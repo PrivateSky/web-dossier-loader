@@ -1,0 +1,37 @@
+<psk-container>
+    <script>
+
+
+
+        let initHostApp = function(){
+            let seed = this.querySelector("input#seed").value;
+            let initializeBootScript = require("boot-host").initializeBootScript;
+            initializeBootScript(seed);
+        };
+
+        let addPskApp = function(){
+            let seed = this.querySelector("input#seed").value;
+            let pskApp = document.createElement('psk-ss-app');
+            pskApp.setAttribute("csb-seed", seed);
+            this.querySelector("#ssapps").appendChild(pskApp);
+        };
+        controller.receive("addPskApp", addPskApp);
+        controller.receive("initHostApp", initHostApp);
+
+    </script>
+
+    <label>
+        Seed:
+    </label>
+    <input type="text" id="seed"/>
+    <br/>
+    <psk-button id="init_host" event-name="initHostApp">Init host app</psk-button><br/>
+    <psk-button id="add_iframe" event-name="addPskApp">Add PskApp</psk-button>
+    <br/>
+
+    <psk-grid columns="3" id="ssapps">
+
+    </psk-grid>
+
+</psk-container>
+

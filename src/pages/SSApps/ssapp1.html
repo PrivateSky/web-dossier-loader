@@ -1,0 +1,21 @@
+<psk-page title="SSApp1 App 1">
+    <psk-container>
+        <script>
+
+            controller.receive("fetchItems", function (evt) {
+                console.log("event",evt);
+                evt.stopImmediatePropagation();
+                fetch("/create-channel/rafael").then(response => {
+                    console.log(response);
+                    response.text().then((data)=>console.log(data.length));
+                });
+            });
+
+        </script>
+
+
+        <psk-button event-name="fetchItems">
+            Fetch My Data
+        </psk-button>
+    </psk-container>
+</psk-page>
