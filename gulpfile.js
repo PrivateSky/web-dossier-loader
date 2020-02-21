@@ -5,7 +5,7 @@ const {series} = require('gulp');
 
 function buildWebComponents(cb) {
     let currentDir = process.cwd();
-    process.chdir('../pskwebcomponents');
+    process.chdir('../../webcomponents/pskwebcomponents');
     run('npm run build')().then(function () {
         process.chdir(currentDir);
         cb();
