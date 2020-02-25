@@ -3,25 +3,18 @@ import RestoreCSBEvent from "../events/RestoreCSBEvent.js";
 export default class RestoreCSBController {
 
     wizardSteps = [{
-        stepName: "FirstStep",
+        stepName: "Enter your seed",
         stepIndex: 1,
         stepComponent: "psk-page-loader",
         stepCompleted: false,
         stepProperties: {pageUrl: "/pages/wizard/restore/init.html"}
     },
         {
-            stepName: "SecondStep",
+            stepName: "Restored finished",
             stepIndex: 2,
             stepComponent: "psk-page-loader",
             stepCompleted: false,
             stepProperties: {pageUrl: "/pages/wizard/restore/details.html"}
-        },
-        {
-            stepName: "ThirdStep",
-            stepIndex: 3,
-            stepComponent: "psk-page-loader",
-            stepCompleted: false,
-            stepProperties: {pageUrl: "Hello"}
         }];
 
     provideConfiguration(event) {
@@ -75,11 +68,6 @@ export default class RestoreCSBController {
         console.log("RestoreCSBController created!");
         element.addEventListener("needWizardConfiguration", this.provideConfiguration.bind(this))
         element.addEventListener("changeStep", this.changeStep.bind(this));
-    }
-
-    restoreCSB(seed) {
-        console.log(seed);
-        throw new Error("Not implemented")
     }
 
 }

@@ -811,6 +811,29 @@ function Archive(archiveConfigurator) {
         }
     };
 
+    /* TODO: do not create multiple BARMaps... */
+    this.addFiles = (arrWithFilePaths, barPath, callback) => {
+        let arr = arrWithFilePaths.slice();
+        let self = this;
+        function recAdd(){
+            if(arr.length){
+                let filePath = arr.pop();
+
+                let fileName = path.basename(filePath) ;
+                self.addFile(filePath, barPath + "/" + fileName, function(err, res){
+                    if(err){
+                     callback(err);
+                    } else{
+                        recAdd();
+                    }
+                });
+            } else {
+                callback(null, true);
+            }
+        }
+        recAdd();
+    };
+
     this.extractFile = (fsFilePath, barPath, callback) => {
         if (typeof barPath === "function") {
             callback = barPath;
@@ -1149,6 +1172,7 @@ function Archive(archiveConfigurator) {
 
             //todo: check if emptyList is called ok in this place.
             // the scenario: adding a new file at an existing barPath should overwrite the initial content found there.
+
             barMap.emptyList(barPath);
             __readBlocksRecursively(0, callback);
 
@@ -2912,15 +2936,20 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 	ret.getSwarmId = function(){
 		return 	thisObject.getMetadata(CNST.SWARMID);
-	}
+	};
 
 	ret.getSwarmType = function(){
 		return 	thisObject.getMetadata(CNST.SWARMTYPE);
-	}
+	};
 
 	ret.__reinit = function(blockchain){
 		ret.autoInit(blockchain);
-	}
+	};
+
+	ret.asJSON = function(){
+		return thisObject.getInnerValue().publicVars;
+	};
+
 	return ret;
 };
 },{"../moduleConstants":"D:\\work\\privatesky\\modules\\blockchain\\moduleConstants.js","callflow":"D:\\work\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\transaction_swarm_template.js":[function(require,module,exports){
@@ -2935,22 +2964,38 @@ exports.createForObject = function(valueObject, thisObject, localId){
 	ret.onReturn        = null;
 	ret.onResult        = null;
 	ret.asyncReturn     = null;
-	//ret.return          = null;
-	ret.home            = null;
 	ret.autoInit        = function(blockchain){
 		_blockchain = blockchain;
 		thisObject.transaction = blockchain.beginTransaction(thisObject);
 	};
 
 	ret.commit = function () {
-		_blockchain.commit(thisObject.transaction);
+		_blockchain.commit(thisObject.transaction, (error, status) => {
+			thisObject.transaction.getSwarm().notify({eventType: "commit", error, status});
+		});
 	};
 
 	ret.onCommit = function (callback) {
 		thisObject.observe((event) => {
-			callback(event.err);
+			callback(event.error, event.status);
+		}, undefined, (event)=>{
+			return event.eventType === "commit";
 		});
 	};
+
+	ret.onReturn = function (callback) {
+		thisObject.observe((event) => {
+			callback(event.error, event.result);
+		}, undefined, (event)=>{
+			return event.eventType === "return";
+		});
+	};
+
+	ret.return = function(error, result){
+		thisObject.notify({eventType: "return", error, result});
+	};
+
+	ret.home = ret.return;
 
 	return ret;
 };
@@ -3657,16 +3702,14 @@ function Blockchain(pskdb, consensusAlgorithm, worldStateCache, signatureProvide
         //console.log(swarm);
     };
 
-    this.commit = function (transaction) {
+    this.commit = function (transaction, callback) {
         let swarm = transaction.getSwarm();
         let handler = transaction.getHandler();
         const diff = handler.computeSwarmTransactionDiff(swarm);
         //console.log("Diff is", diff.output);
         const t = bm.createCRTransaction(swarm.getMetadata("swarmTypeName"), swarm.getMetadata(CNST.COMMAND_ARGS), diff.input, diff.output, consensusAlgorithm.getCurrentPulse());
         t.signatures = [self.signAs(swarm.getMetadata(CNST.SIGNING_AGENT), t.digest)];
-        consensusAlgorithm.commit(t, (err, status) => {
-            swarm.notify({err});
-        });
+        consensusAlgorithm.commit(t, callback);
     };
 
     this.onceAllCommitted = pskdb.onceAllCommitted;
@@ -6537,7 +6580,7 @@ exports.createForObject = function(valueObject, thisObject, localId){
 	ret.parallel        = createParallel;
 	ret.serial          = createSerial;
 	ret.valueOf         = valueOf;
-	ret.update          = update;
+	ret.actualize       = update;
 	ret.runPhase        = runPhase;
 
 
@@ -6864,7 +6907,7 @@ module.exports.create = (brickTransportStrategyName) => {
     return new EDFSBrickStorage(brickTransportStrategyName)
 };
 
-},{"./EDFSBrickStorage":"D:\\work\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportationStrategy.js":[function(require,module,exports){
+},{"./EDFSBrickStorage":"D:\\work\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
 (function (Buffer){
 
 function FetchBrickTransportStrategy(initialConfig) {
@@ -7038,7 +7081,7 @@ function EDFS(brickTransportStrategyName) {
         return barModule.createArchive(createArchiveConfig());
     };
 
-    this.loadCSB = (seed, callback) => {
+    this.bootCSB = (seed, callback) => {
         const rawCSB = new RawCSB(brickTransportStrategyName, seed);
         rawCSB.start(err => callback(err, rawCSB));
     };
@@ -7051,6 +7094,16 @@ function EDFS(brickTransportStrategyName) {
         const edfsBrickStorage = require("edfs-brick-storage").create(brickTransportStrategyName);
         const bar = this.loadBar(seed);
         bar.clone(edfsBrickStorage, true, callback);
+    };
+
+    this.createWallet = (templateSeed, pin, callback) => {
+        this.clone(templateSeed, (err, seed) => {
+            if (err) {
+                return callback(err);
+            }
+
+            require("../seedCage").putSeed(seed, pin, callback);
+        });
     };
 
     this.createBarWithConstitution = function(folderConstitution, callback) {
@@ -7087,7 +7140,14 @@ function EDFS(brickTransportStrategyName) {
 }
 
 module.exports = EDFS;
-},{"../moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","./RawCSB":"D:\\work\\privatesky\\modules\\edfs\\lib\\RawCSB.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\privatesky\\modules\\bar-fs-adapter\\index.js","edfs-brick-storage":"D:\\work\\privatesky\\modules\\edfs-brick-storage\\index.js"}],"D:\\work\\privatesky\\modules\\edfs\\lib\\RawCSB.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawCSB":"D:\\work\\privatesky\\modules\\edfs\\lib\\RawCSB.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\privatesky\\modules\\bar-fs-adapter\\index.js","edfs-brick-storage":"D:\\work\\privatesky\\modules\\edfs-brick-storage\\index.js"}],"D:\\work\\privatesky\\modules\\edfs\\lib\\RawCSB.js":[function(require,module,exports){
+
+/*
+
+Sinica: to be renamed CSBHandler. RootCSB should be deleted
+*/
+
+
 function RawCSB(brickTransportStrategyName, seed) {
     const barModule = require("bar");
     const blockchainModule = require("blockchain");
@@ -7185,7 +7245,7 @@ function RawCSB(brickTransportStrategyName, seed) {
         const historyStorage = blockchainModule.createHistoryStorage("bar", bar);
         const consensusAlgorithm = blockchainModule.createConsensusAlgorithm("direct");
         const signatureProvider = blockchainModule.createSignatureProvider("permissive");
-        return blockchainModule.createABlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, true);
+        return blockchainModule.createBlockchain(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, true);
     }
 
     function createBar() {
@@ -7226,7 +7286,186 @@ module.exports = {
     }
 };
 
-},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\work\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
+(function (Buffer){
+const pskcrypto = "pskcrypto";
+const crypto = require(pskcrypto);
+const storageLocation = "seedCage";
+const algorithm = "aes-256-cfb";
+
+function getSeed(pin, callback) {
+    let encryptedSeed;
+    let seed;
+    try {
+        encryptedSeed = localStorage.getItem(storageLocation);
+        if (encryptedSeed === null || typeof encryptedSeed !== "string" || encryptedSeed.length === 0) {
+            return callback(new Error("SeedCage is empty or data was altered"));
+        }
+        const pskEncryption = crypto.createPskEncryption(algorithm);
+        const encKey = crypto.deriveKey(algorithm, pin);
+        seed = pskEncryption.decrypt(encryptedSeed, encKey).toString();
+    } catch (e) {
+        return callback(e);
+    }
+    callback(undefined, seed);
+}
+
+function putSeed(seed, pin, callback) {
+    let encSeed;
+
+    try {
+        if (typeof seed === "string") {
+            seed = Buffer.from(seed);
+        }
+        /*if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
+            seed = Buffer.from(seed);
+        }*/
+
+        const pskEncryption = crypto.createPskEncryption(algorithm);
+        const encKey = crypto.deriveKey(algorithm, pin);
+        encSeed = pskEncryption.encrypt(seed, encKey);
+        const encParameters = pskEncryption.getEncryptionParameters();
+        encSeed = Buffer.concat([encSeed, encParameters.iv]);
+        if (encParameters.aad) {
+            encSeed = Buffer.concat([encSeed, encParameters.aad]);
+        }
+
+        if (encParameters.tag) {
+            encSeed = Buffer.concat([encSeed, encParameters.tag]);
+        }
+
+        localStorage.setItem(storageLocation, encSeed);
+    } catch (e) {
+        return callback(e);
+    }
+    callback(undefined);
+}
+
+function check(callback) {
+    let item;
+    try {
+        item = localStorage.getItem(storageLocation);
+    } catch (e) {
+        return callback(e);
+    }
+    callback(undefined, !!item);
+}
+
+module.exports = {
+    check,
+    putSeed,
+    getSeed
+};
+
+}).call(this,require("buffer").Buffer)
+
+},{"buffer":"D:\\work\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
+(function (process,Buffer){
+const pth = "path";
+const path = require(pth);
+const os = "os";
+const fileSystem = "fs";
+const fs = require(fileSystem);
+const pskcrypto = "pskcrypto";
+const crypto = require(pskcrypto);
+
+
+const storageLocation = process.env.SEED_CAGE_LOCATION || require(os).homedir();
+const storageFileName = ".seedCage";
+const seedCagePath = path.join(storageLocation, storageFileName);
+const algorithm = "aes-256-cfb";
+
+function getSeed(pin, callback) {
+    fs.readFile(seedCagePath, (err, encryptedSeed) => {
+        if (err) {
+            return callback(err);
+        }
+
+        let seed;
+        try {
+            const pskEncryption = crypto.createPskEncryption(algorithm);
+            const encKey = crypto.deriveKey(algorithm, pin);
+            seed = pskEncryption.decrypt(encryptedSeed, encKey).toString();
+        } catch (e) {
+            return callback(e);
+        }
+
+        callback(undefined, seed);
+    });
+}
+
+function putSeed(seed, pin, callback) {
+    fs.mkdir(storageLocation, {recursive: true}, (err) => {
+        if (err) {
+            return callback(err);
+        }
+
+        fs.stat(seedCagePath, (err, stats) => {
+            if (!err && stats.size > 0) {
+                return callback(Error("Attempted to overwrite existing SEED."));
+            }
+
+            let encSeed;
+            try {
+                if (typeof seed === "string") {
+                    seed = Buffer.from(seed);
+                }
+
+                if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
+                    seed = Buffer.from(seed);
+                }
+
+
+                const pskEncryption = crypto.createPskEncryption(algorithm);
+                const encKey = crypto.deriveKey(algorithm, pin);
+                encSeed = pskEncryption.encrypt(seed, encKey);
+                const encParameters = pskEncryption.getEncryptionParameters();
+                encSeed = Buffer.concat([encSeed, encParameters.iv]);
+                if (encParameters.aad) {
+                    encSeed = Buffer.concat([encSeed, encParameters.aad]);
+                }
+
+                if (encParameters.tag) {
+                    encSeed = Buffer.concat([encSeed, encParameters.tag]);
+                }
+            } catch (e) {
+                return callback(e);
+            }
+
+            console.log("To be removed later", seed.toString());
+            fs.writeFile(seedCagePath, encSeed, callback);
+        });
+    });
+}
+
+function check(callback) {
+    fs.access(seedCagePath, callback);
+}
+
+module.exports = {
+    check,
+    putSeed,
+    getSeed
+};
+
+}).call(this,require('_process'),require("buffer").Buffer)
+
+},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
+const or = require("overwrite-require");
+switch ($$.environmentType) {
+    case or.constants.THREAD_ENVIRONMENT_TYPE:
+    case or.constants.NODEJS_ENVIRONMENT_TYPE:
+        module.exports = require("./NodeSeedCage");
+        break;
+    case or.constants.BROWSER_ENVIRONMENT_TYPE:
+        module.exports = require("./BrowserSeedCage");
+        break;
+    case or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE:
+    case or.constants.ISOLATE_ENVIRONMENT_TYPE:
+    default:
+        throw new Error("No implementation of SeedCage for this env type.");
+}
+},{"./BrowserSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"overwrite-require"}],"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -9650,14 +9889,14 @@ function HostBootScript(seed) {
         let SEED = require("bar").Seed;
         const seed = new SEED(self.seed);
 
-        //self.edfs = EDFS.attachFromSeed(seed);
+        //self.edfs = EDFS.attachWithSeed(seed);
 
         const hasHttpStrategyRegistered = $$.brickTransportStrategiesRegistry.has(FETCH_BRICK_STORAGE_STRATEGY_NAME);
 
         if (!hasHttpStrategyRegistered) {
-            let CreateFetchBrickTransportationStrategy = require("edfs").FetchBrickTransportationStrategy;
-            let FetchBrickTransportationStrategy = new CreateFetchBrickTransportationStrategy(seed.getEndpoint());
-            $$.brickTransportStrategiesRegistry.add(FETCH_BRICK_STORAGE_STRATEGY_NAME, FetchBrickTransportationStrategy);
+            let FetchBrickTransportStrategy = require("edfs").FetchBrickTransportStrategy;
+            let fetchStrategy = new FetchBrickTransportStrategy(seed.getEndpoint());
+            $$.brickTransportStrategiesRegistry.add(FETCH_BRICK_STORAGE_STRATEGY_NAME, fetchStrategy);
         }
         self.edfs = EDFS.attach(FETCH_BRICK_STORAGE_STRATEGY_NAME);
         callback(undefined, self.edfs);
@@ -47149,7 +47388,7 @@ module.exports = {
         const EDFS = require("./lib/EDFS");
         return new EDFS(brickTransportStrategyName);
     },
-    attachToEndpoint(endpoint){
+    attachToEndpoint(endpoint) {
         //TODO:test endpoint against regex to determine transport strategy type
         //for now http will be used
         const transportStrategy = new this.HTTPBrickTransportStrategy(endpoint);
@@ -47157,13 +47396,32 @@ module.exports = {
         $$.brickTransportStrategiesRegistry.add(transportStrategyAlias, transportStrategy);
         return this.attach(transportStrategyAlias);
     },
-    attachFromSeed(compactSeed){
+    attachWithSeed(compactSeed) {
         const SEED = require("bar").Seed;
         const seed = new SEED(compactSeed);
         const transportStrategy = new this.HTTPBrickTransportStrategy(seed.getEndpoint());
         const transportStrategyAlias = "seedBasedStrategy";
         $$.brickTransportStrategiesRegistry.add(transportStrategyAlias, transportStrategy);
         return this.attach(transportStrategyAlias);
+    },
+    attachWithPin(pin, callback) {
+        require("./seedCage").getSeed(pin, (err, seed) => {
+            if (err) {
+                return callback(err);
+            }
+
+            let edfs;
+            try {
+                edfs = this.attachWithSeed(seed);
+            } catch (e) {
+                return callback(e);
+            }
+
+            callback(undefined, edfs);
+        });
+    },
+    checkForSeedCage(callback) {
+        require("./seedCage").check(callback);
     },
     HTTPBrickTransportStrategy: require("./brickTransportStrategies/HTTPBrickTransportStrategy"),
     constants: constants
@@ -47173,13 +47431,13 @@ module.exports = {
 const or = require("overwrite-require");
 const browserContexts = [or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE];
 if (browserContexts.indexOf($$.environmentType) !== -1) {
-    module.exports.FetchBrickTransportationStrategy = require("./brickTransportStrategies/FetchBrickTransportationStrategy");
+    module.exports.FetchBrickTransportStrategy = require("./brickTransportStrategies/FetchBrickTransportStrategy");
 }
 
 
 
 
-},{"./brickTransportStrategies/FetchBrickTransportationStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportationStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","overwrite-require":"overwrite-require"}],"overwrite-require":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","overwrite-require":"overwrite-require"}],"overwrite-require":[function(require,module,exports){
 (function (process,global){
 /*
  require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
@@ -47572,7 +47830,7 @@ self.addEventListener('message', function (event) {
                             let currentIndexLocation = `${event.data.url}`;
                             cache.put(currentIndexLocation, response);
 
-                            event.ports[0].postMessage({status: 'finished', content:content.toString()});
+                            event.ports[0].postMessage({status: 'finished', content: content.toString()});
                         });
 
 
@@ -47586,31 +47844,31 @@ self.addEventListener('message', function (event) {
 });
 
 
-let getAppFile = function(request){
-    return new Promise((resolve, reject)=>{
-            console.log("Request",request.url);
-            let url = new URL(request.url);
-            let appFile = "app"+url.pathname;
-            console.log(appFile);
-            csbArchive.readFile(appFile,(err, content)=>{
-                if(err){
-                    reject(err);
-                }else{
-                    let fileExtension = appFile.substring(appFile.lastIndexOf(".") + 1);
-                    let mimeType = MimeType.getMimeTypeFromExtension(fileExtension);
+let getAppFile = function (request) {
+    return new Promise((resolve, reject) => {
+        console.log("Request", request.url);
+        let url = new URL(request.url);
+        let appFile = "app" + url.pathname;
+        console.log(appFile);
+        csbArchive.readFile(appFile, (err, content) => {
+            if (err) {
+                reject(err);
+            } else {
+                let fileExtension = appFile.substring(appFile.lastIndexOf(".") + 1);
+                let mimeType = MimeType.getMimeTypeFromExtension(fileExtension);
 
-                    let blob = new Blob([mimeType.binary ? content : content.toString()], {type: mimeType.name});
-                    let response = new Response(blob, {"status": 200, "statusText": "ok"});
-                    resolve(response);
-                }
-            });
+                let blob = new Blob([mimeType.binary ? content : content.toString()], {type: mimeType.name});
+                let response = new Response(blob, {"status": 200, "statusText": "ok"});
+                resolve(response);
+            }
+        });
     });
 };
 
 
 self.addEventListener('fetch', (event) => {
 
-    let   cacheAndRelayResponse = function(response){
+    let cacheAndRelayResponse = function (response) {
         let responseClone = response.clone();
         caches.open('v1').then((cache) => {
             cache.put(event.request, responseClone);
@@ -47619,7 +47877,7 @@ self.addEventListener('fetch', (event) => {
         return response;
     };
 
-    if(csbArchive){
+    if (csbArchive) {
         event.respondWith(
             caches.match(event.request).then((resp) => {
                 return resp || getAppFile(event.request).then(cacheAndRelayResponse);
