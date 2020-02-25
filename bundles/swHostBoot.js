@@ -7102,7 +7102,12 @@ function EDFS(brickTransportStrategyName) {
                 return callback(err);
             }
 
-            require("../seedCage").putSeed(seed, pin, callback);
+            require("../seedCage").putSeed(seed, pin, (err)=>{
+                if(err){
+                    return callback(err);
+                }
+                callback(undefined, seed);
+            });
         });
     };
 

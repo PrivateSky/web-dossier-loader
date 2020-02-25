@@ -1,8 +1,9 @@
-function RestoreController() {
+function NewController() {
 
     let EDFS;
     let seed;
     let pin;
+    let walletType;
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -48,18 +49,31 @@ function RestoreController() {
         }
     };
 
+    this.selectWalletType = function(event){
+        walletType = {
+            endpoint:APP_CONFIG.EDFS_ENDPOINT,
+            templateSeed:APP_CONFIG.TEMPLATE_SEED
+        };
+        wizard.next();
+    };
 
-    this.restore = function (event) {
+    this.createWallet = function (event) {
         event.stopImmediatePropagation();
-        seed = document.getElementById("seed").value;
         try {
-            EDFS.attachWithSeed(seed);
-            wizard.next();
+            EDFS = EDFS.attachToEndpoint(walletType.endpoint);
+            EDFS.createWallet(walletType.templateSeed, pin, function (err, _seed) {
+                if(!err){
+                    seed = _seed;
+                    wizard.next();
+                }
+                else{
+                    console.error("An error occured");
+                }
+            });
         }
         catch (e) {
-           document.getElementById("seedError").innerText="Seed is not valid."
+            document.getElementById("pinError").innerText="Seed is not valid."
         }
-
     };
 
     this.previous = function (event) {
@@ -71,7 +85,7 @@ function RestoreController() {
 
     this.setPin = function (event) {
         event.stopImmediatePropagation();
-            EDFS.storeWalletSeed(seed, pin, function (err) {
+        EDFS.storeWalletSeed(seed, pin, function (err) {
             if(err){
                 return document.getElementById("pinError").innerText="Operation failed. Try again"
             }
@@ -89,7 +103,7 @@ function RestoreController() {
     }
 }
 
-let controller = new RestoreController();
+let controller = new NewController();
 document.addEventListener("DOMContentLoaded", function () {
     controller.initView();
 });
