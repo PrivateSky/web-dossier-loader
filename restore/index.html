@@ -1,0 +1,68 @@
+<html>
+<head>
+    <title></title>
+    <base href="/restore" target="_blank">
+    <script src="app-config.js"></script>
+    <script src="bundles/webshims.js"></script>
+    <script src="bundles/edfsBar.js"></script>
+    <script src="controllers/RestoreController.js"></script>
+    <script src="assets/js/stepper.min.js"></script>
+    <link href="assets/css/bootstrap.min.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
+
+</head>
+<body>
+<div id="psk-wizard" class="bs-stepper">
+    <div class="bs-stepper-header" role="tablist">
+        <div class="step" data-target="#test-l-1">
+            <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="test-l-1">
+                <span class="bs-stepper-circle">1</span>
+                <span class="bs-stepper-label">Seed</span>
+            </button>
+        </div>
+        <div class="bs-stepper-line"></div>
+        <div class="step" data-target="#test-l-2">
+            <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="test-l-2">
+                <span class="bs-stepper-circle">2</span>
+                <span class="bs-stepper-label">PIN</span>
+            </button>
+        </div>
+        <div class="bs-stepper-line"></div>
+        <div class="step" data-target="#test-l-3">
+            <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3">
+                <span class="bs-stepper-circle">3</span>
+                <span class="bs-stepper-label">Complete</span>
+            </button>
+        </div>
+    </div>
+    <div class="bs-stepper-content">
+        <form onSubmit="return controller.openWallet(event)">
+            <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
+                <div class="form-group">
+                    <label for="seed">Seed</label>
+                    <input type="text" class="form-control" id="seed" placeholder="Enter Wallet Seed"
+                           oninput="controller.validateSeed(event)">
+                    <label id="seedError"></label>
+                </div>
+                <button id="restoreSeedBtn" class="btn btn-primary" onclick="controller.restore(event)" disabled="disabled">Restore</button>
+            </div>
+            <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+                <div class="form-group">
+                    <label for="pin">PIN</label>
+                    <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
+                           oninput="controller.validatePIN(event)">
+                    <input type="password" class="form-control" id="confirmPin" placeholder="Confirm PIN"
+                           oninput="controller.validatePIN(event)">
+                </div>
+                <button class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
+                <button id="setPINBtn" class="btn btn-primary" onclick="controller.setPin(event)" disabled="disabled">Set PIN</button>
+                <label id="pinError"></label>
+            </div>
+            <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center" aria-labelledby="stepper1trigger3">
+                <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
