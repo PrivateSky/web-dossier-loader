@@ -484,7 +484,7 @@ function Archive(archiveConfigurator) {
 
     this.setSeed = (seed) => {
         cachedSEED = seed;
-        archiveConfigurator.setSeed(seed);
+        archiveConfigurator.setSeed(Buffer.from(seed));
     };
 
     this.getSeed = () => {
@@ -492,7 +492,7 @@ function Archive(archiveConfigurator) {
             return cachedSEED;
         }
 
-        cachedSEED = archiveConfigurator.getSeed();
+        cachedSEED = archiveConfigurator.getSeed().toString();
         return cachedSEED;
     };
 
@@ -953,7 +953,7 @@ function Archive(archiveConfigurator) {
                 }
 
                 if (typeof file !== "undefined") {
-                    readFileAsBlocks(path.join(rootFsPath, file), path.join(barPath, file), archiveConfigurator.getBufferSize(), (err) => {
+                    readFileAsBlocks(path.join(rootFsPath, file), barPath + "/" + file, archiveConfigurator.getBufferSize(), (err) => {
                         if (err) {
                             return callback(err);
                         }
@@ -1935,7 +1935,7 @@ function FolderBarMap(header) {
     let encryptionKey;
 
     this.add = (filePath, brick) => {
-        filePath = filePath.split(path.sep).join(path.posix.sep);
+        filePath = filePath.split(path.sep).join(path.sep);
         this.load();
         if (typeof header[filePath] === "undefined") {
             header[filePath] = [];
@@ -3177,7 +3177,7 @@ function EDFSMiddleware(server) {
         res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
         // Request headers you wish to allow
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length');
+        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length, X-Content-Length');
         next();
 
     });
@@ -3392,7 +3392,7 @@ function EDFS(brickTransportStrategyName) {
     this.createCSB = (callback) => {
         const rawCSB = new RawCSB(brickTransportStrategyName);
         rawCSB.start(err => {
-            if(err) {
+            if (err) {
                 return callback(err);
             }
 
@@ -3426,22 +3426,26 @@ function EDFS(brickTransportStrategyName) {
         bar.clone(edfsBrickStorage, true, callback);
     };
 
-    this.createWallet = (templateSeed, pin, callback) => {
+    this.createWallet = (templateSeed, pin, overwrite = false, callback) => {
         this.clone(templateSeed, (err, seed) => {
             if (err) {
                 return callback(err);
             }
 
-            require("../seedCage").putSeed(seed, pin, (err)=>{
-                if(err){
-                    return callback(err);
-                }
-                callback(undefined, seed);
-            });
+            if (typeof pin !== "undefined") {
+                require("../seedCage").putSeed(seed, pin, overwrite, (err) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(undefined, seed.toString());
+                });
+            } else {
+                callback(undefined, seed.toString());
+            }
         });
     };
 
-    this.createBarWithConstitution = function(folderConstitution, callback) {
+    this.createBarWithConstitution = function (folderConstitution, callback) {
         const bar = this.createBar();
         bar.addFolder(folderConstitution, constants.CSB.CONSTITUTION_FOLDER, (err, mapDigest) => {
             if (err) {
@@ -3466,7 +3470,7 @@ function EDFS(brickTransportStrategyName) {
         if (seed) {
             archiveConfigurator.setBrickTransportStrategyName(brickTransportStrategyName);
             archiveConfigurator.setSeed(seed);
-        }else{
+        } else {
             archiveConfigurator.setSeedEndpoint(brickTransportStrategy.getLocator());
         }
 
@@ -3645,16 +3649,19 @@ function getSeed(pin, callback) {
     callback(undefined, seed);
 }
 
-function putSeed(seed, pin, callback) {
+function putSeed(seed, pin, overwrite = false, callback) {
     let encSeed;
 
+    if (typeof overwrite === "function") {
+        callback(Error("TODO: api signature updated!"));
+    }
     try {
         if (typeof seed === "string") {
             seed = Buffer.from(seed);
         }
-        /*if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
+        if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
             seed = Buffer.from(seed);
-        }*/
+        }
 
         const pskEncryption = crypto.createPskEncryption(algorithm);
         const encKey = crypto.deriveKey(algorithm, pin);
@@ -3732,7 +3739,7 @@ function getSeed(pin, callback) {
     });
 }
 
-function putSeed(seed, pin, callback) {
+function putSeed(seed, pin, overwrite = false, callback) {
     fs.mkdir(storageLocation, {recursive: true}, (err) => {
         if (err) {
             return callback(err);
@@ -3740,38 +3747,46 @@ function putSeed(seed, pin, callback) {
 
         fs.stat(seedCagePath, (err, stats) => {
             if (!err && stats.size > 0) {
-                return callback(Error("Attempted to overwrite existing SEED."));
+                if (overwrite) {
+                    __encryptSeed();
+                } else {
+                    return callback(Error("Attempted to overwrite existing SEED."));
+                }
+            } else {
+                __encryptSeed();
             }
 
-            let encSeed;
-            try {
-                if (typeof seed === "string") {
-                    seed = Buffer.from(seed);
+            function __encryptSeed() {
+                let encSeed;
+                try {
+                    if (typeof seed === "string") {
+                        seed = Buffer.from(seed);
+                    }
+
+                    if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
+                        seed = Buffer.from(seed);
+                    }
+
+
+                    const pskEncryption = crypto.createPskEncryption(algorithm);
+                    const encKey = crypto.deriveKey(algorithm, pin);
+                    encSeed = pskEncryption.encrypt(seed, encKey);
+                    const encParameters = pskEncryption.getEncryptionParameters();
+                    encSeed = Buffer.concat([encSeed, encParameters.iv]);
+                    if (encParameters.aad) {
+                        encSeed = Buffer.concat([encSeed, encParameters.aad]);
+                    }
+
+                    if (encParameters.tag) {
+                        encSeed = Buffer.concat([encSeed, encParameters.tag]);
+                    }
+                } catch (e) {
+                    return callback(e);
                 }
 
-                if (typeof seed === "object" && !Buffer.isBuffer(seed)) {
-                    seed = Buffer.from(seed);
-                }
-
-
-                const pskEncryption = crypto.createPskEncryption(algorithm);
-                const encKey = crypto.deriveKey(algorithm, pin);
-                encSeed = pskEncryption.encrypt(seed, encKey);
-                const encParameters = pskEncryption.getEncryptionParameters();
-                encSeed = Buffer.concat([encSeed, encParameters.iv]);
-                if (encParameters.aad) {
-                    encSeed = Buffer.concat([encSeed, encParameters.aad]);
-                }
-
-                if (encParameters.tag) {
-                    encSeed = Buffer.concat([encSeed, encParameters.tag]);
-                }
-            } catch (e) {
-                return callback(e);
+                console.log("To be removed later", seed.toString());
+                fs.writeFile(seedCagePath, encSeed, callback);
             }
-
-            console.log("To be removed later", seed.toString());
-            fs.writeFile(seedCagePath, encSeed, callback);
         });
     });
 }

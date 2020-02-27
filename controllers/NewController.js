@@ -61,9 +61,10 @@ function NewController() {
         event.stopImmediatePropagation();
         try {
             EDFS = EDFS.attachToEndpoint(walletType.endpoint);
-            EDFS.createWallet(walletType.templateSeed, pin, function (err, _seed) {
+            EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {
                 if(!err){
                     seed = _seed;
+                    console.log(_seed);
                     wizard.next();
                 }
                 else{
