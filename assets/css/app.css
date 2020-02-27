@@ -1,4 +1,106 @@
+@import url("nunito.css");
+@import url("bootstrap.min.css");
+
+html{
+    height:100%;
+    width:100%;
+
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family:Nunito,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    height: 100%;
+    width: 100%;
+}
+
+
 #restoreOrNewContainer,
-#pinContainer{
+#pinContainer {
     display: none;
+    width: 100%;
+    text-align: center;
+}
+
+.wizard-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content {
+    padding: 50px;
+    z-index: 100;
+    background: rgba(64, 83, 115, 0.5);
+    flex-direction: column;
+}
+.stepper-content{
+    padding: 50px;
+    z-index: 100;
+    background: rgba(230, 235, 243, 0.9);
+    flex-direction: column;
+    width:90%;
+    align-self: center;
+}
+
+.content .title {
+    font-size: 200%;
+    color: #FFF;
+    text-align: center;
+}
+
+.content .caption {
+    font-size: 120%;
+    color: #FFF;
+    text-align: center;
+}
+
+.content .actions {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.btn-csb-new{
+    background-color: #616e7d;
+    border-color: #4e5a69;
+    color:#FFFFFF;
+}
+
+.btn-csb-new:hover,
+.btn-csb-new:active,
+.btn-csb-new:visited,
+.btn-csb-new:focus {
+    color:#FFFFFF;
+    background-color: #566271;
+    border-color: #4e5a69;
+}
+
+.btn-csb-restore{
+    background-color: #95799e;
+    border-color: #806489;
+    color:#FFFFFF;
+}
+
+.btn-csb-restore:hover,
+.btn-csb-restore:active,
+.btn-csb-restore:visited,
+.btn-csb-restore:focus {
+    color:#FFFFFF;
+    background-color: #8d7096;
+    border-color: #806489;
+}
+
+
+.stepper-content .active .bs-stepper-circle {
+    background-color: #566271;
 }
