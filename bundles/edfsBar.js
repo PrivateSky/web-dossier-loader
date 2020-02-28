@@ -2234,7 +2234,10 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
         const localSeed = {};
         localSeed.id = id;
         if (!id && usedForEncryption) {
-            localSeed.id = crypto.randomBytes(randomLength);
+            //Bugfix: randomBytes in browser returns an Uint8Array object that has a wrong constructor and prototype
+            //that is why we create a new instance of Buffer/Uint8Array based on the result of randomBytes
+            localSeed.id = Buffer.from(crypto.randomBytes(randomLength));
+            //TODO: why don't we use ID Generator from swarmutils?
         }
 
         if (endpoint) {
@@ -3445,6 +3448,44 @@ function EDFS(brickTransportStrategyName) {
         });
     };
 
+    this.loadWallet = function(walletSeed, pin, overwrite, callback){
+        if(typeof pin === "function"){
+            callback = pin;
+            pin = walletSeed;
+            walletSeed = undefined;
+        }
+        if(typeof  walletSeed === "undefined"){
+            require("../seedCage").getSeed(pin, (err, seed)=>{
+                if(err){
+                    return callback(err);
+                }
+                try {
+                    let wallet = this.loadBar(seed);
+                    return callback(undefined, wallet);
+                }catch(err){
+                    return callback(err);
+                }
+            });
+        }else{
+            let wallet;
+            try{
+                wallet = this.loadBar(walletSeed);
+                if(typeof pin !== "undefined" && pin !== null){
+                    require("../seedCage").putSeed(walletSeed, pin, overwrite,(err)=>{
+                        if(err){
+                            return callback(err);
+                        }
+                        callback(undefined, wallet);
+                    });
+                }else{
+                    return callback(undefined, wallet);
+                }
+            }catch(err){
+                return callback(err);
+            }
+        }
+    };
+
     this.createBarWithConstitution = function (folderConstitution, callback) {
         const bar = this.createBar();
         bar.addFolder(folderConstitution, constants.CSB.CONSTITUTION_FOLDER, (err, mapDigest) => {
@@ -4575,6 +4616,10 @@ function generateMethodForRequestWithData(httpMethod) {
             }
         };
 
+        xhr.onerror = function (e) {
+            callback(new Error("A network error occurred"));
+        };
+
         xhr.open(httpMethod, url, true);
         //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
@@ -4644,10 +4689,13 @@ $$.remote.doHttpGet = function doHttpGet(url, callback) {
             }
 
         } else {
-            const error = new Error("An error occured. StatusCode: " + xhr.status);
+            const error = new Error("An error occurred. StatusCode: " + xhr.status);
 
             callback({error: error, statusCode: xhr.status});
         }
+    };
+    xhr.onerror = function (e) {
+        callback(new Error("A network error occurred"));
     };
 
     xhr.open("GET", url);
@@ -6331,9 +6379,6 @@ module.exports = {
     },
     checkForSeedCage(callback) {
         require("./seedCage").check(callback);
-    },
-    storeWalletSeed(walletSeed, pin, callback){
-        require("./seedCage").putSeed(walletSeed, pin, callback);
     },
     HTTPBrickTransportStrategy: require("./brickTransportStrategies/HTTPBrickTransportStrategy"),
     constants: constants

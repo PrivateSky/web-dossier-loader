@@ -1,18 +1,23 @@
-swBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\privatesky\\builds\\tmp\\swBoot.js":[function(require,module,exports){
+swHostBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\privatesky\\builds\\tmp\\swHostBoot.js":[function(require,module,exports){
 const or = require('overwrite-require');
 or.enableForEnvironment(or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE);
+$$.log = $$.err = $$.fixMe = console.log;
+require("./swHostBoot_intermediar");
 
-require("./swBoot_intermediar");
-},{"./swBoot_intermediar":"D:\\work\\privatesky\\builds\\tmp\\swBoot_intermediar.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\builds\\tmp\\swBoot_intermediar.js":[function(require,module,exports){
+},{"./swHostBoot_intermediar":"D:\\work\\privatesky\\builds\\tmp\\swHostBoot_intermediar.js","overwrite-require":"overwrite-require"}],"D:\\work\\privatesky\\builds\\tmp\\swHostBoot_intermediar.js":[function(require,module,exports){
 (function (global){
-global.swBootLoadModules = function(){ 
+global.swHostBootLoadModules = function(){ 
+
+	if(typeof $$.__runtimeModules["overwrite-require"] === "undefined"){
+		$$.__runtimeModules["overwrite-require"] = require("overwrite-require");
+	}
 
 	if(typeof $$.__runtimeModules["edfs"] === "undefined"){
 		$$.__runtimeModules["edfs"] = require("edfs");
 	}
 
-	if(typeof $$.__runtimeModules["boot-sw"] === "undefined"){
-		$$.__runtimeModules["boot-sw"] = require("swarm-engine/bootScripts/browser/sw");
+	if(typeof $$.__runtimeModules["boot-host"] === "undefined"){
+		$$.__runtimeModules["boot-host"] = require("swarm-engine/bootScripts/browser/sw-host");
 	}
 
 	if(typeof $$.__runtimeModules["pskcrypto"] === "undefined"){
@@ -20,17 +25,17 @@ global.swBootLoadModules = function(){
 	}
 }
 if (true) {
-	swBootLoadModules();
+	swHostBootLoadModules();
 }; 
-global.swBootRequire = require;
+global.swHostBootRequire = require;
 if (typeof $$ !== "undefined") {            
-    $$.requireBundle("swBoot");
+    $$.requireBundle("swHostBoot");
     };
     
     
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"edfs":"edfs","pskcrypto":"pskcrypto","swarm-engine/bootScripts/browser/sw":"swarm-engine/bootScripts/browser/sw"}],"D:\\work\\privatesky\\modules\\adler32\\index.js":[function(require,module,exports){
+},{"edfs":"edfs","overwrite-require":"overwrite-require","pskcrypto":"pskcrypto","swarm-engine/bootScripts/browser/sw-host":"swarm-engine/bootScripts/browser/sw-host"}],"D:\\work\\privatesky\\modules\\adler32\\index.js":[function(require,module,exports){
 
 "use strict";
 
@@ -2250,7 +2255,10 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
         const localSeed = {};
         localSeed.id = id;
         if (!id && usedForEncryption) {
-            localSeed.id = crypto.randomBytes(randomLength);
+            //Bugfix: randomBytes in browser returns an Uint8Array object that has a wrong constructor and prototype
+            //that is why we create a new instance of Buffer/Uint8Array based on the result of randomBytes
+            localSeed.id = Buffer.from(crypto.randomBytes(randomLength));
+            //TODO: why don't we use ID Generator from swarmutils?
         }
 
         if (endpoint) {
@@ -7112,6 +7120,44 @@ function EDFS(brickTransportStrategyName) {
         });
     };
 
+    this.loadWallet = function(walletSeed, pin, overwrite, callback){
+        if(typeof pin === "function"){
+            callback = pin;
+            pin = walletSeed;
+            walletSeed = undefined;
+        }
+        if(typeof  walletSeed === "undefined"){
+            require("../seedCage").getSeed(pin, (err, seed)=>{
+                if(err){
+                    return callback(err);
+                }
+                try {
+                    let wallet = this.loadBar(seed);
+                    return callback(undefined, wallet);
+                }catch(err){
+                    return callback(err);
+                }
+            });
+        }else{
+            let wallet;
+            try{
+                wallet = this.loadBar(walletSeed);
+                if(typeof pin !== "undefined" && pin !== null){
+                    require("../seedCage").putSeed(walletSeed, pin, overwrite,(err)=>{
+                        if(err){
+                            return callback(err);
+                        }
+                        callback(undefined, wallet);
+                    });
+                }else{
+                    return callback(undefined, wallet);
+                }
+            }catch(err){
+                return callback(err);
+            }
+        }
+    };
+
     this.createBarWithConstitution = function (folderConstitution, callback) {
         const bar = this.createBar();
         bar.addFolder(folderConstitution, constants.CSB.CONSTITUTION_FOLDER, (err, mapDigest) => {
@@ -7485,349 +7531,7 @@ switch ($$.environmentType) {
     default:
         throw new Error("No implementation of SeedCage for this env type.");
 }
-},{"./BrowserSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\overwrite-require\\index.js":[function(require,module,exports){
-(function (process,global){
-/*
- require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
- The privatesky code for domains should work in node and browsers.
- */
-function enableForEnvironment(envType){
-
-    const moduleConstants = require("./moduleConstants");
-
-    /**
-     * Used to provide autocomplete for $$ variables
-     * @classdesc Interface for $$ object
-     *
-     * @name $$
-     * @class
-     *
-     */
-
-    switch (envType) {
-        case moduleConstants.BROWSER_ENVIRONMENT_TYPE :
-            global = window;
-            break;
-        case moduleConstants.SERVICE_WORKER_ENVIRONMENT_TYPE:
-            global = self;
-            break;
-    }
-
-    if (typeof(global.$$) == "undefined") {
-        /**
-         * Used to provide autocomplete for $$ variables
-         * @type {$$}
-         */
-        global.$$ = {};
-    }
-
-    if (typeof($$.__global) == "undefined") {
-        $$.__global = {};
-    }
-
-    Object.defineProperty($$, "environmentType", {
-        get: function(){
-            return envType;
-        },
-        set: function (value) {
-            throw Error("Environment type already set!");
-        }
-    });
-
-
-    if (typeof($$.__global.requireLibrariesNames) == "undefined") {
-        $$.__global.currentLibraryName = null;
-        $$.__global.requireLibrariesNames = {};
-    }
-
-
-    if (typeof($$.__runtimeModules) == "undefined") {
-        $$.__runtimeModules = {};
-    }
-
-
-    if (typeof(global.functionUndefined) == "undefined") {
-        global.functionUndefined = function () {
-            console.log("Called of an undefined function!!!!");
-            throw new Error("Called of an undefined function");
-        };
-        if (typeof(global.webshimsRequire) == "undefined") {
-            global.webshimsRequire = global.functionUndefined;
-        }
-
-        if (typeof(global.domainRequire) == "undefined") {
-            global.domainRequire = global.functionUndefined;
-        }
-
-        if (typeof(global.pskruntimeRequire) == "undefined") {
-            global.pskruntimeRequire = global.functionUndefined;
-        }
-    }
-
-    const pastRequests = {};
-
-    function preventRecursiveRequire(request) {
-        if (pastRequests[request]) {
-            const err = new Error("Preventing recursive require for " + request);
-            err.type = "PSKIgnorableError";
-            throw err;
-        }
-
-    }
-
-    function disableRequire(request) {
-        pastRequests[request] = true;
-    }
-
-    function enableRequire(request) {
-        pastRequests[request] = false;
-    }
-
-    function requireFromCache(request) {
-        const existingModule = $$.__runtimeModules[request];
-        return existingModule;
-    }
-
-    function wrapStep(callbackName) {
-        const callback = global[callbackName];
-
-        if (callback === undefined) {
-            return null;
-        }
-
-        if (callback === global.functionUndefined) {
-            return null;
-        }
-
-        return function (request) {
-            const result = callback(request);
-            $$.__runtimeModules[request] = result;
-            return result;
-        }
-    }
-
-
-    function tryRequireSequence(originalRequire, request) {
-        let arr;
-        if (originalRequire) {
-            arr = $$.__requireFunctionsChain.slice();
-            arr.push(originalRequire);
-        } else {
-            arr = $$.__requireFunctionsChain;
-        }
-
-        preventRecursiveRequire(request);
-        disableRequire(request);
-        let result;
-        const previousRequire = $$.__global.currentLibraryName;
-        let previousRequireChanged = false;
-
-        if (!previousRequire) {
-            // console.log("Loading library for require", request);
-            $$.__global.currentLibraryName = request;
-
-            if (typeof $$.__global.requireLibrariesNames[request] == "undefined") {
-                $$.__global.requireLibrariesNames[request] = {};
-                //$$.__global.requireLibrariesDescriptions[request]   = {};
-            }
-            previousRequireChanged = true;
-        }
-        for (let i = 0; i < arr.length; i++) {
-            const func = arr[i];
-            try {
-
-                if (func === global.functionUndefined) continue;
-                result = func(request);
-
-                if (result) {
-                    break;
-                }
-
-            } catch (err) {
-                if (err.type !== "PSKIgnorableError") {
-                    $$.err("Require encountered an error while loading ", request, "\nCause:\n", err.stack);
-                }
-            }
-        }
-
-        if (!result) {
-            $$.log("Failed to load module ", request, result);
-        }
-
-        enableRequire(request);
-        if (previousRequireChanged) {
-            //console.log("End loading library for require", request, $$.__global.requireLibrariesNames[request]);
-            $$.__global.currentLibraryName = null;
-        }
-        return result;
-    }
-
-    function makeBrowserRequire(){
-        console.log("Defining global require in browser");
-
-
-        global.require = function (request) {
-
-            ///*[requireFromCache, wrapStep(webshimsRequire), , wrapStep(pskruntimeRequire), wrapStep(domainRequire)*]
-            return tryRequireSequence(null, request);
-        }
-    }
-
-    function makeIsolateRequire(){
-        // require should be provided when code is loaded in browserify
-        const bundleRequire = require;
-
-        $$.requireBundle('sandboxBase');
-        // this should be set up by sandbox prior to
-        const sandboxRequire = global.require;
-        const cryptoModuleName = 'crypto';
-        global.crypto = require(cryptoModuleName);
-
-        function newLoader(request) {
-            // console.log("newLoader:", request);
-            //preventRecursiveRequire(request);
-            const self = this;
-
-            // console.log('trying to load ', request);
-
-            function tryBundleRequire(...args) {
-                //return $$.__originalRequire.apply(self,args);
-                //return Module._load.apply(self,args)
-                let res;
-                try {
-                    res = sandboxRequire.apply(self, args);
-                } catch (err) {
-                    if (err.code === "MODULE_NOT_FOUND") {
-                        const p = path.join(process.cwd(), request);
-                        res = sandboxRequire.apply(self, [p]);
-                        request = p;
-                    } else {
-                        throw err;
-                    }
-                }
-                return res;
-            }
-
-            let res;
-
-
-            res = tryRequireSequence(tryBundleRequire, request);
-
-
-            return res;
-        }
-
-        global.require = newLoader;
-    }
-
-    function makeNodeJSRequire(){
-        const pathModuleName = 'path';
-        const path = require(pathModuleName);
-        const cryptoModuleName = 'crypto';
-        const utilModuleName = 'util';
-        $$.__runtimeModules["crypto"] = require(cryptoModuleName);
-        $$.__runtimeModules["util"] = require(utilModuleName);
-
-        const moduleModuleName = 'module';
-        const Module = require(moduleModuleName);
-        $$.__runtimeModules["module"] = Module;
-
-        console.log("Redefining require for node");
-
-        $$.__originalRequire = Module._load;
-        const moduleOriginalRequire = Module.prototype.require;
-
-        function newLoader(request) {
-            // console.log("newLoader:", request);
-            //preventRecursiveRequire(request);
-            const self = this;
-
-            function originalRequire(...args) {
-                //return $$.__originalRequire.apply(self,args);
-                //return Module._load.apply(self,args)
-                let res;
-                try {
-                    res = moduleOriginalRequire.apply(self, args);
-                } catch (err) {
-                    if (err.code === "MODULE_NOT_FOUND") {
-                        let pathOrName = request;
-                        if(pathOrName.startsWith('/') || pathOrName.startsWith('./') || pathOrName.startsWith('../')){
-                            pathOrName = path.join(process.cwd(), request);
-                        }
-                        res = moduleOriginalRequire.call(self, pathOrName);
-                        request = pathOrName;
-                    } else {
-                        throw err;
-                    }
-                }
-                return res;
-            }
-
-            function currentFolderRequire(request) {
-                return
-            }
-
-            //[requireFromCache, wrapStep(pskruntimeRequire), wrapStep(domainRequire), originalRequire]
-            return tryRequireSequence(originalRequire, request);
-        }
-
-        Module.prototype.require = newLoader;
-        return newLoader;
-    }
-
-    require("./standardGlobalSymbols.js");
-
-    if (typeof($$.require) == "undefined") {
-
-        $$.__requireList = ["webshimsRequire"];
-        $$.__requireFunctionsChain = [];
-
-        $$.requireBundle = function (name) {
-            name += "Require";
-            $$.__requireList.push(name);
-            const arr = [requireFromCache];
-            $$.__requireList.forEach(function (item) {
-                const callback = wrapStep(item);
-                if (callback) {
-                    arr.push(callback);
-                }
-            });
-
-            $$.__requireFunctionsChain = arr;
-        };
-
-        $$.requireBundle("init");
-
-        switch ($$.environmentType) {
-            case moduleConstants.BROWSER_ENVIRONMENT_TYPE:
-                makeBrowserRequire();
-                $$.require = require;
-                break;
-            case moduleConstants.SERVICE_WORKER_ENVIRONMENT_TYPE:
-                makeBrowserRequire();
-                $$.require = require;
-                break;
-            case moduleConstants.ISOLATE_ENVIRONMENT_TYPE:
-                makeIsolateRequire();
-                $$.require = require;
-                break;
-            default:
-               $$.require = makeNodeJSRequire();
-        }
-
-    }
-};
-
-
-
-module.exports = {
-    enableForEnvironment,
-    constants: require("./moduleConstants")
-};
-
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"./moduleConstants":"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js","_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"./BrowserSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"overwrite-require"}],"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -8148,7 +7852,7 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js","psklogger":"D:\\work\\privatesky\\modules\\psklogger\\index.js"}],"D:\\work\\privatesky\\modules\\psk-http-client\\index.js":[function(require,module,exports){
+},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js","psklogger":false}],"D:\\work\\privatesky\\modules\\psk-http-client\\index.js":[function(require,module,exports){
 //to look nice the requireModule on Node
 require("./lib/psk-abstract-client");
 const or = require('overwrite-require');
@@ -8157,7 +7861,7 @@ if ($$.environmentType === or.constants.BROWSER_ENVIRONMENT_TYPE) {
 } else {
 	require("./lib/psk-node-client");
 }
-},{"./lib/psk-abstract-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
+},{"./lib/psk-abstract-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"overwrite-require"}],"D:\\work\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
 /**********************  utility class **********************************/
 function RequestManager(pollingTimeOut) {
     if (!pollingTimeOut) {
@@ -8593,6 +8297,10 @@ function generateMethodForRequestWithData(httpMethod) {
             }
         };
 
+        xhr.onerror = function (e) {
+            callback(new Error("A network error occurred"));
+        };
+
         xhr.open(httpMethod, url, true);
         //xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
 
@@ -8662,10 +8370,13 @@ $$.remote.doHttpGet = function doHttpGet(url, callback) {
             }
 
         } else {
-            const error = new Error("An error occured. StatusCode: " + xhr.status);
+            const error = new Error("An error occurred. StatusCode: " + xhr.status);
 
             callback({error: error, statusCode: xhr.status});
         }
+    };
+    xhr.onerror = function (e) {
+        callback(new Error("A network error occurred"));
     };
 
     xhr.open("GET", url);
@@ -9064,7 +8775,7 @@ module.exports = new PskCrypto();
 
 }).call(this,require("buffer").Buffer)
 
-},{"./PskEncryption":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\privatesky\\node_modules\\crypto-browserify\\index.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
+},{"./PskEncryption":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\privatesky\\node_modules\\crypto-browserify\\index.js","overwrite-require":"overwrite-require"}],"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("crypto");
 const utils = require("./utils/cryptoUtils");
@@ -9482,761 +9193,7 @@ exports.createSignature = function (agent,counter, nextPublic, arr, size){
 
     return agent + ":" + counter + ":" + nextPublic + ":" + result;
 }
-},{"crypto":"D:\\work\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\privatesky\\modules\\psklogger\\index.js":[function(require,module,exports){
-const PSKLogger = require('./src/PSKLoggerClient/index');
-const EnvironmentDataProvider = require('./src/utils').EnvironmentDataProvider;
-const envTypes = require("overwrite-require").constants;
-
-/**
- * @return {string|*}
- */
-function getContextForMeta(meta) {
-    const contexts = {
-        node: (meta) => `node:${meta.context}`,
-        domain: (meta) =>`domain:${meta.domain}`,
-        agent: (meta) => `domain:${meta.domain}:agent:${meta.agent}`,
-        sandbox: () => `sandbox`
-    };
-
-    if (contexts.hasOwnProperty(meta.origin)) {
-        return contexts[meta.origin](meta);
-    } else {
-        return '';
-    }
-}
-
-switch ($$.environmentType) {
-    case envTypes.NODEJS_ENVIRONMENT_TYPE:
-    case envTypes.THREAD_ENVIRONMENT_TYPE:
-        module.exports.MessagePublisherModule = require('./src/MessagePublisher');
-        module.exports.MessageSubscriberModule = require('./src/MessageSubscriber');
-        module.exports.PubSubProxyModule = require('./src/PubSubProxy');
-        break;
-    default:
-        //nothing to do here for now;
-}
-module.exports.PSKLogger = PSKLogger;
-},{"./src/MessagePublisher":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\index.js","./src/MessageSubscriber":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessageSubscriber\\index.js","./src/PSKLoggerClient/index":"D:\\work\\privatesky\\modules\\psklogger\\src\\PSKLoggerClient\\index.js","./src/PubSubProxy":"D:\\work\\privatesky\\modules\\psklogger\\src\\PubSubProxy\\index.js","./src/utils":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\index.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\GenericLoggerClient.js":[function(require,module,exports){
-const LogFactory = require('./LogFactory');
-
-/**
- *
- * @param {TransportInterface} messagePublisher
- * @constructor
- */
-function GenericLoggerClient(messagePublisher) {
-    /**
-     * This is to be used to send normal logs. They will be published in a subchannel of the "logs" channel.
-     * It is easier to trace only user and platform logs if they are separated in this channel
-     *
-     * @param {{code: Number, name: string}} logLevel
-     * @param {Object} meta
-     * @param {Array<any>} messages
-     *
-     * @return {{level, meta, time, msTime, messages}}
-     */
-    function log(logLevel, meta, messages) {
-        const log = LogFactory.createLog(logLevel, meta, messages);
-
-        const logChannel = `logs.${logLevel.name}`;
-        messagePublisher.send(logChannel, log);
-
-        return log;
-    }
-
-
-    /**
-     * This is to be used for sending custom events when messages don't happen in the normal flow of the platform
-     * or they shouldn't interfere with the tracing of logs
-     * For example, sending statistics about a node or a sandbox is happening periodically and not as a result of
-     * users' running code, therefore this should not be merged with logs
-     *
-     * @param {string} channel
-     * @param {Object} meta
-     * @param {Array<any>} messages
-     * @return {{meta, messages, time}}
-     */
-    function event(channel, meta, messages) {
-        const event = LogFactory.createEvent(meta, messages);
-
-        const logChannel = `events.${channel}`;
-        messagePublisher.send(logChannel, event);
-
-        return event;
-    }
-
-    function publish(channel, message) {
-        messagePublisher.send(channel, message);
-
-        return message;
-    }
-
-    this.event  = event;
-    this.log    = log;
-    this.publish = publish;
-}
-
-module.exports = GenericLoggerClient;
-
-},{"./LogFactory":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LogFactory.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LogFactory.js":[function(require,module,exports){
-function getTime() {
-    const envTypes = require("overwrite-require").constants;
-    switch($$.environmentType) {
-        case envTypes.NODEJS_ENVIRONMENT_TYPE:
-            const perf_hooksModule = 'perf_hooks';
-            const {performance} = require(perf_hooksModule);
-            return performance.now() + performance.timeOrigin;
-        default:
-            return Date.now();
-    }
-}
-
-function createLog(logLevel, meta, messages) {
-    return {
-        level: logLevel,
-        messages: messages,
-        meta: meta,
-        time: getTime()
-    }
-}
-
-function createEvent(meta, messages) {
-    return {
-        messages,
-        meta,
-        time: getTime()
-    };
-}
-
-module.exports = {
-    createLog,
-    createEvent
-};
-
-},{"overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LoggerClient.js":[function(require,module,exports){
-const GenericLoggerClient = require('./GenericLoggerClient');
-const LogLevel = require('../utils/LogLevel');
-const LoggerInterface = require('./LoggerInterface');
-
-/**
- *
- * @param {TransportInterface} messagePublisher
- * @implements LoggerInterface
- * @constructor
- */
-function LoggerClient(messagePublisher) {
-    LoggerInterface.call(this);
-
-    const genericLoggerClient = new GenericLoggerClient(messagePublisher);
-
-
-    /************* PUBLIC METHODS *************/
-
-    public_methods = ["debug", "error", "info", "log", "warn"];
-
-    function exposePublicMethod(target, methodName){
-        let handler = function (meta = {}, ...params) {
-            const logLevel = _getLogLevel(LogLevel.debug);
-            return genericLoggerClient.log(logLevel, meta, params);
-        };
-        Object.defineProperty(handler, "name", {value: methodName});
-        target[methodName] = handler;
-    }
-
-    let self = this;
-    public_methods.forEach(function(methodName){
-        exposePublicMethod(self, methodName);
-    });
-
-    function event(channel, meta = {}, ...params) {
-        return genericLoggerClient.event(channel, meta, ...params);
-    }
-    
-    function redirect(channel, logObject) {
-        return genericLoggerClient.publish(channel, logObject)
-    }
-
-
-    /************* PRIVATE METHODS *************/
-
-    function _getLogLevel(levelCode) {
-        return {
-            code: levelCode,
-            name: LogLevel[levelCode]
-        };
-    }
-
-
-    /************* EXPORTS *************/
-    this.event    = event;
-    this.redirect = redirect;
-}
-
-module.exports = LoggerClient;
-
-},{"../utils/LogLevel":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\LogLevel.js","./GenericLoggerClient":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\GenericLoggerClient.js","./LoggerInterface":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LoggerInterface.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LoggerInterface.js":[function(require,module,exports){
-/**
- * @interface
- */
-function LoggerInterface() {
-    function genericMethod(channel, logObject) {
-        throw new Error('Not implemented');
-    }
-
-    this.debug    = genericMethod;
-    this.error    = genericMethod;
-    this.event    = genericMethod;
-    this.info     = genericMethod;
-    this.log      = genericMethod;
-    this.redirect = genericMethod;
-    this.warn     = genericMethod;
-}
-
-module.exports = LoggerInterface;
-
-},{}],"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\index.js":[function(require,module,exports){
-const GenericLoggerClient = require('./GenericLoggerClient');
-const LogFactory          = require('./LogFactory');
-const LoggerClient        = require('./LoggerClient');
-const LoggerInterface     = require('./LoggerInterface');
-
-
-module.exports = {
-    GenericLoggerClient,
-    LogFactory,
-    LoggerClient,
-    LoggerInterface
-};
-
-},{"./GenericLoggerClient":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\GenericLoggerClient.js","./LogFactory":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LogFactory.js","./LoggerClient":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LoggerClient.js","./LoggerInterface":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\LoggerInterface.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\MessagePublisher.js":[function(require,module,exports){
-(function (process){
-const TransportInterface = require('./TransportInterface');
-const utils = require('../utils');
-const zeroMQModuleName = "zeromq";
-const zeroMQ = require(zeroMQModuleName);
-
-
-/**
- * Creates a ZeroMQ Publisher Socket and connects to the specified address for a ZeroMQ Subscriber
- * @param {string!} address - Base address including protocol and port (ex: tcp://127.0.0.1:8080)
- * @implements TransportInterface
- * @constructor
- */
-function MessagePublisher(address) {
-    TransportInterface.call(this);
-
-    const zmqSocket = zeroMQ.createSocket('pub');
-
-    // uncomment next line if messages are lost
-    // zmqSocket.setsockopt(zeroMQ.ZMQ_SNDHWM, 0);
-    const socket = new utils.BufferedSocket(zmqSocket, utils.SocketType.connectable);
-
-
-    /************* PUBLIC METHODS *************/
-
-    /**
-     *
-     * @param {string} channel
-     * @param {Object} logObject
-     */
-    this.send = function (channel, logObject) {
-        try {
-            const serializedLog = JSON.stringify(logObject);
-
-            socket.send([channel, serializedLog]);
-        } catch (e) {
-            process.stderr.write('Error while sending or serializing message');
-        }
-    };
-
-
-    /************* MONITOR SOCKET *************/
-
-    zmqSocket.connect(address);
-}
-
-module.exports = MessagePublisher;
-
-}).call(this,require('_process'))
-
-},{"../utils":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\index.js","./TransportInterface":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\TransportInterface.js","_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\MessagePublisherForSandbox.js":[function(require,module,exports){
-(function (global){
-const TransportInterface = require('./TransportInterface');
-
-/**
- * This assumes it is executed inside a sandbox and that exists an object "logger" on "global" with a method "send".
- * Sandboxes can't connect directly to ZeroMQ therefore this just relays the message outside the sandbox.
- *
- * @implements TransportInterface
- * @constructor
- */
-function MessagePublisherForSandbox() {
-
-    TransportInterface.call(this);
-
-    /************* PUBLIC METHODS *************/
-
-    /**
-     *
-     * @param {string} channel
-     * @param {Object} logObject
-     */
-    this.send = function (channel, logObject) {
-        try {
-            global.logger.send([channel, logObject]);
-        } catch (e) {
-            console.error('Error while sending or serializing message from sandbox', e);
-        }
-    };
-
-}
-
-module.exports = MessagePublisherForSandbox;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"./TransportInterface":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\TransportInterface.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\TransportInterface.js":[function(require,module,exports){
-/**
- *
- * @interface
- */
-function TransportInterface() {
-    this.send = function (channel, logObject) {
-        throw new Error('Not implemented');
-    }
-}
-
-module.exports = TransportInterface;
-
-},{}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\index.js":[function(require,module,exports){
-const TransportInterface = require('./TransportInterface');
-const MessagePublisher = require('./MessagePublisher');
-const MessagePublisherForSandbox = require('./MessagePublisherForSandbox');
-
-module.exports = {
-    TransportInterface,
-    MessagePublisher,
-    MessagePublisherForSandbox
-};
-
-},{"./MessagePublisher":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\MessagePublisher.js","./MessagePublisherForSandbox":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\MessagePublisherForSandbox.js","./TransportInterface":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\TransportInterface.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessageSubscriber\\MessageSubscriber.js":[function(require,module,exports){
-(function (process){
-const zeroMQModuleName = "zeromq";
-const zeroMQ = require(zeroMQModuleName);
-
-/**
- * Creates a ZeroMQ Subscriber that listens for provided topics on the specified address for a publisher
- * @param {string!} address - Base address including protocol and port (ex: tcp://127.0.0.1:8080)
- * @param {Array<string>|function?} subscriptions - a list of subscription topics, if missing it will subscribe to everything
- * @param {function!} onMessageCallback
- * @constructor
- */
-function MessageSubscriber(address, subscriptions, onMessageCallback) {
-    const zmqSocket = zeroMQ.createSocket('sub');
-
-    // uncomment next line if messages are lost
-    // zmqSocket.setsockopt(zeroMQ.ZMQ_RCVHWM, 0);
-
-    if(arguments.length === 2 && typeof subscriptions === 'function') {
-        onMessageCallback = subscriptions;
-        subscriptions = [''];
-    }
-
-    subscriptions.forEach(subscription => zmqSocket.subscribe(subscription));
-
-    zmqSocket.connect(address);
-
-    zmqSocket.on('message', onMessageCallback);
-
-    const events = ["SIGINT", "SIGUSR1", "SIGUSR2", "uncaughtException", "SIGTERM", "SIGHUP"];
-
-    events.forEach(event => {
-        process.on(event, () => {
-            zmqSocket.close();
-        });
-    });
-}
-
-module.exports = MessageSubscriber;
-
-}).call(this,require('_process'))
-
-},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\MessageSubscriber\\index.js":[function(require,module,exports){
-const MessageSubscriber = require('./MessageSubscriber');
-
-module.exports = {MessageSubscriber};
-
-},{"./MessageSubscriber":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessageSubscriber\\MessageSubscriber.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\PSKLoggerClient\\GenericPSKLogger.js":[function(require,module,exports){
-(function (global){
-const LoggerClientModule = require('../LoggerClient');
-
-const LoggerClient = LoggerClientModule.LoggerClient;
-const LoggerInterface = LoggerClientModule.LoggerInterface;
-
-
-/**
- *
- * @param messagePublisher
- * @implements LoggerInterface
- * @constructor
- */
-function GenericPSKLogger(messagePublisher) {
-    LoggerInterface.call(this);
-
-    const logger = new LoggerClient(messagePublisher);
-
-    function debug(...params) {
-        const meta = prepareMeta();
-        return logger.debug(meta, ...params);
-    }
-
-    function error(...params) {
-        const meta = prepareMeta();
-        return logger.error(meta, ...params);
-    }
-
-    function info(...params) {
-        const meta = prepareMeta();
-        return logger.info(meta, ...params);
-    }
-
-    function log(...params) {
-        const meta = prepareMeta();
-        return logger.log(meta, ...params);
-    }
-
-    function warn(...params) {
-        const meta = prepareMeta();
-        return logger.warn(meta, ...params);
-    }
-
-    function event(event, ...params) {
-        const meta = prepareMeta();
-        return logger.event(event, meta, params);
-    }
-    
-    function redirect(logType, logObject) {
-        const logMeta = logObject.meta;
-        const meta = prepareMeta();
-        
-        Object.assign(meta, logMeta);
-
-        logObject.meta = meta;
-
-        return logger.redirect(logType, logObject);
-    }
-
-    function prepareMeta() {
-        if (global.$$.getEnvironmentData) {
-            return global.$$.getEnvironmentData();
-        }
-        
-        return {};
-    }
-
-
-    this.debug    = debug;
-    this.error    = error;
-    this.event    = event;
-    this.info     = info;
-    this.log      = log;
-    this.redirect = redirect;
-    this.warn     = warn;
-
-}
-
-module.exports = GenericPSKLogger;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"../LoggerClient":"D:\\work\\privatesky\\modules\\psklogger\\src\\LoggerClient\\index.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\PSKLoggerClient\\index.js":[function(require,module,exports){
-(function (process){
-const Configurator     = require('../utils/Configurator');
-const GenericPSKLogger = require('./GenericPSKLogger');
-
-function getLogger() {
-    let messagePublisher;
-
-    if (process.env.context === 'sandbox') {
-        const MessagePublisher = require('../MessagePublisher').MessagePublisherForSandbox;
-        messagePublisher = new MessagePublisher();
-    } else {
-        const config = Configurator.getConfig();
-        const MessagePublisher = require('../MessagePublisher').MessagePublisher;
-        messagePublisher = new MessagePublisher(config.addressForPublishers);
-    }
-
-    return new GenericPSKLogger(messagePublisher);
-}
-
-module.exports = {
-    getLogger
-};
-
-}).call(this,require('_process'))
-
-},{"../MessagePublisher":"D:\\work\\privatesky\\modules\\psklogger\\src\\MessagePublisher\\index.js","../utils/Configurator":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\Configurator.js","./GenericPSKLogger":"D:\\work\\privatesky\\modules\\psklogger\\src\\PSKLoggerClient\\GenericPSKLogger.js","_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\PubSubProxy\\PubSubProxy.js":[function(require,module,exports){
-(function (process){
-const zeroMQModuleName = "zeromq";
-const zeroMQ = require(zeroMQModuleName);
-const utils = require('../utils');
-
-/**
- * Proxy between publishers and subscribers to avoid star topology communication
- * Subscribers should connect first otherwise no subscription request will be sent to publishers and therefore they
- * won't even send the messages to the proxy. This is because the filtering is done on the publisher for tcp or ipc,
- * view http://zguide.zeromq.org/page:all#Getting-the-Message-Out for more info
- * @param {string!} addressForPublishers - Base address including protocol and port (ex: tcp://127.0.0.1:8080)
- * @param {string!} addressForSubscribers - Base address including protocol and port (ex: tcp://127.0.0.1:8080)
- * @constructor
- */
-function PubSubProxy({addressForPublishers, addressForSubscribers}) {
-    const frontend = zeroMQ.createSocket('xsub');
-    const backend = zeroMQ.createSocket('xpub');
-    const bufferedBackend = new utils.BufferedSocket(backend, utils.SocketType.bindable);
-
-    // By default xpub only signals new subscriptions
-    // Settings it to verbose = 1 , will signal on every new subscribe
-    // uncomment next lines if messages are lost
-    // backend.setsockopt(zeroMQ.ZMQ_XPUB_VERBOSE, 1);
-    // backend.setsockopt(zeroMQ.ZMQ_SNDHWM, 0);
-    // backend.setsockopt(zeroMQ.ZMQ_RCVHWM, 0);
-    // frontend.setsockopt(zeroMQ.ZMQ_RCVHWM, 0);
-    // frontend.setsockopt(zeroMQ.ZMQ_SNDHWM, 0);
-
-    // When we receive data on frontend, it means someone is publishing
-    frontend.on('message', (...args) => {
-        // We just relay it to the backend, so subscribers can receive it
-        bufferedBackend.send(args);
-    });
-
-    // When backend receives a message, it's subscribe requests
-    backend.on('message', (data) => {
-        // We send it to frontend, so it knows to what channels to listen to
-        frontend.send(data);
-    });
-
-    /************* MONITOR SOCKET *************/
-
-    frontend.bindSync(addressForPublishers);
-    backend.bindSync(addressForSubscribers);
-
-    const events = ["SIGINT", "SIGUSR1", "SIGUSR2", "uncaughtException", "SIGTERM", "SIGHUP"];
-
-    events.forEach(event => {
-        process.on(event, () => {
-            frontend.close();
-            backend.close();
-        });
-    });
-}
-
-module.exports = PubSubProxy;
-
-}).call(this,require('_process'))
-
-},{"../utils":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\index.js","_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\PubSubProxy\\index.js":[function(require,module,exports){
-const PubSubProxy = require('./PubSubProxy');
-
-module.exports = {PubSubProxy};
-
-},{"./PubSubProxy":"D:\\work\\privatesky\\modules\\psklogger\\src\\PubSubProxy\\PubSubProxy.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\BufferedSocket.js":[function(require,module,exports){
-const SocketType = require('./SocketType');
-
-/**
- * Wrapper for ZeroMQ socket that tries to prevent 'slow joiner', meaning it buffers the first messages until the
- * connection is established, otherwise the first messages would be lost
- * @param {Socket} socket - instance of ZeroMQ Socket
- * @param {SocketType<number>} type - used to determine if should listen for 'connect' or 'accept' event
- * @param {Number?} maxSize = 1000 - Max size for the internal buffer, if 0 the buffer is infinite but can cause memory leak
- * @constructor
- */
-function BufferedSocket(socket, type, maxSize = 10000) {
-    if(maxSize < 0) {
-        maxSize = 1000;
-    }
-
-    let messageQueue = [];
-    let isConnected = false;
-    let currentBufferSize = 0;
-
-    socket.monitor();
-    const event = _getEventForType(type);
-
-    socket.on(event, () => {
-        isConnected = true;
-        _flushQueue();
-    });
-
-    /************* PUBLIC METHODS *************/
-
-    function send(message) {
-        if (!isConnected) {
-            if (maxSize !== 0 && currentBufferSize < maxSize) {
-                currentBufferSize += 1;
-                messageQueue.push(message);
-            }
-        } else {
-            socket.send(message);
-        }
-    }
-
-    /************* PRIVATE METHODS *************/
-
-    function _flushQueue() {
-        for (const message of messageQueue) {
-            socket.send(message);
-        }
-
-        messageQueue = [];
-        currentBufferSize = 0;
-    }
-
-    function _getEventForType(type) {
-        if (type === SocketType.connectable) {
-            return 'connect';
-        } else if (type === SocketType.bindable) {
-            return 'accept';
-        }
-    }
-
-    /************* EXPORTS *************/
-
-    this.send = send;
-}
-
-
-module.exports = BufferedSocket;
-
-},{"./SocketType":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\SocketType.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\Configurator.js":[function(require,module,exports){
-(function (process){
-const config = {
-    addressForPublishers: process.env.PSK_PUBLISH_LOGS_ADDR || 'tcp://127.0.0.1:7000',
-    addressForSubscribers: process.env.PSK_SUBSCRIBE_FOR_LOGS_ADDR || 'tcp://127.0.0.1:7001',
-    addressToCollector: process.env.PSK_COLLECTOR_ADDR || 'tcp://127.0.0.1:5558'
-};
-
-module.exports = {
-    getConfig () {
-        return Object.freeze(config);
-    }
-};
-
-}).call(this,require('_process'))
-
-},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\EnvironmentDataProvider.js":[function(require,module,exports){
-(function (process,global){
-function getEnvironmentData () {
-    const or = require("overwrite-require");
-    let data = {origin: $$.environmentType};
-
-    switch ($$.environmentType){
-        case or.NODEJS_ENVIRONMENT_TYPE:
-            const pathModule = "path";
-            const path = require(pathModule);
-            const osModule = "os";
-            const os = require(osModule);
-            const platform = os.platform();
-
-            const processPath = process.argv[1];
-            const processStartFile = path.basename(processPath);
-
-            data.processStartFile = processStartFile;
-            data.platform = platform;
-            break;
-        case or.BROWSER_ENVIRONMENT_TYPE:
-            //todo: maybe we need some details here?
-            break;
-        default:
-            break;
-    }
-    return data;
-}
-
-function getEnvironmentDataForDomain() {
-    const osModule = "os";
-    const os = require(osModule);
-    const platform = os.platform();
-
-    return {
-        origin: 'domain',
-        domain: process.env.PRIVATESKY_DOMAIN_NAME,
-        platform: platform
-    };
-}
-
-function getEnvironmentDataForAgent() {
-    const osModule = "os";
-    const os = require(osModule);
-    const platform = os.platform();
-    const envTypes = require("overwrite-require").constants;
-
-    let data = {origin: "agent"};
-    switch($$.environmentType){
-        case envTypes.THREAD_ENVIRONMENT_TYPE:
-            data.domain = process.env.PRIVATESKY_DOMAIN_NAME;
-            data.agent = process.env.PRIVATESKY_AGENT_NAME;
-            data.platform = platform;
-            break;
-        default:
-            break;
-    }
-    return data;
-}
-
-let handler;
-
-if(process.env.hasOwnProperty('PRIVATESKY_AGENT_NAME')) {
-    handler = getEnvironmentDataForAgent;
-} else if(process.env.hasOwnProperty('PRIVATESKY_DOMAIN_NAME')) {
-    handler = getEnvironmentDataForDomain;
-} else {
-    handler = getEnvironmentData;
-}
-
-if(typeof global.$$.getEnvironmentData === "undefined"){
-    global.$$.getEnvironmentData = handler;
-}else{
-    console.log("EnvironmentData handler already set.");
-}
-
-//no need to export anything directly
-}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-
-},{"_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\LogLevel.js":[function(require,module,exports){
-const LogLevel = {};
-
-LogLevel[LogLevel["error"] = 0] = "error";
-LogLevel[LogLevel["warn"]  = 1] = "warn";
-LogLevel[LogLevel["info"]  = 2] = "info";
-LogLevel[LogLevel["debug"] = 3] = "debug";
-LogLevel[LogLevel["log"]   = 4] = "log";
-
-module.exports = Object.freeze(LogLevel);
-
-},{}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\SocketType.js":[function(require,module,exports){
-const SocketType = {};
-SocketType[SocketType["connectable"] = 0] = "connectable"; // if .connect is called on socket
-SocketType[SocketType["bindable"] = 1] = "bindable"; // if .bind is called on socket
-
-module.exports = Object.freeze(SocketType);
-
-},{}],"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\index.js":[function(require,module,exports){
-const Configurator            = require('./Configurator');
-const EnvironmentDataProvider = require('./EnvironmentDataProvider');
-const LogLevel                = require('./LogLevel');
-const BufferedSocket          = require('./BufferedSocket');
-const SocketType              = require('./SocketType');
-
-module.exports = {
-    Configurator,
-    EnvironmentDataProvider,
-    LogLevel,
-    BufferedSocket,
-    SocketType
-};
-
-},{"./BufferedSocket":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\BufferedSocket.js","./Configurator":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\Configurator.js","./EnvironmentDataProvider":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\EnvironmentDataProvider.js","./LogLevel":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\LogLevel.js","./SocketType":"D:\\work\\privatesky\\modules\\psklogger\\src\\utils\\SocketType.js"}],"D:\\work\\privatesky\\modules\\soundpubsub\\index.js":[function(require,module,exports){
+},{"crypto":"D:\\work\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\privatesky\\modules\\soundpubsub\\index.js":[function(require,module,exports){
 module.exports = {
 					soundPubSub: require("./lib/soundPubSub").soundPubSub
 };
@@ -10696,7 +9653,278 @@ function promisify(fn) {
 
 module.exports = BootEngine;
 
-},{"edfs":"edfs"}],"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw-host\\HostBootScript.js":[function(require,module,exports){
+},{"edfs":"edfs"}],"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\lib\\MimeType.js":[function(require,module,exports){
+const extensionsMimeTypes = {
+    "aac": {
+        name: "audio/aac",
+        binary: true
+    },
+    "abw": {
+        name: "application/x-abiword",
+        binary: true
+    },
+    "arc": {
+        name: "application/x-freearc",
+        binary: true
+    },
+    "avi": {
+        name: "video/x-msvideo",
+        binary: true
+    },
+    "azw": {
+        name: "application/vnd.amazon.ebook",
+        binary: true
+    },
+    "bin": {
+        name: "application/octet-stream",
+        binary: true
+    }, "bmp": {
+        name: "image/bmp",
+        binary: true
+    }, "bz": {
+        name: "application/x-bzip",
+        binary: true
+    }, "bz2": {
+        name: "application/x-bzip2",
+        binary: true
+    }, "csh": {
+        name: "application/x-csh",
+        binary: false
+    }, "css": {
+        name: "text/css",
+        binary: false
+    }, "csv": {
+        name: "text/csv",
+        binary: false
+    }, "doc": {
+        name: "application/msword",
+        binary: true
+    }, "docx": {
+        name: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+        binary: true
+    }, "eot": {
+        name: "application/vnd.ms-fontobject",
+        binary: true
+    }, "epub": {
+        name: "application/epub+zip",
+        binary: true
+    }, "gz": {
+        name: "application/gzip",
+        binary: true
+    }, "gif": {
+        name: "image/gif",
+        binary: true
+    }, "htm": {
+        name: "text/html",
+        binary: false
+    }, "html": {
+        name: "text/html",
+        binary: false
+    }, "ico": {
+        name: "image/vnd.microsoft.icon",
+        binary: true
+    }, "ics": {
+        name: "text/calendar",
+        binary: false
+    }, "jpeg": {
+        name: "image/jpeg",
+        binary: true
+    }, "jpg": {
+        name: "image/jpeg",
+        binary: true
+    }, "js": {
+        name: "text/javascript",
+        binary: false
+    }, "json": {
+        name: "application/json",
+        binary: false
+    }, "jsonld": {
+        name: "application/ld+json",
+        binary: false
+    }, "mid": {
+        name: "audio/midi",
+        binary: true
+    }, "midi": {
+        name: "audio/midi",
+        binary: true
+    }, "mjs": {
+        name: "text/javascript",
+        binary: false
+    }, "mp3": {
+        name: "audio/mpeg",
+        binary: true
+    }, "mpeg": {
+        name: "video/mpeg",
+        binary: true
+    }, "mpkg": {
+        name: "application/vnd.apple.installer+xm",
+        binary: true
+    }, "odp": {
+        name: "application/vnd.oasis.opendocument.presentation",
+        binary: true
+    }, "ods": {
+        name: "application/vnd.oasis.opendocument.spreadsheet",
+        binary: true
+    }, "odt": {
+        name: "application/vnd.oasis.opendocument.text",
+        binary: true
+    }, "oga": {
+        name: "audio/ogg",
+        binary: true
+    },
+    "ogv": {
+        name: "video/ogg",
+        binary: true
+    },
+    "ogx": {
+        name: "application/ogg",
+        binary: true
+    },
+    "opus": {
+        name: "audio/opus",
+        binary: true
+    },
+    "otf": {
+        name: "font/otf",
+        binary: true
+    },
+    "png": {
+        name: "image/png",
+        binary: true
+    },
+    "pdf": {
+        name: "application/pdf",
+        binary: true
+    },
+    "php": {
+        name: "application/php",
+        binary: false
+    },
+    "ppt": {
+        name: "application/vnd.ms-powerpoint",
+        binary: true
+    },
+    "pptx": {
+        name: "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+        binary: true
+    },
+    "rtf": {
+        name: "application/rtf",
+        binary: true
+    },
+    "sh": {
+        name: "application/x-sh",
+        binary: false
+    },
+    "svg": {
+        name: "image/svg+xml",
+        binary: false
+    },
+    "swf": {
+        name: "application/x-shockwave-flash",
+        binary: true
+    },
+    "tar": {
+        name: "application/x-tar",
+        binary: true
+    },
+    "tif": {
+        name: "image/tiff",
+        binary: true
+    },
+    "tiff": {
+        name: "image/tiff",
+        binary: true
+    },
+    "ts": {
+        name: "video/mp2t",
+        binary: true
+    },
+    "ttf": {
+        name: "font/ttf",
+        binary: true
+    },
+    "txt": {
+        name: "text/plain",
+        binary: false
+    },
+    "vsd": {
+        name: "application/vnd.visio",
+        binary: true
+    },
+    "wav": {
+        name: "audio/wav",
+        binary: true
+    },
+    "weba": {
+        name: "audio/webm",
+        binary: true
+    },
+    "webm": {
+        name: "video/webm",
+        binary: true
+    },
+    "webp": {
+        name: "image/webp",
+        binary: true
+    },
+    "woff": {
+        name: "font/woff",
+        binary: true
+    },
+    "woff2": {
+        name: "font/woff2",
+        binary: true
+    },
+    "xhtml": {
+        name: "application/xhtml+xml",
+        binary: false
+    },
+    "xls": {
+        name: "application/vnd.ms-excel",
+        binary: true
+    },
+    "xlsx": {
+        name: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+        binary: true
+    },
+    "xml": {
+        name: "text/xml",
+        binary: false
+    },
+    "xul": {
+        name: "application/vnd.mozilla.xul+xml",
+        binary: true
+    },
+    "zip": {
+        name: "application/zip",
+        binary: true
+    },
+    "3gp": {
+        name: "video/3gpp",
+        binary: true
+    },
+    "3g2": {
+        name: "video/3gpp2",
+        binary: true
+    },
+    "7z": {
+        name: "application/x-7z-compressed",
+        binary: true
+    }
+};
+
+const defaultMimeType = {
+    name: "text/plain",
+    binary: false
+};
+module.exports.getMimeTypeFromExtension = function (extension) {
+    if (typeof extensionsMimeTypes[extension] !== "undefined") {
+        return extensionsMimeTypes[extension];
+    }
+    return defaultMimeType;
+};
+},{}],"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw-host\\HostBootScript.js":[function(require,module,exports){
 function HostBootScript(seed) {
 
     console.log("Booting host...");
@@ -48268,9 +47496,6 @@ module.exports = {
     checkForSeedCage(callback) {
         require("./seedCage").check(callback);
     },
-    storeWalletSeed(walletSeed, pin, callback){
-        require("./seedCage").putSeed(walletSeed, pin, callback);
-    },
     HTTPBrickTransportStrategy: require("./brickTransportStrategies/HTTPBrickTransportStrategy"),
     constants: constants
 };
@@ -48285,7 +47510,349 @@ if (browserContexts.indexOf($$.environmentType) !== -1) {
 
 
 
-},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","overwrite-require":"D:\\work\\privatesky\\modules\\overwrite-require\\index.js"}],"pskcrypto":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"D:\\work\\privatesky\\modules\\bar\\index.js","overwrite-require":"overwrite-require"}],"overwrite-require":[function(require,module,exports){
+(function (process,global){
+/*
+ require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
+ The privatesky code for domains should work in node and browsers.
+ */
+function enableForEnvironment(envType){
+
+    const moduleConstants = require("./moduleConstants");
+
+    /**
+     * Used to provide autocomplete for $$ variables
+     * @classdesc Interface for $$ object
+     *
+     * @name $$
+     * @class
+     *
+     */
+
+    switch (envType) {
+        case moduleConstants.BROWSER_ENVIRONMENT_TYPE :
+            global = window;
+            break;
+        case moduleConstants.SERVICE_WORKER_ENVIRONMENT_TYPE:
+            global = self;
+            break;
+    }
+
+    if (typeof(global.$$) == "undefined") {
+        /**
+         * Used to provide autocomplete for $$ variables
+         * @type {$$}
+         */
+        global.$$ = {};
+    }
+
+    if (typeof($$.__global) == "undefined") {
+        $$.__global = {};
+    }
+
+    Object.defineProperty($$, "environmentType", {
+        get: function(){
+            return envType;
+        },
+        set: function (value) {
+            throw Error("Environment type already set!");
+        }
+    });
+
+
+    if (typeof($$.__global.requireLibrariesNames) == "undefined") {
+        $$.__global.currentLibraryName = null;
+        $$.__global.requireLibrariesNames = {};
+    }
+
+
+    if (typeof($$.__runtimeModules) == "undefined") {
+        $$.__runtimeModules = {};
+    }
+
+
+    if (typeof(global.functionUndefined) == "undefined") {
+        global.functionUndefined = function () {
+            console.log("Called of an undefined function!!!!");
+            throw new Error("Called of an undefined function");
+        };
+        if (typeof(global.webshimsRequire) == "undefined") {
+            global.webshimsRequire = global.functionUndefined;
+        }
+
+        if (typeof(global.domainRequire) == "undefined") {
+            global.domainRequire = global.functionUndefined;
+        }
+
+        if (typeof(global.pskruntimeRequire) == "undefined") {
+            global.pskruntimeRequire = global.functionUndefined;
+        }
+    }
+
+    const pastRequests = {};
+
+    function preventRecursiveRequire(request) {
+        if (pastRequests[request]) {
+            const err = new Error("Preventing recursive require for " + request);
+            err.type = "PSKIgnorableError";
+            throw err;
+        }
+
+    }
+
+    function disableRequire(request) {
+        pastRequests[request] = true;
+    }
+
+    function enableRequire(request) {
+        pastRequests[request] = false;
+    }
+
+    function requireFromCache(request) {
+        const existingModule = $$.__runtimeModules[request];
+        return existingModule;
+    }
+
+    function wrapStep(callbackName) {
+        const callback = global[callbackName];
+
+        if (callback === undefined) {
+            return null;
+        }
+
+        if (callback === global.functionUndefined) {
+            return null;
+        }
+
+        return function (request) {
+            const result = callback(request);
+            $$.__runtimeModules[request] = result;
+            return result;
+        }
+    }
+
+
+    function tryRequireSequence(originalRequire, request) {
+        let arr;
+        if (originalRequire) {
+            arr = $$.__requireFunctionsChain.slice();
+            arr.push(originalRequire);
+        } else {
+            arr = $$.__requireFunctionsChain;
+        }
+
+        preventRecursiveRequire(request);
+        disableRequire(request);
+        let result;
+        const previousRequire = $$.__global.currentLibraryName;
+        let previousRequireChanged = false;
+
+        if (!previousRequire) {
+            // console.log("Loading library for require", request);
+            $$.__global.currentLibraryName = request;
+
+            if (typeof $$.__global.requireLibrariesNames[request] == "undefined") {
+                $$.__global.requireLibrariesNames[request] = {};
+                //$$.__global.requireLibrariesDescriptions[request]   = {};
+            }
+            previousRequireChanged = true;
+        }
+        for (let i = 0; i < arr.length; i++) {
+            const func = arr[i];
+            try {
+
+                if (func === global.functionUndefined) continue;
+                result = func(request);
+
+                if (result) {
+                    break;
+                }
+
+            } catch (err) {
+                if (err.type !== "PSKIgnorableError") {
+                    $$.err("Require encountered an error while loading ", request, "\nCause:\n", err.stack);
+                }
+            }
+        }
+
+        if (!result) {
+            $$.log("Failed to load module ", request, result);
+        }
+
+        enableRequire(request);
+        if (previousRequireChanged) {
+            //console.log("End loading library for require", request, $$.__global.requireLibrariesNames[request]);
+            $$.__global.currentLibraryName = null;
+        }
+        return result;
+    }
+
+    function makeBrowserRequire(){
+        console.log("Defining global require in browser");
+
+
+        global.require = function (request) {
+
+            ///*[requireFromCache, wrapStep(webshimsRequire), , wrapStep(pskruntimeRequire), wrapStep(domainRequire)*]
+            return tryRequireSequence(null, request);
+        }
+    }
+
+    function makeIsolateRequire(){
+        // require should be provided when code is loaded in browserify
+        const bundleRequire = require;
+
+        $$.requireBundle('sandboxBase');
+        // this should be set up by sandbox prior to
+        const sandboxRequire = global.require;
+        const cryptoModuleName = 'crypto';
+        global.crypto = require(cryptoModuleName);
+
+        function newLoader(request) {
+            // console.log("newLoader:", request);
+            //preventRecursiveRequire(request);
+            const self = this;
+
+            // console.log('trying to load ', request);
+
+            function tryBundleRequire(...args) {
+                //return $$.__originalRequire.apply(self,args);
+                //return Module._load.apply(self,args)
+                let res;
+                try {
+                    res = sandboxRequire.apply(self, args);
+                } catch (err) {
+                    if (err.code === "MODULE_NOT_FOUND") {
+                        const p = path.join(process.cwd(), request);
+                        res = sandboxRequire.apply(self, [p]);
+                        request = p;
+                    } else {
+                        throw err;
+                    }
+                }
+                return res;
+            }
+
+            let res;
+
+
+            res = tryRequireSequence(tryBundleRequire, request);
+
+
+            return res;
+        }
+
+        global.require = newLoader;
+    }
+
+    function makeNodeJSRequire(){
+        const pathModuleName = 'path';
+        const path = require(pathModuleName);
+        const cryptoModuleName = 'crypto';
+        const utilModuleName = 'util';
+        $$.__runtimeModules["crypto"] = require(cryptoModuleName);
+        $$.__runtimeModules["util"] = require(utilModuleName);
+
+        const moduleModuleName = 'module';
+        const Module = require(moduleModuleName);
+        $$.__runtimeModules["module"] = Module;
+
+        console.log("Redefining require for node");
+
+        $$.__originalRequire = Module._load;
+        const moduleOriginalRequire = Module.prototype.require;
+
+        function newLoader(request) {
+            // console.log("newLoader:", request);
+            //preventRecursiveRequire(request);
+            const self = this;
+
+            function originalRequire(...args) {
+                //return $$.__originalRequire.apply(self,args);
+                //return Module._load.apply(self,args)
+                let res;
+                try {
+                    res = moduleOriginalRequire.apply(self, args);
+                } catch (err) {
+                    if (err.code === "MODULE_NOT_FOUND") {
+                        let pathOrName = request;
+                        if(pathOrName.startsWith('/') || pathOrName.startsWith('./') || pathOrName.startsWith('../')){
+                            pathOrName = path.join(process.cwd(), request);
+                        }
+                        res = moduleOriginalRequire.call(self, pathOrName);
+                        request = pathOrName;
+                    } else {
+                        throw err;
+                    }
+                }
+                return res;
+            }
+
+            function currentFolderRequire(request) {
+                return
+            }
+
+            //[requireFromCache, wrapStep(pskruntimeRequire), wrapStep(domainRequire), originalRequire]
+            return tryRequireSequence(originalRequire, request);
+        }
+
+        Module.prototype.require = newLoader;
+        return newLoader;
+    }
+
+    require("./standardGlobalSymbols.js");
+
+    if (typeof($$.require) == "undefined") {
+
+        $$.__requireList = ["webshimsRequire"];
+        $$.__requireFunctionsChain = [];
+
+        $$.requireBundle = function (name) {
+            name += "Require";
+            $$.__requireList.push(name);
+            const arr = [requireFromCache];
+            $$.__requireList.forEach(function (item) {
+                const callback = wrapStep(item);
+                if (callback) {
+                    arr.push(callback);
+                }
+            });
+
+            $$.__requireFunctionsChain = arr;
+        };
+
+        $$.requireBundle("init");
+
+        switch ($$.environmentType) {
+            case moduleConstants.BROWSER_ENVIRONMENT_TYPE:
+                makeBrowserRequire();
+                $$.require = require;
+                break;
+            case moduleConstants.SERVICE_WORKER_ENVIRONMENT_TYPE:
+                makeBrowserRequire();
+                $$.require = require;
+                break;
+            case moduleConstants.ISOLATE_ENVIRONMENT_TYPE:
+                makeIsolateRequire();
+                $$.require = require;
+                break;
+            default:
+               $$.require = makeNodeJSRequire();
+        }
+
+    }
+};
+
+
+
+module.exports = {
+    enableForEnvironment,
+    constants: require("./moduleConstants")
+};
+
+}).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+
+},{"./moduleConstants":"D:\\work\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js","_process":"D:\\work\\privatesky\\node_modules\\process\\browser.js"}],"pskcrypto":[function(require,module,exports){
 const PskCrypto = require("./lib/PskCrypto");
 const ssutil = require("./signsensusDS/ssutil");
 
@@ -48296,13 +47863,15 @@ module.exports.hashValues = ssutil.hashValues;
 module.exports.DuplexStream = require("./lib/utils/DuplexStream");
 
 module.exports.isStream = require("./lib/utils/isStream");
-},{"./lib/PskCrypto":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\work\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"swarm-engine/bootScripts/browser/sw":[function(require,module,exports){
-HostBootScript = require("../sw-host/HostBootScript");
+},{"./lib/PskCrypto":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\work\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\work\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"swarm-engine/bootScripts/browser/sw-host":[function(require,module,exports){
+const HostBootScript = require("./HostBootScript");
+const MimeType = require("../lib/MimeType");
 let bootScript = null;
+let csbArchive = null;
 
 
 self.addEventListener('activate', function (event) {
-    console.log("Activating service worker", event);
+    console.log("Activating host service worker", event);
 
     try {
         clients.claim();
@@ -48311,20 +47880,34 @@ self.addEventListener('activate', function (event) {
     }
 });
 
-self.addEventListener('message', function(event) {
-    if(event.target instanceof ServiceWorkerGlobalScope){
-        if(event.data.action ==="activate"){
+self.addEventListener('message', function (event) {
+    if (event.target instanceof ServiceWorkerGlobalScope) {
+        if (event.data.action === "activate") {
             event.ports[0].postMessage({status: 'empty'});
         }
 
-        if(event.data.seed){
-            //TODO: check if this is not the same code with swHostScript
+        if (event.data.seed) {
             bootScript = new HostBootScript(event.data.seed);
             bootScript.boot((err, archive) => {
-                archive.listFiles("app", (err, files) => {
+                csbArchive = archive;
+                csbArchive.listFiles("app", (err, files) => {
                     console.log(files);
-                    archive.readFile("app/index.html", (err, content) => {
-                        console.log(content.toString());
+                    csbArchive.readFile("app/index.html", (err, content) => {
+
+                        let blob = new Blob([content.toString()], {type: "text/html;charset=utf-8"});
+
+                        let response = new Response(blob, {"status": 200, "statusText": "ok"});
+
+                        console.log(response);
+                        caches.open('v1').then((cache) => {
+                            let currentIndexLocation = `${event.data.url}`;
+                            cache.put(currentIndexLocation, response);
+
+                            event.ports[0].postMessage({status: 'finished', content: content.toString()});
+                        });
+
+
+                        //console.log(content.toString());
                     })
                 })
             });
@@ -48332,4 +47915,56 @@ self.addEventListener('message', function(event) {
         }
     }
 });
-},{"../sw-host/HostBootScript":"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw-host\\HostBootScript.js"}]},{},["D:\\work\\privatesky\\builds\\tmp\\swBoot.js"])
+
+
+let getAppFile = function (request) {
+    return new Promise((resolve, reject) => {
+        console.log("Request", request.url);
+        let url = new URL(request.url);
+        let appFile = "app" + url.pathname;
+        console.log(appFile);
+        csbArchive.readFile(appFile, (err, content) => {
+            if (err) {
+                reject(err);
+            } else {
+                let fileExtension = appFile.substring(appFile.lastIndexOf(".") + 1);
+                let mimeType = MimeType.getMimeTypeFromExtension(fileExtension);
+
+                let blob = new Blob([mimeType.binary ? content : content.toString()], {type: mimeType.name});
+                let response = new Response(blob, {"status": 200, "statusText": "ok"});
+                resolve(response);
+            }
+        });
+    });
+};
+
+
+self.addEventListener('fetch', (event) => {
+
+    let cacheAndRelayResponse = function (response) {
+        let responseClone = response.clone();
+        caches.open('v1').then((cache) => {
+            cache.put(event.request, responseClone);
+        });
+
+        return response;
+    };
+
+    if (csbArchive) {
+        event.respondWith(
+            caches.match(event.request).then((resp) => {
+                return resp || getAppFile(event.request).then(cacheAndRelayResponse);
+            }).catch(() => {
+                console.log("Not found in csb app or cache");
+                return fetch(event.request).then(cacheAndRelayResponse).catch(() => {
+                    console.error("Could not fulfill request");
+                });
+
+            })
+        );
+    }
+
+
+});
+
+},{"../lib/MimeType":"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\lib\\MimeType.js","./HostBootScript":"D:\\work\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw-host\\HostBootScript.js"}]},{},["D:\\work\\privatesky\\builds\\tmp\\swHostBoot.js"])

@@ -1,3 +1,4 @@
+import SWAgent from "./services/SWAgent.js";
 function RestoreController() {
 
     let EDFS;
@@ -19,7 +20,7 @@ function RestoreController() {
             //display stepper
 
 
-            wizard = new Stepper(document.getElementById("psk-wizard"));
+            window.wizard = new Stepper(document.getElementById("psk-wizard"));
 
         });
     };
@@ -50,48 +51,54 @@ function RestoreController() {
 
 
     this.restore = function (event) {
-        event.stopImmediatePropagation();
+        event.preventDefault();
         seed = document.getElementById("seed").value;
         try {
-            EDFS.attachWithSeed(seed);
-            wizard.next();
+            EDFS = EDFS.attachWithSeed(seed);
+            window.wizard.next();
         }
         catch (e) {
            document.getElementById("seedError").innerText="Seed is not valid."
         }
-
     };
 
     this.previous = function (event) {
-        event.stopImmediatePropagation();
+        event.preventDefault();
         document.getElementById("seed").value = "";
         document.getElementById("restoreSeedBtn").setAttribute("disabled","disabled");
-        wizard.previous();
+        window.wizard.previous();
     };
 
     this.setPin = function (event) {
-        event.stopImmediatePropagation();
-            EDFS.storeWalletSeed(seed, pin, function (err) {
-            if(err){
-                return document.getElementById("pinError").innerText="Operation failed. Try again"
+        event.preventDefault();
+        EDFS.loadWallet(seed, pin, true, function (err, wallet) {
+            if (err) {
+                return document.getElementById("pinError").innerText = "Operation failed. Try again"
             }
-            wizard.next();
+
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register('/swHostBoot.js', {scope: "/"}).then(function(reg) {
+                    console.log('Yay, service worker is live!', reg);
+                    window.wizard.next();
+
+                }).catch(function(err) {
+                    return document.getElementById("pinError").innerText = "Operation failed. Try again";
+                });
+            }
         });
     };
 
     this.openWallet = function (event) {
-        event.stopImmediatePropagation();
-
-        //TODO:load sw and send seed -> boot wallet app
-        //redirect page to /
-
-        return false;
+        event.preventDefault();
+        SWAgent.restoreCSB(seed, window.location.origin, function () {
+            window.location="/";
+        });
     }
 }
 
-let controller = new RestoreController();
+window.controller = new RestoreController();
 document.addEventListener("DOMContentLoaded", function () {
-    controller.initView();
+    window.controller.initView();
 });
 
 

@@ -68,7 +68,7 @@ function NewController() {
                     wizard.next();
                 }
                 else{
-                    console.error("An error occured");
+                    document.getElementById("pinError").innerText="An error occurred. Please try again."
                 }
             });
         }

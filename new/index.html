@@ -50,22 +50,25 @@
                 <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
                     <label for="pin">Set up a Personal Identifier(PIN)</label>
                     <div class="row">
-                        <div class="form-group col">
+                        <div class="form-group col-md-6">
                             <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
                                    oninput="controller.validatePIN(event)">
                             <small id="pinHelp" class="form-text text-muted">Setup a easy to remember PIN.</small>
                         </div>
-                        <div class="form-group col">
+                        <div class="form-group col-md-6">
                             <input type="password" class="form-control" id="confirmPin" placeholder="Confirm PIN"
                                    oninput="controller.validatePIN(event)">
                             <small id="pinConfirmHelp" class="form-text text-muted">PINs should be identical.</small>
                         </div>
                     </div>
+                    <div class="row ml-1">
+                        <label id="pinError" class="error"></label>
+                    </div>
                     <button class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
                     <button id="setPINBtn" class="btn btn-primary" onclick="controller.createWallet(event)"
                             disabled="disabled">Set PIN
+
                     </button>
-                    <label id="pinError"></label>
                 </div>
                 <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">

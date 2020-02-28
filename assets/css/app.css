@@ -104,3 +104,7 @@ body {
 .stepper-content .active .bs-stepper-circle {
     background-color: #566271;
 }
+
+label.error{
+    color:darkred;
+}
