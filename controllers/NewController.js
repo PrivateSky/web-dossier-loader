@@ -1,9 +1,12 @@
+import SpinnerService from "./services/SpinnerService.js";
 function NewController() {
 
     let EDFS;
     let seed;
     let pin;
     let walletType;
+    let wizard;
+    let spinner;
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -11,6 +14,7 @@ function NewController() {
 
     this.initView = function () {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
+        spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
 
         EDFS = require("edfs");
         EDFS.checkForSeedCage((err) => {
@@ -58,10 +62,12 @@ function NewController() {
     };
 
     this.createWallet = function (event) {
+        spinner.attachToView();
         event.stopImmediatePropagation();
         try {
             EDFS = EDFS.attachToEndpoint(walletType.endpoint);
             EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {
+                spinner.removeFromView();
                 if(!err){
                     seed = _seed;
                     console.log(_seed);
@@ -104,10 +110,13 @@ function NewController() {
     }
 }
 
+
 let controller = new NewController();
 document.addEventListener("DOMContentLoaded", function () {
     controller.initView();
 });
+window.controller = controller;
+
 
 
 

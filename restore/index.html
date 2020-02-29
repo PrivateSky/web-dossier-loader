@@ -9,29 +9,29 @@
     <script src="assets/js/stepper.min.js"></script>
     <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
     <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
-
+    <link rel="import" href="spinner.html">
 </head>
 <body>
 
 <div class="wizard-container">
     <div id="psk-wizard" class="bs-stepper stepper-content">
         <div class="bs-stepper-header" role="tablist">
-            <div class="step" data-target="#test-l-1">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="test-l-1">
+            <div class="step" data-target="#enter-seed">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="enter-seed">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">Seed</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
-            <div class="step" data-target="#test-l-2">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="test-l-2">
+            <div class="step" data-target="#enter-pin">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">PIN</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
-            <div class="step" data-target="#test-l-3">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3">
+            <div class="step" data-target="#complete">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete">
                     <span class="bs-stepper-circle">3</span>
                     <span class="bs-stepper-label">Complete</span>
                 </button>
@@ -39,7 +39,7 @@
         </div>
         <div class="bs-stepper-content">
             <form onSubmit="return controller.openWallet(event)">
-                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
+                <div id="enter-seed" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                     <div class="form-group">
                         <label for="seed">Seed</label>
                         <input type="text" class="form-control" id="seed" placeholder="Enter Wallet Seed"
@@ -50,7 +50,7 @@
                             disabled="disabled">Restore
                     </button>
                 </div>
-                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+                <div id="enter-pin" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
 
 
                     <div class="row">
@@ -75,7 +75,7 @@
                     </button>
 
                 </div>
-                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center"
+                <div id="complete" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
                     <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
                 </div>

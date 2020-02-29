@@ -25,7 +25,7 @@ SWAgent.sendMessage = function (message) {
         // https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
         navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
     });
-}
+};
 
 SWAgent.restoreCSB = function (seed, url, callback) {
     SWAgent.sendMessage({action: "activate"}).then((data) => {

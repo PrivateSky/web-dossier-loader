@@ -5,7 +5,7 @@
     <script src="app-config.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
-    <script src="controllers/NewController.js"></script>
+    <script type="module" src="controllers/NewController.js"></script>
     <script src="assets/js/stepper.min.js"></script>
     <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
     <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
@@ -15,22 +15,22 @@
 <div class="wizard-container">
     <div id="psk-wizard" class="bs-stepper stepper-content">
         <div class="bs-stepper-header" role="tablist">
-            <div class="step" data-target="#test-l-1">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="test-l-1">
+            <div class="step" data-target="#wallet-type-step">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="wallet-type-step">
                     <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">Wallet Type</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
-            <div class="step" data-target="#test-l-2">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="test-l-2">
+            <div class="step" data-target="#enter-pin-step">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin-step">
                     <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">PIN</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
-            <div class="step" data-target="#test-l-3">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="test-l-3">
+            <div class="step" data-target="#complete-step">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete-step">
                     <span class="bs-stepper-circle">3</span>
                     <span class="bs-stepper-label">Complete</span>
                 </button>
@@ -38,7 +38,7 @@
         </div>
         <div class="bs-stepper-content">
             <form onSubmit="return controller.openWallet(event)">
-                <div id="test-l-1" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
+                <div id="wallet-type-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                     <div class="form-group">
                         <label>Wallet Type</label>
                         <p>A list with wallet types will be here
@@ -47,7 +47,7 @@
                         Wallet
                     </button>
                 </div>
-                <div id="test-l-2" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+                <div id="enter-pin-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
                     <label for="pin">Set up a Personal Identifier(PIN)</label>
                     <div class="row">
                         <div class="form-group col-md-6">
@@ -70,7 +70,7 @@
 
                     </button>
                 </div>
-                <div id="test-l-3" role="tabpanel" class="bs-stepper-pane text-center"
+                <div id="complete-step" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
                     <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
                 </div>
@@ -78,5 +78,7 @@
         </div>
     </div>
 </div>
+
+
 </body>
 </html>

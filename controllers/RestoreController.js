@@ -4,6 +4,7 @@ function RestoreController() {
     let EDFS;
     let seed;
     let pin;
+    let wizard;
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -17,10 +18,8 @@ function RestoreController() {
             if (err) {
                 //inform user that he is possible to delete his old pskwallet instance
             }
-            //display stepper
 
-
-            window.wizard = new Stepper(document.getElementById("psk-wizard"));
+            wizard = new Stepper(document.getElementById("psk-wizard"));
 
         });
     };
@@ -55,7 +54,7 @@ function RestoreController() {
         seed = document.getElementById("seed").value;
         try {
             EDFS = EDFS.attachWithSeed(seed);
-            window.wizard.next();
+            wizard.next();
         }
         catch (e) {
            document.getElementById("seedError").innerText="Seed is not valid."
@@ -66,7 +65,7 @@ function RestoreController() {
         event.preventDefault();
         document.getElementById("seed").value = "";
         document.getElementById("restoreSeedBtn").setAttribute("disabled","disabled");
-        window.wizard.previous();
+        wizard.previous();
     };
 
     this.setPin = function (event) {
@@ -96,10 +95,10 @@ function RestoreController() {
     }
 }
 
-window.controller = new RestoreController();
+let controller = new RestoreController();
 document.addEventListener("DOMContentLoaded", function () {
-    window.controller.initView();
+    controller.initView();
 });
-
+window.controller = controller;
 
 
