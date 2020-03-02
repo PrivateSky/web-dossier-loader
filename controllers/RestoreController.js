@@ -1,3 +1,4 @@
+import SpinnerService from "./services/SpinnerService.js";
 import SWAgent from "./services/SWAgent.js";
 function RestoreController() {
 
@@ -5,6 +6,7 @@ function RestoreController() {
     let seed;
     let pin;
     let wizard;
+    let spinner;
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -12,7 +14,7 @@ function RestoreController() {
 
     this.initView = function () {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
-
+        spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
         EDFS = require("edfs");
         EDFS.checkForSeedCage((err) => {
             if (err) {

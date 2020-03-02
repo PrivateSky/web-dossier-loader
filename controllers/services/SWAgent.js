@@ -72,10 +72,10 @@ SWAgent.unregisterSW = function () {
 }
 
 
-SWAgent.loadWallet = function (edfs, pin, errorContainer) {
+SWAgent.loadWallet = function (edfs, pin, callback) {
     edfs.loadWallet(pin, true, function (err, wallet) {
         if (err) {
-            return document.getElementById(errorContainer).innerText = "Operation failed. Try again"
+            return callback("Operation failed. Try again");
         }
 
         if ('serviceWorker' in navigator) {
@@ -85,15 +85,15 @@ SWAgent.loadWallet = function (edfs, pin, errorContainer) {
                 SWAgent.restoreDossier(wallet.getSeed(), window.location.origin, function (err) {
                     if (err) {
                         SWAgent.unregisterSW();
-                        return document.getElementById(errorContainer).innerText = "Operation failed. Try again"
+                        return callback("Operation failed. Try again");
                     }
-                    window.location = "/";
+                    callback();
                 });
 
 
             }).catch(function (err) {
                 SWAgent.unregisterSW();
-                return document.getElementById("pin-error").innerText = "Operation failed. Try again";
+                return callback("Operation failed. Try again");
             });
         }
     });

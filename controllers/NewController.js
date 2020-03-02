@@ -1,4 +1,3 @@
-import SWAgent from "./services/SWAgent.js";
 import SpinnerService from "./services/SpinnerService.js";
 function NewController() {
 
@@ -65,8 +64,8 @@ function NewController() {
     };
 
     this.createWallet = function (event) {
-        spinner.attachToView();
         event.preventDefault();
+        spinner.attachToView();
         try {
             EDFS = EDFS.attachToEndpoint(walletType.endpoint);
             EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {

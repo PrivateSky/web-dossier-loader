@@ -494,6 +494,16 @@ function Archive(archiveConfigurator) {
     const storageProvider = archiveConfigurator.getStorageProvider();
     let cachedSEED;
     let barMap;
+    let cachedMapDigest;
+
+    this.getMapDigest = () => {
+        if (cachedMapDigest) {
+            return cachedMapDigest;
+        }
+
+        cachedMapDigest = archiveConfigurator.getMapDigest();
+        return cachedMapDigest;
+    };
 
     this.setSeed = (seed) => {
         cachedSEED = seed;
@@ -3179,15 +3189,19 @@ $$.asset.describe("DomainReference", {
 $$.asset.describe("FileAnchor", {
     public: {
         alias: "string",
+        type: "string",
         digest: "string", //csb digest after file addition
         readList: "array", //encrypted seeds with public keys
         writeList: "array", //agentIds
     },
-    init: function (alias, digest) {
+    init: function (alias, type, digest) {
         this.alias = alias;
+        this.type = type;
         this.digest = digest;
     }
 });
+
+
 },{}],"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js":[function(require,module,exports){
 
 $$.asset.describe("key", {
@@ -3215,7 +3229,16 @@ module.exports = $$.library(function(){
     require("./FileAnchor");
     require('./CSBMeta');
 });
-},{"../transactions/transactions":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js","./ACLScope":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js","./Agent":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js","./Backup":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js","./BarAnchor":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js","./CSBMeta":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js","./DomainConfig":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js","./DomainReference":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js","./FileAnchor":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js","./Key":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js"}],"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js":[function(require,module,exports){
+},{"../transactions/transactions":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js","./ACLScope":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js","./Agent":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js","./Backup":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js","./BarAnchor":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js","./CSBMeta":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js","./DomainConfig":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js","./DomainReference":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js","./FileAnchor":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js","./Key":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js"}],"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js":[function(require,module,exports){
+$$.swarms.describe("transactionHandler", {
+    start: function (identity, transactionName, methodName, ...args) {
+        let transaction = $$.blockchain.startTransactionAs(identity, transactionName, methodName, ...args);
+        transaction.onReturn((err, result) => {
+            this.return(err, result);
+        });
+    }
+});
+},{}],"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js":[function(require,module,exports){
 //const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("Agents", {
@@ -3228,6 +3251,9 @@ $$.transaction.describe("Agents", {
         }
 
         this.transaction.add(agent);
+        this.onCommit(()=>{
+            this.return(undefined, agent.asJSON());
+        });
         this.commit();
     }
 });
@@ -3257,6 +3283,9 @@ $$.transaction.describe("DomainConfigTransaction", {
         }
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     getDomainDetails: sharedPhases.getAssetFactory('global.DomainConfig'),
@@ -3285,6 +3314,9 @@ $$.transaction.describe("Domain", {
         }
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     connectDomainLocally: function(alias, localInterface){
@@ -3292,6 +3324,9 @@ $$.transaction.describe("Domain", {
         domain.addLocalInterface('local', localInterface);
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     setWorkspaceForDomain: function(alias, workspace){
@@ -3299,6 +3334,9 @@ $$.transaction.describe("Domain", {
         domain.setWorkspace(workspace);
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     setConstitutionForDomain: function(alias, constitution){
@@ -3306,6 +3344,9 @@ $$.transaction.describe("Domain", {
         domain.setConstitution(constitution);
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     getDomainDetails:function(alias){
@@ -3317,6 +3358,9 @@ $$.transaction.describe("Domain", {
         domain.addRemoteInterface(alias, remoteEndPoint);
 
         this.transaction.add(domain);
+        this.onCommit(()=>{
+            this.return(undefined, domain.asJSON());
+        });
         this.commit();
     },
     setWorkerStrategy: function (alias, workerStrategy) {
@@ -3328,6 +3372,9 @@ $$.transaction.describe("Domain", {
         domainReference.setWorkerStrategy(workerStrategy);
 
         this.transaction.add(domainReference);
+        this.onCommit(()=>{
+            this.return(undefined, domainReference.asJSON());
+        });
         this.commit();
     },
     setMaximumNumberOfWorkers: function (alias, maximumNumberOfWorkers) {
@@ -3339,6 +3386,9 @@ $$.transaction.describe("Domain", {
         domainReference.setMaximumNumberOfWorkers(maximumNumberOfWorkers);
 
         this.transaction.add(domainReference);
+        this.onCommit(()=>{
+            this.return(undefined, domainReference.asJSON());
+        });
         this.commit();
     },
     getDomainDetails: sharedPhases.getAssetFactory('global.DomainReference'),
@@ -3401,9 +3451,28 @@ $$.transaction.describe("StandardCSBTransactions", {
         this.commit();
     },
 
-    addFileAnchor: function (alias, digest) {
-        this.transaction.createAsset("FileAnchor", "init", alias, digest);
-        this.commit();
+    addFileAnchor: function (alias, type, digest) {
+        try{
+            let fileAnchor = this.transaction.createAsset("FileAnchor", "init", alias, type, digest);
+
+            this.onCommit(() => {
+                this.return(undefined, fileAnchor.asJSON());
+            });
+
+            this.commit();
+
+        }catch(e) {
+            this.return(e.message);
+        }
+    },
+
+    domainLookup: function(alias){
+        try{
+            let fileAnchor = this.transaction.lookup("FileAnchor", alias);
+            this.return(undefined, fileAnchor ? fileAnchor.asJSON() : "");
+        }catch(err){
+            this.return(err.message);
+        }
     },
 
     updateFileDigest: function (alias, digest) {
@@ -3770,6 +3839,7 @@ module.exports = {
     startDB: function (worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, loadDefaultConstitution) {
         if(loadDefaultConstitution){
             require('../defaultConstitution/assets/index');
+            require('../defaultConstitution/swarms/index');
             require('../defaultConstitution/transactions/index');
         }
         let pds = require('./pskdb').newPSKDB(worldStateCache, historyStorage);
@@ -3791,7 +3861,7 @@ module.exports = {
     }
 };
 
-},{"../defaultConstitution/assets/index":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js","../defaultConstitution/transactions/index":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js","./Blockchain":"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js","./pskdb":"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js"}],"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js":[function(require,module,exports){
+},{"../defaultConstitution/assets/index":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js","../defaultConstitution/swarms/index":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js","../defaultConstitution/transactions/index":"D:\\work\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js","./Blockchain":"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js","./pskdb":"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js"}],"D:\\work\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js":[function(require,module,exports){
 let CNST = require("../moduleConstants");
 let cutil = require("../OBFT/transactionsUtil");
 // let bm = require("../moduleExports");
@@ -6554,7 +6624,10 @@ exports.createForObject = function(valueObject, thisObject, localId){
 			event = valueObject;
 		}
 		ensureLocalId();
-		$$.PSK_PubSub.publish(valueObject.localId, event);
+
+		setTimeout(()=>{
+			$$.PSK_PubSub.publish(valueObject.localId, event);
+		});
 	}
 
 	function getMeta(name){
@@ -7335,7 +7408,8 @@ module.exports = {
         //TODO:test endpoint against regex to determine transport strategy type
         //for now http will be used
         const transportStrategy = new this.HTTPBrickTransportStrategy(endpoint);
-        const transportStrategyAlias = "seedBasedStrategy";
+        const randomPart = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+        const transportStrategyAlias = "seedBasedStrategy_"+randomPart;
         $$.brickTransportStrategiesRegistry.add(transportStrategyAlias, transportStrategy);
         return this.attach(transportStrategyAlias);
     },
@@ -12616,7 +12690,7 @@ function initializeSwarmEngine(callback){
 }
 
 function plugPowerCords(){
-    self.edfs.loadCSB(self.seed, (err, csb)=>{
+    self.edfs.bootCSB(self.seed, (err, csb)=>{
         if(err){
             return console.log("Failed to boot properly domain!!");
         }
