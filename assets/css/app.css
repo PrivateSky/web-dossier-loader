@@ -18,12 +18,20 @@ body {
 }
 
 
-#restoreOrNewContainer,
-#pinContainer {
+#restore-new-container,
+#pin-container {
     display: none;
     width: 100%;
     text-align: center;
 }
+
+.pin-panel-container
+ {
+    justify-content: center;
+    display: flex;
+    flex: 1;
+ }
+
 
 .wizard-container {
     position: absolute;
@@ -68,7 +76,8 @@ body {
     text-align: center;
 }
 
-.btn-csb-new{
+.btn-csb-new,
+.btn-lost-pin{
     background-color: #616e7d;
     border-color: #4e5a69;
     color:#FFFFFF;
@@ -77,13 +86,18 @@ body {
 .btn-csb-new:hover,
 .btn-csb-new:active,
 .btn-csb-new:visited,
-.btn-csb-new:focus {
+.btn-csb-new:focus,
+.btn-lost-pin:hover,
+.btn-lost-pin:active,
+.btn-lost-pin:visited,
+.btn-lost-pin:focus{
     color:#FFFFFF;
     background-color: #566271;
     border-color: #4e5a69;
 }
 
-.btn-csb-restore{
+.btn-csb-restore,
+.btn-open-wallet{
     background-color: #95799e;
     border-color: #806489;
     color:#FFFFFF;
@@ -92,7 +106,12 @@ body {
 .btn-csb-restore:hover,
 .btn-csb-restore:active,
 .btn-csb-restore:visited,
-.btn-csb-restore:focus {
+.btn-csb-restore:focus,
+.btn-open-wallet:hover,
+.btn-open-wallet:active,
+.btn-open-wallet:visited,
+.btn-open-wallet:focus
+{
     color:#FFFFFF;
     background-color: #8d7096;
     border-color: #806489;
@@ -178,4 +197,42 @@ label.error{
     align-items: center;
     z-index: 10000000;
     background: #00000099;
+}
+.bg-violet{
+    background: rgba(64, 83, 115, 0.6);
+}
+
+/* Extra small devices (portrait phones, less than 576px)*/
+@media (max-width: 575.98px) {
+    .pin-panel{
+        width:20rem;
+    }
+}
+
+/* Small devices (landscape phones, 576px and up)*/
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .pin-panel{
+        width:24rem;
+    }
+}
+
+/* Medium devices (tablets, 768px and up)*/
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .pin-panel{
+        width:32rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .pin-panel{
+        width:36rem;
+    }
+}
+
+
+@media (min-width: 1200px) {
+    .pin-panel{
+        width:40rem;
+    }
 }

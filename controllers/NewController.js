@@ -46,7 +46,7 @@ function NewController() {
         let pinConfirm = document.getElementById("confirmPin").value;
         let btn = document.getElementById("setPINBtn");
 
-        if (pin === pinConfirm && pin.length >= 4) {
+        if (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
             btn.removeAttribute("disabled");
         } else {
             btn.setAttribute("disabled", "disabled");
