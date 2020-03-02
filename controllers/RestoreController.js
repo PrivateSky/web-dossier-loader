@@ -76,25 +76,14 @@ function RestoreController() {
             if (err) {
                 return document.getElementById("pinError").innerText = "Operation failed. Try again"
             }
-
-            if ('serviceWorker' in navigator) {
-                navigator.serviceWorker.register('/swHostBoot.js', {scope: "/"}).then(function(reg) {
-                    console.log('Yay, service worker is live!', reg);
-                    window.wizard.next();
-
-                }).catch(function(err) {
-                    return document.getElementById("pinError").innerText = "Operation failed. Try again";
-                });
-            }
+            wizard.next();
         });
     };
 
     this.openWallet = function (event) {
         event.preventDefault();
-        SWAgent.restoreCSB(seed, window.location.origin, function () {
-            window.location="/";
-        });
-
+        event.stopImmediatePropagation();
+        window.location ="/";
     }
 }
 
