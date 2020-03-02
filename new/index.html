@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="bs-stepper-content">
-            <form onSubmit="return controller.openWallet(event)">
+            <form onSubmit="controller.openWallet(event)">
                 <div id="wallet-type-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                     <div class="form-group">
                         <label>Wallet Type</label>
@@ -74,6 +74,19 @@
                 </div>
                 <div id="complete-step" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
+
+
+                    <div class="form-group">
+                        <label for="seed">Please keep secret this seed </label>
+                        <input type="text" disabled="disabled" class="form-control" id="seed">
+                        <small class="form-text text-muted">You can print it on a piece of paper.</small>
+                    </div>
+
+                    <div class="row ml-1">
+                        <label id="error" class="error"></label>
+                    </div>
+
+
                     <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
                 </div>
             </form>

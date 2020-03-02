@@ -7121,8 +7121,9 @@ function EDFS(brickTransportStrategyName) {
     };
 
     this.loadWallet = function(walletSeed, pin, overwrite, callback){
-        if(typeof pin === "function"){
-            callback = pin;
+        if(typeof overwrite === "function"){
+            callback = overwrite;
+            overwrite = pin;
             pin = walletSeed;
             walletSeed = undefined;
         }
@@ -7345,6 +7346,13 @@ const crypto = require(pskcrypto);
 const storageLocation = "seedCage";
 const algorithm = "aes-256-cfb";
 
+/**
+ * local storage can't handle properly binary data
+ *  https://stackoverflow.com/questions/52419694/how-to-store-uint8array-in-the-browser-with-localstorage-using-javascript
+ * @param pin
+ * @param callback
+ * @returns {*}
+ */
 function getSeed(pin, callback) {
     let encryptedSeed;
     let seed;
@@ -7353,6 +7361,9 @@ function getSeed(pin, callback) {
         if (encryptedSeed === null || typeof encryptedSeed !== "string" || encryptedSeed.length === 0) {
             return callback(new Error("SeedCage is empty or data was altered"));
         }
+
+        const retrievedEncryptedArr = JSON.parse(encryptedSeed);
+        encryptedSeed = new Uint8Array(retrievedEncryptedArr);
         const pskEncryption = crypto.createPskEncryption(algorithm);
         const encKey = crypto.deriveKey(algorithm, pin);
         seed = pskEncryption.decrypt(encryptedSeed, encKey).toString();
@@ -7389,7 +7400,10 @@ function putSeed(seed, pin, overwrite = false, callback) {
             encSeed = Buffer.concat([encSeed, encParameters.tag]);
         }
 
-        localStorage.setItem(storageLocation, encSeed);
+        const encryptedArray =  Array.from(encSeed);
+        const encryptedSeed = JSON.stringify(encryptedArray);
+
+        localStorage.setItem(storageLocation, encryptedSeed);
     } catch (e) {
         return callback(e);
     }
@@ -47891,24 +47905,36 @@ self.addEventListener('message', function (event) {
             bootScript.boot((err, archive) => {
                 csbArchive = archive;
                 csbArchive.listFiles("app", (err, files) => {
-                    console.log(files);
-                    csbArchive.readFile("app/index.html", (err, content) => {
+                    if(files.length>0 && files["app/index.html"]){
+                        csbArchive.readFile("app/index.html", (err, content) => {
 
-                        let blob = new Blob([content.toString()], {type: "text/html;charset=utf-8"});
+                            let blob = new Blob([content.toString()], {type: "text/html;charset=utf-8"});
 
-                        let response = new Response(blob, {"status": 200, "statusText": "ok"});
+                            let response = new Response(blob, {"status": 200, "statusText": "ok"});
 
-                        console.log(response);
-                        caches.open('v1').then((cache) => {
-                            let currentIndexLocation = `${event.data.url}`;
-                            cache.put(currentIndexLocation, response);
+                            caches.open('v1').then((cache) => {
+                                let currentIndexLocation = `${event.data.url}`;
+                                cache.put(currentIndexLocation, response);
 
-                            event.ports[0].postMessage({status: 'finished', content: content.toString()});
-                        });
+                                event.ports[0].postMessage({status: 'finished', content: content.toString()});
+                            });
+                        })
+                    }
+                    else{
+                        event.ports[0].postMessage({error: 'No app found' });
+                        self.registration.unregister()
+                            .then(function() {
 
+                                return self.clients.matchAll();
 
-                        //console.log(content.toString());
-                    })
+                            })
+                            .then(function(clients) {
+
+                                clients.forEach(client => client.navigate(client.url));
+
+                            });
+                    }
+
                 })
             });
 

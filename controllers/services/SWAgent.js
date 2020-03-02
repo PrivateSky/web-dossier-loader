@@ -1,4 +1,5 @@
-function SWAgent() {}
+function SWAgent() {
+}
 
 SWAgent.sendMessage = function (message) {
     // This wraps the message posting/response in a promise, which will
@@ -23,20 +24,81 @@ SWAgent.sendMessage = function (message) {
         // handler on messageChannel.port1.
         // See
         // https://html.spec.whatwg.org/multipage/workers.html#dom-worker-postmessage
-        navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+
+        if (navigator.serviceWorker.controller) {
+            navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+        } else {
+            navigator.serviceWorker.oncontrollerchange = function () {
+                navigator.serviceWorker.controller.postMessage(message, [messageChannel.port2]);
+            };
+        }
+
     });
 };
 
-SWAgent.restoreCSB = function (seed, url, callback) {
+SWAgent.restoreDossier = function (seed, url, callback) {
     SWAgent.sendMessage({action: "activate"}).then((data) => {
         if (data.status === "empty") {
             SWAgent.sendMessage({seed: seed, url: url}).then(data => {
-                console.log(data.status);
-                callback();
+                callback(undefined);
+            }).catch(err => {
+                console.log(err);
+                callback(err);
+            })
+
+        }
+    }).catch(err => {
+        callback(err);
+    });
+};
+
+
+SWAgent.unregisterSW = function () {
+    navigator.serviceWorker.getRegistrations().then(function (registrations) {
+        for (let registration of registrations) {
+            registration.unregister().then(function (success) {
+                if ('caches' in window) {
+                    caches.keys()
+                        .then(function (keyList) {
+                            return Promise.all(keyList.map(function (key) {
+                                return caches.delete(key);
+                            }));
+                        })
+                }
+
             })
         }
     });
+}
+
+
+SWAgent.loadWallet = function (edfs, pin, errorContainer) {
+    edfs.loadWallet(pin, true, function (err, wallet) {
+        if (err) {
+            return document.getElementById(errorContainer).innerText = "Operation failed. Try again"
+        }
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/swHostBoot.js', {scope: "/"}).then(function (reg) {
+                console.log('Yay, service worker is live!', reg);
+
+                SWAgent.restoreDossier(wallet.getSeed(), window.location.origin, function (err) {
+                    if (err) {
+                        SWAgent.unregisterSW();
+                        return document.getElementById(errorContainer).innerText = "Operation failed. Try again"
+                    }
+                    window.location = "/";
+                });
+
+
+            }).catch(function (err) {
+                SWAgent.unregisterSW();
+                return document.getElementById("pin-error").innerText = "Operation failed. Try again";
+            });
+        }
+    });
 };
+
 export default SWAgent;
 
 

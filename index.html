@@ -7,7 +7,7 @@
     <script src="app-config.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
-    <script src="controllers/MainController.js"></script>
+    <script type="module" src="controllers/MainController.js"></script>
     <link href="/assets/css/app.css" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -40,6 +40,11 @@
                             <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
                                    oninput="controller.validatePIN(event)">
                         </div>
+
+                        <div class="row ml-1">
+                            <label id="pin-error" class="error"></label>
+                        </div>
+
                         <button onclick="controller.restore(event)" class="btn btn-lost-pin float-left">Lost PIN?</button>
                         <button type="submit" id="open-wallet-btn" disabled="disabled" class="btn btn-open-wallet float-right">Open Wallet</button>
                     </form>

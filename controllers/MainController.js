@@ -1,19 +1,22 @@
-function MainController(){
+import SWAgent from "./services/SWAgent.js";
+
+function MainController() {
 
     let pin;
     let EDFS;
+    let edfs;
+
 
     function displayContainer(containerId) {
-        document.getElementById(containerId).style.display="block";
+        document.getElementById(containerId).style.display = "block";
     }
 
-    this.initView = function(){
+    this.initView = function () {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
 
-
         EDFS = require("edfs");
-        EDFS.checkForSeedCage((err)=>{
-            if(err){
+        EDFS.checkForSeedCage((err) => {
+            if (err) {
                 return displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
             displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
@@ -21,7 +24,7 @@ function MainController(){
         });
     };
 
-    this.validatePIN = function(){
+    this.validatePIN = function () {
         pin = document.getElementById("pin").value;
         let btn = document.getElementById("open-wallet-btn");
 
@@ -39,26 +42,25 @@ function MainController(){
 
     this.openWallet = function () {
         event.preventDefault();
-         EDFS.attachWithPin(pin, function (err, edfs) {
-             if(err){
-                 console.log(err);
-                 return;
-             }
+        if(edfs){
+            return SWAgent.loadWallet(edfs, pin, "pin-error");
+        }
 
-             EDFS = edfs;
-             EDFS.loadWallet(pin, true, function(err, wallet){
-                 console.log(err,wallet);
-             })
+        EDFS.attachWithPin(pin, function (err, _edfs) {
+            if (err) {
+                return document.getElementById("pin-error").innerText = "Invalid PIN";
+            }
+            edfs = _edfs;
+            SWAgent.loadWallet(edfs, pin, "pin-error");
         });
-
-
     }
 }
 
-let  controller = new MainController();
-document.addEventListener("DOMContentLoaded",function(){
+let controller = new MainController();
+document.addEventListener("DOMContentLoaded", function () {
     controller.initView();
 });
+window.controller = controller;
 
 
 

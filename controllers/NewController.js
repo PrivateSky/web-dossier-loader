@@ -1,7 +1,9 @@
+import SWAgent from "./services/SWAgent.js";
 import SpinnerService from "./services/SpinnerService.js";
 function NewController() {
 
     let EDFS;
+    let edfs;
     let seed;
     let pin;
     let walletType;
@@ -54,6 +56,7 @@ function NewController() {
     };
 
     this.selectWalletType = function(event){
+        event.preventDefault();
         walletType = {
             endpoint:APP_CONFIG.EDFS_ENDPOINT,
             templateSeed:APP_CONFIG.TEMPLATE_SEED
@@ -63,14 +66,14 @@ function NewController() {
 
     this.createWallet = function (event) {
         spinner.attachToView();
-        event.stopImmediatePropagation();
+        event.preventDefault();
         try {
             EDFS = EDFS.attachToEndpoint(walletType.endpoint);
             EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {
                 spinner.removeFromView();
                 if(!err){
                     seed = _seed;
-                    console.log(_seed);
+                    document.getElementById("seed").value = seed;
                     wizard.next();
                 }
                 else{
@@ -84,29 +87,21 @@ function NewController() {
     };
 
     this.previous = function (event) {
-        event.stopImmediatePropagation();
+        event.preventDefault();
         document.getElementById("seed").value = "";
         document.getElementById("restoreSeedBtn").setAttribute("disabled","disabled");
         wizard.previous();
     };
 
     this.setPin = function (event) {
-        event.stopImmediatePropagation();
-        EDFS.storeWalletSeed(seed, pin, function (err) {
-            if(err){
-                return document.getElementById("pinError").innerText="Operation failed. Try again"
-            }
-            wizard.next();
-        });
+        event.preventDefault();
     };
 
     this.openWallet = function (event) {
         event.stopImmediatePropagation();
 
-        //TODO:load sw and send seed -> boot wallet app
-        //redirect page to /
+        window.location ="/"
 
-        return false;
     }
 }
 

@@ -92,6 +92,7 @@ function RestoreController() {
         SWAgent.restoreCSB(seed, window.location.origin, function () {
             window.location="/";
         });
+
     }
 }
 
