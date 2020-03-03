@@ -52,6 +52,10 @@ global.edfsBarLoadModules = function(){
 	if(typeof $$.__runtimeModules["pskcrypto"] === "undefined"){
 		$$.__runtimeModules["pskcrypto"] = require("pskcrypto");
 	}
+
+	if(typeof $$.__runtimeModules["dossier"] === "undefined"){
+		$$.__runtimeModules["dossier"] = require("dossier");
+	}
 }
 if (false) {
 	edfsBarLoadModules();
@@ -64,7 +68,7 @@ if (typeof $$ !== "undefined") {
     
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"@msgpack/msgpack":"@msgpack/msgpack","adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","pskdomain":"pskdomain","swarmutils":"swarmutils"}],"D:\\work\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
+},{"@msgpack/msgpack":"@msgpack/msgpack","adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","dossier":"dossier","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","pskdomain":"pskdomain","swarmutils":"swarmutils"}],"D:\\work\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -785,7 +789,7 @@ function Archive(archiveConfigurator) {
         loadBarMapThenExecute(__addFile, callback);
 
         function __addFile() {
-            readFileAsBlocks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), (err) => {
+            createBricks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), (err) => {
                 if (err) {
                     return callback(err);
                 }
@@ -963,7 +967,7 @@ function Archive(archiveConfigurator) {
                 }
 
                 if (typeof file !== "undefined") {
-                    readFileAsBlocks(path.join(rootFsPath, file), barPath + "/" + file, archiveConfigurator.getBufferSize(), (err) => {
+                    createBricks(path.join(rootFsPath, file), barPath + "/" + file, archiveConfigurator.getBufferSize(), (err) => {
                         if (err) {
                             return callback(err);
                         }
@@ -1147,7 +1151,7 @@ function Archive(archiveConfigurator) {
         });
     }
 
-    function readFileAsBlocks(fsFilePath, barPath, blockSize, callback) {
+    function createBricks(fsFilePath, barPath, blockSize, callback) {
 
         archiveFsAdapter.getFileSize(fsFilePath, (err, fileSize) => {
             if (err) {
@@ -1163,9 +1167,9 @@ function Archive(archiveConfigurator) {
             // the scenario: adding a new file at an existing barPath should overwrite the initial content found there.
 
             barMap.emptyList(barPath);
-            __readBlocksRecursively(0, callback);
+            __createBricksRecursively(0, callback);
 
-            function __readBlocksRecursively(blockIndex, callback) {
+            function __createBricksRecursively(blockIndex, callback) {
                 archiveFsAdapter.readBlockFromFile(fsFilePath, blockIndex * blockSize, (blockIndex + 1) * blockSize - 1, (err, blockData) => {
                     if (err) {
                         return callback(err);
@@ -1183,7 +1187,7 @@ function Archive(archiveConfigurator) {
 
                         ++blockIndex;
                         if (blockIndex < noBlocks) {
-                            __readBlocksRecursively(blockIndex, callback);
+                            __createBricksRecursively(blockIndex, callback);
                         } else {
                             callback();
                         }
@@ -1945,7 +1949,7 @@ function FolderBarMap(header) {
     let encryptionKey;
 
     this.add = (filePath, brick) => {
-        filePath = filePath.split(path.sep).join(path.sep);
+        filePath = filePath.split(path.sep).join("/");
         this.load();
         if (typeof header[filePath] === "undefined") {
             header[filePath] = [];
@@ -6347,7 +6351,37 @@ module.exports.Seed = require('./lib/Seed');
 module.exports.createFolderBrickStorage = createFolderBrickStorage;
 module.exports.createFileBrickStorage = createFileBrickStorage;
 
-},{"./lib/Archive":"D:\\work\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\work\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\work\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\work\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\work\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\work\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\work\\privatesky\\modules\\bar\\lib\\Seed.js"}],"edfs-brick-storage":[function(require,module,exports){
+},{"./lib/Archive":"D:\\work\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\work\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\work\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\work\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\work\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\work\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\work\\privatesky\\modules\\bar\\lib\\Seed.js"}],"dossier":[function(require,module,exports){
+const se = require("swarm-engine");
+se.initialise();
+
+module.exports.load = function(seed, identity, callback){
+    const pathName = "path";
+    const path = require(pathName);
+    const powerCord = new se.OuterThreadPowerCord(path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "psknode/bundles/threadBoot.js"), false, seed);
+
+    let cord_identity;
+    try{
+        const crypto = require("pskcrypto");
+        cord_identity = crypto.pskHash(seed, "hex");
+        $$.swarmEngine.plug(cord_identity, powerCord);
+    }catch(err){
+        return callback(err);
+    }
+
+    const handler = {
+        attachTo : $$.interactions.attachTo,
+        startTransaction : function (transactionTypeName, methodName, ...args) {
+            //todo: get identity from context somehow
+            return $$.interactions.startSwarmAs(cord_identity, "transactionHandler", "start", identity, transactionTypeName, methodName, ...args);
+        }
+    };
+    //todo implement a way to know when thread is ready
+    setTimeout(()=>{
+        callback(undefined, handler);
+    }, 100);
+};
+},{"pskcrypto":"pskcrypto","swarm-engine":false}],"edfs-brick-storage":[function(require,module,exports){
 module.exports.create = (brickTransportStrategyName) => {
     const EDFSBrickStorage = require("./EDFSBrickStorage");
     return new EDFSBrickStorage(brickTransportStrategyName)

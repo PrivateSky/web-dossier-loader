@@ -806,7 +806,7 @@ function Archive(archiveConfigurator) {
         loadBarMapThenExecute(__addFile, callback);
 
         function __addFile() {
-            readFileAsBlocks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), (err) => {
+            createBricks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), (err) => {
                 if (err) {
                     return callback(err);
                 }
@@ -984,7 +984,7 @@ function Archive(archiveConfigurator) {
                 }
 
                 if (typeof file !== "undefined") {
-                    readFileAsBlocks(path.join(rootFsPath, file), barPath + "/" + file, archiveConfigurator.getBufferSize(), (err) => {
+                    createBricks(path.join(rootFsPath, file), barPath + "/" + file, archiveConfigurator.getBufferSize(), (err) => {
                         if (err) {
                             return callback(err);
                         }
@@ -1168,7 +1168,7 @@ function Archive(archiveConfigurator) {
         });
     }
 
-    function readFileAsBlocks(fsFilePath, barPath, blockSize, callback) {
+    function createBricks(fsFilePath, barPath, blockSize, callback) {
 
         archiveFsAdapter.getFileSize(fsFilePath, (err, fileSize) => {
             if (err) {
@@ -1184,9 +1184,9 @@ function Archive(archiveConfigurator) {
             // the scenario: adding a new file at an existing barPath should overwrite the initial content found there.
 
             barMap.emptyList(barPath);
-            __readBlocksRecursively(0, callback);
+            __createBricksRecursively(0, callback);
 
-            function __readBlocksRecursively(blockIndex, callback) {
+            function __createBricksRecursively(blockIndex, callback) {
                 archiveFsAdapter.readBlockFromFile(fsFilePath, blockIndex * blockSize, (blockIndex + 1) * blockSize - 1, (err, blockData) => {
                     if (err) {
                         return callback(err);
@@ -1204,7 +1204,7 @@ function Archive(archiveConfigurator) {
 
                         ++blockIndex;
                         if (blockIndex < noBlocks) {
-                            __readBlocksRecursively(blockIndex, callback);
+                            __createBricksRecursively(blockIndex, callback);
                         } else {
                             callback();
                         }
@@ -1966,7 +1966,7 @@ function FolderBarMap(header) {
     let encryptionKey;
 
     this.add = (filePath, brick) => {
-        filePath = filePath.split(path.sep).join(path.sep);
+        filePath = filePath.split(path.sep).join("/");
         this.load();
         if (typeof header[filePath] === "undefined") {
             header[filePath] = [];
@@ -47979,7 +47979,6 @@ self.addEventListener('message', function (event) {
             bootScript.boot((err, archive) => {
                 csbArchive = archive;
                 csbArchive.listFiles("app", (err, files) => {
-                    console.log(files);
                     if (files.length > 0 && files.indexOf("app/index.html")!==1) {
                         csbArchive.readFile("app/index.html", (err, content) => {
 

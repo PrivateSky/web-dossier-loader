@@ -32,6 +32,22 @@ body {
     flex: 1;
  }
 
+.wallet-type-card
+{
+position:absolute;
+display: flex;
+align-items: center;
+width: 48px;
+height: 48px;
+left:40%;
+top:-20px;
+border-radius:50%;
+}
+
+.wallet-type:hover{
+    background: #edf1f4;
+    cursor: pointer;
+}
 
 .wizard-container {
     position: absolute;
@@ -51,7 +67,6 @@ body {
     flex-direction: column;
 }
 .stepper-content{
-    padding: 50px;
     z-index: 100;
     background: rgba(230, 235, 243, 0.9);
     flex-direction: column;
