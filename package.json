@@ -1,0 +1,12 @@
+{
+  "name": "web-dossier-loader",
+  "version": "0.2.0",
+  "description": "Web Loader for the Dossiers' User Interface",
+  "scripts": {
+    "web-server": "ws"
+  },
+  "devDependencies": {
+    "local-web-server": "^3.0.7"
+  },
+  "license": "MIT"
+}

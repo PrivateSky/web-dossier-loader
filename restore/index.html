@@ -1,0 +1,88 @@
+<html>
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <base href="/restore" target="_blank">
+    <script src="app-config.js"></script>
+    <script src="bundles/webshims.js"></script>
+    <script src="bundles/edfsBar.js"></script>
+    <script type="module" src="controllers/RestoreController.js"></script>
+    <script src="assets/js/stepper.min.js"></script>
+    <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
+    <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="wizard-container">
+    <div id="psk-wizard" class="bs-stepper stepper-content row pl-lg-4 pl-md-2 px-2">
+        <div class="bs-stepper-header" role="tablist">
+            <div class="step" data-target="#enter-seed">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="enter-seed">
+                    <span class="bs-stepper-circle">1</span>
+                    <span class="bs-stepper-label">Seed</span>
+                </button>
+            </div>
+            <div class="bs-stepper-line"></div>
+            <div class="step" data-target="#enter-pin">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin">
+                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-label">PIN</span>
+                </button>
+            </div>
+            <div class="bs-stepper-line"></div>
+            <div class="step" data-target="#complete">
+                <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete">
+                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-label">Complete</span>
+                </button>
+            </div>
+        </div>
+        <div class="bs-stepper-content">
+            <form onSubmit="return controller.openWallet(event)">
+                <div id="enter-seed" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
+                    <div class="form-group">
+                        <label for="seed">Seed</label>
+                        <input type="text" class="form-control" id="seed" placeholder="Enter Wallet Seed"
+                               oninput="controller.validateSeed(event)">
+                        <label id="seedError"></label>
+                    </div>
+                    <button id="restoreSeedBtn" class="btn btn-primary" onclick="controller.restore(event)"
+                            disabled="disabled">Restore
+                    </button>
+                </div>
+                <div id="enter-pin" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+
+
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
+                                   oninput="controller.validatePIN(event)">
+                            <small id="pinHelp" class="form-text text-muted">Setup a easy to remember PIN.</small>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <input type="password" class="form-control" id="confirmPin" placeholder="Confirm PIN"
+                                   oninput="controller.validatePIN(event)">
+                            <small id="pinConfirmHelp" class="form-text text-muted">PINs should be identical.</small>
+                        </div>
+                    </div>
+
+                    <div class="row ml-1">
+                        <label id="pinError" class="error"></label>
+                    </div>
+                    <button class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
+                    <button id="setPINBtn" class="btn btn-primary" onclick="controller.setPin(event)"
+                            disabled="disabled">Set PIN
+                    </button>
+
+                </div>
+                <div id="complete" role="tabpanel" class="bs-stepper-pane text-center"
+                     aria-labelledby="stepper1trigger3">
+                    <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>
