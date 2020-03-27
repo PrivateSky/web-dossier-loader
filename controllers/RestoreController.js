@@ -55,10 +55,17 @@ function RestoreController() {
         event.preventDefault();
         seed = document.getElementById("seed").value;
         try {
-            EDFS = EDFS.attachWithSeed(seed);
-            wizard.next();
+            EDFS.attachWithSeed(seed, function(err, edfs){
+                if(err){
+                    throw err;
+                }
+                EDFS = edfs;
+                wizard.next();
+            });
+
         }
         catch (e) {
+           console.log(e);
            document.getElementById("seedError").innerText="Seed is not valid."
         }
     };
