@@ -103,6 +103,21 @@ function NewController() {
 							console.log("Wallet list files until this point", files);
 							tryToInstallApps(function(err){
 								console.log("finished apps installation", err);
+								if(err){
+									document.getElementById("pinError").innerText="An error occurred. Please try again."
+									return console.log(err);
+								}
+								seed = wallet.getSeed();
+								document.getElementById("seed").value = seed;
+								edfs.loadWallet(seed, pin, true, function(err){
+									if(err){
+										return console.log(err);
+									}
+									console.log("New Wallet instance ready to be used!!!");
+									spinner.removeFromView();
+
+									wizard.next();
+								});
 							});
 						})
 				   });
@@ -130,14 +145,9 @@ function NewController() {
                            console.log("Application list to be installed", appList);
 							installApps(wallet, apps, appList, function(err){
 								if(err){
-									document.getElementById("pinError").innerText="An error occurred. Please try again."
-									return console.log(err);
+									return callback(err);
 								}
-								console.log("New Wallet instance ready to be used!!!");
-								spinner.removeFromView();
-								seed = wallet.getSeed();
-								document.getElementById("seed").value = seed;
-								wizard.next();
+								callback();
 							})
                        });
                    }
