@@ -92,6 +92,7 @@ function NewController() {
                     }
 
                     let files = dirSummaryAsArray(walletTemplate);
+                    console.log(wallet.getSeed());
                     customizeDossier(wallet, files, "/"+EDFS.constants.CSB.APP_FOLDER, function (err) {
                         if (err) {
                             return console.log(err);
@@ -137,11 +138,12 @@ function NewController() {
                             targetPath = `${prefix}/${targetPath}`;
                         }
 
+                        console.log(targetPath);
                         dossier.writeFile(targetPath, file.content, function (err) {
                             if (err) {
                                 return callback(err);
                             }
-                            customizeDossier(dossier, files, callback);
+                            customizeDossier(dossier, files, prefix, callback);
                         });
                     }
 

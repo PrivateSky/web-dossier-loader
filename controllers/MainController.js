@@ -52,7 +52,7 @@ function MainController() {
             if (err) {
                 return document.getElementById("pin-error").innerText = err;
             }
-            window.location = "/";
+            window.location.replace("./");
         }
 
         if (edfs) {

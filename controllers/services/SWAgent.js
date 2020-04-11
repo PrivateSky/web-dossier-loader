@@ -79,7 +79,7 @@ SWAgent.loadWallet = function (edfs, pin, callback) {
         }
 
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('swHostBoot.js').then(function (reg) {
+            navigator.serviceWorker.register('swBoot.js').then(function (reg) {
                 console.log('Yay, service worker is live!', reg);
 
                 SWAgent.restoreDossier(wallet.getSeed(), window.location.origin, function (err) {
