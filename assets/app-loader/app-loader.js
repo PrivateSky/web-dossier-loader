@@ -1,7 +1,5 @@
 import SWAgent from "../../controllers/services/SWAgent.js";
-
 let paths = window.location.pathname.split("/apps/");
-
 let myIdentity = paths[1];
 
 

@@ -25,6 +25,10 @@ function MainController() {
             displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
 
         });
+
+        if(APP_CONFIG.DEVELOPMENT_PIN){
+            controller.openWallet(new CustomEvent("test"));
+        }
     };
 
     this.validatePIN = function () {
@@ -43,7 +47,12 @@ function MainController() {
         window.location = "./restore"
     };
 
-    this.openWallet = function () {
+    this.openWallet = function (event) {
+
+        if(APP_CONFIG.DEVELOPMENT_PIN){
+           pin = APP_CONFIG.DEVELOPMENT_PIN;
+        }
+
         event.preventDefault();
         spinner.attachToView();
 
@@ -94,7 +103,11 @@ function MainController() {
         let iframe = document.createElement("iframe");
         iframe.setAttribute("sandbox","allow-scripts allow-same-origin allow-forms");
         iframe.setAttribute("frameborder","0");
-        iframe.style.display = "none";
+        iframe.style.overflow = "hidden";
+        iframe.style.height = "100%";
+        iframe.style.width = "100%";
+        iframe.style.display = "block";
+        iframe.style.zIndex="100";
         let currentLocation = window.location;
         iframe.src=currentLocation+"apps/"+hexDigest;
 
@@ -106,10 +119,6 @@ function MainController() {
             }
 
             if (event.data.status === "completed") {
-                iframe.style.overflow = "hidden";
-                iframe.style.height = "100%";
-                iframe.style.width = "100%";
-                iframe.style.display = "block";
                 document.write(iframe.outerHTML);
             }
 
@@ -120,6 +129,10 @@ function MainController() {
 
 
         document.body.appendChild(iframe);
+
+        iframe.addEventListener("load",function(){
+           // document.write(iframe.outerHTML);
+        })
 
     }
 
