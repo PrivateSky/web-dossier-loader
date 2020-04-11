@@ -1,4 +1,4 @@
-edfsBarRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\git\\privatesky\\builds\\tmp\\edfsBar_intermediar.js":[function(require,module,exports){
+edfsBarRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\rwork\\web-wallet\\privatesky\\builds\\tmp\\edfsBar_intermediar.js":[function(require,module,exports){
 (function (global){
 global.edfsBarLoadModules = function(){ 
 
@@ -68,7 +68,7 @@ if (typeof $$ !== "undefined") {
 require('source-map-support').install({});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","buffer-from":"buffer-from","dossier":"dossier","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
+},{"adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","buffer-from":"buffer-from","dossier":"dossier","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -138,7 +138,7 @@ Hash.prototype._flush = function(callback)
 };
 }).call(this,require("buffer").Buffer)
 
-},{"./algorithm":"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\algorithm.js","buffer":false,"crypto":false,"stream":false,"util":false}],"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\algorithm.js":[function(require,module,exports){
+},{"./algorithm":"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","buffer":false,"crypto":false,"stream":false,"util":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js":[function(require,module,exports){
 "use strict";
 
 /**
@@ -202,7 +202,7 @@ exports.roll = function(sum, length, oldByte, newByte)
 
 	return ((b << 16) | a) >>> 0;
 };
-},{}],"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\register.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js":[function(require,module,exports){
 "use strict";
 
 module.exports = function()
@@ -230,7 +230,7 @@ module.exports = function()
 	}
 	.bind(crypto.createHash.bind(this));
 };
-},{"./Hash":"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\Hash.js","crypto":false}],"D:\\work\\git\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js":[function(require,module,exports){
+},{"./Hash":"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js":[function(require,module,exports){
 (function (Buffer){
 const fsModule = "fs";
 const fs = require(fsModule);
@@ -239,8 +239,6 @@ const path = require(pathModule);
 const PathAsyncIterator = require('./PathAsyncIterator');
 
 function FsAdapter() {
-
-    let pathAsyncIterator;
 
     this.getFileSize = function (filePath, callback) {
         fs.stat(filePath, (err, stats) => {
@@ -273,78 +271,31 @@ function FsAdapter() {
         });
     };
 
-    this.getFilesIterator = function(inputPath) {
+    this.getFilesIterator = function (inputPath) {
         return new PathAsyncIterator(inputPath);
     };
 
-    this.getNextFile = function (inputPath, restart, callback) {
-        if(typeof restart === "function") {
-            callback = restart;
-            restart = false;
-        }
-
-        if(restart === true) {
-            pathAsyncIterator = new PathAsyncIterator(inputPath);
-        }
-
-        pathAsyncIterator = pathAsyncIterator || new PathAsyncIterator(inputPath);
-        pathAsyncIterator.next(callback);
-    };
-
     this.appendBlockToFile = function (filePath, data, callback) {
-        const pth = constructPath(filePath);
-        if (pth !== '') {
-            fs.mkdir(pth, {recursive: true}, (err) => {
-                if (err && err.code !== "EEXIST") {
-                    return callback(err);
-                }
-
-                fs.appendFile(filePath, data, callback);
-            });
-        } else {
-            fs.appendFile(filePath, data, callback);
-        }
-    };
-
-    this.writeBlockToFile = function (filePath, data, position, length, callback) {
-        const folderPath = path.dirname(filePath);
-        fs.access(folderPath, (err) => {
+        fs.access(filePath, (err) => {
             if (err) {
-                fs.mkdir(folderPath, {recursive: true}, (err) => {
-                    if (err) {
+                fs.mkdir(path.dirname(filePath), {recursive: true}, (err) => {
+                    if (err && err.code !== "EEXIST") {
                         return callback(err);
                     }
 
-                    __writeBlock();
+                    fs.appendFile(filePath, data, callback);
                 });
             } else {
-                __writeBlock();
+                fs.appendFile(filePath, data, callback);
             }
         });
-
-        function __writeBlock() {
-            const writeStream = fs.createWriteStream(filePath, {flags: "a+", start: position});
-
-            writeStream.on("error", (err) => {
-                return callback(err);
-            });
-
-            writeStream.write(data, callback);
-        }
     };
-
-    function constructPath(filePath) {
-        let slices = filePath.split(path.sep);
-        slices.pop();
-        return slices.join(path.sep);
-    }
-
 }
 
 module.exports = FsAdapter;
 }).call(this,require("buffer").Buffer)
 
-},{"./PathAsyncIterator":"D:\\work\\git\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js","buffer":false}],"D:\\work\\git\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js":[function(require,module,exports){
+},{"./PathAsyncIterator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js","buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js":[function(require,module,exports){
 const fsModule = "fs";
 const fs = require(fsModule);
 const pathModule = "path";
@@ -353,6 +304,7 @@ const TaskCounter = require("swarmutils").TaskCounter;
 
 
 function PathAsyncIterator(inputPath) {
+    inputPath = path.normalize(inputPath);
     let removablePathLen;
     const fileList = [];
     const folderList = [];
@@ -469,12 +421,13 @@ function PathAsyncIterator(inputPath) {
 }
 
 module.exports = PathAsyncIterator;
-},{"swarmutils":"swarmutils"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Archive.js":[function(require,module,exports){
+},{"swarmutils":"swarmutils"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require('./Brick');
 const pathModule = "path";
 const path = require(pathModule);
 const isStream = require("../utils/isStream");
+const stream = require('stream');
 const TaskCounter = require("swarmutils").TaskCounter;
 const crypto = require('pskcrypto');
 const adler32 = require('adler32');
@@ -520,202 +473,17 @@ function Archive(archiveConfigurator) {
         loadBarMapThenExecute(() => {
             const fileList = barMap.getFileList(folderBarPath);
             if (fileList.length === 1) {
-                return callback(undefined, __computeFileHash(fileList[0]).toString("hex"));
+                return callback(undefined, __computeFileHash(folderBarPath + "/" + fileList[0]).toString("hex"));
             }
             fileList.sort();
 
             let xor;
             for (let i = 0; i < fileList.length - 1; i++) {
-                xor = crypto.xorBuffers(__computeFileHash(fileList[i]), __computeFileHash(fileList[i + 1]));
+                xor = crypto.xorBuffers(__computeFileHash(folderBarPath + "/" + fileList[i]), __computeFileHash(folderBarPath + "/" + fileList[i + 1]));
             }
 
             callback(undefined, crypto.pskHash(xor, "hex"));
         }, callback);
-    };
-
-    this.update = (fsPath, callback) => {
-        let blocksPositions = {};
-        let checksSumMap = barMap.getDictionaryObject();
-        let fileNameHashes = __setFromHashList();
-        let fileState = {};
-        loadBarMapThenExecute(__update, callback);
-
-        /**
-         * in this function, i do a directory traversal and process every file that i find, looking for blocks that already exists in our archive
-         * @private
-         */
-
-        function __setFromHashList() {
-            let folderHashList = {};
-            barMap.getFileList().forEach((file) => {
-                folderHashList[file.slice(file.indexOf('/'))] = new Set(barMap.getHashList(file));
-            });
-            return folderHashList;
-        }
-
-        function __readDirectoryRecursively(folderPath, sign, callback) {
-            archiveFsAdapter.getNextFile(folderPath, sign, __readFileChk);
-
-            function __readFileChk(err, file) {
-                if (err) {
-                    return callback(err);
-                }
-
-                if (typeof file === 'undefined') {
-                    return callback(undefined, blocksPositions, fileNameHashes);
-                }
-
-                const goodPath = path.posix.normalize(path.join(path.dirname(folderPath), file).split(path.sep).join(path.posix.sep));
-                archiveFsAdapter.getFileSize(goodPath, (err, size) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    __readBlock(goodPath, goodPath.slice(goodPath.indexOf('/')), size, 0, archiveConfigurator.getBufferSize(), undefined, undefined, barMap.isInHeader(goodPath), (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-                        __readDirectoryRecursively(folderPath, false, callback);
-                    });
-                });
-
-            }
-
-            function __readBlock(file, cutFile, fileSize, index, blockSize, currentBlockCheckSum, firstByte, alreadyInBarMap, callback) {
-                if (index >= fileSize) {
-                    if (blocksPositions[file] === undefined) {
-                        blocksPositions[file] = [];
-                    }
-                    blocksPositions[file].push({start: fileSize, end: fileSize});
-                    return callback();
-                }
-                archiveFsAdapter.readBlockFromFile(file, index, index + blockSize - 1, (err, data) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    if (currentBlockCheckSum === undefined) {
-                        currentBlockCheckSum = adler32.sum(data);
-                    } else {
-                        currentBlockCheckSum = adler32.roll(currentBlockCheckSum, blockSize, firstByte, data[blockSize - 1]);
-                    }
-                    let matchFound = false;
-                    if (checksSumMap[currentBlockCheckSum] !== undefined) {
-                        let hardDigest = crypto.pskHash(data).toString('hex');
-                        for (let k = 0; k < checksSumMap[currentBlockCheckSum].length; k++) {
-                            if (checksSumMap[currentBlockCheckSum][k] === hardDigest) {
-                                if (blocksPositions[file] === undefined) {
-                                    blocksPositions[file] = [];
-                                }
-                                blocksPositions[file].push({start: index, end: index + blockSize});
-                                // if(alreadyInBarMap === false){
-                                //     let tempBrick = new Brick();
-                                //     tempBrick.setTransformedData(data);
-                                // }
-                                fileState[file] = alreadyInBarMap;
-                                if (typeof fileNameHashes[cutFile] !== 'undefined') {
-                                    fileNameHashes[cutFile].delete(hardDigest);
-                                }
-                                matchFound = true;
-                                break;
-                            }
-                        }
-                    }
-                    if (matchFound === false) {
-                        __readBlock(file, cutFile, fileSize, index + 1, blockSize, currentBlockCheckSum, data[0], alreadyInBarMap, callback);
-                    } else {
-                        __readBlock(file, cutFile, fileSize, index + blockSize, blockSize, undefined, undefined, alreadyInBarMap, callback);
-                    }
-                });
-            }
-
-        }
-
-        function iterateThroughOffsets(fileName, goodPath, precedence, iteratorIndex, filePositions, callback) {
-            if (iteratorIndex >= filePositions.length) {
-                return callback();
-            }
-            let positionObj = filePositions[iteratorIndex];
-            if (positionObj === undefined) {
-                return callback();
-            }
-            if (positionObj.start > precedence) {
-                archiveFsAdapter.readBlockFromFile(goodPath, precedence, positionObj.end - 1, (err, blockData) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    let bufferSize = archiveConfigurator.getBufferSize();
-                    for (let index = 0; index < blockData.length; index += bufferSize) {
-                        let brick = new Brick();
-                        brick.setTransformedData(blockData.slice(index, index + bufferSize));
-                        barMap.add(fileName, brick);
-                        storageProvider.putBrick(brick, (err) => {
-                            if (err) {
-                                return callback(err);
-                            }
-                            if (index + bufferSize >= blockData.length) {
-                                iterateThroughOffsets(fileName, goodPath, positionObj.end, iteratorIndex + 1, filePositions, callback);
-                            }
-                        });
-                    }
-                });
-            } else {
-                if (fileState[goodPath] === false) {
-                    archiveFsAdapter.readBlockFromFile(goodPath, positionObj.start, positionObj.end - 1, (err, blockData) => {
-                        if (err) {
-                            return callback(err);
-                        }
-                        let brick = new Brick();
-                        brick.setTransformedData(blockData);
-                        barMap.add(fileName, brick);
-                        iterateThroughOffsets(fileName, goodPath, positionObj.end, iteratorIndex + 1, filePositions, callback);
-                    });
-                } else {
-                    iterateThroughOffsets(fileName, goodPath, positionObj.end, iteratorIndex + 1, filePositions, callback);
-                }
-            }
-        }
-
-        function __addBricks(positions, callback) {
-            let precedence;
-            const taskCounter = new TaskCounter((errs, results) => {
-                return callback();
-            });
-            taskCounter.increment(Object.keys(positions).length);
-            Object.keys(positions).forEach((fileName) => {
-                precedence = 0;
-                let goodPath = path.posix.normalize(fileName.split(path.sep).join(path.posix.sep));
-
-                iterateThroughOffsets(fileName, goodPath, precedence, 0, positions[fileName], (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    taskCounter.decrement(undefined, fileName);
-                });
-            });
-        }
-
-        function __deleteBricks(deletions) {
-            //de adaugat, barMap.removeBrick(filePath,brickHash);
-            Object.keys(deletions).forEach((fileName) => {
-                deletions[fileName].forEach((brickHash) => {
-                    barMap.removeBrick(fileName, brickHash);
-                });
-            });
-        }
-
-        function __update() {
-            __readDirectoryRecursively(fsPath, true, (err, positions, deletions) => {
-                if (err) {
-                    return callback(err);
-                }
-                __addBricks(positions, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    __deleteBricks(deletions);
-                    storageProvider.putBarMap(barMap, callback);
-                });
-            });
-        }
     };
 
     this.writeFile = (fileBarPath, data, options, callback) => {
@@ -727,34 +495,25 @@ function Archive(archiveConfigurator) {
         loadBarMapThenExecute(__addData, callback);
 
         function __addData() {
-            archiveConfigurator.setIsEncrypted(options.encrypt);
-            const brick = new Brick(archiveConfigurator);
             if (typeof data === "string") {
                 data = Buffer.from(data);
             }
 
-            if (!Buffer.isBuffer(data)) {
-                return callback(Error(`Type of data is ${typeof data}. Expected Buffer.`));
+            if (!isStream.isReadable(data) && !Buffer.isBuffer(data)) {
+                return callback(Error(`Type of data is ${typeof data}. Expected Buffer or Stream.Readable`));
             }
 
-            brick.setRawData(data);
-
-            if (!barMap.isEmpty(fileBarPath)) {
-                barMap.emptyList(fileBarPath);
-            }
-            barMap.add(fileBarPath, brick);
-            storageProvider.putBrick(brick, (err) => {
+            createBricksFromData(data, fileBarPath, archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
                 if (err) {
                     return callback(err);
                 }
 
-                storageProvider.putBarMap(barMap, (err, digest) => {
-                    if (err) {
-                        return callback(err);
-                    }
+                barMap.setConfig(archiveConfigurator);
+                if (archiveConfigurator.getMapEncryptionKey()) {
+                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
+                }
 
-                    callback(undefined, digest);
-                });
+                storageProvider.putBarMap(barMap, callback);
             });
         }
     };
@@ -782,6 +541,7 @@ function Archive(archiveConfigurator) {
 
                     brick.setConfig(archiveConfigurator);
                     brick.setTransformParameters(barMap.getTransformParameters(brickId));
+
                     fileData = Buffer.concat([fileData, brick.getRawData()]);
                     ++brickIndex;
 
@@ -792,6 +552,51 @@ function Archive(archiveConfigurator) {
                     }
                 });
             }
+        }
+    };
+
+    this.createReadStream = (barPath, callback) => {
+        loadBarMapThenExecute(__prepareStream, callback);
+
+        function __prepareStream() {
+            let brickIndex = 0;
+            let brickIds;
+
+            try {
+                brickIds = barMap.getHashList(barPath);
+            } catch (err) {
+                return callback(err);
+            }
+
+            const readableStream = new stream.Readable({
+                read(size) {
+                    if (brickIndex < brickIds.length) {
+                        this.readBrickData(brickIndex++);
+                    }
+                }
+            });
+
+            // Get a brick and push it into the stream
+            readableStream.readBrickData = function (brickIndex) {
+                const brickId = brickIds[brickIndex];
+                storageProvider.getBrick(brickId, (err, brick) => {
+                    if (err) {
+                        this.destroy(err);
+                        return;
+                    }
+
+                    brick.setConfig(archiveConfigurator);
+                    brick.setTransformParameters(barMap.getTransformParameters(brickId));
+                    const data = brick.getRawData();
+                    this.push(brick.getRawData());
+
+                    if (brickIndex >= (brickIds.length - 1)) {
+                        this.push(null);
+                    }
+                });
+            };
+
+            callback(null, readableStream);
         }
     };
 
@@ -837,7 +642,7 @@ function Archive(archiveConfigurator) {
                 let filePath = arr.pop();
                 let fileName = path.basename(filePath);
 
-                createBricks(filePath, barPath + "/" + fileName, archiveConfigurator.getBufferSize(), options.encrypt,(err) => {
+                createBricks(filePath, barPath + "/" + fileName, archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
                     if (err) {
                         return callback(err);
                     }
@@ -1068,7 +873,14 @@ function Archive(archiveConfigurator) {
             folderBarPath = undefined;
         }
         loadBarMapThenExecute(() => {
-            callback(undefined, barMap.getFileList(folderBarPath));
+            let fileList;
+            try {
+                fileList = barMap.getFileList(folderBarPath)
+            } catch (e) {
+                return callback(e);
+            }
+
+            callback(undefined, fileList);
         }, callback);
     };
 
@@ -1211,9 +1023,9 @@ function Archive(archiveConfigurator) {
                 ++noBlocks;
             }
 
-            // if (!barMap.isEmpty(barPath)) {
-            //     barMap.emptyList(barPath);
-            // }
+            if (!barMap.isEmpty(barPath)) {
+                barMap.emptyList(barPath);
+            }
             __createBricksRecursively(0, callback);
 
             function __createBricksRecursively(blockIndex, callback) {
@@ -1243,6 +1055,100 @@ function Archive(archiveConfigurator) {
         });
     }
 
+    /**
+     * Create bricks from a Buffer or a readable stream
+     * @param {Buffer|stream.Readable} data
+     * @param {string} barPath
+     * @param {number} blockSize
+     * @param {boolean} areEncrypted
+     * @param {callback} callback
+     */
+    function createBricksFromData(data, barPath, blockSize, areEncrypted, callback) {
+        if (typeof areEncrypted === "function") {
+            callback = areEncrypted;
+            areEncrypted = true;
+        }
+
+        if (typeof data === 'string') {
+            data = Buffer.from(data);
+        }
+
+        if (!barMap.isEmpty(barPath)) {
+            barMap.emptyList(barPath);
+        }
+
+        /**
+         * Break the Buffer into bricks
+         * @param {Buffer} data
+         * @param {number} _blockSize
+         * @param {callback} callback
+         */
+        function __createBricksFromBuffer(data, _blockSize, callback) {
+            if (typeof _blockSize === 'function') {
+                callback = _blockSize;
+                _blockSize = blockSize; // set the default blockSize
+            }
+
+            let noBlocks = Math.floor(data.length / _blockSize);
+            if ((data.length % _blockSize) > 0) {
+                ++noBlocks;
+            }
+
+            function __createBricksRecursively(blockIndex, callback) {
+                const blockData = data.slice(blockIndex * _blockSize, (blockIndex + 1) * _blockSize);
+
+                archiveConfigurator.setIsEncrypted(areEncrypted);
+                const brick = new Brick(archiveConfigurator);
+
+                brick.setRawData(blockData);
+                barMap.add(barPath, brick);
+                storageProvider.putBrick(brick, (err) => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    ++blockIndex;
+                    if (blockIndex < noBlocks) {
+                        __createBricksRecursively(blockIndex, callback);
+                    } else {
+                        callback();
+                    }
+                });
+
+            }
+
+            __createBricksRecursively(0, callback);
+        }
+
+        if (isStream.isReadable(data)) {
+            data.on('data', (chunk) => {
+                if (typeof chunk === 'string') {
+                    chunk = Buffer.from(chunk);
+                }
+                data.pause();
+
+                // When reading from a stream, set the block size to the chunk's length
+                __createBricksFromBuffer(chunk, chunk.length, (err) => {
+                    if (err) {
+                        data.destroy(err);
+                        return callback(err);
+                    }
+                    data.resume();
+                });
+            });
+            data.on('error', (err) => {
+                callback(err);
+            });
+            data.on('end', () => {
+                callback();
+            });
+        } else { // Data is buffer
+            __createBricksFromBuffer(data, (err) => {
+                callback(err);
+            });
+        }
+    }
+
     function loadBarMapThenExecute(functionToBeExecuted, callback) {
         storageProvider.getBarMap(archiveConfigurator.getMapDigest(), (err, map) => {
             if (err) {
@@ -1269,7 +1175,7 @@ module.exports = Archive;
 
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/isStream":"D:\\work\\git\\privatesky\\modules\\bar\\utils\\isStream.js","./Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","adler32":"adler32","buffer":false,"pskcrypto":"pskcrypto","swarmutils":"swarmutils"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js":[function(require,module,exports){
+},{"../utils/isStream":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js","./Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","adler32":"adler32","buffer":false,"pskcrypto":"pskcrypto","stream":false,"swarmutils":"swarmutils"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js":[function(require,module,exports){
 const storageProviders = {};
 const fsAdapters = {};
 const Seed = require("./Seed");
@@ -1475,7 +1381,7 @@ ArchiveConfigurator.prototype.registerFsAdapter = (fsAdapterName, factory) => {
 };
 
 module.exports = ArchiveConfigurator;
-},{"./Seed":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js":[function(require,module,exports){
+},{"./Seed":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js":[function(require,module,exports){
 const crypto = require('pskcrypto');
 const BrickTransformFactory = require("./transforms/BrickTransformFactory");
 const transformFactory = new BrickTransformFactory();
@@ -1632,7 +1538,7 @@ function Brick(config) {
 
 module.exports = Brick;
 
-},{"./transforms/BrickTransformFactory":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js","adler32":"adler32","pskcrypto":"pskcrypto"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FileBarMap.js":[function(require,module,exports){
+},{"./transforms/BrickTransformFactory":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js","adler32":"adler32","pskcrypto":"pskcrypto"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require("./Brick");
 const util = require("../utils/utilities");
@@ -1759,7 +1665,7 @@ function FileBarMap(header) {
 module.exports = FileBarMap;
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/utilities":"D:\\work\\git\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js":[function(require,module,exports){
+},{"../utils/utilities":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js":[function(require,module,exports){
 (function (Buffer){
 const BarMap = require("./FileBarMap");
 const util = require("../utils/utilities");
@@ -1979,11 +1885,19 @@ module.exports = {
 };
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/AsyncDispatcher":"D:\\work\\git\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js","../utils/utilities":"D:\\work\\git\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","./FileBarMap":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FileBarMap.js","buffer":false,"fs":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FolderBarMap.js":[function(require,module,exports){
+},{"../utils/AsyncDispatcher":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js","../utils/utilities":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FileBarMap":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js","buffer":false,"fs":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require("./Brick");
 const pathModule = "path";
-const path = require(pathModule);
+let path;
+try {
+    path = require(pathModule);
+} catch (err) {
+} finally {
+    if (typeof path === "undefined") {
+        path = {sep: "/"};
+    }
+}
 
 function FolderBarMap(header) {
     header = header || {};
@@ -2093,7 +2007,7 @@ function FolderBarMap(header) {
 
         function __getHashListRecursively(barMapObj, splitPath) {
             let folderName = splitPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitPath.shift();
             }
             if (barMapObj[folderName]) {
@@ -2130,7 +2044,7 @@ function FolderBarMap(header) {
             }
 
             let folderName = splitPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitPath.shift();
             }
 
@@ -2158,7 +2072,7 @@ function FolderBarMap(header) {
 
         function __emptyListRecursively(folderObj, splitPath) {
             let folderName = splitPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitPath.shift();
             }
 
@@ -2172,8 +2086,6 @@ function FolderBarMap(header) {
                 } else {
                     __emptyListRecursively(folderObj[folderName], splitPath);
                 }
-            } else {
-                throw Error("Invalid path");
             }
         }
     };
@@ -2202,12 +2114,12 @@ function FolderBarMap(header) {
         } else {
             const splitFolderBarPath = folderBarPath.split("/");
             __getFileListRecursively(header, splitFolderBarPath);
-            return files.map(file => folderBarPath + "/" + file);
+            return files.map(file => file);
         }
 
         function __getFileListRecursively(folderObj, splitFolderBarPath) {
             let folderName = splitFolderBarPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitFolderBarPath.shift();
             }
             if (folderObj[folderName]) {
@@ -2269,7 +2181,7 @@ function FolderBarMap(header) {
 
         function __getFoldersRecursively(folderObj, splitPath, folderPath) {
             let folderName = splitPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitPath.shift();
             }
             if (folderObj[folderName]) {
@@ -2352,7 +2264,7 @@ function FolderBarMap(header) {
 
         function __getBricksForFileRecursively(folderObj, splitPath) {
             let folderName = splitPath.shift();
-            if (folderName === "") {
+            while (folderName === "") {
                 folderName = splitPath.shift();
             }
             if (folderObj[folderName]) {
@@ -2375,7 +2287,7 @@ function FolderBarMap(header) {
 module.exports = FolderBarMap;
 }).call(this,require("buffer").Buffer)
 
-},{"./Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js":[function(require,module,exports){
+},{"./Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js":[function(require,module,exports){
 const fs = require("fs");
 const path = require("path");
 const BarMap = require("./FolderBarMap");
@@ -2474,7 +2386,7 @@ module.exports = {
         return new FolderBrickStorage(location);
     }
 };
-},{"./Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","./FolderBarMap":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","fs":false,"path":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Seed.js":[function(require,module,exports){
+},{"./Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FolderBarMap":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","fs":false,"path":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("pskcrypto");
 
@@ -2611,7 +2523,7 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
 module.exports = Seed;
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false,"pskcrypto":"pskcrypto"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js":[function(require,module,exports){
+},{"buffer":false,"pskcrypto":"pskcrypto"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransform(transformGenerator) {
     let directTransform;
@@ -2668,7 +2580,7 @@ module.exports = BrickTransform;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js":[function(require,module,exports){
+},{"buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator= require("./EncryptionGenerator");
 const CompressionEncryptionGenerator = require("./CompressionEncryptionGenerator");
@@ -2705,7 +2617,7 @@ function BrickTransformFactory() {
 module.exports = BrickTransformFactory;
 
 
-},{"./BrickTransform":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js","./CompressionEncryptionGenerator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js","./CompressionGenerator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js":[function(require,module,exports){
+},{"./BrickTransform":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js","./CompressionEncryptionGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js","./CompressionGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator = require("./EncryptionGenerator");
 
@@ -2748,7 +2660,7 @@ function CompressionEncryptionGenerator(config) {
 }
 
 module.exports = CompressionEncryptionGenerator;
-},{"./CompressionGenerator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js":[function(require,module,exports){
+},{"./CompressionGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js":[function(require,module,exports){
 const zlib = require("zlib");
 
 function CompressionGenerator(config) {
@@ -2802,7 +2714,7 @@ function CompressionGenerator(config) {
 module.exports = CompressionGenerator;
 
 
-},{"zlib":false}],"D:\\work\\git\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js":[function(require,module,exports){
+},{"zlib":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js":[function(require,module,exports){
 const crypto = require("pskcrypto");
 
 function EncryptionGenerator(config) {
@@ -2889,7 +2801,7 @@ function EncryptionGenerator(config) {
 }
 
 module.exports = EncryptionGenerator;
-},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js":[function(require,module,exports){
 
 function AsyncDispatcher(finalCallback) {
 	let results = [];
@@ -2939,7 +2851,7 @@ function AsyncDispatcher(finalCallback) {
 }
 
 module.exports = AsyncDispatcher;
-},{}],"D:\\work\\git\\privatesky\\modules\\bar\\utils\\isStream.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js":[function(require,module,exports){
 function isStream(stream){
     return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
 }
@@ -2971,7 +2883,7 @@ module.exports = {
     isDuplex
 };
 
-},{}],"D:\\work\\git\\privatesky\\modules\\bar\\utils\\utilities.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js":[function(require,module,exports){
 const fs = require('fs');
 const OFFSET_SIZE = 8;
 
@@ -2990,7 +2902,7 @@ function ensureFileDoesNotExist(filePath, callback) {
 }
 
 module.exports = {getBarMapOffsetSize, ensureFileDoesNotExist};
-},{"fs":false}],"D:\\work\\git\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js":[function(require,module,exports){
+},{"fs":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js":[function(require,module,exports){
 function EDFSBrickStorage(endpoint) {
 
     const bar = require("bar");
@@ -3103,7 +3015,7 @@ function EDFSBrickStorage(endpoint) {
 module.exports = EDFSBrickStorage;
 
 
-},{"bar":"bar"}],"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js":[function(require,module,exports){
+},{"bar":"bar"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js":[function(require,module,exports){
 const pathModule = "path";
 const path = require(pathModule);
 const fsModule = "fs";
@@ -3116,17 +3028,10 @@ const FILE_SEPARATOR = '-';
 let brickStorageFolder;
 
 $$.flow.describe("BricksManager", {
-    init: function (rootFolder, callback) {
-
-        if (!rootFolder) {
-            callback(new Error("No root folder specified!"));
-            return;
-        }
+    init: function (rootFolder) {
         rootFolder = path.resolve(rootFolder);
-        this.__ensureFolderStructure(rootFolder, (err, pth) => {
-            brickStorageFolder = rootFolder;
-            callback(err, rootFolder);
-        });
+        brickStorageFolder = rootFolder;
+        this.__ensureFolderStructure(rootFolder);
     },
     write: function (fileName, readFileStream, callback) {
         if (!this.__verifyFileName(fileName, callback)) {
@@ -3213,7 +3118,18 @@ $$.flow.describe("BricksManager", {
         return true;
     },
     __ensureFolderStructure: function (folder, callback) {
-        fs.mkdir(folder, {recursive: true}, callback);
+        try{
+            fs.mkdirSync(folder, {recursive: true});
+        }catch(err){
+            if(callback){
+                callback(err);
+            }else{
+                throw err;
+            }
+        }
+        if(callback){
+            callback();
+        }
     },
     __writeFile: function (readStream, folderPath, fileName, callback) {
         const PskHash = crypto.PskHash;
@@ -3268,7 +3184,7 @@ $$.flow.describe("BricksManager", {
     }
 });
 
-},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\lib\\EDFSClient.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\lib\\EDFSClient.js":[function(require,module,exports){
 require("psk-http-client");
 
 function EDFSClient(url) {
@@ -3294,86 +3210,96 @@ function EDFSClient(url) {
 }
 
 module.exports = EDFSClient;
-},{"psk-http-client":"psk-http-client"}],"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js":[function(require,module,exports){
-require("../flows/BricksManager");
+},{"psk-http-client":"psk-http-client"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js":[function(require,module,exports){
+const bricks_storage_folder = "brick-storage";
+const URL_PREFIX = "/EDFS";
 
 function EDFSMiddleware(server) {
+	const path = require("path");
+	require("../flows/BricksManager");
 
-    server.use('/*',function (req, res, next) {
-        res.setHeader('Access-Control-Allow-Origin', '*');
+	let storageFolder = path.join(server.rootFolder, bricks_storage_folder);
+	if(typeof process.env.EDFS_BRICK_STORAGE_FOLDER !== "undefined"){
+		storageFolder = process.env.EDFS_BRICK_STORAGE_FOLDER;
+	}
 
-        // Request methods you wish to allow
-        res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+	$$.flow.start("BricksManager").init(storageFolder);
+	console.log("Bricks Storage location", storageFolder);
 
-        // Request headers you wish to allow
-        res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length, X-Content-Length');
-        next();
+	server.use(`${URL_PREFIX}/*`, function (req, res, next) {
+		res.setHeader('Access-Control-Allow-Origin', '*');
 
-    });
+		// Request methods you wish to allow
+		res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-    server.post('/:fileId', (req, res) => {
-        $$.flow.start("BricksManager").write(req.params.fileId, req, (err, result) => {
-            res.statusCode = 201;
-            if (err) {
-                res.statusCode = 500;
+		// Request headers you wish to allow
+		res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length, X-Content-Length');
+		next();
+	});
 
-                if (err.code === 'EACCES') {
-                    res.statusCode = 409;
-                }
-            }
-            res.end();
-        });
-    });
+	server.post(`${URL_PREFIX}/:fileId`, (req, res) => {
+		$$.flow.start("BricksManager").write(req.params.fileId, req, (err, result) => {
+			res.statusCode = 201;
+			if (err) {
+				res.statusCode = 500;
 
-    server.get('/:fileId', (req, res) => {
-        res.setHeader("content-type", "application/octet-stream");
-        $$.flow.start("BricksManager").read(req.params.fileId, res, (err, result) => {
-            res.statusCode = 200;
-            if (err) {
-                console.log(err);
-                res.statusCode = 404;
-            }
-            res.end();
-        });
-    });
+				if (err.code === 'EACCES') {
+					res.statusCode = 409;
+				}
+			}
+			res.end();
+		});
+	});
 
-    server.post('/attachHashToAlias/:fileId', (req, res) => {
-        $$.flow.start("BricksManager").addAlias(req.params.fileId, req, (err, result) => {
-            res.statusCode = 201;
-            if (err) {
-                res.statusCode = 500;
+	server.get(`${URL_PREFIX}/:fileId`, (req, res) => {
+		res.setHeader("content-type", "application/octet-stream");
+		$$.flow.start("BricksManager").read(req.params.fileId, res, (err, result) => {
+			res.statusCode = 200;
+			if (err) {
+				console.log(err);
+				res.statusCode = 404;
+			}
+			res.end();
+		});
+	});
 
-                if (err.code === 'EACCES') {
-                    res.statusCode = 409;
-                }
-            }
-            res.end();
-        });
-    });
+	server.post(`${URL_PREFIX}/attachHashToAlias/:fileId`, (req, res) => {
+		$$.flow.start("BricksManager").addAlias(req.params.fileId, req, (err, result) => {
+			res.statusCode = 201;
+			if (err) {
+				res.statusCode = 500;
 
-    server.get('/getVersions/:alias', (req, res) => {
-        $$.flow.start("BricksManager").readVersions(req.params.alias, (err, fileHashes) => {
-            res.statusCode = 200;
-            if(err) {
-                console.error(err);
-                res.statusCode = 404;
-            }
-            res.setHeader("content-type", "application/json");
-            res.end(JSON.stringify(fileHashes));
-        });
-    });
+				if (err.code === 'EACCES') {
+					res.statusCode = 409;
+				}
+			}
+			res.end();
+		});
+	});
+
+	server.get(`${URL_PREFIX}/getVersions/:alias`, (req, res) => {
+		$$.flow.start("BricksManager").readVersions(req.params.alias, (err, fileHashes) => {
+			res.statusCode = 200;
+			if (err) {
+				console.error(err);
+				res.statusCode = 404;
+			}
+			res.setHeader("content-type", "application/json");
+			res.end(JSON.stringify(fileHashes));
+		});
+	});
 }
 
 module.exports = EDFSMiddleware;
 
-},{"../flows/BricksManager":"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js"}],"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
+},{"../flows/BricksManager":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js","path":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
 (function (Buffer){
 
 function FetchBrickTransportStrategy(initialConfig) {
     const url = initialConfig;
     this.send = (name, data, callback) => {
 
-        fetch(url + "/EDFS/", {
+        fetch(url + "/EDFS/"+name, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -3384,7 +3310,10 @@ function FetchBrickTransportStrategy(initialConfig) {
             if(response.status>=400){
                 return callback(new Error(`An error occurred ${response.statusText}`))
             }
-            return response.json();
+            return response.json().catch((err) => {
+                // This happens when the response is empty
+                return {};
+            });
         }).then(function(data) {
             callback(null, data)
         }).catch(error=>{
@@ -3437,6 +3366,29 @@ function FetchBrickTransportStrategy(initialConfig) {
         });
     };
 
+    this.attachHashToAlias = (alias, name, callback) => {
+        fetch(url + '/EDFS/attachHashToAlias/' + name, {
+            method: 'POST',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/octet-stream'
+            },
+            body: alias
+        }).then(response => {
+            if(response.status>=400){
+                return callback(new Error(`An error occurred ${response.statusText}`))
+            }
+            return response.json().catch((err) => {
+                // This happens when the response is empty
+                return {};
+            });
+        }).then(data => {
+            callback(null, data);
+        }).catch(error => {
+            callback(error);
+        })
+    }
+
     this.getLocator = () => {
         return url;
     };
@@ -3452,7 +3404,7 @@ module.exports = FetchBrickTransportStrategy;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js":[function(require,module,exports){
+},{"buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js":[function(require,module,exports){
 
 function HTTPBrickTransportStrategy(endpoint) {
     require("psk-http-client");
@@ -3489,7 +3441,7 @@ HTTPBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
 };
 
 module.exports = HTTPBrickTransportStrategy;
-},{"psk-http-client":"psk-http-client"}],"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js":[function(require,module,exports){
+},{"psk-http-client":"psk-http-client"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js":[function(require,module,exports){
 function BrickTransportStrategiesRegistry() {
     const strategies = {};
 
@@ -3534,15 +3486,14 @@ function BrickTransportStrategiesRegistry() {
 if (!$$.brickTransportStrategiesRegistry) {
     $$.brickTransportStrategiesRegistry = new BrickTransportStrategiesRegistry();
 }
-},{}],"D:\\work\\git\\privatesky\\modules\\edfs\\lib\\EDFS.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js":[function(require,module,exports){
 function EDFS(endpoint) {
     const RawDossier = require("./RawDossier");
     const barModule = require("bar");
     const fsAdapter = require("bar-fs-adapter");
     const constants = require('../moduleConstants');
-    const self = this;
 
-    this.createCSB = () => {
+    this.createRawDossier = () => {
         return new RawDossier(endpoint);
     };
 
@@ -3550,12 +3501,12 @@ function EDFS(endpoint) {
         return barModule.createArchive(createArchiveConfig());
     };
 
-    this.bootCSB = (seed, callback) => {
+    this.bootRawDossier = (seed, callback) => {
         const rawDossier = new RawDossier(endpoint, seed);
         rawDossier.start(err => callback(err, rawDossier));
     };
 
-    this.loadRawDossier = (seed)=>{
+    this.loadRawDossier = (seed) => {
         return new RawDossier(endpoint, seed);
     };
 
@@ -3569,9 +3520,13 @@ function EDFS(endpoint) {
         bar.clone(edfsBrickStorage, true, callback);
     };
 
-    this.createWallet = (templateSeed, pin, overwrite = false, callback) => {
-        const wallet = this.createCSB();
-        wallet.mount("/", constants.CSB.CONSTITUTION_FOLDER, templateSeed, (err => {
+    this.createWallet = (templateSeed, pin, overwrite, callback) => {
+        if (typeof overwrite === "function") {
+            callback = overwrite;
+            overwrite = false;
+        }
+        const wallet = this.createRawDossier();
+        wallet.mount("/" + constants.CSB.CODE_FOLDER, constants.CSB.CONSTITUTION_FOLDER, templateSeed, (err => {
             if (err) {
                 return callback(err);
             }
@@ -3604,17 +3559,17 @@ function EDFS(endpoint) {
                 }
                 let rawDossier = this.loadRawDossier(seed);
 
-                if(!rawDossier){
+                if (!rawDossier) {
                     return callback(new Error("RawDossier is not available"));
                 }
-                return  callback(undefined, rawDossier);
+                return callback(undefined, rawDossier);
 
             });
         } else {
 
             let rawDossier = this.loadRawDossier(walletSeed);
 
-            if(!rawDossier){
+            if (!rawDossier) {
                 return callback(new Error("RawDossier is not available"));
             }
 
@@ -3630,17 +3585,6 @@ function EDFS(endpoint) {
                 return callback(undefined, rawDossier);
             }
         }
-    };
-
-    this.createBarWithConstitution = function (folderConstitution, callback) {
-        const bar = this.createBar();
-        bar.addFolder(folderConstitution, constants.CSB.CONSTITUTION_FOLDER, (err, mapDigest) => {
-            if (err) {
-                return callback(err);
-            }
-
-            callback(undefined, bar);
-        });
     };
 
 //------------------------------------------------ internal methods -------------------------------------------------
@@ -3666,12 +3610,7 @@ function EDFS(endpoint) {
 
 module.exports = EDFS;
 
-},{"../moduleConstants":"D:\\work\\git\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawDossier":"D:\\work\\git\\privatesky\\modules\\edfs\\lib\\RawDossier.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","edfs-brick-storage":"edfs-brick-storage"}],"D:\\work\\git\\privatesky\\modules\\edfs\\lib\\RawDossier.js":[function(require,module,exports){
-/*
-
-Sinica: to be renamed CSBHandler. RootCSB should be deleted
-*/
-
+},{"../moduleConstants":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawDossier":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","edfs-brick-storage":"edfs-brick-storage"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js":[function(require,module,exports){
 function RawDossier(endpoint, seed) {
     const barModule = require("bar");
     const constants = require("../moduleConstants").CSB;
@@ -3695,14 +3634,17 @@ function RawDossier(endpoint, seed) {
         options = defaultOpts;
 
         if (options.ignoreMounts === true) {
-            bar.addFolder(fsFolderPath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
+            bar.addFolder(fsFolderPath, barPath, options, callback);
         } else {
+            const splitPath = barPath.split("/");
+            const folderName = splitPath.pop();
+            barPath = splitPath.join("/");
             loadBarForPath(barPath, (err, dossierContext) => {
                 if (err) {
                     return callback(err);
                 }
 
-                dossierContext.archive.addFolder(fsFolderPath, dossierContext.relativePath, options, callback);
+                dossierContext.archive.addFolder(fsFolderPath, dossierContext.relativePath + "/" + folderName, options, callback);
             });
         }
     };
@@ -3720,12 +3662,15 @@ function RawDossier(endpoint, seed) {
         if (options.ignoreMounts === true) {
             bar.addFolder(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
         } else {
+            const splitPath = barPath.split("/");
+            const fileName = splitPath.pop();
+            barPath = splitPath.join("/");
             loadBarForPath(barPath, (err, dossierContext) => {
                 if (err) {
                     return callback(err);
                 }
 
-                dossierContext.archive.addFile(fsFilePath, dossierContext.relativePath, options, callback);
+                dossierContext.archive.addFile(fsFilePath, dossierContext.relativePath + "/" + fileName, options, callback);
             });
         }
     };
@@ -3737,6 +3682,16 @@ function RawDossier(endpoint, seed) {
             }
 
             dossierContext.archive.readFile(dossierContext.relativePath, callback);
+        });
+    };
+
+    this.createReadStream = (fileBarPath, callback) => {
+        loadBarForPath(fileBarPath, (err, dossierContext) => {
+            if (err) {
+                return callback(err);
+            }
+
+            dossierContext.archive.createReadStream(dossierContext.relativePath, callback);
         });
     };
 
@@ -3769,15 +3724,24 @@ function RawDossier(endpoint, seed) {
 
         Object.assign(defaultOpts, options);
         options = defaultOpts;
+        if (path.split("/").includes(constants.MANIFEST_FILE)) {
+            return callback(Error("Trying to overwrite the manifest file. This is not allowed"));
+        }
         if (options.ignoreMounts === true) {
             bar.writeFile(path, data, options, callback);
         } else {
+            const splitPath = path.split("/");
+            const fileName = splitPath.pop();
+            path = splitPath.join("/");
             loadBarForPath(path, (err, dossierContext) => {
                 if (err) {
                     return callback(err);
                 }
+                if (dossierContext.readonly === true) {
+                    return callback(Error("Tried to write in a readonly mounted RawDossier"));
+                }
 
-                dossierContext.archive.writeFile(dossierContext.relativePath, data, options, callback);
+                dossierContext.archive.writeFile(dossierContext.relativePath + "/" + fileName, data, options, callback);
             });
         }
     };
@@ -3788,39 +3752,80 @@ function RawDossier(endpoint, seed) {
                 return callback(err);
             }
 
-            dossierContext.archive.listFiles(dossierContext.relativePath, callback);
+            dossierContext.archive.listFiles(dossierContext.relativePath, (err, files) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                if (path !== "/" && path !== "" && typeof path !== "function") {
+                    files = files.map(file => {
+                        if (file[0] === "/") {
+                            file = file.slice(1);
+                        }
+
+                        return file;
+                    })
+                }
+
+                callback(undefined, files);
+            });
         });
     };
 
-    this.mount = (path, name, archiveIdentifier, callback) => {
-        if (/\w/.test(name) === false) {
+    this.listFolders = (path, callback) => {
+        loadBarForPath(path, (err, dossierContext) => {
+            if (err) {
+                return callback(err);
+            }
+
+            dossierContext.archive.listFolders(dossierContext.relativePath, (err, folders) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                callback(undefined, folders);
+            });
+        });
+    };
+
+    this.mount = (path, name, archiveIdentifier, readonly, callback) => {
+        if (typeof readonly === "function") {
+            callback = readonly;
+            readonly = false;
+        }
+        if (/\W-_/.test(name) === true) {
             return callback(Error("Invalid mount name"));
         }
 
-        bar.readFile(constants.MANIFEST_FILE, (err, data) => {
-            let manifest;
-            if (err) {
-                manifest = {};
-                manifest.mounts = [];
+        bar.listFiles(path, (err, files) => {
+            if (!err && files.length > 0) {
+                return callback(Error("Tried to mount in a non-empty folder"));
             }
 
-            if (data) {
-                manifest = JSON.parse(data.toString());
-                const pathNames = manifest.mounts.filter(el => el.localPath === path);
-                const index = pathNames.findIndex(el => el === name);
-                if (index >= 0) {
-                    return callback(Error(`A mount point at path ${path} with the name ${name} already exists.`));
+            bar.readFile(constants.MANIFEST_FILE, (err, data) => {
+                let manifest;
+                if (err) {
+                    manifest = {};
+                    manifest.mounts = [];
                 }
-            }
 
-            const mount = {};
-            mount.localPath = path;
-            mount.mountName = name;
-            mount.archiveIdentifier = archiveIdentifier;
+                if (data) {
+                    manifest = JSON.parse(data.toString());
+                    const existingMount = manifest.mounts.find(el => el.localPath === path && el.mountName === name);
+                    if (existingMount) {
+                        return callback(Error(`A mount point at path ${path} with the name ${name} already exists.`));
+                    }
+                }
 
-            manifest.mounts.push(mount);
+                const mount = {};
+                mount.localPath = path;
+                mount.mountName = name;
+                mount.archiveIdentifier = archiveIdentifier;
+                mount.readonly = readonly;
+                manifest.mounts.push(mount);
 
-            bar.writeFile(constants.MANIFEST_FILE, JSON.stringify(manifest), {encrypt: true}, callback);
+                bar.writeFile(constants.MANIFEST_FILE, JSON.stringify(manifest), {encrypt: true}, callback);
+            });
         });
     };
 
@@ -3843,6 +3848,42 @@ function RawDossier(endpoint, seed) {
             }
 
             bar.writeFile(constants.MANIFEST_FILE, JSON.stringify(manifest), callback);
+        });
+    };
+
+    this.listMountedDossiers = (path, callback) => {
+        loadBarForPath(path, (err, dossierContext) => {
+            if (err) {
+                return callback(err);
+            }
+
+            dossierContext.archive.readFile(constants.MANIFEST_FILE, (err, manifestContent) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                let manifest;
+                try {
+                    manifest = JSON.parse(manifestContent.toString());
+                } catch (e) {
+                    return callback(e);
+                }
+
+                const matchingMounts = [];
+                manifest.mounts.forEach(mount => {
+                    let sep = mount.localPath === "/" ? "" : "/";
+                    let pth = mount.localPath + sep + mount.mountName;
+
+                    if (pth.startsWith(dossierContext.relativePath)) {
+                        if (path !== "/" && path !== "" && typeof path !== "function" && pth[0] === "/") {
+                            pth = pth.slice(1);
+                        }
+
+                        matchingMounts.push({path: pth, dossierReference: mount.archiveIdentifier});
+                    }
+                });
+                callback(undefined, matchingMounts);
+            });
         });
     };
 
@@ -3884,11 +3925,12 @@ function RawDossier(endpoint, seed) {
             callback = path;
             path = "/";
         }
-        __loadBarForPathRecursively(bar, "", path, callback);
 
-        function __loadBarForPathRecursively(archive, prefixPath, relativePath, callback) {
+        __loadBarForPathRecursively(bar, "", path, false, callback);
+
+        function __loadBarForPathRecursively(archive, prefixPath, relativePath, readonly, callback) {
             if (relativePath === "" || relativePath === "/") {
-                return callback(undefined, {archive, prefixPath, relativePath});
+                return callback(undefined, {archive, prefixPath, readonly, relativePath});
             }
 
             archive.listFiles((err, files) => {
@@ -3898,9 +3940,7 @@ function RawDossier(endpoint, seed) {
 
                 if (files.length === 0) {
                     __searchInManifest();
-                }
-
-                let barPath = files.find(file => {
+                } else {
                     let pth;
                     if (relativePath[0] === "/") {
                         if (prefixPath === "/") {
@@ -3909,28 +3949,31 @@ function RawDossier(endpoint, seed) {
                             pth = prefixPath + relativePath
                         }
                     } else {
-                        if (prefixPath === "/") {
+                        if (prefixPath.endsWith("/")) {
                             pth = prefixPath + relativePath;
                         } else {
                             pth = prefixPath + "/" + relativePath;
                         }
                     }
-                    return file.startsWith(pth);
-                });
+                    let barPath = files.find(file => {
+                        return file.includes(pth) || pth.includes(file);
+                    });
 
+                    if (barPath) {
+                        return callback(undefined, {archive, prefixPath, readonly, relativePath});
+                    } else {
+                        __searchInManifest();
+                    }
 
-                if (barPath) {
-                    return callback(undefined, {archive, prefixPath, relativePath});
-                } else {
-                    __searchInManifest();
                 }
 
-                function __searchInManifest(){
+                function __searchInManifest() {
                     let pathRest = [];
                     let splitPath = relativePath.split("/");
                     if (splitPath[0] === "") {
                         splitPath[0] = "/";
                     }
+
                     archive.readFile("/" + constants.MANIFEST_FILE, (err, manifestContent) => {
                         if (err) {
                             return callback(err);
@@ -3939,13 +3982,15 @@ function RawDossier(endpoint, seed) {
                         const manifest = JSON.parse(manifestContent.toString());
                         pathRest.unshift(splitPath.pop());
                         if (splitPath.length === 0) {
-                            return callback(undefined, {archive, prefixPath, relativePath});
+                            return callback(undefined, {archive, prefixPath, readonly, relativePath});
                         }
 
                         while (splitPath.length > 0) {
                             let localPath;
                             if (splitPath[0] === "/") {
-                                splitPath.shift();
+                                while (splitPath[0] === "/") {
+                                    splitPath.shift();
+                                }
                                 localPath = "/" + splitPath.join("/");
                                 splitPath.unshift("/");
                             } else {
@@ -3956,8 +4001,15 @@ function RawDossier(endpoint, seed) {
                                 const name = pathRest[0];
                                 if (mount.localPath === localPath && mount.mountName === name) {
                                     pathRest.shift();
+
+                                    let newPath;
+                                    if (prefixPath.endsWith("/") || prefixPath === "") {
+                                        newPath = prefixPath + localPath + "/" + name;
+                                    } else {
+                                        newPath = prefixPath + "/" + localPath + "/" + name;
+                                    }
                                     const internalArchive = createBar(mount.archiveIdentifier);
-                                    return __loadBarForPathRecursively(internalArchive, splitPath.join("/"), pathRest.join("/"), callback);
+                                    return __loadBarForPathRecursively(internalArchive, newPath, pathRest.join("/"), mount.readonly, callback);
                                 }
                             }
 
@@ -3974,12 +4026,14 @@ function RawDossier(endpoint, seed) {
 }
 
 module.exports = RawDossier;
-},{"../moduleConstants":"D:\\work\\git\\privatesky\\modules\\edfs\\moduleConstants.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","blockchain":false,"edfs-brick-storage":"edfs-brick-storage"}],"D:\\work\\git\\privatesky\\modules\\edfs\\moduleConstants.js":[function(require,module,exports){
+
+},{"../moduleConstants":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","blockchain":false,"edfs-brick-storage":"edfs-brick-storage"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js":[function(require,module,exports){
 const HTTPBrickTransportStrategy = require("./brickTransportStrategies/HTTPBrickTransportStrategy");
 HTTPBrickTransportStrategy.prototype.HTTP_BRICK_TRANSPORT_STRATEGY = "HTTP_BRICK_TRANSPORT_STRATEGY";
 
 module.exports = {
     CSB: {
+        CODE_FOLDER: "code",
         CONSTITUTION_FOLDER: 'constitution',
         BLOCKCHAIN_FOLDER: 'blockchain',
         APP_FOLDER: 'app',
@@ -3992,7 +4046,7 @@ module.exports = {
     }
 };
 
-},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
+},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pskcrypto = "pskcrypto";
 const crypto = require(pskcrypto);
@@ -4084,7 +4138,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
+},{"buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pth = "path";
 const path = require(pth);
@@ -4183,7 +4237,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
+},{"buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
 const or = require("overwrite-require");
 switch ($$.environmentType) {
     case or.constants.THREAD_ENVIRONMENT_TYPE:
@@ -4198,7 +4252,7 @@ switch ($$.environmentType) {
     default:
         throw new Error("No implementation of SeedCage for this env type.");
 }
-},{"./BrowserSeedCage":"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"overwrite-require"}],"D:\\work\\git\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"./BrowserSeedCage":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"overwrite-require"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -4207,7 +4261,7 @@ module.exports = {
   NODEJS_ENVIRONMENT_TYPE: 'nodejs'
 };
 
-},{}],"D:\\work\\git\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
 (function (global){
 let logger = console;
 
@@ -4519,7 +4573,7 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"psklogger":false}],"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
+},{"psklogger":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
 /**********************  utility class **********************************/
 function RequestManager(pollingTimeOut) {
     if (!pollingTimeOut) {
@@ -4856,7 +4910,7 @@ function HttpChannelClient(remoteEndPoint, channelName, options) {
             }
         });
 
-        createRequestManager();
+        $$.remote.createRequestManager();
     };
 
     const allCatchAlls = [];
@@ -4935,7 +4989,8 @@ if (typeof $$.remote === "undefined") {
         throw new Error("Overwrite this!");
     };
 }
-},{}],"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js":[function(require,module,exports){
+
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js":[function(require,module,exports){
 (function (Buffer){
 function generateMethodForRequestWithData(httpMethod) {
     return function (url, data, callback) {
@@ -4944,7 +4999,7 @@ function generateMethodForRequestWithData(httpMethod) {
         xhr.onload = function () {
             if (xhr.readyState === 4 && (xhr.status >= 200 && xhr.status < 300)) {
                 const data = xhr.response;
-                callback(null, data);
+                callback(undefined, data);
             } else {
                 if(xhr.status>=400){
                     const error = new Error("An error occured. StatusCode: " + xhr.status);
@@ -5009,10 +5064,8 @@ $$.remote.doHttpGet = function doHttpGet(url, callback) {
     };
 
     xhr.onload = function () {
-
         if (xhr.readyState === 4 && xhr.status == "200") {
             var contentType = xhr.getResponseHeader("Content-Type");
-
             if (contentType === "application/octet-stream") {
                 let responseBuffer = this.response;
 
@@ -5021,12 +5074,11 @@ $$.remote.doHttpGet = function doHttpGet(url, callback) {
                 for (let i = 0; i < buffer.length; ++i) {
                     buffer[i] = view[i];
                 }
-                callback(null, buffer);
+                callback(undefined, buffer);
             }
             else{
-                callback(null, xhr.response);
+                callback(undefined, xhr.response);
             }
-
         } else {
             const error = new Error("An error occurred. StatusCode: " + xhr.status);
 
@@ -5055,11 +5107,11 @@ function CryptoProvider(){
         }
 
         return uid;
-    }
+    };
 
     this.signSwarm = function(swarm, agent){
         swarm.meta.signature = agent;
-    }
+    };
 }
 
 
@@ -5076,7 +5128,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js":[function(require,module,exports){
+},{"buffer":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js":[function(require,module,exports){
 (function (Buffer){
 require("./psk-abstract-client");
 
@@ -5149,7 +5201,7 @@ function generateMethodForRequestWithData(httpMethod) {
 			});
 			res.on('end', () => {
 				try {
-					callback(null, rawData, res.headers);
+					callback(undefined, rawData, res.headers);
 				} catch (err) {
 					return callback(err);
 				}finally {
@@ -5264,7 +5316,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"./psk-abstract-client":"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","buffer":false,"http":false,"https":false,"url":false}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js":[function(require,module,exports){
+},{"./psk-abstract-client":"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","buffer":false,"http":false,"https":false,"url":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js":[function(require,module,exports){
 (function (Buffer){
 function PskCrypto() {
     const crypto = require('crypto');
@@ -5433,7 +5485,7 @@ module.exports = new PskCrypto();
 
 }).call(this,require("buffer").Buffer)
 
-},{"./PskEncryption":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false,"overwrite-require":"overwrite-require"}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
+},{"./PskEncryption":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false,"overwrite-require":"overwrite-require"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("crypto");
 const utils = require("./utils/cryptoUtils");
@@ -5518,7 +5570,7 @@ function PskEncryption(algorithm) {
 module.exports = PskEncryption;
 }).call(this,require("buffer").Buffer)
 
-},{"./utils/cryptoUtils":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js":[function(require,module,exports){
+},{"./utils/cryptoUtils":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js":[function(require,module,exports){
 const stream = require('stream');
 const util = require('util');
 
@@ -5543,7 +5595,7 @@ DuplexStream.prototype._read = function (n) {
 };
 
 module.exports = DuplexStream;
-},{"stream":false,"util":false}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js":[function(require,module,exports){
+},{"stream":false,"util":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 
@@ -5623,7 +5675,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false,"crypto":false}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js":[function(require,module,exports){
+},{"buffer":false,"crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js":[function(require,module,exports){
 const stream = require('stream');
 
 
@@ -5651,7 +5703,7 @@ module.exports            = isStream;
 module.exports.isReadable = isReadable;
 module.exports.isWritable = isWritable;
 module.exports.isDuplex   = isDuplex;
-},{"stream":false}],"D:\\work\\git\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js":[function(require,module,exports){
+},{"stream":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js":[function(require,module,exports){
 /*
  SignSens helper functions
  */
@@ -5851,7 +5903,7 @@ exports.createSignature = function (agent,counter, nextPublic, arr, size){
 
     return agent + ":" + counter + ":" + nextPublic + ":" + result;
 }
-},{"crypto":false}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
+},{"crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
 function product(args) {
     if(!args.length){
         return [ [] ];
@@ -5877,7 +5929,7 @@ function objectProduct(obj) {
 }
 
 module.exports = objectProduct;
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
 var meta = "meta";
 
 function OwM(serialized){
@@ -5968,7 +6020,7 @@ OwM.prototype.setMetaFor = function(obj, name, value){
 };
 
 module.exports = OwM;
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
 function QueueElement(content) {
 	this.content = content;
 	this.next = null;
@@ -6036,7 +6088,7 @@ Queue.prototype.toString = function () {
 Queue.prototype.inspect = Queue.prototype.toString;
 
 module.exports = Queue;
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
 const HEADER_SIZE_RESEARVED = 4;
 
 function SwarmPacker(){
@@ -6185,7 +6237,7 @@ SwarmPacker.getHeader = function(pack){
     return header;
 };
 module.exports = SwarmPacker;
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
 
 function TaskCounter(finalCallback) {
 	let results = [];
@@ -6235,7 +6287,7 @@ function TaskCounter(finalCallback) {
 }
 
 module.exports = TaskCounter;
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
 const OwM = require("./OwM");
 
 /*
@@ -6291,7 +6343,7 @@ exports.jsonToNative = function(serialisedValues, result){
     };
 
 };
-},{"./OwM":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
+},{"./OwM":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
 const PING = "PING";
 const PONG = "PONG";
 
@@ -6383,7 +6435,7 @@ module.exports.enableLifeLine = function(timeout){
         }
     }, interval);
 };
-},{"child_process":false}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
+},{"child_process":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
 var commands = {};
 var commands_help = {};
 
@@ -6454,7 +6506,7 @@ module.exports = {
 };
 
 
-},{}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
 
 function encode(buffer) {
     return buffer.toString('base64')
@@ -6522,7 +6574,7 @@ exports.short_uuid = function(callback) {
         callback(null, encode(buf));
     });
 };
-},{"crypto":false}],"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
+},{"crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 const Queue = require("./Queue");
@@ -6628,7 +6680,7 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":false,"crypto":false}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
+},{"./Queue":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":false,"crypto":false}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6751,7 +6803,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
+},{"./util":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6893,7 +6945,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
+},{"./base64":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -6962,7 +7014,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7075,7 +7127,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -7156,7 +7208,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
+},{"./util":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7272,7 +7324,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
+},{}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8356,7 +8408,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
+},{"./array-set":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8774,7 +8826,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
+},{"./array-set":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -9189,7 +9241,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
+},{"./source-map-generator":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -9621,12 +9673,12 @@ exports.roll = algorithm.roll.bind(algorithm);
 exports.Hash = Hash;
 exports.register = register;
 
-},{"./lib/Hash":"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\Hash.js","./lib/algorithm":"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\algorithm.js","./lib/register":"D:\\work\\git\\privatesky\\modules\\adler32\\lib\\register.js"}],"bar-fs-adapter":[function(require,module,exports){
+},{"./lib/Hash":"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","./lib/algorithm":"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","./lib/register":"D:\\rwork\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js"}],"bar-fs-adapter":[function(require,module,exports){
 module.exports.createFsAdapter = () => {
     const FsAdapter = require("./lib/FsAdapter");
     return new FsAdapter();
 };
-},{"./lib/FsAdapter":"D:\\work\\git\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js"}],"bar":[function(require,module,exports){
+},{"./lib/FsAdapter":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js"}],"bar":[function(require,module,exports){
 
 const ArchiveConfigurator = require("./lib/ArchiveConfigurator");
 const createFolderBrickStorage = require("./lib/FolderBrickStorage").createFolderBrickStorage;
@@ -9658,7 +9710,7 @@ module.exports.Seed = require('./lib/Seed');
 module.exports.createFolderBrickStorage = createFolderBrickStorage;
 module.exports.createFileBrickStorage = createFileBrickStorage;
 
-},{"./lib/Archive":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\work\\git\\privatesky\\modules\\bar\\lib\\Seed.js"}],"buffer-from":[function(require,module,exports){
+},{"./lib/Archive":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\rwork\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"buffer-from":[function(require,module,exports){
 (function (Buffer){
 var toString = Object.prototype.toString
 
@@ -9775,28 +9827,23 @@ module.exports.create = (endpoint) => {
     return new EDFSBrickStorage(endpoint)
 };
 
-},{"./EDFSBrickStorage":"D:\\work\\git\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"edfs-middleware":[function(require,module,exports){
-module.exports.getEDFSMiddleware = () => require("./lib/EDFSMiddleware");
+},{"./EDFSBrickStorage":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"edfs-middleware":[function(require,module,exports){
+module.exports.getEDFSMiddleware = require("./lib/EDFSMiddleware");
 module.exports.createEDFSClient = (url) => {
     const EDFSClient = require("./lib/EDFSClient");
     return new EDFSClient(url);
 };
 
 
-},{"./lib/EDFSClient":"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\lib\\EDFSClient.js","./lib/EDFSMiddleware":"D:\\work\\git\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js"}],"edfs":[function(require,module,exports){
+},{"./lib/EDFSClient":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\lib\\EDFSClient.js","./lib/EDFSMiddleware":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js"}],"edfs":[function(require,module,exports){
 require("./brickTransportStrategies/brickTransportStrategiesRegistry");
 const constants = require("./moduleConstants");
-
-function generateUniqueStrategyName(prefix) {
-    const randomPart = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
-    return prefix + "_" + randomPart;
-}
 
 const or = require("overwrite-require");
 const browserContexts = [or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE];
 if (browserContexts.indexOf($$.environmentType) !== -1) {
     $$.brickTransportStrategiesRegistry.add("http", require("./brickTransportStrategies/FetchBrickTransportStrategy"));
-}else{
+} else {
     $$.brickTransportStrategiesRegistry.add("http", require("./brickTransportStrategies/HTTPBrickTransportStrategy"));
 }
 
@@ -9805,10 +9852,16 @@ module.exports = {
         const EDFS = require("./lib/EDFS");
         return new EDFS(endpoint);
     },
-    attachWithSeed(compactSeed) {
+    attachWithSeed(compactSeed, callback) {
         const SEED = require("bar").Seed;
-        const seed = new SEED(compactSeed);
-        return this.attachToEndpoint(seed.getEndpoint());
+        let seed;
+        try {
+            seed = new SEED(compactSeed);
+        } catch (err) {
+            return callback(err);
+        }
+
+        callback(undefined, this.attachToEndpoint(seed.getEndpoint()));
     },
     attachWithPin(pin, callback) {
         require("./seedCage").getSeed(pin, (err, seed) => {
@@ -9816,14 +9869,7 @@ module.exports = {
                 return callback(err);
             }
 
-            let edfs;
-            try {
-                edfs = this.attachWithSeed(seed);
-            } catch (e) {
-                return callback(e);
-            }
-
-            callback(undefined, edfs);
+            this.attachWithSeed(seed, callback);
         });
     },
     checkForSeedCage(callback) {
@@ -9831,7 +9877,7 @@ module.exports = {
     },
     constants: constants
 };
-},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\git\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\git\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\git\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\git\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"bar","overwrite-require":"overwrite-require"}],"overwrite-require":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\rwork\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"bar","overwrite-require":"overwrite-require"}],"overwrite-require":[function(require,module,exports){
 (function (global){
 /*
  require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
@@ -10173,7 +10219,7 @@ module.exports = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./moduleConstants":"D:\\work\\git\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\git\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js"}],"psk-http-client":[function(require,module,exports){
+},{"./moduleConstants":"D:\\rwork\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\rwork\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js"}],"psk-http-client":[function(require,module,exports){
 //to look nice the requireModule on Node
 require("./lib/psk-abstract-client");
 const or = require('overwrite-require');
@@ -10182,7 +10228,7 @@ if ($$.environmentType === or.constants.BROWSER_ENVIRONMENT_TYPE) {
 } else {
 	require("./lib/psk-node-client");
 }
-},{"./lib/psk-abstract-client":"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\work\\git\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"overwrite-require"}],"pskcrypto":[function(require,module,exports){
+},{"./lib/psk-abstract-client":"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\rwork\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"overwrite-require"}],"pskcrypto":[function(require,module,exports){
 const PskCrypto = require("./lib/PskCrypto");
 const ssutil = require("./signsensusDS/ssutil");
 
@@ -10193,7 +10239,7 @@ module.exports.hashValues = ssutil.hashValues;
 module.exports.DuplexStream = require("./lib/utils/DuplexStream");
 
 module.exports.isStream = require("./lib/utils/isStream");
-},{"./lib/PskCrypto":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\work\\git\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"source-map-support":[function(require,module,exports){
+},{"./lib/PskCrypto":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\rwork\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"source-map-support":[function(require,module,exports){
 var SourceMapConsumer = require('source-map').SourceMapConsumer;
 var path = require('path');
 
@@ -10531,8 +10577,13 @@ function cloneCallSite(frame) {
   return object;
 }
 
-function wrapCallSite(frame) {
+function wrapCallSite(frame, state) {
+  // provides interface backward compatibility
+  if (state === undefined) {
+    state = { nextPosition: null, curPosition: null }
+  }
   if(frame.isNative()) {
+    state.curPosition = null;
     return frame;
   }
 
@@ -10546,7 +10597,11 @@ function wrapCallSite(frame) {
 
     // Fix position in Node where some (internal) code is prepended.
     // See https://github.com/evanw/node-source-map-support/issues/36
-    var headerLength = 62;
+    // Header removed in node at ^10.16 || >=11.11.0
+    // v11 is not an LTS candidate, we can just test the one version with it.
+    // Test node versions for: 10.16-19, 10.20+, 12-19, 20-99, 100+, or 11.11
+    var noHeader = /^v(10\.1[6-9]|10\.[2-9][0-9]|10\.[0-9]{3,}|1[2-9]\d*|[2-9]\d|\d{3,}|11\.11)/;
+    var headerLength = noHeader.test(process.version) ? 0 : 62;
     if (line === 1 && column > headerLength && !isInBrowser() && !frame.isEval()) {
       column -= headerLength;
     }
@@ -10556,9 +10611,15 @@ function wrapCallSite(frame) {
       line: line,
       column: column
     });
+    state.curPosition = position;
     frame = cloneCallSite(frame);
     var originalFunctionName = frame.getFunctionName;
-    frame.getFunctionName = function() { return position.name || originalFunctionName(); };
+    frame.getFunctionName = function() {
+      if (state.nextPosition == null) {
+        return originalFunctionName();
+      }
+      return state.nextPosition.name || originalFunctionName();
+    };
     frame.getFileName = function() { return position.source; };
     frame.getLineNumber = function() { return position.line; };
     frame.getColumnNumber = function() { return position.column + 1; };
@@ -10591,9 +10652,14 @@ function prepareStackTrace(error, stack) {
   var message = error.message || '';
   var errorString = name + ": " + message;
 
-  return errorString + stack.map(function(frame) {
-    return '\n    at ' + wrapCallSite(frame);
-  }).join('');
+  var state = { nextPosition: null, curPosition: null };
+  var processedStack = [];
+  for (var i = stack.length - 1; i >= 0; i--) {
+    processedStack.push('\n    at ' + wrapCallSite(stack[i], state));
+    state.nextPosition = state.curPosition;
+  }
+  state.curPosition = state.nextPosition = null;
+  return errorString + processedStack.reverse().join('');
 }
 
 // Generate position and snippet of original source with pointer
@@ -10757,7 +10823,7 @@ exports.resetRetrieveHandlers = function() {
 
   retrieveFileHandlers = originalRetrieveFileHandlers.slice(0);
   retrieveMapHandlers = originalRetrieveMapHandlers.slice(0);
-  
+
   retrieveSourceMap = handlerExec(retrieveMapHandlers);
   retrieveFile = handlerExec(retrieveFileHandlers);
 }
@@ -10772,7 +10838,7 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\work\\git\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarmutils":[function(require,module,exports){
+},{"./lib/source-map-consumer":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\rwork\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarmutils":[function(require,module,exports){
 (function (global){
 module.exports.OwM = require("./lib/OwM");
 module.exports.beesHealer = require("./lib/beesHealer");
@@ -10806,5 +10872,5 @@ if(typeof global.$$.uidGenerator == "undefined"){
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/Combos":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/pingpongFork":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\work\\git\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}]},{},["D:\\work\\git\\privatesky\\builds\\tmp\\edfsBar_intermediar.js"])
+},{"./lib/Combos":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/pingpongFork":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\rwork\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}]},{},["D:\\rwork\\web-wallet\\privatesky\\builds\\tmp\\edfsBar_intermediar.js"])
 //# sourceMappingURL=edfsBar.js.map

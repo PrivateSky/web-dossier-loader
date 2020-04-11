@@ -3,7 +3,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <base href="/new" target="_blank">
+    <base href=".." target="_blank">
     <script src="app-config.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
@@ -18,67 +18,22 @@
 <div class="wizard-container">
     <div id="psk-wizard" class="bs-stepper stepper-content row pl-lg-4 pl-md-2 px-2 ">
         <div class="bs-stepper-header p-0 m-0" role="tablist">
-            <div class="step" data-target="#wallet-type-step">
-                <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="wallet-type-step">
-                    <span class="bs-stepper-circle">1</span>
-                    <span class="bs-stepper-label">Wallet Type</span>
-                </button>
-            </div>
-            <div class="bs-stepper-line"></div>
             <div class="step" data-target="#enter-pin-step">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin-step">
-                    <span class="bs-stepper-circle">2</span>
+                    <span class="bs-stepper-circle">1</span>
                     <span class="bs-stepper-label">PIN</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
             <div class="step" data-target="#complete-step">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete-step">
-                    <span class="bs-stepper-circle">3</span>
+                    <span class="bs-stepper-circle">2</span>
                     <span class="bs-stepper-label">Complete</span>
                 </button>
             </div>
         </div>
         <div class="bs-stepper-content">
             <form onSubmit="controller.openWallet(event)">
-                <div id="wallet-type-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
-                    <div class="form-group">
-                        <label>Wallet Type</label>
-                        <div class="row w-100">
-                            <div class="col-md-3 mb-2" >
-                                <div class="wallet-type card border-info  mx-sm-1 p-3">
-                                    <div class="card border-info  shadow text-info p-3 wallet-type-card" ><span class="fa fa-coins" aria-hidden="true"></span></div>
-                                    <div class="text-info text-center mt-3"><h2>Finances</h2></div>
-                                    <div class="text-info text-center mt-2"><h4>2 Apps</h4></div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-2">
-                                <div class="wallet-type card border-info mx-sm-1 p-3">
-                                    <div class="card border-info shadow text-info p-3 wallet-type-card" ><span class="fa fa-user-secret" aria-hidden="true"></span></div>
-                                    <div class="text-info text-center mt-3"><h2>Secrets</h2></div>
-                                    <div class="text-info text-center mt-2"><h4>3 Apps</h4></div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-2">
-                                <div class="wallet-type card border-info mx-sm-1 p-3">
-                                    <div class="card border-info shadow text-info p-3 wallet-type-card" ><span class="fa fa-file-invoice" aria-hidden="true"></span></div>
-                                    <div class="text-info text-center mt-3"><h2>Payments</h2></div>
-                                    <div class="text-info text-center mt-2"><h4>4 Apps</h4></div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-2 ">
-                                <div class="wallet-type card border-info mx-sm-1 p-3">
-                                    <div class="card border-info shadow text-info p-3 wallet-type-card" ><span class="fab fa-bitcoin" aria-hidden="true"></span></div>
-                                    <div class="text-info text-center mt-3"><h2>Crypto</h2></div>
-                                    <div class="text-info text-center mt-2"><h4>5 Apps</h4></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <button id="restoreSeedBtn" class="btn btn-primary" onclick="controller.selectWalletType(event)">New
-                        Wallet
-                    </button>
-                </div>
                 <div id="enter-pin-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
                     <label for="pin">Set up a Personal Identifier(PIN)</label>
                     <div class="row">
@@ -96,7 +51,6 @@
                     <div class="row ml-1">
                         <label id="pinError" class="error"></label>
                     </div>
-                    <button class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
                     <button id="setPINBtn" class="btn btn-primary" onclick="controller.createWallet(event)"
                             disabled="disabled">Set PIN
 

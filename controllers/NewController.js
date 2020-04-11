@@ -1,4 +1,6 @@
 import SpinnerService from "./services/SpinnerService.js";
+import FileService from "./services/FileService.js";
+
 function NewController() {
 
     let EDFS;
@@ -8,6 +10,7 @@ function NewController() {
     let walletType;
     let wizard;
     let spinner;
+    let fileService = new FileService();
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -54,21 +57,131 @@ function NewController() {
         }
     };
 
-    this.selectWalletType = function(event){
-        event.preventDefault();
-        walletType = {
-            endpoint:APP_CONFIG.EDFS_ENDPOINT,
-            templateSeed:APP_CONFIG.TEMPLATE_SEED
-        };
-        wizard.next();
-    };
-
     this.createWallet = function (event) {
         event.preventDefault();
         spinner.attachToView();
         try {
-            EDFS = EDFS.attachToEndpoint(walletType.endpoint);
-            EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {
+            edfs = EDFS.attachToEndpoint(APP_CONFIG.EDFS_ENDPOINT);
+            fileService.getFolderContentAsJSON("wallet-template", function(err, walletTemplateAsJSON){
+               if(err){
+                   return console.log(err);
+               }
+               const walletTemplate = JSON.parse(walletTemplateAsJSON);
+               const walletTypeSeed = walletTemplate["/"].seed;
+               //we delete the seed file in order to prevent to be copied into the new dossier
+               delete walletTemplate["/"].seed;
+               console.log("Got Wallet type seed", walletTypeSeed);
+               let wallet = edfs.createRawDossier();
+               wallet.mount("/", "code", walletTypeSeed, true, function(err){
+                   if(err){
+                       return console.log(err);
+                   }
+
+                   function dirSummaryAsArray(walletTemplate){
+					   let filesToBeWritten = [];
+					   for(let directory in walletTemplate){
+						   let directoryFiles = walletTemplate[directory];
+						   for(let fileName in directoryFiles){
+							   filesToBeWritten.push({
+								   path: directory+"/"+fileName,
+								   content: directoryFiles[fileName]
+							   });
+						   }
+					   }
+					   return filesToBeWritten;
+				   }
+
+				   let files = dirSummaryAsArray(walletTemplate);
+                   customizeDossier(wallet, files,function(err){
+						if(err){
+							return console.log(err);
+						}
+						wallet.listFiles("/", function(err, files){
+							if(err){
+								return console.log(err);
+							}
+							console.log("Wallet list files until this point", files);
+							tryToInstallApps(function(err){
+								console.log("finished apps installation", err);
+							});
+						})
+				   });
+
+                   function customizeDossier(dossier, files, callback){
+                   		if(files.length === 0){
+                   			return callback();
+						}
+					   let file = files.pop();
+					   dossier.writeFile(file.path, file.content, function(err){
+						   if(err){
+							   return callback(err);
+						   }
+						   customizeDossier(dossier, files, callback);
+					   });
+				   }
+
+                   function tryToInstallApps(callback){
+                       fileService.getFolderContentAsJSON("apps", function(err, appsJSON){
+                           if(err){
+                               return console.log(err);
+                           }
+                           const apps = JSON.parse(appsJSON);
+                           const appList = Object.keys(apps);
+                           console.log("Application list to be installed", appList);
+							installApps(wallet, apps, appList, function(err){
+								if(err){
+									document.getElementById("pinError").innerText="An error occurred. Please try again."
+									return console.log(err);
+								}
+								console.log("New Wallet instance ready to be used!!!");
+								spinner.removeFromView();
+								seed = wallet.getSeed();
+								document.getElementById("seed").value = seed;
+								wizard.next();
+							})
+                       });
+                   }
+
+                   function installApps(dossier, appSeedRepo, appList, callback){
+                   		if(appList.length === 0){
+                   			return callback();
+						}
+					   let appName = appList.pop();
+					   let appTypeSeed = appSeedRepo[appList];
+					   buildApp(appName, appTypeSeed, function(err, newAppSeed){
+						   if(err){
+							   return callback(err);
+						   }
+						   if(appName[0]==="/"){
+						   		appName = appName.replace("/", "");
+						   }
+						   dossier.mount("/apps", appName, newAppSeed, function(err){
+							   if(err){
+								   return callback(err);
+							   }
+							   installApps(dossier, appSeedRepo, appList, callback);
+						   })
+					   });
+				   }
+
+                   function buildApp(appName, appTypeSeed, callback){
+                   		fileService.getFolderContentAsJSON(appName+"-template", function(error, templateAsJSON){
+                   			let appDossier = edfs.createRawDossier();
+                   			appDossier.mount("/", "code", appTypeSeed, function(err){
+                   				if(err || error){
+                   					return callback(err);
+								}
+								let appTemplateFiles = dirSummaryAsArray(walletTemplate);
+                   				customizeDossier(appDossier, files, function(err){
+                   					return callback(err, appDossier.getSeed());
+								})
+							});
+						});
+				   }
+
+               });
+            });
+            /*EDFS.createWallet(walletType.templateSeed, pin, true, function (err, _seed) {
                 spinner.removeFromView();
                 if(!err){
                     seed = _seed;
@@ -78,7 +191,7 @@ function NewController() {
                 else{
                     document.getElementById("pinError").innerText="An error occurred. Please try again."
                 }
-            });
+            });*/
         }
         catch (e) {
             document.getElementById("pinError").innerText="Seed is not valid."
@@ -99,8 +212,7 @@ function NewController() {
     this.openWallet = function (event) {
         event.stopImmediatePropagation();
 
-        window.location ="/"
-
+        window.location ="..";
     }
 }
 
