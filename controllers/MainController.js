@@ -40,7 +40,7 @@ function MainController() {
 
     this.restore = function (event) {
         event.preventDefault();
-        window.location = "/restore"
+        window.location = "./restore"
     };
 
     this.openWallet = function () {

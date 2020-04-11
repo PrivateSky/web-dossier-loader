@@ -90,7 +90,7 @@ function RestoreController() {
     this.openWallet = function (event) {
         event.preventDefault();
         event.stopImmediatePropagation();
-        window.location ="/";
+        window.location.replace("./");
     }
 }
 
