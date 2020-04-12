@@ -170,12 +170,13 @@ function NewController() {
                         }
                         let appName = appList.pop();
 
+                        let appTypeSeed = appSeedRepo[appName];
+
                         if (appName[0] === "/") {
                             appName = appName.replace("/", "");
-                        }
 
-                        let appTypeSeed = appSeedRepo[appList];
-                        buildApp(appName, appTypeSeed, function (err, newAppSeed) {
+                        }
+                        buildApp(appName, appTypeSeed.seed, function (err, newAppSeed) {
                             if (err) {
                                 return callback(err);
                             }

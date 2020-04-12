@@ -74,6 +74,7 @@ function MainController() {
                 return document.getElementById("pin-error").innerText = "Invalid PIN";
             }
             edfs = _edfs;
+
             //SWAgent.loadWallet(edfs, pin, loadWalletHandler);
 
 
@@ -109,7 +110,7 @@ function MainController() {
         iframe.style.display = "block";
         iframe.style.zIndex="100";
         let currentLocation = window.location;
-        iframe.src=currentLocation+"apps/"+hexDigest;
+        iframe.src=currentLocation+"iframe/"+hexDigest;
 
         window.addEventListener("message",(event)=>{
             if(event.data.appIdentity){
@@ -119,7 +120,14 @@ function MainController() {
             }
 
             if (event.data.status === "completed") {
-                document.write(iframe.outerHTML);
+                document.write(`<html>
+                <body>
+                <style>
+                html, body {margin:0; padding: 0;}
+                </style>
+                ${iframe.outerHTML}
+                </body>
+                </html>`);
             }
 
             if (event.data.status === "error") {
@@ -127,19 +135,14 @@ function MainController() {
             }
         });
 
-
         document.body.appendChild(iframe);
-
-        iframe.addEventListener("load",function(){
-           // document.write(iframe.outerHTML);
-        })
 
     }
 
 
     function loadRootSW(callback){
         if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('swRoot.js').then(function(reg) {
+            navigator.serviceWorker.register('swLoader.js').then(function(reg) {
                 callback(undefined);
             }).catch(function(err) {
                 callback(err);

@@ -1,5 +1,5 @@
 import SWAgent from "../../controllers/services/SWAgent.js";
-let paths = window.location.pathname.split("/apps/");
+let paths = window.location.pathname.split("/iframe/");
 let myIdentity = paths[1];
 
 

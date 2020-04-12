@@ -11,16 +11,14 @@ self.addEventListener('activate',  (event) => {
 
 function createResponse(event) {
     return new Promise((resolve) => {
-        console.log(event.request.url);
         let url = event.request.url;
         let newUrl = url;
 
-        if (url.indexOf("/apps/") != -1) {
-            let urlParts = url.split("/apps/");
+        if (url.indexOf("/iframe/") != -1) {
+            let urlParts = url.split("/iframe/");
             if(urlParts.length === 2){
                 let basePath = urlParts[0];
                 newUrl = basePath + "/assets/app-loader/app-loader.html";
-                console.log(newUrl);
             }
         }
 
