@@ -193,8 +193,8 @@ function NewController() {
                                 if (err || error) {
                                     return callback(err);
                                 }
-                                let appTemplateFiles = dirSummaryAsArray(walletTemplate);
-                                customizeDossier(appDossier, files, function (err) {
+                                let appTemplateFiles = dirSummaryAsArray(templateAsJSON);
+                                customizeDossier(appDossier, appTemplateFiles, function (err) {
                                     return callback(err, appDossier.getSeed());
                                 })
                             });
