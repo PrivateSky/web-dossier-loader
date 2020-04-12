@@ -11067,7 +11067,6 @@ function Middleware() {
                     resolve(response);
                 };*/
 
-                console.log("Handling event", event);
                 extractBody(event).then(body => {
 
                     event.request.body = body;

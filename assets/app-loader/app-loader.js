@@ -9,6 +9,7 @@ window.addEventListener("message",(event)=>{
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('../swBoot.js',{scope: myIdentity}).then(function (reg) {
 
+                //TODO listen for controllerchange
                 setTimeout(()=>{
                     SWAgent.restoreDossier(seed, window.location.origin, function (err) {
                         if (err) {

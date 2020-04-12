@@ -169,13 +169,15 @@ function NewController() {
                             return callback();
                         }
                         let appName = appList.pop();
+
+                        if (appName[0] === "/") {
+                            appName = appName.replace("/", "");
+                        }
+
                         let appTypeSeed = appSeedRepo[appList];
                         buildApp(appName, appTypeSeed, function (err, newAppSeed) {
                             if (err) {
                                 return callback(err);
-                            }
-                            if (appName[0] === "/") {
-                                appName = appName.replace("/", "");
                             }
                             dossier.mount("/apps", appName, newAppSeed, function (err) {
                                 if (err) {
@@ -193,7 +195,8 @@ function NewController() {
                                 if (err || error) {
                                     return callback(err);
                                 }
-                                let appTemplateFiles = dirSummaryAsArray(templateAsJSON);
+                                let templateContent = JSON.parse(templateAsJSON);
+                                let appTemplateFiles = dirSummaryAsArray(templateContent);
                                 customizeDossier(appDossier, appTemplateFiles, function (err) {
                                     return callback(err, appDossier.getSeed());
                                 })
