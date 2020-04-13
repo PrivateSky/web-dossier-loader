@@ -1,5 +1,4 @@
 import SpinnerService from "./services/SpinnerService.js";
-import SWAgent from "./services/SWAgent.js";
 
 function MainController() {
 
@@ -56,27 +55,12 @@ function MainController() {
         event.preventDefault();
         spinner.attachToView();
 
-        function loadWalletHandler(err) {
-            spinner.removeFromView();
-            if (err) {
-                return document.getElementById("pin-error").innerText = err;
-            }
-            window.location.replace("./");
-        }
-
-        if (edfs) {
-            return SWAgent.loadWallet(edfs, pin, loadWalletHandler);
-        }
-
         EDFS.attachWithPin(pin, function (err, _edfs) {
             if (err) {
                 spinner.removeFromView();
                 return document.getElementById("pin-error").innerText = "Invalid PIN";
             }
             edfs = _edfs;
-
-            //SWAgent.loadWallet(edfs, pin, loadWalletHandler);
-
 
             loadRootSW((err)=>{
                 if(err){

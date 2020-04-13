@@ -1,5 +1,4 @@
 import SpinnerService from "./services/SpinnerService.js";
-import SWAgent from "./services/SWAgent.js";
 function RestoreController() {
 
     let EDFS;

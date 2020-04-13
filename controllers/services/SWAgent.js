@@ -1,6 +1,30 @@
 function SWAgent() {
 }
 
+let controllersChangeHandlers = [];
+
+navigator.serviceWorker.oncontrollerchange = function (event) {
+    if (event.target && event.target.controller) {
+        let serviceWorker = event.target.controller;
+        let serviceWorkerUrl = serviceWorker.scriptURL;
+
+        if (controllersChangeHandlers.length) {
+            let index = controllersChangeHandlers.length;
+            while (index--) {
+                if (serviceWorkerUrl.endsWith(controllersChangeHandlers[index].swName)) {
+                    controllersChangeHandlers[index].callback(undefined);
+                    controllersChangeHandlers.splice(index, 1);
+                }
+            }
+        }
+    }
+};
+
+SWAgent.whenSwIsReady = function (swName, callback) {
+    controllersChangeHandlers.push({swName: swName, callback: callback});
+};
+
+
 SWAgent.sendMessage = function (message) {
     // This wraps the message posting/response in a promise, which will
     // resolve if the response doesn't contain an error, and reject with
@@ -36,10 +60,10 @@ SWAgent.sendMessage = function (message) {
     });
 };
 
-SWAgent.restoreDossier = function (seed, url, callback) {
+SWAgent.restoreDossier = function (seed, callback) {
     SWAgent.sendMessage({action: "activate"}).then((data) => {
         if (data.status === "empty") {
-            SWAgent.sendMessage({seed: seed, url: url}).then(data => {
+            SWAgent.sendMessage({seed: seed, url: window.location.origin}).then(data => {
                 callback(undefined);
             }).catch(err => {
                 console.log(err);
@@ -72,31 +96,28 @@ SWAgent.unregisterSW = function () {
 }
 
 
-SWAgent.loadWallet = function (edfs, pin, callback) {
-    edfs.loadWallet(pin, true, function (err, wallet) {
-        if (err) {
-            return callback("Operation failed. Try again");
-        }
+SWAgent.loadWallet = function (seed, swConfig, callback) {
 
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('swBoot.js').then(function (reg) {
-                console.log('Yay, service worker is live!', reg);
-
-                SWAgent.restoreDossier(wallet.getSeed(), window.location.origin, function (err) {
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(swConfig.swPath, {scope: swConfig.scope}).then(function (reg) {
+            SWAgent.whenSwIsReady(swConfig.swName, (err) => {
+                if (err) {
+                    throw err;
+                }
+                SWAgent.restoreDossier(seed, function (err) {
                     if (err) {
                         SWAgent.unregisterSW();
                         return callback("Operation failed. Try again");
                     }
                     callback();
                 });
-
-
-            }).catch(function (err) {
-                SWAgent.unregisterSW();
-                return callback("Operation failed. Try again");
             });
-        }
-    });
+
+        }).catch(function (err) {
+            SWAgent.unregisterSW();
+            return callback("Operation failed. Try again");
+        });
+    }
 };
 
 export default SWAgent;
