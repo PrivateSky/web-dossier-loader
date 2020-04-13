@@ -5,7 +5,7 @@ or.enableForEnvironment(or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE);
 require("./swBoot_intermediar");
 },{"./swBoot_intermediar":"D:\\demo\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js","overwrite-require":"D:\\demo\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\demo\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js":[function(require,module,exports){
 (function (global){
-global.swBootLoadModules = function(){
+global.swBootLoadModules = function(){ 
 
 	if(typeof $$.__runtimeModules["source-map-support"] === "undefined"){
 		$$.__runtimeModules["source-map-support"] = require("source-map-support");
@@ -96,7 +96,7 @@ Hash.prototype.digest = function(encoding)
 {
 	if (this._done)
 		throw new Error('Not initialized');
-
+	
 	this._done = true;
 
 	var buf = new Buffer(4);
@@ -2364,7 +2364,7 @@ function FolderBrickStorage(location) {
         map = barMap;
         const barMapBrick = barMap.toBrick();
         barMapBrick.setTransformParameters(barMap.getTransformParameters());
-
+       
         let brickId = barMapBrick.getId();
         if (!brickId) {
             brickId = barMapBrick.getHash();
@@ -3075,7 +3075,7 @@ let OBFTPSwarm = $$.flow.describe("OBFTProcess", {
  *      - {Pulse} `pulse` (see 'transactionsUtil.js')
  * @param {InMemoryPDS} pdsAdapter e.g. require("pskdb/lib/InMemoryPDS").newPDS(null);
  * @param {Number} pulsePeriodicity e.g. 300
- *
+ * 
  * @returns {SwarmDescription} A new instance of "pulseSwarm" flow, with phase `start` already running
  */
 exports.createConsensusManager = function (delegatedAgentName, communicationOutlet, pdsAdapter, pulsePeriodicity, votingBox) {
@@ -4782,7 +4782,7 @@ let pulseSwarm = $$.flow.describe("pulseSwarm", {
 
         let self = this;
         self.communicationOutlet.broadcastPulse(newPulse);
-
+        
         this.lset = {};
         this.currentPulse++;
 
@@ -4904,7 +4904,7 @@ let pulseSwarm = $$.flow.describe("pulseSwarm", {
  *      - {Pulse} `pulse` (see 'transactionsUtil.js')
  * @param {InMemoryPDS} pdsAdapter e.g. require("pskdb/lib/InMemoryPDS").newPDS(null);
  * @param {Number} pulsePeriodicity e.g. 300
- *
+ * 
  * @returns {SwarmDescription} A new instance of "pulseSwarm" flow, with phase `start` already running
  */
 exports.createConsensusManager = function (delegatedAgentName, communicationOutlet, pdsAdapter, pulsePeriodicity, votingBox) {
@@ -7677,22 +7677,8 @@ function RawDossier(endpoint, seed) {
                 if (files.length === 0) {
                     __searchInManifest();
                 } else {
-                    let pth;
-                    if (relativePath[0] === "/") {
-                        if (prefixPath === "/") {
-                            pth = relativePath;
-                        } else {
-                            pth = prefixPath + relativePath
-                        }
-                    } else {
-                        if (prefixPath.endsWith("/")) {
-                            pth = prefixPath + relativePath;
-                        } else {
-                            pth = prefixPath + "/" + relativePath;
-                        }
-                    }
                     let barPath = files.find(file => {
-                        return file.includes(pth) || pth.includes(file);
+                        return file.includes(relativePath) || relativePath.includes(file);
                     });
 
                     if (barPath) {
@@ -7750,7 +7736,7 @@ function RawDossier(endpoint, seed) {
                                         //when navigate into an archive we need to ensure that the remainingPath starts with /
                                         remainingPath = "/"+remainingPath;
                                     }
-                                    return __loadBarForPathRecursively(internalArchive, "", remainingPath, mount.readonly, callback);
+                                    return __loadBarForPathRecursively(internalArchive, newPath, remainingPath, mount.readonly, callback);
                                 }
                             }
 
@@ -47873,7 +47859,7 @@ var IncomingMessage = exports.IncomingMessage = function (xhr, response, mode, f
 		self.url = response.url
 		self.statusCode = response.status
 		self.statusMessage = response.statusText
-
+		
 		response.headers.forEach(function (header, key){
 			self.headers[key.toLowerCase()] = header
 			self.rawHeaders.push(key, header)
@@ -52731,13 +52717,13 @@ Script.prototype.runInContext = function (context) {
     if (!(context instanceof Context)) {
         throw new TypeError("needs a 'context' argument.");
     }
-
+    
     var iframe = document.createElement('iframe');
     if (!iframe.style) iframe.style = {};
     iframe.style.display = 'none';
-
+    
     document.body.appendChild(iframe);
-
+    
     var win = iframe.contentWindow;
     var wEval = win.eval, wExecScript = win.execScript;
 
@@ -52746,7 +52732,7 @@ Script.prototype.runInContext = function (context) {
         wExecScript.call(win, 'null');
         wEval = win.eval;
     }
-
+    
     forEach(Object_keys(context), function (key) {
         win[key] = context[key];
     });
@@ -52755,11 +52741,11 @@ Script.prototype.runInContext = function (context) {
             win[key] = context[key];
         }
     });
-
+    
     var winKeys = Object_keys(win);
 
     var res = wEval.call(win, this.code);
-
+    
     forEach(Object_keys(win), function (key) {
         // Avoid copying circular objects like `top` and `window` by only
         // updating existing context properties or new properties in the `win`
@@ -52774,9 +52760,9 @@ Script.prototype.runInContext = function (context) {
             defineProp(context, key, win[key]);
         }
     });
-
+    
     document.body.removeChild(iframe);
-
+    
     return res;
 };
 

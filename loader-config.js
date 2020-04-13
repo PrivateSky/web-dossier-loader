@@ -8,6 +8,6 @@ APP_CONFIG={
   NEW_OR_RESTORE_CONTAINER_ID:"restore-new-container",
   PIN_CONTAINER_ID:"pin-container",
   EDFS_ENDPOINT:"http://localhost:8080",
-  PIN_MIN_LENGTH:4,
-  DEVELOPMENT_PIN:"1212"
+  PIN_MIN_LENGTH:4
+  /*DEVELOPMENT_PIN:"1212"*/
 };
