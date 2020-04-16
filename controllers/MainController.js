@@ -1,11 +1,11 @@
 import SpinnerService from "./services/SpinnerService.js";
+import WalletService from "./services/WalletService.js";
 
 function MainController() {
 
     let pin;
-    let EDFS;
-    let edfs;
     let spinner;
+    const walletService = new WalletService();
 
 
     function displayContainer(containerId) {
@@ -16,14 +16,12 @@ function MainController() {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
         spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
 
-        EDFS = require("edfs");
-        EDFS.checkForSeedCage((err) => {
-            if (err) {
+        walletService.hasSeedCage((err, result) => {
+            if (!result) {
                 return displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
             displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
-
-        });
+        })
 
         if(APP_CONFIG.DEVELOPMENT_PIN){
             controller.openWallet(new CustomEvent("test"));
@@ -54,34 +52,31 @@ function MainController() {
 
         event.preventDefault();
         spinner.attachToView();
-
-        EDFS.attachWithPin(pin, function (err, _edfs) {
+        walletService.restoreFromPin(pin, (err) => {
             if (err) {
                 spinner.removeFromView();
                 return document.getElementById("pin-error").innerText = "Invalid PIN";
             }
-            edfs = _edfs;
 
-            loadRootSW((err)=>{
-                if(err){
+            loadRootSW((err) => {
+                if (err) {
                     throw err;
                 }
 
-                edfs.loadWallet(pin, true, function (err, wallet) {
+                walletService.load(pin, (err, wallet) => {
                     if (err) {
-                        return callback("Operation failed. Try again");
+                        console.error(err);
+                        return console.error("Operation failed. Try again");
                     }
 
                     const PskCrypto = require("pskcrypto");
                     const hexDigest = PskCrypto.pskHash(wallet.getSeed(), "hex");
 
                     loadIframeInDOM(hexDigest, wallet.getSeed());
-
-
                 })
-
             })
-        });
+
+        })
     };
 
     function loadIframeInDOM(hexDigest, seed){
