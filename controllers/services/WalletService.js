@@ -16,6 +16,13 @@ function WalletService(options) {
     let EDFS = require('edfs');
 
     /**
+     * @param {string} endpoint
+     */
+    this.setEDFSEndpoint = function (endpoint) {
+        this.edfsEndpoint = endpoint;
+    };
+
+    /**
      * @param {callback} callback
      */
     this.hasSeedCage = function (callback) {

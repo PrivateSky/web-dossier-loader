@@ -1,31 +1,94 @@
 import SpinnerService from "./services/SpinnerService.js";
 import WalletService from "./services/WalletService.js";
+import FileService from "./services/FileService.js";
 
 function MainController() {
 
     let pin;
     let spinner;
     const walletService = new WalletService();
+    const fileService = new FileService();
+
+
+    /**
+     * Try and fetch 'local-config.js' and overwrite
+     * the standard configuration
+     *
+     * @param {callback} callback
+     */
+    function getConfiguration(callback) {
+        let pathSegments = window.location.pathname.split('/');
+        let loaderPath = pathSegments.pop();
+        if (!loaderPath) {
+            loaderPath = pathSegments.pop();
+        }
+        const localConfigurationPath = `${loaderPath}/local-config.json`;
+
+        fileService.getFile(localConfigurationPath, (err, data) => {
+            if (err) {
+                return callback();
+            }
+
+            let configuration;
+
+            try {
+                configuration = JSON.parse(data);
+            } catch (e) {
+                console.error(e);
+                return callback();
+            }
+
+            APP_CONFIG = Object.assign(APP_CONFIG, configuration);
+            callback(APP_CONFIG);
+        })
+    }
 
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
     }
 
-    this.initView = function () {
+    function runInDevelopment() {
+        walletService.hasSeedCage((err, result) => {
+            if (!result) {
+                // Create a new wallet
+                spinner.attachToView();
+                walletService.setEDFSEndpoint(APP_CONFIG.EDFS_ENDPOINT);
+                walletService.create(APP_CONFIG.DEVELOPMENT_PIN, (err, wallet) => {
+                    if (err) {
+                        return console.error(err);
+                    }
+                    window.location.reload();
+                });
+                return;
+            }
+
+            // restore existing wallet
+            pin = APP_CONFIG.DEVELOPMENT_PIN;
+            controller.openWallet(new CustomEvent("test"));
+        })
+    }
+
+    this.init = function () {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
         spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
 
+        getConfiguration(() => {
+            if (APP_CONFIG.MODE === 'development') {
+                return runInDevelopment();
+            }
+
+            this.initView();
+        });
+    }
+
+    this.initView = function () {
         walletService.hasSeedCage((err, result) => {
             if (!result) {
                 return displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
             displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
         })
-
-        if(APP_CONFIG.DEVELOPMENT_PIN){
-            controller.openWallet(new CustomEvent("test"));
-        }
     };
 
     this.validatePIN = function () {
@@ -45,11 +108,6 @@ function MainController() {
     };
 
     this.openWallet = function (event) {
-
-        if(APP_CONFIG.DEVELOPMENT_PIN){
-           pin = APP_CONFIG.DEVELOPMENT_PIN;
-        }
-
         event.preventDefault();
         spinner.attachToView();
         walletService.restoreFromPin(pin, (err) => {
@@ -132,7 +190,7 @@ function MainController() {
 
 let controller = new MainController();
 document.addEventListener("DOMContentLoaded", function () {
-    controller.initView();
+    controller.init();
 });
 window.controller = controller;
 
