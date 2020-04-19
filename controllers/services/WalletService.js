@@ -14,6 +14,7 @@ function WalletService(options) {
     this.seed = options.seed;
 
     let EDFS = require('edfs');
+    const EDFS_CONSTANTS = EDFS.constants;
 
     /**
      * @param {string} endpoint
@@ -115,7 +116,7 @@ function WalletService(options) {
         const walletBuilder = new WalletBuilderService(wallet, {
             codeFolderName: 'code',
             walletTemplateFolderName: 'wallet-template',
-            appFolderName: EDFS.constants.CSB.APP_FOLDER,
+            appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
             appsFolderName: 'apps',
             dossierFactory: () => {
                 return edfs.createRawDossier();
@@ -135,6 +136,43 @@ function WalletService(options) {
                 callback(undefined, wallet);
             });
         })
+    }
+
+    /**
+     * Rebuild an existing wallet
+     * @param {string|undefined} pin
+     * @param {callback} callback
+     */
+    this.rebuild = function (pin, callback) {
+        this.restoreFromPin(pin, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            this.load(pin, (err, wallet) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                const walletBuilder = new WalletBuilderService(wallet, {
+                    codeFolderName: 'code',
+                    walletTemplateFolderName: 'wallet-template',
+                    appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+                    appsFolderName: 'apps',
+                    dossierLoader: function (seed, callback) {
+                        return EDFS.loadRawDossier(seed);
+                    }
+                });
+
+                walletBuilder.rebuild((err) => {
+                    if (err) {
+                        return console.error(err);
+                    }
+                    callback(undefined, wallet);
+                })
+            })
+        })
+
     }
 
 }

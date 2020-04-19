@@ -30,10 +30,6 @@ function WalletBuilderService(wallet, options) {
         throw new Error('The apps folder name is required');
     }
 
-    if (typeof options.dossierFactory !== 'function') {
-        throw new Error('A RawDossier factory function is required');
-    }
-
     const CODE_FOLDER = options.codeFolderName;
     const WALLET_TEMPLATE_FOLDER = options.walletTemplateFolderName;
     const APP_FOLDER = options.appFolderName;
@@ -43,6 +39,7 @@ function WalletBuilderService(wallet, options) {
 
     this.walletTypeSeed = null;
     this.dossierFactory = options.dossierFactory;
+    this.dossierLoader = options.dossierLoader;
 
 
     /**
@@ -111,6 +108,7 @@ function WalletBuilderService(wallet, options) {
 
         dossier.writeFile(targetPath, file.content, (err) => {
             if (err) {
+                console.error(targetPath);
                 return callback(err);
             }
             customizeDossier(dossier, files, prefix, callback);
@@ -154,6 +152,10 @@ function WalletBuilderService(wallet, options) {
             }
 
             files = dirSummaryAsArray(files);
+
+            if (typeof this.dossierFactory !== 'function') {
+                return callback(new Error('A RawDossier factory function is required'));
+            }
 
             const appDossier = this.dossierFactory();
             appDossier.mount('/', CODE_FOLDER, seed, (err) => {
@@ -199,6 +201,96 @@ function WalletBuilderService(wallet, options) {
                 performInstallation(apps, appsList, callback);
             })
         });
+    };
+
+    /**
+     * @param {string} appName
+     * @param {string} seed
+     * @param {callback} callback
+     */
+    const rebuildApp = (appName, seed, callback) => {
+        fileService.getFolderContentAsJSON(`${appName}-template`, (err, data) => {
+            let files;
+
+            try {
+                files = JSON.parse(data);
+            } catch (e) {
+                return callback(e);
+            }
+
+            files = dirSummaryAsArray(files);
+
+            const appDossier = this.dossierLoader(seed);
+            customizeDossier(appDossier, files, (err) => {
+                return callback(err);
+            })
+        })
+
+    };
+
+    /**
+     * @param {object} apps
+     * @param {Array.String} appsList
+     * @param {callback} callback
+     */
+    const performApplicationsRebuild = (apps, appsList, callback) => {
+        if (!appsList.length) {
+            return callback();
+        }
+
+        let appName = appsList.pop();
+        const appInfo = apps[appName];
+
+        if (appName[0] === '/') {
+            appName = appName.replace('/', '');
+        }
+
+        rebuildApp(appName, appInfo.seed, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            performApplicationsRebuild(apps, appsList, callback);
+        })
+    };
+
+    /**
+     * Get list of installed applications
+     * and rebuild them
+     *
+     * @param {callback} callback
+     */
+    const rebuildApplications = (callback) => {
+        getListOfAppsForInstallation((err, apps) => {
+            if (err) {
+                return callback(err);
+            }
+
+            const appsList = [];
+
+            wallet.listMountedDossiers('/', (err, data) => {
+                const mountedApps = [];
+                for (const mountPoint of data) {
+                    const appName = '/' + mountPoint.path.split('/').pop();
+                    const appSeed = mountPoint.dossierReference;
+
+                    if (!apps[appName]) {
+                        continue;
+                    }
+
+                    appsList.push(appName);
+                    apps[appName].seed = appSeed;
+                }
+
+                if (!appsList) {
+                    return;
+                }
+
+                performApplicationsRebuild(apps, appsList, callback);
+            });
+
+        })
+
     };
 
     /**
@@ -265,6 +357,33 @@ function WalletBuilderService(wallet, options) {
             install(files, callback);
         });
     };
+
+    /**
+     * @param {callback}
+     */
+    this.rebuild = function (callback) {
+        getWalletTemplateContent((err, files) => {
+            if (err) {
+                return callback(err);
+            }
+
+            // Remove the seed file in order to prevent copying it into the new dossier
+            delete files['/'].seed;
+
+            // Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
+            // into the wallet's app folder
+            files = dirSummaryAsArray(files);
+            customizeDossier(wallet, files, `/${APP_FOLDER}`, (err) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                console.log('Rebuilding');
+                rebuildApplications(callback);
+            })
+        })
+
+    }
 }
 
 export default WalletBuilderService;

@@ -9,20 +9,25 @@ function MainController() {
     const walletService = new WalletService();
     const fileService = new FileService();
 
-
-    /**
-     * Try and fetch 'local-config.js' and overwrite
-     * the standard configuration
-     *
-     * @param {callback} callback
-     */
-    function getConfiguration(callback) {
+    function getUrl(file) {
         let pathSegments = window.location.pathname.split('/');
         let loaderPath = pathSegments.pop();
         if (!loaderPath) {
             loaderPath = pathSegments.pop();
         }
-        const localConfigurationPath = `${loaderPath}/local-config.json`;
+
+        return `${loaderPath}/${file}`;
+    }
+
+
+    /**
+     * Try and fetch 'local-config.json' and overwrite
+     * the standard configuration
+     *
+     * @param {callback} callback
+     */
+    function getConfiguration(callback) {
+        const localConfigurationPath = getUrl('local-config.json');
 
         fileService.getFile(localConfigurationPath, (err, data) => {
             if (err) {
@@ -48,6 +53,35 @@ function MainController() {
         document.getElementById(containerId).style.display = "block";
     }
 
+    /**
+     * @param {callback} callback
+     */
+    function checkForWalletUpdates(callback) {
+        const lastUpdateFilename = getUrl('../last-update.txt');
+
+        fileService.getFile(lastUpdateFilename, (err, data) => {
+            if (err) {
+                return callback(false);
+            }
+
+            const lastUpdateTimestamp = parseInt(data, 10);
+            if (isNaN(lastUpdateTimestamp)) {
+                return callback(false);
+            }
+
+            const walletLastUpdateTimestamp = parseInt(localStorage.getItem('__walletLastUpdated'), 10);
+            if (isNaN(walletLastUpdateTimestamp)) {
+                return callback(true);
+            }
+
+            if (lastUpdateTimestamp > walletLastUpdateTimestamp) {
+                return callback(true);
+            }
+
+            return callback(false);
+        })
+    }
+
     function runInDevelopment() {
         walletService.hasSeedCage((err, result) => {
             if (!result) {
@@ -63,9 +97,42 @@ function MainController() {
                 return;
             }
 
-            // restore existing wallet
             pin = APP_CONFIG.DEVELOPMENT_PIN;
-            controller.openWallet(new CustomEvent("test"));
+            checkForWalletUpdates((hasUpdates) => {
+                if (hasUpdates) {
+                    // Unregister the swLoader.js
+                    navigator.serviceWorker.getRegistration().then((reg) => {
+                        if (!reg) {
+                            return;
+                        }
+
+                        return reg.unregister();
+                    }).then((result) => {
+                        if (result) {
+                            // If a registration was found and unregistration
+                            // was requests, reload the window before performing
+                            // wallet rebuilding
+                            return window.location.reload();
+                        }
+
+                        // After the swLoader.js has been unregistered and stopped
+                        // rebuild the wallet
+                        walletService.rebuild(pin, (err, wallet) => {
+                            if (err) {
+                                return console.error(err);
+                            }
+
+                            localStorage.setItem('__walletLastUpdated', Date.now());
+                            console.log('Wallet was rebuilt.');
+                            window.location.reload();
+                        })
+                    })
+                    return;
+                }
+
+                // restore existing wallet
+                controller.openWallet(new CustomEvent("test"));
+            });
         })
     }
 
