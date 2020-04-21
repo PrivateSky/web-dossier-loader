@@ -131,6 +131,8 @@ function MainController() {
                             return window.location.reload();
                         }
 
+                        spinner.attachToView();
+
                         // After the all the service works have been unregistered and stopped
                         // rebuild the wallet
                         walletService.rebuild(pin, (err, wallet) => {
