@@ -166,7 +166,7 @@ function MainController() {
     }
 
     this.initView = function () {
-        walletService.hasSeedCage((err, result) => {
+        walletService.hasSeedCage((result) => {
             if (!result) {
                 return this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
