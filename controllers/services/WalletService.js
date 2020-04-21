@@ -29,10 +29,10 @@ function WalletService(options) {
     this.hasSeedCage = function (callback) {
         EDFS.checkForSeedCage((err) => {
             if (err) {
-                return callback(undefined, false);
+                return callback(false);
             }
 
-            callback(undefined, true);
+            callback(true);
         });
     };
 
@@ -164,9 +164,11 @@ function WalletService(options) {
                     }
                 });
 
+
                 walletBuilder.rebuild((err) => {
                     if (err) {
-                        return console.error(err);
+                        console.error(err);
+                        return callback(err);
                     }
                     callback(undefined, wallet);
                 })

@@ -10,5 +10,4 @@ APP_CONFIG={
   EDFS_ENDPOINT:"http://localhost:8080",
   MODE: 'secure',
   PIN_MIN_LENGTH:4
-  /*DEVELOPMENT_PIN:"1212"*/
 };

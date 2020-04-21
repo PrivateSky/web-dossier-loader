@@ -1,3 +1,3 @@
 /node_modules
 /.idea
-local-config.json
+loader-config.local.json

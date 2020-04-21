@@ -4,11 +4,21 @@ import FileService from "./services/FileService.js";
 
 function MainController() {
 
-    let pin;
-    let spinner;
+    const WALLET_LAST_UPDATE_TIMESTAMP_KEY = '__waletLastUpdated';
+    const DEFAULT_PIN = '12345';
+
     const walletService = new WalletService();
     const fileService = new FileService();
 
+    let pin;
+    let spinner;
+
+    /**
+     * Return path to file relative to the `loader` folder
+     *
+     * @param {string} file
+     * @return {string}
+     */
     function getUrl(file) {
         let pathSegments = window.location.pathname.split('/');
         let loaderPath = pathSegments.pop();
@@ -21,13 +31,13 @@ function MainController() {
 
 
     /**
-     * Try and fetch 'local-config.json' and overwrite
+     * Try and fetch 'loader-config.local.json' and overwrite
      * the standard configuration
      *
      * @param {callback} callback
      */
-    function getConfiguration(callback) {
-        const localConfigurationPath = getUrl('local-config.json');
+    function loadLocalConfiguration(callback) {
+        const localConfigurationPath = getUrl('loader-config.local.json');
 
         fileService.getFile(localConfigurationPath, (err, data) => {
             if (err) {
@@ -39,21 +49,18 @@ function MainController() {
             try {
                 configuration = JSON.parse(data);
             } catch (e) {
-                console.error(e);
                 return callback();
             }
 
             APP_CONFIG = Object.assign(APP_CONFIG, configuration);
-            callback(APP_CONFIG);
+            callback();
         })
     }
 
-
-    function displayContainer(containerId) {
-        document.getElementById(containerId).style.display = "block";
-    }
-
     /**
+     * Fetch the 'last-update.txt' file and compare the timestamp
+     * with the one stored in local storage.
+     *
      * @param {callback} callback
      */
     function checkForWalletUpdates(callback) {
@@ -69,7 +76,7 @@ function MainController() {
                 return callback(false);
             }
 
-            const walletLastUpdateTimestamp = parseInt(localStorage.getItem('__walletLastUpdated'), 10);
+            const walletLastUpdateTimestamp = parseInt(localStorage.getItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY), 10);
             if (isNaN(walletLastUpdateTimestamp)) {
                 return callback(true);
             }
@@ -82,47 +89,56 @@ function MainController() {
         })
     }
 
+    /**
+     * Run the loader in development mode
+     *
+     * Create a default wallet with a default pin if none exists
+     * and load it
+     */
     function runInDevelopment() {
-        walletService.hasSeedCage((err, result) => {
+        walletService.hasSeedCage((result) => {
+            pin = APP_CONFIG.DEVELOPMENT_PIN || DEFAULT_PIN;
+
             if (!result) {
                 // Create a new wallet
                 spinner.attachToView();
                 walletService.setEDFSEndpoint(APP_CONFIG.EDFS_ENDPOINT);
-                walletService.create(APP_CONFIG.DEVELOPMENT_PIN, (err, wallet) => {
+                walletService.create(pin, (err, wallet) => {
                     if (err) {
                         return console.error(err);
                     }
+                    localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                     window.location.reload();
                 });
                 return;
             }
 
-            pin = APP_CONFIG.DEVELOPMENT_PIN;
+            // Load an existing wallet
             checkForWalletUpdates((hasUpdates) => {
                 if (hasUpdates) {
-                    // Unregister the swLoader.js
-                    navigator.serviceWorker.getRegistration().then((reg) => {
-                        if (!reg) {
+                    // Unregister the service workers to allow wallet rebuilding
+                    // and clear the cache
+                    navigator.serviceWorker.getRegistrations().then((registrations) => {
+                        if (!registrations || !registrations.length) {
                             return;
                         }
 
-                        return reg.unregister();
+                        const unregisterPromises = registrations.map(reg => reg.unregister());
+                        return Promise.all(unregisterPromises);
                     }).then((result) => {
                         if (result) {
-                            // If a registration was found and unregistration
-                            // was requests, reload the window before performing
-                            // wallet rebuilding
+                            // Reload the page after unregistering the service workers
                             return window.location.reload();
                         }
 
-                        // After the swLoader.js has been unregistered and stopped
+                        // After the all the service works have been unregistered and stopped
                         // rebuild the wallet
                         walletService.rebuild(pin, (err, wallet) => {
                             if (err) {
                                 return console.error(err);
                             }
 
-                            localStorage.setItem('__walletLastUpdated', Date.now());
+                            localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                             console.log('Wallet was rebuilt.');
                             window.location.reload();
                         })
@@ -140,7 +156,7 @@ function MainController() {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
         spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
 
-        getConfiguration(() => {
+        loadLocalConfiguration(() => {
             if (APP_CONFIG.MODE === 'development') {
                 return runInDevelopment();
             }
@@ -152,10 +168,14 @@ function MainController() {
     this.initView = function () {
         walletService.hasSeedCage((err, result) => {
             if (!result) {
-                return displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
+                return this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
-            displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
+            this.displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
         })
+    };
+
+    this.displayContainer = function (containerId) {
+        document.getElementById(containerId).style.display = "block";
     };
 
     this.validatePIN = function () {
@@ -193,6 +213,7 @@ function MainController() {
                         console.error(err);
                         return console.error("Operation failed. Try again");
                     }
+                    console.log(`Loading wallet ${wallet.getSeed()}`);
 
                     const PskCrypto = require("pskcrypto");
                     const hexDigest = PskCrypto.pskHash(wallet.getSeed(), "hex");
@@ -260,6 +281,3 @@ document.addEventListener("DOMContentLoaded", function () {
     controller.init();
 });
 window.controller = controller;
-
-
-
