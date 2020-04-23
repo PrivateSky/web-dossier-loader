@@ -1,11 +1,13 @@
 import SpinnerService from "./services/SpinnerService.js";
+import WalletService from "./services/WalletService.js";
+
 function RestoreController() {
 
-    let EDFS;
     let seed;
     let pin;
     let wizard;
     let spinner;
+    const walletService = new WalletService();
 
     function displayContainer(containerId) {
         document.getElementById(containerId).style.display = "block";
@@ -14,14 +16,8 @@ function RestoreController() {
     this.initView = function () {
         document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
         spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
-        EDFS = require("edfs");
-        EDFS.checkForSeedCage((err) => {
-            if (err) {
-                //inform user that he is possible to delete his old pskwallet instance
-            }
-
+        walletService.hasSeedCage((err, result) => {
             wizard = new Stepper(document.getElementById("psk-wizard"));
-
         });
     };
 
@@ -54,14 +50,14 @@ function RestoreController() {
         event.preventDefault();
         seed = document.getElementById("seed").value;
         try {
-            EDFS.attachWithSeed(seed, function(err, edfs){
-                if(err){
+            walletService.restoreFromSeed(seed, (err) => {
+                if (err) {
                     throw err;
                 }
-                EDFS = edfs;
-                wizard.next();
-            });
 
+                wizard.next();
+
+            });
         }
         catch (e) {
            console.log(e);
@@ -78,12 +74,12 @@ function RestoreController() {
 
     this.setPin = function (event) {
         event.preventDefault();
-        EDFS.loadWallet(seed, pin, true, function (err, wallet) {
+        walletService.changePin(seed, pin, (err, wallet) => {
             if (err) {
                 return document.getElementById("pinError").innerText = "Operation failed. Try again"
             }
             wizard.next();
-        });
+        })
     };
 
     this.openWallet = function (event) {
