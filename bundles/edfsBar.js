@@ -1380,15 +1380,15 @@ function ArchiveConfigurator() {
         config.seedEndpoint = endpoint;
     };
 
-    this.setSeedId = (id) => {
-        config.seed.setId(id);
-        this.setMapDigest(id);
+    this.setSeedKey = (key) => {
+        config.seed.setKey(key);
+        this.setMapDigest(key);
     };
 
-    this.getSeedId = () => {
+    this.getSeedKey = () => {
         loadSeed();
         if (config.seed) {
-            return config.seed.getId();
+            return config.seed.getKey();
         }
     };
 
@@ -1398,7 +1398,7 @@ function ArchiveConfigurator() {
         if (endpoint) {
             this.setStorageProvider("EDFSBrickStorage", endpoint);
         }
-        this.setMapDigest(config.seed.getId());
+        this.setMapDigest(config.seed.getKey());
     };
 
     this.getSeed = () => {
@@ -1425,24 +1425,24 @@ function ArchiveConfigurator() {
         if (!config.seedEndpoint && config.seed) {
             config.seedEndpoint = config.seed.getEndpoint();
         }
-        config.seed = new Seed(undefined, undefined, config.seedEndpoint, !!config.encryption);
-        if (config.seed.getId()) {
-            self.setMapDigest(config.seed.getId());
+        config.seed = new Seed(undefined, config.seedEndpoint);
+        if (config.seed.getKey()) {
+            self.setMapDigest(config.seed.getKey());
         }
     };
 
     this.setCache = (cacheInstance) => {
         cache = cacheInstance;
-    }
+    };
 
     this.getCache = () => {
         return cache;
-    }
+    };
 
     //--------------------------
     function loadSeed() {
         if (!config.seed) {
-            config.seed = new Seed(undefined, undefined, config.seedEndpoint, !!config.encryption);
+            config.seed = new Seed(undefined, config.seedEndpoint);
         }
     }
 }
@@ -1493,16 +1493,16 @@ function Brick(config) {
         return hash;
     };
 
-    this.getId = () => {
-        const seedId = config.getSeedId();
+    this.getKey = () => {
+        const seedId = config.getSeedKey();
         if (seedId) {
             return seedId;
         }
         return config.getMapDigest();
     };
 
-    this.setId = (id) => {
-        config.setSeedId(id);
+    this.setKey = (key) => {
+        config.setSeedKey(key);
     };
 
     this.getSeed = () => {
@@ -2405,12 +2405,12 @@ function FolderBrickStorage(location) {
         const barMapBrick = barMap.toBrick();
         barMapBrick.setTransformParameters(barMap.getTransformParameters());
        
-        let brickId = barMapBrick.getId();
+        let brickId = barMapBrick.getKey();
         if (!brickId) {
             brickId = barMapBrick.getHash();
         }
 
-        barMapBrick.setId(brickId);
+        barMapBrick.setKey(brickId);
         const writeStream = fs.createWriteStream(path.join(location, brickId));
         writeStream.write(barMapBrick.getTransformedData(), (err) => {
             writeStream.end();
@@ -2452,10 +2452,11 @@ module.exports = {
 },{"./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","./FolderBarMap":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBarMap.js","fs":false,"path":false}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Seed.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("pskcrypto");
+const base58 = require("./base58");
 
-function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength = 32) {
+function Seed(compactSeed, endpoint, key) {
     let seed;
-
+    const keyLen = 32;
     init();
 
     this.getCompactForm = () => {
@@ -2466,38 +2467,29 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
         return generateCompactForm(seed);
     };
 
-    this.getLocation = () => {
-        if (!seed) {
-            throw Error("Cannot retrieve location");
-        }
-
-        return seed.endpoint + "/" + seed.id.toString("hex");
-    };
-
     this.getEndpoint = () => {
         if (!seed) {
             throw Error("Cannot retrieve endpoint");
         }
 
-        return seed.endpoint.toString();
+        return seed.endpoint;
     };
 
-    this.getId = () => {
-        if (!seed.id) {
+    this.getAnchorURL = () => {
+        if (!seed.key) {
             return;
         }
-        return seed.id.toString("hex");
+        return seed.endpoint + "/" + crypto.pskHash(seed.key, "hex");
     };
 
-    this.setId = (localId) => {
-        seed.id = localId;
+    this.getKey = () => {
+        return crypto.pskHash(seed.key, "hex");
+    };
+    this.setKey = (key) => {
+        seed.key = key;
     };
 
     this.getEncryptionKey = (algorithm) => {
-        if (seed.tag === 'r') {
-            return;
-        }
-
         return crypto.deriveKey(algorithm, generateCompactForm(seed));
     };
 
@@ -2512,24 +2504,18 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
 
     function create() {
         const localSeed = {};
-        localSeed.id = id;
-        if (!id && usedForEncryption) {
+        localSeed.key = key;
+        if (!key) {
             //Bugfix: randomBytes in browser returns an Uint8Array object that has a wrong constructor and prototype
             //that is why we create a new instance of Buffer/Uint8Array based on the result of randomBytes
-            localSeed.id = Buffer.from(crypto.randomBytes(randomLength));
+            localSeed.key = Buffer.from(crypto.randomBytes(keyLen));
             //TODO: why don't we use ID Generator from swarmutils?
         }
 
         if (endpoint) {
             localSeed.endpoint = endpoint;
-        }else{
+        } else {
             throw Error("The SEED could not be created because an endpoint was not provided.")
-        }
-
-        if (usedForEncryption === true) {
-            localSeed.flag = 'e';
-        }else{
-            localSeed.flag = 'r';
         }
 
         return localSeed;
@@ -2540,16 +2526,15 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
             return expandedSeed;
         }
 
-        if(!expandedSeed.id){
+        if (!expandedSeed.key) {
             throw Error("The seed does not contain an id");
         }
-        let compactSeed = expandedSeed.id.toString('base64');
+        let compactSeed = base58.encode(expandedSeed.key);
         if (expandedSeed.endpoint) {
-            compactSeed += '|' + Buffer.from(JSON.stringify(expandedSeed.endpoint)).toString('base64');
+            compactSeed += '|' + base58.encode(expandedSeed.endpoint);
         }
 
-        compactSeed += expandedSeed.flag;
-        return Buffer.from(encodeURIComponent(compactSeed));
+        return compactSeed;
     }
 
     function load(compactFormSeed) {
@@ -2565,16 +2550,12 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
             compactFormSeed = compactFormSeed.toString();
         }
 
-        const decodedCompactSeed = decodeURIComponent(compactFormSeed);
         const localSeed = {};
-        const splitCompactSeed = decodedCompactSeed.split('|');
-
-        localSeed.flag = splitCompactSeed[1][splitCompactSeed[1].length - 1];
-        splitCompactSeed[1] = splitCompactSeed[1].slice(0, -1);
-        localSeed.id = Buffer.from(splitCompactSeed[0], 'base64');
+        const splitCompactSeed = compactFormSeed.split('|');
+        localSeed.key = base58.decode(splitCompactSeed[0]);
 
         if (splitCompactSeed[1] && splitCompactSeed[1].length > 0) {
-            localSeed.endpoint = JSON.parse(Buffer.from(splitCompactSeed[1], 'base64').toString());
+            localSeed.endpoint = base58.decode(splitCompactSeed[1]).toString();
         } else {
             console.warn('Cannot find endpoint in compact seed')
         }
@@ -2584,9 +2565,149 @@ function Seed(compactSeed, id, endpoint, usedForEncryption  = true, randomLength
 }
 
 module.exports = Seed;
+
+
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false,"pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransform.js":[function(require,module,exports){
+},{"./base58":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/base58.js","buffer":false,"pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/base58.js":[function(require,module,exports){
+(function (Buffer){
+const ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
+const BASE = ALPHABET.length;
+const LEADER = ALPHABET.charAt(0);
+const FACTOR = Math.log(BASE) / Math.log(256); // log(BASE) / log(256), rounded up
+const iFACTOR = Math.log(256) / Math.log(BASE); // log(256) / log(BASE), rounded up
+
+const BASE_MAP = Buffer.alloc(256);
+for (let j = 0; j < BASE_MAP.length; j++) {
+    BASE_MAP[j] = 255
+}
+for (let i = 0; i < ALPHABET.length; i++) {
+    let x = ALPHABET.charAt(i);
+    let xc = x.charCodeAt(0);
+    if (BASE_MAP[xc] !== 255) {
+        throw new TypeError(x + ' is ambiguous');
+    }
+    BASE_MAP[xc] = i;
+}
+
+function encode(source) {
+    if (Array.isArray(source) || source instanceof Uint8Array || typeof source === "string") {
+        source = Buffer.from(source);
+    }
+    if (!Buffer.isBuffer(source)) {
+        throw new TypeError('Expected Buffer');
+    }
+    if (source.length === 0) {
+        return '';
+    }
+    // Skip & count leading zeroes.
+    let zeroes = 0;
+    let length = 0;
+    let pbegin = 0;
+    const pend = source.length;
+    while (pbegin !== pend && source[pbegin] === 0) {
+        pbegin++;
+        zeroes++;
+    }
+    // Allocate enough space in big-endian base58 representation.
+    const size = ((pend - pbegin) * iFACTOR + 1) >>> 0;
+    const b58 = Buffer.alloc(size);
+    // Process the bytes.
+    while (pbegin !== pend) {
+        let carry = source[pbegin];
+        // Apply "b58 = b58 * 256 + ch".
+        let i = 0;
+        for (let it1 = size - 1; (carry !== 0 || i < length) && (it1 !== -1); it1--, i++) {
+            carry += (256 * b58[it1]) >>> 0;
+            b58[it1] = (carry % BASE) >>> 0;
+            carry = (carry / BASE) >>> 0;
+        }
+        if (carry !== 0) {
+            throw new Error('Non-zero carry');
+        }
+        length = i;
+        pbegin++;
+    }
+    // Skip leading zeroes in base58 result.
+    let it2 = size - length;
+    while (it2 !== size && b58[it2] === 0) {
+        it2++;
+    }
+    // Translate the result into a string.
+    let str = LEADER.repeat(zeroes);
+    for (; it2 < size; ++it2) {
+        str += ALPHABET.charAt(b58[it2]);
+    }
+    return str;
+}
+
+function decode(source) {
+    if (typeof source !== 'string') {
+        throw new TypeError('Expected String');
+    }
+    if (source.length === 0) {
+        return Buffer.alloc(0);
+    }
+    let psz = 0;
+    // Skip leading spaces.
+    if (source[psz] === ' ') {
+        return;
+    }
+    // Skip and count leading '1's.
+    let zeroes = 0;
+    let length = 0;
+    while (source[psz] === LEADER) {
+        zeroes++;
+        psz++;
+    }
+    // Allocate enough space in big-endian base256 representation.
+    const size = (((source.length - psz) * FACTOR) + 1) >>> 0; // log(58) / log(256), rounded up.
+    const b256 = Buffer.alloc(size);
+    // Process the characters.
+    while (source[psz]) {
+        // Decode character
+        let carry = BASE_MAP[source.charCodeAt(psz)];
+        // Invalid character
+        if (carry === 255) {
+            return;
+        }
+        let i = 0;
+        for (let it3 = size - 1; (carry !== 0 || i < length) && (it3 !== -1); it3--, i++) {
+            carry += (BASE * b256[it3]) >>> 0;
+            b256[it3] = (carry % 256) >>> 0;
+            carry = (carry / 256) >>> 0;
+        }
+        if (carry !== 0) {
+            throw new Error('Non-zero carry');
+        }
+        length = i;
+        psz++;
+    }
+    // Skip trailing spaces.
+    if (source[psz] === ' ') {
+        return;
+    }
+    // Skip leading zeroes in b256.
+    let it4 = size - length;
+    while (it4 !== size && b256[it4] === 0) {
+        it4++;
+    }
+    const vch = Buffer.alloc(zeroes + (size - it4));
+    vch.fill(0x00, 0, zeroes);
+    let j = zeroes;
+    while (it4 !== size) {
+        vch[j++] = b256[it4++];
+    }
+    return vch;
+}
+
+module.exports = {
+    encode,
+    decode
+};
+}).call(this,require("buffer").Buffer)
+
+},{"buffer":false}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransform.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransform(transformGenerator) {
     let directTransform;
@@ -3006,10 +3127,10 @@ function EDFSBrickStorage(endpoint) {
         const barMapBrick = barMap.toBrick();
         barMapBrick.setTransformParameters(barMap.getTransformParameters());
 
-        let brickId = barMapBrick.getId();
+        let brickId = barMapBrick.getKey();
         if (!brickId) {
             brickId = barMapBrick.getHash();
-            barMapBrick.setId(brickId);
+            barMapBrick.setKey(brickId);
         }
 
         brickTransportStrategy.getHashForAlias(brickId, (err, hashesList) => {
@@ -3072,6 +3193,9 @@ function EDFSBrickStorage(endpoint) {
 
                 const mapBrick = bar.createBrick();
                 mapBrick.setTransformedData(barMapData);
+                if (barMapId !== mapBrick.getHash()) {
+                    return callback(Error("Invalid data received"));
+                }
                 map = bar.createBarMap(mapBrick);
                 callback(undefined, map);
             });
@@ -3509,6 +3633,7 @@ HTTPBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
 
 module.exports = HTTPBrickTransportStrategy;
 },{"psk-http-client":"psk-http-client"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js":[function(require,module,exports){
+(function (Buffer){
 function BrickTransportStrategiesRegistry() {
     const strategies = {};
 
@@ -3526,7 +3651,7 @@ function BrickTransportStrategiesRegistry() {
 
     this.get = (endpoint) => {
         if (typeof endpoint !== "string" || endpoint.length === 0) {
-            throw Error("Invalid endpoint");
+            throw Error(`Invalid endpoint ${endpoint}, ${typeof endpoint} ${Buffer.isBuffer(endpoint)}`);
         }
 
         const strategyName = getStrategyNameFromEndpoint(endpoint);
@@ -3553,7 +3678,9 @@ function BrickTransportStrategiesRegistry() {
 if (!$$.brickTransportStrategiesRegistry) {
     $$.brickTransportStrategiesRegistry = new BrickTransportStrategiesRegistry();
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/EDFS.js":[function(require,module,exports){
+}).call(this,{"isBuffer":require("../../../node_modules/is-buffer/index.js")})
+
+},{"../../../node_modules/is-buffer/index.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/EDFS.js":[function(require,module,exports){
 function EDFS(endpoint, options) {
     options = options || {};
 
@@ -4330,6 +4457,8 @@ let logger = console;
 
 if (!global.process || process.env.NO_LOGS !== 'true') {
     try {
+        const zmqName = "zeromq";
+        require(zmqName);
         const PSKLoggerModule = require('psklogger');
         const PSKLogger = PSKLoggerModule.PSKLogger;
 
@@ -4337,7 +4466,7 @@ if (!global.process || process.env.NO_LOGS !== 'true') {
 
         console.log('Logger init successful', process.pid);
     } catch (e) {
-        if(e.message.indexOf("psklogger")!==-1){
+        if(e.message.indexOf("psklogger")!==-1 || e.message.indexOf("zeromq")!==-1){
             console.log('Logger not available, using console');
             logger = console;
         }else{
@@ -6936,7 +7065,30 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Queue.js","buffer":false,"crypto":false}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/array-set.js":[function(require,module,exports){
+},{"./Queue":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Queue.js","buffer":false,"crypto":false}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js":[function(require,module,exports){
+/*!
+ * Determine if an object is a Buffer
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+
+// The _isBuffer check is for Safari 5-7 support, because it's missing
+// Object.prototype.constructor. Remove this eventually
+module.exports = function (obj) {
+  return obj != null && (isBuffer(obj) || isSlowBuffer(obj) || !!obj._isBuffer)
+}
+
+function isBuffer (obj) {
+  return !!obj.constructor && typeof obj.constructor.isBuffer === 'function' && obj.constructor.isBuffer(obj)
+}
+
+// For Node v0.10 support. Remove this eventually.
+function isSlowBuffer (obj) {
+  return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
+}
+
+},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -10555,6 +10707,16 @@ try {
 
 var bufferFrom = require('buffer-from');
 
+/**
+ * Requires a module which is protected against bundler minification.
+ *
+ * @param {NodeModule} mod
+ * @param {string} request
+ */
+function dynamicRequire(mod, request) {
+  return mod.require(request);
+}
+
 // Only install once if called multiple times
 var errorFormatterInstalled = false;
 var uncaughtShimInstalled = false;
@@ -11101,6 +11263,17 @@ exports.install = function(options) {
   if (!uncaughtShimInstalled) {
     var installHandler = 'handleUncaughtExceptions' in options ?
       options.handleUncaughtExceptions : true;
+
+    // Do not override 'uncaughtException' with our own handler in Node.js
+    // Worker threads. Workers pass the error to the main thread as an event,
+    // rather than printing something to stderr and exiting.
+    try {
+      // We need to use `dynamicRequire` because `require` on it's own will be optimized by WebPack/Browserify.
+      var worker_threads = dynamicRequire(module, 'worker_threads');
+      if (worker_threads.isMainThread === false) {
+        installHandler = false;
+      }
+    } catch(e) {}
 
     // Provide the option to not install the uncaught exception handler. This is
     // to support other uncaught exception handlers (in test frameworks, for
