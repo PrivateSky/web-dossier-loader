@@ -1,6 +1,8 @@
 import SpinnerService from "./services/SpinnerService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
+import SWAgent from "./services/SWAgent.js";
+import SSAppRunner  from "./services/SSAppRunner.js";
 
 function MainController() {
 
@@ -12,6 +14,8 @@ function MainController() {
 
     let pin;
     let spinner;
+
+    const self = this;
 
     /**
      * Return path to file relative to the `loader` folder
@@ -149,7 +153,7 @@ function MainController() {
                 }
 
                 // restore existing wallet
-                controller.openWallet(new CustomEvent("test"));
+                self.openWallet();
             });
         })
     }
@@ -197,101 +201,33 @@ function MainController() {
     };
 
     this.openWallet = function (event) {
-        event.preventDefault();
+        if (event) {
+            event.preventDefault();
+        }
         spinner.attachToView();
+
         walletService.restoreFromPin(pin, (err) => {
             if (err) {
                 spinner.removeFromView();
                 return document.getElementById("pin-error").innerText = "Invalid PIN";
             }
 
-            loadRootSW((err) => {
+            walletService.load(pin, (err, wallet) => {
                 if (err) {
-                    throw err;
+                    console.error(err);
+                    return console.error("Operation failed. Try again");
                 }
+                console.log(`Loading wallet ${wallet.getSeed()}`);
 
-                walletService.load(pin, (err, wallet) => {
-                    if (err) {
-                        console.error(err);
-                        return console.error("Operation failed. Try again");
-                    }
-                    console.log(`Loading wallet ${wallet.getSeed()}`);
-
-                    const PskCrypto = require("pskcrypto");
-                    const hexDigest = PskCrypto.pskHash(wallet.getSeed(), "hex");
-
-                    loadIframeInDOM(hexDigest, wallet.getSeed());
-                })
+                new SSAppRunner({
+                    seed: wallet.getSeed()
+                }).run();
             })
-
         })
     };
-
-    function loadIframeInDOM(hexDigest, seed){
-        let iframe = document.createElement("iframe");
-        iframe.setAttribute("sandbox","allow-scripts allow-same-origin allow-forms");
-        iframe.setAttribute("frameborder","0");
-        iframe.style.overflow = "hidden";
-        iframe.style.height = "100%";
-        iframe.style.width = "100%";
-        iframe.style.display = "block";
-        iframe.style.zIndex="100";
-        let currentLocation = window.location;
-        iframe.src=currentLocation+"iframe/"+hexDigest;
-
-        window.addEventListener("message",(event)=>{
-            if(event.data.appIdentity){
-                if(event.data.appIdentity === hexDigest){
-                    iframe.contentWindow.postMessage({seed:seed},iframe.src);
-                }
-            }
-
-            if (event.data.status === "completed") {
-                document.write(`<html>
-                <body>
-                <style>
-                html, body {margin:0; padding: 0;}
-                </style>
-                ${iframe.outerHTML}
-                </body>
-                </html>`);
-            }
-
-            if (event.data.status === "error") {
-                //handle error;
-            }
-        });
-
-        navigator.serviceWorker.addEventListener('message', (e) => {
-            if (!e.data || e.data.query !== 'seed') {
-                return;
-            }
-
-            const swWorkerIdentity = e.data.identity;
-            if (swWorkerIdentity === hexDigest) {
-                e.source.postMessage({
-                    seed: seed
-                });
-            }
-        })
-
-        document.body.appendChild(iframe);
-
-    }
-
-
-    function loadRootSW(callback){
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('swLoader.js').then(function(reg) {
-                callback(undefined);
-            }).catch(function(err) {
-                callback(err);
-            });
-        }
-    }
 }
 
-let controller = new MainController();
+const controller = new MainController();
 document.addEventListener("DOMContentLoaded", function () {
     controller.init();
 });

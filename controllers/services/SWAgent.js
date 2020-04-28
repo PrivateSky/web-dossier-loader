@@ -4,17 +4,15 @@ function SWAgent() {
 let controllersChangeHandlers = [];
 
 navigator.serviceWorker.oncontrollerchange = function (event) {
-    if (event.target && event.target.controller) {
-        let serviceWorker = event.target.controller;
-        let serviceWorkerUrl = serviceWorker.scriptURL;
+    let serviceWorker = event.target.controller;
+    let serviceWorkerUrl = serviceWorker.scriptURL;
 
-        if (controllersChangeHandlers.length) {
-            let index = controllersChangeHandlers.length;
-            while (index--) {
-                if (serviceWorkerUrl.endsWith(controllersChangeHandlers[index].swName)) {
-                    controllersChangeHandlers[index].callback(undefined);
-                    controllersChangeHandlers.splice(index, 1);
-                }
+    if (controllersChangeHandlers.length) {
+        let index = controllersChangeHandlers.length;
+        while (index--) {
+            if (serviceWorkerUrl.endsWith(controllersChangeHandlers[index].swName)) {
+                controllersChangeHandlers[index].callback(undefined);
+                controllersChangeHandlers.splice(index, 1);
             }
         }
     }
@@ -66,16 +64,32 @@ SWAgent.restoreDossier = function (seed, callback) {
             SWAgent.sendMessage({seed: seed, url: window.location.origin}).then(data => {
                 callback(undefined);
             }).catch(err => {
-                console.log(err);
                 callback(err);
             })
-
         }
     }).catch(err => {
         callback(err);
     });
 };
 
+SWAgent.registerSW = function (options, callback) {
+    options = options || {};
+    const scope = (options.scope) ? {
+        scope: options.scope
+    } : undefined;
+
+    if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register(options.path, scope).then(function (reg) {
+            if (reg.active) {
+                return callback();
+            }
+            SWAgent.whenSwIsReady(options.name, callback);
+        }).catch(function (err) {
+            SWAgent.unregisterSW();
+            return callback('Operation failed. Try again');
+        })
+    }
+}
 
 SWAgent.unregisterSW = function () {
     navigator.serviceWorker.getRegistrations().then(function (registrations) {
@@ -97,31 +111,19 @@ SWAgent.unregisterSW = function () {
 
 
 SWAgent.loadWallet = function (seed, swConfig, callback) {
+    SWAgent.registerSW(swConfig, function (err)  {
+        if (err) {
+            throw err;
+        }
 
-    if ('serviceWorker' in navigator) {
-        navigator.serviceWorker.register(swConfig.swPath, {scope: swConfig.scope}).then(function (reg) {
-            SWAgent.whenSwIsReady(swConfig.swName, (err) => {
-                if (err) {
-                    throw err;
-                }
-                SWAgent.restoreDossier(seed, function (err) {
-                    if (err) {
-                        SWAgent.unregisterSW();
-                        return callback("Operation failed. Try again");
-                    }
-                    callback();
-                });
-            });
-
-        }).catch(function (err) {
-            SWAgent.unregisterSW();
-            return callback("Operation failed. Try again");
+        SWAgent.restoreDossier(seed, function (err) {
+            if (err) {
+                SWAgent.unregisterSW();
+                return callback("Operation failed. Try again");
+            }
+            callback();
         });
-    }
+    });
 };
 
 export default SWAgent;
-
-
-
-
