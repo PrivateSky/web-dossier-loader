@@ -1,9 +1,9 @@
-swBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"/home/vlad/Development/privatesky/web-wallet/privatesky/builds/tmp/swBoot.js":[function(require,module,exports){
+swBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot.js":[function(require,module,exports){
 const or = require('overwrite-require');
 or.enableForEnvironment(or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE);
 
 require("./swBoot_intermediar");
-},{"./swBoot_intermediar":"/home/vlad/Development/privatesky/web-wallet/privatesky/builds/tmp/swBoot_intermediar.js","overwrite-require":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/builds/tmp/swBoot_intermediar.js":[function(require,module,exports){
+},{"./swBoot_intermediar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js":[function(require,module,exports){
 (function (global){
 global.swBootLoadModules = function(){ 
 
@@ -45,7 +45,7 @@ if (typeof $$ !== "undefined") {
 require('source-map-support').install({});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"buffer-from":"buffer-from","edfs":"edfs","psk-cache":"psk-cache","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarm-engine/bootScripts/browser/sw":"swarm-engine/bootScripts/browser/sw"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/index.js":[function(require,module,exports){
+},{"buffer-from":"buffer-from","edfs":"edfs","psk-cache":"psk-cache","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarm-engine/bootScripts/browser/sw":"swarm-engine/bootScripts/browser/sw"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js":[function(require,module,exports){
 
 "use strict";
 
@@ -58,7 +58,7 @@ exports.roll = algorithm.roll.bind(algorithm);
 exports.Hash = Hash;
 exports.register = register;
 
-},{"./lib/Hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/Hash.js","./lib/algorithm":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/algorithm.js","./lib/register":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/register.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/Hash.js":[function(require,module,exports){
+},{"./lib/Hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","./lib/algorithm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","./lib/register":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -128,7 +128,7 @@ Hash.prototype._flush = function(callback)
 };
 }).call(this,require("buffer").Buffer)
 
-},{"./algorithm":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/algorithm.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/algorithm.js":[function(require,module,exports){
+},{"./algorithm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js":[function(require,module,exports){
 "use strict";
 
 /**
@@ -192,7 +192,7 @@ exports.roll = function(sum, length, oldByte, newByte)
 
 	return ((b << 16) | a) >>> 0;
 };
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/register.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js":[function(require,module,exports){
 "use strict";
 
 module.exports = function()
@@ -220,12 +220,12 @@ module.exports = function()
 	}
 	.bind(crypto.createHash.bind(this));
 };
-},{"./Hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/lib/Hash.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/index.js":[function(require,module,exports){
+},{"./Hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js":[function(require,module,exports){
 module.exports.createFsAdapter = () => {
     const FsAdapter = require("./lib/FsAdapter");
     return new FsAdapter();
 };
-},{"./lib/FsAdapter":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js":[function(require,module,exports){
+},{"./lib/FsAdapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js":[function(require,module,exports){
 (function (Buffer){
 const fsModule = "fs";
 const fs = require(fsModule);
@@ -290,7 +290,7 @@ function FsAdapter() {
 module.exports = FsAdapter;
 }).call(this,require("buffer").Buffer)
 
-},{"./PathAsyncIterator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js":[function(require,module,exports){
+},{"./PathAsyncIterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js":[function(require,module,exports){
 const fsModule = "fs";
 const fs = require(fsModule);
 const pathModule = "path";
@@ -416,7 +416,7 @@ function PathAsyncIterator(inputPath) {
 }
 
 module.exports = PathAsyncIterator;
-},{"swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/index.js":[function(require,module,exports){
+},{"swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js":[function(require,module,exports){
 
 const ArchiveConfigurator = require("./lib/ArchiveConfigurator");
 const createFolderBrickStorage = require("./lib/FolderBrickStorage").createFolderBrickStorage;
@@ -448,7 +448,7 @@ module.exports.Seed = require('./lib/Seed');
 module.exports.createFolderBrickStorage = createFolderBrickStorage;
 module.exports.createFileBrickStorage = createFileBrickStorage;
 
-},{"./lib/Archive":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Archive.js","./lib/ArchiveConfigurator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/ArchiveConfigurator.js","./lib/Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","./lib/FileBrickStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FileBrickStorage.js","./lib/FolderBarMap":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBarMap.js","./lib/FolderBrickStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBrickStorage.js","./lib/Seed":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Seed.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Archive.js":[function(require,module,exports){
+},{"./lib/Archive":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require('./Brick');
 const pathModule = "path";
@@ -1264,7 +1264,7 @@ module.exports = Archive;
 
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/isStream":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/isStream.js","./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","adler32":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/index.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","pskcrypto":"pskcrypto","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/ArchiveConfigurator.js":[function(require,module,exports){
+},{"../utils/isStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pskcrypto":"pskcrypto","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js":[function(require,module,exports){
 const storageProviders = {};
 const fsAdapters = {};
 const Seed = require("./Seed");
@@ -1480,7 +1480,7 @@ ArchiveConfigurator.prototype.registerFsAdapter = (fsAdapterName, factory) => {
 
 module.exports = ArchiveConfigurator;
 
-},{"./Seed":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Seed.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js":[function(require,module,exports){
+},{"./Seed":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js":[function(require,module,exports){
 const crypto = require('pskcrypto');
 const BrickTransformFactory = require("./transforms/BrickTransformFactory");
 const transformFactory = new BrickTransformFactory();
@@ -1637,7 +1637,7 @@ function Brick(config) {
 
 module.exports = Brick;
 
-},{"./transforms/BrickTransformFactory":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js","adler32":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/adler32/index.js","pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FileBarMap.js":[function(require,module,exports){
+},{"./transforms/BrickTransformFactory":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js","adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require("./Brick");
 const util = require("../utils/utilities");
@@ -1764,7 +1764,7 @@ function FileBarMap(header) {
 module.exports = FileBarMap;
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/utilities":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/utilities.js","./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FileBrickStorage.js":[function(require,module,exports){
+},{"../utils/utilities":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js":[function(require,module,exports){
 (function (Buffer){
 const BarMap = require("./FileBarMap");
 const util = require("../utils/utilities");
@@ -1984,7 +1984,7 @@ module.exports = {
 };
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/AsyncDispatcher":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/AsyncDispatcher.js","../utils/utilities":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/utilities.js","./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","./FileBarMap":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FileBarMap.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBarMap.js":[function(require,module,exports){
+},{"../utils/AsyncDispatcher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js","../utils/utilities":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FileBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require("./Brick");
 const pathModule = "path";
@@ -2373,7 +2373,7 @@ function FolderBarMap(header) {
 module.exports = FolderBarMap;
 }).call(this,require("buffer").Buffer)
 
-},{"./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBrickStorage.js":[function(require,module,exports){
+},{"./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js":[function(require,module,exports){
 const fs = require("fs");
 const path = require("path");
 const BarMap = require("./FolderBarMap");
@@ -2472,7 +2472,7 @@ module.exports = {
         return new FolderBrickStorage(location);
     }
 };
-},{"./Brick":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Brick.js","./FolderBarMap":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/FolderBarMap.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/Seed.js":[function(require,module,exports){
+},{"./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FolderBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("pskcrypto");
 const base58 = require("./base58");
@@ -2552,12 +2552,12 @@ function Seed(compactSeed, endpoint, key) {
         if (!expandedSeed.key) {
             throw Error("The seed does not contain an id");
         }
-        let compactSeed = base58.encode(expandedSeed.key);
+        let compactSeed = expandedSeed.key.toString("hex");
         if (expandedSeed.endpoint) {
-            compactSeed += '|' + base58.encode(expandedSeed.endpoint);
+            compactSeed += '|' + expandedSeed.endpoint.toString();
         }
 
-        return compactSeed;
+        return base58.encode(compactSeed);
     }
 
     function load(compactFormSeed) {
@@ -2574,11 +2574,11 @@ function Seed(compactSeed, endpoint, key) {
         }
 
         const localSeed = {};
-        const splitCompactSeed = compactFormSeed.split('|');
-        localSeed.key = base58.decode(splitCompactSeed[0]);
+        const splitCompactSeed = base58.decode(compactFormSeed).toString().split('|');
+        localSeed.key = Buffer.from(splitCompactSeed[0], "hex");
 
         if (splitCompactSeed[1] && splitCompactSeed[1].length > 0) {
-            localSeed.endpoint = base58.decode(splitCompactSeed[1]).toString();
+            localSeed.endpoint = splitCompactSeed[1];
         } else {
             console.warn('Cannot find endpoint in compact seed')
         }
@@ -2592,7 +2592,7 @@ module.exports = Seed;
 
 }).call(this,require("buffer").Buffer)
 
-},{"./base58":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/base58.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/base58.js":[function(require,module,exports){
+},{"./base58":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\base58.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\base58.js":[function(require,module,exports){
 (function (Buffer){
 const ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 const BASE = ALPHABET.length;
@@ -2730,7 +2730,7 @@ module.exports = {
 };
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransform.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransform(transformGenerator) {
     let directTransform;
@@ -2787,7 +2787,7 @@ module.exports = BrickTransform;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator= require("./EncryptionGenerator");
 const CompressionEncryptionGenerator = require("./CompressionEncryptionGenerator");
@@ -2824,7 +2824,7 @@ function BrickTransformFactory() {
 module.exports = BrickTransformFactory;
 
 
-},{"./BrickTransform":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/BrickTransform.js","./CompressionEncryptionGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js","./CompressionGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js":[function(require,module,exports){
+},{"./BrickTransform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js","./CompressionEncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js","./CompressionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator = require("./EncryptionGenerator");
 
@@ -2867,7 +2867,7 @@ function CompressionEncryptionGenerator(config) {
 }
 
 module.exports = CompressionEncryptionGenerator;
-},{"./CompressionGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/CompressionGenerator.js":[function(require,module,exports){
+},{"./CompressionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js":[function(require,module,exports){
 const zlib = require("zlib");
 
 function CompressionGenerator(config) {
@@ -2921,7 +2921,7 @@ function CompressionGenerator(config) {
 module.exports = CompressionGenerator;
 
 
-},{"zlib":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-zlib/lib/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js":[function(require,module,exports){
+},{"zlib":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js":[function(require,module,exports){
 const crypto = require("pskcrypto");
 
 function EncryptionGenerator(config) {
@@ -3008,7 +3008,7 @@ function EncryptionGenerator(config) {
 }
 
 module.exports = EncryptionGenerator;
-},{"pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/AsyncDispatcher.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js":[function(require,module,exports){
 
 function AsyncDispatcher(finalCallback) {
 	let results = [];
@@ -3058,7 +3058,7 @@ function AsyncDispatcher(finalCallback) {
 }
 
 module.exports = AsyncDispatcher;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/isStream.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js":[function(require,module,exports){
 function isStream(stream){
     return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
 }
@@ -3090,7 +3090,7 @@ module.exports = {
     isDuplex
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/utils/utilities.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js":[function(require,module,exports){
 const fs = require('fs');
 const OFFSET_SIZE = 8;
 
@@ -3109,7 +3109,7 @@ function ensureFileDoesNotExist(filePath, callback) {
 }
 
 module.exports = {getBarMapOffsetSize, ensureFileDoesNotExist};
-},{"fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/OBFTImplementation.js":[function(require,module,exports){
+},{"fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\OBFTImplementation.js":[function(require,module,exports){
 let pskcrypto = require("pskcrypto");
 let fs = require("fs");
 
@@ -3268,7 +3268,7 @@ exports.createConsensusManager = function (delegatedAgentName, communicationOutl
     return instance;
 }
 
-},{"./transactionsUtil":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/transactionsUtil.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/PulseUtil.js":[function(require,module,exports){
+},{"./transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\PulseUtil.js":[function(require,module,exports){
 function PulseUtil(signer, currentPulseNumber, block, newTransactions, vsd, top, last) {
     this.signer         = signer;               //a.k.a. delegatedAgentName
     this.currentPulse   = currentPulseNumber;
@@ -3292,7 +3292,7 @@ function PulseHistory(){
 module.exports.createPulseHistory = function () {
     return new PulseHistory();
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/transactionsUtil.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js":[function(require,module,exports){
 /*
 consensus helper functions when working with transactions
 */
@@ -3320,7 +3320,7 @@ module.exports.orderCRTransactions = function (pset) { //order in place the pset
     return arr;
 }
 
-},{"pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/blockchainSwarmTypes/asset_swarm_template.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\asset_swarm_template.js":[function(require,module,exports){
 var CNST = require("../moduleConstants");
 
 exports.createForObject = function(valueObject, thisObject, localId){
@@ -3367,7 +3367,7 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 	return ret;
 };
-},{"../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","callflow":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/blockchainSwarmTypes/transaction_swarm_template.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\transaction_swarm_template.js":[function(require,module,exports){
 let CNST = require("../moduleConstants");
 
 exports.createForObject = function(valueObject, thisObject, localId){
@@ -3414,7 +3414,7 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 	return ret;
 };
-},{"../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","callflow":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/ACLScope.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js":[function(require,module,exports){
 
 $$.asset.describe("ACLScope", {
     public:{
@@ -3437,7 +3437,7 @@ $$.asset.describe("ACLScope", {
         return true;
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Agent.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js":[function(require,module,exports){
 
 $$.asset.describe("Agent", {
     public:{
@@ -3463,7 +3463,7 @@ $$.asset.describe("Agent", {
 
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Backup.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js":[function(require,module,exports){
 
 $$.asset.describe("Backup", {
     public:{
@@ -3477,7 +3477,7 @@ $$.asset.describe("Backup", {
     }
 });
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/BarAnchor.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js":[function(require,module,exports){
 $$.asset.describe("BarAnchor", {
     public: {
         alias: "string",
@@ -3504,7 +3504,7 @@ $$.asset.describe("BarAnchor", {
         this.writeList.push(agentId);
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/CSBMeta.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js":[function(require,module,exports){
 
 $$.asset.describe("CSBMeta", {
 	public:{
@@ -3527,7 +3527,7 @@ $$.asset.describe("CSBMeta", {
 
 });
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/DomainConfig.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js":[function(require,module,exports){
 
 $$.asset.describe("DomainConfig", {
     public:{
@@ -3569,7 +3569,7 @@ $$.asset.describe("DomainConfig", {
         this.workerStrategy = workerStrategy;
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/DomainReference.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js":[function(require,module,exports){
 
 $$.asset.describe("DomainReference", {
     public:{
@@ -3595,7 +3595,7 @@ $$.asset.describe("DomainReference", {
         return this.workspace;
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/FileAnchor.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js":[function(require,module,exports){
 $$.asset.describe("FileAnchor", {
     public: {
         alias: "string",
@@ -3614,7 +3614,7 @@ $$.asset.describe("FileAnchor", {
 });
 
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Key.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js":[function(require,module,exports){
 
 $$.asset.describe("key", {
     public:{
@@ -3628,7 +3628,7 @@ $$.asset.describe("key", {
         this.value = value;
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js":[function(require,module,exports){
 module.exports = $$.library(function(){
     require("./DomainReference");
     require("./DomainConfig");
@@ -3641,7 +3641,7 @@ module.exports = $$.library(function(){
     require("./FileAnchor");
     require('./CSBMeta');
 });
-},{"../transactions/transactions":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/transactions.js","./ACLScope":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/ACLScope.js","./Agent":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Agent.js","./Backup":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Backup.js","./BarAnchor":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/BarAnchor.js","./CSBMeta":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/CSBMeta.js","./DomainConfig":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/DomainConfig.js","./DomainReference":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/DomainReference.js","./FileAnchor":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/FileAnchor.js","./Key":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/Key.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/swarms/index.js":[function(require,module,exports){
+},{"../transactions/transactions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js","./ACLScope":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js","./Agent":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js","./Backup":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js","./BarAnchor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js","./CSBMeta":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js","./DomainConfig":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js","./DomainReference":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js","./FileAnchor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js","./Key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js":[function(require,module,exports){
 if($$.swarms){
     $$.swarms.describe("transactionHandler", {
         start: function (identity, transactionName, methodName, ...args) {
@@ -3653,7 +3653,7 @@ if($$.swarms){
     });
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/agentTransaction.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("Agents", {
@@ -3674,7 +3674,7 @@ $$.transaction.describe("Agents", {
     getAgents: sharedPhases.getAllAssetsFactory('global.Agent')
 });
 
-},{"./sharedPhases":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/domainConfigTransaction.js":[function(require,module,exports){
+},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainConfigTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("DomainConfigTransaction", {
@@ -3708,7 +3708,7 @@ $$.transaction.describe("DomainConfigTransaction", {
     getDomains: sharedPhases.getAllAssetsFactory('global.DomainConfig')
 });
 
-},{"./sharedPhases":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/domainTransaction.js":[function(require,module,exports){
+},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("Domain", {
@@ -3811,7 +3811,7 @@ $$.transaction.describe("Domain", {
     getDomains: sharedPhases.getAllAssetsFactory('global.DomainReference')
 });
 
-},{"./sharedPhases":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/firstTransactionWorkaroundDeleteThis.js":[function(require,module,exports){
+},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\firstTransactionWorkaroundDeleteThis.js":[function(require,module,exports){
 /**
  * FIXME
  * The first block in the blockchain is 0.
@@ -3831,13 +3831,13 @@ $$.transaction.describe("TooShortBlockChainWorkaroundDeleteThis", {
         this.commit();
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js":[function(require,module,exports){
 require('./domainTransaction');
 require('./agentTransaction');
 require('./standardCSBTransactions');
 require('./domainConfigTransaction');
 require('./firstTransactionWorkaroundDeleteThis');
-},{"./agentTransaction":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/agentTransaction.js","./domainConfigTransaction":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/domainConfigTransaction.js","./domainTransaction":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/domainTransaction.js","./firstTransactionWorkaroundDeleteThis":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/firstTransactionWorkaroundDeleteThis.js","./standardCSBTransactions":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/standardCSBTransactions.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js":[function(require,module,exports){
+},{"./agentTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js","./domainConfigTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainConfigTransaction.js","./domainTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainTransaction.js","./firstTransactionWorkaroundDeleteThis":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\firstTransactionWorkaroundDeleteThis.js","./standardCSBTransactions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\standardCSBTransactions.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js":[function(require,module,exports){
 module.exports = {
     getAssetFactory: function(assetType) {
         return function(alias) {
@@ -3861,7 +3861,7 @@ module.exports = {
         };
     }
 };
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/standardCSBTransactions.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\standardCSBTransactions.js":[function(require,module,exports){
 $$.transaction.describe("StandardCSBTransactions", {
     addBarAnchor: function (mountPoint, barMapDigest) {
         this.transaction.createAsset("BarAnchor", "init", mountPoint, barMapDigest);
@@ -3906,7 +3906,7 @@ $$.transaction.describe("StandardCSBTransactions", {
         }
     }
 });
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/transactions.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js":[function(require,module,exports){
 $$.transaction.describe("transactions", {
     updateKey: function (key, value) {
         var transaction = $$.blockchain.beginTransaction(this);
@@ -3963,7 +3963,7 @@ usages:
 
  */
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\index.js":[function(require,module,exports){
 ___DISABLE_OBSOLETE_ZIP_ARCHIVER_WAIT_FOR_BARS = true;
 //require("../../../psknode/bundles/pskruntime.js");
 var callflowModule = require("callflow");
@@ -3977,7 +3977,7 @@ $$.transaction      = $$.transactions;
 module.exports = require('./moduleExports');
 
 
-},{"./blockchainSwarmTypes/asset_swarm_template":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/blockchainSwarmTypes/asset_swarm_template.js","./blockchainSwarmTypes/transaction_swarm_template":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/blockchainSwarmTypes/transaction_swarm_template.js","./moduleExports":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleExports.js","callflow":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js":[function(require,module,exports){
+},{"./blockchainSwarmTypes/asset_swarm_template":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\asset_swarm_template.js","./blockchainSwarmTypes/transaction_swarm_template":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\transaction_swarm_template.js","./moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
     ALIAS:"alias",
     ALIASES : '/aliases',
@@ -3992,7 +3992,7 @@ module.exports = {
     SWARMID:"swarmId",
     SWARMTYPE:"swarmTypeName"
 };
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleExports.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js":[function(require,module,exports){
 (function (process){
 module.exports = {
     createBlockchain:function(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, loadDefaultConstitution, forcedBoot){
@@ -4052,7 +4052,7 @@ module.exports = {
 }
 }).call(this,require('_process'))
 
-},{"./pskdb":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/index.js","./strategies/consensusAlgortims/consensusAlgoritmsRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/consensusAlgortims/consensusAlgoritmsRegistry.js","./strategies/historyStorages/historyStoragesRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/historyStoragesRegistry.js","./strategies/networkCommunication/networkCommunicationStrategiesRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/networkCommunication/networkCommunicationStrategiesRegistry.js","./strategies/signatureProvidersRegistry/signatureProvidersRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/signatureProvidersRegistry/signatureProvidersRegistry.js","./strategies/votingStrategies/votingStrategiesRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/votingStrategies/votingStrategiesRegistry.js","./strategies/worldStateCaches/worldStateCacheRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/worldStateCaches/worldStateCacheRegistry.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/Blockchain.js":[function(require,module,exports){
+},{"./pskdb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\index.js","./strategies/consensusAlgortims/consensusAlgoritmsRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\consensusAlgortims\\consensusAlgoritmsRegistry.js","./strategies/historyStorages/historyStoragesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\historyStoragesRegistry.js","./strategies/networkCommunication/networkCommunicationStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\networkCommunication\\networkCommunicationStrategiesRegistry.js","./strategies/signatureProvidersRegistry/signatureProvidersRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\signatureProvidersRegistry\\signatureProvidersRegistry.js","./strategies/votingStrategies/votingStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\votingStrategies\\votingStrategiesRegistry.js","./strategies/worldStateCaches/worldStateCacheRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\worldStateCaches\\worldStateCacheRegistry.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js":[function(require,module,exports){
 const bm = require('../moduleExports');
 const beesHealer = require("swarmutils").beesHealer;
 var CNST = require("../moduleConstants");
@@ -4256,7 +4256,7 @@ function Transaction(blockchain, pdsHandler, transactionSwarm, worldStateCache, 
 }
 
 module.exports = Blockchain;
-},{"../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","../moduleExports":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleExports.js","./securityParadigms/securityParadigmRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/securityParadigms/securityParadigmRegistry.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/index.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","../moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","./securityParadigms/securityParadigmRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\securityParadigmRegistry.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\index.js":[function(require,module,exports){
 const Blockchain = require('./Blockchain');
 
 module.exports = {
@@ -4285,7 +4285,7 @@ module.exports = {
     }
 };
 
-},{"../defaultConstitution/assets/index":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/assets/index.js","../defaultConstitution/swarms/index":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/swarms/index.js","../defaultConstitution/transactions/index":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/defaultConstitution/transactions/index.js","./Blockchain":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/Blockchain.js","./pskdb":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/pskdb.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/pskdb.js":[function(require,module,exports){
+},{"../defaultConstitution/assets/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js","../defaultConstitution/swarms/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js","../defaultConstitution/transactions/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js","./Blockchain":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js","./pskdb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js":[function(require,module,exports){
 let CNST = require("../moduleConstants");
 let cutil = require("../OBFT/transactionsUtil");
 // let bm = require("../moduleExports");
@@ -4679,7 +4679,7 @@ function VerificationKeySpaceHandler(parentStorage, worldStateCache, blockchain)
 exports.newPSKDB = function (worldStateCache, historyStorage) {
     return new PSKDB(worldStateCache, historyStorage);
 };
-},{"../OBFT/transactionsUtil":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/transactionsUtil.js","../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","./securityParadigms/localExecutionCache":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/securityParadigms/localExecutionCache.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/securityParadigms/localExecutionCache.js":[function(require,module,exports){
+},{"../OBFT/transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","./securityParadigms/localExecutionCache":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\localExecutionCache.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\localExecutionCache.js":[function(require,module,exports){
 let CNST=require("../../moduleConstants");
 let cache = {};
 
@@ -4754,7 +4754,7 @@ module.exports = {
     }
 };
 
-},{"../../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/pskdb/securityParadigms/securityParadigmRegistry.js":[function(require,module,exports){
+},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\securityParadigmRegistry.js":[function(require,module,exports){
 
 var CNST = require("../../moduleConstants");
 
@@ -4862,7 +4862,7 @@ module.exports = {
         return new Registry();
     }
 }
-},{"../../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/signsensus/SignSensusImplementation.js":[function(require,module,exports){
+},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\signsensus\\SignSensusImplementation.js":[function(require,module,exports){
 let pskcrypto = require("pskcrypto");
 let fs = require("fs");
 
@@ -5097,7 +5097,7 @@ exports.createConsensusManager = function (delegatedAgentName, communicationOutl
     return instance;
 }
 
-},{"../OBFT/transactionsUtil":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/transactionsUtil.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","pskcrypto":"pskcrypto"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/consensusAlgortims/consensusAlgoritmsRegistry.js":[function(require,module,exports){
+},{"../OBFT/transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\consensusAlgortims\\consensusAlgoritmsRegistry.js":[function(require,module,exports){
 var mod = require("../../moduleExports");
 
 function DirectCommitAlgorithm() {
@@ -5174,7 +5174,7 @@ module.exports = {
         }
     }
 };
-},{"../../OBFT/OBFTImplementation":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/OBFTImplementation.js","../../moduleExports":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleExports.js","../../signsensus/SignSensusImplementation":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/signsensus/SignSensusImplementation.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/BarHistoryStorage.js":[function(require,module,exports){
+},{"../../OBFT/OBFTImplementation":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\OBFTImplementation.js","../../moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","../../signsensus/SignSensusImplementation":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\signsensus\\SignSensusImplementation.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\BarHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function BarHistoryStorage(archive) {
@@ -5247,7 +5247,7 @@ function BarHistoryStorage(archive) {
 }
 
 module.exports = BarHistoryStorage;
-},{"./LatestHashTracker":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/FsHistoryStorage.js":[function(require,module,exports){
+},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\FsHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function FsHistoryStorage(folder) {
@@ -5352,7 +5352,7 @@ function FsHistoryStorage(folder) {
 
 module.exports = FsHistoryStorage;
 
-},{"./LatestHashTracker":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js":[function(require,module,exports){
+},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js":[function(require,module,exports){
 function LatestHashTracker() {
     let hlb = "none";
     let maxBlockNumber = 0;
@@ -5369,7 +5369,7 @@ function LatestHashTracker() {
 }
 
 module.exports = LatestHashTracker;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/MemoryHistoryStorage.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\MemoryHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function MemoryHistoryStorage() {
@@ -5396,7 +5396,7 @@ function MemoryHistoryStorage() {
 }
 
 module.exports = MemoryHistoryStorage;
-},{"./LatestHashTracker":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/historyStoragesRegistry.js":[function(require,module,exports){
+},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\historyStoragesRegistry.js":[function(require,module,exports){
 const FsHistoryStorage = require("./FsHistoryStorage");
 const MemoryHistoryStorage = require("./MemoryHistoryStorage");
 const BarHistoryStorage = require("./BarHistoryStorage");
@@ -5415,7 +5415,7 @@ module.exports = {
         }
     }
 };
-},{"./BarHistoryStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/BarHistoryStorage.js","./FsHistoryStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/FsHistoryStorage.js","./MemoryHistoryStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/historyStorages/MemoryHistoryStorage.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/networkCommunication/networkCommunicationStrategiesRegistry.js":[function(require,module,exports){
+},{"./BarHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\BarHistoryStorage.js","./FsHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\FsHistoryStorage.js","./MemoryHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\MemoryHistoryStorage.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\networkCommunication\\networkCommunicationStrategiesRegistry.js":[function(require,module,exports){
 (function (process){
 const mc = require("../../moduleConstants");
 let pulseUtil = require("../../OBFT/PulseUtil");
@@ -5481,7 +5481,7 @@ module.exports = {
 }
 }).call(this,require('_process'))
 
-},{"../../OBFT/PulseUtil":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/OBFT/PulseUtil.js","../../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/signatureProvidersRegistry/signatureProvidersRegistry.js":[function(require,module,exports){
+},{"../../OBFT/PulseUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\PulseUtil.js","../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\signatureProvidersRegistry\\signatureProvidersRegistry.js":[function(require,module,exports){
 function PermissiveSignatureProvider(){
     /*
     return a signature of message ms for agent agentId
@@ -5508,7 +5508,7 @@ module.exports = {
     }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/votingStrategies/votingStrategiesRegistry.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\votingStrategies\\votingStrategiesRegistry.js":[function(require,module,exports){
 
 function SimpleMajoritarianStrategy(shareHoldersCounter){
     this.refreshShares = function(){
@@ -5558,7 +5558,7 @@ module.exports = {
         }
     }
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/strategies/worldStateCaches/worldStateCacheRegistry.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\worldStateCaches\\worldStateCacheRegistry.js":[function(require,module,exports){
 (function (setImmediate){
 const mc = require("../../moduleConstants");
 
@@ -5716,7 +5716,7 @@ module.exports = {
 };
 }).call(this,require("timers").setImmediate)
 
-},{"../../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/moduleConstants.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","timers":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/timers-browserify/main.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/constants.js":[function(require,module,exports){
+},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\constants.js":[function(require,module,exports){
 $$.CONSTANTS = {
     SWARM_FOR_EXECUTION:"swarm_for_execution",//TODO: remove
     INBOUND:"inbound",//TODO: remove
@@ -5738,7 +5738,7 @@ $$.CONSTANTS.mixIn = function(otherConstants){
     }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js":[function(require,module,exports){
 (function (global){
 function initialise() {
     if($$.callflow){
@@ -5826,7 +5826,7 @@ module.exports = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./constants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/constants.js","./lib/InterceptorRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/InterceptorRegistry.js","./lib/loadLibrary":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/loadLibrary.js","./lib/parallelJoinPoint":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/parallelJoinPoint.js","./lib/serialJoinPoint":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/serialJoinPoint.js","./lib/swarmDescription":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/swarmDescription.js","./lib/utilityFunctions/base":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/base.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","soundpubsub":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/soundpubsub/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/InterceptorRegistry.js":[function(require,module,exports){
+},{"./constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\constants.js","./lib/InterceptorRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\InterceptorRegistry.js","./lib/loadLibrary":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\loadLibrary.js","./lib/parallelJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js","./lib/serialJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js","./lib/swarmDescription":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\swarmDescription.js","./lib/utilityFunctions/base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js","soundpubsub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\InterceptorRegistry.js":[function(require,module,exports){
 (function (global){
 // related to: SwarmSpace.SwarmDescription.createPhase()
 
@@ -6021,7 +6021,7 @@ exports.createInterceptorRegistry = function () {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/loadLibrary.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\loadLibrary.js":[function(require,module,exports){
 /*
 Initial License: (c) Axiologic Research & Alboaie Sînică.
 Contributors: Axiologic Research , PrivateSky project
@@ -6125,7 +6125,7 @@ exports.loadLibrary = function(prefixName, folder){
 }
 
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/parallelJoinPoint.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js":[function(require,module,exports){
 (function (process){
 
 var globalJoinCounter = 0;
@@ -6265,7 +6265,7 @@ exports.createJoinPoint = function(swarm, callback, args){
 };
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/serialJoinPoint.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js":[function(require,module,exports){
 
 var joinCounter = 0;
 
@@ -6390,7 +6390,7 @@ exports.createSerialJoinPoint = function(swarm, callback, args){
     jp.setProxyObject(p);
     return p;
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/swarmDescription.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\swarmDescription.js":[function(require,module,exports){
 const OwM = require("swarmutils").OwM;
 
 const swarmDescriptionsRegistry = {};
@@ -6757,7 +6757,7 @@ exports.createSwarmEngine = function(swarmType, utils){
 };
 
 
-},{"./utilityFunctions/callflow":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/callflow.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/SwarmDebug.js":[function(require,module,exports){
+},{"./utilityFunctions/callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\callflow.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\SwarmDebug.js":[function(require,module,exports){
 (function (process,global){
 /*
  Initial License: (c) Axiologic Research & Alboaie Sînică.
@@ -6956,7 +6956,7 @@ function localLog (logType, message, err) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/base.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js":[function(require,module,exports){
 var beesHealer = require("swarmutils").beesHealer;
 var swarmDebug = require("./SwarmDebug");
 
@@ -7088,12 +7088,12 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 };
 
-},{"../parallelJoinPoint":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/parallelJoinPoint.js","../serialJoinPoint":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/serialJoinPoint.js","./SwarmDebug":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/SwarmDebug.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/callflow.js":[function(require,module,exports){
+},{"../parallelJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js","../serialJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js","./SwarmDebug":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\SwarmDebug.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\callflow.js":[function(require,module,exports){
 exports.createForObject = function(valueObject, thisObject, localId){
 	var ret = require("./base").createForObject(valueObject, thisObject, localId);
 	return ret;
 };
-},{"./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/base.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js":[function(require,module,exports){
+},{"./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js":[function(require,module,exports){
 function EDFSBrickStorage(endpoint) {
 
     const bar = require("bar");
@@ -7213,13 +7213,13 @@ function EDFSBrickStorage(endpoint) {
 module.exports = EDFSBrickStorage;
 
 
-},{"bar":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-brick-storage/index.js":[function(require,module,exports){
+},{"bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js":[function(require,module,exports){
 module.exports.create = (endpoint) => {
     const EDFSBrickStorage = require("./EDFSBrickStorage");
     return new EDFSBrickStorage(endpoint)
 };
 
-},{"./EDFSBrickStorage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js":[function(require,module,exports){
+},{"./EDFSBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
 (function (Buffer){
 
 function FetchBrickTransportStrategy(initialConfig) {
@@ -7331,7 +7331,7 @@ module.exports = FetchBrickTransportStrategy;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js":[function(require,module,exports){
 
 function HTTPBrickTransportStrategy(endpoint) {
     require("psk-http-client");
@@ -7368,7 +7368,7 @@ HTTPBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
 };
 
 module.exports = HTTPBrickTransportStrategy;
-},{"psk-http-client":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js":[function(require,module,exports){
+},{"psk-http-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransportStrategiesRegistry() {
     const strategies = {};
@@ -7416,7 +7416,7 @@ if (!$$.brickTransportStrategiesRegistry) {
 }
 }).call(this,{"isBuffer":require("../../../node_modules/is-buffer/index.js")})
 
-},{"../../../node_modules/is-buffer/index.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/EDFS.js":[function(require,module,exports){
+},{"../../../node_modules/is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js":[function(require,module,exports){
 function EDFS(endpoint, options) {
     options = options || {};
 
@@ -7544,7 +7544,7 @@ function EDFS(endpoint, options) {
 
 module.exports = EDFS;
 
-},{"../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/moduleConstants.js","../seedCage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/index.js","./RawDossier":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/RawDossier.js","bar":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/index.js","bar-fs-adapter":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/index.js","edfs-brick-storage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-brick-storage/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/RawDossier.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawDossier":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js","edfs-brick-storage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js":[function(require,module,exports){
 function RawDossier(endpoint, seed, cache) {
     const barModule = require("bar");
     const constants = require("../moduleConstants").CSB;
@@ -7594,7 +7594,7 @@ function RawDossier(endpoint, seed, cache) {
         options = defaultOpts;
 
         if (options.ignoreMounts === true) {
-            bar.addFolder(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
+            bar.addFile(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
         } else {
             const splitPath = barPath.split("/");
             const fileName = splitPath.pop();
@@ -7678,6 +7678,10 @@ function RawDossier(endpoint, seed, cache) {
                 dossierContext.archive.writeFile(dossierContext.relativePath + "/" + fileName, data, options, callback);
             });
         }
+    };
+
+    this.delete = (barPath, callback) => {
+        bar.delete(barPath, callback);
     };
 
     this.listFiles = (path, callback) => {
@@ -7953,7 +7957,7 @@ function RawDossier(endpoint, seed, cache) {
 
 module.exports = RawDossier;
 
-},{"../moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/moduleConstants.js","bar":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/index.js","bar-fs-adapter":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar-fs-adapter/index.js","blockchain":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/blockchain/index.js","edfs-brick-storage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-brick-storage/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/moduleConstants.js":[function(require,module,exports){
+},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js","blockchain":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\index.js","edfs-brick-storage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js":[function(require,module,exports){
 const HTTPBrickTransportStrategy = require("./brickTransportStrategies/HTTPBrickTransportStrategy");
 HTTPBrickTransportStrategy.prototype.HTTP_BRICK_TRANSPORT_STRATEGY = "HTTP_BRICK_TRANSPORT_STRATEGY";
 
@@ -7972,7 +7976,7 @@ module.exports = {
     }
 };
 
-},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/BrowserSeedCage.js":[function(require,module,exports){
+},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pskcrypto = "pskcrypto";
 const crypto = require(pskcrypto);
@@ -8064,7 +8068,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/NodeSeedCage.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
 (function (process,Buffer){
 const pth = "path";
 const path = require(pth);
@@ -8163,7 +8167,7 @@ module.exports = {
 
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/index.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
 const or = require("overwrite-require");
 switch ($$.environmentType) {
     case or.constants.THREAD_ENVIRONMENT_TYPE:
@@ -8178,7 +8182,7 @@ switch ($$.environmentType) {
     default:
         throw new Error("No implementation of SeedCage for this env type.");
 }
-},{"./BrowserSeedCage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/BrowserSeedCage.js","./NodeSeedCage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/NodeSeedCage.js","overwrite-require":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js":[function(require,module,exports){
+},{"./BrowserSeedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js":[function(require,module,exports){
 (function (process,global){
 /*
  require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
@@ -8520,7 +8524,7 @@ module.exports = {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/moduleConstants.js","./standardGlobalSymbols.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/standardGlobalSymbols.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/moduleConstants.js":[function(require,module,exports){
+},{"./moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -8529,7 +8533,7 @@ module.exports = {
   NODEJS_ENVIRONMENT_TYPE: 'nodejs'
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/standardGlobalSymbols.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
 (function (process,global){
 let logger = console;
 
@@ -8843,7 +8847,7 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","psklogger":false}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-cache/lib/Cache.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","psklogger":false}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-cache\\lib\\Cache.js":[function(require,module,exports){
 const DEFAULT_ITEMS_LIMIT = 1000;
 const DEFAULT_STORAGE_LEVELS = 3;
 
@@ -8962,7 +8966,7 @@ function Cache(options) {
 
 module.exports = Cache;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\index.js":[function(require,module,exports){
 //to look nice the requireModule on Node
 require("./lib/psk-abstract-client");
 const or = require('overwrite-require');
@@ -8971,7 +8975,7 @@ if ($$.environmentType === or.constants.BROWSER_ENVIRONMENT_TYPE) {
 } else {
 	require("./lib/psk-node-client");
 }
-},{"./lib/psk-abstract-client":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","./lib/psk-browser-client":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-browser-client.js","./lib/psk-node-client":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-node-client.js","overwrite-require":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-abstract-client.js":[function(require,module,exports){
+},{"./lib/psk-abstract-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
 /**********************  utility class **********************************/
 function RequestManager(pollingTimeOut) {
     if (!pollingTimeOut) {
@@ -9388,7 +9392,7 @@ if (typeof $$.remote === "undefined") {
     };
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-browser-client.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js":[function(require,module,exports){
 (function (Buffer){
 function generateMethodForRequestWithData(httpMethod) {
     return function (url, data, callback) {
@@ -9526,7 +9530,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-node-client.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js":[function(require,module,exports){
 (function (process,Buffer){
 require("./psk-abstract-client");
 
@@ -9714,7 +9718,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"./psk-abstract-client":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","http":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/index.js","https":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/https-browserify/index.js","url":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/url.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/PskCrypto.js":[function(require,module,exports){
+},{"./psk-abstract-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","http":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js","https":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\https-browserify\\index.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js":[function(require,module,exports){
 (function (Buffer){
 function PskCrypto() {
     const crypto = require('crypto');
@@ -9883,7 +9887,7 @@ module.exports = new PskCrypto();
 
 }).call(this,require("buffer").Buffer)
 
-},{"./PskEncryption":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/PskEncryption.js","./utils/cryptoUtils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js","overwrite-require":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/PskEncryption.js":[function(require,module,exports){
+},{"./PskEncryption":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("crypto");
 const utils = require("./utils/cryptoUtils");
@@ -9968,7 +9972,7 @@ function PskEncryption(algorithm) {
 module.exports = PskEncryption;
 }).call(this,require("buffer").Buffer)
 
-},{"./utils/cryptoUtils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js":[function(require,module,exports){
+},{"./utils/cryptoUtils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js":[function(require,module,exports){
 const stream = require('stream');
 const util = require('util');
 
@@ -9993,7 +9997,7 @@ DuplexStream.prototype._read = function (n) {
 };
 
 module.exports = DuplexStream;
-},{"stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js":[function(require,module,exports){
+},{"stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 
@@ -10073,7 +10077,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/isStream.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js":[function(require,module,exports){
 const stream = require('stream');
 
 
@@ -10101,7 +10105,7 @@ module.exports            = isStream;
 module.exports.isReadable = isReadable;
 module.exports.isWritable = isWritable;
 module.exports.isDuplex   = isDuplex;
-},{"stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/signsensusDS/ssutil.js":[function(require,module,exports){
+},{"stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js":[function(require,module,exports){
 /*
  SignSens helper functions
  */
@@ -10301,11 +10305,11 @@ exports.createSignature = function (agent,counter, nextPublic, arr, size){
 
     return agent + ":" + counter + ":" + nextPublic + ":" + result;
 }
-},{"crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/soundpubsub/index.js":[function(require,module,exports){
+},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js":[function(require,module,exports){
 module.exports = {
 					soundPubSub: require("./lib/soundPubSub").soundPubSub
 };
-},{"./lib/soundPubSub":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/soundpubsub/lib/soundPubSub.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/soundpubsub/lib/soundPubSub.js":[function(require,module,exports){
+},{"./lib/soundPubSub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js":[function(require,module,exports){
 /*
 Initial License: (c) Axiologic Research & Alboaie Sînică.
 Contributors: Axiologic Research , PrivateSky project
@@ -10680,7 +10684,7 @@ function SoundPubSub(){
 }
 
 exports.soundPubSub = new SoundPubSub();
-},{"swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/index.js":[function(require,module,exports){
+},{"swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js":[function(require,module,exports){
 const Middleware = require("./lib/Middleware");
 let middlewareInstance = new Middleware();
 
@@ -10688,7 +10692,7 @@ exports.getMiddleware = function(){
     return middlewareInstance;
 };
 
-},{"./lib/Middleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/Middleware.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/EventRequest.js":[function(require,module,exports){
+},{"./lib/Middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\Middleware.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventRequest.js":[function(require,module,exports){
 const unsupportedMethods = ["acceptsCharsets", "acceptsEncodings", "acceptsLanguages", "param", "is", "range"];
 const unsupportedProperties = ["app", "fresh", "ip", "ips", "signedCookies", "stale", "subdomains", "xhr"];
 
@@ -10820,7 +10824,7 @@ function EventRequest(event) {
 
 exports.EventRequest = EventRequest;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/EventResponse.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventResponse.js":[function(require,module,exports){
 const unsupportedMethods = ["append", "redirect", "location", "links", "jsonp", "render", "sendFile"];
 const unsupportedProperties = ["app", "headersSent", "locals"];
 const httpStatuses = require("./HttpStatuses").httpStatuses;
@@ -11004,7 +11008,7 @@ if(typeof FetchEvent!== "undefined")
 
 exports.EventResponse = EventResponse;
 
-},{"./HttpStatuses":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/HttpStatuses.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/HttpStatuses.js":[function(require,module,exports){
+},{"./HttpStatuses":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\HttpStatuses.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\HttpStatuses.js":[function(require,module,exports){
 exports.httpStatuses = {
     "100": "Continue",
     "101": "Switching Protocols",
@@ -11071,7 +11075,7 @@ exports.httpStatuses = {
     "511": "Network Authentication Required"
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/Middleware.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\Middleware.js":[function(require,module,exports){
 const EventResponse = require("./EventResponse").EventResponse;
 const EventRequest = require("./EventRequest").EventRequest;
 
@@ -11379,7 +11383,7 @@ function Middleware() {
 module.exports = Middleware;
 
 
-},{"./EventRequest":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/EventRequest.js","./EventResponse":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/lib/EventResponse.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/BootEngine.js":[function(require,module,exports){
+},{"./EventRequest":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventRequest.js","./EventResponse":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventResponse.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\BootEngine.js":[function(require,module,exports){
 function BootEngine(getSeed, getEDFS, initializeSwarmEngine, runtimeBundles, constitutionBundles) {
 
 	if (typeof getSeed !== "function") {
@@ -11478,7 +11482,7 @@ function promisify(fn) {
 
 module.exports = BootEngine;
 
-},{"edfs":"edfs","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/FileReadableStreamAdapter.js":[function(require,module,exports){
+},{"edfs":"edfs","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\FileReadableStreamAdapter.js":[function(require,module,exports){
 const { Readable } = require('stream');
 const util = require('util');
 const Buffer = require('buffer').Buffer;
@@ -11521,7 +11525,7 @@ FileReadableStreamAdapter.prototype._read = function (size) {
 
 module.exports = FileReadableStreamAdapter;
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/RawDossierHelper.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\RawDossierHelper.js":[function(require,module,exports){
 const MimeType = require("../util/MimeType");
 
 function RawDossierHelper(rawDossier){
@@ -11583,7 +11587,7 @@ function RawDossierHelper(rawDossier){
 
 module.exports = RawDossierHelper;
 
-},{"../util/MimeType":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/util/MimeType.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/SWBootScript.js":[function(require,module,exports){
+},{"../util/MimeType":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\util\\MimeType.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\SWBootScript.js":[function(require,module,exports){
 function SWBootScript(seed) {
 
     console.log("Booting host...");
@@ -11649,7 +11653,7 @@ module.exports = SWBootScript;
 
 
 
-},{"../../../powerCords/browser/ServiceWorkerPC":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js","../../BootEngine":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/BootEngine.js","callflow":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/index.js","edfs":"edfs","soundpubsub":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/soundpubsub/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/Uploader.js":[function(require,module,exports){
+},{"../../../powerCords/browser/ServiceWorkerPC":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js","../../BootEngine":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\BootEngine.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js","edfs":"edfs","soundpubsub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\Uploader.js":[function(require,module,exports){
 const FileReadableStreamAdapter = require('./FileReadableStreamAdapter');
 
 /**
@@ -11969,7 +11973,7 @@ Uploader.prototype.upload = function (request, callback) {
 
 module.exports = Uploader;
 
-},{"./FileReadableStreamAdapter":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/FileReadableStreamAdapter.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/util/MimeType.js":[function(require,module,exports){
+},{"./FileReadableStreamAdapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\FileReadableStreamAdapter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\util\\MimeType.js":[function(require,module,exports){
 const extensionsMimeTypes = {
     "aac": {
         name: "audio/aac",
@@ -12240,7 +12244,7 @@ module.exports.getMimeTypeFromExtension = function (extension) {
     }
     return defaultMimeType;
 };
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js":[function(require,module,exports){
 const UtilFunctions = require("../../utils/utilFunctions");
 function ServiceWorkerPC() {
     const channelsManager = require("../../utils/SWChannelsManager").getChannelsManager();
@@ -12342,7 +12346,7 @@ function ServiceWorkerPC() {
 
 module.exports = ServiceWorkerPC;
 
-},{"../../utils/SWChannelsManager":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/SWChannelsManager.js","../../utils/utilFunctions":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/utilFunctions.js","ssapp-middleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/index.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/SWChannelsManager.js":[function(require,module,exports){
+},{"../../utils/SWChannelsManager":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js","../../utils/utilFunctions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js","ssapp-middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js":[function(require,module,exports){
 let Queue = require("swarmutils").Queue;
 const maxQueueSize = 100;
 const TOKEN_PLACEHOLDER = "WEB_TOKEN_PLACEHOLDER";
@@ -12477,7 +12481,7 @@ module.exports.getChannelsManager = function(){
     return channelManagerInstance;
 }
 
-},{"../powerCords/browser/ServiceWorkerPC":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js","swarmutils":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/utilFunctions.js":[function(require,module,exports){
+},{"../powerCords/browser/ServiceWorkerPC":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js":[function(require,module,exports){
 const urlReg = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}|localhost)(:[0-9]{1,5})?(\/.*)?$/gi;
 const domainReg = /^([0-9a-zA-Z]*)\/agent\/([0-9a-zA-Z]*)$/gi;
 const httpUrlRegex = new RegExp(urlReg);
@@ -12563,7 +12567,7 @@ function handleOptionsRequest(req,res, next){
 
 module.exports = {prepareMessage, getChannelName, isUrl, isInMyHosts, handleOptionsRequest};
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js":[function(require,module,exports){
 (function (global){
 module.exports.OwM = require("./lib/OwM");
 module.exports.beesHealer = require("./lib/beesHealer");
@@ -12597,7 +12601,7 @@ if(typeof global.$$.uidGenerator == "undefined"){
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/Combos":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Combos.js","./lib/OwM":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/OwM.js","./lib/Queue":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Queue.js","./lib/SwarmPacker":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/SwarmPacker.js","./lib/TaskCounter":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/TaskCounter.js","./lib/beesHealer":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/beesHealer.js","./lib/path":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/path.js","./lib/pingpongFork":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/pingpongFork.js","./lib/pskconsole":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/pskconsole.js","./lib/safe-uuid":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/safe-uuid.js","./lib/uidGenerator":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/uidGenerator.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Combos.js":[function(require,module,exports){
+},{"./lib/Combos":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\path.js","./lib/pingpongFork":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
 function product(args) {
     if(!args.length){
         return [ [] ];
@@ -12623,7 +12627,7 @@ function objectProduct(obj) {
 }
 
 module.exports = objectProduct;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/OwM.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
 var meta = "meta";
 
 function OwM(serialized){
@@ -12714,7 +12718,7 @@ OwM.prototype.setMetaFor = function(obj, name, value){
 };
 
 module.exports = OwM;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Queue.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
 function QueueElement(content) {
 	this.content = content;
 	this.next = null;
@@ -12782,7 +12786,7 @@ Queue.prototype.toString = function () {
 Queue.prototype.inspect = Queue.prototype.toString;
 
 module.exports = Queue;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/SwarmPacker.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
 const HEADER_SIZE_RESEARVED = 4;
 
 function SwarmPacker(){
@@ -12931,7 +12935,7 @@ SwarmPacker.getHeader = function(pack){
     return header;
 };
 module.exports = SwarmPacker;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/TaskCounter.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
 
 function TaskCounter(finalCallback) {
 	let results = [];
@@ -12981,7 +12985,7 @@ function TaskCounter(finalCallback) {
 }
 
 module.exports = TaskCounter;
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/beesHealer.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
 const OwM = require("./OwM");
 
 /*
@@ -13037,7 +13041,7 @@ exports.jsonToNative = function(serialisedValues, result){
     };
 
 };
-},{"./OwM":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/OwM.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/path.js":[function(require,module,exports){
+},{"./OwM":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\path.js":[function(require,module,exports){
 function replaceAll(str, search, replacement) {
     return str.split(search).join(replacement);
 }
@@ -13111,7 +13115,7 @@ module.exports = {
     ensureIsAbsolute
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/pingpongFork.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
 (function (process){
 const PING = "PING";
 const PONG = "PONG";
@@ -13206,7 +13210,7 @@ module.exports.enableLifeLine = function(timeout){
 };
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","child_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/pskconsole.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","child_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
 (function (process){
 var commands = {};
 var commands_help = {};
@@ -13280,7 +13284,7 @@ module.exports = {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/safe-uuid.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
 
 function encode(buffer) {
     return buffer.toString('base64')
@@ -13348,7 +13352,7 @@ exports.short_uuid = function(callback) {
         callback(null, encode(buf));
     });
 };
-},{"crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/uidGenerator.js":[function(require,module,exports){
+},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 const Queue = require("./Queue");
@@ -13454,7 +13458,7 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarmutils/lib/Queue.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js":[function(require,module,exports){
+},{"./Queue":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js":[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -13465,7 +13469,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/api.js","./asn1/base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","./asn1/constants":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js","./asn1/decoders":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/index.js","./asn1/encoders":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/index.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/api.js":[function(require,module,exports){
+},{"./asn1/api":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\api.js","./asn1/base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","./asn1/constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js","./asn1/decoders":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\index.js","./asn1/encoders":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\index.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\api.js":[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -13528,7 +13532,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","vm":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/vm-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/buffer.js":[function(require,module,exports){
+},{"../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","vm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\vm-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\buffer.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -13646,7 +13650,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/index.js":[function(require,module,exports){
+},{"../base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js":[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -13654,7 +13658,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/buffer.js","./node":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/node.js","./reporter":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/reporter.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/node.js":[function(require,module,exports){
+},{"./buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\buffer.js","./node":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\node.js","./reporter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\reporter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\node.js":[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -14290,7 +14294,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/base/reporter.js":[function(require,module,exports){
+},{"../base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\reporter.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -14413,7 +14417,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/constants/der.js":[function(require,module,exports){
+},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\der.js":[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -14457,7 +14461,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js":[function(require,module,exports){
+},{"../constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js":[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -14478,7 +14482,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/constants/der.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js":[function(require,module,exports){
+},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\der.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -14804,13 +14808,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/index.js":[function(require,module,exports){
+},{"../../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\index.js":[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js","./pem":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/pem.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/pem.js":[function(require,module,exports){
+},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js","./pem":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\pem.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\pem.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -14861,7 +14865,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js":[function(require,module,exports){
+},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -15158,13 +15162,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/index.js":[function(require,module,exports){
+},{"../../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\index.js":[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js","./pem":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/pem.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/pem.js":[function(require,module,exports){
+},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js","./pem":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\pem.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\pem.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -15187,7 +15191,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/assert.js":[function(require,module,exports){
+},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js":[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -15698,7 +15702,7 @@ var objectKeys = Object.keys || function (obj) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"object-assign":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/object-assign/index.js","util/":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
+},{"object-assign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\object-assign\\index.js","util/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -15723,14 +15727,14 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js":[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/util/util.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\util.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -16321,7 +16325,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./support/isBuffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/base64-js/index.js":[function(require,module,exports){
+},{"./support/isBuffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\base64-js\\index.js":[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -16475,7 +16479,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -19904,7 +19908,7 @@ function fromByteArray (uint8) {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/brorand/index.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js":[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -19971,9 +19975,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js":[function(require,module,exports){
+},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js":[function(require,module,exports){
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/aes.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js":[function(require,module,exports){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
 // which is in turn based on the one from crypto-js
@@ -20203,7 +20207,7 @@ AES.prototype.scrub = function () {
 
 module.exports.AES = AES
 
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/authCipher.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js":[function(require,module,exports){
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('cipher-base')
@@ -20322,7 +20326,7 @@ StreamCipher.prototype.setAAD = function setAAD (buf) {
 
 module.exports = StreamCipher
 
-},{"./aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/aes.js","./ghash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/ghash.js","./incr32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/incr32.js","buffer-xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js","cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/browser.js":[function(require,module,exports){
+},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./ghash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\ghash.js","./incr32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js":[function(require,module,exports){
 var ciphers = require('./encrypter')
 var deciphers = require('./decrypter')
 var modes = require('./modes/list.json')
@@ -20337,7 +20341,7 @@ exports.createDecipher = exports.Decipher = deciphers.createDecipher
 exports.createDecipheriv = exports.Decipheriv = deciphers.createDecipheriv
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/decrypter.js","./encrypter":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/encrypter.js","./modes/list.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/list.json"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/decrypter.js":[function(require,module,exports){
+},{"./decrypter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\decrypter.js","./encrypter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\encrypter.js","./modes/list.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\decrypter.js":[function(require,module,exports){
 var AuthCipher = require('./authCipher')
 var Buffer = require('safe-buffer').Buffer
 var MODES = require('./modes')
@@ -20463,7 +20467,7 @@ function createDecipher (suite, password) {
 exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
-},{"./aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/aes.js","./authCipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/authCipher.js","./modes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/index.js","./streamCipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/streamCipher.js","cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","evp_bytestokey":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/evp_bytestokey/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/encrypter.js":[function(require,module,exports){
+},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./authCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js","./modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","./streamCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\encrypter.js":[function(require,module,exports){
 var MODES = require('./modes')
 var AuthCipher = require('./authCipher')
 var Buffer = require('safe-buffer').Buffer
@@ -20579,7 +20583,7 @@ function createCipher (suite, password) {
 exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
-},{"./aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/aes.js","./authCipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/authCipher.js","./modes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/index.js","./streamCipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/streamCipher.js","cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","evp_bytestokey":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/evp_bytestokey/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/ghash.js":[function(require,module,exports){
+},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./authCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js","./modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","./streamCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\ghash.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var ZEROES = Buffer.alloc(16, 0)
 
@@ -20670,7 +20674,7 @@ GHASH.prototype.final = function (abl, bl) {
 
 module.exports = GHASH
 
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/incr32.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js":[function(require,module,exports){
 function incr32 (iv) {
   var len = iv.length
   var item
@@ -20687,7 +20691,7 @@ function incr32 (iv) {
 }
 module.exports = incr32
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cbc.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cbc.js":[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -20706,7 +20710,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb.js":[function(require,module,exports){
+},{"buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var xor = require('buffer-xor')
 
@@ -20741,7 +20745,7 @@ exports.encrypt = function (self, data, decrypt) {
   return out
 }
 
-},{"buffer-xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb1.js":[function(require,module,exports){
+},{"buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb1.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -20785,7 +20789,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb8.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb8.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -20812,7 +20816,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ctr.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ctr.js":[function(require,module,exports){
 var xor = require('buffer-xor')
 var Buffer = require('safe-buffer').Buffer
 var incr32 = require('../incr32')
@@ -20844,7 +20848,7 @@ exports.encrypt = function (self, chunk) {
   return xor(chunk, pad)
 }
 
-},{"../incr32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/incr32.js","buffer-xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ecb.js":[function(require,module,exports){
+},{"../incr32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ecb.js":[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -20853,7 +20857,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js":[function(require,module,exports){
 var modeModules = {
   ECB: require('./ecb'),
   CBC: require('./cbc'),
@@ -20873,7 +20877,7 @@ for (var key in modes) {
 
 module.exports = modes
 
-},{"./cbc":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cbc.js","./cfb":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb.js","./cfb1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb1.js","./cfb8":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/cfb8.js","./ctr":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ctr.js","./ecb":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ecb.js","./list.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/list.json","./ofb":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ofb.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/list.json":[function(require,module,exports){
+},{"./cbc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cbc.js","./cfb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb.js","./cfb1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb1.js","./cfb8":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb8.js","./ctr":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ctr.js","./ecb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ecb.js","./list.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json","./ofb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ofb.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json":[function(require,module,exports){
 module.exports={
   "aes-128-ecb": {
     "cipher": "AES",
@@ -21066,7 +21070,7 @@ module.exports={
   }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/ofb.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ofb.js":[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -21087,7 +21091,7 @@ exports.encrypt = function (self, chunk) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","buffer-xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/streamCipher.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js":[function(require,module,exports){
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('cipher-base')
@@ -21116,7 +21120,7 @@ StreamCipher.prototype._final = function () {
 
 module.exports = StreamCipher
 
-},{"./aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/aes.js","cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-cipher/browser.js":[function(require,module,exports){
+},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-cipher\\browser.js":[function(require,module,exports){
 var DES = require('browserify-des')
 var aes = require('browserify-aes/browser')
 var aesModes = require('browserify-aes/modes')
@@ -21185,7 +21189,7 @@ exports.createDecipher = exports.Decipher = createDecipher
 exports.createDecipheriv = exports.Decipheriv = createDecipheriv
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/browser.js","browserify-aes/modes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/modes/index.js","browserify-des":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-des/index.js","browserify-des/modes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-des/modes.js","evp_bytestokey":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/evp_bytestokey/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-des/index.js":[function(require,module,exports){
+},{"browserify-aes/browser":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","browserify-aes/modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","browserify-des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\index.js","browserify-des/modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\modes.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\index.js":[function(require,module,exports){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
 var inherits = require('inherits')
@@ -21237,7 +21241,7 @@ DES.prototype._final = function () {
   return Buffer.from(this._des.final())
 }
 
-},{"cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","des.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-des/modes.js":[function(require,module,exports){
+},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","des.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\modes.js":[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -21263,7 +21267,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-rsa/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js":[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -21308,10 +21312,10 @@ function getr(priv) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/algos.js":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\algos.js":[function(require,module,exports){
 module.exports = require('./browser/algorithms.json')
 
-},{"./browser/algorithms.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/algorithms.json"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/algorithms.json":[function(require,module,exports){
+},{"./browser/algorithms.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json":[function(require,module,exports){
 module.exports={
   "sha224WithRSAEncryption": {
     "sign": "rsa",
@@ -21465,7 +21469,7 @@ module.exports={
   }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/curves.json":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json":[function(require,module,exports){
 module.exports={
   "1.3.132.0.10": "secp256k1",
   "1.3.132.0.33": "p224",
@@ -21475,7 +21479,7 @@ module.exports={
   "1.3.132.0.35": "p521"
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\index.js":[function(require,module,exports){
 (function (Buffer){
 var createHash = require('create-hash')
 var stream = require('stream')
@@ -21571,7 +21575,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./algorithms.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/algorithms.json","./sign":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/sign.js","./verify":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/verify.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","create-hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/sign.js":[function(require,module,exports){
+},{"./algorithms.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json","./sign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\sign.js","./verify":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\verify.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\sign.js":[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var createHmac = require('create-hmac')
@@ -21721,7 +21725,7 @@ module.exports.makeKey = makeKey
 
 }).call(this,require("buffer").Buffer)
 
-},{"./curves.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/curves.json","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-rsa/index.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","create-hmac":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hmac/browser.js","elliptic":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic.js","parse-asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/verify.js":[function(require,module,exports){
+},{"./curves.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","create-hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\verify.js":[function(require,module,exports){
 (function (Buffer){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
 var BN = require('bn.js')
@@ -21809,7 +21813,7 @@ module.exports = verify
 
 }).call(this,require("buffer").Buffer)
 
-},{"./curves.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/curves.json","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","elliptic":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic.js","parse-asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-zlib/lib/binding.js":[function(require,module,exports){
+},{"./curves.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\binding.js":[function(require,module,exports){
 (function (process,Buffer){
 'use strict';
 /* eslint camelcase: "off" */
@@ -22222,7 +22226,7 @@ Zlib.prototype._reset = function () {
 exports.Zlib = Zlib;
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/assert.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","pako/lib/zlib/constants":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/constants.js","pako/lib/zlib/deflate.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/deflate.js","pako/lib/zlib/inflate.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inflate.js","pako/lib/zlib/zstream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/zstream.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-zlib/lib/index.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pako/lib/zlib/constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\constants.js","pako/lib/zlib/deflate.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\deflate.js","pako/lib/zlib/inflate.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inflate.js","pako/lib/zlib/zstream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\zstream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\index.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -22835,9 +22839,9 @@ util.inherits(InflateRaw, Zlib);
 util.inherits(Unzip, Zlib);
 }).call(this,require('_process'))
 
-},{"./binding":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-zlib/lib/binding.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/assert.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js":[function(require,module,exports){
-arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"][0].apply(exports,arguments)
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-xor/index.js":[function(require,module,exports){
+},{"./binding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\binding.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js":[function(require,module,exports){
+arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"][0].apply(exports,arguments)
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js":[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -22852,7 +22856,7 @@ module.exports = function xor (a, b) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js":[function(require,module,exports){
 (function (Buffer){
 /*!
  * The buffer module from node.js, for the browser.
@@ -24634,7 +24638,7 @@ function numberIsNaN (obj) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"base64-js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/base64-js/index.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","ieee754":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ieee754/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/builtin-status-codes/browser.js":[function(require,module,exports){
+},{"base64-js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\base64-js\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","ieee754":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ieee754\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\builtin-status-codes\\browser.js":[function(require,module,exports){
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -24700,7 +24704,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
 var StringDecoder = require('string_decoder').StringDecoder
@@ -24801,7 +24805,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 
 module.exports = CipherBase
 
-},{"inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js","string_decoder":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/string_decoder/lib/string_decoder.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js":[function(require,module,exports){
+},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","string_decoder":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js":[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -24913,7 +24917,7 @@ function objectToString(o) {
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
 
-},{"../../is-buffer/index.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-ecdh/browser.js":[function(require,module,exports){
+},{"../../is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\browser.js":[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic')
 var BN = require('bn.js')
@@ -25042,7 +25046,7 @@ function formatReturnValue (bn, enc, len) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","elliptic":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -25074,14 +25078,14 @@ module.exports = function createHash (alg) {
   return new Hash(sha(alg))
 }
 
-},{"cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","md5.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/md5.js/index.js","ripemd160":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ripemd160/index.js","sha.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/md5.js":[function(require,module,exports){
+},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js":[function(require,module,exports){
 var MD5 = require('md5.js')
 
 module.exports = function (buffer) {
   return new MD5().update(buffer).digest()
 }
 
-},{"md5.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/md5.js/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hmac/browser.js":[function(require,module,exports){
+},{"md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Legacy = require('./legacy')
@@ -25145,7 +25149,7 @@ module.exports = function createHmac (alg, key) {
   return new Hmac(alg, key)
 }
 
-},{"./legacy":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hmac/legacy.js","cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","create-hash/md5":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/md5.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","ripemd160":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ripemd160/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js","sha.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hmac/legacy.js":[function(require,module,exports){
+},{"./legacy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\legacy.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","create-hash/md5":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\legacy.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Buffer = require('safe-buffer').Buffer
@@ -25193,7 +25197,7 @@ Hmac.prototype._final = function () {
 }
 module.exports = Hmac
 
-},{"cipher-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/cipher-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/crypto-browserify/index.js":[function(require,module,exports){
+},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js":[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -25292,7 +25296,7 @@ exports.constants = {
   'POINT_CONVERSION_HYBRID': 6
 }
 
-},{"browserify-cipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-cipher/browser.js","browserify-sign":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/browser/index.js","browserify-sign/algos":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign/algos.js","create-ecdh":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-ecdh/browser.js","create-hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js","create-hmac":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hmac/browser.js","diffie-hellman":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/browser.js","pbkdf2":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/browser.js","public-encrypt":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/browser.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js","randomfill":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randomfill/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des.js":[function(require,module,exports){
+},{"browserify-cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-cipher\\browser.js","browserify-sign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\index.js","browserify-sign/algos":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\algos.js","create-ecdh":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\browser.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","create-hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js","diffie-hellman":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\browser.js","pbkdf2":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js","public-encrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\browser.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","randomfill":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randomfill\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des.js":[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -25301,7 +25305,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cbc.js","./des/cipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cipher.js","./des/des":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/des.js","./des/ede":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/ede.js","./des/utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cbc.js":[function(require,module,exports){
+},{"./des/cbc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cbc.js","./des/cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./des/des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js","./des/ede":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\ede.js","./des/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cbc.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -25368,7 +25372,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cipher.js":[function(require,module,exports){
+},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -25511,7 +25515,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/des.js":[function(require,module,exports){
+},{"minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -25655,7 +25659,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"./cipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cipher.js","./utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/utils.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/ede.js":[function(require,module,exports){
+},{"./cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\ede.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -25711,7 +25715,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"./cipher":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/cipher.js","./des":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/des.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/des.js/lib/des/utils.js":[function(require,module,exports){
+},{"./cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js":[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -25969,7 +25973,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/browser.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\browser.js":[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -26016,7 +26020,7 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
 
-},{"./lib/dh":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/dh.js","./lib/generatePrime":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/generatePrime.js","./lib/primes.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/primes.json","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/dh.js":[function(require,module,exports){
+},{"./lib/dh":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\dh.js","./lib/generatePrime":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js","./lib/primes.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\primes.json","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\dh.js":[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -26185,7 +26189,7 @@ function formatReturnValue(bn, enc) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./generatePrime":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/generatePrime.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","miller-rabin":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/miller-rabin/lib/mr.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/generatePrime.js":[function(require,module,exports){
+},{"./generatePrime":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","miller-rabin":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js":[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -26292,7 +26296,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","miller-rabin":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/miller-rabin/lib/mr.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/diffie-hellman/lib/primes.json":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","miller-rabin":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\primes.json":[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -26327,7 +26331,7 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js":[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -26342,7 +26346,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/package.json","./elliptic/curve":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js","./elliptic/curves":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curves.js","./elliptic/ec":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/index.js","./elliptic/eddsa":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/index.js","./elliptic/utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","brorand":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/brorand/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js":[function(require,module,exports){
+},{"../package.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\package.json","./elliptic/curve":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js","./elliptic/curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","./elliptic/ec":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\index.js","./elliptic/eddsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\index.js","./elliptic/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -26720,7 +26724,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/edwards.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\edwards.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -27154,7 +27158,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js":[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -27164,7 +27168,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","./edwards":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/edwards.js","./mont":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/mont.js","./short":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/short.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/mont.js":[function(require,module,exports){
+},{"./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","./edwards":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\edwards.js","./mont":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\mont.js","./short":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\short.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\mont.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -27344,7 +27348,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/short.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\short.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -28283,7 +28287,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curves.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js":[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -28491,7 +28495,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"./curve":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js","./precomputed/secp256k1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/precomputed/secp256k1.js","./utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","hash.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/index.js":[function(require,module,exports){
+},{"./curve":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js","./precomputed/secp256k1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\precomputed\\secp256k1.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\index.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -28734,7 +28738,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../curves":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curves.js","../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./key":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/key.js","./signature":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/signature.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","brorand":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/brorand/index.js","hmac-drbg":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hmac-drbg/lib/hmac-drbg.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/key.js":[function(require,module,exports){
+},{"../curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\key.js","./signature":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\signature.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js","hmac-drbg":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hmac-drbg\\lib\\hmac-drbg.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\key.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -28854,7 +28858,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/ec/signature.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\signature.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -28990,7 +28994,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/index.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\index.js":[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -29110,7 +29114,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../curves":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/curves.js","../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./key":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/key.js","./signature":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/signature.js","hash.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/key.js":[function(require,module,exports){
+},{"../curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\key.js","./signature":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\signature.js","hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\key.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -29207,7 +29211,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/eddsa/signature.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\signature.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -29274,7 +29278,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/precomputed/secp256k1.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\precomputed\\secp256k1.js":[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -30056,7 +30060,7 @@ module.exports = {
   }
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/lib/elliptic/utils.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js":[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -30177,7 +30181,7 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js","minimalistic-crypto-utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/elliptic/package.json":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js","minimalistic-crypto-utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\package.json":[function(require,module,exports){
 module.exports={
   "_from": "elliptic@^6.0.0",
   "_id": "elliptic@6.5.2",
@@ -30202,7 +30206,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.2.tgz",
   "_shasum": "05c5678d7173c049d8ca433552224a495d0e3762",
   "_spec": "elliptic@^6.0.0",
-  "_where": "/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-sign",
+  "_where": "D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -30266,7 +30270,7 @@ module.exports={
   "version": "6.5.2"
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -30791,7 +30795,7 @@ function functionBindPolyfill(context) {
   };
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/evp_bytestokey/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var MD5 = require('md5.js')
 
@@ -30838,7 +30842,7 @@ function EVP_BytesToKey (password, salt, keyBits, ivLen) {
 
 module.exports = EVP_BytesToKey
 
-},{"md5.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/md5.js/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash-base/index.js":[function(require,module,exports){
+},{"md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js":[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
@@ -30935,7 +30939,7 @@ HashBase.prototype._digest = function () {
 
 module.exports = HashBase
 
-},{"inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js","stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash.js":[function(require,module,exports){
+},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js":[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -30952,7 +30956,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js","./hash/hmac":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/hmac.js","./hash/ripemd":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/ripemd.js","./hash/sha":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha.js","./hash/utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js":[function(require,module,exports){
+},{"./hash/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","./hash/hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\hmac.js","./hash/ripemd":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\ripemd.js","./hash/sha":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha.js","./hash/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -31046,7 +31050,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"./utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/hmac.js":[function(require,module,exports){
+},{"./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\hmac.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -31095,7 +31099,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"./utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/ripemd.js":[function(require,module,exports){
+},{"./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\ripemd.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -31243,7 +31247,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"./common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js","./utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha.js":[function(require,module,exports){
+},{"./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha.js":[function(require,module,exports){
 'use strict';
 
 exports.sha1 = require('./sha/1');
@@ -31252,7 +31256,7 @@ exports.sha256 = require('./sha/256');
 exports.sha384 = require('./sha/384');
 exports.sha512 = require('./sha/512');
 
-},{"./sha/1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/1.js","./sha/224":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/224.js","./sha/256":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/256.js","./sha/384":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/384.js","./sha/512":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/512.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/1.js":[function(require,module,exports){
+},{"./sha/1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\1.js","./sha/224":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\224.js","./sha/256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js","./sha/384":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\384.js","./sha/512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\1.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31328,7 +31332,7 @@ SHA1.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","./common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/common.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/224.js":[function(require,module,exports){
+},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\224.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31360,7 +31364,7 @@ SHA224.prototype._digest = function digest(enc) {
 };
 
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","./256":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/256.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/256.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31467,7 +31471,7 @@ SHA256.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","./common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/common.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/384.js":[function(require,module,exports){
+},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\384.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31504,7 +31508,7 @@ SHA384.prototype._digest = function digest(enc) {
     return utils.split32(this.h.slice(0, 12), 'big');
 };
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","./512":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/512.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/512.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31836,7 +31840,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/sha/common.js":[function(require,module,exports){
+},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -31887,7 +31891,7 @@ function g1_256(x) {
 }
 exports.g1_256 = g1_256;
 
-},{"../utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash/utils.js":[function(require,module,exports){
+},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -32167,7 +32171,7 @@ function shr64_lo(ah, al, num) {
 }
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hmac-drbg/lib/hmac-drbg.js":[function(require,module,exports){
+},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hmac-drbg\\lib\\hmac-drbg.js":[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -32282,7 +32286,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"hash.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash.js/lib/hash.js","minimalistic-assert":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js","minimalistic-crypto-utils":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/https-browserify/index.js":[function(require,module,exports){
+},{"hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js","minimalistic-crypto-utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\https-browserify\\index.js":[function(require,module,exports){
 var http = require('http')
 var url = require('url')
 
@@ -32315,7 +32319,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/index.js","url":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/url.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ieee754/index.js":[function(require,module,exports){
+},{"http":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ieee754\\index.js":[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -32401,7 +32405,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -32430,7 +32434,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js":[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -32453,14 +32457,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/isarray/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\isarray\\index.js":[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/md5.js/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var HashBase = require('hash-base')
@@ -32608,7 +32612,7 @@ function fnI (a, b, c, d, m, k, s) {
 
 module.exports = MD5
 
-},{"hash-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/miller-rabin/lib/mr.js":[function(require,module,exports){
+},{"hash-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js":[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -32725,7 +32729,7 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","brorand":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/brorand/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-assert/index.js":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js":[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -32738,7 +32742,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js":[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -32798,7 +32802,7 @@ utils.encode = function encode(arr, enc) {
     return arr;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/object-assign/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\object-assign\\index.js":[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -32890,7 +32894,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/utils/common.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js":[function(require,module,exports){
 'use strict';
 
 
@@ -32997,7 +33001,7 @@ exports.setTyped = function (on) {
 
 exports.setTyped(TYPED_OK);
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/adler32.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js":[function(require,module,exports){
 'use strict';
 
 // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -33050,7 +33054,7 @@ function adler32(adler, buf, len, pos) {
 
 module.exports = adler32;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/constants.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\constants.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -33120,7 +33124,7 @@ module.exports = {
   //Z_NULL:                 null // Use -1 or null inline, depending on var type
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/crc32.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js":[function(require,module,exports){
 'use strict';
 
 // Note: we can't get significant speed boost here.
@@ -33181,7 +33185,7 @@ function crc32(crc, buf, len, pos) {
 
 module.exports = crc32;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/deflate.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\deflate.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -35057,7 +35061,7 @@ exports.deflatePrime = deflatePrime;
 exports.deflateTune = deflateTune;
 */
 
-},{"../utils/common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/utils/common.js","./adler32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/adler32.js","./crc32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/crc32.js","./messages":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/messages.js","./trees":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/trees.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inffast.js":[function(require,module,exports){
+},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js","./adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js","./crc32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js","./messages":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\messages.js","./trees":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\trees.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inffast.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -35404,7 +35408,7 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inflate.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inflate.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -36962,7 +36966,7 @@ exports.inflateSyncPoint = inflateSyncPoint;
 exports.inflateUndermine = inflateUndermine;
 */
 
-},{"../utils/common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/utils/common.js","./adler32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/adler32.js","./crc32":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/crc32.js","./inffast":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inffast.js","./inftrees":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inftrees.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/inftrees.js":[function(require,module,exports){
+},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js","./adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js","./crc32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js","./inffast":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inffast.js","./inftrees":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inftrees.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inftrees.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -37307,7 +37311,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   return 0;
 };
 
-},{"../utils/common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/utils/common.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/messages.js":[function(require,module,exports){
+},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\messages.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -37341,7 +37345,7 @@ module.exports = {
   '-6':   'incompatible version' /* Z_VERSION_ERROR (-6) */
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/trees.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\trees.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -38565,7 +38569,7 @@ exports._tr_flush_block  = _tr_flush_block;
 exports._tr_tally = _tr_tally;
 exports._tr_align = _tr_align;
 
-},{"../utils/common":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/utils/common.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pako/lib/zlib/zstream.js":[function(require,module,exports){
+},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\zstream.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -38614,7 +38618,7 @@ function ZStream() {
 
 module.exports = ZStream;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/aesid.json":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\aesid.json":[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -38628,7 +38632,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/asn1.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\asn1.js":[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 'use strict'
@@ -38752,7 +38756,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"./certificate":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/certificate.js","asn1.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/certificate.js":[function(require,module,exports){
+},{"./certificate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\certificate.js","asn1.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\certificate.js":[function(require,module,exports){
 // from https://github.com/Rantanen/node-dtls/blob/25a7dc861bda38cfeac93a723500eea4f0ac2e86/Certificate.js
 // thanks to @Rantanen
 
@@ -38843,7 +38847,7 @@ var X509Certificate = asn.define('X509Certificate', function () {
 
 module.exports = X509Certificate
 
-},{"asn1.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/asn1.js/lib/asn1.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/fixProc.js":[function(require,module,exports){
+},{"asn1.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\fixProc.js":[function(require,module,exports){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED[\n\r]+DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)[\n\r]+([0-9A-z\n\r\+\/\=]+)[\n\r]+/m
 var startRegex = /^-----BEGIN ((?:.*? KEY)|CERTIFICATE)-----/m
@@ -38876,7 +38880,7 @@ module.exports = function (okey, password) {
   }
 }
 
-},{"browserify-aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/browser.js","evp_bytestokey":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/evp_bytestokey/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/index.js":[function(require,module,exports){
+},{"browserify-aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js":[function(require,module,exports){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
 var fixProc = require('./fixProc')
@@ -38985,7 +38989,7 @@ function decrypt (data, password) {
   return Buffer.concat(out)
 }
 
-},{"./aesid.json":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/aesid.json","./asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/asn1.js","./fixProc":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/fixProc.js","browserify-aes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-aes/browser.js","pbkdf2":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js":[function(require,module,exports){
+},{"./aesid.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\aesid.json","./asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\asn1.js","./fixProc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\fixProc.js","browserify-aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","pbkdf2":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js":[function(require,module,exports){
 (function (process){
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -39292,11 +39296,11 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/browser.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js":[function(require,module,exports){
 exports.pbkdf2 = require('./lib/async')
 exports.pbkdf2Sync = require('./lib/sync')
 
-},{"./lib/async":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/async.js","./lib/sync":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/sync-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/async.js":[function(require,module,exports){
+},{"./lib/async":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\async.js","./lib/sync":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\async.js":[function(require,module,exports){
 (function (process,global){
 var checkParameters = require('./precondition')
 var defaultEncoding = require('./default-encoding')
@@ -39401,7 +39405,7 @@ module.exports = function (password, salt, iterations, keylen, digest, callback)
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./default-encoding":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/default-encoding.js","./precondition":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/precondition.js","./sync":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/sync-browser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/default-encoding.js":[function(require,module,exports){
+},{"./default-encoding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js","./precondition":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js","./sync":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js":[function(require,module,exports){
 (function (process){
 var defaultEncoding
 /* istanbul ignore next */
@@ -39416,7 +39420,7 @@ module.exports = defaultEncoding
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/precondition.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js":[function(require,module,exports){
 (function (Buffer){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 
@@ -39449,7 +39453,7 @@ module.exports = function (password, salt, iterations, keylen) {
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
 
-},{"../../is-buffer/index.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/sync-browser.js":[function(require,module,exports){
+},{"../../is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js":[function(require,module,exports){
 var md5 = require('create-hash/md5')
 var RIPEMD160 = require('ripemd160')
 var sha = require('sha.js')
@@ -39555,7 +39559,7 @@ function pbkdf2 (password, salt, iterations, keylen, digest) {
 
 module.exports = pbkdf2
 
-},{"./default-encoding":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/default-encoding.js","./precondition":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/pbkdf2/lib/precondition.js","create-hash/md5":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/md5.js","ripemd160":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ripemd160/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js","sha.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process-nextick-args/index.js":[function(require,module,exports){
+},{"./default-encoding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js","./precondition":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js","create-hash/md5":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -39605,7 +39609,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js":[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -39791,7 +39795,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/browser.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\browser.js":[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt')
 exports.privateDecrypt = require('./privateDecrypt')
 
@@ -39803,7 +39807,7 @@ exports.publicDecrypt = function publicDecrypt (key, buf) {
   return exports.privateDecrypt(key, buf, true)
 }
 
-},{"./privateDecrypt":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/privateDecrypt.js","./publicEncrypt":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/publicEncrypt.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/mgf.js":[function(require,module,exports){
+},{"./privateDecrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\privateDecrypt.js","./publicEncrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\publicEncrypt.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js":[function(require,module,exports){
 var createHash = require('create-hash')
 var Buffer = require('safe-buffer').Buffer
 
@@ -39824,7 +39828,7 @@ function i2ops (c) {
   return out
 }
 
-},{"create-hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/privateDecrypt.js":[function(require,module,exports){
+},{"create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\privateDecrypt.js":[function(require,module,exports){
 var parseKeys = require('parse-asn1')
 var mgf = require('./mgf')
 var xor = require('./xor')
@@ -39931,7 +39935,7 @@ function compare (a, b) {
   return dif
 }
 
-},{"./mgf":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/mgf.js","./withPublic":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/withPublic.js","./xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/xor.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-rsa/index.js","create-hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js","parse-asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/publicEncrypt.js":[function(require,module,exports){
+},{"./mgf":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js","./withPublic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js","./xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\publicEncrypt.js":[function(require,module,exports){
 var parseKeys = require('parse-asn1')
 var randomBytes = require('randombytes')
 var createHash = require('create-hash')
@@ -40021,7 +40025,7 @@ function nonZero (len) {
   return out
 }
 
-},{"./mgf":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/mgf.js","./withPublic":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/withPublic.js","./xor":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/xor.js","bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify-rsa/index.js","create-hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/create-hash/browser.js","parse-asn1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/parse-asn1/index.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/withPublic.js":[function(require,module,exports){
+},{"./mgf":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js","./withPublic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js","./xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js":[function(require,module,exports){
 var BN = require('bn.js')
 var Buffer = require('safe-buffer').Buffer
 
@@ -40035,7 +40039,7 @@ function withPublic (paddedMsg, key) {
 
 module.exports = withPublic
 
-},{"bn.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/bn.js/lib/bn.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/public-encrypt/xor.js":[function(require,module,exports){
+},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js":[function(require,module,exports){
 module.exports = function xor (a, b) {
   var len = a.length
   var i = -1
@@ -40045,7 +40049,7 @@ module.exports = function xor (a, b) {
   return a
 }
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/punycode/punycode.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\punycode\\punycode.js":[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -40583,7 +40587,7 @@ module.exports = function xor (a, b) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/decode.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\decode.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -40669,7 +40673,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/encode.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\encode.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -40756,13 +40760,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\index.js":[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/decode.js","./encode":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/encode.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js":[function(require,module,exports){
+},{"./decode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\decode.js","./encode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\encode.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js":[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -40817,7 +40821,7 @@ function randomBytes (size, cb) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randomfill/browser.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randomfill\\browser.js":[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -40930,10 +40934,10 @@ function randomFillSync (buf, offset, size) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","randombytes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/randombytes/browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/duplex-browser.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\duplex-browser.js":[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
-},{"./lib/_stream_duplex.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -41065,7 +41069,7 @@ Duplex.prototype._destroy = function (err, cb) {
 
   pna.nextTick(cb, err);
 };
-},{"./_stream_readable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_writable.js","core-util-is":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","process-nextick-args":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process-nextick-args/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
+},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -41113,7 +41117,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
+},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -42136,7 +42140,7 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/BufferList":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","core-util-is":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js","events":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","isarray":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/isarray/index.js","process-nextick-args":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process-nextick-args/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","string_decoder/":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
+},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/BufferList":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\BufferList.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","isarray":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\isarray\\index.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -42351,7 +42355,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
+},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
 (function (process,global,setImmediate){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -43042,7 +43046,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
 
-},{"./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","core-util-is":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","process-nextick-args":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process-nextick-args/index.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","timers":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/timers-browserify/main.js","util-deprecate":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util-deprecate/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports){
+},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\BufferList.js":[function(require,module,exports){
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -43122,7 +43126,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -43197,10 +43201,10 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process-nextick-args/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
+},{"process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
 module.exports = require('events').EventEmitter;
 
-},{"events":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js":[function(require,module,exports){
+},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js":[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -43264,7 +43268,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -43561,10 +43565,10 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/passthrough.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\passthrough.js":[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/readable-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
+},{"./readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -43573,13 +43577,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_writable.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/transform.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\transform.js":[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/readable-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/writable-browser.js":[function(require,module,exports){
+},{"./readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\writable-browser.js":[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/_stream_writable.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/ripemd160/index.js":[function(require,module,exports){
+},{"./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js":[function(require,module,exports){
 'use strict'
 var Buffer = require('buffer').Buffer
 var inherits = require('inherits')
@@ -43744,7 +43748,7 @@ function fn5 (a, b, c, d, e, m, k, s) {
 
 module.exports = RIPEMD160
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","hash-base":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/hash-base/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","hash-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js":[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -43810,7 +43814,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 // prototype class for hash functions
@@ -43893,7 +43897,7 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/index.js":[function(require,module,exports){
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js":[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -43910,7 +43914,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha.js","./sha1":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha1.js","./sha224":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha224.js","./sha256":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha256.js","./sha384":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha384.js","./sha512":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha512.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha.js":[function(require,module,exports){
+},{"./sha":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha.js","./sha1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha1.js","./sha224":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha224.js","./sha256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js","./sha384":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha384.js","./sha512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha.js":[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
  * in FIPS PUB 180-1
@@ -44006,7 +44010,7 @@ Sha.prototype._hash = function () {
 
 module.exports = Sha
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha1.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha1.js":[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
  * in FIPS PUB 180-1
@@ -44107,7 +44111,7 @@ Sha1.prototype._hash = function () {
 
 module.exports = Sha1
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha224.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha224.js":[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -44162,7 +44166,7 @@ Sha224.prototype._hash = function () {
 
 module.exports = Sha224
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","./sha256":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha256.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha256.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","./sha256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js":[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -44299,7 +44303,7 @@ Sha256.prototype._hash = function () {
 
 module.exports = Sha256
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha384.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha384.js":[function(require,module,exports){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
 var Hash = require('./hash')
@@ -44358,7 +44362,7 @@ Sha384.prototype._hash = function () {
 
 module.exports = Sha384
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","./sha512":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha512.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/sha512.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","./sha512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js":[function(require,module,exports){
 var inherits = require('inherits')
 var Hash = require('./hash')
 var Buffer = require('safe-buffer').Buffer
@@ -44620,7 +44624,7 @@ Sha512.prototype._hash = function () {
 
 module.exports = Sha512
 
-},{"./hash":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/sha.js/hash.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/array-set.js":[function(require,module,exports){
+},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -44743,7 +44747,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/base64-vlq.js":[function(require,module,exports){
+},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -44885,7 +44889,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/base64.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/base64.js":[function(require,module,exports){
+},{"./base64":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -44954,7 +44958,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/binary-search.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -45067,7 +45071,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/mapping-list.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -45148,7 +45152,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/quick-sort.js":[function(require,module,exports){
+},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -45264,7 +45268,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-map-consumer.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -46348,7 +46352,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/base64-vlq.js","./binary-search":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/binary-search.js","./quick-sort":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/quick-sort.js","./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-map-generator.js":[function(require,module,exports){
+},{"./array-set":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -46766,7 +46770,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/base64-vlq.js","./mapping-list":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/mapping-list.js","./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-node.js":[function(require,module,exports){
+},{"./array-set":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -47181,7 +47185,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-map-generator.js","./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/util.js":[function(require,module,exports){
+},{"./source-map-generator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -47600,7 +47604,7 @@ function compareByGeneratedPositionsInflated(mappingA, mappingB) {
 }
 exports.compareByGeneratedPositionsInflated = compareByGeneratedPositionsInflated;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-browserify/index.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -47729,7 +47733,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","readable-stream/duplex.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/duplex-browser.js","readable-stream/passthrough.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/passthrough.js","readable-stream/readable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/readable-browser.js","readable-stream/transform.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/transform.js","readable-stream/writable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/writable-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/index.js":[function(require,module,exports){
+},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream/duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\duplex-browser.js","readable-stream/passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\passthrough.js","readable-stream/readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js","readable-stream/transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\transform.js","readable-stream/writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\writable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js":[function(require,module,exports){
 (function (global){
 var ClientRequest = require('./lib/request')
 var response = require('./lib/response')
@@ -47818,7 +47822,7 @@ http.METHODS = [
 ]
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/request":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/request.js","./lib/response":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/response.js","builtin-status-codes":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/builtin-status-codes/browser.js","url":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/url.js","xtend":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/xtend/immutable.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/capability.js":[function(require,module,exports){
+},{"./lib/request":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\request.js","./lib/response":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js","builtin-status-codes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\builtin-status-codes\\browser.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js","xtend":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\xtend\\immutable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js":[function(require,module,exports){
 (function (global){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -47882,7 +47886,7 @@ xhr = null // Help gc
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/request.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\request.js":[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -48202,7 +48206,7 @@ var unsafeHeaders = [
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 
-},{"./capability":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/capability.js","./response":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/response.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/response.js":[function(require,module,exports){
+},{"./capability":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js","./response":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js":[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -48414,7 +48418,7 @@ IncomingMessage.prototype._onXHRProgress = function () {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 
-},{"./capability":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/lib/capability.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js":[function(require,module,exports){
+},{"./capability":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js":[function(require,module,exports){
 'use strict';
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
@@ -48543,7 +48547,7 @@ createErrorType('ERR_UNKNOWN_ENCODING', function (arg) {
 createErrorType('ERR_STREAM_UNSHIFT_AFTER_END_EVENT', 'stream.unshift() after end event');
 module.exports.codes = codes;
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -48686,7 +48690,7 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 }).call(this,require('_process'))
 
-},{"./_stream_readable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
+},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -48726,7 +48730,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
+},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -49854,7 +49858,7 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/async_iterator":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/async_iterator.js","./internal/streams/buffer_list":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/buffer_list.js","./internal/streams/destroy":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/from":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/from-browser.js","./internal/streams/state":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","events":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","string_decoder/":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/string_decoder/lib/string_decoder.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
+},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/async_iterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js","./internal/streams/buffer_list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/from":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -50056,7 +50060,7 @@ function done(stream, er, data) {
   if (stream._transformState.transforming) throw new ERR_TRANSFORM_ALREADY_TRANSFORMING();
   return stream.push(null);
 }
-},{"../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
+},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -50757,7 +50761,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/state":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/inherits/inherits_browser.js","util-deprecate":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util-deprecate/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/async_iterator.js":[function(require,module,exports){
+},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -50968,7 +50972,7 @@ var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterat
 module.exports = createReadableStreamAsyncIterator;
 }).call(this,require('_process'))
 
-},{"./end-of-stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/buffer_list.js":[function(require,module,exports){
+},{"./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js":[function(require,module,exports){
 'use strict';
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -51179,7 +51183,7 @@ function () {
 
   return BufferList;
 }();
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js","util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browser-resolve/empty.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
 (function (process){
 'use strict'; // undocumented cb() API, needed for core, not for public API
 
@@ -51288,7 +51292,7 @@ module.exports = {
 };
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js":[function(require,module,exports){
 // Ported from https://github.com/mafintosh/end-of-stream with
 // permission from the author, Mathias Buus (@mafintosh).
 'use strict';
@@ -51393,12 +51397,12 @@ function eos(stream, opts, callback) {
 }
 
 module.exports = eos;
-},{"../../../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/from-browser.js":[function(require,module,exports){
+},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js":[function(require,module,exports){
 module.exports = function () {
   throw new Error('Readable.from is not available in the browser')
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/pipeline.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js":[function(require,module,exports){
 // Ported from https://github.com/mafintosh/pump with
 // permission from the author, Mathias Buus (@mafintosh).
 'use strict';
@@ -51496,7 +51500,7 @@ function pipeline() {
 }
 
 module.exports = pipeline;
-},{"../../../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./end-of-stream":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js":[function(require,module,exports){
+},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js":[function(require,module,exports){
 'use strict';
 
 var ERR_INVALID_OPT_VALUE = require('../../../errors').codes.ERR_INVALID_OPT_VALUE;
@@ -51524,9 +51528,9 @@ function getHighWaterMark(state, options, duplexKey, isDuplex) {
 module.exports = {
   getHighWaterMark: getHighWaterMark
 };
-},{"../../../errors":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
-arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js"][0].apply(exports,arguments)
-},{"events":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/events/events.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
+},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
+arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js"][0].apply(exports,arguments)
+},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -51537,9 +51541,9 @@ exports.PassThrough = require('./lib/_stream_passthrough.js');
 exports.finished = require('./lib/internal/streams/end-of-stream.js');
 exports.pipeline = require('./lib/internal/streams/pipeline.js');
 
-},{"./lib/_stream_duplex.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js","./lib/internal/streams/end-of-stream.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","./lib/internal/streams/pipeline.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/pipeline.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
-arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js"][0].apply(exports,arguments)
-},{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/timers-browserify/main.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js","./lib/internal/streams/end-of-stream.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","./lib/internal/streams/pipeline.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js":[function(require,module,exports){
+arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js"][0].apply(exports,arguments)
+},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js":[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -51619,7 +51623,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 
-},{"process/browser.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","timers":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/timers-browserify/main.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/url.js":[function(require,module,exports){
+},{"process/browser.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -52353,7 +52357,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/util.js","punycode":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/punycode/punycode.js","querystring":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/querystring-es3/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/util.js":[function(require,module,exports){
+},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\util.js","punycode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\punycode\\punycode.js","querystring":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\util.js":[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -52371,7 +52375,7 @@ module.exports = {
   }
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util-deprecate/browser.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js":[function(require,module,exports){
 (function (global){
 
 /**
@@ -52443,11 +52447,11 @@ function config (name) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
-arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js"][0].apply(exports,arguments)
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/support/isBufferBrowser.js":[function(require,module,exports){
-arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js"][0].apply(exports,arguments)
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/util.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
+arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js"][0].apply(exports,arguments)
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\support\\isBufferBrowser.js":[function(require,module,exports){
+arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js"][0].apply(exports,arguments)
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -53038,7 +53042,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./support/isBuffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/support/isBufferBrowser.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","inherits":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util/node_modules/inherits/inherits_browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/vm-browserify/index.js":[function(require,module,exports){
+},{"./support/isBuffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\support\\isBufferBrowser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\vm-browserify\\index.js":[function(require,module,exports){
 var indexOf = function (xs, item) {
     if (xs.indexOf) return xs.indexOf(item);
     else for (var i = 0; i < xs.length; i++) {
@@ -53189,7 +53193,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/xtend/immutable.js":[function(require,module,exports){
+},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\xtend\\immutable.js":[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -53284,7 +53288,7 @@ module.exports = bufferFrom
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer/index.js"}],"edfs":[function(require,module,exports){
+},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"edfs":[function(require,module,exports){
 require("./brickTransportStrategies/brickTransportStrategiesRegistry");
 const constants = require("./moduleConstants");
 
@@ -53332,7 +53336,7 @@ module.exports = {
     constants: constants
 };
 
-},{"./brickTransportStrategies/FetchBrickTransportStrategy":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js","./lib/EDFS":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/lib/EDFS.js","./moduleConstants":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/moduleConstants.js","./seedCage":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/seedCage/index.js","bar":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/bar/index.js","overwrite-require":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/overwrite-require/index.js","psk-cache":"psk-cache"}],"psk-cache":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js","psk-cache":"psk-cache"}],"psk-cache":[function(require,module,exports){
 const Cache = require("./lib/Cache")
 let cacheInstance;
 
@@ -53369,7 +53373,7 @@ module.exports = {
     }
 };
 
-},{"./lib/Cache":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/psk-cache/lib/Cache.js"}],"pskcrypto":[function(require,module,exports){
+},{"./lib/Cache":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-cache\\lib\\Cache.js"}],"pskcrypto":[function(require,module,exports){
 const PskCrypto = require("./lib/PskCrypto");
 const ssutil = require("./signsensusDS/ssutil");
 
@@ -53380,7 +53384,7 @@ module.exports.hashValues = ssutil.hashValues;
 module.exports.DuplexStream = require("./lib/utils/DuplexStream");
 
 module.exports.isStream = require("./lib/utils/isStream");
-},{"./lib/PskCrypto":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/PskCrypto.js","./lib/utils/DuplexStream":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js","./lib/utils/isStream":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/lib/utils/isStream.js","./signsensusDS/ssutil":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/pskcrypto/signsensusDS/ssutil.js"}],"source-map-support":[function(require,module,exports){
+},{"./lib/PskCrypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"source-map-support":[function(require,module,exports){
 (function (process){
 var SourceMapConsumer = require('source-map').SourceMapConsumer;
 var path = require('path');
@@ -53920,12 +53924,8 @@ exports.install = function(options) {
 
   // Support runtime transpilers that include inline source maps
   if (options.hookRequire && !isInBrowser()) {
-    var Module;
-    try {
-      Module = require('module');
-    } catch (err) {
-      // NOP: Loading in catch block to convert webpack error to warning.
-    }
+    // Use dynamicRequire to avoid including in browser bundles
+    var Module = dynamicRequire(module, 'module');
     var $compile = Module.prototype._compile;
 
     if (!$compile.__sourceMapSupport) {
@@ -53993,7 +53993,7 @@ exports.resetRetrieveHandlers = function() {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","module":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
+},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer-from":"buffer-from","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -54003,7 +54003,7 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-map-consumer.js","./lib/source-map-generator":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-map-generator.js","./lib/source-node":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map/lib/source-node.js"}],"swarm-engine/bootScripts/browser/sw":[function(require,module,exports){
+},{"./lib/source-map-consumer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarm-engine/bootScripts/browser/sw":[function(require,module,exports){
 (function (Buffer){
 const SWBootScript = require("./SWBootScript");
 const server = require("ssapp-middleware").getMiddleware();
@@ -54271,5 +54271,5 @@ function configureUploader(config) {
 
 }).call(this,{"isBuffer":require("../../../../../node_modules/is-buffer/index.js")})
 
-},{"../../../../../node_modules/is-buffer/index.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/is-buffer/index.js","../../../utils/SWChannelsManager":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/SWChannelsManager.js","../../../utils/utilFunctions":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/utils/utilFunctions.js","./RawDossierHelper":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/RawDossierHelper.js","./SWBootScript":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/SWBootScript.js","./Uploader":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/swarm-engine/bootScripts/browser/sw/Uploader.js","edfs":"edfs","ssapp-middleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/ssapp-middleware/index.js"}]},{},["/home/vlad/Development/privatesky/web-wallet/privatesky/builds/tmp/swBoot.js"])
+},{"../../../../../node_modules/is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js","../../../utils/SWChannelsManager":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js","../../../utils/utilFunctions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js","./RawDossierHelper":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\RawDossierHelper.js","./SWBootScript":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\SWBootScript.js","./Uploader":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\Uploader.js","edfs":"edfs","ssapp-middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js"}]},{},["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot.js"])
 //# sourceMappingURL=swBoot.js.map
