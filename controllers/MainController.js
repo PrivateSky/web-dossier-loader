@@ -133,7 +133,7 @@ function MainController() {
 
                         spinner.attachToView();
 
-                        // After the all the service works have been unregistered and stopped
+                        // After all the service works have been unregistered and stopped
                         // rebuild the wallet
                         walletService.rebuild(pin, (err, wallet) => {
                             if (err) {
