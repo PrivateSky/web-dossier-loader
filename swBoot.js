@@ -2552,12 +2552,12 @@ function Seed(compactSeed, endpoint, key) {
         if (!expandedSeed.key) {
             throw Error("The seed does not contain an id");
         }
-        let compactSeed = base58.encode(expandedSeed.key);
+        let compactSeed = expandedSeed.key.toString("hex");
         if (expandedSeed.endpoint) {
-            compactSeed += '|' + base58.encode(expandedSeed.endpoint);
+            compactSeed += '|' + expandedSeed.endpoint.toString();
         }
 
-        return compactSeed;
+        return base58.encode(compactSeed);
     }
 
     function load(compactFormSeed) {
@@ -2574,11 +2574,11 @@ function Seed(compactSeed, endpoint, key) {
         }
 
         const localSeed = {};
-        const splitCompactSeed = compactFormSeed.split('|');
-        localSeed.key = base58.decode(splitCompactSeed[0]);
+        const splitCompactSeed = base58.decode(compactFormSeed).toString().split('|');
+        localSeed.key = Buffer.from(splitCompactSeed[0], "hex");
 
         if (splitCompactSeed[1] && splitCompactSeed[1].length > 0) {
-            localSeed.endpoint = base58.decode(splitCompactSeed[1]).toString();
+            localSeed.endpoint = splitCompactSeed[1];
         } else {
             console.warn('Cannot find endpoint in compact seed')
         }
@@ -7594,7 +7594,7 @@ function RawDossier(endpoint, seed, cache) {
         options = defaultOpts;
 
         if (options.ignoreMounts === true) {
-            bar.addFolder(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
+            bar.addFile(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
         } else {
             const splitPath = barPath.split("/");
             const fileName = splitPath.pop();
@@ -7678,6 +7678,10 @@ function RawDossier(endpoint, seed, cache) {
                 dossierContext.archive.writeFile(dossierContext.relativePath + "/" + fileName, data, options, callback);
             });
         }
+    };
+
+    this.delete = (barPath, callback) => {
+        bar.delete(barPath, callback);
     };
 
     this.listFiles = (path, callback) => {
@@ -11352,28 +11356,28 @@ function Middleware() {
 
     }
 
-    this.init = (serviceWorker) => {
-        serviceWorker.addEventListener('fetch', (event) => {
-            let requestedUrl = new URL(event.request.url);
-            this.requestedHosts.add(requestedUrl.host);
-            /**
-             * A promise should be returned synchronously
-             */
-            event.respondWith(new Promise((resolve, reject) => {
+    /**
+     * Execute registered request handlers for a
+     * FetchEvent
+     *
+     * @param {FetchEvent} event
+     * @return {Promise}
+     */
+    this.handleEvent = (event) => {
+        let requestedUrl = new URL(event.request.url);
+        this.requestedHosts.add(requestedUrl.host);
+
+        return extractBody(event).then((body) => {
+            event.request.body = body;
+            let request = new EventRequest(event);
+            let response = new EventResponse(event);
+
+            return new Promise((resolve, reject) => {
                 event.resolver = resolve;
 
-                extractBody(event).then(body => {
-                    event.request.body = body;
-                    let request = new EventRequest(event);
-                    let response = new EventResponse(event);
-                    this.executeRequest(request, response);
-                }).catch((err) => {
-                    reject(err);
-                })
-            }));
-
-        });
-        console.log("Initialized! Prepared to capture requests!")
+                this.executeRequest(request, response);
+            })
+        })
     };
 }
 module.exports = Middleware;
@@ -53920,12 +53924,8 @@ exports.install = function(options) {
 
   // Support runtime transpilers that include inline source maps
   if (options.hookRequire && !isInBrowser()) {
-    var Module;
-    try {
-      Module = require('module');
-    } catch (err) {
-      // NOP: Loading in catch block to convert webpack error to warning.
-    }
+    // Use dynamicRequire to avoid including in browser bundles
+    var Module = dynamicRequire(module, 'module');
     var $compile = Module.prototype._compile;
 
     if (!$compile.__sourceMapSupport) {
@@ -53993,7 +53993,7 @@ exports.resetRetrieveHandlers = function() {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","module":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
+},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -54017,6 +54017,7 @@ let bootScript = null;
 let rawDossier = null;
 let rawDossierHlp = null;
 let uploader = null;
+let seedResolver = null;
 
 
 function createChannelHandler (req, res) {
@@ -54082,39 +54083,135 @@ function receiveMessageHandler (req, res) {
 
 self.addEventListener('activate', function (event) {
     console.log("Activating host service worker", event);
-
-    try {
-        clients.claim();
-    } catch (err) {
-        console.log(err);
-    }
+    event.waitUntil(clients.claim());
 });
 
 self.addEventListener('message', function (event) {
-    if (event.target instanceof ServiceWorkerGlobalScope) {
-        if (event.data.action === "activate") {
-            event.ports[0].postMessage({status: 'empty'});
+    if (!(event.target instanceof ServiceWorkerGlobalScope)) {
+        return;
+    }
+
+    const data = event.data;
+    const comPort = event.ports[0];
+
+    if (data.action === "activate") {
+        comPort.postMessage({status: 'empty'});
+    }
+
+    if (data.seed) {
+        // If a seed promise resolver exists
+        // it means that the state is waiting to be initialized
+        // in the fetch request event handler
+        if (seedResolver) {
+            // Resolve the seed request
+            seedResolver(data.seed);
+
+            // Prevent multiple resolves in case
+            // multiple tabs are open
+            seedResolver = null;
+            return;
         }
 
-        if (event.data.seed) {
-            bootScript = new SWBootScript(event.data.seed);
-            bootScript.boot((err, _rawDossier) => {
-
-                if(err){
+        if (!rawDossier) {
+            bootSWEnvironment(data.seed, (err) => {
+                if (err) {
                     throw err;
                 }
-
-                rawDossier = _rawDossier;
-                rawDossierHlp = new RawDossierHelper(rawDossier);
-                initMiddleware();
-                event.ports[0].postMessage({status: 'finished'});
+                comPort.postMessage({status: 'finished'});
                 afterBootScripts();
-            });
+            })
         }
     }
 });
 
-server.init(self);
+self.addEventListener('fetch', (event) => {
+    event.respondWith(initState(event).then(server.handleEvent));
+});
+
+/**
+ * Initialize the service worker state
+ *
+ * If the dossier isn't loaded, request a seed
+ * and boot the service worker environment
+ *
+ * @param {FetchEvent} event
+ * @return {Promise}
+ */
+function initState(event) {
+    if (rawDossier) {
+        return Promise.resolve(event);
+    }
+
+    return requestSeedFromClient().then((seed) => {
+        return new Promise((resolve, reject) => {
+            bootSWEnvironment(seed, (err) => {
+                if (err) {
+                    return reject(err);
+                }
+
+                resolve(event);
+            })
+        })
+    });
+}
+
+/**
+ * Request a seed by posting a seed request
+ * to all visible windows
+ *
+ * @return {Promise} The promise will be resolved
+ *                   when a client will post back the
+ *                   the requested seed in the
+ *                   "on message" handler
+ */
+function requestSeedFromClient() {
+    return clients.matchAll({
+        includeUncontrolled: true,
+        type: 'window'
+    }).then((clients) => {
+        // This promise will be resolved
+        // once the loader posts back our seed in the "on message" handler
+        let requestSeedPromise = new Promise((resolve, reject) => {
+            seedResolver = resolve;
+        })
+
+        const identity = self.registration.scope.split('/').pop();
+
+        // Request the seed
+        for (const client of clients) {
+            // Send a seed request only to visible windows
+            if (client.visibilityState !== 'visible') {
+                continue;
+            }
+
+            client.postMessage({
+                query: 'seed',
+                identity: identity,
+            });
+        }
+        return requestSeedPromise;
+    })
+}
+
+/**
+ * @param {string} seed
+ * @param {callback} callback
+ */
+function bootSWEnvironment(seed, callback) {
+    bootScript = new SWBootScript(seed);
+    bootScript.boot((err, _rawDossier) => {
+        if(err){
+            return callback(err);
+        }
+
+        rawDossier = _rawDossier;
+        rawDossierHlp = new RawDossierHelper(rawDossier);
+        initMiddleware();
+        callback();
+    });
+}
+
+
 
 function initMiddleware(){
     server.put("/create-channel/:channelName", createChannelHandler);

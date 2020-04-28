@@ -262,6 +262,19 @@ function MainController() {
             }
         });
 
+        navigator.serviceWorker.addEventListener('message', (e) => {
+            if (!e.data || e.data.query !== 'seed') {
+                return;
+            }
+
+            const swWorkerIdentity = e.data.identity;
+            if (swWorkerIdentity === hexDigest) {
+                e.source.postMessage({
+                    seed: seed
+                });
+            }
+        })
+
         document.body.appendChild(iframe);
 
     }
