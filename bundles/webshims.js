@@ -31263,12 +31263,8 @@ exports.install = function(options) {
 
   // Support runtime transpilers that include inline source maps
   if (options.hookRequire && !isInBrowser()) {
-    var Module;
-    try {
-      Module = require('module');
-    } catch (err) {
-      // NOP: Loading in catch block to convert webpack error to warning.
-    }
+    // Use dynamicRequire to avoid including in browser bundles
+    var Module = dynamicRequire(module, 'module');
     var $compile = Module.prototype._compile;
 
     if (!$compile.__sourceMapSupport) {
@@ -31336,7 +31332,7 @@ exports.resetRetrieveHandlers = function() {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-from/index.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","module":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"path","source-map":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map-support/node_modules/source-map/source-map.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
+},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/buffer-from/index.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"path","source-map":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/source-map-support/node_modules/source-map/source-map.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
 arguments[4]["/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js"][0].apply(exports,arguments)
 },{"safe-buffer":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/safe-buffer/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/util-deprecate/browser.js":[function(require,module,exports){
 (function (global){

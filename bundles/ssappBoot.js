@@ -2545,12 +2545,12 @@ function Seed(compactSeed, endpoint, key) {
         if (!expandedSeed.key) {
             throw Error("The seed does not contain an id");
         }
-        let compactSeed = base58.encode(expandedSeed.key);
+        let compactSeed = expandedSeed.key.toString("hex");
         if (expandedSeed.endpoint) {
-            compactSeed += '|' + base58.encode(expandedSeed.endpoint);
+            compactSeed += '|' + expandedSeed.endpoint.toString();
         }
 
-        return compactSeed;
+        return base58.encode(compactSeed);
     }
 
     function load(compactFormSeed) {
@@ -2567,11 +2567,11 @@ function Seed(compactSeed, endpoint, key) {
         }
 
         const localSeed = {};
-        const splitCompactSeed = compactFormSeed.split('|');
-        localSeed.key = base58.decode(splitCompactSeed[0]);
+        const splitCompactSeed = base58.decode(compactFormSeed).toString().split('|');
+        localSeed.key = Buffer.from(splitCompactSeed[0], "hex");
 
         if (splitCompactSeed[1] && splitCompactSeed[1].length > 0) {
-            localSeed.endpoint = base58.decode(splitCompactSeed[1]).toString();
+            localSeed.endpoint = splitCompactSeed[1];
         } else {
             console.warn('Cannot find endpoint in compact seed')
         }
@@ -7086,7 +7086,349 @@ exports.createForObject = function(valueObject, thisObject, localId){
 	var ret = require("./base").createForObject(valueObject, thisObject, localId);
 	return ret;
 };
-},{"./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/base.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier/index.js":[function(require,module,exports){
+},{"./base":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/callflow/lib/utilityFunctions/base.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/DossierWizardMiddleware.js":[function(require,module,exports){
+(function (process){
+
+const URL_PREFIX = "/dossierWizard";
+
+function DossierWizardMiddleware(server){
+	const path = require('path');
+	const fs = require('fs');
+	const VirtualMQ = require('virtualmq');
+	const httpWrapper = VirtualMQ.getHttpWrapper();
+	const httpUtils = httpWrapper.httpUtils;
+	const crypto = require('pskcrypto');
+	const serverCommands = require('./utils/serverCommands');
+	const executioner = require('./utils/executioner');
+
+	const randSize = 32;
+	server.use(`${URL_PREFIX}/*`, function (req, res, next) {
+		res.setHeader('Access-Control-Allow-Origin', '*');
+
+		// Request methods you wish to allow
+		res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+		// Request headers you wish to allow
+		res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length, X-Content-Length');
+		next();
+	});
+
+	server.post(`${URL_PREFIX}/begin`, (req, res) => {
+		const transactionId = crypto.randomBytes(randSize).toString('hex');
+		fs.mkdir(path.join(server.rootFolder, transactionId), {recursive: true}, (err) => {
+			if (err) {
+				res.statusCode = 500;
+				res.end();
+				return;
+			}
+			console.log("About to send transaction Id", transactionId);
+
+			res.end(transactionId);
+		});
+	});
+
+	server.post(`${URL_PREFIX}/addFile`, (req, res) => {
+		res.statusCode = 400;
+		res.end('Illegal url, missing transaction id');
+	});
+
+	server.post(`${URL_PREFIX}/addFile/:transactionId/:fileAlias`, (req, res) => {
+		const transactionId = req.params.transactionId;
+		const fileObj = {
+			fileName: req.params.fileAlias,
+			stream: req
+		};
+
+		serverCommands.addFile(path.join(server.rootFolder, transactionId), fileObj, (err) => {
+			if(err) {
+				if(err.code === 'EEXIST') {
+					res.statusCode = 409;
+				} else {
+					res.statusCode = 500;
+				}
+			}
+
+			res.end();
+		});
+	});
+
+	server.post(`${URL_PREFIX}/addEndpoint`, (req, res) => {
+		res.statusCode = 400;
+		res.end('Illegal url, missing transaction id');
+	});
+
+	server.post(`${URL_PREFIX}/addEndpoint/:transactionId`, httpUtils.bodyParser);
+
+	server.post(`${URL_PREFIX}/addEndpoint/:transactionId`, (req, res) => {
+		const transactionId = req.params.transactionId;
+		serverCommands.setEndpoint(path.join(server.rootFolder, transactionId), req.body, (err) => {
+			if(err) {
+				res.statusCode = 500;
+			}
+
+			res.end();
+		});
+	});
+
+	server.post(`${URL_PREFIX}/build`, (req, res) => {
+		res.statusCode = 400;
+		res.end('Illegal url, missing transaction id');
+	});
+	server.post(`${URL_PREFIX}/build/:transactionId`, httpUtils.bodyParser);
+	server.post(`${URL_PREFIX}/build/:transactionId`, (req, res) => {
+		const transactionId = req.params.transactionId;
+		executioner.executioner(path.join(server.rootFolder, transactionId), (err, seed) => {
+			if(err) {
+				res.statusCode = 500;
+				console.log("Error", err);
+				res.end();
+				return;
+			}
+			res.end(seed.toString());
+
+		});
+	});
+
+	server.use(`${URL_PREFIX}`, (req, res) => {
+		res.statusCode = 303;
+		let redirectLocation = 'index.html';
+
+		if(!req.url.endsWith('/')) {
+			redirectLocation = `${URL_PREFIX}/` + redirectLocation;
+		}
+
+		res.setHeader("Location", redirectLocation);
+		res.end();
+	});
+
+	server.use(`${URL_PREFIX}/*`, httpUtils.serveStaticFile(path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, 'modules/dossier-wizard/web'), `${URL_PREFIX}/`));
+
+	server.use((req, res) => {
+		res.statusCode = 404;
+		res.end();
+	});
+}
+module.exports = DossierWizardMiddleware;
+
+}).call(this,require('_process'))
+
+},{"./utils/executioner":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/executioner.js","./utils/serverCommands":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/serverCommands.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","pskcrypto":"pskcrypto","virtualmq":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/index.js":[function(require,module,exports){
+(function (process,__dirname){
+if (!process.env.PSK_ROOT_INSTALATION_FOLDER) {
+    process.env.PSK_ROOT_INSTALATION_FOLDER = path.resolve("." + __dirname + "/../..");
+}
+module.exports.getDossierWizardMiddleware = require("./DossierWizardMiddleware");
+
+
+}).call(this,require('_process'),"/modules/dossier-wizard")
+
+},{"./DossierWizardMiddleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/DossierWizardMiddleware.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/TransactionManager.js":[function(require,module,exports){
+const fs = require('fs');
+const path = require('path');
+
+function TransactionManager(localFolder) {
+
+    const filePath = path.join(localFolder, 'commands.json');
+
+    function loadTransaction(callback) {
+        fs.mkdir(localFolder, {recursive: true}, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            fs.readFile(filePath, (err, transaction) => {
+                let transactionObj = {};
+                if (err) {
+                    return callback(undefined, transactionObj);
+                }
+
+                try {
+                    transactionObj = JSON.parse(transaction.toString());
+                } catch (e) {
+                    return callback(e);
+                }
+                callback(undefined, transactionObj);
+            });
+        });
+    }
+
+    function saveTransaction(transaction, callback) {
+        fs.mkdir(localFolder, {recursive: true}, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            fs.writeFile(filePath, JSON.stringify(transaction), callback);
+        });
+    }
+
+    function addCommand(command, callback) {
+
+        loadTransaction((err, transaction) => {
+            if (err) {
+                return callback(err);
+            }
+
+            if (typeof transaction.commands === "undefined") {
+                transaction.commands = [];
+            }
+
+            transaction.commands.push(command);
+
+            saveTransaction(transaction, callback);
+        });
+    }
+
+    return {
+        addCommand,
+        loadTransaction,
+        saveTransaction
+    };
+}
+
+module.exports = TransactionManager;
+
+},{"fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/dossierOperations.js":[function(require,module,exports){
+const EDFS = require("edfs");
+
+function createArchive(endpoint) {
+    const edfs = EDFS.attachToEndpoint(endpoint);
+    let archive = edfs.createBar();
+    return archive;
+}
+
+function addFile(workingDir, fileName, archive, callback) {
+    const path = require("path");
+    archive.addFile(path.join(workingDir, fileName), fileName, callback);
+}
+
+module.exports = {
+    addFile,
+    createArchive
+};
+},{"edfs":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs/index.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/executioner.js":[function(require,module,exports){
+const dossierOperations = require('./dossierOperations');
+const TransactionManager = require('./TransactionManager');
+
+function executioner(workingDir, callback) {
+    const manager = new TransactionManager(workingDir);
+    manager.loadTransaction((err, transaction) => {
+        if (err) {
+            return callback(err);
+        }
+        let archive;
+        try {
+            archive = dossierOperations.createArchive(transaction.endpoint);
+        } catch (e) {
+            return callback(e);
+        }
+
+        executeCommand(transaction.commands, archive, workingDir, 0, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, archive.getSeed());
+        });
+    });
+}
+
+function executeCommand(commands, archive, workingDir, index = 0, callback) {
+    if (!Array.isArray(commands)) {
+        return callback(Error(`No commands`));
+    }
+    if (index === commands.length) {
+        return callback();
+    }
+
+    const match = judge(commands[index], archive, workingDir, (err) => {
+        if (err) {
+            return callback(err);
+        }
+
+        executeCommand(commands, archive, workingDir, ++index, callback);
+    });
+
+    if (!match) {
+        return callback(new Error('No match for command found' + commands[index].name));
+    }
+}
+
+function judge(command, archive, workingDir, callback) {
+    switch (command.name) {
+        case 'addFile':
+            dossierOperations.addFile(workingDir, command.params.fileName, archive, callback);
+            break;
+
+        default:
+            return false;
+    }
+
+    return true;
+}
+
+module.exports = {
+    executioner
+};
+
+},{"./TransactionManager":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/TransactionManager.js","./dossierOperations":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/dossierOperations.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/serverCommands.js":[function(require,module,exports){
+const fs = require("fs");
+const path = require("path");
+const url = require('url');
+
+const TransactionManager = require("./TransactionManager");
+
+function addFile(workingDir, FileObj, callback) {
+    const cmd = {
+        name: 'addFile',
+        params: {
+            fileName: FileObj.fileName
+        }
+    };
+
+    const manager = new TransactionManager(workingDir);
+    const filePath = path.join(workingDir, FileObj.fileName);
+    fs.access(filePath, (err) => {
+        if (!err) {
+            const e = new Error('File already exists');
+            e.code = 'EEXIST';
+            return callback(e);
+        }
+
+        const file = fs.createWriteStream(filePath);
+
+        file.on('close', () => {
+            manager.addCommand(cmd, callback);
+        });
+
+        FileObj.stream.pipe(file);
+    });
+}
+
+function setEndpoint(workingDir, endpointObj, callback) {
+    let endpoint;
+    try {
+        endpoint = new url.URL(endpointObj).origin;
+    } catch (e) {
+        return callback(e);
+    }
+    const manager = new TransactionManager(workingDir);
+    manager.loadTransaction((err, transaction) => {
+        if (err) {
+            return callback(err);
+        }
+        transaction.endpoint = endpoint;
+
+        manager.saveTransaction(transaction, callback);
+    });
+}
+
+module.exports = {
+    addFile,
+    setEndpoint
+};
+
+},{"./TransactionManager":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/utils/TransactionManager.js","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","url":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/url/url.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier/index.js":[function(require,module,exports){
 (function (process){
 const se = require("swarm-engine");
 if(typeof $$ === "undefined" || typeof $$.swarmEngine === "undefined"){
@@ -7966,7 +8308,7 @@ function RawDossier(endpoint, seed, cache) {
         options = defaultOpts;
 
         if (options.ignoreMounts === true) {
-            bar.addFolder(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
+            bar.addFile(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
         } else {
             const splitPath = barPath.split("/");
             const fileName = splitPath.pop();
@@ -8050,6 +8392,10 @@ function RawDossier(endpoint, seed, cache) {
                 dossierContext.archive.writeFile(dossierContext.relativePath + "/" + fileName, data, options, callback);
             });
         }
+    };
+
+    this.delete = (barPath, callback) => {
+        bar.delete(barPath, callback);
     };
 
     this.listFiles = (path, callback) => {
@@ -16464,6 +16810,7 @@ function HttpServer({listeningPort, rootFolder, sslConfig}, callback) {
 		require("./ChannelsManager.js")(server);
 		require("./FilesManager.js")(server);
 		require("edfs-middleware").getEDFSMiddleware(server);
+		require("dossier-wizard").getDossierWizardMiddleware(server);
 
 		setTimeout(function(){
 			//allow other endpoints registration before registering fallback handler
@@ -16500,7 +16847,7 @@ module.exports.getHttpWrapper = function() {
 
 }).call(this,require('_process'))
 
-},{"./ChannelsManager.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/ChannelsManager.js","./FilesManager.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/FilesManager.js","./VMQRequestFactory":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/VMQRequestFactory.js","./libs/TokenBucket":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/TokenBucket.js","./libs/http-wrapper":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/http-wrapper/src/index.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","edfs-middleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-middleware/index.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/TokenBucket.js":[function(require,module,exports){
+},{"./ChannelsManager.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/ChannelsManager.js","./FilesManager.js":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/FilesManager.js","./VMQRequestFactory":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/VMQRequestFactory.js","./libs/TokenBucket":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/TokenBucket.js","./libs/http-wrapper":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/http-wrapper/src/index.js","_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","dossier-wizard":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/dossier-wizard/index.js","edfs-middleware":"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/edfs-middleware/index.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js"}],"/home/vlad/Development/privatesky/web-wallet/privatesky/modules/virtualmq/libs/TokenBucket.js":[function(require,module,exports){
 /**
  * An implementation of the Token bucket algorithm
  * @param startTokens - maximum number of tokens possible to obtain and the default starting value
@@ -57947,12 +58294,8 @@ exports.install = function(options) {
 
   // Support runtime transpilers that include inline source maps
   if (options.hookRequire && !isInBrowser()) {
-    var Module;
-    try {
-      Module = require('module');
-    } catch (err) {
-      // NOP: Loading in catch block to convert webpack error to warning.
-    }
+    // Use dynamicRequire to avoid including in browser bundles
+    var Module = dynamicRequire(module, 'module');
     var $compile = Module.prototype._compile;
 
     if (!$compile.__sourceMapSupport) {
@@ -58020,7 +58363,7 @@ exports.resetRetrieveHandlers = function() {
 
 }).call(this,require('_process'))
 
-},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","module":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
+},{"_process":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/vlad/Development/privatesky/web-wallet/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:

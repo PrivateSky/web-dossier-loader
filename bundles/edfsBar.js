@@ -2529,12 +2529,12 @@ function Seed(compactSeed, endpoint, key) {
         if (!expandedSeed.key) {
             throw Error("The seed does not contain an id");
         }
-        let compactSeed = base58.encode(expandedSeed.key);
+        let compactSeed = expandedSeed.key.toString("hex");
         if (expandedSeed.endpoint) {
-            compactSeed += '|' + base58.encode(expandedSeed.endpoint);
+            compactSeed += '|' + expandedSeed.endpoint.toString();
         }
 
-        return compactSeed;
+        return base58.encode(compactSeed);
     }
 
     function load(compactFormSeed) {
@@ -2551,11 +2551,11 @@ function Seed(compactSeed, endpoint, key) {
         }
 
         const localSeed = {};
-        const splitCompactSeed = compactFormSeed.split('|');
-        localSeed.key = base58.decode(splitCompactSeed[0]);
+        const splitCompactSeed = base58.decode(compactFormSeed).toString().split('|');
+        localSeed.key = Buffer.from(splitCompactSeed[0], "hex");
 
         if (splitCompactSeed[1] && splitCompactSeed[1].length > 0) {
-            localSeed.endpoint = base58.decode(splitCompactSeed[1]).toString();
+            localSeed.endpoint = splitCompactSeed[1];
         } else {
             console.warn('Cannot find endpoint in compact seed')
         }
@@ -3858,7 +3858,7 @@ function RawDossier(endpoint, seed, cache) {
         options = defaultOpts;
 
         if (options.ignoreMounts === true) {
-            bar.addFolder(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
+            bar.addFile(fsFilePath, barPath, options, (err, barMapDigest) => callback(err, barMapDigest));
         } else {
             const splitPath = barPath.split("/");
             const fileName = splitPath.pop();
@@ -3942,6 +3942,10 @@ function RawDossier(endpoint, seed, cache) {
                 dossierContext.archive.writeFile(dossierContext.relativePath + "/" + fileName, data, options, callback);
             });
         }
+    };
+
+    this.delete = (barPath, callback) => {
+        bar.delete(barPath, callback);
     };
 
     this.listFiles = (path, callback) => {
@@ -11229,12 +11233,8 @@ exports.install = function(options) {
 
   // Support runtime transpilers that include inline source maps
   if (options.hookRequire && !isInBrowser()) {
-    var Module;
-    try {
-      Module = require('module');
-    } catch (err) {
-      // NOP: Loading in catch block to convert webpack error to warning.
-    }
+    // Use dynamicRequire to avoid including in browser bundles
+    var Module = dynamicRequire(module, 'module');
     var $compile = Module.prototype._compile;
 
     if (!$compile.__sourceMapSupport) {
@@ -11300,7 +11300,7 @@ exports.resetRetrieveHandlers = function() {
   retrieveFile = handlerExec(retrieveFileHandlers);
 }
 
-},{"buffer-from":"buffer-from","fs":false,"module":false,"path":false,"source-map":"source-map"}],"source-map":[function(require,module,exports){
+},{"buffer-from":"buffer-from","fs":false,"path":false,"source-map":"source-map"}],"source-map":[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
