@@ -1,0 +1,19 @@
+{
+  "workDir": ".",
+  "dependencies": [
+    {
+      "name": "PSK bundles",
+      "src": "",
+      "actions": [
+        {
+          "type": "copy",
+          "src": "../../../privatesky/psknode/bundles/swBoot.js",
+          "target": "./swBoot.js",
+          "options": {
+            "overwrite": true
+          }
+        }
+      ]
+    }
+  ]
+}

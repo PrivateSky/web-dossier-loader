@@ -3,10 +3,11 @@
   "version": "0.2.0",
   "description": "Web Loader for the Dossiers' User Interface",
   "scripts": {
-    "web-server": "ws -p 9090"
+    "postinstall": "node ./node_modules/octopus/scripts/run",
+    "update":"npm run postinstall"
   },
-  "devDependencies": {
-    "local-web-server": "^3.0.7"
+  "dependencies": {
+    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0"
   },
   "license": "MIT"
 }
