@@ -302,7 +302,7 @@ function WalletBuilderService(wallet, options) {
     const installApplications = (callback) => {
         getListOfAppsForInstallation((err, apps) => {
             if (err) {
-                return callback(err);
+                return callback();
             }
 
             const appsList = Object.keys(apps);
