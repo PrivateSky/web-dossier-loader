@@ -4,11 +4,11 @@ const paths = window.location.pathname.split("/iframe/");
 const myIdentity = paths[1];
 const swName = "swBoot.js";
 
-window.addEventListener("message", (event) => {
+window.document.addEventListener(myIdentity, (e) => {
+    const data = e.detail || {};
 
-    if (event.data.seed) {
-
-        const seed = event.data.seed;
+    if (data.seed) {
+        const seed = data.seed;
         const swConfig = {
             name: swName,
             path: `../${swName}`,
@@ -17,11 +17,51 @@ window.addEventListener("message", (event) => {
 
         SWAgent.loadWallet(seed, swConfig, (err) => {
             if (err) {
-                return console.error(err);
+                console.error(err);
+                return sendMessage({
+                    status: 'error'
+                });
             }
-            window.parent.postMessage({status:"completed"},"*");
+            sendMessage({
+                status: 'completed'
+            });
         })
-    }
-});
 
-window.parent.postMessage({appIdentity: myIdentity}, "*");
+    }
+})
+
+sendMessage({
+    query: 'seed'
+})
+
+function sendMessage(message) {
+    const event = new CustomEvent(myIdentity, {
+        detail: message
+    });
+    window.parent.document.dispatchEvent(event);
+}
+
+//window.addEventListener("message", (event) => {
+
+    //if (event.data.seed) {
+
+        //const seed = event.data.seed;
+        //const swConfig = {
+            //name: swName,
+            //path: `../${swName}`,
+            //scope: myIdentity
+        //};
+
+        //SWAgent.loadWallet(seed, swConfig, (err) => {
+            //if (err) {
+                //return console.error(err);
+            //}
+            //window.parent.postMessage({status:"completed"},"*");
+            //sendMessage({
+                //status: 'completed'
+            //});
+        //})
+    //}
+//});
+
+//window.parent.postMessage({appIdentity: myIdentity}, "*");

@@ -30,6 +30,8 @@ function SSAppRunner(options) {
         iframe.style.display = 'block';
         iframe.style.zIndex = '100';
 
+        iframe.setAttribute('identity', this.hash);
+
         // This request will be intercepted by swLoader.js
         // and will make the iframe load the app-loader.js script
         iframe.src = window.location + 'iframe/' + this.hash;
@@ -37,20 +39,18 @@ function SSAppRunner(options) {
     };
 
     const setupLoadEventsListener = (iframe) => {
-        window.addEventListener('message', (e) => {
-            const data = e.data;
+        window.document.addEventListener(this.hash, (e) => {
+            const data = e.detail || {};
 
-            // the app-loader.js script is requesting the wallet seed
-            if (data.appIdentity === this.hash) {
-                iframe.contentWindow.postMessage({
-                    seed: this.seed,
-                }, iframe.src);
+            if (data.query === 'seed') {
+                iframe.contentWindow.document.dispatchEvent(new CustomEvent(this.hash, {
+                    detail: {
+                        seed: this.seed
+                    }
+                }));
                 return;
             }
 
-            // The application's SW is registered and initialized.
-            // Replace the current document with the app's iframe
-            // and run the app
             if (data.status === 'completed') {
                 const newPageDocument = `<html>
                     <body>
@@ -71,7 +71,7 @@ function SSAppRunner(options) {
             if (data.status === 'error') {
                 throw new Error("Unable to load application");
             }
-        });
+        }, true);
     };
 
     /**
