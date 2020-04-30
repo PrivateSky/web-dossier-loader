@@ -21,21 +21,21 @@
             <div class="step" data-target="#enter-pin-step">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin-step">
                     <span class="bs-stepper-circle">1</span>
-                    <span class="bs-stepper-label">PIN</span>
+                    <span class="bs-stepper-label" id="step-pin">PIN</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
             <div class="step" data-target="#complete-step">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete-step">
                     <span class="bs-stepper-circle">2</span>
-                    <span class="bs-stepper-label">Complete</span>
+                    <span class="bs-stepper-label" id="step-complete">Complete</span>
                 </button>
             </div>
         </div>
         <div class="bs-stepper-content">
             <form onSubmit="controller.openWallet(event)">
                 <div id="enter-pin-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
-                    <label for="pin">Set up a Personal Identifier(PIN)</label>
+                    <label for="pin" id="set-up-pin">Set up a Personal Identifier(PIN)</label>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
@@ -61,9 +61,9 @@
 
 
                     <div class="form-group">
-                        <label for="seed">Please keep secret this seed </label>
+                        <label for="seed" id="seed_keep_secret">Please keep secret this seed</label>
                         <input type="text" disabled="disabled" class="form-control" id="seed">
-                        <small class="form-text text-muted">You can print it on a piece of paper.</small>
+                        <small class="form-text text-muted" id="seed_print">You can print it on a piece of paper.</small>
                     </div>
 
                     <div class="row ml-1">
@@ -71,7 +71,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
+                    <button type="submit" class="btn btn-primary mt-5" id="open-wallet-btn">Open Wallet</button>
                 </div>
             </form>
         </div>

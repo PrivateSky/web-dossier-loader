@@ -19,22 +19,21 @@
 
     <div id="restore-new-container" class="align-self-center bd-highlight content">
 
-        <div class="title">Cloud Safe Box</div>
-        <div class="caption">A smart application for keep your secrets</div>
+        <div id="loader-title" class="title">Cloud Safe Box</div>
+        <div id="loader-caption" class="caption">A smart application for keep your secrets</div>
         <div class="actions">
-            <a type="button" class="btn btn-csb-new" href="new">New Dossier</a>
-            <a type="button" class="btn btn-csb-restore" href="restore">Restore Dossier</a>
+            <a type="button" class="btn btn-csb-new" href="new" id="new-dossier" >New Dossier</a>
+            <a type="button" class="btn btn-csb-restore" href="restore" id="restore-dossier">Restore Dossier</a>
         </div>
-
 
     </div>
 
     <div id="pin-container" class="align-self-center bd-highlight">
         <div class="pin-panel-container">
             <div class="pin-panel card text-white bg-violet mb-3" style="max-width: 30rem;">
-                <div class="card-header">Wallet Authorization</div>
+                <div class="card-header" id="wallet-authorization">Wallet Authorization</div>
                 <div class="card-body">
-                    <h5 class="card-title">Enter PIN</h5>
+                    <h5 class="card-title" id="enter-pin">Enter PIN</h5>
                     <form onsubmit="controller.openWallet(event)">
                         <div class="form-group">
                             <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
@@ -46,7 +45,7 @@
                         </div>
 
                         <button type="submit" id="open-wallet-btn" disabled="disabled" class="btn btn-open-wallet float-left">Open Wallet</button>
-                        <button type="button" onclick="controller.restore(event)" class="btn btn-lost-pin float-right">Lost PIN?</button>
+                        <button type="button" id="lost-pin" onclick="controller.restore(event)" class="btn btn-lost-pin float-right">Lost PIN?</button>
                     </form>
                 </div>
             </div>

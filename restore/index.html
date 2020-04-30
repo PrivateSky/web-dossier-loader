@@ -20,21 +20,21 @@
             <div class="step" data-target="#enter-seed">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger1" aria-controls="enter-seed">
                     <span class="bs-stepper-circle">1</span>
-                    <span class="bs-stepper-label">Seed</span>
+                    <span id="step-seed" class="bs-stepper-label">Seed</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
             <div class="step" data-target="#enter-pin">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger2" aria-controls="enter-pin">
                     <span class="bs-stepper-circle">2</span>
-                    <span class="bs-stepper-label">PIN</span>
+                    <span id="step-pin" class="bs-stepper-label">PIN</span>
                 </button>
             </div>
             <div class="bs-stepper-line"></div>
             <div class="step" data-target="#complete">
                 <button type="button" class="step-trigger" role="tab" id="stepper1trigger3" aria-controls="complete">
                     <span class="bs-stepper-circle">3</span>
-                    <span class="bs-stepper-label">Complete</span>
+                    <span id="step-complete" class="bs-stepper-label">Complete</span>
                 </button>
             </div>
         </div>
@@ -42,7 +42,7 @@
             <form onSubmit="return controller.openWallet(event)">
                 <div id="enter-seed" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                     <div class="form-group">
-                        <label for="seed">Seed</label>
+                        <label id="seed-label" for="seed">Seed</label>
                         <input type="text" class="form-control" id="seed" placeholder="Enter Wallet Seed"
                                oninput="controller.validateSeed(event)">
                         <label id="seedError"></label>
@@ -70,7 +70,7 @@
                     <div class="row ml-1">
                         <label id="pinError" class="error"></label>
                     </div>
-                    <button class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
+                    <button id="change-wallet" class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
                     <button id="setPINBtn" class="btn btn-primary" onclick="controller.setPin(event)"
                             disabled="disabled">Set PIN
                     </button>
@@ -78,7 +78,7 @@
                 </div>
                 <div id="complete" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
-                    <button type="submit" class="btn btn-primary mt-5">Open Wallet</button>
+                    <button id="open-wallet-btn" type="submit" class="btn btn-primary mt-5">Open Wallet</button>
                 </div>
             </form>
         </div>

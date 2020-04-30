@@ -28,4 +28,23 @@ function Spinner(view) {
     }
 }
 
-export default Spinner;
+function prepareView(page_labels){
+	try {
+		page_labels.forEach(page_label => {
+			let labelAttribute = "innerHTML";
+			if (page_label.attribute) {
+				labelAttribute = page_label.attribute;
+			}
+			let labelIdentifier = Object.keys(page_label).find((prop) => {
+				return prop !== "attribute";
+			});
+			document.querySelector(labelIdentifier)[labelAttribute] = page_label[labelIdentifier]
+		})
+	}
+	catch (e) {
+		console.log(e);
+	}
+}
+
+export {Spinner, prepareView};
+

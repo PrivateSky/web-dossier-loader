@@ -1,4 +1,4 @@
-import SpinnerService from "./services/SpinnerService.js";
+import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 
 function RestoreController() {
@@ -13,9 +13,8 @@ function RestoreController() {
         document.getElementById(containerId).style.display = "block";
     }
 
-    this.initView = function () {
-        document.getElementsByTagName("title")[0].text = APP_CONFIG.appName;
-        spinner = new SpinnerService(document.getElementsByTagName("body")[0]);
+    this.init = function () {
+        spinner = new Spinner(document.getElementsByTagName("body")[0]);
         walletService.hasSeedCage((err, result) => {
             wizard = new Stepper(document.getElementById("psk-wizard"));
         });
@@ -91,8 +90,36 @@ function RestoreController() {
 
 let controller = new RestoreController();
 document.addEventListener("DOMContentLoaded", function () {
-    controller.initView();
+	let LABELS = APP_CONFIG.LABELS_DICTIONARY;
+	const page_labels = [
+		{"title": LABELS.APP_NAME,},
+		{"#step-seed": LABELS.SEED},
+		{"#step-pin": LABELS.PIN},
+		{"#step-complete": LABELS.COMPLETE},
+		{"#seed-label": LABELS.SEED},
+		{
+			"#seed": LABELS.ENTER_WALLET_SEED,
+			"attribute": "placeholder"
+		},
+
+		{
+			"#pin": LABELS.ENTER_PIN,
+			"attribute": "placeholder"
+		},
+		{
+			"#confirmPin": LABELS.CONFIRM_PIN,
+			"attribute": "placeholder"
+		},
+		{"#pinHelp": LABELS.EASY_TO_REMEMBER_PIN},
+		{"#pinConfirmHelp": LABELS.CONFIRM_PIN_IDENTICAL},
+		{"#setPINBtn": LABELS.SET_PIN},
+		{"#restoreSeedBtn":LABELS.RESTORE},
+
+		{"#open-wallet-btn": LABELS.OPEN_WALLET}
+	];
+	prepareView(page_labels);
+	controller.init();
+
 });
 window.controller = controller;
-
 

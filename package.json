@@ -4,7 +4,7 @@
   "description": "Web Loader for the Dossiers' User Interface",
   "scripts": {
     "postinstall": "node ./node_modules/octopus/scripts/run",
-    "update":"npm run postinstall"
+    "update": "npm run postinstall"
   },
   "dependencies": {
     "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0"
