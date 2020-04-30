@@ -251,3 +251,28 @@ label.error{
         width:40rem;
     }
 }
+
+@media print {
+    .s-stepper-header{
+        display: none;
+    }
+    #seed{
+        font-size: 13px;
+        text-align: center;
+    }
+    #complete-step .form-group{
+        position: absolute;
+        background: white;
+        left: 0;
+        right: 0;
+        bottom:0;
+        top: 0;
+        padding-top: 20%;
+    }
+
+    #complete-step .form-group .input-group-append,
+    #complete-step .form-group small
+    {
+        display: none;
+    }
+}

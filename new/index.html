@@ -62,7 +62,14 @@
 
                     <div class="form-group">
                         <label for="seed" id="seed_keep_secret">Please keep secret this seed</label>
-                        <input type="text" disabled="disabled" class="form-control" id="seed">
+                        <div class="input-group mb-3">
+                            <input type="text" disabled="disabled" class="form-control" id="seed">
+                            <div class="input-group-append">
+                                <button onclick="window.print();" class="btn btn-outline-secondary" type="button"><i class="fas fa-print"></i>
+                                </button>
+                            </div>
+                        </div>
+
                         <small class="form-text text-muted" id="seed_print">You can print it on a piece of paper.</small>
                     </div>
 
