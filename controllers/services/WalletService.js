@@ -41,7 +41,7 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.restoreFromPin = function (pin, callback) {
-        EDFS.attachWithPin(pin, (err, edfs) => {
+        EDFS.attachWithPassword(pin, (err, edfs) => {
             if (err) {
                 return callback(err);
             }
