@@ -114,6 +114,7 @@ document.addEventListener("DOMContentLoaded", function () {
 		{"#pinConfirmHelp": LABELS.CONFIRM_PIN_IDENTICAL},
 		{"#setPINBtn": LABELS.SET_PIN},
 		{"#restoreSeedBtn":LABELS.RESTORE},
+		{"#change-wallet":LABELS.CHANGE_WALLET},
 
 		{"#open-wallet-btn": LABELS.OPEN_WALLET}
 	];
