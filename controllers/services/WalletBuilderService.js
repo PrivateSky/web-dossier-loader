@@ -158,7 +158,8 @@ function WalletBuilderService(wallet, options) {
             }
 
             const appDossier = this.dossierFactory();
-            appDossier.mount('/', CODE_FOLDER, seed, (err) => {
+            appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
+
                 if (err) {
                     return callback(err);
                 }
@@ -193,7 +194,7 @@ function WalletBuilderService(wallet, options) {
                 return callback(err);
             }
 
-            wallet.mount('/apps', appName, newAppSeed, (err) => {
+            wallet.mount('/apps/' + appName, newAppSeed, (err) => {
                 if (err) {
                     return callback(err);
                 }
@@ -321,7 +322,7 @@ function WalletBuilderService(wallet, options) {
      */
     const install = (files, callback) => {
         // Mount the "wallet template" into wallet/code
-        wallet.mount('/', CODE_FOLDER, this.walletTypeSeed, (err) => {
+        wallet.mount('/' + CODE_FOLDER, this.walletTypeSeed, (err) => {
             if (err) {
                 return callback(err);
             }
