@@ -264,7 +264,7 @@ function WalletBuilderService(wallet, options) {
     const rebuildApplications = (callback) => {
         getListOfAppsForInstallation((err, apps) => {
             if (err) {
-                return callback(err);
+                return callback();
             }
 
             const appsList = [];
