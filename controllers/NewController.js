@@ -75,10 +75,6 @@ function NewController() {
 		wizard.previous();
 	};
 
-	this.setPin = function (event) {
-		event.preventDefault();
-	};
-
 	this.openWallet = function (event) {
 		event.preventDefault();
 		event.stopImmediatePropagation();
