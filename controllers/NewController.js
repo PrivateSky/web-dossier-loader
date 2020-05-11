@@ -80,6 +80,7 @@ function NewController() {
 	};
 
 	this.openWallet = function (event) {
+		event.preventDefault();
 		event.stopImmediatePropagation();
 		window.location.replace("./");
 	}
