@@ -91,23 +91,52 @@ SWAgent.registerSW = function (options, callback) {
     }
 }
 
-SWAgent.unregisterSW = function () {
-    navigator.serviceWorker.getRegistrations().then(function (registrations) {
-        for (let registration of registrations) {
-            registration.unregister().then(function (success) {
-                if ('caches' in window) {
-                    caches.keys()
-                        .then(function (keyList) {
-                            return Promise.all(keyList.map(function (key) {
-                                return caches.delete(key);
-                            }));
-                        })
-                }
+SWAgent.unregisterSW = function (callback) {
 
-            })
-        }
-    });
-}
+	function unregisterServiceWorkers(sws, callback) {
+		let sequence = Promise.resolve();
+		for (let sw of sws) {
+			sequence = sequence.then(() => {
+				return new Promise(resolve => {
+					sw.unregister().then(function (success) {
+						if (!success) {
+							console.log("Could not unregister sw ", sw);
+						}
+						if ('caches' in window) {
+							caches.keys()
+								.then(function (keyList) {
+									return Promise.all(keyList.map(function (key) {
+										return caches.delete(key);
+									}));
+								}).then(resolve);
+						}
+						else {
+							resolve();
+						}
+					})
+				})
+			});
+			sequence.then(callback);
+		}
+	}
+
+	function unregisterAllServiceWorkers() {
+		return new Promise(resolve => {
+			navigator.serviceWorker.getRegistrations().then(function (sws) {
+				if (sws.length > 0) {
+					return unregisterServiceWorkers(sws, resolve);
+				}
+				resolve();
+			});
+		})
+	};
+
+	let promise = unregisterAllServiceWorkers();
+
+	if (typeof callback === "function") {
+		promise.then(callback);
+	}
+};
 
 
 SWAgent.loadWallet = function (seed, swConfig, callback) {

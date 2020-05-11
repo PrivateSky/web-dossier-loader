@@ -2,6 +2,7 @@ import {Spinner,prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import SSAppRunner from "./services/SSAppRunner.js";
+import SWAgent from "./services/SWAgent.js";
 
 function MainController() {
 
@@ -196,7 +197,10 @@ function MainController() {
 
 	this.restore = function (event) {
 		event.preventDefault();
-		window.location = "./restore"
+		SWAgent.unregisterSW(()=>{
+			window.location = "./restore"
+		});
+
 	};
 
 	this.openWallet = function (event) {
