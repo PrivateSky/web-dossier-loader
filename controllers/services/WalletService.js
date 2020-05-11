@@ -14,6 +14,7 @@ function WalletService(options) {
     this.seed = options.seed;
 
     let EDFS = require('edfs');
+    let edfsInstance;
     const EDFS_CONSTANTS = EDFS.constants;
 
     /**
@@ -46,7 +47,7 @@ function WalletService(options) {
                 return callback(err);
             }
 
-            EDFS = edfs;
+			edfsInstance = edfs;
             callback();
         })
     };
@@ -61,7 +62,7 @@ function WalletService(options) {
                 return callback(err);
             }
 
-            EDFS = edfs;
+			edfsInstance = edfs;
             callback();
         })
     };
@@ -72,7 +73,7 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.changePin = function (seed, pin, callback) {
-        EDFS.loadWallet(seed, pin, true, (err, wallet) => {
+		edfsInstance.loadWallet(seed, pin, true, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -85,7 +86,7 @@ function WalletService(options) {
      * @param {callback}
      */
     this.load = function (pin, callback) {
-        EDFS.loadWallet(pin, true, (err, wallet) => {
+		edfsInstance.loadWallet(pin, true, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
