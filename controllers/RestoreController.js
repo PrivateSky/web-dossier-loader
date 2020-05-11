@@ -22,9 +22,9 @@ function RestoreController() {
 
     this.validateSeed =function(event) {
         let seed = event.target.value;
-        let btn = document.getElementById("restoreSeedBtn");
+        let btn = document.getElementById("restore-seed-btn");
         if(seed.length>0){
-            document.getElementById("seedError").innerText = "";
+            document.getElementById("seed-error").innerText = "";
             btn.removeAttribute("disabled");
         }
         else{
@@ -34,8 +34,8 @@ function RestoreController() {
 
     this.validatePIN = function (event) {
         pin = document.getElementById("pin").value;
-        let pinConfirm = document.getElementById("confirmPin").value;
-        let btn = document.getElementById("setPINBtn");
+        let pinConfirm = document.getElementById("confirm-pin").value;
+        let btn = document.getElementById("set-pin-btn");
 
         if (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
             btn.removeAttribute("disabled");
@@ -60,14 +60,14 @@ function RestoreController() {
         }
         catch (e) {
            console.log(e);
-           document.getElementById("seedError").innerText="Seed is not valid."
+           document.getElementById("seed-error").innerText="Seed is not valid."
         }
     };
 
     this.previous = function (event) {
         event.preventDefault();
         document.getElementById("seed").value = "";
-        document.getElementById("restoreSeedBtn").setAttribute("disabled","disabled");
+        document.getElementById("restore-seed-btn").setAttribute("disabled","disabled");
         wizard.previous();
     };
 
@@ -75,7 +75,7 @@ function RestoreController() {
         event.preventDefault();
         walletService.changePin(seed, pin, (err, wallet) => {
             if (err) {
-                return document.getElementById("pinError").innerText = "Operation failed. Try again"
+                return document.getElementById("pin-error").innerText = "Operation failed. Try again"
             }
             wizard.next();
         })
@@ -107,13 +107,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			"attribute": "placeholder"
 		},
 		{
-			"#confirmPin": LABELS.CONFIRM_PIN,
+			"#confirm-pin": LABELS.CONFIRM_PIN,
 			"attribute": "placeholder"
 		},
-		{"#pinHelp": LABELS.EASY_TO_REMEMBER_PIN},
-		{"#pinConfirmHelp": LABELS.CONFIRM_PIN_IDENTICAL},
-		{"#setPINBtn": LABELS.SET_PIN},
-		{"#restoreSeedBtn":LABELS.RESTORE},
+		{"#pin-help": LABELS.EASY_TO_REMEMBER_PIN},
+		{"#pin-confirm-help": LABELS.CONFIRM_PIN_IDENTICAL},
+		{"#set-pin-btn": LABELS.SET_PIN},
+		{"#restore-seed-btn":LABELS.RESTORE},
 		{"#wallet-restored-success":LABELS.WALLET_RESTORED_SUCCESSFULLY},
 		{"#change-wallet":LABELS.CHANGE_WALLET},
 

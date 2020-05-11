@@ -24,9 +24,9 @@ function NewController() {
 
 	this.validateSeed = function (event) {
 		let seed = event.target.value;
-		let btn = document.getElementById("restoreSeedBtn");
+		let btn = document.getElementById("restore-seed-btn");
 		if (seed.length > 0) {
-			document.getElementById("seedError").innerText = "";
+			document.getElementById("seed-error").innerText = "";
 			btn.removeAttribute("disabled");
 		}
 		else {
@@ -36,8 +36,8 @@ function NewController() {
 
 	this.validatePIN = function (event) {
 		pin = document.getElementById("pin").value;
-		let pinConfirm = document.getElementById("confirmPin").value;
-		let btn = document.getElementById("setPINBtn");
+		let pinConfirm = document.getElementById("confirm-pin").value;
+		let btn = document.getElementById("set-pin-btn");
 
 		if (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
 			btn.removeAttribute("disabled");
@@ -53,7 +53,7 @@ function NewController() {
 			console.log('Creating wallet...');
 			walletService.create(pin, (err, wallet) => {
 				if (err) {
-					document.getElementById("pinError").innerText = "An error occurred. Please try again."
+					document.getElementById("pin-error").innerText = "An error occurred. Please try again."
 					return console.error(err);
 				}
 				const seed = wallet.getSeed();
@@ -64,14 +64,14 @@ function NewController() {
 			});
 		}
 		catch (e) {
-			document.getElementById("pinError").innerText = "Seed is not valid."
+			document.getElementById("pin-error").innerText = "Seed is not valid."
 		}
 	};
 
 	this.previous = function (event) {
 		event.preventDefault();
 		document.getElementById("seed").value = "";
-		document.getElementById("restoreSeedBtn").setAttribute("disabled", "disabled");
+		document.getElementById("restore-seed-btn").setAttribute("disabled", "disabled");
 		wizard.previous();
 	};
 
@@ -98,12 +98,12 @@ document.addEventListener("DOMContentLoaded", function () {
 			"attribute": "placeholder"
 		},
 		{
-			"#confirmPin": LABELS.CONFIRM_PIN,
+			"#confirm-pin": LABELS.CONFIRM_PIN,
 			"attribute": "placeholder"
 		},
-		{"#pinHelp": LABELS.EASY_TO_REMEMBER_PIN},
-		{"#pinConfirmHelp": LABELS.CONFIRM_PIN_IDENTICAL},
-		{"#setPINBtn": LABELS.SET_PIN},
+		{"#pin-help": LABELS.EASY_TO_REMEMBER_PIN},
+		{"#pin-confirm-help": LABELS.CONFIRM_PIN_IDENTICAL},
+		{"#set-pin-btn": LABELS.SET_PIN},
 
 		{"#seed_keep_secret": LABELS.SEED_KEEP_SECRET},
 		{"#seed_print": LABELS.SEED_PRINT},
