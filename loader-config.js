@@ -20,6 +20,7 @@ APP_CONFIG={
 	  SEED_KEEP_SECRET:"Please keep secret this seed",
       SEED_PRINT:"You can print it on a piece of paper.",
 	  RESTORE:"Restore",
+	  WALLET_RESTORED_SUCCESSFULLY:"Your wallet has been successfully restored.",
 	  CHANGE_WALLET:"Change wallet"
   },
   APP_PATHS:{
