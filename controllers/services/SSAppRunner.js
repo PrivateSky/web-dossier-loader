@@ -21,7 +21,7 @@ function SSAppRunner(options) {
     const buildContainerIframe = () => {
         const iframe = document.createElement('iframe');
 
-        iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
+        //iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
         iframe.setAttribute("frameborder", "0");
 
         iframe.style.overflow = 'hidden';
