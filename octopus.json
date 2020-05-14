@@ -12,6 +12,22 @@
           "options": {
             "overwrite": true
           }
+        },
+        {
+          "type": "copy",
+          "src": "../../../privatesky/psknode/bundles/edfsBar.js",
+          "target": "./bundles/edfsBar.js",
+          "options": {
+            "overwrite": true
+          }
+        },
+        {
+          "type": "copy",
+          "src": "../../../privatesky/psknode/bundles/webshims.js",
+          "target": "./bundles/webshims.js",
+          "options": {
+            "overwrite": true
+          }
         }
       ]
     }
