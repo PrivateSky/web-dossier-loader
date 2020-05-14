@@ -112,31 +112,36 @@ function WalletService(options) {
         } catch (e) {
             return callback(e);
         }
-        const wallet = edfs.createRawDossier();
 
-        const walletBuilder = new WalletBuilderService(wallet, {
-            codeFolderName: 'code',
-            walletTemplateFolderName: 'wallet-template',
-            appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
-            appsFolderName: 'apps',
-            dossierFactory: () => {
-                return edfs.createRawDossier();
-            }
-        });
-
-        walletBuilder.build((err) => {
+        edfs.createRawDossier((err, wallet) => {
             if (err) {
                 return callback(err);
             }
 
-            edfs.loadWallet(wallet.getSeed(), pin, true, (err, wallet) => {
+            const walletBuilder = new WalletBuilderService(wallet, {
+                codeFolderName: 'code',
+                walletTemplateFolderName: 'wallet-template',
+                appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+                appsFolderName: 'apps',
+                dossierFactory: (callback) => {
+                    edfs.createRawDossier(callback);
+                }
+            });
+
+            walletBuilder.build((err) => {
                 if (err) {
                     return callback(err);
                 }
 
-                callback(undefined, wallet);
-            });
-        })
+                edfs.loadWallet(wallet.getSeed(), pin, true, (err, wallet) => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    callback(undefined, wallet);
+                });
+            })
+        });
     }
 
     /**
@@ -161,7 +166,7 @@ function WalletService(options) {
                     appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
                     appsFolderName: 'apps',
                     dossierLoader: function (seed, callback) {
-                        return EDFS.loadRawDossier(seed);
+                        EDFS.loadRawDossier(seed, callback);
                     }
                 });
 

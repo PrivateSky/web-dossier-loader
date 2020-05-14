@@ -157,18 +157,22 @@ function WalletBuilderService(wallet, options) {
                 return callback(new Error('A RawDossier factory function is required'));
             }
 
-            const appDossier = this.dossierFactory();
-            appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
-
+            this.dossierFactory((err, appDossier) => {
                 if (err) {
                     return callback(err);
                 }
 
-                customizeDossier(appDossier, files, (err) => {
-                    return callback(err, appDossier.getSeed());
-                })
-            })
+                appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
 
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    customizeDossier(appDossier, files, (err) => {
+                        return callback(err, appDossier.getSeed());
+                    })
+                })
+            });
         })
 
     };
