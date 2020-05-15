@@ -106,7 +106,22 @@ function WalletBuilderService(wallet, options) {
             targetPath = `${prefix}/${targetPath}`;
         }
 
-        dossier.writeFile(targetPath, file.content, (err) => {
+        let fileContent;
+        if(Array.isArray(file.content)){
+            let Buffer = require("buffer").Buffer;
+
+            let arrayBuffer  = new Uint8Array(file.content).buffer;
+            let buffer = new Buffer(arrayBuffer.byteLength);
+			let view = new Uint8Array(arrayBuffer);
+			for (let i = 0; i < buffer.length; ++i) {
+				buffer[i] = view[i];
+			}
+			fileContent = buffer;
+        }
+        else{
+            fileContent = file.content;
+        }
+        dossier.writeFile(targetPath, fileContent, (err) => {
             if (err) {
                 console.error(targetPath);
                 return callback(err);
@@ -168,7 +183,7 @@ function WalletBuilderService(wallet, options) {
                         return callback(err);
                     }
 
-                    customizeDossier(appDossier, files, (err) => {
+                    customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
                         return callback(err, appDossier.getSeed());
                     })
                 })
@@ -226,7 +241,7 @@ function WalletBuilderService(wallet, options) {
             files = dirSummaryAsArray(files);
 
             const appDossier = this.dossierLoader(seed);
-            customizeDossier(appDossier, files, (err) => {
+            customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
                 return callback(err);
             })
         })
