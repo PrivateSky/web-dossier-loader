@@ -1,5 +1,5 @@
 'use strict';
-
+import ScopedLocalStorage from "./ScopedLocalStorage.js"
 import WalletBuilderService from "./WalletBuilderService.js";
 
 /**
@@ -8,6 +8,8 @@ import WalletBuilderService from "./WalletBuilderService.js";
  * @param {string} options.seed
  */
 function WalletService(options) {
+
+	ScopedLocalStorage.setLocalStorageScope();
     options = options || {};
 
     this.edfsEndpoint = options.edfsEndpoint;
