@@ -2,6 +2,7 @@ function ScopedLocalStorage() {
 
 	let lsNativeSetItem = localStorage.setItem.bind(localStorage);
 	let lsNativeGetItem = localStorage.getItem.bind((localStorage));
+	let lsNativeRemoveItem = localStorage.removeItem.bind((localStorage));
 
 	this.setLocalStorageScope = function () {
 
@@ -36,7 +37,12 @@ function ScopedLocalStorage() {
 			let scopedKeyName = key + ":" + appDir;
 			return lsNativeGetItem(scopedKeyName)
 		};
-	}
+
+		localStorage.removeItem = function (key) {
+			let scopedKeyName = key + ":" + appDir;
+			lsNativeRemoveItem(scopedKeyName)
+		};
+	};
 
 }
 

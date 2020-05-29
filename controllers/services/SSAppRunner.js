@@ -1,7 +1,7 @@
 'use strict';
 
 import SWAgent from "./SWAgent.js";
-
+import EventMiddleware from "./EventMiddleware.js";
 const PskCrypto = require("pskcrypto");
 
 function SSAppRunner(options) {
@@ -39,39 +39,41 @@ function SSAppRunner(options) {
     };
 
     const setupLoadEventsListener = (iframe) => {
-        window.document.addEventListener(this.hash, (e) => {
-            const data = e.detail || {};
 
-            if (data.query === 'seed') {
-                iframe.contentWindow.document.dispatchEvent(new CustomEvent(this.hash, {
-                    detail: {
-                        seed: this.seed
-                    }
-                }));
-                return;
-            }
+		let eventMiddleware = new EventMiddleware(iframe, this.hash);
 
-            if (data.status === 'completed') {
-                const newPageDocument = `<html>
-                    <body>
-                        <style>
-                            html, body {
-                                margin: 0;
-                                padding: 0;
-                            }
-                        </style>
+		eventMiddleware.registerQuery("seed", ()=>{
+            return {seed:this.seed};
+        });
 
-                        ${iframe.outerHTML}
-                    </body>
-                </html>`;
+		eventMiddleware.onStatus("completed", ()=>{
+			if(iframe.hasAttribute("app-placeholder")){
+				iframe.removeAttribute("app-placeholder");
+				return document.body.innerHTML = iframe.outerHTML;
+			}
+			else{
+				/**
+				 * remove all body elements that are related to loader UI except the iframe
+				 */
+				document.querySelectorAll("body > *:not(iframe)").forEach(node => node.remove())
+			}
+		});
 
-                return document.write(newPageDocument);
-            }
+		eventMiddleware.onStatus("sign-out", (data)=>{
 
-            if (data.status === 'error') {
-                throw new Error("Unable to load application");
-            }
-        }, true);
+			SWAgent.unregisterSW(() => {
+				if (data.deleteSeed === true) {
+					localStorage.removeItem("seedCage");
+				}
+				window.location.reload();
+			});
+
+		});
+
+		eventMiddleware.onStatus("error", ()=>{
+			throw new Error("Unable to load application");
+		});
+
     };
 
     /**

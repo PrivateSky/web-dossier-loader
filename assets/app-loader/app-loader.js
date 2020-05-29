@@ -4,6 +4,8 @@ const paths = window.location.pathname.split("/iframe/");
 const myIdentity = paths[1];
 const swName = "swBoot.js";
 
+window.frameElement.setAttribute("app-placeholder","true");
+
 window.document.addEventListener(myIdentity, (e) => {
     const data = e.detail || {};
 
@@ -28,11 +30,11 @@ window.document.addEventListener(myIdentity, (e) => {
         })
 
     }
-})
+});
 
 sendMessage({
     query: 'seed'
-})
+});
 
 function sendMessage(message) {
     const event = new CustomEvent(myIdentity, {
@@ -40,28 +42,3 @@ function sendMessage(message) {
     });
     window.parent.document.dispatchEvent(event);
 }
-
-//window.addEventListener("message", (event) => {
-
-    //if (event.data.seed) {
-
-        //const seed = event.data.seed;
-        //const swConfig = {
-            //name: swName,
-            //path: `../${swName}`,
-            //scope: myIdentity
-        //};
-
-        //SWAgent.loadWallet(seed, swConfig, (err) => {
-            //if (err) {
-                //return console.error(err);
-            //}
-            //window.parent.postMessage({status:"completed"},"*");
-            //sendMessage({
-                //status: 'completed'
-            //});
-        //})
-    //}
-//});
-
-//window.parent.postMessage({appIdentity: myIdentity}, "*");
