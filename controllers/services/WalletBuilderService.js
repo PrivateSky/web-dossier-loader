@@ -157,7 +157,7 @@ function WalletBuilderService(wallet, options) {
      * @param {callback} callback
      */
     const buildApp = (appName, seed, callback) => {
-        fileService.getFolderContentAsJSON(`${appName}-template`, (err, data) => {
+        fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
             let files;
 
             try {
@@ -229,7 +229,7 @@ function WalletBuilderService(wallet, options) {
      * @param {callback} callback
      */
     const rebuildApp = (appName, seed, callback) => {
-        fileService.getFolderContentAsJSON(`${appName}-template`, (err, data) => {
+        fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
             let files;
 
             try {

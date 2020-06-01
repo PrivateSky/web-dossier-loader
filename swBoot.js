@@ -1,9 +1,9 @@
-swBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot.js":[function(require,module,exports){
+swBootRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/swBoot.js":[function(require,module,exports){
 const or = require('overwrite-require');
 or.enableForEnvironment(or.constants.SERVICE_WORKER_ENVIRONMENT_TYPE);
 
 require("./swBoot_intermediar");
-},{"./swBoot_intermediar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot_intermediar.js":[function(require,module,exports){
+},{"./swBoot_intermediar":"/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/swBoot_intermediar.js","overwrite-require":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/swBoot_intermediar.js":[function(require,module,exports){
 (function (global){
 global.swBootLoadModules = function(){ 
 
@@ -45,7 +45,7 @@ if (typeof $$ !== "undefined") {
 require('source-map-support').install({});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"buffer-from":"buffer-from","edfs":"edfs","psk-cache":"psk-cache","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarm-engine/bootScripts/browser/sw":"swarm-engine/bootScripts/browser/sw"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js":[function(require,module,exports){
+},{"buffer-from":"buffer-from","edfs":"edfs","psk-cache":"psk-cache","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarm-engine/bootScripts/browser/sw":"swarm-engine/bootScripts/browser/sw"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/index.js":[function(require,module,exports){
 
 "use strict";
 
@@ -58,7 +58,7 @@ exports.roll = algorithm.roll.bind(algorithm);
 exports.Hash = Hash;
 exports.register = register;
 
-},{"./lib/Hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","./lib/algorithm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","./lib/register":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
+},{"./lib/Hash":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js","./lib/algorithm":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js","./lib/register":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/register.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js":[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -128,7 +128,7 @@ Hash.prototype._flush = function(callback)
 };
 }).call(this,require("buffer").Buffer)
 
-},{"./algorithm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\algorithm.js":[function(require,module,exports){
+},{"./algorithm":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js":[function(require,module,exports){
 "use strict";
 
 /**
@@ -192,7 +192,7 @@ exports.roll = function(sum, length, oldByte, newByte)
 
 	return ((b << 16) | a) >>> 0;
 };
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\register.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/register.js":[function(require,module,exports){
 "use strict";
 
 module.exports = function()
@@ -220,12 +220,12 @@ module.exports = function()
 	}
 	.bind(crypto.createHash.bind(this));
 };
-},{"./Hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\lib\\Hash.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js":[function(require,module,exports){
+},{"./Hash":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/index.js":[function(require,module,exports){
 module.exports.createFsAdapter = () => {
     const FsAdapter = require("./lib/FsAdapter");
     return new FsAdapter();
 };
-},{"./lib/FsAdapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js":[function(require,module,exports){
+},{"./lib/FsAdapter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js":[function(require,module,exports){
 (function (Buffer){
 const fsModule = "fs";
 const fs = require(fsModule);
@@ -290,7 +290,7 @@ function FsAdapter() {
 module.exports = FsAdapter;
 }).call(this,require("buffer").Buffer)
 
-},{"./PathAsyncIterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js":[function(require,module,exports){
+},{"./PathAsyncIterator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js":[function(require,module,exports){
 const fsModule = "fs";
 const fs = require(fsModule);
 const pathModule = "path";
@@ -416,7 +416,7 @@ function PathAsyncIterator(inputPath) {
 }
 
 module.exports = PathAsyncIterator;
-},{"swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js":[function(require,module,exports){
+},{"swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/index.js":[function(require,module,exports){
 
 const ArchiveConfigurator = require("./lib/ArchiveConfigurator");
 const createFolderBrickStorage = require("./lib/FolderBrickStorage").createFolderBrickStorage;
@@ -440,7 +440,7 @@ module.exports.createArchiveConfigurator = () => {
 };
 
 module.exports.createBarMap = (header) => {
-    const BarMap = require("./lib/FolderBarMap");
+    const BarMap = require("./lib/BarMap");
     return new BarMap(header);
 };
 
@@ -448,7 +448,7 @@ module.exports.Seed = require('./lib/Seed');
 module.exports.createFolderBrickStorage = createFolderBrickStorage;
 module.exports.createFileBrickStorage = createFileBrickStorage;
 
-},{"./lib/Archive":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Archive.js":[function(require,module,exports){
+},{"./lib/Archive":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Archive.js","./lib/ArchiveConfigurator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/ArchiveConfigurator.js","./lib/BarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js","./lib/Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./lib/FileBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FileBrickStorage.js","./lib/FolderBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FolderBrickStorage.js","./lib/Seed":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Archive.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require('./Brick');
 const pathModule = "path";
@@ -460,32 +460,122 @@ const TaskCounter = swarmutils.TaskCounter;
 const pskPth = swarmutils.path;
 const crypto = require('pskcrypto');
 const adler32 = require('adler32');
+const BrickStorageService = require('./BrickStorageService').Service;
 
+/**
+ * @param {ArchiveConfigurator} archiveConfigurator
+ */
 function Archive(archiveConfigurator) {
-
-    const archiveFsAdapter = archiveConfigurator.getFsAdapter();
-    const storageProvider = archiveConfigurator.getStorageProvider();
-    const cache = archiveConfigurator.getCache();
-
     let cachedSEED;
     let barMap;
     let cachedMapDigest;
     let validator;
 
+    const brickStorageService = buildBrickStorageServiceInstance();
+
+    ////////////////////////////////////////////////////////////
+    // Private methods
+    ////////////////////////////////////////////////////////////
+
+    /**
+     * Create and configura the BrickStorageService
+     *
+     * @return {BrickStorageService}
+     */
+    function buildBrickStorageServiceInstance() {
+        const instance = new BrickStorageService({
+            cache: archiveConfigurator.getCache(),
+            bufferSize: archiveConfigurator.getBufferSize(),
+            storageProvider: archiveConfigurator.getStorageProvider(),
+
+            brickFactoryCallback: () => {
+                return new Brick(archiveConfigurator);
+            },
+
+            barMapConfiguratorCallback: (barMap) => {
+                if (archiveConfigurator.getMapEncryptionKey()) {
+                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
+                }
+
+                if (!barMap.getConfig()) {
+                    barMap.setConfig(archiveConfigurator);
+                }
+
+                barMap.load();
+                return barMap;
+            },
+
+            brickDataExtractorCallback: (brickMeta, brick) => {
+                brick.setConfig(archiveConfigurator);
+                const transformParameters = barMap.getTransformParameters(brickMeta);
+                brick.setTransformParameters(transformParameters);
+
+                return brick.getRawData();
+            },
+
+            fsAdapter: archiveConfigurator.getFsAdapter()
+        });
+
+        return instance;
+    }
+
+    /**
+     * @param {string} fileBarPath
+     * @return {string}
+     */
+    function computeFileHash(fileBarPath) {
+        const hashList = barMap.getBricksMeta(fileBarPath).map(brickMeta => brickMeta.hash);
+        const PskHash = crypto.PskHash;
+        const pskHash = new PskHash();
+        hashList.forEach(hash => {
+            pskHash.update(hash);
+        });
+
+        return pskHash.digest();
+    }
+
+    ////////////////////////////////////////////////////////////
+    // Public methods
+    ////////////////////////////////////////////////////////////
+
+    /**
+     * @param {callback} callback
+     */
+    this.load = (callback) => {
+        const barMapHash = archiveConfigurator.getBarMapId();
+        brickStorageService.getBarMap(barMapHash, (err, map) => {
+            if (err) {
+                return callback(err);
+            }
+
+            barMap = map;
+            callback();
+        })
+    };
+
+    /**
+     * @return {string}
+     */
     this.getMapDigest = () => {
         if (cachedMapDigest) {
             return cachedMapDigest;
         }
 
-        cachedMapDigest = archiveConfigurator.getMapDigest();
+        cachedMapDigest = archiveConfigurator.getBarMapId();
         return cachedMapDigest;
     };
 
+    /**
+     * @param {string} seed
+     */
     this.setSeed = (seed) => {
         cachedSEED = seed;
         archiveConfigurator.setSeed(Buffer.from(seed));
     };
 
+    /**
+     * @return {string}
+     */
     this.getSeed = () => {
         if (cachedSEED) {
             return cachedSEED;
@@ -495,31 +585,49 @@ function Archive(archiveConfigurator) {
         return cachedSEED;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     * @return {string}
+     */
     this.getFileHash = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(() => {
-            callback(undefined, __computeFileHash(barPath).toString("hex"));
-        }, callback)
+        const hash = computeFileHash(barPath).toString("hex");
+        callback(undefined, hash);
+        return hash;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     * @return {string}
+     */
     this.getFolderHash = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(() => {
-            const fileList = barMap.getFileList(barPath);
-            if (fileList.length === 1) {
-                return callback(undefined, __computeFileHash(pskPth.join(barPath, fileList[0]).toString("hex")));
-            }
-            fileList.sort();
+        const fileList = barMap.getFileList(barPath);
+        if (fileList.length === 1) {
+            const hash = computeFileHash(pskPth.join(barPath, fileList[0]).toString("hex"));
+            callback(undefined, hash);
+            return hash;
+        }
+        fileList.sort();
 
-            let xor = __computeFileHash(pskPth.join(barPath, fileList[0]));
-            for (let i = 0; i < fileList.length - 1; i++) {
-                xor = crypto.xorBuffers(xor, __computeFileHash(pskPth.join(barPath, fileList[i + 1])));
-            }
+        let xor = computeFileHash(pskPth.join(barPath, fileList[0]));
+        for (let i = 0; i < fileList.length - 1; i++) {
+            xor = crypto.xorBuffers(xor, computeFileHash(pskPth.join(barPath, fileList[i + 1])));
+        }
 
-            callback(undefined, crypto.pskHash(xor, "hex"));
-        }, callback);
+        const hash = crypto.pskHash(xor, "hex");
+        callback(undefined, hash);
+        return hash;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {string|Buffer|stream.ReadableStream} data
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.writeFile = (barPath, data, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -528,120 +636,71 @@ function Archive(archiveConfigurator) {
         }
         barPath = pskPth.normalize(barPath);
 
-        loadBarMapThenExecute(__addData, callback);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        function __addData() {
-            archiveConfigurator.setIsEncrypted(options.encrypt);
-            const bufferSize = archiveConfigurator.getBufferSize();
-
-            if (typeof data === "string") {
-                data = Buffer.from(data);
+        brickStorageService.ingestData(data, (err, result) => {
+            if (err) {
+                return callback(err);
             }
 
-
-            if (Buffer.isBuffer(data)) {
-                let bricks;
-                try {
-                    bricks = createBricksFromBuffer(data, bufferSize);
-                } catch (e) {
-                    return callback(e);
-                }
-                return updateBar(barPath, bricks, callback);
-            }
-
-            if (isStream.isReadable(data)) {
-                return createBricksFromStream(data, bufferSize, (err, bricks) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    updateBar(barPath, bricks, callback);
-                });
-            }
-
-            return callback(Error(`Type of data is ${typeof data}. Expected Buffer or Stream.Readable`));
-        }
+            barMap.addFileEntry(barPath, result);
+            this.saveBarMap(callback);
+        });
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.readFile = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(__readFile, callback);
 
-        function __readFile() {
-            let fileData = Buffer.alloc(0);
-            let bricksMeta;
-            try {
-                bricksMeta = barMap.getBricksMeta(barPath);
-            } catch (err) {
+        let bricksMeta;
+
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
+        }
+
+        brickStorageService.createBufferFromBricks(bricksMeta, (err, buffer) => {
+            if (err) {
                 return callback(err);
             }
 
-            getFileRecursively(0, callback);
-
-            function getFileRecursively(brickIndex, callback) {
-                const brickMeta = bricksMeta[brickIndex];
-                getBrickData(brickMeta, (err, data) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    fileData = Buffer.concat([fileData, data]);
-                    ++brickIndex;
-
-                    if (brickIndex < bricksMeta.length) {
-                        getFileRecursively(brickIndex, callback);
-                    } else {
-                        callback(undefined, fileData);
-                    }
-
-                });
-            }
-        }
+            callback(undefined, buffer);
+        });
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.createReadStream = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(__prepareStream, callback);
 
-        function __prepareStream() {
-            let brickIndex = 0;
-            let bricksMeta;
+        let bricksMeta;
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
+        }
 
-            try {
-                bricksMeta = barMap.getBricksMeta(barPath);
-            } catch (err) {
+        brickStorageService.createStreamFromBricks(bricksMeta, (err, stream) => {
+            if (err) {
                 return callback(err);
             }
 
-            const readableStream = new stream.Readable({
-                read(size) {
-                    if (brickIndex < bricksMeta.length) {
-                        this.readBrickData(brickIndex++);
-                    }
-                }
-            });
-
-            // Get a brick and push it into the stream
-            readableStream.readBrickData = function (brickIndex) {
-                const brickMeta = bricksMeta[brickIndex];
-                getBrickData(brickMeta, (err, data) => {
-                    if (err) {
-                        this.destroy(err);
-                        return;
-                    }
-
-                    this.push(data);
-
-                    if (brickIndex >= (bricksMeta.length - 1)) {
-                        this.push(null);
-                    }
-                });
-            };
-
-            callback(null, readableStream);
-        }
+            callback(undefined, stream);
+        });
     };
 
+    /**
+     * @param {string} fsFilePath
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.addFile = (fsFilePath, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -650,26 +709,25 @@ function Archive(archiveConfigurator) {
         }
 
         barPath = pskPth.normalize(barPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        loadBarMapThenExecute(__addFile, callback);
+        brickStorageService.ingestFile(fsFilePath, (err, result) => {
+            if (err) {
+                return callback(err);
+            }
 
-        function __addFile() {
-            createBricks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                barMap.setConfig(archiveConfigurator);
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-
-                storageProvider.putBarMap(barMap, callback);
-            });
-        }
+            barMap.addFileEntry(barPath, result);
+            this.saveBarMap(callback);
+        })
     };
 
-    this.addFiles = (arrWithFilePaths, barPath, options, callback) => {
+    /**
+     * @param {string} files
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
+    this.addFiles = (files, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
             options = {};
@@ -677,148 +735,71 @@ function Archive(archiveConfigurator) {
         }
 
         barPath = pskPth.normalize(barPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        let arr = arrWithFilePaths.slice();
+        const filesArray = files.slice();
 
-        loadBarMapThenExecute(() => {
-            recAdd()
-        }, callback);
-
-        function recAdd() {
-            if (arr.length > 0) {
-                let filePath = arr.pop();
-                let fileName = path.basename(filePath);
-
-                createBricks(filePath, pskPth.join(barPath, fileName), archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    recAdd();
-                });
-            } else {
-                barMap.setConfig(archiveConfigurator);
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-                storageProvider.putBarMap(barMap, callback);
+        brickStorageService.ingestFiles(filesArray, (err, result) => {
+            if (err) {
+                return callback(err);
             }
-        }
+
+            for (const filePath in result) {
+                const bricks = result[filePath];
+                barMap.addFileEntry(pskPth.join(barPath, filePath), bricks);
+            }
+
+            this.saveBarMap(callback);
+        });
     };
 
+    /**
+     * @param {string} fsFilePath
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.extractFile = (fsFilePath, barPath, callback) => {
         if (typeof barPath === "function") {
             callback = barPath;
             barPath = pskPth.normalize(fsFilePath);
         }
 
+        let bricksMeta;
 
-        loadBarMapThenExecute(__extractFile, callback);
-
-        function __extractFile() {
-            const bricksMeta = barMap.getBricksMeta(barPath);
-            getFileRecursively(0, callback);
-
-            function getFileRecursively(brickIndex, callback) {
-                const brickMeta = bricksMeta[brickIndex];
-                getBrickData(brickMeta, (err, data) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    archiveFsAdapter.appendBlockToFile(fsFilePath, data, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        ++brickIndex;
-                        if (brickIndex < bricksMeta.length) {
-                            getFileRecursively(brickIndex, callback);
-                        } else {
-                            callback();
-                        }
-                    });
-                })
-            }
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
         }
+
+
+        brickStorageService.createFileFromBricks(fsFilePath, bricksMeta, callback);
     };
 
-    this.appendToFile = (filePath, data, callback) => {
+    /**
+     * @param {string} barPath
+     * @param {string|Buffer|stream.ReadableStream} data
+     * @param {callback} callback
+     */
+    this.appendToFile = (barPath, data, callback) => {
+        barPath = pskPth.normalize(barPath);
 
-        loadBarMapThenExecute(__appendToFile, callback);
-
-        function __appendToFile() {
-            filePath = path.normalize(filePath);
-
-            if (typeof data === "string") {
-                data = Buffer.from(data);
-            }
-            if (Buffer.isBuffer(data)) {
-                const dataBrick = new Brick(data);
-                storageProvider.putBrick(dataBrick, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    barMap.add(filePath, dataBrick);
-                    putBarMap(callback);
-                });
-                return;
+        brickStorageService.ingestData(data, (err, result) => {
+            if (err) {
+                return callback(err);
             }
 
-            if (isStream.isReadable(data)) {
-                data.on('error', (err) => {
-                    return callback(err);
-                }).on('data', (chunk) => {
-                    const dataBrick = new Brick(chunk);
-                    barMap.add(filePath, dataBrick);
-                    storageProvider.putBrick(dataBrick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-                    });
-                }).on("end", () => {
-                    putBarMap(callback);
-                });
-                return;
-            }
-            callback(new Error("Invalid type of parameter data"));
-        }
+            barMap.appendBricksToEntry(barPath, result);
+            this.saveBarMap(callback);
+        })
     };
 
-
-    this.replaceFile = (fileName, stream, callback) => {
-        if (typeof stream !== 'object') {
-            return callback(new Error('Wrong stream!'));
-        }
-
-        loadBarMapThenExecute(__replaceFile, callback);
-
-        function __replaceFile() {
-            fileName = path.normalize(fileName);
-            stream.on('error', () => {
-                return callback(new Error("File does not exist!"));
-            }).on('open', () => {
-                storageProvider.deleteFile(fileName, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    barMap.emptyList(fileName);
-                });
-            }).on('data', (chunk) => {
-                let tempBrick = new Brick(chunk);
-                barMap.add(fileName, tempBrick);
-                storageProvider.putBrick(tempBrick, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    putBarMap(callback);
-                });
-            });
-        }
-    };
-
+    /**
+     * @param {string} fsFolderPath
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.addFolder = (fsFolderPath, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -826,88 +807,83 @@ function Archive(archiveConfigurator) {
             options.encrypt = true;
         }
         barPath = pskPth.normalize(barPath);
-        const filesIterator = archiveFsAdapter.getFilesIterator(fsFolderPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        loadBarMapThenExecute(__addFolder, callback);
-
-        function __addFolder() {
-
-            filesIterator.next(readFileCb);
-
-            function readFileCb(err, file, rootFsPath) {
-                if (err) {
-                    return callback(err);
-                }
-
-                if (typeof file !== "undefined") {
-                    createBricks(path.join(rootFsPath, file), pskPth.join(barPath, file), archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        filesIterator.next(readFileCb);
-                    });
-                } else {
-                    storageProvider.putBarMap(barMap, (err, mapDigest) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        archiveConfigurator.setMapDigest(mapDigest);
-                        callback(undefined, mapDigest);
-                    });
-                }
+        brickStorageService.ingestFolder(fsFolderPath, (err, result) => {
+            if (err) {
+                return callback(err);
             }
-        }
+
+
+            for (const filePath in result) {
+                const bricks = result[filePath];
+                barMap.addFileEntry(pskPth.join(barPath, filePath), bricks);
+            }
+
+            this.saveBarMap(callback);
+        });
     };
 
-
+    /**
+     * @param {string} fsFolderPath
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.extractFolder = (fsFolderPath, barPath, callback) => {
         if (typeof barPath === "function") {
             callback = barPath;
             barPath = pskPth.normalize(fsFolderPath);
         }
 
-        loadBarMapThenExecute(() => {
-            const filePaths = barMap.getFileList(barPath);
-            const taskCounter = new TaskCounter(() => {
-                callback();
-            });
-            taskCounter.increment(filePaths.length);
-            filePaths.forEach(filePath => {
-                let actualPath;
-                if (fsFolderPath) {
-                    if (fsFolderPath.includes(filePath)) {
-                        actualPath = fsFolderPath;
-                    } else {
-                        actualPath = path.join(fsFolderPath, filePath);
-                    }
+        const filePaths = barMap.getFileList(barPath);
+        const taskCounter = new TaskCounter(() => {
+            callback();
+        });
+        taskCounter.increment(filePaths.length);
+        filePaths.forEach(filePath => {
+            let actualPath;
+            if (fsFolderPath) {
+                if (fsFolderPath.includes(filePath)) {
+                    actualPath = fsFolderPath;
                 } else {
-                    actualPath = filePath;
+                    actualPath = path.join(fsFolderPath, filePath);
+                }
+            } else {
+                actualPath = filePath;
+            }
+
+            this.extractFile(actualPath, filePath, (err) => {
+                if (err) {
+                    return callback(err);
                 }
 
-                this.extractFile(actualPath, filePath, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    taskCounter.decrement();
-                });
+                taskCounter.decrement();
             });
-        }, callback);
+        });
     };
 
-    this.store = (callback) => {
-        storageProvider.putBarMap(barMap, callback);
+    /**
+     * @param {callback} callback
+     */
+    this.saveBarMap = (callback) => {
+        brickStorageService.putBarMap(barMap, callback);
     };
 
+
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.delete = (barPath, callback) => {
-        loadBarMapThenExecute(() => {
-            barMap.delete(barPath);
-            callback();
-        }, callback);
+        barMap.delete(barPath);
+        callback();
     };
 
+    /**
+     * @param {string} folderBarPath
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.listFiles = (folderBarPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -918,107 +894,80 @@ function Archive(archiveConfigurator) {
             folderBarPath = "/";
         }
 
+        let fileList;
+        try {
+            fileList = barMap.getFileList(folderBarPath, options.recursive);
+        } catch (e) {
+            return callback(e);
+        }
 
-        loadBarMapThenExecute(() => {
-            let fileList;
-            try {
-                fileList = barMap.getFileList(folderBarPath, options.recursive);
-            } catch (e) {
-                return callback(e);
-            }
-
-            callback(undefined, fileList);
-        }, callback);
+        callback(undefined, fileList);
     };
 
+    /**
+     * @param {string} folderBarPath
+     * @param {boolean} recursive
+     * @param {callback} callback
+     */
     this.listFolders = (folderBarPath, recursive, callback) => {
         if (typeof recursive === "function") {
             callback = recursive;
             recursive = true;
         }
 
-        loadBarMapThenExecute(() => {
-            callback(undefined, barMap.getFolderList(folderBarPath, recursive));
-        }, callback);
+        callback(undefined, barMap.getFolderList(folderBarPath, recursive));
     };
 
+    /**
+     * @param {EDFSBrickStorage} targetStorage
+     * @param {boolean} preserveKeys
+     * @param {callback} callback
+     */
     this.clone = (targetStorage, preserveKeys = true, callback) => {
         targetStorage.getBarMap((err, targetBarMap) => {
             if (err) {
                 return callback(err);
             }
 
-            loadBarMapThenExecute(__cloneBricks, callback);
 
-            function __cloneBricks() {
-                const fileList = barMap.getFileList("/");
-
-                __getFilesRecursively(fileList, 0, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    cachedSEED = archiveConfigurator.getSeed();
-                    archiveConfigurator.generateSeed();
-                    targetBarMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                    targetBarMap.setConfig(archiveConfigurator);
-                    targetStorage.putBarMap(targetBarMap, err => callback(err, archiveConfigurator.getSeed()));
-                });
+            const fileList = barMap.getFileList("/");
+            const bricksList = {};
+            for (const filepath of fileList) {
+                bricksList[filepath] = barMap.getBricksMeta(filepath);
             }
 
-            function __getFilesRecursively(fileList, fileIndex, callback) {
-                const filePath = fileList[fileIndex];
-                let bricksMeta;
-                try {
-                    bricksMeta = bricksMeta.getBricksMeta(filePath);
-                } catch (e){
-                    return callback(e);
-                }
-
-                __getBricksRecursively(filePath, bricksMeta, 0, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    ++fileIndex;
-                    if (fileIndex === fileList.length) {
-                        return callback();
+            brickStorageService.copyBricks(bricksList, {
+                dstStorage: targetStorage,
+                beforeCopyCallback: (brickId, brick) => {
+                    const transformParameters = barMap.getTransformParameters(brickId);
+                    if (transformParameters) {
+                        brick.setTransformParameters(transformParameters);
                     }
 
-                    __getFilesRecursively(fileList, fileIndex, callback);
-                });
-            }
-
-            function __getBricksRecursively(filePath, bricksMeta, brickIndex, callback) {
-                storageProvider.getBrick(bricksMeta[brickIndex].hash, (err, brick) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    brick.setTransformParameters(barMap.getTransformParameters(bricksMeta[brickIndex]));
-                    __addBrickToTarget(brick, callback);
-                });
-
-                function __addBrickToTarget(brick, callback) {
                     brick.setConfig(archiveConfigurator);
                     if (!preserveKeys) {
                         brick.createNewTransform();
                     }
 
-                    ++brickIndex;
-                    targetBarMap.add(filePath, brick);
-                    targetStorage.putBrick(brick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        if (brickIndex === bricksMeta.length) {
-                            return callback();
-                        }
-
-                        __getBricksRecursively(filePath, bricksMeta, brickIndex, callback);
-                    });
+                    return brick;
                 }
-            }
+            }, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                for (const filepath in result) {
+                    const bricks = result[filepath];
+                    targetBarMap.addFileEntry(filepath, bricks);
+                }
+
+                cachedSEED = archiveConfigurator.getSeed();
+                archiveConfigurator.generateSeed();
+                targetBarMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
+                targetBarMap.setConfig(archiveConfigurator);
+
+                targetStorage.putBarMap(targetBarMap, err => callback(err, archiveConfigurator.getSeed()));
+            });
         });
     };
 
@@ -1030,271 +979,13 @@ function Archive(archiveConfigurator) {
     this.setValidator = (_validator) => {
         validator = _validator;
     };
-
-    //------------------------------------------- internal methods -----------------------------------------------------
-
-    function __computeFileHash(fileBarPath) {
-        const hashList = barMap.getBricksMeta(fileBarPath).map(brickMeta => brickMeta.hash);
-        const PskHash = crypto.PskHash;
-        const pskHash = new PskHash();
-        hashList.forEach(hash => {
-            pskHash.update(hash);
-        });
-
-        return pskHash.digest();
-    }
-
-    function putBarMap(callback) {
-        if (typeof archiveConfigurator.getMapDigest() !== "undefined") {
-            storageProvider.deleteFile(archiveConfigurator.getMapDigest(), (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                __putBarMap(callback);
-            });
-            return;
-        }
-        __putBarMap(callback);
-    }
-
-    function __putBarMap(callback) {
-        storageProvider.putBarMap(barMap, (err, newMapDigest) => {
-            if (err) {
-                return callback(err);
-            }
-
-            archiveConfigurator.setMapDigest(newMapDigest);
-            callback(undefined, archiveConfigurator.getMapDigest());
-        });
-    }
-
-    function createBricks(fsFilePath, barPath, blockSize, areEncrypted, callback) {
-        if (typeof areEncrypted === "function") {
-            callback = areEncrypted;
-            areEncrypted = true;
-        }
-        archiveFsAdapter.getFileSize(fsFilePath, (err, fileSize) => {
-            if (err) {
-                return callback(err);
-            }
-
-            let noBlocks = Math.floor(fileSize / blockSize);
-            if (fileSize % blockSize > 0) {
-                ++noBlocks;
-            }
-
-            if (!barMap.isEmpty(barPath)) {
-                barMap.emptyList(barPath);
-            }
-            __createBricksRecursively(0, callback);
-
-            function __createBricksRecursively(blockIndex, callback) {
-                archiveFsAdapter.readBlockFromFile(fsFilePath, blockIndex * blockSize, (blockIndex + 1) * blockSize - 1, (err, blockData) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    archiveConfigurator.setIsEncrypted(areEncrypted);
-                    const brick = new Brick(archiveConfigurator);
-                    brick.setRawData(blockData);
-                    barMap.add(barPath, brick);
-                    storageProvider.putBrick(brick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        ++blockIndex;
-                        if (blockIndex < noBlocks) {
-                            __createBricksRecursively(blockIndex, callback);
-                        } else {
-                            callback();
-                        }
-                    });
-                });
-            }
-        });
-    }
-
-    /**
-     * Create bricks from a Buffer
-     * @param {Buffer} buffer
-     * @param {number} blockSize
-     * @return {Array<Brick>}
-     */
-    function createBricksFromBuffer(buffer, blockSize) {
-        let noBlocks = Math.floor(buffer.length / blockSize);
-        if ((buffer.length % blockSize) > 0) {
-            ++noBlocks;
-        }
-
-        const bricks = [];
-        for (let blockIndex = 0; blockIndex < noBlocks; blockIndex++) {
-            const blockData = buffer.slice(blockIndex * blockSize, (blockIndex + 1) * blockSize);
-
-            const brick = new Brick(archiveConfigurator);
-            brick.setRawData(blockData);
-            bricks.push(brick);
-        }
-
-        return bricks;
-    }
-
-    /**
-     * Create bricks from a Stream
-     * @param {stream.Readable} stream
-     * @param {number} blockSize
-     * @param {callback|undefined} callback
-     */
-    function createBricksFromStream(stream, blockSize, callback) {
-        let bricks = [];
-        stream.on('data', (chunk) => {
-            if (typeof chunk === 'string') {
-                chunk = Buffer.from(chunk);
-            }
-
-            let chunkBricks = createBricksFromBuffer(chunk, chunk.length);
-            bricks = bricks.concat(chunkBricks);
-        });
-        stream.on('error', (err) => {
-            callback(err);
-        });
-        stream.on('end', () => {
-            callback(undefined, bricks);
-        });
-    }
-
-    /**
-     * @param {string} barPath
-     * @param {Array<Brick} bricks
-     * @param {callback} callback
-     */
-    function updateBar(barPath, bricks, callback) {
-        if (!barMap.isEmpty(barPath)) {
-            barMap.emptyList(barPath);
-        }
-
-        for (let brick of bricks) {
-            barMap.add(barPath, brick);
-        }
-
-        function __saveBricks(bricks, callback) {
-            const brick = bricks.shift();
-
-            if (!brick) {
-                return storageProvider.putBarMap(barMap, callback);
-            }
-
-            storageProvider.putBrick(brick, (err) => {
-                if (err) {
-                    return callback(err);
-                };
-
-                __saveBricks(bricks, callback);
-            })
-        }
-
-        if (!validator || typeof validator.writeRule !== 'function') {
-            return __saveBricks(bricks, callback);
-        }
-
-        validator.writeRule.call(this, barMap, barPath, bricks, (err) => {
-            if (err) {
-                return callback(err);
-            }
-
-            __saveBricks(bricks, callback);
-        });
-    }
-
-    /**
-     * @param {*} key
-     * @return {Boolean}
-     */
-    function hasInCache(key) {
-        if (!cache) {
-            return false;
-        }
-
-        return cache.has(key);
-    }
-
-    /**
-     * @param {*} key
-     * @param {*} value
-     */
-    function storeInCache(key, value) {
-        if (!cache) {
-            return;
-        }
-
-        cache.set(key, value);
-    }
-
-    /**
-     * Try and get brick data from cache
-     * Fallback to storage provide if not found in cache
-     *
-     * @param {string} brickMeta
-     * @param {callback} callback
-     */
-    function getBrickData(brickMeta, callback) {
-        if (!hasInCache(brickMeta.hash)) {
-            return storageProvider.getBrick(brickMeta.hash, (err, brick) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                brick.setConfig(archiveConfigurator);
-                brick.setTransformParameters(barMap.getTransformParameters(brickMeta));
-                const data = brick.getRawData();
-                storeInCache(brickMeta.hash, data);
-                callback(undefined, data);
-            });
-        }
-
-        const data = cache.get(brickMeta.hash);
-        callback(undefined, data);
-    }
-
-    function loadBarMapThenExecute(functionToBeExecuted, callback) {
-        const digest = archiveConfigurator.getMapDigest();
-        if (!digest || !hasInCache(digest)) {
-            return storageProvider.getBarMap(digest, (err, map) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    map.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-
-                if (!map.getConfig()) {
-                    map.setConfig(archiveConfigurator);
-                }
-
-                map.load();
-                barMap = map;
-                if (digest) {
-                    storeInCache(digest, barMap);
-                }
-                storageProvider.setBarMap(barMap);
-                functionToBeExecuted();
-            });
-        }
-
-        const map = cache.get(digest);
-        barMap = map;
-        storageProvider.setBarMap(barMap);
-        functionToBeExecuted();
-    }
 }
 
 module.exports = Archive;
 
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/isStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pskcrypto":"pskcrypto","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js":[function(require,module,exports){
+},{"../utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./BrickStorageService":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/index.js","adler32":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/index.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","pskcrypto":"pskcrypto","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/ArchiveConfigurator.js":[function(require,module,exports){
 const storageProviders = {};
 const fsAdapters = {};
 const Seed = require("./Seed");
@@ -1342,12 +1033,10 @@ function ArchiveConfigurator() {
         return config.fsAdapter;
     };
 
-    this.setMapDigest = (mapDigest) => {
-        config.mapDigest = mapDigest;
-    };
-
-    this.getMapDigest = () => {
-        return config.mapDigest;
+    this.getBarMapId = () => {
+        if (config.seed) {
+            return config.seed.getKey();
+        }
     };
 
     this.setEncryptionAlgorithm = (algorithm) => {
@@ -1435,11 +1124,9 @@ function ArchiveConfigurator() {
 
     this.setSeedKey = (key) => {
         config.seed.setKey(key);
-        this.setMapDigest(key);
     };
 
     this.getSeedKey = () => {
-        loadSeed();
         if (config.seed) {
             return config.seed.getKey();
         }
@@ -1451,7 +1138,6 @@ function ArchiveConfigurator() {
         if (endpoint) {
             this.setStorageProvider("EDFSBrickStorage", endpoint);
         }
-        this.setMapDigest(config.seed.getKey());
     };
 
     this.getSeed = () => {
@@ -1479,9 +1165,6 @@ function ArchiveConfigurator() {
             config.seedEndpoint = config.seed.getEndpoint();
         }
         config.seed = new Seed(undefined, config.seedEndpoint);
-        if (config.seed.getKey()) {
-            self.setMapDigest(config.seed.getKey());
-        }
     };
 
     this.setCache = (cacheInstance) => {
@@ -1510,511 +1193,7 @@ ArchiveConfigurator.prototype.registerFsAdapter = (fsAdapterName, factory) => {
 
 module.exports = ArchiveConfigurator;
 
-},{"./Seed":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js":[function(require,module,exports){
-const crypto = require('pskcrypto');
-const BrickTransformFactory = require("./transforms/BrickTransformFactory");
-const transformFactory = new BrickTransformFactory();
-const adler32 = require('adler32');
-
-function Brick(config) {
-    let rawData;
-    let transformedData;
-    let hash;
-    let transformParameters;
-    let transform = transformFactory.createBrickTransform(config);
-
-    this.setConfig = (newConfig) => {
-        config = newConfig;
-        if (transform) {
-            transform.setConfig(newConfig);
-        } else {
-            transform = transformFactory.createBrickTransform(config);
-        }
-    };
-
-    this.createNewTransform = () => {
-        transform = transformFactory.createBrickTransform(config);
-        transformParameters = undefined;
-        transformData();
-    };
-
-    this.getHash = () => {
-        if (!hash) {
-            hash = crypto.pskHash(this.getTransformedData()).toString("hex");
-        }
-
-        return hash;
-    };
-
-    this.getKey = () => {
-        const seedId = config.getSeedKey();
-        if (seedId) {
-            return seedId;
-        }
-        return config.getMapDigest();
-    };
-
-    this.setKey = (key) => {
-        config.setSeedKey(key);
-    };
-
-    this.getSeed = () => {
-        return config.getSeed().toString();
-    };
-    this.getAdler32 = () => {
-        return adler32.sum(this.getTransformedData());
-    };
-
-    this.setRawData = function (data) {
-        rawData = data;
-        if (!transform) {
-            transformedData = rawData;
-        }
-    };
-
-    this.getRawData = () => {
-        if (rawData) {
-            return rawData;
-        }
-
-        if (transformedData) {
-            if (!transform) {
-                return transformedData;
-            }
-
-            rawData = transform.applyInverseTransform(transformedData, transformParameters);
-            if (rawData) {
-                return rawData;
-            }
-
-            return transformedData;
-        }
-
-        throw new Error("The brick does not contain any data.");
-    };
-
-    this.setTransformedData = (data) => {
-        transformedData = data;
-    };
-
-    this.getTransformedData = () => {
-        if (!transformedData) {
-            transformData();
-        }
-
-        if (transformedData) {
-            return transformedData;
-        }
-
-        if (rawData) {
-            return rawData;
-        }
-
-        throw new Error("The brick does not contain any data.");
-    };
-
-    this.getTransformParameters = () => {
-        if (!transformedData) {
-            transformData();
-        }
-        return transformParameters;
-    };
-
-    this.setTransformParameters = (newTransformParams) => {
-        if (!newTransformParams) {
-            return;
-        }
-
-        if (!transformParameters) {
-            transformParameters = newTransformParams;
-            return;
-        }
-
-        Object.keys(newTransformParams).forEach(key => {
-            transformParameters[key] = newTransformParams[key];
-        });
-    };
-
-    this.getRawSize = () => {
-        return rawData.length;
-    };
-
-    this.getTransformedSize = () => {
-        if (!transformedData) {
-            return rawData.length;
-        }
-
-        return transformedData.length;
-    };
-
-//----------------------------------------------- internal methods -----------------------------------------------------
-    function transformData() {
-        if (!transform) {
-            throw new Error("transform undefined");
-        }
-
-        if (rawData) {
-            transformedData = transform.applyDirectTransform(rawData, transformParameters);
-            if (!transformedData) {
-                transformedData = rawData;
-            }
-        }
-
-        transformParameters = transform.getTransformParameters();
-    }
-
-}
-
-module.exports = Brick;
-
-},{"./transforms/BrickTransformFactory":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js","adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\adler32\\index.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js":[function(require,module,exports){
-(function (Buffer){
-const Brick = require("./Brick");
-const util = require("../utils/utilities");
-const pathModule = "path";
-const path = require(pathModule);
-
-function FileBarMap(header) {
-    header = header || {};
-
-    let brickOffset = util.getBarMapOffsetSize();
-    let archiveConfig;
-    let encryptionKey;
-
-    this.add = (filePath, brick) => {
-        filePath = filePath.split(path.sep).join(path.posix.sep);
-        this.load();
-        if (typeof header[filePath] === "undefined") {
-            header[filePath] = [];
-        }
-
-        const brickObj = {
-            checkSum: brick.getAdler32(),
-            offset: brickOffset,
-            hash: brick.getHash()
-        };
-
-        const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
-        if (encKey) {
-            brickObj.key = encKey;
-        }
-
-        header[filePath].push(brickObj);
-        brickOffset += brick.getTransformedSize();
-    };
-
-    this.getHashList = (filePath) => {
-        this.load();
-        return header[filePath].map(brickObj => brickObj.offset);
-    };
-
-    this.getFileList = (folderBarPath) => {
-        this.load();
-        if (!folderBarPath) {
-            return Object.keys(header);
-        }
-        return Object.keys(header).filter(fileName => fileName.includes(folderBarPath));
-    };
-
-    this.getDictionaryObject = () => {
-        let objectDict = {};
-        Object.keys(header).forEach((fileName) => {
-            let brickObjects = header[fileName];
-            for (let j = 0; j < brickObjects.length; j++) {
-                if (typeof objectDict[brickObjects[j]['checkSum']] === 'undefined') {
-                    objectDict[brickObjects[j]['checkSum']] = [];
-                }
-                objectDict[brickObjects[j]['checkSum']].push(brickObjects[j]['hash']);
-            }
-        });
-        return objectDict;
-    };
-
-    this.getTransformParameters = (brickId) => {
-        if (!brickId) {
-            return encryptionKey ? {key: encryptionKey} : {};
-        }
-
-        this.load();
-        let bricks = [];
-        const files = this.getFileList();
-
-        files.forEach(filePath => {
-            bricks = bricks.concat(header[filePath]);
-        });
-
-        const brickObj = bricks.find(brick => {
-            return brick.offset === brickId;
-        });
-
-        const addTransformData = {};
-        if (brickObj.key) {
-            addTransformData.key = Buffer.from(brickObj.key);
-        }
-
-        return addTransformData;
-    };
-
-    this.toBrick = () => {
-        this.load();
-        const brick = new Brick(archiveConfig);
-        brick.setTransformParameters({key: encryptionKey});
-        brick.setRawData(Buffer.from(JSON.stringify(header)));
-        return brick;
-    };
-
-    this.load = () => {
-        if (header instanceof Brick) {
-            header.setConfig(archiveConfig);
-            if (encryptionKey) {
-                header.setTransformParameters({key: encryptionKey});
-            }
-            header = JSON.parse(header.getRawData().toString());
-        }
-    };
-
-    this.setConfig = (config) => {
-        archiveConfig = config;
-    };
-
-    this.getConfig = () => {
-        return archiveConfig;
-    };
-
-    this.setEncryptionKey = (encKey) => {
-        encryptionKey = encKey;
-    };
-
-    this.removeFile = (filePath) => {
-        this.load();
-        delete header[filePath];
-    };
-}
-
-module.exports = FileBarMap;
-}).call(this,require("buffer").Buffer)
-
-},{"../utils/utilities":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js":[function(require,module,exports){
-(function (Buffer){
-const BarMap = require("./FileBarMap");
-const util = require("../utils/utilities");
-const fs = require("fs");
-const Brick = require("./Brick");
-const AsyncDispatcher = require("../utils/AsyncDispatcher");
-
-function FileBrickStorage(filePath) {
-
-    let isFirstBrick = true;
-    let map;
-    let mapOffset;
-
-    this.setBarMap = (barMap) => {
-        map = barMap;
-    };
-
-    this.putBrick = (brick, callback) => {
-        if (isFirstBrick) {
-            isFirstBrick = false;
-            const writeStream = fs.createWriteStream(filePath, {start: util.getBarMapOffsetSize()});
-            writeStream.on("error", (err) => {
-                return callback(err);
-            });
-
-            writeStream.write(brick.getTransformedData(), callback);
-        } else {
-            fs.appendFile(filePath, brick.getTransformedData(), callback);
-        }
-    };
-
-    this.getBrick = (brickId, callback) => {
-        this.getBarMap((err, barMap) => {
-            if (err) {
-                return callback(err);
-            }
-            let brickOffsets = [];
-            const fileList = barMap.getFileList();
-            fileList.forEach(file => {
-                brickOffsets = brickOffsets.concat(barMap.getHashList(file));
-            });
-
-            const brickIndex = brickOffsets.findIndex(el => {
-                return el === brickId;
-            });
-
-            let nextBrickId = brickOffsets[brickIndex + 1];
-            if (!nextBrickId) {
-                nextBrickId = Number(mapOffset);
-            }
-
-            readBrick(brickId, nextBrickId, callback);
-        });
-
-    };
-
-    this.deleteFile = (fileName, callback) => {
-        this.getBarMap((err, barMap) => {
-            if (err) {
-                return callback(err);
-            }
-
-            barMap.removeFile(fileName);
-            this.putBarMap(barMap, callback);
-        });
-    };
-
-
-    this.putBarMap = (barMap, callback) => {
-        map = barMap;
-        readBarMapOffset((err, offset) => {
-            if(offset) {
-                offset = Number(offset);
-                fs.truncate(filePath, offset, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    __writeBarMap(offset);
-                });
-            }else{
-                fs.stat(filePath, (err, stats) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    const barMapOffset = stats.size;
-
-                    const bufferBarMapOffset = Buffer.alloc(util.getBarMapOffsetSize());
-                    bufferBarMapOffset.writeBigUInt64LE(BigInt(barMapOffset));
-                    mapOffset = barMapOffset;
-                    const offsetWriteStream = fs.createWriteStream(filePath, {flags: "r+", start: 0});
-
-                    offsetWriteStream.on("error", (err) => {
-                        return callback(err);
-                    });
-
-                    offsetWriteStream.write(bufferBarMapOffset, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        __writeBarMap(barMapOffset);
-                    });
-                });
-            }
-        });
-
-        function __writeBarMap(offset) {
-            const mapWriteStream = fs.createWriteStream(filePath, {flags: "r+", start: offset});
-            mapWriteStream.on("error", (err) => {
-                return callback(err);
-            });
-
-            const mapBrick = barMap.toBrick();
-            mapBrick.setTransformParameters(barMap.getTransformParameters());
-            mapWriteStream.write(mapBrick.getTransformedData(), callback);
-        }
-
-    };
-
-    this.getBarMap = (mapDigest, callback) => {
-        if (typeof mapDigest === "function") {
-            callback = mapDigest;
-        }
-
-        if (map) {
-            return callback(undefined, map);
-        }
-
-        readBarMap((err, barMap) => {
-            if (err) {
-                return callback(err);
-            }
-
-            map = barMap;
-            callback(undefined, barMap);
-        });
-    };
-
-    //------------------------------------------ Internal functions ---------------------------------------------------
-
-    function readBarMapOffset(callback) {
-        const readStream = fs.createReadStream(filePath, {start: 0, end: util.getBarMapOffsetSize() - 1});
-
-        const buffer = Buffer.alloc(util.getBarMapOffsetSize());
-        let offsetBuffer = 0;
-
-        readStream.on("data", (chunk) => {
-            chunk.copy(buffer, offsetBuffer);
-            offsetBuffer += chunk.length;
-        });
-
-        readStream.on("end", () => {
-            callback(undefined, buffer.readBigUInt64LE());
-        });
-
-        readStream.on("error", (err) => {
-            return callback(err);
-        });
-    }
-
-    function readBarMap(callback) {
-        readBarMapOffset((err, barMapOffset) => {
-            if (err) {
-                if (err.code === "ENOENT") {
-                    return callback(undefined, new BarMap());
-                }
-
-                return callback(err)
-            }
-
-            mapOffset = barMapOffset;
-            const readStream = fs.createReadStream(filePath, {start: Number(barMapOffset)});
-            let barMapData = Buffer.alloc(0);
-
-            readStream.on("data", (chunk) => {
-                barMapData = Buffer.concat([barMapData, chunk]);
-            });
-
-            readStream.on("error", (err) => {
-                return callback(err);
-            });
-
-            readStream.on("end", () => {
-                const mapBrick = new Brick();
-                mapBrick.setTransformedData(barMapData);
-                callback(undefined, new BarMap(mapBrick));
-            });
-        });
-    }
-
-    function readBrick(brickOffsetStart, brickOffsetEnd, callback) {
-        const readStream = fs.createReadStream(filePath, {start: brickOffsetStart, end: brickOffsetEnd - 1});
-        let brickData = Buffer.alloc(0);
-
-        readStream.on("data", (chunk) => {
-            brickData = Buffer.concat([brickData, chunk]);
-        });
-
-        readStream.on("error", (err) => {
-            return callback(err);
-        });
-
-        readStream.on("end", () => {
-            const brick = new Brick();
-            brick.setTransformedData(brickData);
-            callback(undefined, brick);
-        });
-    }
-}
-
-module.exports = {
-    createFileBrickStorage(filePath) {
-        return new FileBrickStorage(filePath);
-    }
-};
-}).call(this,require("buffer").Buffer)
-
-},{"../utils/AsyncDispatcher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js","../utils/utilities":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FileBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FileBarMap.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js":[function(require,module,exports){
+},{"./Seed":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require("./Brick");
 const pathModule = "path";
@@ -2028,11 +1207,25 @@ try {
     }
 }
 
-function FolderBarMap(header) {
+function BarMap(header) {
     header = header || {};
     const pskPath = require("swarmutils").path;
     let archiveConfig;
     let encryptionKey;
+
+    this.addFileEntry = (path, bricks) => {
+        if (!this.isEmpty(path)) {
+            this.emptyList(path);
+        }
+
+        this.appendBricksToEntry(path, bricks);
+    };
+
+    this.appendBricksToEntry = (path, bricks) => {
+        for (const data of bricks) {
+            this.add(path, data);
+        }
+    }
 
     this.add = (filePath, brick) => {
         filePath = pskPath.normalize(filePath);
@@ -2048,22 +1241,35 @@ function FolderBarMap(header) {
             if (fileName === "") {
                 fileName = splitPath.shift();
             }
-            if (splitPath.length === 0) {
-                const brickObj = {
-                    checkSum: brick.getAdler32(),
-                    hash: brick.getHash()
-                };
 
-                const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
-                if (encKey) {
-                    brickObj.key = encKey;
+            if (!splitPath.length) {
+                let checkSum;
+                let hash;
+                let key;
+
+                if (brick instanceof Brick) {
+                    checkSum = brick.getAdler32();
+                    hash = brick.getHash();
+                    key = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
+                } else {
+                    checkSum = brick.checkSum;
+                    hash = brick.hash;
+                    key = brick.encryptionKey;
                 }
 
+
+                const brickObj = {
+                    checkSum,
+                    hash,
+                };
+
+                if (key) {
+                    brickObj.key = key;
+                }
 
                 if (!barMapObj[fileName]) {
                     barMapObj[fileName] = [];
                 }
-
 
                 barMapObj[fileName].push(brickObj);
             } else {
@@ -2346,14 +1552,1078 @@ function FolderBarMap(header) {
     };
 }
 
-module.exports = FolderBarMap;
+module.exports = BarMap;
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js":[function(require,module,exports){
+},{"./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js":[function(require,module,exports){
+const crypto = require('pskcrypto');
+const BrickTransformFactory = require("./transforms/BrickTransformFactory");
+const transformFactory = new BrickTransformFactory();
+const adler32 = require('adler32');
+
+function Brick(config) {
+    let rawData;
+    let transformedData;
+    let hash;
+    let transformParameters;
+    let transform = transformFactory.createBrickTransform(config);
+
+    this.setConfig = (newConfig) => {
+        config = newConfig;
+        if (transform) {
+            transform.setConfig(newConfig);
+        } else {
+            transform = transformFactory.createBrickTransform(config);
+        }
+    };
+
+    this.createNewTransform = () => {
+        transform = transformFactory.createBrickTransform(config);
+        transformParameters = undefined;
+        transformData();
+    };
+
+    this.getHash = () => {
+        if (!hash) {
+            hash = crypto.pskHash(this.getTransformedData()).toString("hex");
+        }
+
+        return hash;
+    };
+
+    this.getKey = () => {
+        return config.getSeedKey();
+    };
+
+    this.setKey = (key) => {
+        config.setSeedKey(key);
+    };
+
+    this.getSeed = () => {
+        return config.getSeed().toString();
+    };
+    this.getAdler32 = () => {
+        return adler32.sum(this.getTransformedData());
+    };
+
+    this.setRawData = function (data) {
+        rawData = data;
+        if (!transform) {
+            transformedData = rawData;
+        }
+    };
+
+    this.getRawData = () => {
+        if (rawData) {
+            return rawData;
+        }
+
+        if (transformedData) {
+            if (!transform) {
+                return transformedData;
+            }
+
+            rawData = transform.applyInverseTransform(transformedData, transformParameters);
+            if (rawData) {
+                return rawData;
+            }
+
+            return transformedData;
+        }
+
+        throw new Error("The brick does not contain any data.");
+    };
+
+    this.setTransformedData = (data) => {
+        transformedData = data;
+    };
+
+    this.getTransformedData = () => {
+        if (!transformedData) {
+            transformData();
+        }
+
+        if (transformedData) {
+            return transformedData;
+        }
+
+        if (rawData) {
+            return rawData;
+        }
+
+        throw new Error("The brick does not contain any data.");
+    };
+
+    this.getTransformParameters = () => {
+        if (!transformedData) {
+            transformData();
+        }
+        return transformParameters;
+    };
+
+    this.setTransformParameters = (newTransformParams) => {
+        if (!newTransformParams) {
+            return;
+        }
+
+        if (!transformParameters) {
+            transformParameters = newTransformParams;
+            return;
+        }
+
+        Object.keys(newTransformParams).forEach(key => {
+            transformParameters[key] = newTransformParams[key];
+        });
+    };
+
+    this.getRawSize = () => {
+        return rawData.length;
+    };
+
+    this.getTransformedSize = () => {
+        if (!transformedData) {
+            return rawData.length;
+        }
+
+        return transformedData.length;
+    };
+
+    this.getSummary = () => {
+        let encryptionKey;
+        const transformParameters = this.getTransformParameters();
+
+        if (transformParameters) {
+            encryptionKey = transformParameters.key;
+        }
+
+        return {
+            hash: this.getHash(),
+            checkSum: this.getAdler32(),
+            encryptionKey
+        };
+    }
+
+//----------------------------------------------- internal methods -----------------------------------------------------
+    function transformData() {
+        if (!transform) {
+            throw new Error("transform undefined");
+        }
+
+        if (rawData) {
+            transformedData = transform.applyDirectTransform(rawData, transformParameters);
+            if (!transformedData) {
+                transformedData = rawData;
+            }
+        }
+
+        transformParameters = transform.getTransformParameters();
+    }
+
+}
+
+module.exports = Brick;
+
+},{"./transforms/BrickTransformFactory":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js","adler32":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/index.js","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/Service.js":[function(require,module,exports){
+(function (Buffer){
+'use strict'
+
+const pathModule = "path";
+const path = require(pathModule);
+
+const isStream = require("../../utils/isStream");
+const stream = require('stream');
+
+/**
+ * Brick storage layer
+ * Wrapper over EDFSBrickStorage
+ *
+ * @param {object} options
+ * @param {Cache} options.cache
+ * @param {number} options.bufferSize
+ * @param {EDFSBrickStorage} options.storageProvider
+ * @param {callback} options.brickFactoryCallback
+ * @param {FSAdapter} options.fsAdapter
+ * @param {callback} options.brickDataExtractorCallback
+ * @param {callback} options.barMapConfiguratorCallback
+ */
+function Service(options) {
+    options = options || {};
+
+    this.cache = options.cache;
+    this.bufferSize = parseInt(options.bufferSize, 10);
+    this.storageProvider = options.storageProvider;
+    this.brickFactoryCallback = options.brickFactoryCallback;
+    this.fsAdapter = options.fsAdapter;
+    this.brickDataExtractorCallback = options.brickDataExtractorCallback;
+    this.barMapConfiguratorCallback = options.barMapConfiguratorCallback;
+
+    if (isNaN(this.bufferSize) || this.bufferSize < 1) {
+        throw new Error('Buffer size is required');
+    }
+
+    if (!this.storageProvider) {
+        throw new Error('Storage provider is required');
+    }
+
+    if (typeof this.brickFactoryCallback !== 'function') {
+        throw new Error('A brick factory callback is required');
+    }
+
+    if (!this.fsAdapter) {
+        throw new Error('A file system adapter is required');
+    }
+
+    if (typeof this.brickDataExtractorCallback !== 'function') {
+        throw new Error('A Brick data extractor callback is required');
+    }
+
+    if (typeof this.barMapConfiguratorCallback !== 'function') {
+        throw new Error('A BarMap configurator callback is required');
+    }
+
+    /**
+     * @param {*} key
+     * @return {Boolean}
+     */
+    const hasInCache = (key) => {
+        if (!this.cache) {
+            return false;
+        }
+
+        return this.cache.has(key);
+    }
+
+    /**
+     * @param {*} key
+     * @param {*} value
+     */
+    const storeInCache = (key, value) => {
+        if (!this.cache) {
+            return;
+        }
+
+        this.cache.set(key, value);
+    }
+
+    /**
+     * Creates writable stream to a EDFSBrickStorage instance
+     *
+     * @param {EDFSBrickStorage} storageProvider
+     * @param {callback} beforeCopyCallback
+     * @return {stream.Writable}
+     */
+    const createBricksWritableStream = (storageProvider, beforeCopyCallback) => {
+        return ((storageProvider, beforeCopyCallback) => {
+
+            const writableStream = new stream.Writable({
+                write(brickContainer, encoding, callback) {
+                    let { brick, brickMeta } = brickContainer;
+                    if (typeof beforeCopyCallback === 'function') {
+                        brick = beforeCopyCallback(brickMeta, brick);
+                    }
+
+                    storageProvider.putBrick(brick, (err, digest) => {
+                        if (err) {
+                            return callback(err);
+                        }
+
+                        const brickSummary = brick.getSummary();
+                        brickSummary.digest = digest;
+                        this.bricksSummary.push(brickSummary);
+
+                        callback();
+                    })
+                },
+                objectMode: true
+            });
+
+            writableStream.bricksSummary = [];
+            return writableStream;
+
+        })(storageProvider, beforeCopyCallback);
+    }
+
+    /**
+     * Create a readable stream of Brick objects
+     * retrieved from EDFSBrickStorage
+     *
+     * @param {Array<object>} bricksMeta
+     * @return {stream.Readable}
+     */
+    const createBricksReadableStream = (bricksMeta) => {
+        return ((bricksMeta) => {
+
+            let brickIndex = 0;
+
+            const readableStream = new stream.Readable({
+                read(size) {
+                    if (brickIndex < bricksMeta.length) {
+                        this.getBrick(brickIndex++);
+                    }
+                },
+                objectMode: true
+            });
+
+            // Get a brick and push it into the stream
+            const self = this;
+            readableStream.getBrick = function (brickIndex) {
+                const brickMeta = bricksMeta[brickIndex];
+                self.storageProvider.getBrick(brickMeta.hash, (err, brick) => {
+                    if (err) {
+                        this.destroy(err);
+                        return;
+                    }
+
+                    this.push({
+                        brickMeta,
+                        brick
+                    });
+
+                    if (brickIndex >= (bricksMeta.length - 1)) {
+                        this.push(null);
+                    }
+                });
+            };
+
+            return readableStream;
+
+        })(bricksMeta);
+    }
+
+    /**
+     * Retrieves a Brick from storage and converts
+     * it into a Buffer
+     *
+     * @param {object} brickMeta
+     * @param {callback} callback
+     */
+    const getBrickAsBuffer = (brickMeta, callback) => {
+        if (hasInCache(brickMeta.hash)) {
+            const data = this.cache.get(brickMeta.hash);
+            return callback(undefined, data);
+        }
+
+        this.storageProvider.getBrick(brickMeta.hash, (err, brick) => {
+            if (err) {
+                return callback(err);
+            }
+
+            const data = this.brickDataExtractorCallback(brickMeta, brick);
+            storeInCache(brickMeta.hash, data);
+            callback(undefined, data);
+        });
+    };
+
+    /**
+     * Counts the number of blocks in a file
+     *
+     * @param {string} filePath
+     * @param {callback} callback
+     */
+    const getFileBlocksCount = (filePath, callback) => {
+        this.fsAdapter.getFileSize(filePath, (err, size) => {
+            if (err) {
+                return callback(err);
+            }
+
+            let blocksCount = Math.floor(size / this.bufferSize);
+            if (size % this.bufferSize > 0) {
+                ++blocksCount;
+            }
+
+            callback(undefined, blocksCount);
+        })
+    };
+
+    /**
+     * Creates a Brick from a Buffer
+     * and saves it into brick storage
+     *
+     * @param {Buffer} data
+     * @param {callback} callback
+     */
+    const convertDataBlockToBrick = (data, callback) => {
+        const brick = this.brickFactoryCallback();
+        brick.setRawData(data);
+
+        this.storageProvider.putBrick(brick, (err, digest) => {
+            if (err) {
+                return callback(err);
+            }
+
+            const brickSummary = brick.getSummary();
+            brickSummary.digest = digest;
+
+            return callback(undefined, brickSummary);
+        });
+
+    };
+
+    /**
+     * Recursively breaks a buffer into Brick objects and
+     * stores them into storage
+     *
+     * @param {Array<object>} resultContainer
+     * @param {Buffer} buffer
+     * @param {number} blockIndex
+     * @param {number} blockSize
+     * @param {callback} callback
+     */
+    const convertBufferToBricks = (resultContainer, buffer, blockIndex, blockSize, callback) => {
+        let blocksCount = Math.floor(buffer.length / blockSize);
+        if ((buffer.length % blockSize) > 0) {
+            ++blocksCount;
+        }
+
+        const blockData = buffer.slice(blockIndex * blockSize, (blockIndex + 1) * blockSize);
+
+        convertDataBlockToBrick(blockData, (err, result) => {
+            if (err) {
+                return callback(err);
+            }
+
+            resultContainer.push(result);
+            ++blockIndex;
+
+            if (blockIndex < blocksCount) {
+                return convertBufferToBricks(resultContainer, buffer, blockIndex, blockSize, callback);
+            }
+
+            return callback();
+        });
+    };
+
+    /**
+     * Copy the contents of a file into brick storage
+     *
+     * @param {Array<object>} resultContainer
+     * @param {string} filePath
+     * @param {number} blockIndex
+     * @param {number} blocksCount
+     * @param {callback} callback
+     */
+    const convertFileToBricks = (resultContainer, filePath, blockIndex, blocksCount, callback) => {
+        if (typeof blocksCount === 'function') {
+            callback = blocksCount;
+            blocksCount = blockIndex;
+            blockIndex = 0;
+        }
+
+        const blockOffset = blockIndex * this.bufferSize;
+        const blockEndOffset = (blockIndex + 1) * this.bufferSize - 1;
+        this.fsAdapter.readBlockFromFile(filePath, blockOffset, blockEndOffset, (err, data) => {
+            if (err) {
+                return callback(err);
+            }
+
+            convertDataBlockToBrick(data, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                resultContainer.push(result);
+                ++blockIndex;
+
+                if (blockIndex < blocksCount) {
+                    return convertFileToBricks(resultContainer, filePath, blockIndex, blocksCount, callback);
+                }
+
+                return callback();
+            })
+        })
+    };
+
+    /**
+     * Stores a Buffer as Bricks into brick storage
+     *
+     * @param {Buffer} buffer
+     * @param {number|callback} bufferSize
+     * @param {callback|undefined} callback
+     */
+    this.ingestBuffer = (buffer, bufferSize, callback) => {
+        if (typeof bufferSize === 'function') {
+            callback = bufferSize;
+            bufferSize = this.bufferSize;
+        }
+        const bricksSummary = [];
+
+        convertBufferToBricks(bricksSummary, buffer, 0, bufferSize, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, bricksSummary);
+        });
+    };
+
+    /**
+     * Reads a stream of data into multiple Brick objects
+     * stored in brick storage
+     *
+     * @param {stream.Readable} stream
+     * @param {callback}
+     */
+    this.ingestStream = (stream, callback) => {
+        let bricksSummary = [];
+        stream.on('data', (chunk) => {
+            if (typeof chunk === 'string') {
+                chunk = Buffer.from(chunk);
+            }
+
+            stream.pause();
+            this.ingestBuffer(chunk, chunk.length, (err, summary) => {
+                if (err) {
+                    stream.destroy(err);
+                    return;
+                }
+                bricksSummary = bricksSummary.concat(summary);
+                stream.resume();
+            });
+        });
+        stream.on('error', (err) => {
+            callback(err);
+        });
+        stream.on('end', () => {
+            callback(undefined, bricksSummary);
+        })
+    };
+
+    /**
+     * @param {string|Buffer|stream.Readable} data
+     * @param {callback} callback
+     */
+    this.ingestData = (data, callback) => {
+        if (typeof data === 'string') {
+            data = Buffer.from(data);
+        }
+
+        if (!Buffer.isBuffer(data) && !isStream.isReadable(data)) {
+            return callback(Error(`Type of data is ${typeof data}. Expected Buffer or Stream.Readable`));
+        }
+
+        if (Buffer.isBuffer(data)) {
+            return this.ingestBuffer(data, callback);
+        }
+
+        return this.ingestStream(data, callback);
+    };
+
+    /**
+     * Copy the contents of a file into brick storage
+     *
+     * @param {string} filePath
+     * @param {callback} callback
+     */
+    this.ingestFile = (filePath, callback) => {
+        const bricksSummary = [];
+
+        getFileBlocksCount(filePath, (err, blocksCount) => {
+            if (err) {
+                return callback(err);
+            }
+
+            convertFileToBricks(bricksSummary, filePath, blocksCount, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                callback(undefined, bricksSummary);
+            });
+        });
+    };
+
+    /**
+     * Copy the contents of multiple files into brick storage
+     *
+     * @param {Array<string>} filePath
+     * @param {callback} callback
+     */
+    this.ingestFiles = (files, callback) => {
+        const bricksSummary = {};
+
+        const ingestFilesRecursive = (files, callback) => {
+            if (!files.length) {
+                return callback(undefined, bricksSummary);
+            }
+
+            const filePath = files.pop();
+            const filename = path.basename(filePath);
+
+            this.ingestFile(filePath, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                bricksSummary[filename] = result;
+
+                ingestFilesRecursive(files, callback);
+            });
+        };
+
+        ingestFilesRecursive(files, callback);
+    };
+
+    /**
+     * Copy the contents of folder into brick storage
+     *
+     * @param {string} folderPath
+     * @param {callback} callback
+     */
+    this.ingestFolder = (folderPath, callback) => {
+        const bricksSummary = {};
+        const filesIterator = this.fsAdapter.getFilesIterator(folderPath);
+
+        const iteratorHandler = (err, filename, dirname) => {
+            if (err) {
+                return callback(err);
+            }
+
+            if (typeof filename === 'undefined') {
+                return callback(undefined, bricksSummary);
+            }
+
+            const filePath = path.join(dirname, filename);
+            this.ingestFile(filePath, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                bricksSummary[filename] = result;
+                filesIterator.next(iteratorHandler);
+            });
+        };
+
+        filesIterator.next(iteratorHandler);
+    };
+
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * from storage and create a Buffer using their data
+     *
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createBufferFromBricks = (bricksMeta, callback) => {
+        let buffer = Buffer.alloc(0);
+
+        const getBricksAsBufferRecursive = (index, callback) => {
+            const brickMeta = bricksMeta[index];
+
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                buffer = Buffer.concat([buffer, data]);
+                ++index;
+
+                if (index < bricksMeta.length) {
+                    return getBricksAsBufferRecursive(index, callback);
+                }
+
+                callback(undefined, buffer);
+            });
+        };
+
+        getBricksAsBufferRecursive(0, callback);
+    }
+
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * from storage and create a readable stream
+     * from their data
+     *
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createStreamFromBricks = (bricksMeta, callback) => {
+        let brickIndex = 0;
+
+        const readableStream = new stream.Readable({
+            read(size) {
+                if (brickIndex < bricksMeta.length) {
+                    this.readBrickData(brickIndex++);
+                }
+            }
+        });
+
+        // Get a brick and push it into the stream
+        readableStream.readBrickData = function (brickIndex) {
+            const brickMeta = bricksMeta[brickIndex];
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    this.destroy(err);
+                    return;
+                }
+
+                this.push(data);
+
+                if (brickIndex >= (bricksMeta.length - 1)) {
+                    this.push(null);
+                }
+            });
+        };
+
+        callback(undefined, readableStream);
+    }
+
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * and store their data into a file
+     *
+     * @param {string} filePath
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createFileFromBricks = (filePath, bricksMeta, callback) => {
+        const getBricksAsBufferRecursive = (index, callback) => {
+            const brickMeta = bricksMeta[index];
+
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                this.fsAdapter.appendBlockToFile(filePath, data, (err) => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    ++index;
+
+                    if (index < bricksMeta.length) {
+                        return getBricksAsBufferRecursive(index, callback);
+                    }
+
+                    callback();
+                });
+            });
+        };
+
+        getBricksAsBufferRecursive(0, callback);
+    }
+
+    /**
+     * Copy all the Bricks identified by `bricksList`
+     * into another storage provider
+     *
+     * @param {object} bricksList
+     * @param {object} options
+     * @param {FSAdapter} options.dstStorage
+     * @param {callback} options.beforeCopyCallback
+     * @param {callback} callback
+     */
+    this.copyBricks = (bricksList, options, callback) => {
+        const bricksSetKeys = Object.keys(bricksList);
+        const newBricksSetKeys = {};
+
+        const copyBricksRecursive = (callback) => {
+            if (!bricksSetKeys.length) {
+                return callback();
+            }
+
+            const setKey = bricksSetKeys.shift();
+            const bricksMeta = bricksList[setKey];
+
+            const srcStream = createBricksReadableStream(bricksMeta);
+            const dstStream = createBricksWritableStream(options.dstStorage, options.beforeCopyCallback);
+
+            srcStream.on('error', (err) => {
+                callback(err);
+                dstStream.destroy(err);
+            });
+
+            dstStream.on('finish', () => {
+                newBricksSetKeys[setKey] = dstStream.bricksSummary;
+                dstStream.destroy();
+                copyBricksRecursive(callback);
+            });
+
+            srcStream.pipe(dstStream);
+        };
+
+        copyBricksRecursive((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, newBricksSetKeys);
+        });
+    };
+
+    /**
+     * @param {string} hash
+     * @param {callback} callback
+     */
+    this.getBarMap = (hash, callback) => {
+        if (hash && hasInCache(hash)) {
+            const map = this.cache.get(hash);
+            this.storageProvider.setBarMap(map);
+            return callback(undefined, map);
+        }
+
+        this.storageProvider.getBarMap(hash, (err, map) => {
+            if (err) {
+                return callback(err);
+            }
+
+            map = this.barMapConfiguratorCallback(map);
+
+            if (hash) {
+                storeInCache(hash, map);
+            }
+
+            this.storageProvider.setBarMap(map);
+            callback(undefined, map);
+        })
+    }
+
+    /**
+     * @param {BarMap} barMap
+     * @param {callback} callback
+     */
+    this.putBarMap = (barMap, callback) => {
+        this.storageProvider.putBarMap(barMap, callback);
+    }
+}
+
+module.exports = Service;
+
+}).call(this,require("buffer").Buffer)
+
+},{"../../utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/index.js":[function(require,module,exports){
+'use strict'
+
+module.exports = {
+    Service: require('./Service')
+};
+
+},{"./Service":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/Service.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FileBrickStorage.js":[function(require,module,exports){
+(function (Buffer){
+const BarMap = require("./obsolete/FileBarMap");
+const util = require("../utils/utilities");
+const fs = require("fs");
+const Brick = require("./Brick");
+const AsyncDispatcher = require("../utils/AsyncDispatcher");
+
+function FileBrickStorage(filePath) {
+
+    let isFirstBrick = true;
+    let map;
+    let mapOffset;
+
+    this.setBarMap = (barMap) => {
+        map = barMap;
+    };
+
+    this.putBrick = (brick, callback) => {
+        if (isFirstBrick) {
+            isFirstBrick = false;
+            const writeStream = fs.createWriteStream(filePath, {start: util.getBarMapOffsetSize()});
+            writeStream.on("error", (err) => {
+                return callback(err);
+            });
+
+            writeStream.write(brick.getTransformedData(), callback);
+        } else {
+            fs.appendFile(filePath, brick.getTransformedData(), callback);
+        }
+    };
+
+    this.getBrick = (brickId, callback) => {
+        this.getBarMap((err, barMap) => {
+            if (err) {
+                return callback(err);
+            }
+            let brickOffsets = [];
+            const fileList = barMap.getFileList();
+            fileList.forEach(file => {
+                brickOffsets = brickOffsets.concat(barMap.getHashList(file));
+            });
+
+            const brickIndex = brickOffsets.findIndex(el => {
+                return el === brickId;
+            });
+
+            let nextBrickId = brickOffsets[brickIndex + 1];
+            if (!nextBrickId) {
+                nextBrickId = Number(mapOffset);
+            }
+
+            readBrick(brickId, nextBrickId, callback);
+        });
+
+    };
+
+    this.deleteFile = (fileName, callback) => {
+        this.getBarMap((err, barMap) => {
+            if (err) {
+                return callback(err);
+            }
+
+            barMap.removeFile(fileName);
+            this.putBarMap(barMap, callback);
+        });
+    };
+
+
+    this.putBarMap = (barMap, callback) => {
+        map = barMap;
+        readBarMapOffset((err, offset) => {
+            if(offset) {
+                offset = Number(offset);
+                fs.truncate(filePath, offset, (err) => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    __writeBarMap(offset);
+                });
+            }else{
+                fs.stat(filePath, (err, stats) => {
+                    if (err) {
+                        return callback(err);
+                    }
+
+                    const barMapOffset = stats.size;
+
+                    const bufferBarMapOffset = Buffer.alloc(util.getBarMapOffsetSize());
+                    bufferBarMapOffset.writeBigUInt64LE(BigInt(barMapOffset));
+                    mapOffset = barMapOffset;
+                    const offsetWriteStream = fs.createWriteStream(filePath, {flags: "r+", start: 0});
+
+                    offsetWriteStream.on("error", (err) => {
+                        return callback(err);
+                    });
+
+                    offsetWriteStream.write(bufferBarMapOffset, (err) => {
+                        if (err) {
+                            return callback(err);
+                        }
+
+                        __writeBarMap(barMapOffset);
+                    });
+                });
+            }
+        });
+
+        function __writeBarMap(offset) {
+            const mapWriteStream = fs.createWriteStream(filePath, {flags: "r+", start: offset});
+            mapWriteStream.on("error", (err) => {
+                return callback(err);
+            });
+
+            const mapBrick = barMap.toBrick();
+            mapBrick.setTransformParameters(barMap.getTransformParameters());
+            mapWriteStream.write(mapBrick.getTransformedData(), callback);
+        }
+
+    };
+
+    this.getBarMap = (mapDigest, callback) => {
+        if (typeof mapDigest === "function") {
+            callback = mapDigest;
+        }
+
+        if (map) {
+            return callback(undefined, map);
+        }
+
+        readBarMap((err, barMap) => {
+            if (err) {
+                return callback(err);
+            }
+
+            map = barMap;
+            callback(undefined, barMap);
+        });
+    };
+
+    //------------------------------------------ Internal functions ---------------------------------------------------
+
+    function readBarMapOffset(callback) {
+        const readStream = fs.createReadStream(filePath, {start: 0, end: util.getBarMapOffsetSize() - 1});
+
+        const buffer = Buffer.alloc(util.getBarMapOffsetSize());
+        let offsetBuffer = 0;
+
+        readStream.on("data", (chunk) => {
+            chunk.copy(buffer, offsetBuffer);
+            offsetBuffer += chunk.length;
+        });
+
+        readStream.on("end", () => {
+            callback(undefined, buffer.readBigUInt64LE());
+        });
+
+        readStream.on("error", (err) => {
+            return callback(err);
+        });
+    }
+
+    function readBarMap(callback) {
+        readBarMapOffset((err, barMapOffset) => {
+            if (err) {
+                if (err.code === "ENOENT") {
+                    return callback(undefined, new BarMap());
+                }
+
+                return callback(err)
+            }
+
+            mapOffset = barMapOffset;
+            const readStream = fs.createReadStream(filePath, {start: Number(barMapOffset)});
+            let barMapData = Buffer.alloc(0);
+
+            readStream.on("data", (chunk) => {
+                barMapData = Buffer.concat([barMapData, chunk]);
+            });
+
+            readStream.on("error", (err) => {
+                return callback(err);
+            });
+
+            readStream.on("end", () => {
+                const mapBrick = new Brick();
+                mapBrick.setTransformedData(barMapData);
+                callback(undefined, new BarMap(mapBrick));
+            });
+        });
+    }
+
+    function readBrick(brickOffsetStart, brickOffsetEnd, callback) {
+        const readStream = fs.createReadStream(filePath, {start: brickOffsetStart, end: brickOffsetEnd - 1});
+        let brickData = Buffer.alloc(0);
+
+        readStream.on("data", (chunk) => {
+            brickData = Buffer.concat([brickData, chunk]);
+        });
+
+        readStream.on("error", (err) => {
+            return callback(err);
+        });
+
+        readStream.on("end", () => {
+            const brick = new Brick();
+            brick.setTransformedData(brickData);
+            callback(undefined, brick);
+        });
+    }
+}
+
+module.exports = {
+    createFileBrickStorage(filePath) {
+        return new FileBrickStorage(filePath);
+    }
+};
+
+}).call(this,require("buffer").Buffer)
+
+},{"../utils/AsyncDispatcher":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/AsyncDispatcher.js","../utils/utilities":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./obsolete/FileBarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/obsolete/FileBarMap.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FolderBrickStorage.js":[function(require,module,exports){
 const fs = require("fs");
 const path = require("path");
-const BarMap = require("./FolderBarMap");
+const BarMap = require("./BarMap");
 const Brick = require("./Brick");
 
 function FolderBrickStorage(location) {
@@ -2449,7 +2719,8 @@ module.exports = {
         return new FolderBrickStorage(location);
     }
 };
-},{"./Brick":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Brick.js","./FolderBarMap":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\Seed.js":[function(require,module,exports){
+
+},{"./BarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/path-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("pskcrypto");
 const base58 = require("./base58");
@@ -2569,7 +2840,7 @@ module.exports = Seed;
 
 }).call(this,require("buffer").Buffer)
 
-},{"./base58":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\base58.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\base58.js":[function(require,module,exports){
+},{"./base58":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/base58.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/base58.js":[function(require,module,exports){
 (function (Buffer){
 const ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 const BASE = ALPHABET.length;
@@ -2707,7 +2978,145 @@ module.exports = {
 };
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/obsolete/FileBarMap.js":[function(require,module,exports){
+(function (Buffer){
+const Brick = require("../Brick");
+const util = require("../../utils/utilities");
+const pathModule = "path";
+const path = require(pathModule);
+
+function FileBarMap(header) {
+    header = header || {};
+
+    let brickOffset = util.getBarMapOffsetSize();
+    let archiveConfig;
+    let encryptionKey;
+
+    this.addFileEntry = (path, bricks) => {
+        this.appendBricksToEntry(path, bricks);
+    };
+
+    this.appendBricksToEntry = (path, bricks) => {
+        for (const data of bricks) {
+            this.add(path, data);
+        }
+    }
+
+    this.add = (filePath, brick) => {
+        filePath = filePath.split(path.sep).join(path.posix.sep);
+        this.load();
+        if (typeof header[filePath] === "undefined") {
+            header[filePath] = [];
+        }
+
+        const brickObj = {
+            checkSum: brick.getAdler32(),
+            offset: brickOffset,
+            hash: brick.getHash()
+        };
+
+        const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
+        if (encKey) {
+            brickObj.key = encKey;
+        }
+
+        header[filePath].push(brickObj);
+        brickOffset += brick.getTransformedSize();
+    };
+
+    this.getHashList = (filePath) => {
+        this.load();
+        return header[filePath].map(brickObj => brickObj.offset);
+    };
+
+    this.getFileList = (folderBarPath) => {
+        this.load();
+        if (!folderBarPath) {
+            return Object.keys(header);
+        }
+        return Object.keys(header).filter(fileName => fileName.includes(folderBarPath));
+    };
+
+    this.getDictionaryObject = () => {
+        let objectDict = {};
+        Object.keys(header).forEach((fileName) => {
+            let brickObjects = header[fileName];
+            for (let j = 0; j < brickObjects.length; j++) {
+                if (typeof objectDict[brickObjects[j]['checkSum']] === 'undefined') {
+                    objectDict[brickObjects[j]['checkSum']] = [];
+                }
+                objectDict[brickObjects[j]['checkSum']].push(brickObjects[j]['hash']);
+            }
+        });
+        return objectDict;
+    };
+
+    this.getTransformParameters = (brickId) => {
+        if (!brickId) {
+            return encryptionKey ? {key: encryptionKey} : {};
+        }
+
+        this.load();
+        let bricks = [];
+        const files = this.getFileList();
+
+        files.forEach(filePath => {
+            bricks = bricks.concat(header[filePath]);
+        });
+
+        const brickObj = bricks.find(brick => {
+            return brick.offset === brickId;
+        });
+
+        const addTransformData = {};
+        if (brickObj.key) {
+            addTransformData.key = Buffer.from(brickObj.key);
+        }
+
+        return addTransformData;
+    };
+
+    this.toBrick = () => {
+        this.load();
+        const brick = new Brick(archiveConfig);
+        brick.setTransformParameters({key: encryptionKey});
+        brick.setRawData(Buffer.from(JSON.stringify(header)));
+        return brick;
+    };
+
+    this.load = () => {
+        if (header instanceof Brick) {
+            header.setConfig(archiveConfig);
+            if (encryptionKey) {
+                header.setTransformParameters({key: encryptionKey});
+            }
+            header = JSON.parse(header.getRawData().toString());
+        }
+    };
+
+    this.setConfig = (config) => {
+        archiveConfig = config;
+    };
+
+    this.getConfig = () => {
+        return archiveConfig;
+    };
+
+    this.setEncryptionKey = (encKey) => {
+        encryptionKey = encKey;
+    };
+
+    this.removeFile = (filePath) => {
+        this.load();
+        delete header[filePath];
+    };
+}
+
+module.exports = FileBarMap;
+
+}).call(this,require("buffer").Buffer)
+
+},{"../../utils/utilities":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js","../Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransform.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransform(transformGenerator) {
     let directTransform;
@@ -2764,7 +3173,7 @@ module.exports = BrickTransform;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator= require("./EncryptionGenerator");
 const CompressionEncryptionGenerator = require("./CompressionEncryptionGenerator");
@@ -2801,7 +3210,7 @@ function BrickTransformFactory() {
 module.exports = BrickTransformFactory;
 
 
-},{"./BrickTransform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js","./CompressionEncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js","./CompressionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js":[function(require,module,exports){
+},{"./BrickTransform":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransform.js","./CompressionEncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js","./CompressionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator = require("./EncryptionGenerator");
 
@@ -2844,7 +3253,7 @@ function CompressionEncryptionGenerator(config) {
 }
 
 module.exports = CompressionEncryptionGenerator;
-},{"./CompressionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js":[function(require,module,exports){
+},{"./CompressionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js":[function(require,module,exports){
 const zlib = require("zlib");
 
 function CompressionGenerator(config) {
@@ -2898,7 +3307,7 @@ function CompressionGenerator(config) {
 module.exports = CompressionGenerator;
 
 
-},{"zlib":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js":[function(require,module,exports){
+},{"zlib":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-zlib/lib/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js":[function(require,module,exports){
 const crypto = require("pskcrypto");
 
 function EncryptionGenerator(config) {
@@ -2985,7 +3394,7 @@ function EncryptionGenerator(config) {
 }
 
 module.exports = EncryptionGenerator;
-},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/AsyncDispatcher.js":[function(require,module,exports){
 
 function AsyncDispatcher(finalCallback) {
 	let results = [];
@@ -3035,7 +3444,7 @@ function AsyncDispatcher(finalCallback) {
 }
 
 module.exports = AsyncDispatcher;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\isStream.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js":[function(require,module,exports){
 function isStream(stream){
     return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
 }
@@ -3067,7 +3476,7 @@ module.exports = {
     isDuplex
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\utils\\utilities.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js":[function(require,module,exports){
 const fs = require('fs');
 const OFFSET_SIZE = 8;
 
@@ -3086,7 +3495,7 @@ function ensureFileDoesNotExist(filePath, callback) {
 }
 
 module.exports = {getBarMapOffsetSize, ensureFileDoesNotExist};
-},{"fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\OBFTImplementation.js":[function(require,module,exports){
+},{"fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/OBFTImplementation.js":[function(require,module,exports){
 let pskcrypto = require("pskcrypto");
 let fs = require("fs");
 
@@ -3245,7 +3654,7 @@ exports.createConsensusManager = function (delegatedAgentName, communicationOutl
     return instance;
 }
 
-},{"./transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\PulseUtil.js":[function(require,module,exports){
+},{"./transactionsUtil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/transactionsUtil.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/PulseUtil.js":[function(require,module,exports){
 function PulseUtil(signer, currentPulseNumber, block, newTransactions, vsd, top, last) {
     this.signer         = signer;               //a.k.a. delegatedAgentName
     this.currentPulse   = currentPulseNumber;
@@ -3269,7 +3678,7 @@ function PulseHistory(){
 module.exports.createPulseHistory = function () {
     return new PulseHistory();
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/transactionsUtil.js":[function(require,module,exports){
 /*
 consensus helper functions when working with transactions
 */
@@ -3297,7 +3706,7 @@ module.exports.orderCRTransactions = function (pset) { //order in place the pset
     return arr;
 }
 
-},{"pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\asset_swarm_template.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/blockchainSwarmTypes/asset_swarm_template.js":[function(require,module,exports){
 var CNST = require("../moduleConstants");
 
 exports.createForObject = function(valueObject, thisObject, localId){
@@ -3344,7 +3753,7 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 	return ret;
 };
-},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\transaction_swarm_template.js":[function(require,module,exports){
+},{"../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","callflow":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/blockchainSwarmTypes/transaction_swarm_template.js":[function(require,module,exports){
 let CNST = require("../moduleConstants");
 
 exports.createForObject = function(valueObject, thisObject, localId){
@@ -3391,7 +3800,7 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 	return ret;
 };
-},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js":[function(require,module,exports){
+},{"../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","callflow":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/ACLScope.js":[function(require,module,exports){
 
 $$.asset.describe("ACLScope", {
     public:{
@@ -3414,7 +3823,7 @@ $$.asset.describe("ACLScope", {
         return true;
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Agent.js":[function(require,module,exports){
 
 $$.asset.describe("Agent", {
     public:{
@@ -3440,7 +3849,7 @@ $$.asset.describe("Agent", {
 
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Backup.js":[function(require,module,exports){
 
 $$.asset.describe("Backup", {
     public:{
@@ -3454,7 +3863,7 @@ $$.asset.describe("Backup", {
     }
 });
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/BarAnchor.js":[function(require,module,exports){
 $$.asset.describe("BarAnchor", {
     public: {
         alias: "string",
@@ -3481,7 +3890,7 @@ $$.asset.describe("BarAnchor", {
         this.writeList.push(agentId);
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/CSBMeta.js":[function(require,module,exports){
 
 $$.asset.describe("CSBMeta", {
 	public:{
@@ -3504,7 +3913,7 @@ $$.asset.describe("CSBMeta", {
 
 });
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/DomainConfig.js":[function(require,module,exports){
 
 $$.asset.describe("DomainConfig", {
     public:{
@@ -3546,7 +3955,7 @@ $$.asset.describe("DomainConfig", {
         this.workerStrategy = workerStrategy;
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/DomainReference.js":[function(require,module,exports){
 
 $$.asset.describe("DomainReference", {
     public:{
@@ -3572,7 +3981,7 @@ $$.asset.describe("DomainReference", {
         return this.workspace;
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/FileAnchor.js":[function(require,module,exports){
 $$.asset.describe("FileAnchor", {
     public: {
         alias: "string",
@@ -3591,7 +4000,7 @@ $$.asset.describe("FileAnchor", {
 });
 
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Key.js":[function(require,module,exports){
 
 $$.asset.describe("key", {
     public:{
@@ -3605,7 +4014,7 @@ $$.asset.describe("key", {
         this.value = value;
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/index.js":[function(require,module,exports){
 module.exports = $$.library(function(){
     require("./DomainReference");
     require("./DomainConfig");
@@ -3618,7 +4027,7 @@ module.exports = $$.library(function(){
     require("./FileAnchor");
     require('./CSBMeta');
 });
-},{"../transactions/transactions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js","./ACLScope":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\ACLScope.js","./Agent":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Agent.js","./Backup":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Backup.js","./BarAnchor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\BarAnchor.js","./CSBMeta":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\CSBMeta.js","./DomainConfig":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainConfig.js","./DomainReference":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\DomainReference.js","./FileAnchor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\FileAnchor.js","./Key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\Key.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js":[function(require,module,exports){
+},{"../transactions/transactions":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/transactions.js","./ACLScope":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/ACLScope.js","./Agent":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Agent.js","./Backup":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Backup.js","./BarAnchor":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/BarAnchor.js","./CSBMeta":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/CSBMeta.js","./DomainConfig":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/DomainConfig.js","./DomainReference":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/DomainReference.js","./FileAnchor":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/FileAnchor.js","./Key":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/Key.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/swarms/index.js":[function(require,module,exports){
 if($$.swarms){
     $$.swarms.describe("transactionHandler", {
         start: function (identity, transactionName, methodName, ...args) {
@@ -3630,7 +4039,7 @@ if($$.swarms){
     });
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/agentTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("Agents", {
@@ -3651,7 +4060,7 @@ $$.transaction.describe("Agents", {
     getAgents: sharedPhases.getAllAssetsFactory('global.Agent')
 });
 
-},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainConfigTransaction.js":[function(require,module,exports){
+},{"./sharedPhases":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/domainConfigTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("DomainConfigTransaction", {
@@ -3685,7 +4094,7 @@ $$.transaction.describe("DomainConfigTransaction", {
     getDomains: sharedPhases.getAllAssetsFactory('global.DomainConfig')
 });
 
-},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainTransaction.js":[function(require,module,exports){
+},{"./sharedPhases":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/domainTransaction.js":[function(require,module,exports){
 const sharedPhases = require('./sharedPhases');
 
 $$.transaction.describe("Domain", {
@@ -3788,7 +4197,7 @@ $$.transaction.describe("Domain", {
     getDomains: sharedPhases.getAllAssetsFactory('global.DomainReference')
 });
 
-},{"./sharedPhases":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\firstTransactionWorkaroundDeleteThis.js":[function(require,module,exports){
+},{"./sharedPhases":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/firstTransactionWorkaroundDeleteThis.js":[function(require,module,exports){
 /**
  * FIXME
  * The first block in the blockchain is 0.
@@ -3808,13 +4217,13 @@ $$.transaction.describe("TooShortBlockChainWorkaroundDeleteThis", {
         this.commit();
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/index.js":[function(require,module,exports){
 require('./domainTransaction');
 require('./agentTransaction');
 require('./standardCSBTransactions');
 require('./domainConfigTransaction');
 require('./firstTransactionWorkaroundDeleteThis');
-},{"./agentTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\agentTransaction.js","./domainConfigTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainConfigTransaction.js","./domainTransaction":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\domainTransaction.js","./firstTransactionWorkaroundDeleteThis":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\firstTransactionWorkaroundDeleteThis.js","./standardCSBTransactions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\standardCSBTransactions.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\sharedPhases.js":[function(require,module,exports){
+},{"./agentTransaction":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/agentTransaction.js","./domainConfigTransaction":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/domainConfigTransaction.js","./domainTransaction":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/domainTransaction.js","./firstTransactionWorkaroundDeleteThis":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/firstTransactionWorkaroundDeleteThis.js","./standardCSBTransactions":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/standardCSBTransactions.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/sharedPhases.js":[function(require,module,exports){
 module.exports = {
     getAssetFactory: function(assetType) {
         return function(alias) {
@@ -3838,7 +4247,7 @@ module.exports = {
         };
     }
 };
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\standardCSBTransactions.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/standardCSBTransactions.js":[function(require,module,exports){
 $$.transaction.describe("StandardCSBTransactions", {
     addBarAnchor: function (mountPoint, barMapDigest) {
         this.transaction.createAsset("BarAnchor", "init", mountPoint, barMapDigest);
@@ -3883,7 +4292,7 @@ $$.transaction.describe("StandardCSBTransactions", {
         }
     }
 });
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\transactions.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/transactions.js":[function(require,module,exports){
 $$.transaction.describe("transactions", {
     updateKey: function (key, value) {
         var transaction = $$.blockchain.beginTransaction(this);
@@ -3940,7 +4349,7 @@ usages:
 
  */
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/index.js":[function(require,module,exports){
 ___DISABLE_OBSOLETE_ZIP_ARCHIVER_WAIT_FOR_BARS = true;
 //require("../../../psknode/bundles/pskruntime.js");
 var callflowModule = require("callflow");
@@ -3954,7 +4363,7 @@ $$.transaction      = $$.transactions;
 module.exports = require('./moduleExports');
 
 
-},{"./blockchainSwarmTypes/asset_swarm_template":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\asset_swarm_template.js","./blockchainSwarmTypes/transaction_swarm_template":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\blockchainSwarmTypes\\transaction_swarm_template.js","./moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js":[function(require,module,exports){
+},{"./blockchainSwarmTypes/asset_swarm_template":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/blockchainSwarmTypes/asset_swarm_template.js","./blockchainSwarmTypes/transaction_swarm_template":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/blockchainSwarmTypes/transaction_swarm_template.js","./moduleExports":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleExports.js","callflow":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js":[function(require,module,exports){
 module.exports = {
     ALIAS:"alias",
     ALIASES : '/aliases',
@@ -3969,7 +4378,7 @@ module.exports = {
     SWARMID:"swarmId",
     SWARMTYPE:"swarmTypeName"
 };
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleExports.js":[function(require,module,exports){
 (function (process){
 module.exports = {
     createBlockchain:function(worldStateCache, historyStorage, consensusAlgorithm, signatureProvider, loadDefaultConstitution, forcedBoot){
@@ -4029,7 +4438,7 @@ module.exports = {
 }
 }).call(this,require('_process'))
 
-},{"./pskdb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\index.js","./strategies/consensusAlgortims/consensusAlgoritmsRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\consensusAlgortims\\consensusAlgoritmsRegistry.js","./strategies/historyStorages/historyStoragesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\historyStoragesRegistry.js","./strategies/networkCommunication/networkCommunicationStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\networkCommunication\\networkCommunicationStrategiesRegistry.js","./strategies/signatureProvidersRegistry/signatureProvidersRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\signatureProvidersRegistry\\signatureProvidersRegistry.js","./strategies/votingStrategies/votingStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\votingStrategies\\votingStrategiesRegistry.js","./strategies/worldStateCaches/worldStateCacheRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\worldStateCaches\\worldStateCacheRegistry.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js":[function(require,module,exports){
+},{"./pskdb":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/index.js","./strategies/consensusAlgortims/consensusAlgoritmsRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/consensusAlgortims/consensusAlgoritmsRegistry.js","./strategies/historyStorages/historyStoragesRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/historyStoragesRegistry.js","./strategies/networkCommunication/networkCommunicationStrategiesRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/networkCommunication/networkCommunicationStrategiesRegistry.js","./strategies/signatureProvidersRegistry/signatureProvidersRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/signatureProvidersRegistry/signatureProvidersRegistry.js","./strategies/votingStrategies/votingStrategiesRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/votingStrategies/votingStrategiesRegistry.js","./strategies/worldStateCaches/worldStateCacheRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/worldStateCaches/worldStateCacheRegistry.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/Blockchain.js":[function(require,module,exports){
 const bm = require('../moduleExports');
 const beesHealer = require("swarmutils").beesHealer;
 var CNST = require("../moduleConstants");
@@ -4233,7 +4642,7 @@ function Transaction(blockchain, pdsHandler, transactionSwarm, worldStateCache, 
 }
 
 module.exports = Blockchain;
-},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","../moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","./securityParadigms/securityParadigmRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\securityParadigmRegistry.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\index.js":[function(require,module,exports){
+},{"../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","../moduleExports":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleExports.js","./securityParadigms/securityParadigmRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/securityParadigms/securityParadigmRegistry.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/index.js":[function(require,module,exports){
 const Blockchain = require('./Blockchain');
 
 module.exports = {
@@ -4262,7 +4671,7 @@ module.exports = {
     }
 };
 
-},{"../defaultConstitution/assets/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\assets\\index.js","../defaultConstitution/swarms/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\swarms\\index.js","../defaultConstitution/transactions/index":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\defaultConstitution\\transactions\\index.js","./Blockchain":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\Blockchain.js","./pskdb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\pskdb.js":[function(require,module,exports){
+},{"../defaultConstitution/assets/index":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/assets/index.js","../defaultConstitution/swarms/index":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/swarms/index.js","../defaultConstitution/transactions/index":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/defaultConstitution/transactions/index.js","./Blockchain":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/Blockchain.js","./pskdb":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/pskdb.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/pskdb.js":[function(require,module,exports){
 let CNST = require("../moduleConstants");
 let cutil = require("../OBFT/transactionsUtil");
 // let bm = require("../moduleExports");
@@ -4656,7 +5065,7 @@ function VerificationKeySpaceHandler(parentStorage, worldStateCache, blockchain)
 exports.newPSKDB = function (worldStateCache, historyStorage) {
     return new PSKDB(worldStateCache, historyStorage);
 };
-},{"../OBFT/transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","./securityParadigms/localExecutionCache":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\localExecutionCache.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\localExecutionCache.js":[function(require,module,exports){
+},{"../OBFT/transactionsUtil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/transactionsUtil.js","../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","./securityParadigms/localExecutionCache":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/securityParadigms/localExecutionCache.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/securityParadigms/localExecutionCache.js":[function(require,module,exports){
 let CNST=require("../../moduleConstants");
 let cache = {};
 
@@ -4731,7 +5140,7 @@ module.exports = {
     }
 };
 
-},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\pskdb\\securityParadigms\\securityParadigmRegistry.js":[function(require,module,exports){
+},{"../../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/pskdb/securityParadigms/securityParadigmRegistry.js":[function(require,module,exports){
 
 var CNST = require("../../moduleConstants");
 
@@ -4839,7 +5248,7 @@ module.exports = {
         return new Registry();
     }
 }
-},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\signsensus\\SignSensusImplementation.js":[function(require,module,exports){
+},{"../../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/signsensus/SignSensusImplementation.js":[function(require,module,exports){
 let pskcrypto = require("pskcrypto");
 let fs = require("fs");
 
@@ -5074,7 +5483,7 @@ exports.createConsensusManager = function (delegatedAgentName, communicationOutl
     return instance;
 }
 
-},{"../OBFT/transactionsUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\transactionsUtil.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","pskcrypto":"pskcrypto"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\consensusAlgortims\\consensusAlgoritmsRegistry.js":[function(require,module,exports){
+},{"../OBFT/transactionsUtil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/transactionsUtil.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/consensusAlgortims/consensusAlgoritmsRegistry.js":[function(require,module,exports){
 var mod = require("../../moduleExports");
 
 function DirectCommitAlgorithm() {
@@ -5151,7 +5560,7 @@ module.exports = {
         }
     }
 };
-},{"../../OBFT/OBFTImplementation":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\OBFTImplementation.js","../../moduleExports":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleExports.js","../../signsensus/SignSensusImplementation":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\signsensus\\SignSensusImplementation.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\BarHistoryStorage.js":[function(require,module,exports){
+},{"../../OBFT/OBFTImplementation":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/OBFTImplementation.js","../../moduleExports":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleExports.js","../../signsensus/SignSensusImplementation":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/signsensus/SignSensusImplementation.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/BarHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function BarHistoryStorage(archive) {
@@ -5224,7 +5633,7 @@ function BarHistoryStorage(archive) {
 }
 
 module.exports = BarHistoryStorage;
-},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\FsHistoryStorage.js":[function(require,module,exports){
+},{"./LatestHashTracker":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/FsHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function FsHistoryStorage(folder) {
@@ -5329,7 +5738,7 @@ function FsHistoryStorage(folder) {
 
 module.exports = FsHistoryStorage;
 
-},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js":[function(require,module,exports){
+},{"./LatestHashTracker":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js":[function(require,module,exports){
 function LatestHashTracker() {
     let hlb = "none";
     let maxBlockNumber = 0;
@@ -5346,7 +5755,7 @@ function LatestHashTracker() {
 }
 
 module.exports = LatestHashTracker;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\MemoryHistoryStorage.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/MemoryHistoryStorage.js":[function(require,module,exports){
 const LatestHashTracker = require("./LatestHashTracker");
 
 function MemoryHistoryStorage() {
@@ -5373,7 +5782,7 @@ function MemoryHistoryStorage() {
 }
 
 module.exports = MemoryHistoryStorage;
-},{"./LatestHashTracker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\LatestHashTracker.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\historyStoragesRegistry.js":[function(require,module,exports){
+},{"./LatestHashTracker":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/LatestHashTracker.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/historyStoragesRegistry.js":[function(require,module,exports){
 const FsHistoryStorage = require("./FsHistoryStorage");
 const MemoryHistoryStorage = require("./MemoryHistoryStorage");
 const BarHistoryStorage = require("./BarHistoryStorage");
@@ -5392,7 +5801,7 @@ module.exports = {
         }
     }
 };
-},{"./BarHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\BarHistoryStorage.js","./FsHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\FsHistoryStorage.js","./MemoryHistoryStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\historyStorages\\MemoryHistoryStorage.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\networkCommunication\\networkCommunicationStrategiesRegistry.js":[function(require,module,exports){
+},{"./BarHistoryStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/BarHistoryStorage.js","./FsHistoryStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/FsHistoryStorage.js","./MemoryHistoryStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/historyStorages/MemoryHistoryStorage.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/networkCommunication/networkCommunicationStrategiesRegistry.js":[function(require,module,exports){
 (function (process){
 const mc = require("../../moduleConstants");
 let pulseUtil = require("../../OBFT/PulseUtil");
@@ -5458,7 +5867,7 @@ module.exports = {
 }
 }).call(this,require('_process'))
 
-},{"../../OBFT/PulseUtil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\OBFT\\PulseUtil.js","../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\signatureProvidersRegistry\\signatureProvidersRegistry.js":[function(require,module,exports){
+},{"../../OBFT/PulseUtil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/OBFT/PulseUtil.js","../../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/signatureProvidersRegistry/signatureProvidersRegistry.js":[function(require,module,exports){
 function PermissiveSignatureProvider(){
     /*
     return a signature of message ms for agent agentId
@@ -5485,7 +5894,7 @@ module.exports = {
     }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\votingStrategies\\votingStrategiesRegistry.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/votingStrategies/votingStrategiesRegistry.js":[function(require,module,exports){
 
 function SimpleMajoritarianStrategy(shareHoldersCounter){
     this.refreshShares = function(){
@@ -5535,7 +5944,7 @@ module.exports = {
         }
     }
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\strategies\\worldStateCaches\\worldStateCacheRegistry.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/strategies/worldStateCaches/worldStateCacheRegistry.js":[function(require,module,exports){
 (function (setImmediate){
 const mc = require("../../moduleConstants");
 
@@ -5693,7 +6102,7 @@ module.exports = {
 };
 }).call(this,require("timers").setImmediate)
 
-},{"../../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\moduleConstants.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\constants.js":[function(require,module,exports){
+},{"../../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/moduleConstants.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","timers":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/timers-browserify/main.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/constants.js":[function(require,module,exports){
 $$.CONSTANTS = {
     SWARM_FOR_EXECUTION:"swarm_for_execution",//TODO: remove
     INBOUND:"inbound",//TODO: remove
@@ -5715,7 +6124,7 @@ $$.CONSTANTS.mixIn = function(otherConstants){
     }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/index.js":[function(require,module,exports){
 (function (global){
 function initialise() {
     if($$.callflow){
@@ -5803,7 +6212,7 @@ module.exports = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\constants.js","./lib/InterceptorRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\InterceptorRegistry.js","./lib/loadLibrary":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\loadLibrary.js","./lib/parallelJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js","./lib/serialJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js","./lib/swarmDescription":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\swarmDescription.js","./lib/utilityFunctions/base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js","soundpubsub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\InterceptorRegistry.js":[function(require,module,exports){
+},{"./constants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/constants.js","./lib/InterceptorRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/InterceptorRegistry.js","./lib/loadLibrary":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/loadLibrary.js","./lib/parallelJoinPoint":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/parallelJoinPoint.js","./lib/serialJoinPoint":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/serialJoinPoint.js","./lib/swarmDescription":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/swarmDescription.js","./lib/utilityFunctions/base":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/base.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js","path":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/path-browserify/index.js","soundpubsub":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/soundpubsub/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/InterceptorRegistry.js":[function(require,module,exports){
 (function (global){
 // related to: SwarmSpace.SwarmDescription.createPhase()
 
@@ -5998,7 +6407,7 @@ exports.createInterceptorRegistry = function () {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\loadLibrary.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/loadLibrary.js":[function(require,module,exports){
 /*
 Initial License: (c) Axiologic Research & Alboaie Sînică.
 Contributors: Axiologic Research , PrivateSky project
@@ -6102,7 +6511,7 @@ exports.loadLibrary = function(prefixName, folder){
 }
 
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/parallelJoinPoint.js":[function(require,module,exports){
 (function (process){
 
 var globalJoinCounter = 0;
@@ -6242,7 +6651,7 @@ exports.createJoinPoint = function(swarm, callback, args){
 };
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/serialJoinPoint.js":[function(require,module,exports){
 
 var joinCounter = 0;
 
@@ -6367,7 +6776,7 @@ exports.createSerialJoinPoint = function(swarm, callback, args){
     jp.setProxyObject(p);
     return p;
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\swarmDescription.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/swarmDescription.js":[function(require,module,exports){
 const OwM = require("swarmutils").OwM;
 
 const swarmDescriptionsRegistry = {};
@@ -6734,7 +7143,7 @@ exports.createSwarmEngine = function(swarmType, utils){
 };
 
 
-},{"./utilityFunctions/callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\callflow.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\SwarmDebug.js":[function(require,module,exports){
+},{"./utilityFunctions/callflow":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/callflow.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/SwarmDebug.js":[function(require,module,exports){
 (function (process,global){
 /*
  Initial License: (c) Axiologic Research & Alboaie Sînică.
@@ -6933,7 +7342,7 @@ function localLog (logType, message, err) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/base.js":[function(require,module,exports){
 var beesHealer = require("swarmutils").beesHealer;
 var swarmDebug = require("./SwarmDebug");
 
@@ -7065,12 +7474,12 @@ exports.createForObject = function(valueObject, thisObject, localId){
 
 };
 
-},{"../parallelJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\parallelJoinPoint.js","../serialJoinPoint":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\serialJoinPoint.js","./SwarmDebug":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\SwarmDebug.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\callflow.js":[function(require,module,exports){
+},{"../parallelJoinPoint":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/parallelJoinPoint.js","../serialJoinPoint":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/serialJoinPoint.js","./SwarmDebug":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/SwarmDebug.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/callflow.js":[function(require,module,exports){
 exports.createForObject = function(valueObject, thisObject, localId){
 	var ret = require("./base").createForObject(valueObject, thisObject, localId);
 	return ret;
 };
-},{"./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\lib\\utilityFunctions\\base.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js":[function(require,module,exports){
+},{"./base":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/lib/utilityFunctions/base.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js":[function(require,module,exports){
 function EDFSBrickStorage(endpoint) {
 
     const bar = require("bar");
@@ -7100,6 +7509,34 @@ function EDFSBrickStorage(endpoint) {
             }
             callback(undefined, brick);
         });
+    };
+
+    const BRICK_MAX_SIZE_IN_BYTES = 4;
+    this.getMultipleBricks = function (brickHashes, callback) {
+        brickTransportStrategy.getMultipleBricks(brickHashes, (err, bricksData) => {
+            if (err) {
+                return callback(err);
+            }
+            let bricks = [];
+
+            function parseResponse(response) {
+                if (response.length > 0) {
+                    let brickSizeBuffer = response.slice(0, BRICK_MAX_SIZE_IN_BYTES);
+                    let brickSize = brickSizeBuffer.readUInt32BE();
+                    let brickData = response.slice(BRICK_MAX_SIZE_IN_BYTES, brickSize + BRICK_MAX_SIZE_IN_BYTES);
+                    const brick = bar.createBrick();
+                    brick.setTransformedData(brickData);
+                    bricks.push(brick);
+                    response = response.slice(brickSize + BRICK_MAX_SIZE_IN_BYTES);
+                    return parseResponse(response);
+                }
+            }
+
+            parseResponse(bricksData);
+            callback(undefined, bricks);
+        });
+
+
     };
 
     this.deleteBrick = function (brickHash, callback) {
@@ -7172,7 +7609,7 @@ function EDFSBrickStorage(endpoint) {
             }
             brickTransportStrategy.get(barMapId, (err, barMapData) => {
                 if (err) {
-                    return callback(err);
+                    return callback(undefined, bar.createBarMap());
                 }
 
                 const mapBrick = bar.createBrick();
@@ -7190,77 +7627,76 @@ function EDFSBrickStorage(endpoint) {
 module.exports = EDFSBrickStorage;
 
 
-},{"bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js":[function(require,module,exports){
+},{"bar":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/index.js":[function(require,module,exports){
 module.exports.create = (endpoint) => {
     const EDFSBrickStorage = require("./EDFSBrickStorage");
     return new EDFSBrickStorage(endpoint)
 };
 
-},{"./EDFSBrickStorage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
+},{"./EDFSBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js":[function(require,module,exports){
 (function (Buffer){
-
 function FetchBrickTransportStrategy(initialConfig) {
     const url = initialConfig;
     this.send = (name, data, callback) => {
 
-        fetch(url + "/EDFS/"+name, {
+        fetch(url + "/EDFS/" + name, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/octet-stream'
             },
             body: data
-        }).then(function(response) {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+        }).then(function (response) {
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().catch((err) => {
                 // This happens when the response is empty
                 return {};
             });
-        }).then(function(data) {
+        }).then(function (data) {
             callback(null, data)
-        }).catch(error=>{
+        }).catch(error => {
             callback(error);
         });
 
     };
 
     this.get = (name, callback) => {
-        fetch(url + "/EDFS/"+name,{
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/octet-stream'
-            },
-        }).then(response=>{
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
-            }
-            return response.arrayBuffer();
-        }).then(arrayBuffer=>{
-                let buffer = new Buffer(arrayBuffer.byteLength);
-                let view = new Uint8Array(arrayBuffer);
-                for (let i = 0; i < buffer.length; ++i) {
-                    buffer[i] = view[i];
-                }
-
-            callback(null, buffer);
-        }).catch(error=>{
-            callback(error);
-        });
-    };
-
-    this.getHashForAlias = (alias, callback) => {
-        fetch(url + "/EDFS/getVersions/" + alias, {
+        fetch(url + "/EDFS/" + name, {
             method: 'GET',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/octet-stream'
             },
         }).then(response => {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
+            }
+            return response.arrayBuffer();
+        }).then(arrayBuffer => {
+            let buffer = new Buffer(arrayBuffer.byteLength);
+            let view = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < buffer.length; ++i) {
+                buffer[i] = view[i];
+            }
+
+            callback(null, buffer);
+        }).catch(error => {
+            callback(error);
+        });
+    };
+
+    this.getHashForAlias = (alias, callback) => {
+        fetch(url + "/anchoring/getVersions/" + alias, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/octet-stream'
+            },
+        }).then(response => {
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().then(data => {
                 callback(null, data);
@@ -7271,7 +7707,7 @@ function FetchBrickTransportStrategy(initialConfig) {
     };
 
     this.attachHashToAlias = (alias, name, callback) => {
-        fetch(url + '/EDFS/attachHashToAlias/' + name, {
+        fetch(url + '/anchoring/attachHashToAlias/' + name, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -7279,8 +7715,8 @@ function FetchBrickTransportStrategy(initialConfig) {
             },
             body: alias
         }).then(response => {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().catch((err) => {
                 // This happens when the response is empty
@@ -7291,12 +7727,13 @@ function FetchBrickTransportStrategy(initialConfig) {
         }).catch(error => {
             callback(error);
         })
-    }
+    };
 
     this.getLocator = () => {
         return url;
     };
 }
+
 //TODO:why we use this?
 FetchBrickTransportStrategy.prototype.FETCH_BRICK_TRANSPORT_STRATEGY = "FETCH_BRICK_TRANSPORT_STRATEGY";
 FetchBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
@@ -7308,8 +7745,7 @@ module.exports = FetchBrickTransportStrategy;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js":[function(require,module,exports){
-
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js":[function(require,module,exports){
 function HTTPBrickTransportStrategy(endpoint) {
     require("psk-http-client");
 
@@ -7321,7 +7757,9 @@ function HTTPBrickTransportStrategy(endpoint) {
 
             try {
                 brickDigest = JSON.parse(brickDigest);
-            } catch (e) {}
+            } catch (e) {
+                return callback(e);
+            }
             callback(undefined, brickDigest);
         });
     };
@@ -7330,9 +7768,17 @@ function HTTPBrickTransportStrategy(endpoint) {
         $$.remote.doHttpGet(endpoint + "/EDFS/" + name, callback);
     };
 
+    this.getMultipleBricks = (brickHashes, callback) => {
+        let query = "?";
+        brickHashes.forEach(brickHash => {
+            query += "hashes=" + brickHash + "&";
+        });
+        $$.remote.doHttpGet(endpoint + "/EDFS/downloadMultipleBricks" + query, callback);
+    };
+
     this.getHashForAlias = (alias, callback) => {
-        $$.remote.doHttpGet(endpoint + "/EDFS/getVersions/" + alias, (err, hashesList) => {
-            if(err) {
+        $$.remote.doHttpGet(endpoint + "/anchoring/getVersions/" + alias, (err, hashesList) => {
+            if (err) {
                 return callback(err)
             }
 
@@ -7341,7 +7787,7 @@ function HTTPBrickTransportStrategy(endpoint) {
     };
 
     this.attachHashToAlias = (alias, name, callback) => {
-        $$.remote.doHttpPost(endpoint + "/EDFS/attachHashToAlias/" + name, alias, callback);
+        $$.remote.doHttpPost(endpoint + "/anchoring/attachHashToAlias/" + name, alias, callback);
     };
 
     this.getLocator = () => {
@@ -7355,7 +7801,7 @@ HTTPBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
 
 module.exports = HTTPBrickTransportStrategy;
 
-},{"psk-http-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js":[function(require,module,exports){
+},{"psk-http-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransportStrategiesRegistry() {
     const strategies = {};
@@ -7403,7 +7849,7 @@ if (!$$.brickTransportStrategiesRegistry) {
 }
 }).call(this,{"isBuffer":require("../../../node_modules/is-buffer/index.js")})
 
-},{"../../../node_modules/is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js":[function(require,module,exports){
+},{"../../../node_modules/is-buffer/index.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/EDFS.js":[function(require,module,exports){
 function EDFS(endpoint, options) {
     options = options || {};
 
@@ -7414,31 +7860,57 @@ function EDFS(endpoint, options) {
     const pskPath = require("swarmutils").path;
     const cache = options.cache;
 
-    this.createRawDossier = () => {
-        return new RawDossier(endpoint, undefined, cache);
+    this.createRawDossier = (callback) => {
+        const dossier = new RawDossier(endpoint, undefined, cache);
+        dossier.load(err => callback(err, dossier));
     };
 
-    this.createBar = () => {
-        return barModule.createArchive(createArchiveConfig());
+    this.createBar = (callback) => {
+        const bar = barModule.createArchive(createArchiveConfig());
+        bar.load(err => callback(err, bar));
     };
 
     this.bootRawDossier = (seed, callback) => {
         const rawDossier = new RawDossier(endpoint, seed, cache);
-        rawDossier.start(err => callback(err, rawDossier));
+        rawDossier.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            rawDossier.start(err => callback(err, rawDossier));
+        })
     };
 
-    this.loadRawDossier = (seed) => {
-        return new RawDossier(endpoint, seed, cache);
+    this.loadRawDossier = (seed, callback) => {
+        const dossier = new RawDossier(endpoint, seed, cache);
+        dossier.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, dossier);
+        });
     };
 
-    this.loadBar = (seed) => {
-        return barModule.createArchive(createArchiveConfig(seed));
+    this.loadBar = (seed, callback) => {
+        const bar = barModule.createArchive(createArchiveConfig(seed));
+        bar.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, bar);
+        });
     };
 
     this.clone = (seed, callback) => {
         const edfsBrickStorage = require("edfs-brick-storage").create(endpoint);
-        const bar = this.loadBar(seed);
-        bar.clone(edfsBrickStorage, true, callback);
+        this.loadBar(seed, (err, bar) => {
+            if (err) {
+                return callback(err);
+            }
+            bar.clone(edfsBrickStorage, true, callback);
+        })
     };
 
     this.createWallet = (templateSeed, password, overwrite, callback) => {
@@ -7446,24 +7918,29 @@ function EDFS(endpoint, options) {
             callback = overwrite;
             overwrite = false;
         }
-        const wallet = this.createRawDossier();
-        wallet.mount(pskPath.ensureIsAbsolute(pskPath.join(constants.CSB.CODE_FOLDER, constants.CSB.CONSTITUTION_FOLDER)), templateSeed, (err => {
+        this.createRawDossier((err, wallet) => {
             if (err) {
                 return callback(err);
             }
 
-            const seed = wallet.getSeed();
-            if (typeof password !== "undefined") {
-                require("../seedCage").putSeed(seed, password, overwrite, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
+            wallet.mount(pskPath.ensureIsAbsolute(pskPath.join(constants.CSB.CODE_FOLDER, constants.CSB.CONSTITUTION_FOLDER)), templateSeed, (err => {
+                if (err) {
+                    return callback(err);
+                }
+
+                const seed = wallet.getSeed();
+                if (typeof password !== "undefined") {
+                    require("../seedCage").putSeed(seed, password, overwrite, (err) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        callback(undefined, seed.toString());
+                    });
+                } else {
                     callback(undefined, seed.toString());
-                });
-            } else {
-                callback(undefined, seed.toString());
-            }
-        }));
+                }
+            }));
+        })
     };
 
     this.loadWallet = function (walletSeed, password, overwrite, callback) {
@@ -7478,34 +7955,32 @@ function EDFS(endpoint, options) {
                 if (err) {
                     return callback(err);
                 }
-                let rawDossier = this.loadRawDossier(seed);
-
-                if (!rawDossier) {
-                    return callback(new Error("RawDossier is not available"));
-                }
-                return callback(undefined, rawDossier);
-
+                this.loadRawDossier(seed, (err, dossier) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    return callback(undefined, dossier);
+                });
             });
-        } else {
+            return;
+        }
 
-            let rawDossier = this.loadRawDossier(walletSeed);
-
-            if (!rawDossier) {
-                return callback(new Error("RawDossier is not available"));
+        this.loadRawDossier(walletSeed, (err, dossier) => {
+            if (err) {
+                return callback(err);
             }
-
 
             if (typeof password !== "undefined" && password !== null) {
                 require("../seedCage").putSeed(walletSeed, password, overwrite, (err) => {
                     if (err) {
                         return callback(err);
                     }
-                    callback(undefined, rawDossier);
+                    callback(undefined, dossier);
                 });
             } else {
-                return callback(undefined, rawDossier);
+                return callback(undefined, dossier);
             }
-        }
+        });
     };
 
 //------------------------------------------------ internal methods -------------------------------------------------
@@ -7532,7 +8007,7 @@ function EDFS(endpoint, options) {
 
 module.exports = EDFS;
 
-},{"../moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawDossier":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js","edfs-brick-storage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\Manifest.js":[function(require,module,exports){
+},{"../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js","../seedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js","./RawDossier":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/RawDossier.js","bar":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/index.js","bar-fs-adapter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/index.js","edfs-brick-storage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/index.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/Manifest.js":[function(require,module,exports){
 const MANIFEST_PATH = "/manifest";
 
 function Manifest(archive, callback) {
@@ -7628,7 +8103,7 @@ function Manifest(archive, callback) {
     };
 
     manifestHandler.getMountedDossiers = function (path, callback) {
-        const mountedDossiers = [];
+        let mountedDossiers = [];
         for (let mountPoint in manifest.mounts) {
             if (pskPath.isSubpath(mountPoint, path)) {
                 let mountPath = mountPoint.substring(path.length);
@@ -7642,28 +8117,44 @@ function Manifest(archive, callback) {
             }
         }
 
+        const mountPaths = mountedDossiers.map(mountedDossier => mountedDossier.path);
+        mountedDossiers = mountedDossiers.filter((mountedDossier, index) => {
+            return mountPaths.indexOf(mountedDossier.path) === index;
+        });
+
         callback(undefined, mountedDossiers);
     };
 
-function getArchive(seed, asDossier, callback) {
-    if (typeof asDossier === "function") {
-        callback = asDossier;
-        asDossier = false;
+    function getArchive(seed, asDossier, callback) {
+        if (typeof asDossier === "function") {
+            callback = asDossier;
+            asDossier = false;
+        }
+        let edfsModuleName = "edfs";
+        let EDFS = require(edfsModuleName);
+        EDFS.attachWithSeed(seed, function (err, edfs) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (asDossier) {
+                return edfs.loadRawDossier(seed, (err, dossier) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(undefined, dossier);
+                })
+            }
+
+            edfs.loadBar(seed, (err, bar) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                callback(undefined, bar);
+            })
+        });
     }
-    let edfsModuleName = "edfs";
-    let EDFS = require(edfsModuleName);
-    EDFS.attachWithSeed(seed, function (err, edfs) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (asDossier) {
-            return callback(undefined, edfs.loadRawDossier(seed));
-        }
-
-        callback(undefined, edfs.loadBar(seed));
-    });
-}
 
     function persist(callback) {
         archive.writeFile(MANIFEST_PATH, JSON.stringify(manifest), callback);
@@ -7693,19 +8184,24 @@ module.exports.getManifest = function getManifest(archive, callback) {
 };
 
 
-},{"swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\RawDossier.js":[function(require,module,exports){
+},{"swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/RawDossier.js":[function(require,module,exports){
 function RawDossier(endpoint, seed, cache) {
     const barModule = require("bar");
     const Manifest = require("./Manifest");
     const pskPath = require("swarmutils").path;
     let manifestHandler;
     const bar = createBar(seed);
+
     this.getSeed = () => {
         return bar.getSeed();
     };
 
     this.start = (callback) => {
         createBlockchain(bar).start(callback);
+    };
+
+    this.load = (callback) => {
+        bar.load(callback);
     };
 
     function getManifest(callback) {
@@ -8051,7 +8547,7 @@ function RawDossier(endpoint, seed, cache) {
 
 module.exports = RawDossier;
 
-},{"./Manifest":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\Manifest.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","bar-fs-adapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar-fs-adapter\\index.js","blockchain":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\blockchain\\index.js","edfs-brick-storage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs-brick-storage\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js":[function(require,module,exports){
+},{"./Manifest":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/Manifest.js","bar":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/index.js","bar-fs-adapter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/index.js","blockchain":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/blockchain/index.js","edfs-brick-storage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/index.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js":[function(require,module,exports){
 const HTTPBrickTransportStrategy = require("./brickTransportStrategies/HTTPBrickTransportStrategy");
 HTTPBrickTransportStrategy.prototype.HTTP_BRICK_TRANSPORT_STRATEGY = "HTTP_BRICK_TRANSPORT_STRATEGY";
 
@@ -8070,7 +8566,7 @@ module.exports = {
     }
 };
 
-},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
+},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/BrowserSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pskcrypto = "pskcrypto";
 const crypto = require(pskcrypto);
@@ -8162,7 +8658,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/NodeSeedCage.js":[function(require,module,exports){
 (function (process,Buffer){
 const pth = "path";
 const path = require(pth);
@@ -8261,7 +8757,7 @@ module.exports = {
 
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js":[function(require,module,exports){
 const or = require("overwrite-require");
 switch ($$.environmentType) {
     case or.constants.THREAD_ENVIRONMENT_TYPE:
@@ -8276,7 +8772,7 @@ switch ($$.environmentType) {
     default:
         throw new Error("No implementation of SeedCage for this env type.");
 }
-},{"./BrowserSeedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js":[function(require,module,exports){
+},{"./BrowserSeedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/BrowserSeedCage.js","./NodeSeedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/NodeSeedCage.js","overwrite-require":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js":[function(require,module,exports){
 (function (process,global){
 /*
  require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
@@ -8618,7 +9114,7 @@ module.exports = {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"./moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/moduleConstants.js","./standardGlobalSymbols.js":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/standardGlobalSymbols.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -8627,7 +9123,7 @@ module.exports = {
   NODEJS_ENVIRONMENT_TYPE: 'nodejs'
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/standardGlobalSymbols.js":[function(require,module,exports){
 (function (process,global){
 let logger = console;
 
@@ -8941,7 +9437,7 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","psklogger":false}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-cache\\lib\\Cache.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","psklogger":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-cache/lib/Cache.js":[function(require,module,exports){
 const DEFAULT_ITEMS_LIMIT = 1000;
 const DEFAULT_STORAGE_LEVELS = 3;
 
@@ -9060,7 +9556,7 @@ function Cache(options) {
 
 module.exports = Cache;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/index.js":[function(require,module,exports){
 //to look nice the requireModule on Node
 require("./lib/psk-abstract-client");
 const or = require('overwrite-require');
@@ -9069,7 +9565,7 @@ if ($$.environmentType === or.constants.BROWSER_ENVIRONMENT_TYPE) {
 } else {
 	require("./lib/psk-node-client");
 }
-},{"./lib/psk-abstract-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
+},{"./lib/psk-abstract-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","./lib/psk-browser-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-browser-client.js","./lib/psk-node-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-node-client.js","overwrite-require":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js":[function(require,module,exports){
 /**********************  utility class **********************************/
 function RequestManager(pollingTimeOut) {
     if (!pollingTimeOut) {
@@ -9486,7 +9982,7 @@ if (typeof $$.remote === "undefined") {
     };
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-browser-client.js":[function(require,module,exports){
 (function (Buffer){
 function generateMethodForRequestWithData(httpMethod) {
     return function (url, data, callback) {
@@ -9624,7 +10120,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-node-client.js":[function(require,module,exports){
 (function (process,Buffer){
 require("./psk-abstract-client");
 
@@ -9812,7 +10308,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"./psk-abstract-client":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","http":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js","https":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\https-browserify\\index.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js":[function(require,module,exports){
+},{"./psk-abstract-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","http":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/index.js","https":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/https-browserify/index.js","url":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/url.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskCrypto.js":[function(require,module,exports){
 (function (Buffer){
 function PskCrypto() {
     const crypto = require('crypto');
@@ -9981,7 +10477,7 @@ module.exports = new PskCrypto();
 
 }).call(this,require("buffer").Buffer)
 
-},{"./PskEncryption":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
+},{"./PskEncryption":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskEncryption.js","./utils/cryptoUtils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js","overwrite-require":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskEncryption.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("crypto");
 const utils = require("./utils/cryptoUtils");
@@ -10066,7 +10562,7 @@ function PskEncryption(algorithm) {
 module.exports = PskEncryption;
 }).call(this,require("buffer").Buffer)
 
-},{"./utils/cryptoUtils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js":[function(require,module,exports){
+},{"./utils/cryptoUtils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js":[function(require,module,exports){
 const stream = require('stream');
 const util = require('util');
 
@@ -10091,7 +10587,7 @@ DuplexStream.prototype._read = function (n) {
 };
 
 module.exports = DuplexStream;
-},{"stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js":[function(require,module,exports){
+},{"stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 
@@ -10171,7 +10667,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/isStream.js":[function(require,module,exports){
 const stream = require('stream');
 
 
@@ -10199,7 +10695,7 @@ module.exports            = isStream;
 module.exports.isReadable = isReadable;
 module.exports.isWritable = isWritable;
 module.exports.isDuplex   = isDuplex;
-},{"stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js":[function(require,module,exports){
+},{"stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/signsensusDS/ssutil.js":[function(require,module,exports){
 /*
  SignSens helper functions
  */
@@ -10399,11 +10895,11 @@ exports.createSignature = function (agent,counter, nextPublic, arr, size){
 
     return agent + ":" + counter + ":" + nextPublic + ":" + result;
 }
-},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js":[function(require,module,exports){
+},{"crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/soundpubsub/index.js":[function(require,module,exports){
 module.exports = {
 					soundPubSub: require("./lib/soundPubSub").soundPubSub
 };
-},{"./lib/soundPubSub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\lib\\soundPubSub.js":[function(require,module,exports){
+},{"./lib/soundPubSub":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/soundpubsub/lib/soundPubSub.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/soundpubsub/lib/soundPubSub.js":[function(require,module,exports){
 /*
 Initial License: (c) Axiologic Research & Alboaie Sînică.
 Contributors: Axiologic Research , PrivateSky project
@@ -10778,7 +11274,7 @@ function SoundPubSub(){
 }
 
 exports.soundPubSub = new SoundPubSub();
-},{"swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js":[function(require,module,exports){
+},{"swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/index.js":[function(require,module,exports){
 const Middleware = require("./lib/Middleware");
 let middlewareInstance = new Middleware();
 
@@ -10786,7 +11282,7 @@ exports.getMiddleware = function(){
     return middlewareInstance;
 };
 
-},{"./lib/Middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\Middleware.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventRequest.js":[function(require,module,exports){
+},{"./lib/Middleware":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/Middleware.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/EventRequest.js":[function(require,module,exports){
 const unsupportedMethods = ["acceptsCharsets", "acceptsEncodings", "acceptsLanguages", "param", "is", "range"];
 const unsupportedProperties = ["app", "fresh", "ip", "ips", "signedCookies", "stale", "subdomains", "xhr"];
 
@@ -10918,7 +11414,7 @@ function EventRequest(event) {
 
 exports.EventRequest = EventRequest;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventResponse.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/EventResponse.js":[function(require,module,exports){
 const unsupportedMethods = ["append", "redirect", "location", "links", "jsonp", "render", "sendFile"];
 const unsupportedProperties = ["app", "headersSent", "locals"];
 const httpStatuses = require("./HttpStatuses").httpStatuses;
@@ -11102,7 +11598,7 @@ if(typeof FetchEvent!== "undefined")
 
 exports.EventResponse = EventResponse;
 
-},{"./HttpStatuses":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\HttpStatuses.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\HttpStatuses.js":[function(require,module,exports){
+},{"./HttpStatuses":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/HttpStatuses.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/HttpStatuses.js":[function(require,module,exports){
 exports.httpStatuses = {
     "100": "Continue",
     "101": "Switching Protocols",
@@ -11169,7 +11665,7 @@ exports.httpStatuses = {
     "511": "Network Authentication Required"
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\Middleware.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/Middleware.js":[function(require,module,exports){
 const EventResponse = require("./EventResponse").EventResponse;
 const EventRequest = require("./EventRequest").EventRequest;
 
@@ -11478,7 +11974,7 @@ function Middleware() {
 module.exports = Middleware;
 
 
-},{"./EventRequest":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventRequest.js","./EventResponse":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\lib\\EventResponse.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\BootEngine.js":[function(require,module,exports){
+},{"./EventRequest":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/EventRequest.js","./EventResponse":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/lib/EventResponse.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/BootEngine.js":[function(require,module,exports){
 function BootEngine(getSeed, getEDFS, initializeSwarmEngine, runtimeBundles, constitutionBundles) {
 
 	if (typeof getSeed !== "function") {
@@ -11534,24 +12030,29 @@ function BootEngine(getSeed, getEDFS, initializeSwarmEngine, runtimeBundles, con
 
 	this.boot = function (callback) {
 		const __boot = async () => {
-			const seed = await getSeed();
-			edfs = await getEDFS();
-			this.rawDossier = edfs.loadRawDossier(seed);
-			try{
-                await evalBundles(runtimeBundles);
-            }catch(err)
-            {
+            const seed = await getSeed();
+            edfs = await getEDFS();
+
+            const loadRawDossier = promisify(edfs.loadRawDossier);
+            try {
+                this.rawDossier = await loadRawDossier(seed);
+            } catch (err) {
                 console.log(err);
             }
-			await initializeSwarmEngine();
-			if (typeof constitutionBundles !== "undefined") {
-				try{
-					await evalBundles(constitutionBundles, true);
-				}catch(err)
-				{
-					console.log(err);
-				}
-			}
+
+            try {
+                await evalBundles(runtimeBundles);
+            } catch(err) {
+                console.log(err);
+            }
+            await initializeSwarmEngine();
+            if (typeof constitutionBundles !== "undefined") {
+                try {
+                    await evalBundles(constitutionBundles, true);
+                } catch(err) {
+                    console.log(err);
+                }
+            }
 		};
 
 		__boot()
@@ -11576,7 +12077,7 @@ function promisify(fn) {
 
 module.exports = BootEngine;
 
-},{"edfs":"edfs","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\FileReadableStreamAdapter.js":[function(require,module,exports){
+},{"edfs":"edfs","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/FileReadableStreamAdapter.js":[function(require,module,exports){
 const { Readable } = require('stream');
 const util = require('util');
 const Buffer = require('buffer').Buffer;
@@ -11619,7 +12120,7 @@ FileReadableStreamAdapter.prototype._read = function (size) {
 
 module.exports = FileReadableStreamAdapter;
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\RawDossierHelper.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/RawDossierHelper.js":[function(require,module,exports){
 const MimeType = require("../util/MimeType");
 
 function RawDossierHelper(rawDossier){
@@ -11681,7 +12182,7 @@ function RawDossierHelper(rawDossier){
 
 module.exports = RawDossierHelper;
 
-},{"../util/MimeType":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\util\\MimeType.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\SWBootScript.js":[function(require,module,exports){
+},{"../util/MimeType":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/util/MimeType.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/SWBootScript.js":[function(require,module,exports){
 function SWBootScript(seed) {
 
     console.log("Booting host...");
@@ -11747,7 +12248,7 @@ module.exports = SWBootScript;
 
 
 
-},{"../../../powerCords/browser/ServiceWorkerPC":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js","../../BootEngine":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\BootEngine.js","callflow":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\callflow\\index.js","edfs":"edfs","soundpubsub":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\soundpubsub\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\Uploader.js":[function(require,module,exports){
+},{"../../../powerCords/browser/ServiceWorkerPC":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js","../../BootEngine":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/BootEngine.js","callflow":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/callflow/index.js","edfs":"edfs","soundpubsub":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/soundpubsub/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/Uploader.js":[function(require,module,exports){
 const FileReadableStreamAdapter = require('./FileReadableStreamAdapter');
 
 /**
@@ -11952,7 +12453,7 @@ Uploader.prototype.uploadFile = function (file, callback) {
 
     const writeFile = () => {
         const stream = new FileReadableStreamAdapter(file);
-        this.dossier.writeFile(destFile, stream, (err) => {
+        this.dossier.writeFile(destFile, stream, {ignoreMounts:false}, (err) => {
             callback(err, {
                 path: destFile
             });
@@ -12067,7 +12568,7 @@ Uploader.prototype.upload = function (request, callback) {
 
 module.exports = Uploader;
 
-},{"./FileReadableStreamAdapter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\FileReadableStreamAdapter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\util\\MimeType.js":[function(require,module,exports){
+},{"./FileReadableStreamAdapter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/FileReadableStreamAdapter.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/util/MimeType.js":[function(require,module,exports){
 const extensionsMimeTypes = {
     "aac": {
         name: "audio/aac",
@@ -12170,7 +12671,11 @@ const extensionsMimeTypes = {
     }, "mpeg": {
         name: "video/mpeg",
         binary: true
-    }, "mpkg": {
+    },
+	"mp4": {
+		name: "video/mp4",
+		binary: true
+	},"mpkg": {
         name: "application/vnd.apple.installer+xm",
         binary: true
     }, "odp": {
@@ -12338,7 +12843,8 @@ module.exports.getMimeTypeFromExtension = function (extension) {
     }
     return defaultMimeType;
 };
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js":[function(require,module,exports){
+
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js":[function(require,module,exports){
 const UtilFunctions = require("../../utils/utilFunctions");
 function ServiceWorkerPC() {
     const channelsManager = require("../../utils/SWChannelsManager").getChannelsManager();
@@ -12440,7 +12946,7 @@ function ServiceWorkerPC() {
 
 module.exports = ServiceWorkerPC;
 
-},{"../../utils/SWChannelsManager":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js","../../utils/utilFunctions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js","ssapp-middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js":[function(require,module,exports){
+},{"../../utils/SWChannelsManager":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/SWChannelsManager.js","../../utils/utilFunctions":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/utilFunctions.js","ssapp-middleware":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/index.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/SWChannelsManager.js":[function(require,module,exports){
 let Queue = require("swarmutils").Queue;
 const maxQueueSize = 100;
 const TOKEN_PLACEHOLDER = "WEB_TOKEN_PLACEHOLDER";
@@ -12575,7 +13081,7 @@ module.exports.getChannelsManager = function(){
     return channelManagerInstance;
 }
 
-},{"../powerCords/browser/ServiceWorkerPC":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\powerCords\\browser\\ServiceWorkerPC.js","swarmutils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js":[function(require,module,exports){
+},{"../powerCords/browser/ServiceWorkerPC":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/powerCords/browser/ServiceWorkerPC.js","swarmutils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/utilFunctions.js":[function(require,module,exports){
 const urlReg = /^(http:\/\/www\.|https:\/\/www\.|http:\/\/|https:\/\/)?([a-z0-9]+([\-.]{1}[a-z0-9]+)*\.[a-z]{2,5}|localhost)(:[0-9]{1,5})?(\/.*)?$/gi;
 const domainReg = /^([0-9a-zA-Z]*)\/agent\/([0-9a-zA-Z]*)$/gi;
 const httpUrlRegex = new RegExp(urlReg);
@@ -12661,7 +13167,7 @@ function handleOptionsRequest(req,res, next){
 
 module.exports = {prepareMessage, getChannelName, isUrl, isInMyHosts, handleOptionsRequest};
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/index.js":[function(require,module,exports){
 (function (global){
 module.exports.OwM = require("./lib/OwM");
 module.exports.beesHealer = require("./lib/beesHealer");
@@ -12695,7 +13201,7 @@ if(typeof global.$$.uidGenerator == "undefined"){
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/Combos":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\path.js","./lib/pingpongFork":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
+},{"./lib/Combos":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Combos.js","./lib/OwM":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js","./lib/Queue":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js","./lib/SwarmPacker":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/SwarmPacker.js","./lib/TaskCounter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/TaskCounter.js","./lib/beesHealer":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/beesHealer.js","./lib/path":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/path.js","./lib/pingpongFork":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pingpongFork.js","./lib/pskconsole":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pskconsole.js","./lib/safe-uuid":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/safe-uuid.js","./lib/uidGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/uidGenerator.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Combos.js":[function(require,module,exports){
 function product(args) {
     if(!args.length){
         return [ [] ];
@@ -12721,7 +13227,7 @@ function objectProduct(obj) {
 }
 
 module.exports = objectProduct;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js":[function(require,module,exports){
 var meta = "meta";
 
 function OwM(serialized){
@@ -12812,7 +13318,7 @@ OwM.prototype.setMetaFor = function(obj, name, value){
 };
 
 module.exports = OwM;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js":[function(require,module,exports){
 function QueueElement(content) {
 	this.content = content;
 	this.next = null;
@@ -12880,7 +13386,7 @@ Queue.prototype.toString = function () {
 Queue.prototype.inspect = Queue.prototype.toString;
 
 module.exports = Queue;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/SwarmPacker.js":[function(require,module,exports){
 const HEADER_SIZE_RESEARVED = 4;
 
 function SwarmPacker(){
@@ -13029,7 +13535,7 @@ SwarmPacker.getHeader = function(pack){
     return header;
 };
 module.exports = SwarmPacker;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/TaskCounter.js":[function(require,module,exports){
 
 function TaskCounter(finalCallback) {
 	let results = [];
@@ -13079,7 +13585,7 @@ function TaskCounter(finalCallback) {
 }
 
 module.exports = TaskCounter;
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/beesHealer.js":[function(require,module,exports){
 const OwM = require("./OwM");
 
 /*
@@ -13135,7 +13641,7 @@ exports.jsonToNative = function(serialisedValues, result){
     };
 
 };
-},{"./OwM":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\path.js":[function(require,module,exports){
+},{"./OwM":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/path.js":[function(require,module,exports){
 function replaceAll(str, search, replacement) {
     return str.split(search).join(replacement);
 }
@@ -13278,7 +13784,7 @@ module.exports = {
     relative
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pingpongFork.js":[function(require,module,exports){
 (function (process){
 const PING = "PING";
 const PONG = "PONG";
@@ -13373,7 +13879,7 @@ module.exports.enableLifeLine = function(timeout){
 };
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","child_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","child_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pskconsole.js":[function(require,module,exports){
 (function (process){
 var commands = {};
 var commands_help = {};
@@ -13447,7 +13953,7 @@ module.exports = {
 
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/safe-uuid.js":[function(require,module,exports){
 
 function encode(buffer) {
     return buffer.toString('base64')
@@ -13515,7 +14021,7 @@ exports.short_uuid = function(callback) {
         callback(null, encode(buf));
     });
 };
-},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
+},{"crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/uidGenerator.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 const Queue = require("./Queue");
@@ -13621,7 +14127,7 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js":[function(require,module,exports){
+},{"./Queue":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js":[function(require,module,exports){
 var asn1 = exports;
 
 asn1.bignum = require('bn.js');
@@ -13632,7 +14138,7 @@ asn1.constants = require('./asn1/constants');
 asn1.decoders = require('./asn1/decoders');
 asn1.encoders = require('./asn1/encoders');
 
-},{"./asn1/api":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\api.js","./asn1/base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","./asn1/constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js","./asn1/decoders":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\index.js","./asn1/encoders":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\index.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\api.js":[function(require,module,exports){
+},{"./asn1/api":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/api.js","./asn1/base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","./asn1/constants":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js","./asn1/decoders":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/index.js","./asn1/encoders":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/index.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/api.js":[function(require,module,exports){
 var asn1 = require('../asn1');
 var inherits = require('inherits');
 
@@ -13695,7 +14201,7 @@ Entity.prototype.encode = function encode(data, enc, /* internal */ reporter) {
   return this._getEncoder(enc).encode(data, reporter);
 };
 
-},{"../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","vm":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\vm-browserify\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\buffer.js":[function(require,module,exports){
+},{"../asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","vm":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/vm-browserify/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/buffer.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Reporter = require('../base').Reporter;
 var Buffer = require('buffer').Buffer;
@@ -13813,7 +14319,7 @@ EncoderBuffer.prototype.join = function join(out, offset) {
   return out;
 };
 
-},{"../base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js":[function(require,module,exports){
+},{"../base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/index.js":[function(require,module,exports){
 var base = exports;
 
 base.Reporter = require('./reporter').Reporter;
@@ -13821,7 +14327,7 @@ base.DecoderBuffer = require('./buffer').DecoderBuffer;
 base.EncoderBuffer = require('./buffer').EncoderBuffer;
 base.Node = require('./node');
 
-},{"./buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\buffer.js","./node":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\node.js","./reporter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\reporter.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\node.js":[function(require,module,exports){
+},{"./buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/buffer.js","./node":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/node.js","./reporter":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/reporter.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/node.js":[function(require,module,exports){
 var Reporter = require('../base').Reporter;
 var EncoderBuffer = require('../base').EncoderBuffer;
 var DecoderBuffer = require('../base').DecoderBuffer;
@@ -14457,7 +14963,7 @@ Node.prototype._isPrintstr = function isPrintstr(str) {
   return /^[A-Za-z0-9 '\(\)\+,\-\.\/:=\?]*$/.test(str);
 };
 
-},{"../base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\index.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\base\\reporter.js":[function(require,module,exports){
+},{"../base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/index.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/base/reporter.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 function Reporter(options) {
@@ -14580,7 +15086,7 @@ ReporterError.prototype.rethrow = function rethrow(msg) {
   return this;
 };
 
-},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\der.js":[function(require,module,exports){
+},{"inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/constants/der.js":[function(require,module,exports){
 var constants = require('../constants');
 
 exports.tagClass = {
@@ -14624,7 +15130,7 @@ exports.tag = {
 };
 exports.tagByName = constants._reverse(exports.tag);
 
-},{"../constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\index.js":[function(require,module,exports){
+},{"../constants":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/constants/index.js":[function(require,module,exports){
 var constants = exports;
 
 // Helper
@@ -14645,7 +15151,7 @@ constants._reverse = function reverse(map) {
 
 constants.der = require('./der');
 
-},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\constants\\der.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js":[function(require,module,exports){
+},{"./der":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/constants/der.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 var asn1 = require('../../asn1');
@@ -14971,13 +15477,13 @@ function derDecodeLen(buf, primitive, fail) {
   return len;
 }
 
-},{"../../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\index.js":[function(require,module,exports){
+},{"../../asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/index.js":[function(require,module,exports){
 var decoders = exports;
 
 decoders.der = require('./der');
 decoders.pem = require('./pem');
 
-},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js","./pem":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\pem.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\pem.js":[function(require,module,exports){
+},{"./der":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js","./pem":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/pem.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/pem.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -15028,7 +15534,7 @@ PEMDecoder.prototype.decode = function decode(data, options) {
   return DERDecoder.prototype.decode.call(this, input, options);
 };
 
-},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\decoders\\der.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js":[function(require,module,exports){
+},{"./der":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/decoders/der.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js":[function(require,module,exports){
 var inherits = require('inherits');
 var Buffer = require('buffer').Buffer;
 
@@ -15325,13 +15831,13 @@ function encodeTag(tag, primitive, cls, reporter) {
   return res;
 }
 
-},{"../../asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\index.js":[function(require,module,exports){
+},{"../../asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/index.js":[function(require,module,exports){
 var encoders = exports;
 
 encoders.der = require('./der');
 encoders.pem = require('./pem');
 
-},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js","./pem":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\pem.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\pem.js":[function(require,module,exports){
+},{"./der":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js","./pem":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/pem.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/pem.js":[function(require,module,exports){
 var inherits = require('inherits');
 
 var DEREncoder = require('./der');
@@ -15354,7 +15860,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   return out.join('\n');
 };
 
-},{"./der":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1\\encoders\\der.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
+},{"./der":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1/encoders/der.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -18329,7 +18835,13 @@ PEMEncoder.prototype.encode = function encode(data, options) {
     } else if (cmp > 0) {
       r.isub(this.p);
     } else {
-      r.strip();
+      if (r.strip !== undefined) {
+        // r is BN v4 instance
+        r.strip();
+      } else {
+        // r is BN v5 instance
+        r._strip();
+      }
     }
 
     return r;
@@ -18783,7 +19295,7 @@ PEMEncoder.prototype.encode = function encode(data, options) {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/assert.js":[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -19294,7 +19806,7 @@ var objectKeys = Object.keys || function (obj) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"object-assign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\object-assign\\index.js","util/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
+},{"object-assign":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/object-assign/index.js","util/":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -19319,14 +19831,14 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js":[function(require,module,exports){
 module.exports = function isBuffer(arg) {
   return arg && typeof arg === 'object'
     && typeof arg.copy === 'function'
     && typeof arg.fill === 'function'
     && typeof arg.readUInt8 === 'function';
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\util.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/util/util.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -19917,7 +20429,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./support/isBuffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\base64-js\\index.js":[function(require,module,exports){
+},{"./support/isBuffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/base64-js/index.js":[function(require,module,exports){
 'use strict'
 
 exports.byteLength = byteLength
@@ -20071,7 +20583,7 @@ function fromByteArray (uint8) {
   return parts.join('')
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
 (function (module, exports) {
   'use strict';
 
@@ -23147,7 +23659,13 @@ function fromByteArray (uint8) {
     } else if (cmp > 0) {
       r.isub(this.p);
     } else {
-      r._strip();
+      if (r.strip !== undefined) {
+        // r is a BN v4 instance
+        r.strip();
+      } else {
+        // r is a BN v5 instance
+        r._strip();
+      }
     }
 
     return r;
@@ -23603,7 +24121,7 @@ function fromByteArray (uint8) {
   };
 })(typeof module === 'undefined' || module, this);
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/brorand/index.js":[function(require,module,exports){
 var r;
 
 module.exports = function rand(len) {
@@ -23670,9 +24188,9 @@ if (typeof self === 'object') {
   }
 }
 
-},{"crypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js":[function(require,module,exports){
+},{"crypto":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js":[function(require,module,exports){
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/aes.js":[function(require,module,exports){
 // based on the aes implimentation in triple sec
 // https://github.com/keybase/triplesec
 // which is in turn based on the one from crypto-js
@@ -23902,7 +24420,7 @@ AES.prototype.scrub = function () {
 
 module.exports.AES = AES
 
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/authCipher.js":[function(require,module,exports){
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('cipher-base')
@@ -24021,7 +24539,7 @@ StreamCipher.prototype.setAAD = function setAAD (buf) {
 
 module.exports = StreamCipher
 
-},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./ghash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\ghash.js","./incr32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js":[function(require,module,exports){
+},{"./aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/aes.js","./ghash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/ghash.js","./incr32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/incr32.js","buffer-xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js","cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/browser.js":[function(require,module,exports){
 var ciphers = require('./encrypter')
 var deciphers = require('./decrypter')
 var modes = require('./modes/list.json')
@@ -24036,7 +24554,7 @@ exports.createDecipher = exports.Decipher = deciphers.createDecipher
 exports.createDecipheriv = exports.Decipheriv = deciphers.createDecipheriv
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"./decrypter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\decrypter.js","./encrypter":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\encrypter.js","./modes/list.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\decrypter.js":[function(require,module,exports){
+},{"./decrypter":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/decrypter.js","./encrypter":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/encrypter.js","./modes/list.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/list.json"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/decrypter.js":[function(require,module,exports){
 var AuthCipher = require('./authCipher')
 var Buffer = require('safe-buffer').Buffer
 var MODES = require('./modes')
@@ -24162,7 +24680,7 @@ function createDecipher (suite, password) {
 exports.createDecipher = createDecipher
 exports.createDecipheriv = createDecipheriv
 
-},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./authCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js","./modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","./streamCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\encrypter.js":[function(require,module,exports){
+},{"./aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/aes.js","./authCipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/authCipher.js","./modes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/index.js","./streamCipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/streamCipher.js","cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","evp_bytestokey":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/evp_bytestokey/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/encrypter.js":[function(require,module,exports){
 var MODES = require('./modes')
 var AuthCipher = require('./authCipher')
 var Buffer = require('safe-buffer').Buffer
@@ -24278,7 +24796,7 @@ function createCipher (suite, password) {
 exports.createCipheriv = createCipheriv
 exports.createCipher = createCipher
 
-},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","./authCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\authCipher.js","./modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","./streamCipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\ghash.js":[function(require,module,exports){
+},{"./aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/aes.js","./authCipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/authCipher.js","./modes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/index.js","./streamCipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/streamCipher.js","cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","evp_bytestokey":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/evp_bytestokey/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/ghash.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var ZEROES = Buffer.alloc(16, 0)
 
@@ -24369,7 +24887,7 @@ GHASH.prototype.final = function (abl, bl) {
 
 module.exports = GHASH
 
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/incr32.js":[function(require,module,exports){
 function incr32 (iv) {
   var len = iv.length
   var item
@@ -24386,7 +24904,7 @@ function incr32 (iv) {
 }
 module.exports = incr32
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cbc.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cbc.js":[function(require,module,exports){
 var xor = require('buffer-xor')
 
 exports.encrypt = function (self, block) {
@@ -24405,7 +24923,7 @@ exports.decrypt = function (self, block) {
   return xor(out, pad)
 }
 
-},{"buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb.js":[function(require,module,exports){
+},{"buffer-xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var xor = require('buffer-xor')
 
@@ -24440,7 +24958,7 @@ exports.encrypt = function (self, data, decrypt) {
   return out
 }
 
-},{"buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb1.js":[function(require,module,exports){
+},{"buffer-xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb1.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -24484,7 +25002,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb8.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb8.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 function encryptByte (self, byteParam, decrypt) {
@@ -24511,7 +25029,7 @@ exports.encrypt = function (self, chunk, decrypt) {
   return out
 }
 
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ctr.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ctr.js":[function(require,module,exports){
 var xor = require('buffer-xor')
 var Buffer = require('safe-buffer').Buffer
 var incr32 = require('../incr32')
@@ -24543,7 +25061,7 @@ exports.encrypt = function (self, chunk) {
   return xor(chunk, pad)
 }
 
-},{"../incr32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\incr32.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ecb.js":[function(require,module,exports){
+},{"../incr32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/incr32.js","buffer-xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ecb.js":[function(require,module,exports){
 exports.encrypt = function (self, block) {
   return self._cipher.encryptBlock(block)
 }
@@ -24552,7 +25070,7 @@ exports.decrypt = function (self, block) {
   return self._cipher.decryptBlock(block)
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/index.js":[function(require,module,exports){
 var modeModules = {
   ECB: require('./ecb'),
   CBC: require('./cbc'),
@@ -24572,7 +25090,7 @@ for (var key in modes) {
 
 module.exports = modes
 
-},{"./cbc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cbc.js","./cfb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb.js","./cfb1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb1.js","./cfb8":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\cfb8.js","./ctr":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ctr.js","./ecb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ecb.js","./list.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json","./ofb":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ofb.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\list.json":[function(require,module,exports){
+},{"./cbc":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cbc.js","./cfb":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb.js","./cfb1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb1.js","./cfb8":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/cfb8.js","./ctr":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ctr.js","./ecb":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ecb.js","./list.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/list.json","./ofb":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ofb.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/list.json":[function(require,module,exports){
 module.exports={
   "aes-128-ecb": {
     "cipher": "AES",
@@ -24765,7 +25283,7 @@ module.exports={
   }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\ofb.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/ofb.js":[function(require,module,exports){
 (function (Buffer){
 var xor = require('buffer-xor')
 
@@ -24786,7 +25304,7 @@ exports.encrypt = function (self, chunk) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","buffer-xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\streamCipher.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","buffer-xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/streamCipher.js":[function(require,module,exports){
 var aes = require('./aes')
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('cipher-base')
@@ -24815,7 +25333,7 @@ StreamCipher.prototype._final = function () {
 
 module.exports = StreamCipher
 
-},{"./aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\aes.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-cipher\\browser.js":[function(require,module,exports){
+},{"./aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/aes.js","cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-cipher/browser.js":[function(require,module,exports){
 var DES = require('browserify-des')
 var aes = require('browserify-aes/browser')
 var aesModes = require('browserify-aes/modes')
@@ -24884,7 +25402,7 @@ exports.createDecipher = exports.Decipher = createDecipher
 exports.createDecipheriv = exports.Decipheriv = createDecipheriv
 exports.listCiphers = exports.getCiphers = getCiphers
 
-},{"browserify-aes/browser":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","browserify-aes/modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\modes\\index.js","browserify-des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\index.js","browserify-des/modes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\modes.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\index.js":[function(require,module,exports){
+},{"browserify-aes/browser":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/browser.js","browserify-aes/modes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/modes/index.js","browserify-des":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-des/index.js","browserify-des/modes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-des/modes.js","evp_bytestokey":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/evp_bytestokey/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-des/index.js":[function(require,module,exports){
 var CipherBase = require('cipher-base')
 var des = require('des.js')
 var inherits = require('inherits')
@@ -24936,7 +25454,7 @@ DES.prototype._final = function () {
   return Buffer.from(this._des.final())
 }
 
-},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","des.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-des\\modes.js":[function(require,module,exports){
+},{"cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","des.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-des/modes.js":[function(require,module,exports){
 exports['des-ecb'] = {
   key: 8,
   iv: 0
@@ -24962,7 +25480,7 @@ exports['des-ede'] = {
   iv: 0
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/index.js":[function(require,module,exports){
 (function (Buffer){
 var bn = require('bn.js');
 var randomBytes = require('randombytes');
@@ -25007,12 +25525,12 @@ function getr(priv) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\algos.js":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/node_modules/bn.js/lib/bn.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/algos.js":[function(require,module,exports){
 module.exports = require('./browser/algorithms.json')
 
-},{"./browser/algorithms.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json":[function(require,module,exports){
+},{"./browser/algorithms.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/algorithms.json"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/algorithms.json":[function(require,module,exports){
 module.exports={
   "sha224WithRSAEncryption": {
     "sign": "rsa",
@@ -25166,7 +25684,7 @@ module.exports={
   }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/curves.json":[function(require,module,exports){
 module.exports={
   "1.3.132.0.10": "secp256k1",
   "1.3.132.0.33": "p224",
@@ -25176,8 +25694,8 @@ module.exports={
   "1.3.132.0.35": "p521"
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\index.js":[function(require,module,exports){
-var Buffer = require('buffer').Buffer
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/index.js":[function(require,module,exports){
+var Buffer = require('safe-buffer').Buffer
 var createHash = require('create-hash')
 var stream = require('readable-stream')
 var inherits = require('inherits')
@@ -25270,9 +25788,9 @@ module.exports = {
   createVerify: createVerify
 }
 
-},{"./algorithms.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\algorithms.json","./sign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\sign.js","./verify":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\verify.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\sign.js":[function(require,module,exports){
+},{"./algorithms.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/algorithms.json","./sign":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/sign.js","./verify":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/verify.js","create-hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/readable-browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/sign.js":[function(require,module,exports){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var Buffer = require('buffer').Buffer
+var Buffer = require('safe-buffer').Buffer
 var createHmac = require('create-hmac')
 var crt = require('browserify-rsa')
 var EC = require('elliptic').ec
@@ -25415,9 +25933,9 @@ module.exports = sign
 module.exports.getKey = getKey
 module.exports.makeKey = makeKey
 
-},{"./curves.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","create-hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\verify.js":[function(require,module,exports){
+},{"./curves.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/curves.json","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/index.js","create-hmac":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hmac/browser.js","elliptic":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic.js","parse-asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/verify.js":[function(require,module,exports){
 // much of this based on https://github.com/indutny/self-signed/blob/gh-pages/lib/rsa.js
-var Buffer = require('buffer').Buffer
+var Buffer = require('safe-buffer').Buffer
 var BN = require('bn.js')
 var EC = require('elliptic').ec
 var parseKeys = require('parse-asn1')
@@ -25501,7 +26019,7 @@ function checkValue (b, q) {
 
 module.exports = verify
 
-},{"./curves.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\curves.json","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js":[function(require,module,exports){
+},{"./curves.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/curves.json","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/bn.js/lib/bn.js","elliptic":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic.js","parse-asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js":[function(require,module,exports){
 'use strict';
 
 function _inheritsLoose(subClass, superClass) { subClass.prototype = Object.create(superClass.prototype); subClass.prototype.constructor = subClass; subClass.__proto__ = superClass; }
@@ -25630,7 +26148,7 @@ createErrorType('ERR_UNKNOWN_ENCODING', function (arg) {
 createErrorType('ERR_STREAM_UNSHIFT_AFTER_END_EVENT', 'stream.unshift() after end event');
 module.exports.codes = codes;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -25773,7 +26291,7 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 }).call(this,require('_process'))
 
-},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_writable.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
+},{"./_stream_readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_writable.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -25813,7 +26331,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_transform.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
+},{"./_stream_transform":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -26941,7 +27459,7 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/async_iterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js","./internal/streams/buffer_list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/from":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/async_iterator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/async_iterator.js","./internal/streams/buffer_list":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/buffer_list.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/from":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/from-browser.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","string_decoder/":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/string_decoder/lib/string_decoder.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -27143,7 +27661,7 @@ function done(stream, er, data) {
   if (stream._transformState.transforming) throw new ERR_TRANSFORM_ALREADY_TRANSFORMING();
   return stream.push(null);
 }
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_duplex.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -27844,7 +28362,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","util-deprecate":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util-deprecate/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/async_iterator.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -28055,7 +28573,7 @@ var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterat
 module.exports = createReadableStreamAsyncIterator;
 }).call(this,require('_process'))
 
-},{"./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js":[function(require,module,exports){
+},{"./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/buffer_list.js":[function(require,module,exports){
 'use strict';
 
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
@@ -28266,7 +28784,7 @@ function () {
 
   return BufferList;
 }();
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
 (function (process){
 'use strict'; // undocumented cb() API, needed for core, not for public API
 
@@ -28375,7 +28893,7 @@ module.exports = {
 };
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js":[function(require,module,exports){
 // Ported from https://github.com/mafintosh/end-of-stream with
 // permission from the author, Mathias Buus (@mafintosh).
 'use strict';
@@ -28480,12 +28998,12 @@ function eos(stream, opts, callback) {
 }
 
 module.exports = eos;
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js":[function(require,module,exports){
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/from-browser.js":[function(require,module,exports){
 module.exports = function () {
   throw new Error('Readable.from is not available in the browser')
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/pipeline.js":[function(require,module,exports){
 // Ported from https://github.com/mafintosh/pump with
 // permission from the author, Mathias Buus (@mafintosh).
 'use strict';
@@ -28583,7 +29101,7 @@ function pipeline() {
 }
 
 module.exports = pipeline;
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js","./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js":[function(require,module,exports){
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js","./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/state.js":[function(require,module,exports){
 'use strict';
 
 var ERR_INVALID_OPT_VALUE = require('../../../errors').codes.ERR_INVALID_OPT_VALUE;
@@ -28611,10 +29129,10 @@ function getHighWaterMark(state, options, duplexKey, isDuplex) {
 module.exports = {
   getHighWaterMark: getHighWaterMark
 };
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
 module.exports = require('events').EventEmitter;
 
-},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
+},{"events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -28625,7 +29143,7 @@ exports.PassThrough = require('./lib/_stream_passthrough.js');
 exports.finished = require('./lib/internal/streams/end-of-stream.js');
 exports.pipeline = require('./lib/internal/streams/pipeline.js');
 
-},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_writable.js","./lib/internal/streams/end-of-stream.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","./lib/internal/streams/pipeline.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\binding.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_writable.js","./lib/internal/streams/end-of-stream.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","./lib/internal/streams/pipeline.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/pipeline.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-zlib/lib/binding.js":[function(require,module,exports){
 (function (process,Buffer){
 'use strict';
 /* eslint camelcase: "off" */
@@ -29038,7 +29556,7 @@ Zlib.prototype._reset = function () {
 exports.Zlib = Zlib;
 }).call(this,require('_process'),require("buffer").Buffer)
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","pako/lib/zlib/constants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\constants.js","pako/lib/zlib/deflate.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\deflate.js","pako/lib/zlib/inflate.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inflate.js","pako/lib/zlib/zstream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\zstream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\index.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/assert.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","pako/lib/zlib/constants":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/constants.js","pako/lib/zlib/deflate.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/deflate.js","pako/lib/zlib/inflate.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inflate.js","pako/lib/zlib/zstream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/zstream.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-zlib/lib/index.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -29651,9 +30169,9 @@ util.inherits(InflateRaw, Zlib);
 util.inherits(Unzip, Zlib);
 }).call(this,require('_process'))
 
-},{"./binding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-zlib\\lib\\binding.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\assert.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer-xor\\index.js":[function(require,module,exports){
+},{"./binding":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-zlib/lib/binding.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/assert.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer-xor/index.js":[function(require,module,exports){
 (function (Buffer){
 module.exports = function xor (a, b) {
   var length = Math.min(a.length, b.length)
@@ -29668,7 +30186,7 @@ module.exports = function xor (a, b) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js":[function(require,module,exports){
 (function (Buffer){
 /*!
  * The buffer module from node.js, for the browser.
@@ -31450,7 +31968,7 @@ function numberIsNaN (obj) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"base64-js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\base64-js\\index.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","ieee754":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ieee754\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\builtin-status-codes\\browser.js":[function(require,module,exports){
+},{"base64-js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/base64-js/index.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","ieee754":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ieee754/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/builtin-status-codes/browser.js":[function(require,module,exports){
 module.exports = {
   "100": "Continue",
   "101": "Switching Protocols",
@@ -31516,7 +32034,7 @@ module.exports = {
   "511": "Network Authentication Required"
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('stream').Transform
 var StringDecoder = require('string_decoder').StringDecoder
@@ -31617,7 +32135,7 @@ CipherBase.prototype._toString = function (value, enc, fin) {
 
 module.exports = CipherBase
 
-},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js","string_decoder":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js":[function(require,module,exports){
+},{"inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js","stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js","string_decoder":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/string_decoder/lib/string_decoder.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js":[function(require,module,exports){
 (function (Buffer){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -31729,7 +32247,7 @@ function objectToString(o) {
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
 
-},{"../../is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\browser.js":[function(require,module,exports){
+},{"../../is-buffer/index.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-ecdh/browser.js":[function(require,module,exports){
 (function (Buffer){
 var elliptic = require('elliptic')
 var BN = require('bn.js')
@@ -31858,9 +32376,9 @@ function formatReturnValue (bn, enc, len) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","elliptic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-ecdh/node_modules/bn.js/lib/bn.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","elliptic":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-ecdh/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var MD5 = require('md5.js')
@@ -31892,14 +32410,14 @@ module.exports = function createHash (alg) {
   return new Hash(sha(alg))
 }
 
-},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js":[function(require,module,exports){
+},{"cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","md5.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/md5.js/index.js","ripemd160":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ripemd160/index.js","sha.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/md5.js":[function(require,module,exports){
 var MD5 = require('md5.js')
 
 module.exports = function (buffer) {
   return new MD5().update(buffer).digest()
 }
 
-},{"md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js":[function(require,module,exports){
+},{"md5.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/md5.js/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hmac/browser.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Legacy = require('./legacy')
@@ -31963,7 +32481,7 @@ module.exports = function createHmac (alg, key) {
   return new Hmac(alg, key)
 }
 
-},{"./legacy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\legacy.js","cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","create-hash/md5":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\legacy.js":[function(require,module,exports){
+},{"./legacy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hmac/legacy.js","cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","create-hash/md5":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/md5.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","ripemd160":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ripemd160/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js","sha.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hmac/legacy.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var Buffer = require('safe-buffer').Buffer
@@ -32011,7 +32529,7 @@ Hmac.prototype._final = function () {
 }
 module.exports = Hmac
 
-},{"cipher-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\cipher-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\crypto-browserify\\index.js":[function(require,module,exports){
+},{"cipher-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/cipher-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/crypto-browserify/index.js":[function(require,module,exports){
 'use strict'
 
 exports.randomBytes = exports.rng = exports.pseudoRandomBytes = exports.prng = require('randombytes')
@@ -32110,7 +32628,7 @@ exports.constants = {
   'POINT_CONVERSION_HYBRID': 6
 }
 
-},{"browserify-cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-cipher\\browser.js","browserify-sign":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\browser\\index.js","browserify-sign/algos":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\algos.js","create-ecdh":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-ecdh\\browser.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","create-hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hmac\\browser.js","diffie-hellman":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\browser.js","pbkdf2":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js","public-encrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\browser.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","randomfill":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randomfill\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des.js":[function(require,module,exports){
+},{"browserify-cipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-cipher/browser.js","browserify-sign":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/browser/index.js","browserify-sign/algos":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/algos.js","create-ecdh":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-ecdh/browser.js","create-hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js","create-hmac":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hmac/browser.js","diffie-hellman":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/browser.js","pbkdf2":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/browser.js","public-encrypt":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/browser.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js","randomfill":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randomfill/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des.js":[function(require,module,exports){
 'use strict';
 
 exports.utils = require('./des/utils');
@@ -32119,7 +32637,7 @@ exports.DES = require('./des/des');
 exports.CBC = require('./des/cbc');
 exports.EDE = require('./des/ede');
 
-},{"./des/cbc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cbc.js","./des/cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./des/des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js","./des/ede":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\ede.js","./des/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cbc.js":[function(require,module,exports){
+},{"./des/cbc":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cbc.js","./des/cipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cipher.js","./des/des":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/des.js","./des/ede":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/ede.js","./des/utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cbc.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -32186,7 +32704,7 @@ proto._update = function _update(inp, inOff, out, outOff) {
   }
 };
 
-},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js":[function(require,module,exports){
+},{"inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cipher.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -32329,7 +32847,7 @@ Cipher.prototype._finalDecrypt = function _finalDecrypt() {
   return this._unpad(out);
 };
 
-},{"minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js":[function(require,module,exports){
+},{"minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/des.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -32473,7 +32991,7 @@ DES.prototype._decrypt = function _decrypt(state, lStart, rStart, out, off) {
   utils.rip(l, r, out, off);
 };
 
-},{"./cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\ede.js":[function(require,module,exports){
+},{"./cipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cipher.js","./utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/utils.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/ede.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -32529,7 +33047,7 @@ EDE.prototype._update = function _update(inp, inOff, out, outOff) {
 EDE.prototype._pad = DES.prototype._pad;
 EDE.prototype._unpad = DES.prototype._unpad;
 
-},{"./cipher":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\cipher.js","./des":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\des.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\des.js\\lib\\des\\utils.js":[function(require,module,exports){
+},{"./cipher":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/cipher.js","./des":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/des.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/des.js/lib/des/utils.js":[function(require,module,exports){
 'use strict';
 
 exports.readUInt32BE = function readUInt32BE(bytes, off) {
@@ -32787,7 +33305,7 @@ exports.padSplit = function padSplit(num, size, group) {
   return out.join(' ');
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\browser.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/browser.js":[function(require,module,exports){
 (function (Buffer){
 var generatePrime = require('./lib/generatePrime')
 var primes = require('./lib/primes.json')
@@ -32834,7 +33352,7 @@ exports.createDiffieHellman = exports.DiffieHellman = createDiffieHellman
 
 }).call(this,require("buffer").Buffer)
 
-},{"./lib/dh":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\dh.js","./lib/generatePrime":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js","./lib/primes.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\primes.json","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\dh.js":[function(require,module,exports){
+},{"./lib/dh":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/dh.js","./lib/generatePrime":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/generatePrime.js","./lib/primes.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/primes.json","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/dh.js":[function(require,module,exports){
 (function (Buffer){
 var BN = require('bn.js');
 var MillerRabin = require('miller-rabin');
@@ -33003,7 +33521,7 @@ function formatReturnValue(bn, enc) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./generatePrime":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\node_modules\\bn.js\\lib\\bn.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","miller-rabin":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\generatePrime.js":[function(require,module,exports){
+},{"./generatePrime":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/generatePrime.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/node_modules/bn.js/lib/bn.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","miller-rabin":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/miller-rabin/lib/mr.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/generatePrime.js":[function(require,module,exports){
 var randomBytes = require('randombytes');
 module.exports = findPrime;
 findPrime.simpleSieve = simpleSieve;
@@ -33110,7 +33628,7 @@ function findPrime(bits, gen) {
 
 }
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\node_modules\\bn.js\\lib\\bn.js","miller-rabin":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\lib\\primes.json":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/node_modules/bn.js/lib/bn.js","miller-rabin":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/miller-rabin/lib/mr.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/lib/primes.json":[function(require,module,exports){
 module.exports={
     "modp1": {
         "gen": "02",
@@ -33145,9 +33663,9 @@ module.exports={
         "prime": "ffffffffffffffffc90fdaa22168c234c4c6628b80dc1cd129024e088a67cc74020bbea63b139b22514a08798e3404ddef9519b3cd3a431b302b0a6df25f14374fe1356d6d51c245e485b576625e7ec6f44c42e9a637ed6b0bff5cb6f406b7edee386bfb5a899fa5ae9f24117c4b1fe649286651ece45b3dc2007cb8a163bf0598da48361c55d39a69163fa8fd24cf5f83655d23dca3ad961c62f356208552bb9ed529077096966d670c354e4abc9804f1746c08ca18217c32905e462e36ce3be39e772c180e86039b2783a2ec07a28fb5c55df06f4c52c9de2bcbf6955817183995497cea956ae515d2261898fa051015728e5a8aaac42dad33170d04507a33a85521abdf1cba64ecfb850458dbef0a8aea71575d060c7db3970f85a6e1e4c7abf5ae8cdb0933d71e8c94e04a25619dcee3d2261ad2ee6bf12ffa06d98a0864d87602733ec86a64521f2b18177b200cbbe117577a615d6c770988c0bad946e208e24fa074e5ab3143db5bfce0fd108e4b82d120a92108011a723c12a787e6d788719a10bdba5b2699c327186af4e23c1a946834b6150bda2583e9ca2ad44ce8dbbbc2db04de8ef92e8efc141fbecaa6287c59474e6bc05d99b2964fa090c3a2233ba186515be7ed1f612970cee2d7afb81bdd762170481cd0069127d5b05aa993b4ea988d8fddc186ffb7dc90a6c08f4df435c93402849236c3fab4d27c7026c1d4dcb2602646dec9751e763dba37bdf8ff9406ad9e530ee5db382f413001aeb06a53ed9027d831179727b0865a8918da3edbebcf9b14ed44ce6cbaced4bb1bdb7f1447e6cc254b332051512bd7af426fb8f401378cd2bf5983ca01c64b92ecf032ea15d1721d03f482d7ce6e74fef6d55e702f46980c82b5a84031900b1c9e59e7c97fbec7e8f323a97a7e36cc88be0f1d45b7ff585ac54bd407b22b4154aacc8f6d7ebf48e1d814cc5ed20f8037e0a79715eef29be32806a1d58bb7c5da76f550aa3d8a1fbff0eb19ccb1a313d55cda56c9ec2ef29632387fe8d76e3c0468043e8f663f4860ee12bf2d5b0b7474d6e694f91e6dbe115974a3926f12fee5e438777cb6a932df8cd8bec4d073b931ba3bc832b68d9dd300741fa7bf8afc47ed2576f6936ba424663aab639c5ae4f5683423b4742bf1c978238f16cbe39d652de3fdb8befc848ad922222e04a4037c0713eb57a81a23f0c73473fc646cea306b4bcbc8862f8385ddfa9d4b7fa2c087e879683303ed5bdd3a062b3cf5b3a278a66d2a13f83f44f82ddf310ee074ab6a364597e899a0255dc164f31cc50846851df9ab48195ded7ea1b1d510bd7ee74d73faf36bc31ecfa268359046f4eb879f924009438b481c6cd7889a002ed5ee382bc9190da6fc026e479558e4475677e9aa9e3050e2765694dfc81f56e880b96e7160c980dd98edd3dfffffffffffffffff"
     }
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\diffie-hellman\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/diffie-hellman/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic.js":[function(require,module,exports){
 'use strict';
 
 var elliptic = exports;
@@ -33162,7 +33680,7 @@ elliptic.curves = require('./elliptic/curves');
 elliptic.ec = require('./elliptic/ec');
 elliptic.eddsa = require('./elliptic/eddsa');
 
-},{"../package.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\package.json","./elliptic/curve":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js","./elliptic/curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","./elliptic/ec":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\index.js","./elliptic/eddsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\index.js","./elliptic/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js":[function(require,module,exports){
+},{"../package.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/package.json","./elliptic/curve":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js","./elliptic/curves":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curves.js","./elliptic/ec":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/index.js","./elliptic/eddsa":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/index.js","./elliptic/utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","brorand":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/brorand/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -33540,7 +34058,7 @@ BasePoint.prototype.dblp = function dblp(k) {
   return r;
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\edwards.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/edwards.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -33974,7 +34492,7 @@ Point.prototype.eqXToP = function eqXToP(x) {
 Point.prototype.toP = Point.prototype.normalize;
 Point.prototype.mixedAdd = Point.prototype.add;
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js":[function(require,module,exports){
 'use strict';
 
 var curve = exports;
@@ -33984,7 +34502,7 @@ curve.short = require('./short');
 curve.mont = require('./mont');
 curve.edwards = require('./edwards');
 
-},{"./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","./edwards":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\edwards.js","./mont":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\mont.js","./short":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\short.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\mont.js":[function(require,module,exports){
+},{"./base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","./edwards":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/edwards.js","./mont":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/mont.js","./short":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/short.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/mont.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -34164,7 +34682,7 @@ Point.prototype.getX = function getX() {
   return this.x.fromRed();
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\short.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/short.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -35103,7 +35621,7 @@ JPoint.prototype.isInfinity = function isInfinity() {
   return this.z.cmpn(0) === 0;
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\base.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/base.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curves.js":[function(require,module,exports){
 'use strict';
 
 var curves = exports;
@@ -35311,7 +35829,7 @@ defineCurve('secp256k1', {
   ]
 });
 
-},{"./curve":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curve\\index.js","./precomputed/secp256k1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\precomputed\\secp256k1.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\index.js":[function(require,module,exports){
+},{"./curve":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curve/index.js","./precomputed/secp256k1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/precomputed/secp256k1.js","./utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","hash.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/index.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -35554,7 +36072,7 @@ EC.prototype.getKeyRecoveryParam = function(e, signature, Q, enc) {
   throw new Error('Unable to find valid recovery factor');
 };
 
-},{"../curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\key.js","./signature":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\signature.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js","hmac-drbg":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hmac-drbg\\lib\\hmac-drbg.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\key.js":[function(require,module,exports){
+},{"../curves":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curves.js","../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./key":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/key.js","./signature":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/signature.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js","brorand":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/brorand/index.js","hmac-drbg":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hmac-drbg/lib/hmac-drbg.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/key.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -35674,7 +36192,7 @@ KeyPair.prototype.inspect = function inspect() {
          ' pub: ' + (this.pub && this.pub.inspect()) + ' >';
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\ec\\signature.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/ec/signature.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -35810,7 +36328,7 @@ Signature.prototype.toDER = function toDER(enc) {
   return utils.encode(res, enc);
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\index.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/index.js":[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -35930,7 +36448,7 @@ EDDSA.prototype.isPoint = function isPoint(val) {
   return val instanceof this.pointClass;
 };
 
-},{"../curves":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\curves.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","./key":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\key.js","./signature":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\signature.js","hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\key.js":[function(require,module,exports){
+},{"../curves":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/curves.js","../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","./key":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/key.js","./signature":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/signature.js","hash.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/key.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -36027,7 +36545,7 @@ KeyPair.prototype.getPublic = function getPublic(enc) {
 
 module.exports = KeyPair;
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\eddsa\\signature.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/eddsa/signature.js":[function(require,module,exports){
 'use strict';
 
 var BN = require('bn.js');
@@ -36094,7 +36612,7 @@ Signature.prototype.toHex = function toHex() {
 
 module.exports = Signature;
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\precomputed\\secp256k1.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/precomputed/secp256k1.js":[function(require,module,exports){
 module.exports = {
   doubles: {
     step: 4,
@@ -36876,7 +37394,7 @@ module.exports = {
   }
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\lib\\elliptic\\utils.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/lib/elliptic/utils.js":[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -36997,9 +37515,9 @@ function intFromLE(bytes) {
 utils.intFromLE = intFromLE;
 
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js","minimalistic-crypto-utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\elliptic\\package.json":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js","minimalistic-crypto-utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/elliptic/package.json":[function(require,module,exports){
 module.exports={
   "_from": "elliptic@^6.5.2",
   "_id": "elliptic@6.5.2",
@@ -37024,7 +37542,7 @@ module.exports={
   "_resolved": "https://registry.npmjs.org/elliptic/-/elliptic-6.5.2.tgz",
   "_shasum": "05c5678d7173c049d8ca433552224a495d0e3762",
   "_spec": "elliptic@^6.5.2",
-  "_where": "D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign",
+  "_where": "/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign",
   "author": {
     "name": "Fedor Indutny",
     "email": "fedor@indutny.com"
@@ -37088,7 +37606,7 @@ module.exports={
   "version": "6.5.2"
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -37613,7 +38131,7 @@ function functionBindPolyfill(context) {
   };
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/evp_bytestokey/index.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 var MD5 = require('md5.js')
 
@@ -37660,7 +38178,7 @@ function EVP_BytesToKey (password, salt, keyBits, ivLen) {
 
 module.exports = EVP_BytesToKey
 
-},{"md5.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js":[function(require,module,exports){
+},{"md5.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/md5.js/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/index.js":[function(require,module,exports){
 'use strict'
 var Buffer = require('safe-buffer').Buffer
 var Transform = require('readable-stream').Transform
@@ -37757,9 +38275,9 @@ HashBase.prototype._digest = function () {
 
 module.exports = HashBase
 
-},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\readable-browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
+},{"inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/readable-browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -37902,9 +38420,9 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 }).call(this,require('_process'))
 
-},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_writable.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_passthrough.js"][0].apply(exports,arguments)
-},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_transform.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
+},{"./_stream_readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_writable.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js"][0].apply(exports,arguments)
+},{"./_stream_transform":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_transform.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -39032,9 +39550,9 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/async_iterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js","./internal/streams/buffer_list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/from":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_transform.js"][0].apply(exports,arguments)
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_duplex.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/async_iterator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/async_iterator.js","./internal/streams/buffer_list":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/buffer_list.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/from":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/from-browser.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","string_decoder/":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/string_decoder/lib/string_decoder.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js"][0].apply(exports,arguments)
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_duplex.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -39735,7 +40253,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","util-deprecate":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util-deprecate/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/async_iterator.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -39946,9 +40464,9 @@ var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterat
 module.exports = createReadableStreamAsyncIterator;
 }).call(this,require('_process'))
 
-},{"./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
+},{"./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/buffer_list.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/buffer_list.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
 (function (process){
 'use strict'; // undocumented cb() API, needed for core, not for public API
 
@@ -40057,19 +40575,19 @@ module.exports = {
 };
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js","./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js"][0].apply(exports,arguments)
-},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\readable-browser.js"][0].apply(exports,arguments)
-},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\_stream_writable.js","./lib/internal/streams/end-of-stream.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","./lib/internal/streams/pipeline.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/end-of-stream.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/from-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/from-browser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/pipeline.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/pipeline.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js","./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/state.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/state.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js"][0].apply(exports,arguments)
+},{"events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/readable-browser.js"][0].apply(exports,arguments)
+},{"./lib/_stream_duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/_stream_writable.js","./lib/internal/streams/end-of-stream.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","./lib/internal/streams/pipeline.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/node_modules/readable-stream/lib/internal/streams/pipeline.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash.js":[function(require,module,exports){
 var hash = exports;
 
 hash.utils = require('./hash/utils');
@@ -40086,7 +40604,7 @@ hash.sha384 = hash.sha.sha384;
 hash.sha512 = hash.sha.sha512;
 hash.ripemd160 = hash.ripemd.ripemd160;
 
-},{"./hash/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","./hash/hmac":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\hmac.js","./hash/ripemd":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\ripemd.js","./hash/sha":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha.js","./hash/utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js":[function(require,module,exports){
+},{"./hash/common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js","./hash/hmac":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/hmac.js","./hash/ripemd":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/ripemd.js","./hash/sha":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha.js","./hash/utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -40180,7 +40698,7 @@ BlockHash.prototype._pad = function pad() {
   return res;
 };
 
-},{"./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\hmac.js":[function(require,module,exports){
+},{"./utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/hmac.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -40229,7 +40747,7 @@ Hmac.prototype.digest = function digest(enc) {
   return this.outer.digest(enc);
 };
 
-},{"./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\ripemd.js":[function(require,module,exports){
+},{"./utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/ripemd.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -40377,7 +40895,7 @@ var sh = [
   8, 5, 12, 9, 12, 5, 14, 6, 8, 13, 6, 5, 15, 13, 11, 11
 ];
 
-},{"./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","./utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha.js":[function(require,module,exports){
+},{"./common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js","./utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha.js":[function(require,module,exports){
 'use strict';
 
 exports.sha1 = require('./sha/1');
@@ -40386,7 +40904,7 @@ exports.sha256 = require('./sha/256');
 exports.sha384 = require('./sha/384');
 exports.sha512 = require('./sha/512');
 
-},{"./sha/1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\1.js","./sha/224":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\224.js","./sha/256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js","./sha/384":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\384.js","./sha/512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\1.js":[function(require,module,exports){
+},{"./sha/1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/1.js","./sha/224":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/224.js","./sha/256":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/256.js","./sha/384":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/384.js","./sha/512":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/512.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/1.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40462,7 +40980,7 @@ SHA1.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\224.js":[function(require,module,exports){
+},{"../common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","./common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/common.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/224.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40494,7 +41012,7 @@ SHA224.prototype._digest = function digest(enc) {
 };
 
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\256.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","./256":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/256.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/256.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40601,7 +41119,7 @@ SHA256.prototype._digest = function digest(enc) {
     return utils.split32(this.h, 'big');
 };
 
-},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\384.js":[function(require,module,exports){
+},{"../common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","./common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/common.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/384.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40638,7 +41156,7 @@ SHA384.prototype._digest = function digest(enc) {
     return utils.split32(this.h.slice(0, 12), 'big');
 };
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","./512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\512.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","./512":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/512.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/512.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -40970,7 +41488,7 @@ function g1_512_lo(xh, xl) {
   return r;
 }
 
-},{"../common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\common.js","../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\sha\\common.js":[function(require,module,exports){
+},{"../common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/common.js","../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/sha/common.js":[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -41021,7 +41539,7 @@ function g1_256(x) {
 }
 exports.g1_256 = g1_256;
 
-},{"../utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash\\utils.js":[function(require,module,exports){
+},{"../utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash/utils.js":[function(require,module,exports){
 'use strict';
 
 var assert = require('minimalistic-assert');
@@ -41301,7 +41819,7 @@ function shr64_lo(ah, al, num) {
 }
 exports.shr64_lo = shr64_lo;
 
-},{"inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hmac-drbg\\lib\\hmac-drbg.js":[function(require,module,exports){
+},{"inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hmac-drbg/lib/hmac-drbg.js":[function(require,module,exports){
 'use strict';
 
 var hash = require('hash.js');
@@ -41416,7 +41934,7 @@ HmacDRBG.prototype.generate = function generate(len, enc, add, addEnc) {
   return utils.encode(res, enc);
 };
 
-},{"hash.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash.js\\lib\\hash.js","minimalistic-assert":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js","minimalistic-crypto-utils":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\https-browserify\\index.js":[function(require,module,exports){
+},{"hash.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash.js/lib/hash.js","minimalistic-assert":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js","minimalistic-crypto-utils":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/https-browserify/index.js":[function(require,module,exports){
 var http = require('http')
 var url = require('url')
 
@@ -41449,7 +41967,7 @@ function validateParams (params) {
   return params
 }
 
-},{"http":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ieee754\\index.js":[function(require,module,exports){
+},{"http":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/index.js","url":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/url.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ieee754/index.js":[function(require,module,exports){
 exports.read = function (buffer, offset, isLE, mLen, nBytes) {
   var e, m
   var eLen = (nBytes * 8) - mLen - 1
@@ -41535,7 +42053,7 @@ exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
   buffer[offset + i - d] |= s * 128
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
 if (typeof Object.create === 'function') {
   // implementation from standard node.js 'util' module
   module.exports = function inherits(ctor, superCtor) {
@@ -41564,7 +42082,7 @@ if (typeof Object.create === 'function') {
   }
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js":[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -41587,14 +42105,14 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\isarray\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/isarray/index.js":[function(require,module,exports){
 var toString = {}.toString;
 
 module.exports = Array.isArray || function (arr) {
   return toString.call(arr) == '[object Array]';
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\md5.js\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/md5.js/index.js":[function(require,module,exports){
 'use strict'
 var inherits = require('inherits')
 var HashBase = require('hash-base')
@@ -41742,7 +42260,7 @@ function fnI (a, b, c, d, m, k, s) {
 
 module.exports = MD5
 
-},{"hash-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\lib\\mr.js":[function(require,module,exports){
+},{"hash-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/miller-rabin/lib/mr.js":[function(require,module,exports){
 var bn = require('bn.js');
 var brorand = require('brorand');
 
@@ -41859,9 +42377,9 @@ MillerRabin.prototype.getDivisor = function getDivisor(n, k) {
   return false;
 };
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\node_modules\\bn.js\\lib\\bn.js","brorand":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\brorand\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\miller-rabin\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-assert\\index.js":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/miller-rabin/node_modules/bn.js/lib/bn.js","brorand":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/brorand/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/miller-rabin/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-assert/index.js":[function(require,module,exports){
 module.exports = assert;
 
 function assert(val, msg) {
@@ -41874,7 +42392,7 @@ assert.equal = function assertEqual(l, r, msg) {
     throw new Error(msg || ('Assertion failed: ' + l + ' != ' + r));
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\minimalistic-crypto-utils\\lib\\utils.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/minimalistic-crypto-utils/lib/utils.js":[function(require,module,exports){
 'use strict';
 
 var utils = exports;
@@ -41934,7 +42452,7 @@ utils.encode = function encode(arr, enc) {
     return arr;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\object-assign\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/object-assign/index.js":[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -42026,7 +42544,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/utils/common.js":[function(require,module,exports){
 'use strict';
 
 
@@ -42133,7 +42651,7 @@ exports.setTyped = function (on) {
 
 exports.setTyped(TYPED_OK);
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/adler32.js":[function(require,module,exports){
 'use strict';
 
 // Note: adler32 takes 12% for level 0 and 2% for level 6.
@@ -42186,7 +42704,7 @@ function adler32(adler, buf, len, pos) {
 
 module.exports = adler32;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\constants.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/constants.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -42256,7 +42774,7 @@ module.exports = {
   //Z_NULL:                 null // Use -1 or null inline, depending on var type
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/crc32.js":[function(require,module,exports){
 'use strict';
 
 // Note: we can't get significant speed boost here.
@@ -42317,7 +42835,7 @@ function crc32(crc, buf, len, pos) {
 
 module.exports = crc32;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\deflate.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/deflate.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -44193,7 +44711,7 @@ exports.deflatePrime = deflatePrime;
 exports.deflateTune = deflateTune;
 */
 
-},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js","./adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js","./crc32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js","./messages":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\messages.js","./trees":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\trees.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inffast.js":[function(require,module,exports){
+},{"../utils/common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/utils/common.js","./adler32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/adler32.js","./crc32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/crc32.js","./messages":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/messages.js","./trees":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/trees.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inffast.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -44540,7 +45058,7 @@ module.exports = function inflate_fast(strm, start) {
   return;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inflate.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inflate.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -46098,7 +46616,7 @@ exports.inflateSyncPoint = inflateSyncPoint;
 exports.inflateUndermine = inflateUndermine;
 */
 
-},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js","./adler32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\adler32.js","./crc32":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\crc32.js","./inffast":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inffast.js","./inftrees":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inftrees.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\inftrees.js":[function(require,module,exports){
+},{"../utils/common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/utils/common.js","./adler32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/adler32.js","./crc32":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/crc32.js","./inffast":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inffast.js","./inftrees":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inftrees.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/inftrees.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -46443,7 +46961,7 @@ module.exports = function inflate_table(type, lens, lens_index, codes, table, ta
   return 0;
 };
 
-},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\messages.js":[function(require,module,exports){
+},{"../utils/common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/utils/common.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/messages.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -46477,7 +46995,7 @@ module.exports = {
   '-6':   'incompatible version' /* Z_VERSION_ERROR (-6) */
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\trees.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/trees.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -47701,7 +48219,7 @@ exports._tr_flush_block  = _tr_flush_block;
 exports._tr_tally = _tr_tally;
 exports._tr_align = _tr_align;
 
-},{"../utils/common":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\utils\\common.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pako\\lib\\zlib\\zstream.js":[function(require,module,exports){
+},{"../utils/common":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/utils/common.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pako/lib/zlib/zstream.js":[function(require,module,exports){
 'use strict';
 
 // (C) 1995-2013 Jean-loup Gailly and Mark Adler
@@ -47750,7 +48268,7 @@ function ZStream() {
 
 module.exports = ZStream;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\aesid.json":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/aesid.json":[function(require,module,exports){
 module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.2": "aes-128-cbc",
 "2.16.840.1.101.3.4.1.3": "aes-128-ofb",
@@ -47764,7 +48282,7 @@ module.exports={"2.16.840.1.101.3.4.1.1": "aes-128-ecb",
 "2.16.840.1.101.3.4.1.43": "aes-256-ofb",
 "2.16.840.1.101.3.4.1.44": "aes-256-cfb"
 }
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\asn1.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/asn1.js":[function(require,module,exports){
 // from https://github.com/indutny/self-signed/blob/gh-pages/lib/asn1.js
 // Fedor, you are amazing.
 'use strict'
@@ -47888,7 +48406,7 @@ exports.signature = asn1.define('signature', function () {
   )
 })
 
-},{"./certificate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\certificate.js","asn1.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\certificate.js":[function(require,module,exports){
+},{"./certificate":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/certificate.js","asn1.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/certificate.js":[function(require,module,exports){
 // from https://github.com/Rantanen/node-dtls/blob/25a7dc861bda38cfeac93a723500eea4f0ac2e86/Certificate.js
 // thanks to @Rantanen
 
@@ -47979,7 +48497,7 @@ var X509Certificate = asn.define('X509Certificate', function () {
 
 module.exports = X509Certificate
 
-},{"asn1.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\lib\\asn1.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\fixProc.js":[function(require,module,exports){
+},{"asn1.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/lib/asn1.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/fixProc.js":[function(require,module,exports){
 // adapted from https://github.com/apatil/pemstrip
 var findProc = /Proc-Type: 4,ENCRYPTED[\n\r]+DEK-Info: AES-((?:128)|(?:192)|(?:256))-CBC,([0-9A-H]+)[\n\r]+([0-9A-z\n\r\+\/\=]+)[\n\r]+/m
 var startRegex = /^-----BEGIN ((?:.*? KEY)|CERTIFICATE)-----/m
@@ -48012,7 +48530,7 @@ module.exports = function (okey, password) {
   }
 }
 
-},{"browserify-aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","evp_bytestokey":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\evp_bytestokey\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js":[function(require,module,exports){
+},{"browserify-aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/browser.js","evp_bytestokey":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/evp_bytestokey/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/index.js":[function(require,module,exports){
 var asn1 = require('./asn1')
 var aesid = require('./aesid.json')
 var fixProc = require('./fixProc')
@@ -48121,7 +48639,7 @@ function decrypt (data, password) {
   return Buffer.concat(out)
 }
 
-},{"./aesid.json":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\aesid.json","./asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\asn1.js","./fixProc":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\fixProc.js","browserify-aes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-aes\\browser.js","pbkdf2":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js":[function(require,module,exports){
+},{"./aesid.json":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/aesid.json","./asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/asn1.js","./fixProc":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/fixProc.js","browserify-aes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-aes/browser.js","pbkdf2":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/path-browserify/index.js":[function(require,module,exports){
 (function (process){
 // .dirname, .basename, and .extname methods are extracted from Node.js v8.11.1,
 // backported and transplited with Babel, with backwards-compat fixes
@@ -48428,11 +48946,11 @@ var substr = 'ab'.substr(-1) === 'b'
 
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\browser.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/browser.js":[function(require,module,exports){
 exports.pbkdf2 = require('./lib/async')
 exports.pbkdf2Sync = require('./lib/sync')
 
-},{"./lib/async":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\async.js","./lib/sync":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\async.js":[function(require,module,exports){
+},{"./lib/async":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/async.js","./lib/sync":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/sync-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/async.js":[function(require,module,exports){
 (function (process,global){
 var checkParameters = require('./precondition')
 var defaultEncoding = require('./default-encoding')
@@ -48537,7 +49055,7 @@ module.exports = function (password, salt, iterations, keylen, digest, callback)
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./default-encoding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js","./precondition":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js","./sync":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js":[function(require,module,exports){
+},{"./default-encoding":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/default-encoding.js","./precondition":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/precondition.js","./sync":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/sync-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/default-encoding.js":[function(require,module,exports){
 (function (process){
 var defaultEncoding
 /* istanbul ignore next */
@@ -48552,7 +49070,7 @@ module.exports = defaultEncoding
 
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/precondition.js":[function(require,module,exports){
 (function (Buffer){
 var MAX_ALLOC = Math.pow(2, 30) - 1 // default in iojs
 
@@ -48585,7 +49103,7 @@ module.exports = function (password, salt, iterations, keylen) {
 
 }).call(this,{"isBuffer":require("../../is-buffer/index.js")})
 
-},{"../../is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\sync-browser.js":[function(require,module,exports){
+},{"../../is-buffer/index.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/sync-browser.js":[function(require,module,exports){
 var md5 = require('create-hash/md5')
 var RIPEMD160 = require('ripemd160')
 var sha = require('sha.js')
@@ -48691,7 +49209,7 @@ function pbkdf2 (password, salt, iterations, keylen, digest) {
 
 module.exports = pbkdf2
 
-},{"./default-encoding":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\default-encoding.js","./precondition":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\pbkdf2\\lib\\precondition.js","create-hash/md5":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\md5.js","ripemd160":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js","sha.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js":[function(require,module,exports){
+},{"./default-encoding":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/default-encoding.js","./precondition":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/pbkdf2/lib/precondition.js","create-hash/md5":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/md5.js","ripemd160":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ripemd160/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js","sha.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process-nextick-args/index.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -48741,7 +49259,7 @@ function nextTick(fn, arg1, arg2, arg3) {
 
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js":[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -48927,7 +49445,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\browser.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/browser.js":[function(require,module,exports){
 exports.publicEncrypt = require('./publicEncrypt')
 exports.privateDecrypt = require('./privateDecrypt')
 
@@ -48939,7 +49457,7 @@ exports.publicDecrypt = function publicDecrypt (key, buf) {
   return exports.privateDecrypt(key, buf, true)
 }
 
-},{"./privateDecrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\privateDecrypt.js","./publicEncrypt":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\publicEncrypt.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js":[function(require,module,exports){
+},{"./privateDecrypt":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/privateDecrypt.js","./publicEncrypt":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/publicEncrypt.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/mgf.js":[function(require,module,exports){
 var createHash = require('create-hash')
 var Buffer = require('safe-buffer').Buffer
 
@@ -48960,9 +49478,9 @@ function i2ops (c) {
   return out
 }
 
-},{"create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\node_modules\\bn.js\\lib\\bn.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\asn1.js\\node_modules\\bn.js\\lib\\bn.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\privateDecrypt.js":[function(require,module,exports){
+},{"create-hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/node_modules/bn.js/lib/bn.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/asn1.js/node_modules/bn.js/lib/bn.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/privateDecrypt.js":[function(require,module,exports){
 var parseKeys = require('parse-asn1')
 var mgf = require('./mgf')
 var xor = require('./xor')
@@ -49069,7 +49587,7 @@ function compare (a, b) {
   return dif
 }
 
-},{"./mgf":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js","./withPublic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js","./xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\publicEncrypt.js":[function(require,module,exports){
+},{"./mgf":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/mgf.js","./withPublic":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/withPublic.js","./xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/xor.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/index.js","create-hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js","parse-asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/publicEncrypt.js":[function(require,module,exports){
 var parseKeys = require('parse-asn1')
 var randomBytes = require('randombytes')
 var createHash = require('create-hash')
@@ -49159,7 +49677,7 @@ function nonZero (len) {
   return out
 }
 
-},{"./mgf":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\mgf.js","./withPublic":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js","./xor":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js","bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\node_modules\\bn.js\\lib\\bn.js","browserify-rsa":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-rsa\\index.js","create-hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\create-hash\\browser.js","parse-asn1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\parse-asn1\\index.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\withPublic.js":[function(require,module,exports){
+},{"./mgf":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/mgf.js","./withPublic":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/withPublic.js","./xor":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/xor.js","bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/node_modules/bn.js/lib/bn.js","browserify-rsa":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-rsa/index.js","create-hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/create-hash/browser.js","parse-asn1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/parse-asn1/index.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/withPublic.js":[function(require,module,exports){
 var BN = require('bn.js')
 var Buffer = require('safe-buffer').Buffer
 
@@ -49173,7 +49691,7 @@ function withPublic (paddedMsg, key) {
 
 module.exports = withPublic
 
-},{"bn.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\node_modules\\bn.js\\lib\\bn.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\public-encrypt\\xor.js":[function(require,module,exports){
+},{"bn.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/node_modules/bn.js/lib/bn.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/public-encrypt/xor.js":[function(require,module,exports){
 module.exports = function xor (a, b) {
   var len = a.length
   var i = -1
@@ -49183,7 +49701,7 @@ module.exports = function xor (a, b) {
   return a
 }
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\punycode\\punycode.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/punycode/punycode.js":[function(require,module,exports){
 (function (global){
 /*! https://mths.be/punycode v1.4.1 by @mathias */
 ;(function(root) {
@@ -49721,7 +50239,7 @@ module.exports = function xor (a, b) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\decode.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/decode.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -49807,7 +50325,7 @@ var isArray = Array.isArray || function (xs) {
   return Object.prototype.toString.call(xs) === '[object Array]';
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\encode.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/encode.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -49894,13 +50412,13 @@ var objectKeys = Object.keys || function (obj) {
   return res;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/index.js":[function(require,module,exports){
 'use strict';
 
 exports.decode = exports.parse = require('./decode');
 exports.encode = exports.stringify = require('./encode');
 
-},{"./decode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\decode.js","./encode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\encode.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js":[function(require,module,exports){
+},{"./decode":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/decode.js","./encode":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/encode.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js":[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -49955,7 +50473,7 @@ function randomBytes (size, cb) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randomfill\\browser.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randomfill/browser.js":[function(require,module,exports){
 (function (process,global){
 'use strict'
 
@@ -50068,10 +50586,10 @@ function randomFillSync (buf, offset, size) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","randombytes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\randombytes\\browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\duplex-browser.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","randombytes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/randombytes/browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/duplex-browser.js":[function(require,module,exports){
 module.exports = require('./lib/_stream_duplex.js');
 
-},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -50203,7 +50721,7 @@ Duplex.prototype._destroy = function (err, cb) {
 
   pna.nextTick(cb, err);
 };
-},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
+},{"./_stream_readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_writable.js","core-util-is":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","process-nextick-args":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process-nextick-args/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -50251,7 +50769,7 @@ function PassThrough(options) {
 PassThrough.prototype._transform = function (chunk, encoding, cb) {
   cb(null, chunk);
 };
-},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
+},{"./_stream_transform":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_transform.js","core-util-is":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -51274,7 +51792,7 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/BufferList":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\BufferList.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","isarray":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\isarray\\index.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
+},{"./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/BufferList":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/BufferList.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","core-util-is":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js","events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","isarray":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/isarray/index.js","process-nextick-args":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process-nextick-args/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","string_decoder/":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -51489,7 +52007,7 @@ function done(stream, er, data) {
 
   return stream.push(null);
 }
-},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
+},{"./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","core-util-is":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
 (function (process,global,setImmediate){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -52180,7 +52698,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("timers").setImmediate)
 
-},{"./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","core-util-is":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\core-util-is\\lib\\util.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\BufferList.js":[function(require,module,exports){
+},{"./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","core-util-is":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/core-util-is/lib/util.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","process-nextick-args":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process-nextick-args/index.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","timers":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/timers-browserify/main.js","util-deprecate":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util-deprecate/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/BufferList.js":[function(require,module,exports){
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -52260,7 +52778,7 @@ if (util && util.inspect && util.inspect.custom) {
     return this.constructor.name + ' ' + obj;
   };
 }
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
 'use strict';
 
 /*<replacement>*/
@@ -52335,9 +52853,9 @@ module.exports = {
   destroy: destroy,
   undestroy: undestroy
 };
-},{"process-nextick-args":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process-nextick-args\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js"][0].apply(exports,arguments)
-},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js":[function(require,module,exports){
+},{"process-nextick-args":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process-nextick-args/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js"][0].apply(exports,arguments)
+},{"events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js":[function(require,module,exports){
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -52401,7 +52919,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -52698,10 +53216,10 @@ function simpleWrite(buf) {
 function simpleEnd(buf) {
   return buf && buf.length ? this.write(buf) : '';
 }
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\passthrough.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/passthrough.js":[function(require,module,exports){
 module.exports = require('./readable').PassThrough
 
-},{"./readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
+},{"./readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/readable-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
 exports = module.exports = require('./lib/_stream_readable.js');
 exports.Stream = exports;
 exports.Readable = exports;
@@ -52710,13 +53228,13 @@ exports.Duplex = require('./lib/_stream_duplex.js');
 exports.Transform = require('./lib/_stream_transform.js');
 exports.PassThrough = require('./lib/_stream_passthrough.js');
 
-},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\transform.js":[function(require,module,exports){
+},{"./lib/_stream_duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_writable.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/transform.js":[function(require,module,exports){
 module.exports = require('./readable').Transform
 
-},{"./readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\writable-browser.js":[function(require,module,exports){
+},{"./readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/readable-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/writable-browser.js":[function(require,module,exports){
 module.exports = require('./lib/_stream_writable.js');
 
-},{"./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\lib\\_stream_writable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\ripemd160\\index.js":[function(require,module,exports){
+},{"./lib/_stream_writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/lib/_stream_writable.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/ripemd160/index.js":[function(require,module,exports){
 'use strict'
 var Buffer = require('buffer').Buffer
 var inherits = require('inherits')
@@ -52881,7 +53399,8 @@ function fn5 (a, b, c, d, e, m, k, s) {
 
 module.exports = RIPEMD160
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","hash-base":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\hash-base\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","hash-base":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/hash-base/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js":[function(require,module,exports){
+/*! safe-buffer. MIT License. Feross Aboukhadijeh <https://feross.org/opensource> */
 /* eslint-disable node/no-deprecated-api */
 var buffer = require('buffer')
 var Buffer = buffer.Buffer
@@ -52947,7 +53466,7 @@ SafeBuffer.allocUnsafeSlow = function (size) {
   return buffer.SlowBuffer(size)
 }
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js":[function(require,module,exports){
 var Buffer = require('safe-buffer').Buffer
 
 // prototype class for hash functions
@@ -53030,7 +53549,7 @@ Hash.prototype._update = function () {
 
 module.exports = Hash
 
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\index.js":[function(require,module,exports){
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/index.js":[function(require,module,exports){
 var exports = module.exports = function SHA (algorithm) {
   algorithm = algorithm.toLowerCase()
 
@@ -53047,7 +53566,7 @@ exports.sha256 = require('./sha256')
 exports.sha384 = require('./sha384')
 exports.sha512 = require('./sha512')
 
-},{"./sha":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha.js","./sha1":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha1.js","./sha224":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha224.js","./sha256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js","./sha384":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha384.js","./sha512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha.js":[function(require,module,exports){
+},{"./sha":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha.js","./sha1":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha1.js","./sha224":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha224.js","./sha256":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha256.js","./sha384":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha384.js","./sha512":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha512.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha.js":[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-0, as defined
  * in FIPS PUB 180-1
@@ -53143,7 +53662,7 @@ Sha.prototype._hash = function () {
 
 module.exports = Sha
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha1.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha1.js":[function(require,module,exports){
 /*
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-1, as defined
  * in FIPS PUB 180-1
@@ -53244,7 +53763,7 @@ Sha1.prototype._hash = function () {
 
 module.exports = Sha1
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha224.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha224.js":[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -53299,7 +53818,7 @@ Sha224.prototype._hash = function () {
 
 module.exports = Sha224
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","./sha256":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha256.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","./sha256":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha256.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha256.js":[function(require,module,exports){
 /**
  * A JavaScript implementation of the Secure Hash Algorithm, SHA-256, as defined
  * in FIPS 180-2
@@ -53436,7 +53955,7 @@ Sha256.prototype._hash = function () {
 
 module.exports = Sha256
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha384.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha384.js":[function(require,module,exports){
 var inherits = require('inherits')
 var SHA512 = require('./sha512')
 var Hash = require('./hash')
@@ -53495,7 +54014,7 @@ Sha384.prototype._hash = function () {
 
 module.exports = Sha384
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","./sha512":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\sha512.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","./sha512":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha512.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/sha512.js":[function(require,module,exports){
 var inherits = require('inherits')
 var Hash = require('./hash')
 var Buffer = require('safe-buffer').Buffer
@@ -53757,7 +54276,7 @@ Sha512.prototype._hash = function () {
 
 module.exports = Sha512
 
-},{"./hash":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\sha.js\\hash.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
+},{"./hash":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/sha.js/hash.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -53880,7 +54399,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
+},{"./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -54022,7 +54541,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
+},{"./base64":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -54091,7 +54610,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/binary-search.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -54204,7 +54723,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/mapping-list.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -54285,7 +54804,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
+},{"./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/quick-sort.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -54401,7 +54920,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-consumer.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -55485,7 +56004,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
+},{"./array-set":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js","./binary-search":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/binary-search.js","./quick-sort":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/quick-sort.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -55903,7 +56422,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
+},{"./array-set":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js","./mapping-list":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/mapping-list.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-node.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -56318,7 +56837,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
+},{"./source-map-generator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -56737,7 +57256,7 @@ function compareByGeneratedPositionsInflated(mappingA, mappingB) {
 }
 exports.compareByGeneratedPositionsInflated = compareByGeneratedPositionsInflated;
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-browserify\\index.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-browserify/index.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -56866,7 +57385,7 @@ Stream.prototype.pipe = function(dest, options) {
   return dest;
 };
 
-},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream/duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\duplex-browser.js","readable-stream/passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\passthrough.js","readable-stream/readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\readable-browser.js","readable-stream/transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\transform.js","readable-stream/writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\writable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\index.js":[function(require,module,exports){
+},{"events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","readable-stream/duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/duplex-browser.js","readable-stream/passthrough.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/passthrough.js","readable-stream/readable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/readable-browser.js","readable-stream/transform.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/transform.js","readable-stream/writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/writable-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/index.js":[function(require,module,exports){
 (function (global){
 var ClientRequest = require('./lib/request')
 var response = require('./lib/response')
@@ -56955,7 +57474,7 @@ http.METHODS = [
 ]
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/request":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\request.js","./lib/response":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js","builtin-status-codes":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\builtin-status-codes\\browser.js","url":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js","xtend":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\xtend\\immutable.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js":[function(require,module,exports){
+},{"./lib/request":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/request.js","./lib/response":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/response.js","builtin-status-codes":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/builtin-status-codes/browser.js","url":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/url.js","xtend":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/xtend/immutable.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/capability.js":[function(require,module,exports){
 (function (global){
 exports.fetch = isFunction(global.fetch) && isFunction(global.ReadableStream)
 
@@ -57019,7 +57538,7 @@ xhr = null // Help gc
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\request.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/request.js":[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -57338,7 +57857,7 @@ var unsafeHeaders = [
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 
-},{"./capability":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js","./response":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\response.js":[function(require,module,exports){
+},{"./capability":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/capability.js","./response":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/response.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/response.js":[function(require,module,exports){
 (function (process,global,Buffer){
 var capability = require('./capability')
 var inherits = require('inherits')
@@ -57550,9 +58069,9 @@ IncomingMessage.prototype._onXHRProgress = function () {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {},require("buffer").Buffer)
 
-},{"./capability":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\lib\\capability.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","readable-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\errors-browser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js":[function(require,module,exports){
+},{"./capability":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/lib/capability.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","readable-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/errors-browser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js":[function(require,module,exports){
 (function (process){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -57695,9 +58214,9 @@ Object.defineProperty(Duplex.prototype, 'destroyed', {
 });
 }).call(this,require('_process'))
 
-},{"./_stream_readable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js","./_stream_writable":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_passthrough.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_passthrough.js"][0].apply(exports,arguments)
-},{"./_stream_transform":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js":[function(require,module,exports){
+},{"./_stream_readable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js","./_stream_writable":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_passthrough.js"][0].apply(exports,arguments)
+},{"./_stream_transform":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -58825,9 +59344,9 @@ function indexOf(xs, x) {
 }
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/async_iterator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js","./internal/streams/buffer_list":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/from":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","string_decoder/":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\_stream_transform.js"][0].apply(exports,arguments)
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/async_iterator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/async_iterator.js","./internal/streams/buffer_list":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/buffer_list.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/from":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/from-browser.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","string_decoder/":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/string_decoder/lib/string_decoder.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/_stream_transform.js"][0].apply(exports,arguments)
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -59528,7 +60047,7 @@ Writable.prototype._destroy = function (err, cb) {
 };
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./_stream_duplex":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./internal/streams/destroy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js","./internal/streams/state":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js","./internal/streams/stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\inherits\\inherits_browser.js","util-deprecate":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\async_iterator.js":[function(require,module,exports){
+},{"../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./_stream_duplex":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./internal/streams/destroy":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js","./internal/streams/state":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js","./internal/streams/stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/inherits/inherits_browser.js","util-deprecate":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util-deprecate/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/async_iterator.js":[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -59739,9 +60258,9 @@ var createReadableStreamAsyncIterator = function createReadableStreamAsyncIterat
 module.exports = createReadableStreamAsyncIterator;
 }).call(this,require('_process'))
 
-},{"./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\buffer_list.js"][0].apply(exports,arguments)
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js","util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browser-resolve\\empty.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\destroy.js":[function(require,module,exports){
+},{"./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/buffer_list.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/buffer_list.js"][0].apply(exports,arguments)
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js","util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browser-resolve/empty.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/destroy.js":[function(require,module,exports){
 (function (process){
 'use strict'; // undocumented cb() API, needed for core, not for public API
 
@@ -59850,21 +60369,21 @@ module.exports = {
 };
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\from-browser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js","./end-of-stream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\state.js"][0].apply(exports,arguments)
-},{"../../../errors":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\errors-browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\lib\\internal\\streams\\stream-browser.js"][0].apply(exports,arguments)
-},{"events":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\events\\events.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\readable-browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify-sign\\node_modules\\readable-stream\\readable-browser.js"][0].apply(exports,arguments)
-},{"./lib/_stream_duplex.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_duplex.js","./lib/_stream_passthrough.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_passthrough.js","./lib/_stream_readable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_readable.js","./lib/_stream_transform.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_transform.js","./lib/_stream_writable.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\_stream_writable.js","./lib/internal/streams/end-of-stream.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\end-of-stream.js","./lib/internal/streams/pipeline.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\stream-http\\node_modules\\readable-stream\\lib\\internal\\streams\\pipeline.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\string_decoder\\lib\\string_decoder.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\readable-stream\\node_modules\\string_decoder\\lib\\string_decoder.js"][0].apply(exports,arguments)
-},{"safe-buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\safe-buffer\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/from-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/from-browser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/pipeline.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/pipeline.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js","./end-of-stream":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/state.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/state.js"][0].apply(exports,arguments)
+},{"../../../errors":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/errors-browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/stream-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/lib/internal/streams/stream-browser.js"][0].apply(exports,arguments)
+},{"events":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/events/events.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/readable-browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify-sign/node_modules/readable-stream/readable-browser.js"][0].apply(exports,arguments)
+},{"./lib/_stream_duplex.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_duplex.js","./lib/_stream_passthrough.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_passthrough.js","./lib/_stream_readable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_readable.js","./lib/_stream_transform.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_transform.js","./lib/_stream_writable.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/_stream_writable.js","./lib/internal/streams/end-of-stream.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/end-of-stream.js","./lib/internal/streams/pipeline.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/stream-http/node_modules/readable-stream/lib/internal/streams/pipeline.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/string_decoder/lib/string_decoder.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/readable-stream/node_modules/string_decoder/lib/string_decoder.js"][0].apply(exports,arguments)
+},{"safe-buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/safe-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/timers-browserify/main.js":[function(require,module,exports){
 (function (setImmediate,clearImmediate){
 var nextTick = require('process/browser.js').nextTick;
 var apply = Function.prototype.apply;
@@ -59944,7 +60463,7 @@ exports.clearImmediate = typeof clearImmediate === "function" ? clearImmediate :
 };
 }).call(this,require("timers").setImmediate,require("timers").clearImmediate)
 
-},{"process/browser.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","timers":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\timers-browserify\\main.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\url.js":[function(require,module,exports){
+},{"process/browser.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","timers":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/timers-browserify/main.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/url.js":[function(require,module,exports){
 // Copyright Joyent, Inc. and other Node contributors.
 //
 // Permission is hereby granted, free of charge, to any person obtaining a
@@ -60678,7 +61197,7 @@ Url.prototype.parseHost = function() {
   if (host) this.hostname = host;
 };
 
-},{"./util":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\util.js","punycode":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\punycode\\punycode.js","querystring":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\querystring-es3\\index.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\url\\util.js":[function(require,module,exports){
+},{"./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/util.js","punycode":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/punycode/punycode.js","querystring":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/querystring-es3/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/url/util.js":[function(require,module,exports){
 'use strict';
 
 module.exports = {
@@ -60696,7 +61215,7 @@ module.exports = {
   }
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util-deprecate\\browser.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util-deprecate/browser.js":[function(require,module,exports){
 (function (global){
 
 /**
@@ -60768,11 +61287,11 @@ function config (name) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\node_modules\\inherits\\inherits_browser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\inherits\\inherits_browser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\support\\isBufferBrowser.js":[function(require,module,exports){
-arguments[4]["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\assert\\node_modules\\util\\support\\isBufferBrowser.js"][0].apply(exports,arguments)
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\util.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/node_modules/inherits/inherits_browser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/inherits/inherits_browser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/support/isBufferBrowser.js":[function(require,module,exports){
+arguments[4]["/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/assert/node_modules/util/support/isBufferBrowser.js"][0].apply(exports,arguments)
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/util.js":[function(require,module,exports){
 (function (process,global){
 // Copyright Joyent, Inc. and other Node contributors.
 //
@@ -61363,7 +61882,7 @@ function hasOwnProperty(obj, prop) {
 
 }).call(this,require('_process'),typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./support/isBuffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\support\\isBufferBrowser.js","_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","inherits":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\util\\node_modules\\inherits\\inherits_browser.js"}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\vm-browserify\\index.js":[function(require,module,exports){
+},{"./support/isBuffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/support/isBufferBrowser.js","_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","inherits":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/util/node_modules/inherits/inherits_browser.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/vm-browserify/index.js":[function(require,module,exports){
 var indexOf = function (xs, item) {
     if (xs.indexOf) return xs.indexOf(item);
     else for (var i = 0; i < xs.length; i++) {
@@ -61514,7 +62033,7 @@ exports.createContext = Script.createContext = function (context) {
     return copy;
 };
 
-},{}],"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\xtend\\immutable.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/xtend/immutable.js":[function(require,module,exports){
 module.exports = extend
 
 var hasOwnProperty = Object.prototype.hasOwnProperty;
@@ -61609,7 +62128,7 @@ module.exports = bufferFrom
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\buffer\\index.js"}],"edfs":[function(require,module,exports){
+},{"buffer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/buffer/index.js"}],"edfs":[function(require,module,exports){
 require("./brickTransportStrategies/brickTransportStrategiesRegistry");
 const constants = require("./moduleConstants");
 
@@ -61656,7 +62175,7 @@ module.exports = {
     constants: constants
 };
 
-},{"./brickTransportStrategies/FetchBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\bar\\index.js","overwrite-require":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\overwrite-require\\index.js","psk-cache":"psk-cache"}],"psk-cache":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js","./lib/EDFS":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/EDFS.js","./moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js","./seedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js","bar":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/index.js","overwrite-require":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/index.js","psk-cache":"psk-cache"}],"psk-cache":[function(require,module,exports){
 const Cache = require("./lib/Cache")
 let cacheInstance;
 
@@ -61693,7 +62212,7 @@ module.exports = {
     }
 };
 
-},{"./lib/Cache":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\psk-cache\\lib\\Cache.js"}],"pskcrypto":[function(require,module,exports){
+},{"./lib/Cache":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-cache/lib/Cache.js"}],"pskcrypto":[function(require,module,exports){
 const PskCrypto = require("./lib/PskCrypto");
 const ssutil = require("./signsensusDS/ssutil");
 
@@ -61704,7 +62223,7 @@ module.exports.hashValues = ssutil.hashValues;
 module.exports.DuplexStream = require("./lib/utils/DuplexStream");
 
 module.exports.isStream = require("./lib/utils/isStream");
-},{"./lib/PskCrypto":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"source-map-support":[function(require,module,exports){
+},{"./lib/PskCrypto":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskCrypto.js","./lib/utils/DuplexStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js","./lib/utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/isStream.js","./signsensusDS/ssutil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/signsensusDS/ssutil.js"}],"source-map-support":[function(require,module,exports){
 (function (process){
 var SourceMapConsumer = require('source-map').SourceMapConsumer;
 var path = require('path');
@@ -62313,7 +62832,7 @@ exports.resetRetrieveHandlers = function() {
 
 }).call(this,require('_process'))
 
-},{"_process":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\process\\browser.js","buffer-from":"buffer-from","fs":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\browserify\\lib\\_empty.js","path":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\path-browserify\\index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
+},{"_process":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/process/browser.js","buffer-from":"buffer-from","fs":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/browserify/lib/_empty.js","path":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/path-browserify/index.js","source-map":"source-map"}],"source-map":[function(require,module,exports){
 /*
  * Copyright 2009-2011 Mozilla Foundation and contributors
  * Licensed under the New BSD license. See LICENSE.txt or:
@@ -62323,10 +62842,11 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarm-engine/bootScripts/browser/sw":[function(require,module,exports){
+},{"./lib/source-map-consumer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-consumer.js","./lib/source-map-generator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js","./lib/source-node":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-node.js"}],"swarm-engine/bootScripts/browser/sw":[function(require,module,exports){
 (function (Buffer,global){
 const SWBootScript = require("./SWBootScript");
 const server = require("ssapp-middleware").getMiddleware();
+const MimeType = require("../util/MimeType");
 const ChannelsManager = require("../../../utils/SWChannelsManager").getChannelsManager();
 const UtilFunctions = require("../../../utils/utilFunctions");
 const RawDossierHelper = require("./RawDossierHelper");
@@ -62628,7 +63148,9 @@ function downloadHandler(req, res) {
         const filename = path.split('/').pop();
         const readableStream = convertToNativeReadableStream(stream);
 
+		let fileExt = filename.substring(filename.lastIndexOf(".") + 1);
         res.status(200);
+        res.set("Content-Type",MimeType.getMimeTypeFromExtension(fileExt).name);
         res.set("Content-Disposition", `attachment; filename="${filename}"`);
         res.send(readableStream);
     });
@@ -62675,5 +63197,5 @@ function configureUploader(config) {
 
 }).call(this,{"isBuffer":require("../../../../../node_modules/is-buffer/index.js")},typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"../../../../../node_modules/is-buffer/index.js":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\node_modules\\is-buffer\\index.js","../../../utils/SWChannelsManager":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\SWChannelsManager.js","../../../utils/utilFunctions":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\utils\\utilFunctions.js","./RawDossierHelper":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\RawDossierHelper.js","./SWBootScript":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\SWBootScript.js","./Uploader":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\swarm-engine\\bootScripts\\browser\\sw\\Uploader.js","edfs":"edfs","ssapp-middleware":"D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\modules\\ssapp-middleware\\index.js"}]},{},["D:\\work\\git\\webcomponents\\web-wallet\\privatesky\\builds\\tmp\\swBoot.js"])
+},{"../../../../../node_modules/is-buffer/index.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js","../../../utils/SWChannelsManager":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/SWChannelsManager.js","../../../utils/utilFunctions":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/utils/utilFunctions.js","../util/MimeType":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/util/MimeType.js","./RawDossierHelper":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/RawDossierHelper.js","./SWBootScript":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/SWBootScript.js","./Uploader":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarm-engine/bootScripts/browser/sw/Uploader.js","edfs":"edfs","ssapp-middleware":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/ssapp-middleware/index.js"}]},{},["/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/swBoot.js"])
 //# sourceMappingURL=swBoot.js.map

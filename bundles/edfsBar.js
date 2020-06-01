@@ -1,4 +1,4 @@
-edfsBarRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"F:\\Temp\\web-wallet3\\privatesky\\builds\\tmp\\edfsBar_intermediar.js":[function(require,module,exports){
+edfsBarRequire=(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({"/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/edfsBar_intermediar.js":[function(require,module,exports){
 (function (global){
 global.edfsBarLoadModules = function(){ 
 
@@ -72,7 +72,7 @@ if (typeof $$ !== "undefined") {
 require('source-map-support').install({});
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","buffer-from":"buffer-from","dossier":"dossier","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-cache":"psk-cache","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\Hash.js":[function(require,module,exports){
+},{"adler32":"adler32","bar":"bar","bar-fs-adapter":"bar-fs-adapter","buffer-from":"buffer-from","dossier":"dossier","edfs":"edfs","edfs-brick-storage":"edfs-brick-storage","edfs-middleware":"edfs-middleware","overwrite-require":"overwrite-require","psk-cache":"psk-cache","psk-http-client":"psk-http-client","pskcrypto":"pskcrypto","source-map":"source-map","source-map-support":"source-map-support","swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js":[function(require,module,exports){
 (function (Buffer){
 "use strict";
 
@@ -142,7 +142,7 @@ Hash.prototype._flush = function(callback)
 };
 }).call(this,require("buffer").Buffer)
 
-},{"./algorithm":"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\algorithm.js","buffer":false,"crypto":false,"stream":false,"util":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\algorithm.js":[function(require,module,exports){
+},{"./algorithm":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js","buffer":false,"crypto":false,"stream":false,"util":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js":[function(require,module,exports){
 "use strict";
 
 /**
@@ -206,7 +206,7 @@ exports.roll = function(sum, length, oldByte, newByte)
 
 	return ((b << 16) | a) >>> 0;
 };
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\register.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/register.js":[function(require,module,exports){
 "use strict";
 
 module.exports = function()
@@ -234,7 +234,7 @@ module.exports = function()
 	}
 	.bind(crypto.createHash.bind(this));
 };
-},{"./Hash":"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\Hash.js","crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js":[function(require,module,exports){
+},{"./Hash":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js","crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js":[function(require,module,exports){
 (function (Buffer){
 const fsModule = "fs";
 const fs = require(fsModule);
@@ -299,7 +299,7 @@ function FsAdapter() {
 module.exports = FsAdapter;
 }).call(this,require("buffer").Buffer)
 
-},{"./PathAsyncIterator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js","buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar-fs-adapter\\lib\\PathAsyncIterator.js":[function(require,module,exports){
+},{"./PathAsyncIterator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js","buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/PathAsyncIterator.js":[function(require,module,exports){
 const fsModule = "fs";
 const fs = require(fsModule);
 const pathModule = "path";
@@ -425,7 +425,7 @@ function PathAsyncIterator(inputPath) {
 }
 
 module.exports = PathAsyncIterator;
-},{"swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Archive.js":[function(require,module,exports){
+},{"swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Archive.js":[function(require,module,exports){
 (function (Buffer){
 const Brick = require('./Brick');
 const pathModule = "path";
@@ -437,32 +437,122 @@ const TaskCounter = swarmutils.TaskCounter;
 const pskPth = swarmutils.path;
 const crypto = require('pskcrypto');
 const adler32 = require('adler32');
+const BrickStorageService = require('./BrickStorageService').Service;
 
+/**
+ * @param {ArchiveConfigurator} archiveConfigurator
+ */
 function Archive(archiveConfigurator) {
-
-    const archiveFsAdapter = archiveConfigurator.getFsAdapter();
-    const storageProvider = archiveConfigurator.getStorageProvider();
-    const cache = archiveConfigurator.getCache();
-
     let cachedSEED;
     let barMap;
     let cachedMapDigest;
     let validator;
 
+    const brickStorageService = buildBrickStorageServiceInstance();
+
+    ////////////////////////////////////////////////////////////
+    // Private methods
+    ////////////////////////////////////////////////////////////
+
+    /**
+     * Create and configura the BrickStorageService
+     *
+     * @return {BrickStorageService}
+     */
+    function buildBrickStorageServiceInstance() {
+        const instance = new BrickStorageService({
+            cache: archiveConfigurator.getCache(),
+            bufferSize: archiveConfigurator.getBufferSize(),
+            storageProvider: archiveConfigurator.getStorageProvider(),
+
+            brickFactoryCallback: () => {
+                return new Brick(archiveConfigurator);
+            },
+
+            barMapConfiguratorCallback: (barMap) => {
+                if (archiveConfigurator.getMapEncryptionKey()) {
+                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
+                }
+
+                if (!barMap.getConfig()) {
+                    barMap.setConfig(archiveConfigurator);
+                }
+
+                barMap.load();
+                return barMap;
+            },
+
+            brickDataExtractorCallback: (brickMeta, brick) => {
+                brick.setConfig(archiveConfigurator);
+                const transformParameters = barMap.getTransformParameters(brickMeta);
+                brick.setTransformParameters(transformParameters);
+
+                return brick.getRawData();
+            },
+
+            fsAdapter: archiveConfigurator.getFsAdapter()
+        });
+
+        return instance;
+    }
+
+    /**
+     * @param {string} fileBarPath
+     * @return {string}
+     */
+    function computeFileHash(fileBarPath) {
+        const hashList = barMap.getBricksMeta(fileBarPath).map(brickMeta => brickMeta.hash);
+        const PskHash = crypto.PskHash;
+        const pskHash = new PskHash();
+        hashList.forEach(hash => {
+            pskHash.update(hash);
+        });
+
+        return pskHash.digest();
+    }
+
+    ////////////////////////////////////////////////////////////
+    // Public methods
+    ////////////////////////////////////////////////////////////
+
+    /**
+     * @param {callback} callback
+     */
+    this.load = (callback) => {
+        const barMapHash = archiveConfigurator.getBarMapId();
+        brickStorageService.getBarMap(barMapHash, (err, map) => {
+            if (err) {
+                return callback(err);
+            }
+
+            barMap = map;
+            callback();
+        })
+    };
+
+    /**
+     * @return {string}
+     */
     this.getMapDigest = () => {
         if (cachedMapDigest) {
             return cachedMapDigest;
         }
 
-        cachedMapDigest = archiveConfigurator.getMapDigest();
+        cachedMapDigest = archiveConfigurator.getBarMapId();
         return cachedMapDigest;
     };
 
+    /**
+     * @param {string} seed
+     */
     this.setSeed = (seed) => {
         cachedSEED = seed;
         archiveConfigurator.setSeed(Buffer.from(seed));
     };
 
+    /**
+     * @return {string}
+     */
     this.getSeed = () => {
         if (cachedSEED) {
             return cachedSEED;
@@ -472,31 +562,49 @@ function Archive(archiveConfigurator) {
         return cachedSEED;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     * @return {string}
+     */
     this.getFileHash = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(() => {
-            callback(undefined, __computeFileHash(barPath).toString("hex"));
-        }, callback)
+        const hash = computeFileHash(barPath).toString("hex");
+        callback(undefined, hash);
+        return hash;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     * @return {string}
+     */
     this.getFolderHash = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(() => {
-            const fileList = barMap.getFileList(barPath);
-            if (fileList.length === 1) {
-                return callback(undefined, __computeFileHash(pskPth.join(barPath, fileList[0]).toString("hex")));
-            }
-            fileList.sort();
+        const fileList = barMap.getFileList(barPath);
+        if (fileList.length === 1) {
+            const hash = computeFileHash(pskPth.join(barPath, fileList[0]).toString("hex"));
+            callback(undefined, hash);
+            return hash;
+        }
+        fileList.sort();
 
-            let xor = __computeFileHash(pskPth.join(barPath, fileList[0]));
-            for (let i = 0; i < fileList.length - 1; i++) {
-                xor = crypto.xorBuffers(xor, __computeFileHash(pskPth.join(barPath, fileList[i + 1])));
-            }
+        let xor = computeFileHash(pskPth.join(barPath, fileList[0]));
+        for (let i = 0; i < fileList.length - 1; i++) {
+            xor = crypto.xorBuffers(xor, computeFileHash(pskPth.join(barPath, fileList[i + 1])));
+        }
 
-            callback(undefined, crypto.pskHash(xor, "hex"));
-        }, callback);
+        const hash = crypto.pskHash(xor, "hex");
+        callback(undefined, hash);
+        return hash;
     };
 
+    /**
+     * @param {string} barPath
+     * @param {string|Buffer|stream.ReadableStream} data
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.writeFile = (barPath, data, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -505,120 +613,71 @@ function Archive(archiveConfigurator) {
         }
         barPath = pskPth.normalize(barPath);
 
-        loadBarMapThenExecute(__addData, callback);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        function __addData() {
-            archiveConfigurator.setIsEncrypted(options.encrypt);
-            const bufferSize = archiveConfigurator.getBufferSize();
-
-            if (typeof data === "string") {
-                data = Buffer.from(data);
+        brickStorageService.ingestData(data, (err, result) => {
+            if (err) {
+                return callback(err);
             }
 
-
-            if (Buffer.isBuffer(data)) {
-                let bricks;
-                try {
-                    bricks = createBricksFromBuffer(data, bufferSize);
-                } catch (e) {
-                    return callback(e);
-                }
-                return updateBar(barPath, bricks, callback);
-            }
-
-            if (isStream.isReadable(data)) {
-                return createBricksFromStream(data, bufferSize, (err, bricks) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    updateBar(barPath, bricks, callback);
-                });
-            }
-
-            return callback(Error(`Type of data is ${typeof data}. Expected Buffer or Stream.Readable`));
-        }
+            barMap.addFileEntry(barPath, result);
+            this.saveBarMap(callback);
+        });
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.readFile = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(__readFile, callback);
 
-        function __readFile() {
-            let fileData = Buffer.alloc(0);
-            let brickIds;
-            try {
-                brickIds = barMap.getHashList(barPath);
-            } catch (err) {
+        let bricksMeta;
+
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
+        }
+
+        brickStorageService.createBufferFromBricks(bricksMeta, (err, buffer) => {
+            if (err) {
                 return callback(err);
             }
 
-            getFileRecursively(0, callback);
-
-            function getFileRecursively(brickIndex, callback) {
-                const brickId = brickIds[brickIndex];
-                getBrickData(brickId, (err, data) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    fileData = Buffer.concat([fileData, data]);
-                    ++brickIndex;
-
-                    if (brickIndex < brickIds.length) {
-                        getFileRecursively(brickIndex, callback);
-                    } else {
-                        callback(undefined, fileData);
-                    }
-
-                });
-            }
-        }
+            callback(undefined, buffer);
+        });
     };
 
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.createReadStream = (barPath, callback) => {
         barPath = pskPth.normalize(barPath);
-        loadBarMapThenExecute(__prepareStream, callback);
 
-        function __prepareStream() {
-            let brickIndex = 0;
-            let brickIds;
+        let bricksMeta;
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
+        }
 
-            try {
-                brickIds = barMap.getHashList(barPath);
-            } catch (err) {
+        brickStorageService.createStreamFromBricks(bricksMeta, (err, stream) => {
+            if (err) {
                 return callback(err);
             }
 
-            const readableStream = new stream.Readable({
-                read(size) {
-                    if (brickIndex < brickIds.length) {
-                        this.readBrickData(brickIndex++);
-                    }
-                }
-            });
-
-            // Get a brick and push it into the stream
-            readableStream.readBrickData = function (brickIndex) {
-                const brickId = brickIds[brickIndex];
-                getBrickData(brickId, (err, data) => {
-                    if (err) {
-                        this.destroy(err);
-                        return;
-                    }
-
-                    this.push(data);
-
-                    if (brickIndex >= (brickIds.length - 1)) {
-                        this.push(null);
-                    }
-                });
-            };
-
-            callback(null, readableStream);
-        }
+            callback(undefined, stream);
+        });
     };
 
+    /**
+     * @param {string} fsFilePath
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.addFile = (fsFilePath, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -627,26 +686,25 @@ function Archive(archiveConfigurator) {
         }
 
         barPath = pskPth.normalize(barPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        loadBarMapThenExecute(__addFile, callback);
+        brickStorageService.ingestFile(fsFilePath, (err, result) => {
+            if (err) {
+                return callback(err);
+            }
 
-        function __addFile() {
-            createBricks(fsFilePath, barPath, archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                barMap.setConfig(archiveConfigurator);
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-
-                storageProvider.putBarMap(barMap, callback);
-            });
-        }
+            barMap.addFileEntry(barPath, result);
+            this.saveBarMap(callback);
+        })
     };
 
-    this.addFiles = (arrWithFilePaths, barPath, options, callback) => {
+    /**
+     * @param {string} files
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
+    this.addFiles = (files, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
             options = {};
@@ -654,148 +712,71 @@ function Archive(archiveConfigurator) {
         }
 
         barPath = pskPth.normalize(barPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        let arr = arrWithFilePaths.slice();
+        const filesArray = files.slice();
 
-        loadBarMapThenExecute(() => {
-            recAdd()
-        }, callback);
-
-        function recAdd() {
-            if (arr.length > 0) {
-                let filePath = arr.pop();
-                let fileName = path.basename(filePath);
-
-                createBricks(filePath, pskPth.join(barPath, fileName), archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    recAdd();
-                });
-            } else {
-                barMap.setConfig(archiveConfigurator);
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    barMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-                storageProvider.putBarMap(barMap, callback);
+        brickStorageService.ingestFiles(filesArray, (err, result) => {
+            if (err) {
+                return callback(err);
             }
-        }
+
+            for (const filePath in result) {
+                const bricks = result[filePath];
+                barMap.addFileEntry(pskPth.join(barPath, filePath), bricks);
+            }
+
+            this.saveBarMap(callback);
+        });
     };
 
+    /**
+     * @param {string} fsFilePath
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.extractFile = (fsFilePath, barPath, callback) => {
         if (typeof barPath === "function") {
             callback = barPath;
             barPath = pskPth.normalize(fsFilePath);
         }
 
+        let bricksMeta;
 
-        loadBarMapThenExecute(__extractFile, callback);
-
-        function __extractFile() {
-            const brickIds = barMap.getHashList(barPath);
-            getFileRecursively(0, callback);
-
-            function getFileRecursively(brickIndex, callback) {
-                const brickId = brickIds[brickIndex];
-                getBrickData(brickId, (err, data) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    archiveFsAdapter.appendBlockToFile(fsFilePath, data, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        ++brickIndex;
-                        if (brickIndex < brickIds.length) {
-                            getFileRecursively(brickIndex, callback);
-                        } else {
-                            callback();
-                        }
-                    });
-                })
-            }
+        try {
+            bricksMeta = barMap.getBricksMeta(barPath);
+        } catch (err) {
+            return callback(err);
         }
+
+
+        brickStorageService.createFileFromBricks(fsFilePath, bricksMeta, callback);
     };
 
-    this.appendToFile = (filePath, data, callback) => {
+    /**
+     * @param {string} barPath
+     * @param {string|Buffer|stream.ReadableStream} data
+     * @param {callback} callback
+     */
+    this.appendToFile = (barPath, data, callback) => {
+        barPath = pskPth.normalize(barPath);
 
-        loadBarMapThenExecute(__appendToFile, callback);
-
-        function __appendToFile() {
-            filePath = path.normalize(filePath);
-
-            if (typeof data === "string") {
-                data = Buffer.from(data);
-            }
-            if (Buffer.isBuffer(data)) {
-                const dataBrick = new Brick(data);
-                storageProvider.putBrick(dataBrick, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    barMap.add(filePath, dataBrick);
-                    putBarMap(callback);
-                });
-                return;
+        brickStorageService.ingestData(data, (err, result) => {
+            if (err) {
+                return callback(err);
             }
 
-            if (isStream.isReadable(data)) {
-                data.on('error', (err) => {
-                    return callback(err);
-                }).on('data', (chunk) => {
-                    const dataBrick = new Brick(chunk);
-                    barMap.add(filePath, dataBrick);
-                    storageProvider.putBrick(dataBrick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-                    });
-                }).on("end", () => {
-                    putBarMap(callback);
-                });
-                return;
-            }
-            callback(new Error("Invalid type of parameter data"));
-        }
+            barMap.appendBricksToEntry(barPath, result);
+            this.saveBarMap(callback);
+        })
     };
 
-
-    this.replaceFile = (fileName, stream, callback) => {
-        if (typeof stream !== 'object') {
-            return callback(new Error('Wrong stream!'));
-        }
-
-        loadBarMapThenExecute(__replaceFile, callback);
-
-        function __replaceFile() {
-            fileName = path.normalize(fileName);
-            stream.on('error', () => {
-                return callback(new Error("File does not exist!"));
-            }).on('open', () => {
-                storageProvider.deleteFile(fileName, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    barMap.emptyList(fileName);
-                });
-            }).on('data', (chunk) => {
-                let tempBrick = new Brick(chunk);
-                barMap.add(fileName, tempBrick);
-                storageProvider.putBrick(tempBrick, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    putBarMap(callback);
-                });
-            });
-        }
-    };
-
+    /**
+     * @param {string} fsFolderPath
+     * @param {string} barPath
+     * @param {object} options
+     * @param {callback} callback
+     */
     this.addFolder = (fsFolderPath, barPath, options, callback) => {
         if (typeof options === "function") {
             callback = options;
@@ -803,194 +784,167 @@ function Archive(archiveConfigurator) {
             options.encrypt = true;
         }
         barPath = pskPth.normalize(barPath);
-        const filesIterator = archiveFsAdapter.getFilesIterator(fsFolderPath);
+        archiveConfigurator.setIsEncrypted(options.encrypt);
 
-        loadBarMapThenExecute(__addFolder, callback);
-
-        function __addFolder() {
-
-            filesIterator.next(readFileCb);
-
-            function readFileCb(err, file, rootFsPath) {
-                if (err) {
-                    return callback(err);
-                }
-
-                if (typeof file !== "undefined") {
-                    createBricks(path.join(rootFsPath, file), pskPth.join(barPath, file), archiveConfigurator.getBufferSize(), options.encrypt, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        filesIterator.next(readFileCb);
-                    });
-                } else {
-                    storageProvider.putBarMap(barMap, (err, mapDigest) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        archiveConfigurator.setMapDigest(mapDigest);
-                        callback(undefined, mapDigest);
-                    });
-                }
+        brickStorageService.ingestFolder(fsFolderPath, (err, result) => {
+            if (err) {
+                return callback(err);
             }
-        }
+
+
+            for (const filePath in result) {
+                const bricks = result[filePath];
+                barMap.addFileEntry(pskPth.join(barPath, filePath), bricks);
+            }
+
+            this.saveBarMap(callback);
+        });
     };
 
-
+    /**
+     * @param {string} fsFolderPath
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.extractFolder = (fsFolderPath, barPath, callback) => {
         if (typeof barPath === "function") {
             callback = barPath;
             barPath = pskPth.normalize(fsFolderPath);
         }
 
-        loadBarMapThenExecute(() => {
-            const filePaths = barMap.getFileList(barPath);
-            const taskCounter = new TaskCounter(() => {
-                callback();
-            });
-            taskCounter.increment(filePaths.length);
-            filePaths.forEach(filePath => {
-                let actualPath;
-                if (fsFolderPath) {
-                    if (fsFolderPath.includes(filePath)) {
-                        actualPath = fsFolderPath;
-                    } else {
-                        actualPath = path.join(fsFolderPath, filePath);
-                    }
+        const filePaths = barMap.getFileList(barPath);
+        const taskCounter = new TaskCounter(() => {
+            callback();
+        });
+        taskCounter.increment(filePaths.length);
+        filePaths.forEach(filePath => {
+            let actualPath;
+            if (fsFolderPath) {
+                if (fsFolderPath.includes(filePath)) {
+                    actualPath = fsFolderPath;
                 } else {
-                    actualPath = filePath;
+                    actualPath = path.join(fsFolderPath, filePath);
+                }
+            } else {
+                actualPath = filePath;
+            }
+
+            this.extractFile(actualPath, filePath, (err) => {
+                if (err) {
+                    return callback(err);
                 }
 
-                this.extractFile(actualPath, filePath, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    taskCounter.decrement();
-                });
+                taskCounter.decrement();
             });
-        }, callback);
+        });
     };
 
-    this.store = (callback) => {
-        storageProvider.putBarMap(barMap, callback);
+    /**
+     * @param {callback} callback
+     */
+    this.saveBarMap = (callback) => {
+        brickStorageService.putBarMap(barMap, callback);
     };
 
+
+    /**
+     * @param {string} barPath
+     * @param {callback} callback
+     */
     this.delete = (barPath, callback) => {
-        loadBarMapThenExecute(() => {
-            barMap.delete(barPath);
-            callback();
-        }, callback);
+        barMap.delete(barPath);
+        callback();
     };
 
-    this.listFiles = (folderBarPath, recursive, callback) => {
-        if (typeof recursive === "function") {
-            callback = recursive;
-            recursive = true;
+    /**
+     * @param {string} folderBarPath
+     * @param {object} options
+     * @param {callback} callback
+     */
+    this.listFiles = (folderBarPath, options, callback) => {
+        if (typeof options === "function") {
+            callback = options;
+            options = {recursive:true};
         } else if (typeof folderBarPath === "function") {
             callback = folderBarPath;
-            recursive = true;
+            options = {recursive: true};
             folderBarPath = "/";
         }
 
+        let fileList;
+        try {
+            fileList = barMap.getFileList(folderBarPath, options.recursive);
+        } catch (e) {
+            return callback(e);
+        }
 
-        loadBarMapThenExecute(() => {
-            let fileList;
-            try {
-                fileList = barMap.getFileList(folderBarPath, recursive);
-            } catch (e) {
-                return callback(e);
-            }
-
-            callback(undefined, fileList);
-        }, callback);
+        callback(undefined, fileList);
     };
 
+    /**
+     * @param {string} folderBarPath
+     * @param {boolean} recursive
+     * @param {callback} callback
+     */
     this.listFolders = (folderBarPath, recursive, callback) => {
         if (typeof recursive === "function") {
             callback = recursive;
             recursive = true;
         }
 
-        loadBarMapThenExecute(() => {
-            callback(undefined, barMap.getFolderList(folderBarPath, recursive));
-        }, callback);
+        callback(undefined, barMap.getFolderList(folderBarPath, recursive));
     };
 
+    /**
+     * @param {EDFSBrickStorage} targetStorage
+     * @param {boolean} preserveKeys
+     * @param {callback} callback
+     */
     this.clone = (targetStorage, preserveKeys = true, callback) => {
         targetStorage.getBarMap((err, targetBarMap) => {
             if (err) {
                 return callback(err);
             }
 
-            loadBarMapThenExecute(__cloneBricks, callback);
 
-            function __cloneBricks() {
-                const fileList = barMap.getFileList("/");
-
-                __getFilesRecursively(fileList, 0, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    cachedSEED = archiveConfigurator.getSeed();
-                    archiveConfigurator.generateSeed();
-                    targetBarMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                    targetBarMap.setConfig(archiveConfigurator);
-                    targetStorage.putBarMap(targetBarMap, err => callback(err, archiveConfigurator.getSeed()));
-                });
+            const fileList = barMap.getFileList("/");
+            const bricksList = {};
+            for (const filepath of fileList) {
+                bricksList[filepath] = barMap.getBricksMeta(filepath);
             }
 
-            function __getFilesRecursively(fileList, fileIndex, callback) {
-                const filePath = fileList[fileIndex];
-                __getBricksRecursively(filePath, barMap.getHashList(filePath), 0, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
-                    ++fileIndex;
-                    if (fileIndex === fileList.length) {
-                        return callback();
+            brickStorageService.copyBricks(bricksList, {
+                dstStorage: targetStorage,
+                beforeCopyCallback: (brickId, brick) => {
+                    const transformParameters = barMap.getTransformParameters(brickId);
+                    if (transformParameters) {
+                        brick.setTransformParameters(transformParameters);
                     }
 
-                    __getFilesRecursively(fileList, fileIndex, callback);
-                });
-            }
-
-            function __getBricksRecursively(filePath, brickList, brickIndex, callback) {
-                storageProvider.getBrick(brickList[brickIndex], (err, brick) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    if (barMap.getTransformParameters(brickList[brickIndex])) {
-                        brick.setTransformParameters(barMap.getTransformParameters(brickList[brickIndex]));
-                    }
-                    __addBrickToTarget(brick, callback);
-                });
-
-                function __addBrickToTarget(brick, callback) {
                     brick.setConfig(archiveConfigurator);
                     if (!preserveKeys) {
                         brick.createNewTransform();
                     }
 
-                    ++brickIndex;
-                    targetBarMap.add(filePath, brick);
-                    targetStorage.putBrick(brick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        if (brickIndex === brickList.length) {
-                            return callback();
-                        }
-
-                        __getBricksRecursively(filePath, brickList, brickIndex, callback);
-                    });
+                    return brick;
                 }
-            }
+            }, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                for (const filepath in result) {
+                    const bricks = result[filepath];
+                    targetBarMap.addFileEntry(filepath, bricks);
+                }
+
+                cachedSEED = archiveConfigurator.getSeed();
+                archiveConfigurator.generateSeed();
+                targetBarMap.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
+                targetBarMap.setConfig(archiveConfigurator);
+
+                targetStorage.putBarMap(targetBarMap, err => callback(err, archiveConfigurator.getSeed()));
+            });
         });
     };
 
@@ -1002,271 +956,13 @@ function Archive(archiveConfigurator) {
     this.setValidator = (_validator) => {
         validator = _validator;
     };
-
-    //------------------------------------------- internal methods -----------------------------------------------------
-
-    function __computeFileHash(fileBarPath) {
-        const hashList = barMap.getHashList(fileBarPath);
-        const PskHash = crypto.PskHash;
-        const pskHash = new PskHash();
-        hashList.forEach(hash => {
-            pskHash.update(hash);
-        });
-
-        return pskHash.digest();
-    }
-
-    function putBarMap(callback) {
-        if (typeof archiveConfigurator.getMapDigest() !== "undefined") {
-            storageProvider.deleteFile(archiveConfigurator.getMapDigest(), (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                __putBarMap(callback);
-            });
-            return;
-        }
-        __putBarMap(callback);
-    }
-
-    function __putBarMap(callback) {
-        storageProvider.putBarMap(barMap, (err, newMapDigest) => {
-            if (err) {
-                return callback(err);
-            }
-
-            archiveConfigurator.setMapDigest(newMapDigest);
-            callback(undefined, archiveConfigurator.getMapDigest());
-        });
-    }
-
-    function createBricks(fsFilePath, barPath, blockSize, areEncrypted, callback) {
-        if (typeof areEncrypted === "function") {
-            callback = areEncrypted;
-            areEncrypted = true;
-        }
-        archiveFsAdapter.getFileSize(fsFilePath, (err, fileSize) => {
-            if (err) {
-                return callback(err);
-            }
-
-            let noBlocks = Math.floor(fileSize / blockSize);
-            if (fileSize % blockSize > 0) {
-                ++noBlocks;
-            }
-
-            if (!barMap.isEmpty(barPath)) {
-                barMap.emptyList(barPath);
-            }
-            __createBricksRecursively(0, callback);
-
-            function __createBricksRecursively(blockIndex, callback) {
-                archiveFsAdapter.readBlockFromFile(fsFilePath, blockIndex * blockSize, (blockIndex + 1) * blockSize - 1, (err, blockData) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    archiveConfigurator.setIsEncrypted(areEncrypted);
-                    const brick = new Brick(archiveConfigurator);
-                    brick.setRawData(blockData);
-                    barMap.add(barPath, brick);
-                    storageProvider.putBrick(brick, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-
-                        ++blockIndex;
-                        if (blockIndex < noBlocks) {
-                            __createBricksRecursively(blockIndex, callback);
-                        } else {
-                            callback();
-                        }
-                    });
-                });
-            }
-        });
-    }
-
-    /**
-     * Create bricks from a Buffer
-     * @param {Buffer} buffer
-     * @param {number} blockSize
-     * @return {Array<Brick>}
-     */
-    function createBricksFromBuffer(buffer, blockSize) {
-        let noBlocks = Math.floor(buffer.length / blockSize);
-        if ((buffer.length % blockSize) > 0) {
-            ++noBlocks;
-        }
-
-        const bricks = [];
-        for (let blockIndex = 0; blockIndex < noBlocks; blockIndex++) {
-            const blockData = buffer.slice(blockIndex * blockSize, (blockIndex + 1) * blockSize);
-
-            const brick = new Brick(archiveConfigurator);
-            brick.setRawData(blockData);
-            bricks.push(brick);
-        }
-
-        return bricks;
-    }
-
-    /**
-     * Create bricks from a Stream
-     * @param {stream.Readable} stream
-     * @param {number} blockSize
-     * @param {callback|undefined} callback
-     */
-    function createBricksFromStream(stream, blockSize, callback) {
-        let bricks = [];
-        stream.on('data', (chunk) => {
-            if (typeof chunk === 'string') {
-                chunk = Buffer.from(chunk);
-            }
-
-            let chunkBricks = createBricksFromBuffer(chunk, chunk.length);
-            bricks = bricks.concat(chunkBricks);
-        });
-        stream.on('error', (err) => {
-            callback(err);
-        });
-        stream.on('end', () => {
-            callback(undefined, bricks);
-        });
-    }
-
-    /**
-     * @param {string} barPath
-     * @param {Array<Brick} bricks
-     * @param {callback} callback
-     */
-    function updateBar(barPath, bricks, callback) {
-        if (!barMap.isEmpty(barPath)) {
-            barMap.emptyList(barPath);
-        }
-
-        for (let brick of bricks) {
-            barMap.add(barPath, brick);
-        }
-
-        function __saveBricks(bricks, callback) {
-            const brick = bricks.shift();
-
-            if (!brick) {
-                return storageProvider.putBarMap(barMap, callback);
-            }
-
-            storageProvider.putBrick(brick, (err) => {
-                if (err) {
-                    return callback(err);
-                };
-
-                __saveBricks(bricks, callback);
-            })
-        }
-
-        if (!validator || typeof validator.writeRule !== 'function') {
-            return __saveBricks(bricks, callback);
-        }
-
-        validator.writeRule.call(this, barMap, barPath, bricks, (err) => {
-            if (err) {
-                return callback(err);
-            }
-
-            __saveBricks(bricks, callback);
-        });
-    }
-
-    /**
-     * @param {*} key
-     * @return {Boolean}
-     */
-    function hasInCache(key) {
-        if (!cache) {
-            return false;
-        }
-
-        return cache.has(key);
-    }
-
-    /**
-     * @param {*} key
-     * @param {*} value
-     */
-    function storeInCache(key, value) {
-        if (!cache) {
-            return;
-        }
-
-        cache.set(key, value);
-    }
-
-    /**
-     * Try and get brick data from cache
-     * Fallback to storage provide if not found in cache
-     *
-     * @param {string} hash
-     * @param {callback} callback
-     */
-    function getBrickData(hash, callback) {
-        if (!hasInCache(hash)) {
-            return storageProvider.getBrick(hash, (err, brick) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                brick.setConfig(archiveConfigurator);
-                brick.setTransformParameters(barMap.getTransformParameters(hash));
-                const data = brick.getRawData();
-                storeInCache(hash, data);
-                callback(undefined, data);
-            });
-        }
-
-        const data = cache.get(hash);
-        callback(undefined, data);
-    }
-
-    function loadBarMapThenExecute(functionToBeExecuted, callback) {
-        const digest = archiveConfigurator.getMapDigest();
-        if (!digest || !hasInCache(digest)) {
-            return storageProvider.getBarMap(digest, (err, map) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                if (archiveConfigurator.getMapEncryptionKey()) {
-                    map.setEncryptionKey(archiveConfigurator.getMapEncryptionKey());
-                }
-
-                if (!map.getConfig()) {
-                    map.setConfig(archiveConfigurator);
-                }
-
-                map.load();
-                barMap = map;
-                if (digest) {
-                    storeInCache(digest, barMap);
-                }
-                storageProvider.setBarMap(barMap);
-                functionToBeExecuted();
-            });
-        }
-
-        const map = cache.get(digest);
-        barMap = map;
-        storageProvider.setBarMap(barMap);
-        functionToBeExecuted();
-    }
 }
 
 module.exports = Archive;
 
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/isStream":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\isStream.js","./Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","adler32":"adler32","buffer":false,"pskcrypto":"pskcrypto","stream":false,"swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js":[function(require,module,exports){
+},{"../utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./BrickStorageService":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/index.js","adler32":"adler32","buffer":false,"pskcrypto":"pskcrypto","stream":false,"swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/ArchiveConfigurator.js":[function(require,module,exports){
 const storageProviders = {};
 const fsAdapters = {};
 const Seed = require("./Seed");
@@ -1314,12 +1010,10 @@ function ArchiveConfigurator() {
         return config.fsAdapter;
     };
 
-    this.setMapDigest = (mapDigest) => {
-        config.mapDigest = mapDigest;
-    };
-
-    this.getMapDigest = () => {
-        return config.mapDigest;
+    this.getBarMapId = () => {
+        if (config.seed) {
+            return config.seed.getKey();
+        }
     };
 
     this.setEncryptionAlgorithm = (algorithm) => {
@@ -1407,11 +1101,9 @@ function ArchiveConfigurator() {
 
     this.setSeedKey = (key) => {
         config.seed.setKey(key);
-        this.setMapDigest(key);
     };
 
     this.getSeedKey = () => {
-        loadSeed();
         if (config.seed) {
             return config.seed.getKey();
         }
@@ -1423,7 +1115,6 @@ function ArchiveConfigurator() {
         if (endpoint) {
             this.setStorageProvider("EDFSBrickStorage", endpoint);
         }
-        this.setMapDigest(config.seed.getKey());
     };
 
     this.getSeed = () => {
@@ -1451,9 +1142,6 @@ function ArchiveConfigurator() {
             config.seedEndpoint = config.seed.getEndpoint();
         }
         config.seed = new Seed(undefined, config.seedEndpoint);
-        if (config.seed.getKey()) {
-            self.setMapDigest(config.seed.getKey());
-        }
     };
 
     this.setCache = (cacheInstance) => {
@@ -1482,7 +1170,370 @@ ArchiveConfigurator.prototype.registerFsAdapter = (fsAdapterName, factory) => {
 
 module.exports = ArchiveConfigurator;
 
-},{"./Seed":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Seed.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js":[function(require,module,exports){
+},{"./Seed":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js":[function(require,module,exports){
+(function (Buffer){
+const Brick = require("./Brick");
+const pathModule = "path";
+let path;
+try {
+    path = require(pathModule);
+} catch (err) {
+} finally {
+    if (typeof path === "undefined") {
+        path = {sep: "/"};
+    }
+}
+
+function BarMap(header) {
+    header = header || {};
+    const pskPath = require("swarmutils").path;
+    let archiveConfig;
+    let encryptionKey;
+
+    this.addFileEntry = (path, bricks) => {
+        if (!this.isEmpty(path)) {
+            this.emptyList(path);
+        }
+
+        this.appendBricksToEntry(path, bricks);
+    };
+
+    this.appendBricksToEntry = (path, bricks) => {
+        for (const data of bricks) {
+            this.add(path, data);
+        }
+    }
+
+    this.add = (filePath, brick) => {
+        filePath = pskPath.normalize(filePath);
+        if (filePath === "") {
+            throw Error("Invalid path");
+        }
+        this.load();
+        const pathSegments = filePath.split("/");
+        __addFileRecursively(header, pathSegments, brick);
+
+        function __addFileRecursively(barMapObj, splitPath, brick) {
+            let fileName = splitPath.shift();
+            if (fileName === "") {
+                fileName = splitPath.shift();
+            }
+
+            if (!splitPath.length) {
+                let checkSum;
+                let hash;
+                let key;
+
+                if (brick instanceof Brick) {
+                    checkSum = brick.getAdler32();
+                    hash = brick.getHash();
+                    key = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
+                } else {
+                    checkSum = brick.checkSum;
+                    hash = brick.hash;
+                    key = brick.encryptionKey;
+                }
+
+
+                const brickObj = {
+                    checkSum,
+                    hash,
+                };
+
+                if (key) {
+                    brickObj.key = key;
+                }
+
+                if (!barMapObj[fileName]) {
+                    barMapObj[fileName] = [];
+                }
+
+                barMapObj[fileName].push(brickObj);
+            } else {
+                if (!barMapObj[fileName]) {
+                    barMapObj[fileName] = {};
+                }
+                __addFileRecursively(barMapObj[fileName], splitPath, brick);
+            }
+        }
+    };
+
+    this.isInHeader = (filePath) => {
+        return header[filePath] !== undefined;
+    };
+
+    this.removeBrick = (filePath, brickHash) => {
+        let indexToRemove = header[filePath].findIndex(brickObj => brickObj.hash === brickHash);
+        header[filePath].splice(indexToRemove, 1);
+    };
+
+    this.delete = (barPath) => {
+        barPath = pskPath.normalize(barPath);
+
+        function deletePath(targetObj, path) {
+            if (path === "") {
+                header = {};
+            } else {
+                delete targetObj[path];
+            }
+        }
+
+        const pathSegments = barPath.split("/");
+        let path = pathSegments.pop();
+        deletePath(navigate(pathSegments.join("/")), path);
+    };
+
+    this.getBricksMeta = (filePath) => {
+        const pathSegments = filePath.split("/");
+        const fileName = pathSegments.pop();
+        let fileBricks = navigate(pathSegments.join("/"));
+        fileBricks = fileBricks[fileName];
+        if (typeof fileBricks === "undefined") {
+            throw Error(`Path <${filePath}> not found`);
+        }
+        if (!Array.isArray(fileBricks) && typeof fileBricks === "object") {
+            throw Error(`Path <${filePath}> is a folder`);
+        }
+
+        return fileBricks;
+    };
+
+    this.getHashList = (filePath) => {
+        filePath = pskPath.normalize(filePath);
+        if (filePath === "") {
+            throw Error(`Invalid path ${filePath}.`);
+        }
+        this.load();
+        const pathSegments = filePath.split("/");
+
+        return __getHashListRecursively(header, pathSegments);
+
+        function __getHashListRecursively(barMapObj, pathSegments) {
+            let folderName = pathSegments.shift();
+            if (folderName === "") {
+                folderName = pathSegments.shift();
+            }
+            if (barMapObj[folderName]) {
+                if (pathSegments.length === 0) {
+                    return barMapObj[folderName].map(brickObj => brickObj.hash);
+                } else {
+                    return __getHashListRecursively(barMapObj[folderName], pathSegments);
+                }
+            } else {
+                throw Error(`Invalid path ${filePath}`);
+            }
+        }
+    };
+
+    this.getCheckSumList = (filePath) => {
+        this.load();
+        return header[filePath].map(brickObj => brickObj.checkSum);
+    };
+
+    this.isEmpty = (filePath) => {
+        filePath = pskPath.normalize(filePath);
+        this.load();
+
+        if (filePath === "/") {
+            return Object.keys(header).length === 0;
+        } else {
+            const pathSegments = filePath.split("/");
+            return __checkIsEmptyRecursively(header, pathSegments);
+        }
+
+        function __checkIsEmptyRecursively(folderObj, pathSegments) {
+            if (Object.keys(folderObj).length === 0) {
+                return true;
+            }
+
+            let folderName = pathSegments.shift();
+            if (folderName === "") {
+                folderName = pathSegments.shift();
+            }
+
+            if (folderObj[folderName]) {
+                if (pathSegments.length === 0) {
+                    if (Array.isArray(folderObj[folderName])) {
+                        return folderObj[folderName].length === 0;
+                    } else {
+                        return Object.keys(folderObj[folderName]).length === 0;
+                    }
+                } else {
+                    return __checkIsEmptyRecursively(folderObj[folderName], pathSegments);
+                }
+            } else {
+                return true;
+            }
+        }
+    };
+
+    this.emptyList = (filePath) => {
+        filePath = pskPath.normalize(filePath);
+        this.load();
+
+        const pathSegments = filePath.split("/");
+        __emptyListRecursively(header, pathSegments);
+
+        function __emptyListRecursively(folderObj, pathSegments) {
+            let folderName = pathSegments.shift();
+            if (folderName === "") {
+                folderName = pathSegments.shift();
+            }
+
+            if (folderObj[folderName]) {
+                if (pathSegments.length === 0) {
+                    if (Array.isArray(folderObj[folderName])) {
+                        folderObj[folderName] = []
+                    } else {
+                        throw Error(`Invalid path ${filePath}`);
+                    }
+                } else {
+                    __emptyListRecursively(folderObj[folderName], pathSegments);
+                }
+            }
+        }
+    };
+
+
+    this.toBrick = () => {
+        this.load();
+        archiveConfig.setIsEncrypted(true);
+        const brick = new Brick(archiveConfig);
+        if (encryptionKey) {
+            brick.setTransformParameters({key: encryptionKey});
+        }
+        brick.setRawData(Buffer.from(JSON.stringify(header)));
+        return brick;
+    };
+
+
+    this.getFileList = (folderBarPath, recursive) => {
+        if (typeof recursive === "undefined") {
+            recursive = true;
+        }
+        folderBarPath = pskPath.normalize(folderBarPath);
+        this.load();
+        let files = [];
+
+        function printFiles(targetObj, currentPath) {
+            for (let prop in targetObj) {
+                if (Array.isArray(targetObj[prop])) {
+                    let filePath = pskPath.join(currentPath, prop);
+                    files.push(filePath);
+                } else {
+                    if (typeof targetObj[prop] === "object") {
+                        if (recursive === true) {
+                            printFiles(targetObj[prop], pskPath.join(currentPath, prop));
+                        }
+                    } else {
+                        throw Error("BarMap corrupted.");
+                    }
+                }
+            }
+        }
+
+        printFiles(navigate(folderBarPath), "");
+        return files;
+    };
+
+    function navigate(toPath) {
+        let target = header;
+        let segments = toPath.split("/");
+        for (let i in segments) {
+            let segment = segments[i];
+            if (segment !== "") {
+                if (typeof target[segment] !== "undefined") {
+                    if (!Array.isArray(target[segment]) && typeof target[segment] === "object") {
+                        target = target[segment];
+                    } else {
+                        if (Array.isArray(target[segment]) && i < segments.length) {
+                            throw Error(`Path ${toPath} is not valid!`);
+                        }
+                    }
+                } else {
+                    return undefined;
+                }
+            }
+        }
+
+        return target;
+    }
+
+    this.getFolderList = (barPath, recursive) => {
+        let folders = [];
+
+        function printFolders(targetObj, currentPath) {
+            for (let prop in targetObj) {
+                if (typeof targetObj[prop] === "object" && !Array.isArray(targetObj[prop])) {
+                    folders.push(pskPath.join(currentPath, prop));
+                    if (recursive === true) {
+                        printFolders(targetObj[prop], pskPath.join(currentPath, prop));
+                    }
+                } else {
+                    if (!Array.isArray(targetObj[prop])) {
+                        throw Error("BarMap corrupted.");
+                    }
+                }
+            }
+        }
+
+        printFolders(navigate(barPath), "");
+        return folders;
+    };
+
+    this.getTransformParameters = (brickMeta) => {
+        this.load();
+        if (typeof brickMeta === "undefined") {
+            return encryptionKey ? {key: encryptionKey} : undefined;
+        }
+
+        const addTransformData = {};
+        if (brickMeta.key) {
+            addTransformData.key = Buffer.from(brickMeta.key);
+        }
+
+        return addTransformData;
+    };
+
+    this.load = () => {
+        if (header instanceof Brick) {
+            header.setConfig(archiveConfig);
+            header.setTransformParameters({key: encryptionKey});
+            header = JSON.parse(header.getRawData().toString());
+        } else {
+            if (Buffer.isBuffer(header)) {
+                header = header.toString();
+            }
+
+            if (typeof header === "string") {
+                header = JSON.parse(header);
+            }
+        }
+    };
+
+    this.setConfig = (config) => {
+        archiveConfig = config;
+    };
+
+    this.getConfig = () => {
+        return archiveConfig;
+    };
+
+    this.setEncryptionKey = (encKey) => {
+        encryptionKey = encKey;
+    };
+
+    this.removeFile = (filePath) => {
+        this.load();
+        delete header[filePath];
+    };
+}
+
+module.exports = BarMap;
+
+}).call(this,require("buffer").Buffer)
+
+},{"./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","buffer":false,"swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js":[function(require,module,exports){
 const crypto = require('pskcrypto');
 const BrickTransformFactory = require("./transforms/BrickTransformFactory");
 const transformFactory = new BrickTransformFactory();
@@ -1519,11 +1570,7 @@ function Brick(config) {
     };
 
     this.getKey = () => {
-        const seedId = config.getSeedKey();
-        if (seedId) {
-            return seedId;
-        }
-        return config.getMapDigest();
+        return config.getSeedKey();
     };
 
     this.setKey = (key) => {
@@ -1619,6 +1666,21 @@ function Brick(config) {
         return transformedData.length;
     };
 
+    this.getSummary = () => {
+        let encryptionKey;
+        const transformParameters = this.getTransformParameters();
+
+        if (transformParameters) {
+            encryptionKey = transformParameters.key;
+        }
+
+        return {
+            hash: this.getHash(),
+            checkSum: this.getAdler32(),
+            encryptionKey
+        };
+    }
+
 //----------------------------------------------- internal methods -----------------------------------------------------
     function transformData() {
         if (!transform) {
@@ -1639,136 +1701,684 @@ function Brick(config) {
 
 module.exports = Brick;
 
-},{"./transforms/BrickTransformFactory":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js","adler32":"adler32","pskcrypto":"pskcrypto"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FileBarMap.js":[function(require,module,exports){
+},{"./transforms/BrickTransformFactory":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js","adler32":"adler32","pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/Service.js":[function(require,module,exports){
 (function (Buffer){
-const Brick = require("./Brick");
-const util = require("../utils/utilities");
+'use strict'
+
 const pathModule = "path";
 const path = require(pathModule);
 
-function FileBarMap(header) {
-    header = header || {};
+const isStream = require("../../utils/isStream");
+const stream = require('stream');
 
-    let brickOffset = util.getBarMapOffsetSize();
-    let archiveConfig;
-    let encryptionKey;
+/**
+ * Brick storage layer
+ * Wrapper over EDFSBrickStorage
+ *
+ * @param {object} options
+ * @param {Cache} options.cache
+ * @param {number} options.bufferSize
+ * @param {EDFSBrickStorage} options.storageProvider
+ * @param {callback} options.brickFactoryCallback
+ * @param {FSAdapter} options.fsAdapter
+ * @param {callback} options.brickDataExtractorCallback
+ * @param {callback} options.barMapConfiguratorCallback
+ */
+function Service(options) {
+    options = options || {};
 
-    this.add = (filePath, brick) => {
-        filePath = filePath.split(path.sep).join(path.posix.sep);
-        this.load();
-        if (typeof header[filePath] === "undefined") {
-            header[filePath] = [];
+    this.cache = options.cache;
+    this.bufferSize = parseInt(options.bufferSize, 10);
+    this.storageProvider = options.storageProvider;
+    this.brickFactoryCallback = options.brickFactoryCallback;
+    this.fsAdapter = options.fsAdapter;
+    this.brickDataExtractorCallback = options.brickDataExtractorCallback;
+    this.barMapConfiguratorCallback = options.barMapConfiguratorCallback;
+
+    if (isNaN(this.bufferSize) || this.bufferSize < 1) {
+        throw new Error('Buffer size is required');
+    }
+
+    if (!this.storageProvider) {
+        throw new Error('Storage provider is required');
+    }
+
+    if (typeof this.brickFactoryCallback !== 'function') {
+        throw new Error('A brick factory callback is required');
+    }
+
+    if (!this.fsAdapter) {
+        throw new Error('A file system adapter is required');
+    }
+
+    if (typeof this.brickDataExtractorCallback !== 'function') {
+        throw new Error('A Brick data extractor callback is required');
+    }
+
+    if (typeof this.barMapConfiguratorCallback !== 'function') {
+        throw new Error('A BarMap configurator callback is required');
+    }
+
+    /**
+     * @param {*} key
+     * @return {Boolean}
+     */
+    const hasInCache = (key) => {
+        if (!this.cache) {
+            return false;
         }
 
-        const brickObj = {
-            checkSum: brick.getAdler32(),
-            offset: brickOffset,
-            hash: brick.getHash()
+        return this.cache.has(key);
+    }
+
+    /**
+     * @param {*} key
+     * @param {*} value
+     */
+    const storeInCache = (key, value) => {
+        if (!this.cache) {
+            return;
+        }
+
+        this.cache.set(key, value);
+    }
+
+    /**
+     * Creates writable stream to a EDFSBrickStorage instance
+     *
+     * @param {EDFSBrickStorage} storageProvider
+     * @param {callback} beforeCopyCallback
+     * @return {stream.Writable}
+     */
+    const createBricksWritableStream = (storageProvider, beforeCopyCallback) => {
+        return ((storageProvider, beforeCopyCallback) => {
+
+            const writableStream = new stream.Writable({
+                write(brickContainer, encoding, callback) {
+                    let { brick, brickMeta } = brickContainer;
+                    if (typeof beforeCopyCallback === 'function') {
+                        brick = beforeCopyCallback(brickMeta, brick);
+                    }
+
+                    storageProvider.putBrick(brick, (err, digest) => {
+                        if (err) {
+                            return callback(err);
+                        }
+
+                        const brickSummary = brick.getSummary();
+                        brickSummary.digest = digest;
+                        this.bricksSummary.push(brickSummary);
+
+                        callback();
+                    })
+                },
+                objectMode: true
+            });
+
+            writableStream.bricksSummary = [];
+            return writableStream;
+
+        })(storageProvider, beforeCopyCallback);
+    }
+
+    /**
+     * Create a readable stream of Brick objects
+     * retrieved from EDFSBrickStorage
+     *
+     * @param {Array<object>} bricksMeta
+     * @return {stream.Readable}
+     */
+    const createBricksReadableStream = (bricksMeta) => {
+        return ((bricksMeta) => {
+
+            let brickIndex = 0;
+
+            const readableStream = new stream.Readable({
+                read(size) {
+                    if (brickIndex < bricksMeta.length) {
+                        this.getBrick(brickIndex++);
+                    }
+                },
+                objectMode: true
+            });
+
+            // Get a brick and push it into the stream
+            const self = this;
+            readableStream.getBrick = function (brickIndex) {
+                const brickMeta = bricksMeta[brickIndex];
+                self.storageProvider.getBrick(brickMeta.hash, (err, brick) => {
+                    if (err) {
+                        this.destroy(err);
+                        return;
+                    }
+
+                    this.push({
+                        brickMeta,
+                        brick
+                    });
+
+                    if (brickIndex >= (bricksMeta.length - 1)) {
+                        this.push(null);
+                    }
+                });
+            };
+
+            return readableStream;
+
+        })(bricksMeta);
+    }
+
+    /**
+     * Retrieves a Brick from storage and converts
+     * it into a Buffer
+     *
+     * @param {object} brickMeta
+     * @param {callback} callback
+     */
+    const getBrickAsBuffer = (brickMeta, callback) => {
+        if (hasInCache(brickMeta.hash)) {
+            const data = this.cache.get(brickMeta.hash);
+            return callback(undefined, data);
+        }
+
+        this.storageProvider.getBrick(brickMeta.hash, (err, brick) => {
+            if (err) {
+                return callback(err);
+            }
+
+            const data = this.brickDataExtractorCallback(brickMeta, brick);
+            storeInCache(brickMeta.hash, data);
+            callback(undefined, data);
+        });
+    };
+
+    /**
+     * Counts the number of blocks in a file
+     *
+     * @param {string} filePath
+     * @param {callback} callback
+     */
+    const getFileBlocksCount = (filePath, callback) => {
+        this.fsAdapter.getFileSize(filePath, (err, size) => {
+            if (err) {
+                return callback(err);
+            }
+
+            let blocksCount = Math.floor(size / this.bufferSize);
+            if (size % this.bufferSize > 0) {
+                ++blocksCount;
+            }
+
+            callback(undefined, blocksCount);
+        })
+    };
+
+    /**
+     * Creates a Brick from a Buffer
+     * and saves it into brick storage
+     *
+     * @param {Buffer} data
+     * @param {callback} callback
+     */
+    const convertDataBlockToBrick = (data, callback) => {
+        const brick = this.brickFactoryCallback();
+        brick.setRawData(data);
+
+        this.storageProvider.putBrick(brick, (err, digest) => {
+            if (err) {
+                return callback(err);
+            }
+
+            const brickSummary = brick.getSummary();
+            brickSummary.digest = digest;
+
+            return callback(undefined, brickSummary);
+        });
+
+    };
+
+    /**
+     * Recursively breaks a buffer into Brick objects and
+     * stores them into storage
+     *
+     * @param {Array<object>} resultContainer
+     * @param {Buffer} buffer
+     * @param {number} blockIndex
+     * @param {number} blockSize
+     * @param {callback} callback
+     */
+    const convertBufferToBricks = (resultContainer, buffer, blockIndex, blockSize, callback) => {
+        let blocksCount = Math.floor(buffer.length / blockSize);
+        if ((buffer.length % blockSize) > 0) {
+            ++blocksCount;
+        }
+
+        const blockData = buffer.slice(blockIndex * blockSize, (blockIndex + 1) * blockSize);
+
+        convertDataBlockToBrick(blockData, (err, result) => {
+            if (err) {
+                return callback(err);
+            }
+
+            resultContainer.push(result);
+            ++blockIndex;
+
+            if (blockIndex < blocksCount) {
+                return convertBufferToBricks(resultContainer, buffer, blockIndex, blockSize, callback);
+            }
+
+            return callback();
+        });
+    };
+
+    /**
+     * Copy the contents of a file into brick storage
+     *
+     * @param {Array<object>} resultContainer
+     * @param {string} filePath
+     * @param {number} blockIndex
+     * @param {number} blocksCount
+     * @param {callback} callback
+     */
+    const convertFileToBricks = (resultContainer, filePath, blockIndex, blocksCount, callback) => {
+        if (typeof blocksCount === 'function') {
+            callback = blocksCount;
+            blocksCount = blockIndex;
+            blockIndex = 0;
+        }
+
+        const blockOffset = blockIndex * this.bufferSize;
+        const blockEndOffset = (blockIndex + 1) * this.bufferSize - 1;
+        this.fsAdapter.readBlockFromFile(filePath, blockOffset, blockEndOffset, (err, data) => {
+            if (err) {
+                return callback(err);
+            }
+
+            convertDataBlockToBrick(data, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                resultContainer.push(result);
+                ++blockIndex;
+
+                if (blockIndex < blocksCount) {
+                    return convertFileToBricks(resultContainer, filePath, blockIndex, blocksCount, callback);
+                }
+
+                return callback();
+            })
+        })
+    };
+
+    /**
+     * Stores a Buffer as Bricks into brick storage
+     *
+     * @param {Buffer} buffer
+     * @param {number|callback} bufferSize
+     * @param {callback|undefined} callback
+     */
+    this.ingestBuffer = (buffer, bufferSize, callback) => {
+        if (typeof bufferSize === 'function') {
+            callback = bufferSize;
+            bufferSize = this.bufferSize;
+        }
+        const bricksSummary = [];
+
+        convertBufferToBricks(bricksSummary, buffer, 0, bufferSize, (err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, bricksSummary);
+        });
+    };
+
+    /**
+     * Reads a stream of data into multiple Brick objects
+     * stored in brick storage
+     *
+     * @param {stream.Readable} stream
+     * @param {callback}
+     */
+    this.ingestStream = (stream, callback) => {
+        let bricksSummary = [];
+        stream.on('data', (chunk) => {
+            if (typeof chunk === 'string') {
+                chunk = Buffer.from(chunk);
+            }
+
+            stream.pause();
+            this.ingestBuffer(chunk, chunk.length, (err, summary) => {
+                if (err) {
+                    stream.destroy(err);
+                    return;
+                }
+                bricksSummary = bricksSummary.concat(summary);
+                stream.resume();
+            });
+        });
+        stream.on('error', (err) => {
+            callback(err);
+        });
+        stream.on('end', () => {
+            callback(undefined, bricksSummary);
+        })
+    };
+
+    /**
+     * @param {string|Buffer|stream.Readable} data
+     * @param {callback} callback
+     */
+    this.ingestData = (data, callback) => {
+        if (typeof data === 'string') {
+            data = Buffer.from(data);
+        }
+
+        if (!Buffer.isBuffer(data) && !isStream.isReadable(data)) {
+            return callback(Error(`Type of data is ${typeof data}. Expected Buffer or Stream.Readable`));
+        }
+
+        if (Buffer.isBuffer(data)) {
+            return this.ingestBuffer(data, callback);
+        }
+
+        return this.ingestStream(data, callback);
+    };
+
+    /**
+     * Copy the contents of a file into brick storage
+     *
+     * @param {string} filePath
+     * @param {callback} callback
+     */
+    this.ingestFile = (filePath, callback) => {
+        const bricksSummary = [];
+
+        getFileBlocksCount(filePath, (err, blocksCount) => {
+            if (err) {
+                return callback(err);
+            }
+
+            convertFileToBricks(bricksSummary, filePath, blocksCount, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                callback(undefined, bricksSummary);
+            });
+        });
+    };
+
+    /**
+     * Copy the contents of multiple files into brick storage
+     *
+     * @param {Array<string>} filePath
+     * @param {callback} callback
+     */
+    this.ingestFiles = (files, callback) => {
+        const bricksSummary = {};
+
+        const ingestFilesRecursive = (files, callback) => {
+            if (!files.length) {
+                return callback(undefined, bricksSummary);
+            }
+
+            const filePath = files.pop();
+            const filename = path.basename(filePath);
+
+            this.ingestFile(filePath, (err, result) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                bricksSummary[filename] = result;
+
+                ingestFilesRecursive(files, callback);
+            });
         };
 
-        const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
-        if (encKey) {
-            brickObj.key = encKey;
-        }
-
-        header[filePath].push(brickObj);
-        brickOffset += brick.getTransformedSize();
+        ingestFilesRecursive(files, callback);
     };
 
-    this.getHashList = (filePath) => {
-        this.load();
-        return header[filePath].map(brickObj => brickObj.offset);
-    };
+    /**
+     * Copy the contents of folder into brick storage
+     *
+     * @param {string} folderPath
+     * @param {callback} callback
+     */
+    this.ingestFolder = (folderPath, callback) => {
+        const bricksSummary = {};
+        const filesIterator = this.fsAdapter.getFilesIterator(folderPath);
 
-    this.getFileList = (folderBarPath) => {
-        this.load();
-        if (!folderBarPath) {
-            return Object.keys(header);
-        }
-        return Object.keys(header).filter(fileName => fileName.includes(folderBarPath));
-    };
+        const iteratorHandler = (err, filename, dirname) => {
+            if (err) {
+                return callback(err);
+            }
 
-    this.getDictionaryObject = () => {
-        let objectDict = {};
-        Object.keys(header).forEach((fileName) => {
-            let brickObjects = header[fileName];
-            for (let j = 0; j < brickObjects.length; j++) {
-                if (typeof objectDict[brickObjects[j]['checkSum']] === 'undefined') {
-                    objectDict[brickObjects[j]['checkSum']] = [];
+            if (typeof filename === 'undefined') {
+                return callback(undefined, bricksSummary);
+            }
+
+            const filePath = path.join(dirname, filename);
+            this.ingestFile(filePath, (err, result) => {
+                if (err) {
+                    return callback(err);
                 }
-                objectDict[brickObjects[j]['checkSum']].push(brickObjects[j]['hash']);
+
+                bricksSummary[filename] = result;
+                filesIterator.next(iteratorHandler);
+            });
+        };
+
+        filesIterator.next(iteratorHandler);
+    };
+
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * from storage and create a Buffer using their data
+     *
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createBufferFromBricks = (bricksMeta, callback) => {
+        let buffer = Buffer.alloc(0);
+
+        const getBricksAsBufferRecursive = (index, callback) => {
+            const brickMeta = bricksMeta[index];
+
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                buffer = Buffer.concat([buffer, data]);
+                ++index;
+
+                if (index < bricksMeta.length) {
+                    return getBricksAsBufferRecursive(index, callback);
+                }
+
+                callback(undefined, buffer);
+            });
+        };
+
+        getBricksAsBufferRecursive(0, callback);
+    }
+
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * from storage and create a readable stream
+     * from their data
+     *
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createStreamFromBricks = (bricksMeta, callback) => {
+        let brickIndex = 0;
+
+        const readableStream = new stream.Readable({
+            read(size) {
+                if (brickIndex < bricksMeta.length) {
+                    this.readBrickData(brickIndex++);
+                }
             }
         });
-        return objectDict;
-    };
 
-    this.getTransformParameters = (brickId) => {
-        if (!brickId) {
-            return encryptionKey ? {key: encryptionKey} : {};
-        }
+        // Get a brick and push it into the stream
+        readableStream.readBrickData = function (brickIndex) {
+            const brickMeta = bricksMeta[brickIndex];
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    this.destroy(err);
+                    return;
+                }
 
-        this.load();
-        let bricks = [];
-        const files = this.getFileList();
+                this.push(data);
 
-        files.forEach(filePath => {
-            bricks = bricks.concat(header[filePath]);
-        });
+                if (brickIndex >= (bricksMeta.length - 1)) {
+                    this.push(null);
+                }
+            });
+        };
 
-        const brickObj = bricks.find(brick => {
-            return brick.offset === brickId;
-        });
+        callback(undefined, readableStream);
+    }
 
-        const addTransformData = {};
-        if (brickObj.key) {
-            addTransformData.key = Buffer.from(brickObj.key);
-        }
+    /**
+     * Retrieve all the Bricks identified by `bricksMeta`
+     * and store their data into a file
+     *
+     * @param {string} filePath
+     * @param {Array<object>} bricksMeta
+     * @param {callback} callback
+     */
+    this.createFileFromBricks = (filePath, bricksMeta, callback) => {
+        const getBricksAsBufferRecursive = (index, callback) => {
+            const brickMeta = bricksMeta[index];
 
-        return addTransformData;
-    };
+            getBrickAsBuffer(brickMeta, (err, data) => {
+                if (err) {
+                    return callback(err);
+                }
 
-    this.toBrick = () => {
-        this.load();
-        const brick = new Brick(archiveConfig);
-        brick.setTransformParameters({key: encryptionKey});
-        brick.setRawData(Buffer.from(JSON.stringify(header)));
-        return brick;
-    };
+                this.fsAdapter.appendBlockToFile(filePath, data, (err) => {
+                    if (err) {
+                        return callback(err);
+                    }
 
-    this.load = () => {
-        if (header instanceof Brick) {
-            header.setConfig(archiveConfig);
-            if (encryptionKey) {
-                header.setTransformParameters({key: encryptionKey});
+                    ++index;
+
+                    if (index < bricksMeta.length) {
+                        return getBricksAsBufferRecursive(index, callback);
+                    }
+
+                    callback();
+                });
+            });
+        };
+
+        getBricksAsBufferRecursive(0, callback);
+    }
+
+    /**
+     * Copy all the Bricks identified by `bricksList`
+     * into another storage provider
+     *
+     * @param {object} bricksList
+     * @param {object} options
+     * @param {FSAdapter} options.dstStorage
+     * @param {callback} options.beforeCopyCallback
+     * @param {callback} callback
+     */
+    this.copyBricks = (bricksList, options, callback) => {
+        const bricksSetKeys = Object.keys(bricksList);
+        const newBricksSetKeys = {};
+
+        const copyBricksRecursive = (callback) => {
+            if (!bricksSetKeys.length) {
+                return callback();
             }
-            header = JSON.parse(header.getRawData().toString());
+
+            const setKey = bricksSetKeys.shift();
+            const bricksMeta = bricksList[setKey];
+
+            const srcStream = createBricksReadableStream(bricksMeta);
+            const dstStream = createBricksWritableStream(options.dstStorage, options.beforeCopyCallback);
+
+            srcStream.on('error', (err) => {
+                callback(err);
+                dstStream.destroy(err);
+            });
+
+            dstStream.on('finish', () => {
+                newBricksSetKeys[setKey] = dstStream.bricksSummary;
+                dstStream.destroy();
+                copyBricksRecursive(callback);
+            });
+
+            srcStream.pipe(dstStream);
+        };
+
+        copyBricksRecursive((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, newBricksSetKeys);
+        });
+    };
+
+    /**
+     * @param {string} hash
+     * @param {callback} callback
+     */
+    this.getBarMap = (hash, callback) => {
+        if (hash && hasInCache(hash)) {
+            const map = this.cache.get(hash);
+            this.storageProvider.setBarMap(map);
+            return callback(undefined, map);
         }
-    };
 
-    this.setConfig = (config) => {
-        archiveConfig = config;
-    };
+        this.storageProvider.getBarMap(hash, (err, map) => {
+            if (err) {
+                return callback(err);
+            }
 
-    this.getConfig = () => {
-        return archiveConfig;
-    };
+            map = this.barMapConfiguratorCallback(map);
 
-    this.setEncryptionKey = (encKey) => {
-        encryptionKey = encKey;
-    };
+            if (hash) {
+                storeInCache(hash, map);
+            }
 
-    this.removeFile = (filePath) => {
-        this.load();
-        delete header[filePath];
-    };
+            this.storageProvider.setBarMap(map);
+            callback(undefined, map);
+        })
+    }
+
+    /**
+     * @param {BarMap} barMap
+     * @param {callback} callback
+     */
+    this.putBarMap = (barMap, callback) => {
+        this.storageProvider.putBarMap(barMap, callback);
+    }
 }
 
-module.exports = FileBarMap;
+module.exports = Service;
+
 }).call(this,require("buffer").Buffer)
 
-},{"../utils/utilities":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js":[function(require,module,exports){
+},{"../../utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js","buffer":false,"stream":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/index.js":[function(require,module,exports){
+'use strict'
+
+module.exports = {
+    Service: require('./Service')
+};
+
+},{"./Service":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BrickStorageService/Service.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FileBrickStorage.js":[function(require,module,exports){
 (function (Buffer){
-const BarMap = require("./FileBarMap");
+const BarMap = require("./obsolete/FileBarMap");
 const util = require("../utils/utilities");
 const fs = require("fs");
 const Brick = require("./Brick");
@@ -1984,413 +2594,13 @@ module.exports = {
         return new FileBrickStorage(filePath);
     }
 };
-}).call(this,require("buffer").Buffer)
-
-},{"../utils/AsyncDispatcher":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js","../utils/utilities":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\utilities.js","./Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","./FileBarMap":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FileBarMap.js","buffer":false,"fs":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FolderBarMap.js":[function(require,module,exports){
-(function (Buffer){
-const Brick = require("./Brick");
-const pathModule = "path";
-let path;
-try {
-    path = require(pathModule);
-} catch (err) {
-} finally {
-    if (typeof path === "undefined") {
-        path = {sep: "/"};
-    }
-}
-
-function FolderBarMap(header) {
-    header = header || {};
-    const pskPath = require("swarmutils").path;
-    let archiveConfig;
-    let encryptionKey;
-
-    this.add = (filePath, brick) => {
-        filePath = pskPath.normalize(filePath);
-        if (filePath === "") {
-            throw Error("Invalid path");
-        }
-        this.load();
-        const pathSegments = filePath.split("/");
-        __addFileRecursively(header, pathSegments, brick);
-
-        function __addFileRecursively(barMapObj, splitPath, brick) {
-            let fileName = splitPath.shift();
-            if (fileName === "") {
-                fileName = splitPath.shift();
-            }
-            if (splitPath.length === 0) {
-                const brickObj = {
-                    checkSum: brick.getAdler32(),
-                    hash: brick.getHash()
-                };
-
-                const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
-                if (encKey) {
-                    brickObj.key = encKey;
-                }
-
-
-                if (!barMapObj[fileName]) {
-                    barMapObj[fileName] = [];
-                }
-
-
-                barMapObj[fileName].push(brickObj);
-            } else {
-                if (!barMapObj[fileName]) {
-                    barMapObj[fileName] = {};
-                }
-                __addFileRecursively(barMapObj[fileName], splitPath, brick);
-            }
-        }
-    };
-
-    this.isInHeader = (filePath) => {
-        return header[filePath] !== undefined;
-    };
-
-    this.removeBrick = (filePath, brickHash) => {
-        let indexToRemove = header[filePath].findIndex(brickObj => brickObj.hash === brickHash);
-        header[filePath].splice(indexToRemove, 1);
-    };
-
-    this.delete = (barPath) => {
-        barPath = pskPath.normalize(barPath);
-
-        if (barPath === "/") {
-            header = {};
-        } else {
-            const pathSegments = barPath.split("/");
-            if (pathSegments[0] === "") {
-                pathSegments.shift();
-            }
-            __removeRecursively(header, pathSegments);
-        }
-
-        function __removeRecursively(folderObj, splitPath) {
-            const folderName = splitPath.shift();
-            if (folderObj[folderName]) {
-                if (splitPath.length === 0) {
-                    folderObj[folderName] = undefined;
-                } else {
-                    __removeRecursively(folderObj[folderName], splitPath);
-                }
-            }
-        }
-    };
-
-    this.getHashList = (filePath) => {
-        filePath = pskPath.normalize(filePath);
-        if (filePath === "") {
-            throw Error(`Invalid path ${filePath}.`);
-        }
-        this.load();
-        const pathSegments = filePath.split("/");
-
-        return __getHashListRecursively(header, pathSegments);
-
-        function __getHashListRecursively(barMapObj, pathSegments) {
-            let folderName = pathSegments.shift();
-            if (folderName === "") {
-                folderName = pathSegments.shift();
-            }
-            if (barMapObj[folderName]) {
-                if (pathSegments.length === 0) {
-                    return barMapObj[folderName].map(brickObj => brickObj.hash);
-                } else {
-                    return __getHashListRecursively(barMapObj[folderName], pathSegments);
-                }
-            } else {
-                throw Error(`Invalid path ${filePath}`);
-            }
-        }
-    };
-
-    this.getCheckSumList = (filePath) => {
-        this.load();
-        return header[filePath].map(brickObj => brickObj.checkSum);
-    };
-
-    this.isEmpty = (filePath) => {
-        filePath = pskPath.normalize(filePath);
-        this.load();
-
-        if (filePath === "/") {
-            return Object.keys(header).length === 0;
-        } else {
-            const pathSegments = filePath.split("/");
-            return __checkIsEmptyRecursively(header, pathSegments);
-        }
-
-        function __checkIsEmptyRecursively(folderObj, pathSegments) {
-            if (Object.keys(folderObj).length === 0) {
-                return true;
-            }
-
-            let folderName = pathSegments.shift();
-            if (folderName === "") {
-                folderName = pathSegments.shift();
-            }
-
-            if (folderObj[folderName]) {
-                if (pathSegments.length === 0) {
-                    if (Array.isArray(folderObj[folderName])) {
-                        return folderObj[folderName].length === 0;
-                    } else {
-                        return Object.keys(folderObj[folderName]).length === 0;
-                    }
-                } else {
-                    return __checkIsEmptyRecursively(folderObj[folderName], pathSegments);
-                }
-            } else {
-                return true;
-            }
-        }
-    };
-
-    this.emptyList = (filePath) => {
-        filePath = pskPath.normalize(filePath);
-        this.load();
-
-        const pathSegments = filePath.split("/");
-        __emptyListRecursively(header, pathSegments);
-
-        function __emptyListRecursively(folderObj, pathSegments) {
-            let folderName = pathSegments.shift();
-            if (folderName === "") {
-                folderName = pathSegments.shift();
-            }
-
-            if (folderObj[folderName]) {
-                if (pathSegments.length === 0) {
-                    if (Array.isArray(folderObj[folderName])) {
-                        folderObj[folderName] = []
-                    } else {
-                        throw Error(`Invalid path ${filePath}`);
-                    }
-                } else {
-                    __emptyListRecursively(folderObj[folderName], pathSegments);
-                }
-            }
-        }
-    };
-
-
-    this.toBrick = () => {
-        this.load();
-        archiveConfig.setIsEncrypted(true);
-        const brick = new Brick(archiveConfig);
-        if (encryptionKey) {
-            brick.setTransformParameters({key: encryptionKey});
-        }
-        brick.setRawData(Buffer.from(JSON.stringify(header)));
-        return brick;
-    };
-
-
-    this.getFileList = (folderBarPath, recursive) => {
-        if (typeof recursive === "undefined") {
-            recursive = true;
-        }
-        folderBarPath = pskPath.normalize(folderBarPath);
-        this.load();
-        return getFilesFromPath(header, folderBarPath, recursive);
-
-
-        function getFilesFromPath(folderObj, barPath, recursive){
-            let files = [];
-            if (barPath === "/") {
-                __getAllFiles(header, barPath);
-
-                return files;
-            } else {
-                const pathSegments = barPath.split("/");
-                __getFilesFromPath(header, pathSegments);
-
-                return files;
-            }
-
-            function __getFilesFromPath(folderObj, pathSegments) {
-                let folderName = pathSegments.shift();
-                if (folderName === "") {
-                    folderName = pathSegments.shift();
-                }
-                if (folderObj[folderName]) {
-                    if (pathSegments.length === 0) {
-                        Object.keys(folderObj[folderName]).forEach(file => {
-                            if (Array.isArray(folderObj[folderName][file])) {
-                                files.push(file);
-                            }
-                        });
-                    } else {
-                        if (recursive === true) {
-                            __getFilesFromPath(folderObj[folderName], pathSegments);
-                        }
-                    }
-                }
-            }
-
-            function __getAllFiles(folderObj, relativePath) {
-                Object.keys(folderObj).forEach(folderName => {
-                    if (folderObj[folderName]) {
-                        let newPath = pskPath.join(relativePath, folderName);
-
-                        if (Array.isArray(folderObj[folderName])) {
-                            files.push(newPath);
-                        } else {
-                            if (recursive === true) {
-                                __getAllFiles(folderObj[folderName], newPath);
-                            }
-                        }
-                    }
-                });
-            }
-        }
-    };
-
-    this.getFolderList = (barPath, recursive) => {
-        barPath = pskPath.normalize(barPath);
-        let folders = [];
-        if (barPath === "/") {
-            __getAllFolders(header, barPath, recursive);
-            return folders;
-        } else {
-            const pathSegments = barPath.split("/");
-            __getFoldersFromPath(header, pathSegments, "/", recursive);
-            return folders;
-        }
-
-        function __getAllFolders(folderObj, relativePath, recursive) {
-            Object.keys(folderObj).forEach(folderName => {
-                if (typeof folderObj[folderName] === "object" && !Array.isArray(folderObj[folderName])) {
-                    const newPath = pskPath.join(relativePath, folderName);
-                    folders.push(newPath);
-                    if (recursive === true) {
-                        __getAllFolders(folderObj[folderName], newPath);
-                    }
-                }
-            });
-        }
-
-        function __getFoldersFromPath(folderObj, pathSegments, relativePath, recursive) {
-            let folderName = pathSegments.shift();
-            if (folderName === "") {
-                folderName = pathSegments.shift();
-            }
-            if (folderObj[folderName]) {
-                const newFolderPath = pskPath.join(relativePath, folderName);
-                if (pathSegments.length === 0) {
-                    folders.push(newFolderPath);
-                    Object.keys(folderObj[folderName]).forEach(fileName => {
-                        if (typeof folderObj[folderName][fileName] === "object" && !Array.isArray(folderObj[folderName][fileName])) {
-                            const newFilePath = pskPath.join(relativePath, fileName);
-                            folders.push(newFilePath);
-                            if (recursive === true) {
-                                __getFoldersFromPath(folderObj[folderName][fileName], pathSegments, newFilePath, recursive);
-                            }
-                        }
-                    });
-                } else {
-                    __getFoldersFromPath(folderObj[folderName], pathSegments, newFolderPath, recursive);
-                }
-            }
-        }
-    };
-
-    this.getTransformParameters = (brickId) => {
-        this.load();
-        if (!brickId) {
-            return encryptionKey ? {key: encryptionKey} : undefined;
-        }
-        let bricks = [];
-        const files = this.getFileList("/", true);
-        files.forEach(file => {
-            bricks = bricks.concat(getBricksForFile(file));
-        });
-
-        const brickObj = bricks.find(brick => {
-            return brick.hash === brickId;
-        });
-
-        const addTransformData = {};
-        if (brickObj.key) {
-            addTransformData.key = Buffer.from(brickObj.key);
-        }
-
-        return addTransformData;
-    };
-
-    this.load = () => {
-        if (header instanceof Brick) {
-            header.setConfig(archiveConfig);
-            header.setTransformParameters({key: encryptionKey});
-            header = JSON.parse(header.getRawData().toString());
-        } else {
-            if (Buffer.isBuffer(header)) {
-                header = header.toString();
-            }
-
-            if (typeof header === "string") {
-                header = JSON.parse(header);
-            }
-        }
-    };
-
-    this.setConfig = (config) => {
-        archiveConfig = config;
-    };
-
-    this.getConfig = () => {
-        return archiveConfig;
-    };
-
-    this.setEncryptionKey = (encKey) => {
-        encryptionKey = encKey;
-    };
-
-    this.removeFile = (filePath) => {
-        this.load();
-        delete header[filePath];
-    };
-
-    function getBricksForFile(filePath) {
-        filePath = pskPath.normalize(filePath);
-        const splitPath = filePath.split("/");
-        return __getBricksForFileRecursively(header, splitPath);
-
-
-        function __getBricksForFileRecursively(folderObj, splitPath) {
-            let folderName = splitPath.shift();
-            if (folderName === "") {
-                folderName = splitPath.shift();
-            }
-            if (folderObj[folderName]) {
-                if (splitPath.length === 0) {
-                    if (Array.isArray(folderObj[folderName])) {
-                        return folderObj[folderName];
-                    } else {
-                        throw Error(`Invalid path ${filePath}`);
-                    }
-                } else {
-                    return __getBricksForFileRecursively(folderObj[folderName], splitPath);
-                }
-            } else {
-                throw Error(`Invalid path ${filePath}`);
-            }
-        }
-    }
-}
-
-module.exports = FolderBarMap;
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","buffer":false,"swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js":[function(require,module,exports){
+},{"../utils/AsyncDispatcher":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/AsyncDispatcher.js","../utils/utilities":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./obsolete/FileBarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/obsolete/FileBarMap.js","buffer":false,"fs":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FolderBrickStorage.js":[function(require,module,exports){
 const fs = require("fs");
 const path = require("path");
-const BarMap = require("./FolderBarMap");
+const BarMap = require("./BarMap");
 const Brick = require("./Brick");
 
 function FolderBrickStorage(location) {
@@ -2486,7 +2696,8 @@ module.exports = {
         return new FolderBrickStorage(location);
     }
 };
-},{"./Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","./FolderBarMap":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","fs":false,"path":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Seed.js":[function(require,module,exports){
+
+},{"./BarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js","./Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","fs":false,"path":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("pskcrypto");
 const base58 = require("./base58");
@@ -2606,7 +2817,7 @@ module.exports = Seed;
 
 }).call(this,require("buffer").Buffer)
 
-},{"./base58":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\base58.js","buffer":false,"pskcrypto":"pskcrypto"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\base58.js":[function(require,module,exports){
+},{"./base58":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/base58.js","buffer":false,"pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/base58.js":[function(require,module,exports){
 (function (Buffer){
 const ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz";
 const BASE = ALPHABET.length;
@@ -2744,7 +2955,145 @@ module.exports = {
 };
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js":[function(require,module,exports){
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/obsolete/FileBarMap.js":[function(require,module,exports){
+(function (Buffer){
+const Brick = require("../Brick");
+const util = require("../../utils/utilities");
+const pathModule = "path";
+const path = require(pathModule);
+
+function FileBarMap(header) {
+    header = header || {};
+
+    let brickOffset = util.getBarMapOffsetSize();
+    let archiveConfig;
+    let encryptionKey;
+
+    this.addFileEntry = (path, bricks) => {
+        this.appendBricksToEntry(path, bricks);
+    };
+
+    this.appendBricksToEntry = (path, bricks) => {
+        for (const data of bricks) {
+            this.add(path, data);
+        }
+    }
+
+    this.add = (filePath, brick) => {
+        filePath = filePath.split(path.sep).join(path.posix.sep);
+        this.load();
+        if (typeof header[filePath] === "undefined") {
+            header[filePath] = [];
+        }
+
+        const brickObj = {
+            checkSum: brick.getAdler32(),
+            offset: brickOffset,
+            hash: brick.getHash()
+        };
+
+        const encKey = brick.getTransformParameters() ? brick.getTransformParameters().key : undefined;
+        if (encKey) {
+            brickObj.key = encKey;
+        }
+
+        header[filePath].push(brickObj);
+        brickOffset += brick.getTransformedSize();
+    };
+
+    this.getHashList = (filePath) => {
+        this.load();
+        return header[filePath].map(brickObj => brickObj.offset);
+    };
+
+    this.getFileList = (folderBarPath) => {
+        this.load();
+        if (!folderBarPath) {
+            return Object.keys(header);
+        }
+        return Object.keys(header).filter(fileName => fileName.includes(folderBarPath));
+    };
+
+    this.getDictionaryObject = () => {
+        let objectDict = {};
+        Object.keys(header).forEach((fileName) => {
+            let brickObjects = header[fileName];
+            for (let j = 0; j < brickObjects.length; j++) {
+                if (typeof objectDict[brickObjects[j]['checkSum']] === 'undefined') {
+                    objectDict[brickObjects[j]['checkSum']] = [];
+                }
+                objectDict[brickObjects[j]['checkSum']].push(brickObjects[j]['hash']);
+            }
+        });
+        return objectDict;
+    };
+
+    this.getTransformParameters = (brickId) => {
+        if (!brickId) {
+            return encryptionKey ? {key: encryptionKey} : {};
+        }
+
+        this.load();
+        let bricks = [];
+        const files = this.getFileList();
+
+        files.forEach(filePath => {
+            bricks = bricks.concat(header[filePath]);
+        });
+
+        const brickObj = bricks.find(brick => {
+            return brick.offset === brickId;
+        });
+
+        const addTransformData = {};
+        if (brickObj.key) {
+            addTransformData.key = Buffer.from(brickObj.key);
+        }
+
+        return addTransformData;
+    };
+
+    this.toBrick = () => {
+        this.load();
+        const brick = new Brick(archiveConfig);
+        brick.setTransformParameters({key: encryptionKey});
+        brick.setRawData(Buffer.from(JSON.stringify(header)));
+        return brick;
+    };
+
+    this.load = () => {
+        if (header instanceof Brick) {
+            header.setConfig(archiveConfig);
+            if (encryptionKey) {
+                header.setTransformParameters({key: encryptionKey});
+            }
+            header = JSON.parse(header.getRawData().toString());
+        }
+    };
+
+    this.setConfig = (config) => {
+        archiveConfig = config;
+    };
+
+    this.getConfig = () => {
+        return archiveConfig;
+    };
+
+    this.setEncryptionKey = (encKey) => {
+        encryptionKey = encKey;
+    };
+
+    this.removeFile = (filePath) => {
+        this.load();
+        delete header[filePath];
+    };
+}
+
+module.exports = FileBarMap;
+
+}).call(this,require("buffer").Buffer)
+
+},{"../../utils/utilities":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js","../Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransform.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransform(transformGenerator) {
     let directTransform;
@@ -2801,7 +3150,7 @@ module.exports = BrickTransform;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransformFactory.js":[function(require,module,exports){
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransformFactory.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator= require("./EncryptionGenerator");
 const CompressionEncryptionGenerator = require("./CompressionEncryptionGenerator");
@@ -2838,7 +3187,7 @@ function BrickTransformFactory() {
 module.exports = BrickTransformFactory;
 
 
-},{"./BrickTransform":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\BrickTransform.js","./CompressionEncryptionGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js","./CompressionGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\CompressionEncryptionGenerator.js":[function(require,module,exports){
+},{"./BrickTransform":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/BrickTransform.js","./CompressionEncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js","./CompressionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionEncryptionGenerator.js":[function(require,module,exports){
 const CompressionGenerator = require("./CompressionGenerator");
 const EncryptionGenerator = require("./EncryptionGenerator");
 
@@ -2881,7 +3230,7 @@ function CompressionEncryptionGenerator(config) {
 }
 
 module.exports = CompressionEncryptionGenerator;
-},{"./CompressionGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js","./EncryptionGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\CompressionGenerator.js":[function(require,module,exports){
+},{"./CompressionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js","./EncryptionGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/CompressionGenerator.js":[function(require,module,exports){
 const zlib = require("zlib");
 
 function CompressionGenerator(config) {
@@ -2935,7 +3284,7 @@ function CompressionGenerator(config) {
 module.exports = CompressionGenerator;
 
 
-},{"zlib":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\transforms\\EncryptionGenerator.js":[function(require,module,exports){
+},{"zlib":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/transforms/EncryptionGenerator.js":[function(require,module,exports){
 const crypto = require("pskcrypto");
 
 function EncryptionGenerator(config) {
@@ -3022,7 +3371,7 @@ function EncryptionGenerator(config) {
 }
 
 module.exports = EncryptionGenerator;
-},{"pskcrypto":"pskcrypto"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\AsyncDispatcher.js":[function(require,module,exports){
+},{"pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/AsyncDispatcher.js":[function(require,module,exports){
 
 function AsyncDispatcher(finalCallback) {
 	let results = [];
@@ -3072,7 +3421,7 @@ function AsyncDispatcher(finalCallback) {
 }
 
 module.exports = AsyncDispatcher;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\isStream.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/isStream.js":[function(require,module,exports){
 function isStream(stream){
     return stream !== null && typeof stream === 'object' && typeof stream.pipe === 'function';
 }
@@ -3104,7 +3453,7 @@ module.exports = {
     isDuplex
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\utils\\utilities.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/utils/utilities.js":[function(require,module,exports){
 const fs = require('fs');
 const OFFSET_SIZE = 8;
 
@@ -3123,7 +3472,7 @@ function ensureFileDoesNotExist(filePath, callback) {
 }
 
 module.exports = {getBarMapOffsetSize, ensureFileDoesNotExist};
-},{"fs":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js":[function(require,module,exports){
+},{"fs":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js":[function(require,module,exports){
 function EDFSBrickStorage(endpoint) {
 
     const bar = require("bar");
@@ -3153,6 +3502,34 @@ function EDFSBrickStorage(endpoint) {
             }
             callback(undefined, brick);
         });
+    };
+
+    const BRICK_MAX_SIZE_IN_BYTES = 4;
+    this.getMultipleBricks = function (brickHashes, callback) {
+        brickTransportStrategy.getMultipleBricks(brickHashes, (err, bricksData) => {
+            if (err) {
+                return callback(err);
+            }
+            let bricks = [];
+
+            function parseResponse(response) {
+                if (response.length > 0) {
+                    let brickSizeBuffer = response.slice(0, BRICK_MAX_SIZE_IN_BYTES);
+                    let brickSize = brickSizeBuffer.readUInt32BE();
+                    let brickData = response.slice(BRICK_MAX_SIZE_IN_BYTES, brickSize + BRICK_MAX_SIZE_IN_BYTES);
+                    const brick = bar.createBrick();
+                    brick.setTransformedData(brickData);
+                    bricks.push(brick);
+                    response = response.slice(brickSize + BRICK_MAX_SIZE_IN_BYTES);
+                    return parseResponse(response);
+                }
+            }
+
+            parseResponse(bricksData);
+            callback(undefined, bricks);
+        });
+
+
     };
 
     this.deleteBrick = function (brickHash, callback) {
@@ -3225,7 +3602,7 @@ function EDFSBrickStorage(endpoint) {
             }
             brickTransportStrategy.get(barMapId, (err, barMapData) => {
                 if (err) {
-                    return callback(err);
+                    return callback(undefined, bar.createBarMap());
                 }
 
                 const mapBrick = bar.createBrick();
@@ -3243,16 +3620,14 @@ function EDFSBrickStorage(endpoint) {
 module.exports = EDFSBrickStorage;
 
 
-},{"bar":"bar"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js":[function(require,module,exports){
+},{"bar":"bar"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-middleware/flows/BricksManager.js":[function(require,module,exports){
+(function (Buffer){
 const pathModule = "path";
 const path = require(pathModule);
 const fsModule = "fs";
 const fs = require(fsModule);
-const osModule = "os";
-const endOfLine = require(osModule).EOL;
 const crypto = require("pskcrypto");
 const folderNameSize = process.env.FOLDER_NAME_SIZE || 5;
-const FILE_SEPARATOR = '-';
 let brickStorageFolder;
 
 $$.flow.describe("BricksManager", {
@@ -3298,40 +3673,50 @@ $$.flow.describe("BricksManager", {
             }
         });
     },
-    addAlias: function (fileHash, readStream, callback) {
-        if (!this.__verifyFileName(fileHash, callback)) {
-            return;
-        }
 
-        this.__streamToString(readStream, (err, alias) => {
+    readMultipleBricks: function (brickHashes, writeStream, callback) {
+        if (!Array.isArray(brickHashes)) {
+            brickHashes = [brickHashes];
+        }
+        this.__writeMultipleBricksToStream(brickHashes, 0, writeStream, callback);
+    },
+
+    __writeBrickDataToStream: function (brickData, writeStream, callback) {
+        const brickSize = Buffer.alloc(4);
+        brickSize.writeUInt32BE(brickData.length);
+        writeStream.write(brickSize, (err) => {
             if (err) {
                 return callback(err);
             }
-            if (!alias) {
-                return callback(new Error("No alias was provided"));
-            }
 
-            const filePath = path.join(brickStorageFolder, alias);
-            this.__verifyFileExistence(filePath, (err) => {
-                if (err) {
-                    fs.writeFile(filePath, fileHash + endOfLine, callback);
-                } else {
-                    fs.appendFile(filePath, fileHash + endOfLine, callback);
-                }
-            });
-
+            writeStream.write(brickData, callback);
         });
     },
-    readVersions: function (alias, callback) {
-        const filePath = path.join(brickStorageFolder, alias);
-        fs.readFile(filePath, (err, fileHashes) => {
-            if (err) {
-                if (err.code === "ENOENT") {
-                    return callback(undefined, []);
+    __writeMultipleBricksToStream: function (brickHashes, brickIndex, writeStream, callback) {
+        const brickHash = brickHashes[brickIndex];
+        this.__readBrick(brickHash, (err, brickData) => {
+            this.__writeBrickDataToStream(brickData, writeStream, (err) => {
+                if (err) {
+                    return callback(err);
                 }
+                brickIndex++;
+                if (brickIndex === brickHashes.length) {
+                    callback();
+                } else {
+                    this.__writeMultipleBricksToStream(brickHashes, brickIndex, writeStream, callback);
+                }
+            });
+        });
+    },
+    __readBrick: function (brickHash, callback) {
+        const folderPath = path.join(brickStorageFolder, brickHash.substr(0, folderNameSize));
+        const filePath = path.join(folderPath, brickHash);
+        this.__verifyFileExistence(filePath, (err) => {
+            if (err) {
                 return callback(err);
             }
-            callback(undefined, fileHashes.toString().trimEnd().split(endOfLine));
+
+            fs.readFile(filePath, callback);
         });
     },
     __verifyFileName: function (fileName, callback) {
@@ -3346,16 +3731,16 @@ $$.flow.describe("BricksManager", {
         return true;
     },
     __ensureFolderStructure: function (folder, callback) {
-        try{
+        try {
             fs.mkdirSync(folder, {recursive: true});
-        }catch(err){
-            if(callback){
+        } catch (err) {
+            if (callback) {
                 callback(err);
-            }else{
+            } else {
                 throw err;
             }
         }
-        if(callback){
+        if (callback) {
             callback();
         }
     },
@@ -3369,7 +3754,7 @@ $$.flow.describe("BricksManager", {
                     hash.update(data);
                 });
 
-                const writeStream = fs.createWriteStream(filePath, {mode: 0o444});
+                const writeStream = fs.createWriteStream(filePath, {mode: 0o777});
 
                 writeStream.on("finish", () => {
                     callback(undefined, hash.digest("hex"));
@@ -3382,8 +3767,7 @@ $$.flow.describe("BricksManager", {
 
                 readStream.pipe(writeStream);
             } else {
-                callback();
-
+                callback(undefined, fileName);
             }
         });
     },
@@ -3397,22 +3781,12 @@ $$.flow.describe("BricksManager", {
     },
     __verifyFileExistence: function (filePath, callback) {
         fs.access(filePath, callback);
-    },
-    __streamToString: function (readStream, callback) {
-        let str = '';
-        readStream.on("data", (chunk) => {
-            str += chunk;
-        });
-
-        readStream.on("end", () => {
-            callback(undefined, str);
-        });
-
-        readStream.on("error", callback);
     }
 });
 
-},{"pskcrypto":"pskcrypto"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js":[function(require,module,exports){
+}).call(this,require("buffer").Buffer)
+
+},{"buffer":false,"pskcrypto":"pskcrypto"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-middleware/lib/EDFSMiddleware.js":[function(require,module,exports){
 const bricks_storage_folder = "brick-storage";
 const URL_PREFIX = "/EDFS";
 
@@ -3421,14 +3795,14 @@ function EDFSMiddleware(server) {
     require("../flows/BricksManager");
 
     let storageFolder = path.join(server.rootFolder, bricks_storage_folder);
-    if(typeof process.env.EDFS_BRICK_STORAGE_FOLDER !== "undefined"){
+    if (typeof process.env.EDFS_BRICK_STORAGE_FOLDER !== "undefined") {
         storageFolder = process.env.EDFS_BRICK_STORAGE_FOLDER;
     }
 
     $$.flow.start("BricksManager").init(storageFolder);
     console.log("Bricks Storage location", storageFolder);
 
-    server.use(`${URL_PREFIX}/*`, function (req, res, next) {
+    function setHeaders(req, res, next) {
         res.setHeader('Access-Control-Allow-Origin', '*');
 
         // Request methods you wish to allow
@@ -3437,9 +3811,9 @@ function EDFSMiddleware(server) {
         // Request headers you wish to allow
         res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Content-Length, X-Content-Length');
         next();
-    });
+    }
 
-    server.post(`${URL_PREFIX}/:fileId`, (req, res) => {
+    function uploadBrick(req, res) {
         $$.flow.start("BricksManager").write(req.params.fileId, req, (err, result) => {
             res.statusCode = 201;
             if (err) {
@@ -3451,9 +3825,9 @@ function EDFSMiddleware(server) {
             }
             res.end(JSON.stringify(result));
         });
-    });
+    }
 
-    server.get(`${URL_PREFIX}/:fileId`, (req, res) => {
+    function downloadBrick(req, res) {
         res.setHeader("content-type", "application/octet-stream");
         res.setHeader('Cache-control', 'max-age=31536000'); // set brick cache expiry to 1 year
         $$.flow.start("BricksManager").read(req.params.fileId, res, (err, result) => {
@@ -3464,102 +3838,95 @@ function EDFSMiddleware(server) {
             }
             res.end();
         });
-    });
+    }
 
-    server.post(`${URL_PREFIX}/attachHashToAlias/:fileId`, (req, res) => {
-        $$.flow.start("BricksManager").addAlias(req.params.fileId, req, (err, result) => {
-            res.statusCode = 201;
+    function downloadMultipleBricks(req, res) {
+        res.setHeader("content-type", "application/octet-stream");
+        res.setHeader('Cache-control', 'max-age=31536000'); // set brick cache expiry to 1 year
+        $$.flow.start("BricksManager").readMultipleBricks(req.query.hashes, res, (err, result) => {
+            res.statusCode = 200;
             if (err) {
-                res.statusCode = 500;
-
-                if (err.code === 'EACCES') {
-                    res.statusCode = 409;
-                }
+                console.log(err);
+                res.statusCode = 404;
             }
             res.end();
         });
-    });
+    }
 
-    server.get(`${URL_PREFIX}/getVersions/:alias`, (req, res) => {
-        $$.flow.start("BricksManager").readVersions(req.params.alias, (err, fileHashes) => {
-            res.statusCode = 200;
-            if (err) {
-                console.error(err);
-                res.statusCode = 404;
-            }
-            res.setHeader("content-type", "application/json");
-            res.end(JSON.stringify(fileHashes));
-        });
-    });
+    server.use(`${URL_PREFIX}/*`, setHeaders);
+    server.use(`${URL_PREFIX}/downloadMultipleBricks`, downloadMultipleBricks);
+    server.post(`${URL_PREFIX}/:fileId`, uploadBrick);
+    server.get(`${URL_PREFIX}/:fileId`, downloadBrick);
+    server.post(`${URL_PREFIX}/:fileId/:dldomain`, uploadBrick);
+    server.get(`${URL_PREFIX}/:fileId/:dldomain`, downloadBrick);
 }
 
 module.exports = EDFSMiddleware;
 
-},{"../flows/BricksManager":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-middleware\\flows\\BricksManager.js","path":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js":[function(require,module,exports){
+},{"../flows/BricksManager":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-middleware/flows/BricksManager.js","path":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js":[function(require,module,exports){
 (function (Buffer){
-
 function FetchBrickTransportStrategy(initialConfig) {
     const url = initialConfig;
     this.send = (name, data, callback) => {
 
-        fetch(url + "/EDFS/"+name, {
+        fetch(url + "/EDFS/" + name, {
             method: 'POST',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/octet-stream'
             },
             body: data
-        }).then(function(response) {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+        }).then(function (response) {
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().catch((err) => {
                 // This happens when the response is empty
                 return {};
             });
-        }).then(function(data) {
+        }).then(function (data) {
             callback(null, data)
-        }).catch(error=>{
+        }).catch(error => {
             callback(error);
         });
 
     };
 
     this.get = (name, callback) => {
-        fetch(url + "/EDFS/"+name,{
-            method: 'GET',
-            mode: 'cors',
-            headers: {
-                'Content-Type': 'application/octet-stream'
-            },
-        }).then(response=>{
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
-            }
-            return response.arrayBuffer();
-        }).then(arrayBuffer=>{
-                let buffer = new Buffer(arrayBuffer.byteLength);
-                let view = new Uint8Array(arrayBuffer);
-                for (let i = 0; i < buffer.length; ++i) {
-                    buffer[i] = view[i];
-                }
-
-            callback(null, buffer);
-        }).catch(error=>{
-            callback(error);
-        });
-    };
-
-    this.getHashForAlias = (alias, callback) => {
-        fetch(url + "/EDFS/getVersions/" + alias, {
+        fetch(url + "/EDFS/" + name, {
             method: 'GET',
             mode: 'cors',
             headers: {
                 'Content-Type': 'application/octet-stream'
             },
         }).then(response => {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
+            }
+            return response.arrayBuffer();
+        }).then(arrayBuffer => {
+            let buffer = new Buffer(arrayBuffer.byteLength);
+            let view = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < buffer.length; ++i) {
+                buffer[i] = view[i];
+            }
+
+            callback(null, buffer);
+        }).catch(error => {
+            callback(error);
+        });
+    };
+
+    this.getHashForAlias = (alias, callback) => {
+        fetch(url + "/anchoring/getVersions/" + alias, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Content-Type': 'application/octet-stream'
+            },
+        }).then(response => {
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().then(data => {
                 callback(null, data);
@@ -3570,7 +3937,7 @@ function FetchBrickTransportStrategy(initialConfig) {
     };
 
     this.attachHashToAlias = (alias, name, callback) => {
-        fetch(url + '/EDFS/attachHashToAlias/' + name, {
+        fetch(url + '/anchoring/attachHashToAlias/' + name, {
             method: 'POST',
             mode: 'cors',
             headers: {
@@ -3578,8 +3945,8 @@ function FetchBrickTransportStrategy(initialConfig) {
             },
             body: alias
         }).then(response => {
-            if(response.status>=400){
-                return callback(new Error(`An error occurred ${response.statusText}`))
+            if (response.status >= 400) {
+                throw new Error(`An error occurred ${response.statusText}`);
             }
             return response.json().catch((err) => {
                 // This happens when the response is empty
@@ -3590,12 +3957,13 @@ function FetchBrickTransportStrategy(initialConfig) {
         }).catch(error => {
             callback(error);
         })
-    }
+    };
 
     this.getLocator = () => {
         return url;
     };
 }
+
 //TODO:why we use this?
 FetchBrickTransportStrategy.prototype.FETCH_BRICK_TRANSPORT_STRATEGY = "FETCH_BRICK_TRANSPORT_STRATEGY";
 FetchBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
@@ -3607,8 +3975,7 @@ module.exports = FetchBrickTransportStrategy;
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js":[function(require,module,exports){
-
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js":[function(require,module,exports){
 function HTTPBrickTransportStrategy(endpoint) {
     require("psk-http-client");
 
@@ -3620,7 +3987,9 @@ function HTTPBrickTransportStrategy(endpoint) {
 
             try {
                 brickDigest = JSON.parse(brickDigest);
-            } catch (e) {}
+            } catch (e) {
+                return callback(e);
+            }
             callback(undefined, brickDigest);
         });
     };
@@ -3629,9 +3998,17 @@ function HTTPBrickTransportStrategy(endpoint) {
         $$.remote.doHttpGet(endpoint + "/EDFS/" + name, callback);
     };
 
+    this.getMultipleBricks = (brickHashes, callback) => {
+        let query = "?";
+        brickHashes.forEach(brickHash => {
+            query += "hashes=" + brickHash + "&";
+        });
+        $$.remote.doHttpGet(endpoint + "/EDFS/downloadMultipleBricks" + query, callback);
+    };
+
     this.getHashForAlias = (alias, callback) => {
-        $$.remote.doHttpGet(endpoint + "/EDFS/getVersions/" + alias, (err, hashesList) => {
-            if(err) {
+        $$.remote.doHttpGet(endpoint + "/anchoring/getVersions/" + alias, (err, hashesList) => {
+            if (err) {
                 return callback(err)
             }
 
@@ -3640,7 +4017,7 @@ function HTTPBrickTransportStrategy(endpoint) {
     };
 
     this.attachHashToAlias = (alias, name, callback) => {
-        $$.remote.doHttpPost(endpoint + "/EDFS/attachHashToAlias/" + name, alias, callback);
+        $$.remote.doHttpPost(endpoint + "/anchoring/attachHashToAlias/" + name, alias, callback);
     };
 
     this.getLocator = () => {
@@ -3654,7 +4031,7 @@ HTTPBrickTransportStrategy.prototype.canHandleEndpoint = (endpoint) => {
 
 module.exports = HTTPBrickTransportStrategy;
 
-},{"psk-http-client":"psk-http-client"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js":[function(require,module,exports){
+},{"psk-http-client":"psk-http-client"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js":[function(require,module,exports){
 (function (Buffer){
 function BrickTransportStrategiesRegistry() {
     const strategies = {};
@@ -3702,7 +4079,7 @@ if (!$$.brickTransportStrategiesRegistry) {
 }
 }).call(this,{"isBuffer":require("../../../node_modules/is-buffer/index.js")})
 
-},{"../../../node_modules/is-buffer/index.js":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\is-buffer\\index.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\EDFS.js":[function(require,module,exports){
+},{"../../../node_modules/is-buffer/index.js":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/EDFS.js":[function(require,module,exports){
 function EDFS(endpoint, options) {
     options = options || {};
 
@@ -3713,31 +4090,57 @@ function EDFS(endpoint, options) {
     const pskPath = require("swarmutils").path;
     const cache = options.cache;
 
-    this.createRawDossier = () => {
-        return new RawDossier(endpoint, undefined, cache);
+    this.createRawDossier = (callback) => {
+        const dossier = new RawDossier(endpoint, undefined, cache);
+        dossier.load(err => callback(err, dossier));
     };
 
-    this.createBar = () => {
-        return barModule.createArchive(createArchiveConfig());
+    this.createBar = (callback) => {
+        const bar = barModule.createArchive(createArchiveConfig());
+        bar.load(err => callback(err, bar));
     };
 
     this.bootRawDossier = (seed, callback) => {
         const rawDossier = new RawDossier(endpoint, seed, cache);
-        rawDossier.start(err => callback(err, rawDossier));
+        rawDossier.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            rawDossier.start(err => callback(err, rawDossier));
+        })
     };
 
-    this.loadRawDossier = (seed) => {
-        return new RawDossier(endpoint, seed, cache);
+    this.loadRawDossier = (seed, callback) => {
+        const dossier = new RawDossier(endpoint, seed, cache);
+        dossier.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, dossier);
+        });
     };
 
-    this.loadBar = (seed) => {
-        return barModule.createArchive(createArchiveConfig(seed));
+    this.loadBar = (seed, callback) => {
+        const bar = barModule.createArchive(createArchiveConfig(seed));
+        bar.load((err) => {
+            if (err) {
+                return callback(err);
+            }
+
+            callback(undefined, bar);
+        });
     };
 
     this.clone = (seed, callback) => {
         const edfsBrickStorage = require("edfs-brick-storage").create(endpoint);
-        const bar = this.loadBar(seed);
-        bar.clone(edfsBrickStorage, true, callback);
+        this.loadBar(seed, (err, bar) => {
+            if (err) {
+                return callback(err);
+            }
+            bar.clone(edfsBrickStorage, true, callback);
+        })
     };
 
     this.createWallet = (templateSeed, password, overwrite, callback) => {
@@ -3745,24 +4148,29 @@ function EDFS(endpoint, options) {
             callback = overwrite;
             overwrite = false;
         }
-        const wallet = this.createRawDossier();
-        wallet.mount(pskPath.ensureIsAbsolute(pskPath.join(constants.CSB.CODE_FOLDER, constants.CSB.CONSTITUTION_FOLDER)), templateSeed, (err => {
+        this.createRawDossier((err, wallet) => {
             if (err) {
                 return callback(err);
             }
 
-            const seed = wallet.getSeed();
-            if (typeof password !== "undefined") {
-                require("../seedCage").putSeed(seed, password, overwrite, (err) => {
-                    if (err) {
-                        return callback(err);
-                    }
+            wallet.mount(pskPath.ensureIsAbsolute(pskPath.join(constants.CSB.CODE_FOLDER, constants.CSB.CONSTITUTION_FOLDER)), templateSeed, (err => {
+                if (err) {
+                    return callback(err);
+                }
+
+                const seed = wallet.getSeed();
+                if (typeof password !== "undefined") {
+                    require("../seedCage").putSeed(seed, password, overwrite, (err) => {
+                        if (err) {
+                            return callback(err);
+                        }
+                        callback(undefined, seed.toString());
+                    });
+                } else {
                     callback(undefined, seed.toString());
-                });
-            } else {
-                callback(undefined, seed.toString());
-            }
-        }));
+                }
+            }));
+        })
     };
 
     this.loadWallet = function (walletSeed, password, overwrite, callback) {
@@ -3777,34 +4185,32 @@ function EDFS(endpoint, options) {
                 if (err) {
                     return callback(err);
                 }
-                let rawDossier = this.loadRawDossier(seed);
-
-                if (!rawDossier) {
-                    return callback(new Error("RawDossier is not available"));
-                }
-                return callback(undefined, rawDossier);
-
+                this.loadRawDossier(seed, (err, dossier) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    return callback(undefined, dossier);
+                });
             });
-        } else {
+            return;
+        }
 
-            let rawDossier = this.loadRawDossier(walletSeed);
-
-            if (!rawDossier) {
-                return callback(new Error("RawDossier is not available"));
+        this.loadRawDossier(walletSeed, (err, dossier) => {
+            if (err) {
+                return callback(err);
             }
-
 
             if (typeof password !== "undefined" && password !== null) {
                 require("../seedCage").putSeed(walletSeed, password, overwrite, (err) => {
                     if (err) {
                         return callback(err);
                     }
-                    callback(undefined, rawDossier);
+                    callback(undefined, dossier);
                 });
             } else {
-                return callback(undefined, rawDossier);
+                return callback(undefined, dossier);
             }
-        }
+        });
     };
 
 //------------------------------------------------ internal methods -------------------------------------------------
@@ -3831,7 +4237,7 @@ function EDFS(endpoint, options) {
 
 module.exports = EDFS;
 
-},{"../moduleConstants":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\moduleConstants.js","../seedCage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\index.js","./RawDossier":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\RawDossier.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","edfs-brick-storage":"edfs-brick-storage","swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\Manifest.js":[function(require,module,exports){
+},{"../moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js","../seedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js","./RawDossier":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/RawDossier.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","edfs-brick-storage":"edfs-brick-storage","swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/Manifest.js":[function(require,module,exports){
 const MANIFEST_PATH = "/manifest";
 
 function Manifest(archive, callback) {
@@ -3923,41 +4329,62 @@ function Manifest(archive, callback) {
             }
         }
 
-        callback(undefined, {prefixPath: "", relativePath: path, archive: archive});
+        callback(undefined, {prefixPath: "/", relativePath: path, archive: archive});
     };
 
     manifestHandler.getMountedDossiers = function (path, callback) {
-        const mountedDossiers = [];
+        let mountedDossiers = [];
         for (let mountPoint in manifest.mounts) {
             if (pskPath.isSubpath(mountPoint, path)) {
+                let mountPath = mountPoint.substring(path.length);
+                if (mountPath[0] === "/") {
+                    mountPath = mountPath.substring(1);
+                }
                 mountedDossiers.push({
-                    path: mountPoint.substring(path.length),
+                    path: mountPath.split("/").shift(),
                     identifier: manifest.mounts[mountPoint]
                 });
             }
         }
 
+        const mountPaths = mountedDossiers.map(mountedDossier => mountedDossier.path);
+        mountedDossiers = mountedDossiers.filter((mountedDossier, index) => {
+            return mountPaths.indexOf(mountedDossier.path) === index;
+        });
+
         callback(undefined, mountedDossiers);
     };
 
-function getArchive(seed, asDossier, callback) {
-    if (typeof asDossier === "function") {
-        callback = asDossier;
-        asDossier = false;
+    function getArchive(seed, asDossier, callback) {
+        if (typeof asDossier === "function") {
+            callback = asDossier;
+            asDossier = false;
+        }
+        let edfsModuleName = "edfs";
+        let EDFS = require(edfsModuleName);
+        EDFS.attachWithSeed(seed, function (err, edfs) {
+            if (err) {
+                return callback(err);
+            }
+
+            if (asDossier) {
+                return edfs.loadRawDossier(seed, (err, dossier) => {
+                    if (err) {
+                        return callback(err);
+                    }
+                    callback(undefined, dossier);
+                })
+            }
+
+            edfs.loadBar(seed, (err, bar) => {
+                if (err) {
+                    return callback(err);
+                }
+
+                callback(undefined, bar);
+            })
+        });
     }
-    let EDFS = require("../index");
-    EDFS.attachWithSeed(seed, function (err, edfs) {
-        if (err) {
-            return callback(err);
-        }
-
-        if (asDossier) {
-            return callback(undefined, edfs.loadRawDossier(seed));
-        }
-
-        callback(undefined, edfs.loadBar(seed));
-    });
-}
 
     function persist(callback) {
         archive.writeFile(MANIFEST_PATH, JSON.stringify(manifest), callback);
@@ -3987,19 +4414,24 @@ module.exports.getManifest = function getManifest(archive, callback) {
 };
 
 
-},{"../index":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\index.js","swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\RawDossier.js":[function(require,module,exports){
+},{"swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/RawDossier.js":[function(require,module,exports){
 function RawDossier(endpoint, seed, cache) {
     const barModule = require("bar");
     const Manifest = require("./Manifest");
     const pskPath = require("swarmutils").path;
     let manifestHandler;
     const bar = createBar(seed);
+
     this.getSeed = () => {
         return bar.getSeed();
     };
 
     this.start = (callback) => {
         createBlockchain(bar).start(callback);
+    };
+
+    this.load = (callback) => {
+        bar.load(callback);
     };
 
     function getManifest(callback) {
@@ -4138,13 +4570,17 @@ function RawDossier(endpoint, seed, cache) {
         bar.delete(barPath, callback);
     };
 
-    this.listFiles = (path, callback) => {
+    this.listFiles = (path, options, callback) => {
+        if (typeof options === "function") {
+            callback = options;
+            options = {recursive: true};
+        }
         this.getArchiveForPath(path, (err, result) => {
             if (err) {
                 return callback(err);
             }
 
-            result.archive.listFiles(result.relativePath, (err, files) => {
+            result.archive.listFiles(result.relativePath, options, (err, files) => {
                 if (err) {
                     return callback(err);
                 }
@@ -4184,14 +4620,14 @@ function RawDossier(endpoint, seed, cache) {
                 return callback(err);
             }
 
-            result.archive.listFiles(result.relativePath, (err, files) => {
+            result.archive.listFiles(result.relativePath, {recursive: false}, (err, files) => {
                 if (err) {
                     return callback(err);
                 }
 
                 entries.files = files;
 
-                result.archive.listFolders(result.relativePath, (err, folders) => {
+                result.archive.listFolders(result.relativePath, {recursive: false}, (err, folders) => {
                     if (err) {
                         return callback(err);
                     }
@@ -4216,9 +4652,9 @@ function RawDossier(endpoint, seed, cache) {
                             if (err) {
                                 return callback(err);
                             }
-
                             if (options.withFileTypes) {
-                                entries.mounts = mounts;
+                                entries.mounts = mounts.map(mount => mount.path);
+                                entries.mounts = entries.mounts.filter(mount => entries.folders.indexOf(mount) === -1);
                                 return callback(undefined, entries);
                             }
                             entries.files = [...entries.files, ...mounts];
@@ -4237,7 +4673,7 @@ function RawDossier(endpoint, seed, cache) {
             options = undefined;
         }
 
-        bar.listFiles(pskPath.dirname(path), (err, files) => {
+        bar.listFiles(path, (err, files) => {
             if (!err && files.length > 0) {
                 return callback(Error("Tried to mount in a non-empty folder"));
             }
@@ -4341,7 +4777,7 @@ function RawDossier(endpoint, seed, cache) {
 
 module.exports = RawDossier;
 
-},{"./Manifest":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\Manifest.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","blockchain":false,"edfs-brick-storage":"edfs-brick-storage","swarmutils":"swarmutils"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\moduleConstants.js":[function(require,module,exports){
+},{"./Manifest":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/Manifest.js","bar":"bar","bar-fs-adapter":"bar-fs-adapter","blockchain":false,"edfs-brick-storage":"edfs-brick-storage","swarmutils":"swarmutils"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js":[function(require,module,exports){
 const HTTPBrickTransportStrategy = require("./brickTransportStrategies/HTTPBrickTransportStrategy");
 HTTPBrickTransportStrategy.prototype.HTTP_BRICK_TRANSPORT_STRATEGY = "HTTP_BRICK_TRANSPORT_STRATEGY";
 
@@ -4360,7 +4796,7 @@ module.exports = {
     }
 };
 
-},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js":[function(require,module,exports){
+},{"./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/BrowserSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pskcrypto = "pskcrypto";
 const crypto = require(pskcrypto);
@@ -4452,7 +4888,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js":[function(require,module,exports){
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/NodeSeedCage.js":[function(require,module,exports){
 (function (Buffer){
 const pth = "path";
 const path = require(pth);
@@ -4551,7 +4987,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\index.js":[function(require,module,exports){
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js":[function(require,module,exports){
 const or = require("overwrite-require");
 switch ($$.environmentType) {
     case or.constants.THREAD_ENVIRONMENT_TYPE:
@@ -4566,7 +5002,7 @@ switch ($$.environmentType) {
     default:
         throw new Error("No implementation of SeedCage for this env type.");
 }
-},{"./BrowserSeedCage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\BrowserSeedCage.js","./NodeSeedCage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\NodeSeedCage.js","overwrite-require":"overwrite-require"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\overwrite-require\\moduleConstants.js":[function(require,module,exports){
+},{"./BrowserSeedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/BrowserSeedCage.js","./NodeSeedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/NodeSeedCage.js","overwrite-require":"overwrite-require"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/moduleConstants.js":[function(require,module,exports){
 module.exports = {
   BROWSER_ENVIRONMENT_TYPE: 'browser',
   SERVICE_WORKER_ENVIRONMENT_TYPE: 'service-worker',
@@ -4575,7 +5011,7 @@ module.exports = {
   NODEJS_ENVIRONMENT_TYPE: 'nodejs'
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/standardGlobalSymbols.js":[function(require,module,exports){
 (function (global){
 let logger = console;
 
@@ -4889,7 +5325,7 @@ $$.registerGlobalSymbol("throttlingEvent", function (...args) {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"psklogger":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-cache\\lib\\Cache.js":[function(require,module,exports){
+},{"psklogger":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-cache/lib/Cache.js":[function(require,module,exports){
 const DEFAULT_ITEMS_LIMIT = 1000;
 const DEFAULT_STORAGE_LEVELS = 3;
 
@@ -5008,7 +5444,7 @@ function Cache(options) {
 
 module.exports = Cache;
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js":[function(require,module,exports){
 /**********************  utility class **********************************/
 function RequestManager(pollingTimeOut) {
     if (!pollingTimeOut) {
@@ -5425,7 +5861,7 @@ if (typeof $$.remote === "undefined") {
     };
 }
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-browser-client.js":[function(require,module,exports){
 (function (Buffer){
 function generateMethodForRequestWithData(httpMethod) {
     return function (url, data, callback) {
@@ -5563,7 +5999,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js":[function(require,module,exports){
+},{"buffer":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-node-client.js":[function(require,module,exports){
 (function (Buffer){
 require("./psk-abstract-client");
 
@@ -5751,7 +6187,7 @@ $$.remote.base64Decode = function base64Decode(encodedString){
 
 }).call(this,require("buffer").Buffer)
 
-},{"./psk-abstract-client":"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","buffer":false,"http":false,"https":false,"url":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js":[function(require,module,exports){
+},{"./psk-abstract-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","buffer":false,"http":false,"https":false,"url":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskCrypto.js":[function(require,module,exports){
 (function (Buffer){
 function PskCrypto() {
     const crypto = require('crypto');
@@ -5920,7 +6356,7 @@ module.exports = new PskCrypto();
 
 }).call(this,require("buffer").Buffer)
 
-},{"./PskEncryption":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js","./utils/cryptoUtils":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false,"overwrite-require":"overwrite-require"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\PskEncryption.js":[function(require,module,exports){
+},{"./PskEncryption":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskEncryption.js","./utils/cryptoUtils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":false,"crypto":false,"overwrite-require":"overwrite-require"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskEncryption.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require("crypto");
 const utils = require("./utils/cryptoUtils");
@@ -6005,7 +6441,7 @@ function PskEncryption(algorithm) {
 module.exports = PskEncryption;
 }).call(this,require("buffer").Buffer)
 
-},{"./utils/cryptoUtils":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js","buffer":false,"crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js":[function(require,module,exports){
+},{"./utils/cryptoUtils":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js","buffer":false,"crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js":[function(require,module,exports){
 const stream = require('stream');
 const util = require('util');
 
@@ -6030,7 +6466,7 @@ DuplexStream.prototype._read = function (n) {
 };
 
 module.exports = DuplexStream;
-},{"stream":false,"util":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\cryptoUtils.js":[function(require,module,exports){
+},{"stream":false,"util":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/cryptoUtils.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 
@@ -6110,7 +6546,7 @@ module.exports = {
 
 }).call(this,require("buffer").Buffer)
 
-},{"buffer":false,"crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js":[function(require,module,exports){
+},{"buffer":false,"crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/isStream.js":[function(require,module,exports){
 const stream = require('stream');
 
 
@@ -6138,7 +6574,7 @@ module.exports            = isStream;
 module.exports.isReadable = isReadable;
 module.exports.isWritable = isWritable;
 module.exports.isDuplex   = isDuplex;
-},{"stream":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js":[function(require,module,exports){
+},{"stream":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/signsensusDS/ssutil.js":[function(require,module,exports){
 /*
  SignSens helper functions
  */
@@ -6338,7 +6774,7 @@ exports.createSignature = function (agent,counter, nextPublic, arr, size){
 
     return agent + ":" + counter + ":" + nextPublic + ":" + result;
 }
-},{"crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\Combos.js":[function(require,module,exports){
+},{"crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Combos.js":[function(require,module,exports){
 function product(args) {
     if(!args.length){
         return [ [] ];
@@ -6364,7 +6800,7 @@ function objectProduct(obj) {
 }
 
 module.exports = objectProduct;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\OwM.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js":[function(require,module,exports){
 var meta = "meta";
 
 function OwM(serialized){
@@ -6455,7 +6891,7 @@ OwM.prototype.setMetaFor = function(obj, name, value){
 };
 
 module.exports = OwM;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\Queue.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js":[function(require,module,exports){
 function QueueElement(content) {
 	this.content = content;
 	this.next = null;
@@ -6523,7 +6959,7 @@ Queue.prototype.toString = function () {
 Queue.prototype.inspect = Queue.prototype.toString;
 
 module.exports = Queue;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/SwarmPacker.js":[function(require,module,exports){
 const HEADER_SIZE_RESEARVED = 4;
 
 function SwarmPacker(){
@@ -6672,7 +7108,7 @@ SwarmPacker.getHeader = function(pack){
     return header;
 };
 module.exports = SwarmPacker;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/TaskCounter.js":[function(require,module,exports){
 
 function TaskCounter(finalCallback) {
 	let results = [];
@@ -6722,7 +7158,7 @@ function TaskCounter(finalCallback) {
 }
 
 module.exports = TaskCounter;
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/beesHealer.js":[function(require,module,exports){
 const OwM = require("./OwM");
 
 /*
@@ -6778,7 +7214,7 @@ exports.jsonToNative = function(serialisedValues, result){
     };
 
 };
-},{"./OwM":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\OwM.js"}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\path.js":[function(require,module,exports){
+},{"./OwM":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/path.js":[function(require,module,exports){
 function replaceAll(str, search, replacement) {
     return str.split(search).join(replacement);
 }
@@ -6819,8 +7255,13 @@ function normalize(pth) {
 function join(...args) {
     let pth = "";
     for (let i = 0; i < args.length; i++) {
-        pth += "/" + args[i];
+        if (i !== 0 && args[i - 1] !== "") {
+            pth += "/";
+        }
+
+        pth += args[i];
     }
+
     return normalize(pth);
 }
 
@@ -6851,7 +7292,7 @@ function isSubpath(path, subPath) {
     let result = false;
     if (path.indexOf(subPath) === 0) {
         let char = path[subPath.length];
-        if (char === "" || char === "/") {
+        if (char === "" || char === "/" || subPath === "/") {
             result = true;
         }
     }
@@ -6868,12 +7309,43 @@ function dirname(path) {
     return ensureIsAbsolute(pathSegments.join("/"));
 }
 
-function basename(path){
+function basename(path) {
     if (path === "/") {
         return path;
     }
     return path.split("/").pop;
 }
+
+function relative(from, to) {
+    from = normalize(from);
+    to = normalize(to);
+
+    const fromSegments = from.split("/");
+    const toSegments = to.split("/");
+    let splitIndex;
+    for (let i = 0; i < fromSegments.length; i++) {
+        if (fromSegments[i] !== toSegments[i]) {
+            break;
+        }
+        splitIndex = i;
+    }
+
+    if (typeof splitIndex === "undefined") {
+        throw Error(`The paths <${from}> and <${to}> have nothing in common`);
+    }
+
+    splitIndex++;
+    let relativePath = [];
+    for (let i = splitIndex; i < fromSegments.length; i++) {
+        relativePath.push("..");
+    }
+    for (let i = splitIndex; i < toSegments.length; i++) {
+        relativePath.push(toSegments[i]);
+    }
+
+    return relativePath.join("/");
+}
+
 module.exports = {
     normalize,
     join,
@@ -6881,10 +7353,11 @@ module.exports = {
     ensureIsAbsolute,
     isSubpath,
     dirname,
-    basename
+    basename,
+    relative
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pingpongFork.js":[function(require,module,exports){
 const PING = "PING";
 const PONG = "PONG";
 
@@ -6976,7 +7449,7 @@ module.exports.enableLifeLine = function(timeout){
         }
     }, interval);
 };
-},{"child_process":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js":[function(require,module,exports){
+},{"child_process":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pskconsole.js":[function(require,module,exports){
 var commands = {};
 var commands_help = {};
 
@@ -7047,7 +7520,7 @@ module.exports = {
 };
 
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/safe-uuid.js":[function(require,module,exports){
 
 function encode(buffer) {
     return buffer.toString('base64')
@@ -7115,7 +7588,7 @@ exports.short_uuid = function(callback) {
         callback(null, encode(buf));
     });
 };
-},{"crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js":[function(require,module,exports){
+},{"crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/uidGenerator.js":[function(require,module,exports){
 (function (Buffer){
 const crypto = require('crypto');
 const Queue = require("./Queue");
@@ -7221,7 +7694,7 @@ module.exports.createUidGenerator = function (minBuffers, bufferSize) {
 
 }).call(this,require("buffer").Buffer)
 
-},{"./Queue":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\Queue.js","buffer":false,"crypto":false}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\is-buffer\\index.js":[function(require,module,exports){
+},{"./Queue":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js","buffer":false,"crypto":false}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/is-buffer/index.js":[function(require,module,exports){
 /*!
  * Determine if an object is a Buffer
  *
@@ -7244,7 +7717,7 @@ function isSlowBuffer (obj) {
   return typeof obj.readFloatLE === 'function' && typeof obj.slice === 'function' && isBuffer(obj.slice(0, 0))
 }
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\array-set.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7367,7 +7840,7 @@ ArraySet.prototype.toArray = function ArraySet_toArray() {
 
 exports.ArraySet = ArraySet;
 
-},{"./util":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js":[function(require,module,exports){
+},{"./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7509,7 +7982,7 @@ exports.decode = function base64VLQ_decode(aStr, aIndex, aOutParam) {
   aOutParam.rest = aIndex;
 };
 
-},{"./base64":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\base64.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\base64.js":[function(require,module,exports){
+},{"./base64":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7578,7 +8051,7 @@ exports.decode = function (charCode) {
   return -1;
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\binary-search.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/binary-search.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7691,7 +8164,7 @@ exports.search = function search(aNeedle, aHaystack, aCompare, aBias) {
   return index;
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/mapping-list.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2014 Mozilla Foundation and contributors
@@ -7772,7 +8245,7 @@ MappingList.prototype.toArray = function MappingList_toArray() {
 
 exports.MappingList = MappingList;
 
-},{"./util":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js":[function(require,module,exports){
+},{"./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/quick-sort.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -7888,7 +8361,7 @@ exports.quickSort = function (ary, comparator) {
   doQuickSort(ary, comparator, 0, ary.length - 1);
 };
 
-},{}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js":[function(require,module,exports){
+},{}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-consumer.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -8972,7 +9445,7 @@ IndexedSourceMapConsumer.prototype._parseMappings =
 
 exports.IndexedSourceMapConsumer = IndexedSourceMapConsumer;
 
-},{"./array-set":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./binary-search":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\binary-search.js","./quick-sort":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\quick-sort.js","./util":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js":[function(require,module,exports){
+},{"./array-set":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js","./binary-search":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/binary-search.js","./quick-sort":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/quick-sort.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -9390,7 +9863,7 @@ SourceMapGenerator.prototype.toString =
 
 exports.SourceMapGenerator = SourceMapGenerator;
 
-},{"./array-set":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\array-set.js","./base64-vlq":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\base64-vlq.js","./mapping-list":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\mapping-list.js","./util":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-node.js":[function(require,module,exports){
+},{"./array-set":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/array-set.js","./base64-vlq":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/base64-vlq.js","./mapping-list":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/mapping-list.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-node.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -9805,7 +10278,7 @@ SourceNode.prototype.toStringWithSourceMap = function SourceNode_toStringWithSou
 
 exports.SourceNode = SourceNode;
 
-},{"./source-map-generator":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./util":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js"}],"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\util.js":[function(require,module,exports){
+},{"./source-map-generator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js","./util":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js"}],"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/util.js":[function(require,module,exports){
 /* -*- Mode: js; js-indent-level: 2; -*- */
 /*
  * Copyright 2011 Mozilla Foundation and contributors
@@ -10237,12 +10710,12 @@ exports.roll = algorithm.roll.bind(algorithm);
 exports.Hash = Hash;
 exports.register = register;
 
-},{"./lib/Hash":"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\Hash.js","./lib/algorithm":"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\algorithm.js","./lib/register":"F:\\Temp\\web-wallet3\\privatesky\\modules\\adler32\\lib\\register.js"}],"bar-fs-adapter":[function(require,module,exports){
+},{"./lib/Hash":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/Hash.js","./lib/algorithm":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/algorithm.js","./lib/register":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/adler32/lib/register.js"}],"bar-fs-adapter":[function(require,module,exports){
 module.exports.createFsAdapter = () => {
     const FsAdapter = require("./lib/FsAdapter");
     return new FsAdapter();
 };
-},{"./lib/FsAdapter":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar-fs-adapter\\lib\\FsAdapter.js"}],"bar":[function(require,module,exports){
+},{"./lib/FsAdapter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar-fs-adapter/lib/FsAdapter.js"}],"bar":[function(require,module,exports){
 
 const ArchiveConfigurator = require("./lib/ArchiveConfigurator");
 const createFolderBrickStorage = require("./lib/FolderBrickStorage").createFolderBrickStorage;
@@ -10266,7 +10739,7 @@ module.exports.createArchiveConfigurator = () => {
 };
 
 module.exports.createBarMap = (header) => {
-    const BarMap = require("./lib/FolderBarMap");
+    const BarMap = require("./lib/BarMap");
     return new BarMap(header);
 };
 
@@ -10274,7 +10747,7 @@ module.exports.Seed = require('./lib/Seed');
 module.exports.createFolderBrickStorage = createFolderBrickStorage;
 module.exports.createFileBrickStorage = createFileBrickStorage;
 
-},{"./lib/Archive":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Archive.js","./lib/ArchiveConfigurator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\ArchiveConfigurator.js","./lib/Brick":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Brick.js","./lib/FileBrickStorage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FileBrickStorage.js","./lib/FolderBarMap":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FolderBarMap.js","./lib/FolderBrickStorage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\FolderBrickStorage.js","./lib/Seed":"F:\\Temp\\web-wallet3\\privatesky\\modules\\bar\\lib\\Seed.js"}],"buffer-from":[function(require,module,exports){
+},{"./lib/Archive":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Archive.js","./lib/ArchiveConfigurator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/ArchiveConfigurator.js","./lib/BarMap":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/BarMap.js","./lib/Brick":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Brick.js","./lib/FileBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FileBrickStorage.js","./lib/FolderBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/FolderBrickStorage.js","./lib/Seed":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/bar/lib/Seed.js"}],"buffer-from":[function(require,module,exports){
 (function (Buffer){
 var toString = Object.prototype.toString
 
@@ -10354,11 +10827,7 @@ if(typeof $$ === "undefined" || typeof $$.swarmEngine === "undefined"){
     se.initialise();
 }
 
-module.exports.load = function(seed, identity, callback){
-    const pathName = "path";
-    const path = require(pathName);
-    const powerCord = new se.OuterThreadPowerCord(path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "psknode/bundles/threadBoot.js"), false, seed);
-
+function envSetup(powerCord, seed, identity, callback){
     let cord_identity;
     try{
         const crypto = require("pskcrypto");
@@ -10379,24 +10848,45 @@ module.exports.load = function(seed, identity, callback){
                 return $$.interactions.startSwarmAs(cord_identity, "transactionHandler", "start", identity, transactionTypeName, methodName, ...args);
             }
         };
-        //todo implement a way to know when thread is ready
+        //todo implement a way to know when thread/worker/isolate is ready
         setTimeout(()=>{
             callback(undefined, handler);
         }, 100);
     });
-};
-},{"pskcrypto":"pskcrypto","swarm-engine":false}],"edfs-brick-storage":[function(require,module,exports){
+}
+
+module.exports.load = function(seed, identity, callback){
+    const envTypes = require("overwrite-require").constants;
+    switch($$.environmentType){
+        case envTypes.BROWSER_ENVIRONMENT_TYPE:
+            const pc = new se.OuterWebWorkerPowerCord("path_to_boot_script", seed);
+            return envSetup(pc, seed, identity, callback);
+            break;
+        case envTypes.NODEJS_ENVIRONMENT_TYPE:
+            const pathName = "path";
+            const path = require(pathName);
+            const powerCord = new se.OuterThreadPowerCord(path.join(process.env.PSK_ROOT_INSTALATION_FOLDER, "psknode/bundles/threadBoot.js"), false, seed);
+            return envSetup(powerCord, seed, identity, callback);
+            break;
+        case envTypes.SERVICE_WORKER_ENVIRONMENT_TYPE:
+        case envTypes.ISOLATE_ENVIRONMENT_TYPE:
+        case envTypes.THREAD_ENVIRONMENT_TYPE:
+        default:
+            return callback(new Error(`Dossier can not be loaded in <${$$.environmentType}> environment type for now!`));
+    }
+}
+},{"overwrite-require":"overwrite-require","pskcrypto":"pskcrypto","swarm-engine":false}],"edfs-brick-storage":[function(require,module,exports){
 module.exports.create = (endpoint) => {
     const EDFSBrickStorage = require("./EDFSBrickStorage");
     return new EDFSBrickStorage(endpoint)
 };
 
-},{"./EDFSBrickStorage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-brick-storage\\EDFSBrickStorage.js"}],"edfs-middleware":[function(require,module,exports){
+},{"./EDFSBrickStorage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-brick-storage/EDFSBrickStorage.js"}],"edfs-middleware":[function(require,module,exports){
 module.exports = require("./lib/EDFSMiddleware");
 
 
 
-},{"./lib/EDFSMiddleware":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs-middleware\\lib\\EDFSMiddleware.js"}],"edfs":[function(require,module,exports){
+},{"./lib/EDFSMiddleware":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs-middleware/lib/EDFSMiddleware.js"}],"edfs":[function(require,module,exports){
 require("./brickTransportStrategies/brickTransportStrategiesRegistry");
 const constants = require("./moduleConstants");
 
@@ -10443,7 +10933,7 @@ module.exports = {
     constants: constants
 };
 
-},{"./brickTransportStrategies/FetchBrickTransportStrategy":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\brickTransportStrategies\\brickTransportStrategiesRegistry.js","./lib/EDFS":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\lib\\EDFS.js","./moduleConstants":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\moduleConstants.js","./seedCage":"F:\\Temp\\web-wallet3\\privatesky\\modules\\edfs\\seedCage\\index.js","bar":"bar","overwrite-require":"overwrite-require","psk-cache":"psk-cache"}],"overwrite-require":[function(require,module,exports){
+},{"./brickTransportStrategies/FetchBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/FetchBrickTransportStrategy.js","./brickTransportStrategies/HTTPBrickTransportStrategy":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/HTTPBrickTransportStrategy.js","./brickTransportStrategies/brickTransportStrategiesRegistry":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/brickTransportStrategies/brickTransportStrategiesRegistry.js","./lib/EDFS":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/lib/EDFS.js","./moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/moduleConstants.js","./seedCage":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/edfs/seedCage/index.js","bar":"bar","overwrite-require":"overwrite-require","psk-cache":"psk-cache"}],"overwrite-require":[function(require,module,exports){
 (function (global){
 /*
  require and $$.require are overwriting the node.js defaults in loading modules for increasing security, speed and making it work to the privatesky runtime build with browserify.
@@ -10785,7 +11275,7 @@ module.exports = {
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./moduleConstants":"F:\\Temp\\web-wallet3\\privatesky\\modules\\overwrite-require\\moduleConstants.js","./standardGlobalSymbols.js":"F:\\Temp\\web-wallet3\\privatesky\\modules\\overwrite-require\\standardGlobalSymbols.js"}],"psk-cache":[function(require,module,exports){
+},{"./moduleConstants":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/moduleConstants.js","./standardGlobalSymbols.js":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/overwrite-require/standardGlobalSymbols.js"}],"psk-cache":[function(require,module,exports){
 const Cache = require("./lib/Cache")
 let cacheInstance;
 
@@ -10822,7 +11312,7 @@ module.exports = {
     }
 };
 
-},{"./lib/Cache":"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-cache\\lib\\Cache.js"}],"psk-http-client":[function(require,module,exports){
+},{"./lib/Cache":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-cache/lib/Cache.js"}],"psk-http-client":[function(require,module,exports){
 //to look nice the requireModule on Node
 require("./lib/psk-abstract-client");
 const or = require('overwrite-require');
@@ -10831,7 +11321,7 @@ if ($$.environmentType === or.constants.BROWSER_ENVIRONMENT_TYPE) {
 } else {
 	require("./lib/psk-node-client");
 }
-},{"./lib/psk-abstract-client":"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-abstract-client.js","./lib/psk-browser-client":"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-browser-client.js","./lib/psk-node-client":"F:\\Temp\\web-wallet3\\privatesky\\modules\\psk-http-client\\lib\\psk-node-client.js","overwrite-require":"overwrite-require"}],"pskcrypto":[function(require,module,exports){
+},{"./lib/psk-abstract-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-abstract-client.js","./lib/psk-browser-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-browser-client.js","./lib/psk-node-client":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/psk-http-client/lib/psk-node-client.js","overwrite-require":"overwrite-require"}],"pskcrypto":[function(require,module,exports){
 const PskCrypto = require("./lib/PskCrypto");
 const ssutil = require("./signsensusDS/ssutil");
 
@@ -10842,7 +11332,7 @@ module.exports.hashValues = ssutil.hashValues;
 module.exports.DuplexStream = require("./lib/utils/DuplexStream");
 
 module.exports.isStream = require("./lib/utils/isStream");
-},{"./lib/PskCrypto":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\PskCrypto.js","./lib/utils/DuplexStream":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\DuplexStream.js","./lib/utils/isStream":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\lib\\utils\\isStream.js","./signsensusDS/ssutil":"F:\\Temp\\web-wallet3\\privatesky\\modules\\pskcrypto\\signsensusDS\\ssutil.js"}],"source-map-support":[function(require,module,exports){
+},{"./lib/PskCrypto":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/PskCrypto.js","./lib/utils/DuplexStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/DuplexStream.js","./lib/utils/isStream":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/lib/utils/isStream.js","./signsensusDS/ssutil":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/pskcrypto/signsensusDS/ssutil.js"}],"source-map-support":[function(require,module,exports){
 var SourceMapConsumer = require('source-map').SourceMapConsumer;
 var path = require('path');
 
@@ -11458,7 +11948,7 @@ exports.SourceMapGenerator = require('./lib/source-map-generator').SourceMapGene
 exports.SourceMapConsumer = require('./lib/source-map-consumer').SourceMapConsumer;
 exports.SourceNode = require('./lib/source-node').SourceNode;
 
-},{"./lib/source-map-consumer":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-map-consumer.js","./lib/source-map-generator":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-map-generator.js","./lib/source-node":"F:\\Temp\\web-wallet3\\privatesky\\node_modules\\source-map\\lib\\source-node.js"}],"swarmutils":[function(require,module,exports){
+},{"./lib/source-map-consumer":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-consumer.js","./lib/source-map-generator":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-map-generator.js","./lib/source-node":"/home/cosmin/ssapp-demo-workspace/privatesky/node_modules/source-map/lib/source-node.js"}],"swarmutils":[function(require,module,exports){
 (function (global){
 module.exports.OwM = require("./lib/OwM");
 module.exports.beesHealer = require("./lib/beesHealer");
@@ -11492,5 +11982,5 @@ if(typeof global.$$.uidGenerator == "undefined"){
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 
-},{"./lib/Combos":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\Combos.js","./lib/OwM":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\OwM.js","./lib/Queue":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\Queue.js","./lib/SwarmPacker":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\SwarmPacker.js","./lib/TaskCounter":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\TaskCounter.js","./lib/beesHealer":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\beesHealer.js","./lib/path":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\path.js","./lib/pingpongFork":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\pingpongFork.js","./lib/pskconsole":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\pskconsole.js","./lib/safe-uuid":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\safe-uuid.js","./lib/uidGenerator":"F:\\Temp\\web-wallet3\\privatesky\\modules\\swarmutils\\lib\\uidGenerator.js"}]},{},["F:\\Temp\\web-wallet3\\privatesky\\builds\\tmp\\edfsBar_intermediar.js"])
+},{"./lib/Combos":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Combos.js","./lib/OwM":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/OwM.js","./lib/Queue":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/Queue.js","./lib/SwarmPacker":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/SwarmPacker.js","./lib/TaskCounter":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/TaskCounter.js","./lib/beesHealer":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/beesHealer.js","./lib/path":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/path.js","./lib/pingpongFork":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pingpongFork.js","./lib/pskconsole":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/pskconsole.js","./lib/safe-uuid":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/safe-uuid.js","./lib/uidGenerator":"/home/cosmin/ssapp-demo-workspace/privatesky/modules/swarmutils/lib/uidGenerator.js"}]},{},["/home/cosmin/ssapp-demo-workspace/privatesky/builds/tmp/edfsBar_intermediar.js"])
 //# sourceMappingURL=edfsBar.js.map
