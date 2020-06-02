@@ -361,7 +361,6 @@ function WalletBuilderService(wallet, options) {
                    Object.keys(apps).forEach(appName=>{
 					   appsToBeInstalled[appName] = {
 					       noBuild:true,
-					       appName: appName,
                            seed: apps[appName]
 					   };
                    })
