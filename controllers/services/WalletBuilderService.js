@@ -208,18 +208,25 @@ function WalletBuilderService(wallet, options) {
             appName = appName.replace('/', '');
         }
 
+		const mountApp = (newAppSeed) => {
+			wallet.mount('/apps/' + appName, newAppSeed, (err) => {
+				if (err) {
+					return callback(err);
+				}
+
+				performInstallation(apps, appsList, callback);
+			})
+		};
+
+		if (appInfo.noBuild) {
+			 return mountApp(appInfo.seed);
+		}
+
         buildApp(appName, appInfo.seed, (err, newAppSeed) => {
             if (err) {
                 return callback(err);
             }
-
-            wallet.mount('/apps/' + appName, newAppSeed, (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                performInstallation(apps, appsList, callback);
-            })
+            mountApp(newAppSeed);
         });
     };
 
@@ -313,6 +320,30 @@ function WalletBuilderService(wallet, options) {
 
     };
 
+	const getSSAppsFromInstallationURL = (callback)=>{
+		let url = new URL(window.location.href);
+		let searchParams = url.searchParams;
+		let apps = {};
+
+		searchParams.forEach((paramValue, paramKey) => {
+			if (paramKey === "appName") {
+				let seedKey = paramValue + "Seed";
+				let appSeed = searchParams.get(seedKey);
+				if (appSeed) {
+					apps[paramValue] = appSeed;
+				}
+			}
+		});
+
+		if(Object.keys(apps)){
+			return callback(apps);
+		}
+
+		callback();
+
+	};
+
+
     /**
      * Install applications found in the /apps folder
      * into the wallet
@@ -320,15 +351,31 @@ function WalletBuilderService(wallet, options) {
      * @param {callback} callback
      */
     const installApplications = (callback) => {
+
         getListOfAppsForInstallation((err, apps) => {
-            if (err) {
+
+            let appsToBeInstalled = apps || {};
+
+            getSSAppsFromInstallationURL((apps)=>{
+               if(apps){
+                   Object.keys(apps).forEach(appName=>{
+					   appsToBeInstalled[appName] = {
+					       noBuild:true,
+					       appName: appName,
+                           seed: apps[appName]
+					   };
+                   })
+               }
+            });
+
+            const appsList = Object.keys(appsToBeInstalled);
+
+			if (appsList.length === 0) {
                 return callback();
-            }
+			}
+            console.log('Installing the following applications: ', appsToBeInstalled, appsList);
 
-            const appsList = Object.keys(apps);
-            console.log('Installing the following applications: ', apps, appsList);
-
-            performInstallation(apps, appsList, callback);
+            performInstallation(appsToBeInstalled, appsList, callback);
         })
     }
 
