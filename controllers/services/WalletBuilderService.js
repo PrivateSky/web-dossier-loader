@@ -154,41 +154,52 @@ function WalletBuilderService(wallet, options) {
     /**
      * @param {string} appName
      * @param {string} seed
+     * @param {Boolean} hasTemplate
      * @param {callback} callback
      */
-    const buildApp = (appName, seed, callback) => {
-        fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
-            let files;
+    const buildApp = (appName, seed, hasTemplate, callback) => {
+		if (typeof hasTemplate === "function") {
+			callback = hasTemplate;
+			hasTemplate = true;
+		}
 
-            try {
-                files = JSON.parse(data);
-            } catch (e) {
-                return callback(e);
-            }
+        const instantiateNewDossier = (files) =>{
+			 if (typeof this.dossierFactory !== 'function') {
+				 return callback(new Error('A RawDossier factory function is required'));
+			 }
+			this.dossierFactory((err, appDossier) => {
+				if (err) {
+					return callback(err);
+				}
 
-            files = dirSummaryAsArray(files);
+				appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
 
-            if (typeof this.dossierFactory !== 'function') {
-                return callback(new Error('A RawDossier factory function is required'));
-            }
+					if (err) {
+						return callback(err);
+					}
+					customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
+						return callback(err, appDossier.getSeed());
+					})
+				})
+			});
+		};
 
-            this.dossierFactory((err, appDossier) => {
-                if (err) {
-                    return callback(err);
-                }
+		if(hasTemplate){
+			return fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
+				let files;
 
-                appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
+				try {
+					files = JSON.parse(data);
+				} catch (e) {
+					return callback(e);
+				}
 
-                    if (err) {
-                        return callback(err);
-                    }
+				files = dirSummaryAsArray(files);
+				instantiateNewDossier(files);
+			})
+        }
+		instantiateNewDossier([]);
 
-                    customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
-                        return callback(err, appDossier.getSeed());
-                    })
-                })
-            });
-        })
 
     };
 
@@ -218,11 +229,9 @@ function WalletBuilderService(wallet, options) {
 			})
 		};
 
-		if (appInfo.noBuild) {
-			 return mountApp(appInfo.seed);
-		}
-
-        buildApp(appName, appInfo.seed, (err, newAppSeed) => {
+	    //by default ssapps have a template
+		let hasTemplate = appInfo.hasTemplate !== false;
+        buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
             if (err) {
                 return callback(err);
             }
@@ -360,7 +369,7 @@ function WalletBuilderService(wallet, options) {
                if(apps){
                    Object.keys(apps).forEach(appName=>{
 					   appsToBeInstalled[appName] = {
-					       noBuild:true,
+						   hasTemplate:false,
                            seed: apps[appName]
 					   };
                    })
