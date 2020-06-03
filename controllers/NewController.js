@@ -14,6 +14,11 @@ function NewController() {
 		document.getElementById(containerId).style.display = "block";
 	}
 
+	 this.hasInstallationUrl = function (){
+		let windowUrl = new URL(window.location.href);
+		return windowUrl.searchParams.get("appName") !== null;
+	};
+
 	this.init = function () {
 		spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
@@ -109,6 +114,12 @@ document.addEventListener("DOMContentLoaded", function () {
 		{"#seed_print": LABELS.SEED_PRINT},
 		{"#open-wallet-btn": LABELS.OPEN_WALLET}
 	];
+	if (controller.hasInstallationUrl()) {
+		page_labels.push({"#more-information": APP_CONFIG.NEW_DOSSIER_MORE_INFORMATION})
+	}
+	else{
+		document.querySelector("#more-information").remove();
+	}
 	prepareView(page_labels);
 	controller.init();
 

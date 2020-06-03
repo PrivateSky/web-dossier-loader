@@ -17,6 +17,13 @@ body {
     width: 100%;
 }
 
+#more-information{
+    padding: 2rem;
+}
+
+#more-information .jumbotron{
+    background: none;
+}
 
 #restore-new-container,
 #pin-container {

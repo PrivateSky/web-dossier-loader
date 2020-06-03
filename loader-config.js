@@ -32,5 +32,11 @@ APP_CONFIG={
   PIN_CONTAINER_ID:"pin-container",
   EDFS_ENDPOINT:"http://localhost:8080",
   MODE: 'secure',
-  PIN_MIN_LENGTH:4
+  PIN_MIN_LENGTH:4,
+  NEW_DOSSIER_MORE_INFORMATION:`<div class="jumbotron p-0 m-0" align="center">
+  <h1 class="display-6">Welcome to your secure dossier!</h1>
+  <p class="lead">After completing the following wizard you will gain access to your private data.</p>
+  <p class="m-0">In order to access your private data you have to set up a password.</p>
+  <hr/>
+</div>`
 };
