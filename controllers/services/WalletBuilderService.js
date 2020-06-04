@@ -231,12 +231,17 @@ function WalletBuilderService(wallet, options) {
 
 	    //by default ssapps have a template
 		let hasTemplate = appInfo.hasTemplate !== false;
-        buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
-            if (err) {
-                return callback(err);
-            }
-            mountApp(newAppSeed);
-        });
+		let newInstanceIsDemanded = appInfo.newInstance !== false;
+		if (newInstanceIsDemanded) {
+			return buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
+				if (err) {
+					return callback(err);
+				}
+				mountApp(newAppSeed);
+			});
+		}
+		mountApp(appInfo.seed);
+
     };
 
     /**
@@ -370,6 +375,7 @@ function WalletBuilderService(wallet, options) {
                    Object.keys(apps).forEach(appName=>{
 					   appsToBeInstalled[appName] = {
 						   hasTemplate:false,
+						   newInstance:false,
                            seed: apps[appName]
 					   };
                    })
