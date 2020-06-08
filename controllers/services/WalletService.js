@@ -1,6 +1,7 @@
 'use strict';
 import ScopedLocalStorage from "./ScopedLocalStorage.js"
 import WalletBuilderService from "./WalletBuilderService.js";
+import SWAgent from "./SWAgent.js";
 
 /**
  * @param {object} options
@@ -104,46 +105,48 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.create = function (pin, callback) {
-        if (!this.edfsEndpoint) {
-            throw new Error('An EDFS endpoint is required for creating a wallet');
-        }
+        SWAgent.unregisterSW(()=>{
+			if (!this.edfsEndpoint) {
+				throw new Error('An EDFS endpoint is required for creating a wallet');
+			}
 
-        let edfs;
-        try {
-            edfs = EDFS.attachToEndpoint(this.edfsEndpoint);
-        } catch (e) {
-            return callback(e);
-        }
+			let edfs;
+			try {
+				edfs = EDFS.attachToEndpoint(this.edfsEndpoint);
+			} catch (e) {
+				return callback(e);
+			}
 
-        edfs.createRawDossier((err, wallet) => {
-            if (err) {
-                return callback(err);
-            }
+			edfs.createRawDossier((err, wallet) => {
+				if (err) {
+					return callback(err);
+				}
 
-            const walletBuilder = new WalletBuilderService(wallet, {
-                codeFolderName: 'code',
-                walletTemplateFolderName: 'wallet-template',
-                appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
-                appsFolderName: 'apps',
-                dossierFactory: (callback) => {
-                    edfs.createRawDossier(callback);
-                }
-            });
+				const walletBuilder = new WalletBuilderService(wallet, {
+					codeFolderName: 'code',
+					walletTemplateFolderName: 'wallet-template',
+					appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+					appsFolderName: 'apps',
+					dossierFactory: (callback) => {
+						edfs.createRawDossier(callback);
+					}
+				});
 
-            walletBuilder.build((err) => {
-                if (err) {
-                    return callback(err);
-                }
+				walletBuilder.build((err) => {
+					if (err) {
+						return callback(err);
+					}
 
-                edfs.loadWallet(wallet.getSeed(), pin, true, (err, wallet) => {
-                    if (err) {
-                        return callback(err);
-                    }
+					edfs.loadWallet(wallet.getSeed(), pin, true, (err, wallet) => {
+						if (err) {
+							return callback(err);
+						}
 
-                    callback(undefined, wallet);
-                });
-            })
-        });
+						callback(undefined, wallet);
+					});
+				})
+			});
+        })
     }
 
     /**

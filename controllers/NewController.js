@@ -1,5 +1,6 @@
 import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
+import SWAgent from "./services/SWAgent.js";
 
 function NewController() {
 
@@ -20,11 +21,20 @@ function NewController() {
 	};
 
 	this.init = function () {
-		spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
-		walletService.hasSeedCage((err, result) => {
-			wizard = new Stepper(document.getElementById("psk-wizard"));
+		SWAgent.hasServiceWorkers((hasServiceWorker) => {
+			if (hasServiceWorker) {
+				SWAgent.unregisterSW(() => {
+					window.location.reload();
+				});
+			}else{
+				spinner = new Spinner(document.getElementsByTagName("body")[0]);
+				walletService.hasSeedCage((err, result) => {
+					wizard = new Stepper(document.getElementById("psk-wizard"));
+				});
+			}
 		});
+
 	};
 
 	this.validateSeed = function (event) {

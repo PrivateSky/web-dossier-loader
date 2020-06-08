@@ -98,7 +98,7 @@ SWAgent.unregisterSW = function (callback) {
 		for (let sw of sws) {
 			sequence = sequence.then(() => {
 				return new Promise(resolve => {
-					sw.unregister().then(function (success) {
+					sw.unregister({immediate: true}).then(function (success) {
 						if (!success) {
 							console.log("Could not unregister sw ", sw);
 						}
@@ -108,7 +108,9 @@ SWAgent.unregisterSW = function (callback) {
 									return Promise.all(keyList.map(function (key) {
 										return caches.delete(key);
 									}));
-								}).then(resolve);
+								}).then(()=>{
+									resolve();
+								});
 						}
 						else {
 							resolve();
@@ -116,8 +118,10 @@ SWAgent.unregisterSW = function (callback) {
 					})
 				})
 			});
-			sequence.then(callback);
 		}
+		sequence.then(() => {
+			callback();
+		});
 	}
 
 	function unregisterAllServiceWorkers() {
@@ -134,10 +138,17 @@ SWAgent.unregisterSW = function (callback) {
 	let promise = unregisterAllServiceWorkers();
 
 	if (typeof callback === "function") {
-		promise.then(callback);
+		promise.then(() => {
+			callback();
+		});
 	}
 };
 
+SWAgent.hasServiceWorkers = function(callback){
+	navigator.serviceWorker.getRegistrations().then(function (sws) {
+		callback(sws.length>0);
+	})
+};
 
 SWAgent.loadWallet = function (seed, swConfig, callback) {
     SWAgent.registerSW(swConfig, function (err)  {
