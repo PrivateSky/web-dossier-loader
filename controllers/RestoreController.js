@@ -83,7 +83,9 @@ function RestoreController() {
 
     this.setPin = function (event) {
         event.preventDefault();
+        spinner.attachToView();
         walletService.changePin(seed, pin, (err, wallet) => {
+        	spinner.removeFromView();
             if (err) {
                 return document.getElementById("pin-error").innerText = "Operation failed. Try again"
             }
