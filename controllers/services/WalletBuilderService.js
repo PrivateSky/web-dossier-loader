@@ -371,14 +371,19 @@ function WalletBuilderService(wallet, options) {
             let appsToBeInstalled = apps || {};
 
             getSSAppsFromInstallationURL((apps)=>{
-               if(apps){
-                   Object.keys(apps).forEach(appName=>{
+               let externalAppsList = Object.keys(apps);
+               if(externalAppsList.length>0){
+                   externalAppsList.forEach(appName=>{
 					   appsToBeInstalled[appName] = {
 						   hasTemplate:false,
 						   newInstance:false,
                            seed: apps[appName]
 					   };
-                   })
+                   });
+				   let landingApp = {name: externalAppsList[0]};
+				   wallet.writeFile("apps/.landingApp",JSON.stringify(landingApp), ()=>{
+				   	console.log(`Written landingApp [${landingApp.name}]. `)
+				   });
                }
             });
 
