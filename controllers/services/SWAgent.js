@@ -59,17 +59,13 @@ SWAgent.sendMessage = function (message) {
 };
 
 SWAgent.restoreDossier = function (seed, callback) {
-    SWAgent.sendMessage({action: "activate"}).then((data) => {
-        if (data.status === "empty") {
-            SWAgent.sendMessage({seed: seed, url: window.location.origin}).then(data => {
-                callback(undefined);
-            }).catch(err => {
-                callback(err);
-            })
-        }
-    }).catch(err => {
-        callback(err);
-    });
+	SWAgent.sendMessage({seed: seed}).then(data => {
+		callback();
+	}).catch(err => {
+		callback(err);
+	}).catch(err => {
+		callback(err);
+	});
 };
 
 SWAgent.registerSW = function (options, callback) {
