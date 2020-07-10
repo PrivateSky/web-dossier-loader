@@ -4,12 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <base href=".." target="_self">
-    <script src="loader-config.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
     <script type="module" src="controllers/RestoreController.js"></script>
     <script src="assets/js/stepper.min.js"></script>
-    <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
+    <link href="ssapp-demo-workspace/web-server/web-wallet/loader/assets/css/blue-fluorite.css" type="text/css" rel="stylesheet"/>
     <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
 </head>
 <body>
@@ -42,12 +41,12 @@
             <form onSubmit="return controller.openWallet(event)">
                 <div id="enter-seed" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger1">
                     <div class="form-group">
-                        <label id="seed-label" for="seed">Seed</label>
+                        <label id="seed-label" for="seed">Enter your SEED</label>
                         <input type="text" class="form-control" id="seed" placeholder="Enter Wallet Seed"
                                oninput="controller.validateSeed(event)">
                         <label id="seed-error"></label>
                     </div>
-                    <button id="restore-seed-btn" class="btn btn-primary" onclick="controller.restore(event)"
+                    <button id="restore-seed-btn" class="btn btn-csb-loader btn-csb-restore btn-primary" onclick="controller.restore(event)"
                             disabled="disabled">Restore
                     </button>
                 </div>
@@ -56,7 +55,7 @@
 
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
+                            <input type="password" class="form-control" id="pin" placeholder="Enter your PIN"
                                    oninput="controller.validatePIN(event)">
                             <small id="pin-help" class="form-text text-muted">Setup a easy to remember PIN.</small>
                         </div>
@@ -70,16 +69,17 @@
                     <div class="row ml-1">
                         <label id="pin-error" class="error"></label>
                     </div>
-                    <button id="change-wallet" class="btn btn-primary" onclick="controller.previous(event)">Change wallet</button>
-                    <button id="set-pin-btn" class="btn btn-primary" onclick="controller.setPin(event)"
-                            disabled="disabled">Set PIN
-                    </button>
-
+                    <div class="buttons-box buttons-box-restore-wallet">
+                        <button id="change-wallet" class="btn btn-csb-loader btn-csb-new btn-primary" onclick="controller.previous(event)">Change wallet</button>
+                        <button id="set-pin-btn" class="btn btn-csb-loader btn-csb-restore btn-primary" onclick="controller.setPin(event)"
+                                disabled="disabled">Set PIN
+                        </button>
+                    </div>
                 </div>
                 <div id="complete" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
                     <h4 id="wallet-restored-success">Your wallet has been successfully restored</h4>
-                    <button id="open-wallet-btn" type="submit" class="btn btn-primary mt-5">Open Wallet</button>
+                    <button id="open-wallet-btn" type="submit" class="btn btn-csb-restore btn-csb-loader btn-primary mt-5">Open Wallet</button>
                 </div>
             </form>
         </div>

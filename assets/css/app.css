@@ -1,11 +1,35 @@
 @import url("nunito.css");
 @import url("bootstrap.min.css");
 
+:root {
+    --color-white: rgb(255, 255, 255);
+    --color-black: rgb(0, 0, 0);
+    --color-white-transparent: rgba(255, 255, 255, 0.5);
+    --color-gray-text: rgb(112, 112, 112);
+
+    --color-light-primary-blue-button: #007bff;
+    --color-light-primary-blue-border-button: #007bff;
+    --color-light-primary-blue-hover-button: #0069d9;
+
+    --color-light-primary-gray-button: #566271;
+    --color-light-primary-gray-border-button: #4e5a69;
+    --color-light-primary-gray-hover-button: #616e7d;
+
+    --color-dark-secondary-pink-button: #8d7096;
+    --color-dark-secondary-pink-border-button: #806489;
+    --color-dark-secondary-pink-hover-button: #95799e;
+
+
+
+    --content-height: 450px;
+    --text-align-center: center;
+}
+
 html{
     height:100%;
     width:100%;
-
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -17,6 +41,7 @@ body {
     background-size: cover;
     height: 100%;
     width: 100%;
+    display: block !important;
 }
 
 #more-information{
@@ -100,47 +125,63 @@ border-radius:50%;
     text-align: center;
 }
 
+.btn-csb-loader {
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    border: 1px solid transparent;
+    line-height: 1.5;
+    border-radius: .25rem;
+    display: inline-block;
+    color: var(--color-white) !important;
+}
+
 .btn-csb-new,
-.btn-lost-pin{
-    background-color: #616e7d;
-    border-color: #4e5a69;
-    color:#FFFFFF;
+.btn-lost-pin {
+    background-color: var(--color-light-primary-gray-button);
+    border-color: var(--color-light-primary-gray-border-button);
 }
 
 .btn-csb-new:hover,
 .btn-csb-new:active,
-.btn-csb-new:visited,
 .btn-csb-new:focus,
 .btn-lost-pin:hover,
 .btn-lost-pin:active,
 .btn-lost-pin:visited,
-.btn-lost-pin:focus{
-    color:#FFFFFF;
-    background-color: #566271;
-    border-color: #4e5a69;
+.btn-lost-pin:focus {
+    background-color: var(--color-light-primary-gray-hover-button);
 }
 
 .btn-csb-restore,
-.btn-open-wallet{
-    background-color: #95799e;
-    border-color: #806489;
-    color:#FFFFFF;
+.btn-open-wallet {
+    background-color: var(--color-dark-secondary-pink-button);
+    border-color: var(--color-dark-secondary-pink-border-button);
 }
 
 .btn-csb-restore:hover,
 .btn-csb-restore:active,
-.btn-csb-restore:visited,
 .btn-csb-restore:focus,
 .btn-open-wallet:hover,
 .btn-open-wallet:active,
 .btn-open-wallet:visited,
-.btn-open-wallet:focus
-{
-    color:#FFFFFF;
-    background-color: #8d7096;
-    border-color: #806489;
+.btn-open-wallet:focus {
+    background-color: var(--color-dark-secondary-pink-hover-button);
 }
 
+.btn-primary {
+    background-color: var(--color-light-primary-blue-button) !important;
+    border-color: var(--color-light-primary-blue-border-button) !important;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:focus
+{
+    background-color: var(--color-light-primary-blue-hover-button) !important;
+}
+
+.buttons-box-set-pin {
+    margin-left: 15px;
+}
 
 .stepper-content .active .bs-stepper-circle {
     background-color: #566271;
@@ -257,7 +298,7 @@ label.error{
 
 @media (min-width: 1200px) {
     .pin-panel{
-        width:40rem;
+        width:30rem;
     }
 }
 

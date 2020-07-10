@@ -1,3 +1,4 @@
+import "./../loader-config.js";
 import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import SWAgent from "./services/SWAgent.js";

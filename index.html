@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
     <meta charset="UTF-8">
     <title></title>
-    <script src="loader-config.js"></script>
+    <script type="module" src="loader-config.js"></script>
+    <script type="module" src="controllers/MainController.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
-    <script type="module" src="controllers/MainController.js"></script>
-    <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes">
 </head>
-<body>
+<body style="display: none">
+    <div class="wizard-container">
 
+        <div id="restore-new-container" class="align-self-center bd-highlight content">
 
-<div class="wizard-container">
-
-    <div id="restore-new-container" class="align-self-center bd-highlight content">
-
-        <div id="loader-title" class="title">Cloud Safe Box</div>
-        <div id="loader-caption" class="caption">A smart application for keep your secrets</div>
-        <div class="actions">
-            <a type="button" class="btn btn-csb-new" href="new" id="new-dossier" >New Dossier</a>
-            <a type="button" class="btn btn-csb-restore" href="restore" id="restore-dossier">Restore Dossier</a>
+            <div id="loader-title" class="title">Cloud Safe Box</div>
+            <div id="loader-caption" class="caption">A smart application for keep your secrets</div>
+            <div class="actions">
+                <a type="button" class="btn btn-csb-loader btn-csb-new" href="new" id="new-dossier">New CSB</a>
+                <a type="button" class="btn btn-csb-loader btn-csb-restore" href="restore" id="restore-dossier">Restore
+                    CSB</a>
+            </div>
         </div>
 
-    </div>
+        <div id="pin-container" class="align-self-center bd-highlight">
+            <div class="pin-panel-container">
+                <div class="pin-panel card text-white bg-violet mb-3">
+                    <div class="card-header" id="wallet-authorization">Wallet Authorization</div>
+                    <div class="card-body">
+                        <h5 class="card-title" id="enter-pin">Enter your PIN</h5>
+                        <form class="pin-panel-action-box" onsubmit="controller.openWallet(event)">
+                            <div class="form-group">
+                                <input type="password" class="form-control" id="pin" placeholder="Enter your PIN"
+                                       oninput="controller.validatePIN(event)">
+                            </div>
 
-    <div id="pin-container" class="align-self-center bd-highlight">
-        <div class="pin-panel-container">
-            <div class="pin-panel card text-white bg-violet mb-3" style="max-width: 30rem;">
-                <div class="card-header" id="wallet-authorization">Wallet Authorization</div>
-                <div class="card-body">
-                    <h5 class="card-title" id="enter-pin">Enter PIN</h5>
-                    <form onsubmit="controller.openWallet(event)">
-                        <div class="form-group">
-                            <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
-                                   oninput="controller.validatePIN(event)">
-                        </div>
-
-                        <div class="row ml-1">
-                            <label id="pin-error" class="error"></label>
-                        </div>
-
-                        <button type="submit" id="open-wallet-btn" disabled="disabled" class="btn btn-open-wallet float-left">Open Wallet</button>
-                        <button type="button" id="lost-pin" onclick="controller.restore(event)" class="btn btn-lost-pin float-right">Lost PIN?</button>
-                    </form>
+                            <div class="row ml-1">
+                                <label id="pin-error" class="error"></label>
+                            </div>
+                            <div class="buttons-box">
+                                <button type="button" id="lost-pin" onclick="controller.restore(event)"
+                                        class="btn btn-csb-loader btn-lost-pin float-left">Lost PIN
+                                </button>
+                                <button type="submit" id="open-wallet-btn" disabled="disabled"
+                                        class="btn btn-csb-loader btn-csb-restore float-right">Open Wallet
+                                </button>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
+
     </div>
-
-</div>
-
-
 </body>
 
 

@@ -4,12 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <base href=".." target="_self">
-    <script src="loader-config.js"></script>
     <script src="bundles/webshims.js"></script>
     <script src="bundles/edfsBar.js"></script>
     <script type="module" src="controllers/NewController.js"></script>
     <script src="assets/js/stepper.min.js"></script>
-    <link href="assets/css/app.css" type="text/css" rel="stylesheet"/>
     <link href="assets/css/stepper.min.css" type="text/css" rel="stylesheet"/>
     <link href="assets/fontawesome-free-5.12.1-web/css/all.min.css" type="text/css" rel="stylesheet"/>
 
@@ -32,30 +30,33 @@
                 </button>
             </div>
         </div>
-        <div class="bs-stepper-content">
+        <div class="bs-stepper-content set-pin-content">
             <form onSubmit="controller.openWallet(event)">
                 <div id="enter-pin-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
                     <div id="more-information"></div>
-                    <label for="pin" id="set-up-pin">Set up a Personal Identifier(PIN)</label>
                     <div class="row">
                         <div class="form-group col-md-6">
-                            <input type="password" class="form-control" id="pin" placeholder="Enter PIN"
+                            <label for="pin" class="pin-label">Set up an easy to remember PIN</label>
+                            <input type="password" class="form-control" id="pin" placeholder="Enter your PIN"
                                    oninput="controller.validatePIN(event)">
                             <small id="pin-help" class="form-text text-muted">Setup a easy to remember PIN.</small>
                         </div>
                         <div class="form-group col-md-6">
+                            <label for="pin" id="confirm-your-pin" class="pin-label">Confirm your PIN</label>
                             <input type="password" class="form-control" id="confirm-pin" placeholder="Confirm PIN"
                                    oninput="controller.validatePIN(event)">
                             <small id="pin-confirm-help" class="form-text text-muted">PINs should be identical.</small>
+                        </div>
+                        <div class="buttons-box buttons-box-set-pin">
+                            <button class="btn btn-csb-loader btn-csb-new" href="loader">Back</button>
+                            <button id="set-pin-btn" class="btn btn-csb-loader btn-csb-restore btn-primary" onclick="controller.createWallet(event)"
+                                    disabled="disabled">Set PIN
+                            </button>
                         </div>
                     </div>
                     <div class="row ml-1">
                         <label id="pin-error" class="error"></label>
                     </div>
-                    <button id="set-pin-btn" class="btn btn-primary" onclick="controller.createWallet(event)"
-                            disabled="disabled">Set PIN
-
-                    </button>
                 </div>
                 <div id="complete-step" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
@@ -79,7 +80,7 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-primary mt-5" id="open-wallet-btn">Open Wallet</button>
+                    <button type="submit" class="btn btn-csb-restore btn-csb-loader btn-primary mt-5" id="open-wallet-btn">Open Wallet</button>
                 </div>
             </form>
         </div>
