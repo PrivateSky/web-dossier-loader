@@ -178,7 +178,11 @@ function WalletBuilderService(wallet, options) {
 						return callback(err);
 					}
 					customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
-						return callback(err, appDossier.getSeed());
+                        if (err) {
+                            return callback(err);
+                        }
+
+                        appDossier.getKeySSI(callback);
 					})
 				})
 			});

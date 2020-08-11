@@ -221,11 +221,19 @@ function MainController() {
 					console.error(err);
 					return console.error("Operation failed. Try again");
 				}
-				console.log(`Loading wallet ${wallet.getSeed()}`);
 
-				new SSAppRunner({
-					seed: wallet.getSeed()
-				}).run();
+				wallet.getKeySSI((err, keySSI) => {
+					if (err) {
+						console.error(err);
+						return console.error("Operation failed. Try again");
+					}
+
+					console.log(`Loading wallet ${keySSI}`);
+
+					new SSAppRunner({
+						seed: keySSI
+					}).run();
+				});
 			})
 		})
 	};

@@ -10,14 +10,25 @@ import SWAgent from "./SWAgent.js";
  */
 function WalletService(options) {
 
-	ScopedLocalStorage.setLocalStorageScope();
+    ScopedLocalStorage.setLocalStorageScope();
     options = options || {};
 
     this.edfsEndpoint = options.edfsEndpoint;
-    this.seed = options.seed;
+    this.keySSI = options.keySSI;
 
     let EDFS = require('edfs');
-    let edfsInstance;
+    $$.BDNS.addConfig("default", {
+        endpoints: [
+            {
+                endpoint: options.edfsEndpoint,
+                type: 'brickStorage'
+            },
+            {
+                endpoint: options.edfsEndpoint,
+                type: 'anchorService'
+            }
+        ]
+    })
     const EDFS_CONSTANTS = EDFS.constants;
 
     /**
@@ -45,38 +56,40 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.restoreFromPin = function (pin, callback) {
-        EDFS.attachWithPassword(pin, (err, edfs) => {
-            if (err) {
-                return callback(err);
-            }
-
-			edfsInstance = edfs;
-            callback();
-        })
+        // EDFS.attachWithPassword(pin, (err, edfs) => {
+        //     if (err) {
+        //         return callback(err);
+        //     }
+        //
+        //     edfsInstance = edfs;
+        //     callback();
+        // })
+        callback();
     };
 
     /**
-     * @param {string} seed
+     * @param {string} keySSI
      * @param {callback} callback
      */
-    this.restoreFromSeed = function (seed, callback) {
-        EDFS.attachWithSeed(seed, (err, edfs) => {
-            if (err) {
-                return callback(err);
-            }
-
-			edfsInstance = edfs;
-            callback();
-        })
+    this.restoreFromSeed = function (keySSI, callback) {
+        callback();
+        // EDFS.attachWithSeed(keySSI, (err, edfs) => {
+        //     if (err) {
+        //         return callback(err);
+        //     }
+        //
+        //     edfsInstance = edfs;
+        //     callback();
+        // })
     };
 
     /**
-     * @param {string} seed
+     * @param {string} keySSI
      * @param {string} pin
      * @param {callback} callback
      */
-    this.changePin = function (seed, pin, callback) {
-		edfsInstance.loadWallet(seed, pin, true, (err, wallet) => {
+    this.changePin = function (keySSI, pin, callback) {
+        EDFS.resolveSSI(keySSI, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -89,7 +102,7 @@ function WalletService(options) {
      * @param {callback}
      */
     this.load = function (pin, callback) {
-		edfsInstance.loadWallet(pin, true, (err, wallet) => {
+        EDFS.resolveSSI(undefined, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -105,47 +118,47 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.create = function (pin, callback) {
-        SWAgent.unregisterSW(()=>{
-			if (!this.edfsEndpoint) {
-				throw new Error('An EDFS endpoint is required for creating a wallet');
-			}
+        SWAgent.unregisterSW(() => {
+            if (!this.edfsEndpoint) {
+                throw new Error('An EDFS endpoint is required for creating a wallet');
+            }
 
-			let edfs;
-			try {
-				edfs = EDFS.attachToEndpoint(this.edfsEndpoint);
-			} catch (e) {
-				return callback(e);
-			}
+            EDFS.createDSU("RawDossier", (err, wallet) => {
+                if (err) {
+                    return callback(err);
+                }
 
-			edfs.createRawDossier((err, wallet) => {
-				if (err) {
-					return callback(err);
-				}
+                const walletBuilder = new WalletBuilderService(wallet, {
+                    codeFolderName: 'code',
+                    walletTemplateFolderName: 'wallet-template',
+                    appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+                    appsFolderName: 'apps',
+                    dossierFactory: (callback) => {
+                        EDFS.createDSU("RawDossier", callback);
+                    }
+                });
 
-				const walletBuilder = new WalletBuilderService(wallet, {
-					codeFolderName: 'code',
-					walletTemplateFolderName: 'wallet-template',
-					appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
-					appsFolderName: 'apps',
-					dossierFactory: (callback) => {
-						edfs.createRawDossier(callback);
-					}
-				});
 
-				walletBuilder.build((err) => {
-					if (err) {
-						return callback(err);
-					}
+                walletBuilder.build((err) => {
+                    if (err) {
+                        return callback(err);
+                    }
 
-					edfs.loadWallet(wallet.getSeed(), pin, true, (err, wallet) => {
-						if (err) {
-							return callback(err);
-						}
+                    wallet.getKeySSI((err, keySSI) => {
+                        if (err) {
+                            return callback(err);
+                        }
 
-						callback(undefined, wallet);
-					});
-				})
-			});
+                        EDFS.resolveSSI(keySSI, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
+                            if (err) {
+                                return callback(err);
+                            }
+
+                            callback(undefined, wallet);
+                        });
+                    });
+                })
+            });
         })
     }
 
@@ -170,8 +183,8 @@ function WalletService(options) {
                     walletTemplateFolderName: 'wallet-template',
                     appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
                     appsFolderName: 'apps',
-                    dossierLoader: function (seed, callback) {
-                        EDFS.loadRawDossier(seed, callback);
+                    dossierLoader: function (keySSI, callback) {
+                        EDFS.resolveSSI(keySSI, "RawDossier", callback);
                     }
                 });
 

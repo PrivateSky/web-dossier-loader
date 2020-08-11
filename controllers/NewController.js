@@ -72,11 +72,12 @@ function NewController() {
 					document.getElementById("pin-error").innerText = "An error occurred. Please try again."
 					return console.error(err);
 				}
-				const seed = wallet.getSeed();
-				console.log(`Wallet created. Seed: ${seed}`);
-				document.getElementById("seed").value = seed;
-				spinner.removeFromView();
-				wizard.next();
+				wallet.getKeySSI((err, keySSI) => {
+					console.log(`Wallet created. Seed: ${keySSI}`);
+					document.getElementById("seed").value = keySSI;
+					spinner.removeFromView();
+					wizard.next();
+				});
 			});
 		}
 		catch (e) {
