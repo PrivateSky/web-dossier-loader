@@ -18,8 +18,7 @@ function WalletService(options) {
 
     let EDFS = require('edfs');
     $$.BDNS.addConfig("default", {
-        endpoints: [
-            {
+        endpoints: [{
                 endpoint: options.edfsEndpoint,
                 type: 'brickStorage'
             },
@@ -34,14 +33,14 @@ function WalletService(options) {
     /**
      * @param {string} endpoint
      */
-    this.setEDFSEndpoint = function (endpoint) {
+    this.setEDFSEndpoint = function(endpoint) {
         this.edfsEndpoint = endpoint;
     };
 
     /**
      * @param {callback} callback
      */
-    this.hasSeedCage = function (callback) {
+    this.hasSeedCage = function(callback) {
         EDFS.checkForSeedCage((err) => {
             if (err) {
                 return callback(false);
@@ -55,7 +54,7 @@ function WalletService(options) {
      * @param {string} pin
      * @param {callback} callback
      */
-    this.restoreFromPin = function (pin, callback) {
+    this.restoreFromPin = function(pin, callback) {
         // EDFS.attachWithPassword(pin, (err, edfs) => {
         //     if (err) {
         //         return callback(err);
@@ -71,13 +70,13 @@ function WalletService(options) {
      * @param {string} keySSI
      * @param {callback} callback
      */
-    this.restoreFromSeed = function (keySSI, callback) {
+    this.restoreFromSeed = function(keySSI, callback) {
         callback();
         // EDFS.attachWithSeed(keySSI, (err, edfs) => {
         //     if (err) {
         //         return callback(err);
         //     }
-        //
+
         //     edfsInstance = edfs;
         //     callback();
         // })
@@ -88,8 +87,8 @@ function WalletService(options) {
      * @param {string} pin
      * @param {callback} callback
      */
-    this.changePin = function (keySSI, pin, callback) {
-        EDFS.resolveSSI(keySSI, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
+    this.changePin = function(keySSI, pin, callback) {
+        EDFS.resolveSSI(keySSI, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -101,8 +100,8 @@ function WalletService(options) {
      * @param {string} pin
      * @param {callback}
      */
-    this.load = function (pin, callback) {
-        EDFS.resolveSSI(undefined, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
+    this.load = function(pin, callback) {
+        EDFS.resolveSSI(undefined, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -117,7 +116,7 @@ function WalletService(options) {
      * @param {string|undefined} pin
      * @param {callback} callback
      */
-    this.create = function (pin, callback) {
+    this.create = function(pin, callback) {
         SWAgent.unregisterSW(() => {
             if (!this.edfsEndpoint) {
                 throw new Error('An EDFS endpoint is required for creating a wallet');
@@ -149,7 +148,7 @@ function WalletService(options) {
                             return callback(err);
                         }
 
-                        EDFS.resolveSSI(keySSI, "Wallet", {password: pin, overwrite: true}, (err, wallet) => {
+                        EDFS.resolveSSI(keySSI, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
                             if (err) {
                                 return callback(err);
                             }
@@ -167,7 +166,7 @@ function WalletService(options) {
      * @param {string|undefined} pin
      * @param {callback} callback
      */
-    this.rebuild = function (pin, callback) {
+    this.rebuild = function(pin, callback) {
         this.restoreFromPin(pin, (err) => {
             if (err) {
                 return callback(err);
@@ -183,7 +182,7 @@ function WalletService(options) {
                     walletTemplateFolderName: 'wallet-template',
                     appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
                     appsFolderName: 'apps',
-                    dossierLoader: function (keySSI, callback) {
+                    dossierLoader: function(keySSI, callback) {
                         EDFS.resolveSSI(keySSI, "RawDossier", callback);
                     }
                 });
