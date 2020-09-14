@@ -17,19 +17,17 @@ function WalletService(options) {
     this.keySSI = options.keySSI;
 
     let EDFS = require('edfs');
-    $$.BDNS.addConfig("default", {
-        endpoints: [{
-                endpoint: options.edfsEndpoint,
-                type: 'brickStorage'
-            },
-            {
-                endpoint: options.edfsEndpoint,
-                type: 'anchorService'
-            }
-        ]
-    })
+    const openDSU = require("opendsu");
+    const bdns = openDSU.loadApi("bdns");
+    const keyssi = openDSU.loadApi("keyssi");
+    const resolver = openDSU.loadApi("resolver");
     const EDFS_CONSTANTS = EDFS.constants;
+    const DEFAULT_DOMAIN = "default";
 
+    bdns.addRawInfo(DEFAULT_DOMAIN, {
+    brickStorages: [this.edfsEndpoint],
+    anchoringServices: [this.edfsEndpoint]
+})
     /**
      * @param {string} endpoint
      */
@@ -88,7 +86,7 @@ function WalletService(options) {
      * @param {callback} callback
      */
     this.changePin = function(keySSI, pin, callback) {
-        EDFS.resolveSSI(keySSI, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
+        resolver.loadDSU(keySSI, { password: pin, overwrite: true }, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -101,7 +99,7 @@ function WalletService(options) {
      * @param {callback}
      */
     this.load = function(pin, callback) {
-        EDFS.resolveSSI(undefined, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
+        resolver.loadDSU(keyssi.buildWalletSSI(DEFAULT_DOMAIN), { password: pin, overwrite: true }, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -122,7 +120,7 @@ function WalletService(options) {
                 throw new Error('An EDFS endpoint is required for creating a wallet');
             }
 
-            EDFS.createDSU("RawDossier", (err, wallet) => {
+            resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), (err, wallet) => {
                 if (err) {
                     return callback(err);
                 }
@@ -133,7 +131,7 @@ function WalletService(options) {
                     appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
                     appsFolderName: 'apps',
                     dossierFactory: (callback) => {
-                        EDFS.createDSU("RawDossier", callback);
+                        resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), callback);
                     }
                 });
 
@@ -148,7 +146,7 @@ function WalletService(options) {
                             return callback(err);
                         }
 
-                        EDFS.resolveSSI(keySSI, "Wallet", { password: pin, overwrite: true }, (err, wallet) => {
+                        resolver.loadDSU(keySSI, { password: pin, overwrite: true }, (err, wallet) => {
                             if (err) {
                                 return callback(err);
                             }
@@ -183,7 +181,7 @@ function WalletService(options) {
                     appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
                     appsFolderName: 'apps',
                     dossierLoader: function(keySSI, callback) {
-                        EDFS.resolveSSI(keySSI, "RawDossier", callback);
+                        resolver.loadDSU(keySSI, callback);
                     }
                 });
 
