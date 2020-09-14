@@ -15,8 +15,8 @@
         },
         {
           "type": "copy",
-          "src": "../../../privatesky/psknode/bundles/edfsBar.js",
-          "target": "./bundles/edfsBar.js",
+          "src": "../../../privatesky/psknode/bundles/openDSU.js",
+          "target": "./bundles/openDSU.js",
           "options": {
             "overwrite": true
           }
