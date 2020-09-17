@@ -21,7 +21,7 @@ function WalletService(options) {
     const bdns = openDSU.loadApi("bdns");
     const keyssi = openDSU.loadApi("keyssi");
     const resolver = openDSU.loadApi("resolver");
-    const EDFS_CONSTANTS = EDFS.constants;
+    const CONSTANTS = openDSU.constants;
     const DEFAULT_DOMAIN = "default";
 
     bdns.addRawInfo(DEFAULT_DOMAIN, {
@@ -128,7 +128,7 @@ function WalletService(options) {
                 const walletBuilder = new WalletBuilderService(wallet, {
                     codeFolderName: 'code',
                     walletTemplateFolderName: 'wallet-template',
-                    appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+                    appFolderName: CONSTANTS.APP_FOLDER,
                     appsFolderName: 'apps',
                     dossierFactory: (callback) => {
                         resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), callback);
@@ -178,7 +178,7 @@ function WalletService(options) {
                 const walletBuilder = new WalletBuilderService(wallet, {
                     codeFolderName: 'code',
                     walletTemplateFolderName: 'wallet-template',
-                    appFolderName: EDFS_CONSTANTS.CSB.APP_FOLDER,
+                    appFolderName: CONSTANTS.APP_FOLDER,
                     appsFolderName: 'apps',
                     dossierLoader: function(keySSI, callback) {
                         resolver.loadDSU(keySSI, callback);
