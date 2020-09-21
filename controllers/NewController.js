@@ -72,6 +72,7 @@ function NewController() {
 					document.getElementById("pin-error").innerText = "An error occurred. Please try again."
 					return console.error(err);
 				}
+
 				wallet.getKeySSI((err, keySSI) => {
 					console.log(`Wallet created. Seed: ${keySSI}`);
 					document.getElementById("seed").value = keySSI;

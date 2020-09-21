@@ -10,7 +10,7 @@ import FileService from "./FileService.js";
  * @param {string} options.appFolderName
  * @param {string} options.appsFolderName
  */
-function WalletBuilderService(wallet, options) {
+function WalletBuilderService(options) {
     options = options || {};
 
 
@@ -34,6 +34,8 @@ function WalletBuilderService(wallet, options) {
     const WALLET_TEMPLATE_FOLDER = options.walletTemplateFolderName;
     const APP_FOLDER = options.appFolderName;
     const APPS_FOLDER = options.appsFolderName;
+    const SSI_FILE_NAME = options.ssiFileName;
+    const DEFAULT_DOMAIN = options.domain || "default";
 
     const fileService = new FileService();
 
@@ -84,14 +86,14 @@ function WalletBuilderService(wallet, options) {
     };
 
     /**
-     * Write the files into the dossier under /prefix
+     * Write the files into the DSU under /prefix
      *
-     * @param {RawDossier} dossier
+     * @param {DSU} dsu
      * @param {Array.Object} files
      * @param {string} prefix
      * @param {callback} callback
      */
-    const customizeDossier = (dossier, files, prefix, callback) => {
+    const customizeDSU = (dsu, files, prefix, callback) => {
         if (typeof prefix === "function") {
             callback = prefix;
             prefix = undefined;
@@ -121,12 +123,12 @@ function WalletBuilderService(wallet, options) {
         else{
             fileContent = file.content;
         }
-        dossier.writeFile(targetPath, fileContent, (err) => {
+        dsu.writeFile(targetPath, fileContent, (err) => {
             if (err) {
                 console.error(targetPath);
                 return callback(err);
             }
-            customizeDossier(dossier, files, prefix, callback);
+            customizeDSU(dsu, files, prefix, callback);
         });
     };
 
@@ -164,25 +166,24 @@ function WalletBuilderService(wallet, options) {
 		}
 
         const instantiateNewDossier = (files) =>{
-			 if (typeof this.dossierFactory !== 'function') {
-				 return callback(new Error('A RawDossier factory function is required'));
-			 }
-			this.dossierFactory((err, appDossier) => {
+			 let resolver = require("opendsu").loadApi("resolver");
+			 let keyssi = require("opendsu").loadApi("keyssi");
+			 resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), (err, appDSU) => {
 				if (err) {
 					return callback(err);
 				}
 
-				appDossier.mount('/' + CODE_FOLDER, seed, (err) => {
+				appDSU.mount('/' + CODE_FOLDER, seed, (err) => {
 
 					if (err) {
 						return callback(err);
 					}
-					customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
+					customizeDSU(appDSU, files, `/${APP_FOLDER}`, (err) => {
                         if (err) {
                             return callback(err);
                         }
 
-                        appDossier.getKeySSI(callback);
+                        appDSU.getKeySSI(callback);
 					})
 				})
 			});
@@ -212,7 +213,7 @@ function WalletBuilderService(wallet, options) {
      * @param {Array.String} appsList
      * @param {callback} callback
      */
-    const performInstallation = (apps, appsList, callback) => {
+    const performInstallation = (walletDSU, apps, appsList, callback) => {
         if (!appsList.length) {
             return callback();
         }
@@ -224,12 +225,12 @@ function WalletBuilderService(wallet, options) {
         }
 
 		const mountApp = (newAppSeed) => {
-			wallet.mount('/apps/' + appName, newAppSeed, (err) => {
+			walletDSU.mount('/apps/' + appName, newAppSeed, (err) => {
 				if (err) {
 					return callback(err);
 				}
 
-				performInstallation(apps, appsList, callback);
+				performInstallation(walletDSU, apps, appsList, callback);
 			})
 		};
 
@@ -266,7 +267,7 @@ function WalletBuilderService(wallet, options) {
             files = dirSummaryAsArray(files);
 
             const appDossier = this.dossierLoader(seed);
-            customizeDossier(appDossier, files, `/${APP_FOLDER}`, (err) => {
+            customizeDSU(appDossier, files, `/${APP_FOLDER}`, (err) => {
                 return callback(err);
             })
         })
@@ -366,9 +367,10 @@ function WalletBuilderService(wallet, options) {
      * Install applications found in the /apps folder
      * into the wallet
      *
+	 * @param {DSU} walletDSU
      * @param {callback} callback
      */
-    const installApplications = (callback) => {
+    const installApplications = (walletDSU, callback) => {
 
         getListOfAppsForInstallation((err, apps) => {
 
@@ -385,7 +387,7 @@ function WalletBuilderService(wallet, options) {
 					   };
                    });
 				   let landingApp = {name: externalAppsList[0]};
-				   wallet.writeFile("apps/.landingApp",JSON.stringify(landingApp), ()=>{
+				   walletDSU.writeFile("apps/.landingApp",JSON.stringify(landingApp), ()=>{
 				   	console.log(`Written landingApp [${landingApp.name}]. `)
 				   });
                }
@@ -398,7 +400,7 @@ function WalletBuilderService(wallet, options) {
 			}
             console.log('Installing the following applications: ', appsToBeInstalled, appsList);
 
-            performInstallation(appsToBeInstalled, appsList, callback);
+            performInstallation(walletDSU, appsToBeInstalled, appsList, callback);
         })
     }
 
@@ -409,43 +411,53 @@ function WalletBuilderService(wallet, options) {
      * @param {object} files
      * @param {callback} callback
      */
-    const install = (files, callback) => {
-        // Mount the "wallet template" into wallet/code
-        wallet.mount('/' + CODE_FOLDER, this.walletTypeSeed, (err) => {
-            if (err) {
-                return callback(err);
-            }
+    const install = (wallet, files, callback) => {
+		// Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
+		// into the wallet's app folder
+		files = dirSummaryAsArray(files);
+		customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
+			if (err) {
+				return callback(err);
+			}
 
-            // Remove the seed file in order to prevent copying it into the new dossier
-            delete files['/'].seed;
-
-            // Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
-            // into the wallet's app folder
-            files = dirSummaryAsArray(files);
-            customizeDossier(wallet, files, `/${APP_FOLDER}`, (err) => {
-                if (err) {
-                    return callback(err);
-                }
-
-                installApplications(callback);
-            })
-        })
+			installApplications(wallet, callback);
+		});
     }
 
     /**
      * @param {callback} callback
      */
     this.build = function (callback) {
-        getWalletTemplateContent((err, files) => {
-            if (err) {
-                return callback(err);
-            }
+    	let resolver = require("opendsu").loadApi("resolver");
+		let keySSISpace = require("opendsu").loadApi("keyssi");
 
-            this.walletTypeSeed = files['/'].seed;
-            console.log(`Got wallet type seed: ${this.walletTypeSeed}`);
+    	fileService.getFile(WALLET_TEMPLATE_FOLDER+"/"+SSI_FILE_NAME, (err, dsuType)=>{
+    		if(err){
+    			return callback(err);
+			}
+			resolver.createWallet(keySSISpace.buildWalletSSI("default", "template").getIdentifier(), dsuType, (err, walletDSU) => {
+				if(err){
+					return callback(err);
+				}
 
-            install(files, callback);
-        });
+				getWalletTemplateContent((err, files) => {
+					if (err) {
+						return callback(err);
+					}
+
+					// we need to remove dsu type identifier from the file list
+					files['/'][SSI_FILE_NAME] = undefined;
+					delete files['/'][SSI_FILE_NAME];
+
+					install(walletDSU, files, (err)=>{
+						if(err){
+							return callback(err);
+						}
+						callback(undefined, walletDSU);
+					});
+				});
+			});
+		});
     };
 
     /**
@@ -463,7 +475,7 @@ function WalletBuilderService(wallet, options) {
             // Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
             // into the wallet's app folder
             files = dirSummaryAsArray(files);
-            customizeDossier(wallet, files, `/${APP_FOLDER}`, (err) => {
+            customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
                 if (err) {
                     return callback(err);
                 }

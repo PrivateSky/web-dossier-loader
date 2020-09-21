@@ -180,7 +180,7 @@ function MainController() {
                 return this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
             }
             this.displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
-        })
+        });
     };
 
     this.displayContainer = function(containerId) {
