@@ -75,16 +75,23 @@ function WalletService(options) {
     };
 
     /**
-     * @param {string} pin
+     * @param {string} secret
      * @param {callback}
      */
-    this.load = function(pin, callback) {
-        resolver.loadDSU(keyssi.buildWalletSSI(DEFAULT_DOMAIN), { password: pin, overwrite: true }, (err, wallet) => {
-            if (err) {
-                return callback(err);
-            }
+    this.load = function(secret, callback) {
+        let keySSISpace = require("opendsu").loadApi("keyssi");
+        let tmpKeySSI = keySSISpace.buildWalletSSI();
+        tmpKeySSI.getSeedSSI(secret, (err, seedSSI)=>{
+           if(err){
+               return callback(err);
+           }
 
-            callback(undefined, wallet);
+           resolver.loadDSU(seedSSI, (err, wallet) =>{
+                if(err){
+                    return callback(err);
+                }
+                callback(undefined, wallet);
+           });
         });
     };
 
