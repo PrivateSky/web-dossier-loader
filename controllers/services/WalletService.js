@@ -79,20 +79,8 @@ function WalletService(options) {
      * @param {callback}
      */
     this.load = function(secret, callback) {
-        let keySSISpace = require("opendsu").loadApi("keyssi");
-        let tmpKeySSI = keySSISpace.buildWalletSSI();
-        tmpKeySSI.getSeedSSI(secret, (err, seedSSI)=>{
-           if(err){
-               return callback(err);
-           }
-
-           resolver.loadDSU(seedSSI, (err, wallet) =>{
-                if(err){
-                    return callback(err);
-                }
-                callback(undefined, wallet);
-           });
-        });
+        let resolver = require("opendsu").loadApi("resolver");
+        resolver.loadWallet(secret, callback);
     };
 
 
