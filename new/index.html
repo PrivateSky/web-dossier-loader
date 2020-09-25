@@ -31,25 +31,26 @@
             </div>
         </div>
         <div class="bs-stepper-content set-pin-content">
-            <form onSubmit="controller.openWallet(event)">
+
                 <div id="enter-pin-step" role="tabpanel" class="bs-stepper-pane" aria-labelledby="stepper1trigger2">
+                    <form onSubmit="controller.submitPin(event)">
                     <div id="more-information"></div>
                     <div class="row">
                         <div class="form-group col-md-6">
                             <label for="pin" class="pin-label" id="set-up-pin">Set up an easy to remember PIN</label>
                             <input type="password" class="form-control" id="pin" placeholder="Enter your PIN"
-                                   oninput="controller.validatePIN(event)">
+                                   oninput="controller.validatePIN(event)"/>
                             <small id="pin-help" class="form-text text-muted">Setup a easy to remember PIN.</small>
                         </div>
                         <div class="form-group col-md-6">
                             <label for="pin" id="confirm-your-pin" class="pin-label">Confirm your PIN</label>
                             <input type="password" class="form-control" id="confirm-pin" placeholder="Confirm PIN"
-                                   oninput="controller.validatePIN(event)">
+                                   oninput="controller.validatePIN(event)"/>
                             <small id="pin-confirm-help" class="form-text text-muted">PINs should be identical.</small>
                         </div>
                         <div class="buttons-box buttons-box-set-pin">
-                            <button class="btn btn-csb-loader btn-csb-new" href="loader">Back</button>
-                            <button id="set-pin-btn" class="btn btn-csb-loader btn-csb-restore btn-primary" onclick="controller.createWallet(event)"
+                            <button type="button" class="btn btn-csb-loader btn-csb-new" onclick="controller.goToLandingPage()">Back</button>
+                            <button id="set-pin-btn" class="btn btn-csb-loader btn-csb-restore btn-primary" onclick="controller.submitPin(event)"
                                     disabled="disabled">Set PIN
                             </button>
                         </div>
@@ -57,7 +58,9 @@
                     <div class="row ml-1">
                         <label id="pin-error" class="error"></label>
                     </div>
+                    </form>
                 </div>
+
                 <div id="complete-step" role="tabpanel" class="bs-stepper-pane text-center"
                      aria-labelledby="stepper1trigger3">
 
@@ -80,9 +83,8 @@
                     </div>
 
 
-                    <button type="submit" class="btn btn-csb-restore btn-csb-loader btn-primary mt-5" id="open-wallet-btn">Open Wallet</button>
+                    <button type="button" class="btn btn-csb-restore btn-csb-loader btn-primary mt-5" id="open-wallet-btn" onclick="controller.goToLandingPage();">Open Wallet</button>
                 </div>
-            </form>
         </div>
     </div>
 </div>

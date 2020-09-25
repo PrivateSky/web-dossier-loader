@@ -12,10 +12,6 @@ function NewController() {
 		edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT
 	});
 
-	function displayContainer(containerId) {
-		document.getElementById(containerId).style.display = "block";
-	}
-
 	 this.hasInstallationUrl = function (){
 		let windowUrl = new URL(window.location.href);
 		return windowUrl.searchParams.get("appName") !== null;
@@ -38,32 +34,24 @@ function NewController() {
 
 	};
 
-	this.validateSeed = function (event) {
-		let seed = event.target.value;
-		let btn = document.getElementById("restore-seed-btn");
-		if (seed.length > 0) {
-			document.getElementById("seed-error").innerText = "";
-			btn.removeAttribute("disabled");
-		}
-		else {
-			btn.setAttribute("disabled", "disabled");
-		}
-	};
-
-	this.validatePIN = function (event) {
+	this.pinsAreValid = function(){
 		pin = document.getElementById("pin").value;
 		let pinConfirm = document.getElementById("confirm-pin").value;
-		let btn = document.getElementById("set-pin-btn");
+		return (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH);
+	}
 
-		if (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
+	this.validatePIN = function () {
+		let btn = document.getElementById("set-pin-btn");
+		if (this.pinsAreValid()) {
 			btn.removeAttribute("disabled");
+			return true;
 		} else {
 			btn.setAttribute("disabled", "disabled");
 		}
+		return false;
 	};
 
-	this.createWallet = function (event) {
-		event.preventDefault();
+	function createWallet() {
 		spinner.attachToView();
 		try {
 			console.log('Creating wallet...');
@@ -84,7 +72,7 @@ function NewController() {
 		catch (e) {
 			document.getElementById("pin-error").innerText = "Seed is not valid."
 		}
-	};
+	}
 
 	this.previous = function (event) {
 		event.preventDefault();
@@ -93,16 +81,19 @@ function NewController() {
 		wizard.previous();
 	};
 
-	this.openWallet = function (event) {
+	this.submitPin = function (event) {
 		event.preventDefault();
 		event.stopImmediatePropagation();
-		window.location.replace("./");
+		if(this.pinsAreValid()){
+			createWallet();
+		}
+	}
+	this.goToLandingPage = function(){
+		window.location.replace('./');
 	}
 }
 
-
 let controller = new NewController();
-
 
 document.addEventListener("DOMContentLoaded", function () {
 	let LABELS = APP_CONFIG.LABELS_DICTIONARY;
