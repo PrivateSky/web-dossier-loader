@@ -5,6 +5,14 @@ let theme = APP_CONFIG.THEME;
 linkElement.href = "assets/css/" + theme + ".css";
 linkElement.type = "text/css";
 linkElement.rel = "stylesheet";
-document.querySelector('head').appendChild(linkElement);
+document.head.appendChild(linkElement);
+
+
+if (APP_CONFIG.PLUGIN_SCRIPT) {
+	let scriptElement = document.createElement("script");
+	scriptElement.src = APP_CONFIG.PLUGIN_SCRIPT;
+	scriptElement.type = "module";
+	document.body.appendChild(scriptElement);
+}
 
 window.APP_CONFIG = APP_CONFIG;
