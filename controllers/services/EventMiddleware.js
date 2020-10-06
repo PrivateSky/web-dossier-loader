@@ -31,7 +31,7 @@ function EventMiddleware(iframe, identity) {
 
 		if (typeof data.status === "string") {
 			if (!statusesHandlers[data.status]) {
-				console.error(`Error: Status [${data.status} could not be resolved. Did you added registered a handler for it?]`);
+				//console.error(`Error: Status [${data.status} could not be resolved. Did you added registered a handler for it?]`);
 				return;
 			}
 
