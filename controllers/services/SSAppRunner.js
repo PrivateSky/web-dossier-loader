@@ -34,7 +34,7 @@ function SSAppRunner(options) {
 
         // This request will be intercepted by swLoader.js
         // and will make the iframe load the app-loader.js script
-        iframe.src = window.location + 'iframe/' + this.hash;
+        iframe.src = window.location.origin+window.location.pathname + 'iframe/' + this.hash;
         return iframe;
     };
 
