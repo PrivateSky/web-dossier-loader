@@ -1,16 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title></title>
-    <script type="module" src="loader-config.js"></script>
-    <script type="module" src="controllers/MainController.js"></script>
-    <script src="bundles/webshims.js"></script>
-    <script src="bundles/openDSU.js"></script>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta charset="UTF-8" />
+  <title></title>
+  <script type="module" src="loader-config.js"></script>
+  <script type="module" src="controllers/MainController.js"></script>
+  <script src="bundles/webshims.js"></script>
+  <script src="bundles/openDSU.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+
+  <!-- pwa configs -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <meta name="theme-color" content="#157878" />
+
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <link rel="apple-touch-icon" href="assets/images-pwa/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="assets/images-pwa/touch-icon-ipad.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/images-pwa/touch-icon-iphone-retina.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="assets/images-pwa/touch-icon-ipad-retina.png" />
+
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <link href="assets/images-pwa/apple_splash_2048.png" sizes="2048x2732" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_1668.png" sizes="1668x2224" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_1536.png" sizes="1536x2048" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_1125.png" sizes="1125x2436" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_1242.png" sizes="1242x2208" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_750.png" sizes="750x1334" rel="apple-touch-startup-image" />
+  <link href="assets/images-pwa/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
+  <!-- /pwa configs -->
+
+  <!-- register pwa service worker -->
+  <script>
+    // Check that service workers are registered
+    if ("serviceWorker" in navigator) {
+      // Use the window load event to keep the page load performant
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("swPwa.js", { scope: "/secure-channels/loader/" });
+      });
+    }
+  </script>
+
+  <script>   
+    let canProceedWithInstall = true;
+    let deferredPrompt;
+
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    // Detects if device is in standalone mode
+    const isInStandaloneMode = () => "standalone" in window.navigator && window.navigator.standalone;
+
+    const showInstallationModal = () => {
+      const canInstallAutomatically = !isIos();
+      const canInstallManually = isIos() && !isInStandaloneMode();
+
+      if(!canInstallAutomatically && !canInstallManually) return;
+
+      const automaticInstallationContent = `
+        <button id="installPWA">Install</button>
+      `;
+      const manualInstallationContent = `
+        Manual Guide
+      `;
+      const modalHtml = `        
+        <p>
+          The current website can be installed as a standalone application for easier access.<br/>
+          Do you wish to install it?
+        </p>
+        ${canInstallAutomatically ? automaticInstallationContent : ''}
+        ${canInstallManually ? manualInstallationContent : ''}
+      `;
+
+      const modal = document.createElement('div');
+      modal.innerHTML = modalHtml;
+      modal.style.cssText = `
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 100000000;
+        background-color: gray;
+        text-align: center;
+      `;
+
+      document.body.prepend(modal);
+      document.body.style.display = "block";
+
+      if(canInstallAutomatically) {    
+        modal.querySelector("#installPWA").addEventListener("click", () => {
+          deferredPrompt
+            .prompt()
+            .then(function (evt) {
+              // Wait for the user to respond to the prompt
+              return deferredPrompt.userChoice;
+            })
+            .then(function (choiceResult) {
+              if (choiceResult.outcome === "accepted") {
+                console.log("User accepted the install prompt");
+              } else {
+                console.log("User dismissed the install prompt");
+              }
+            })
+            .catch(function (err) {
+              alert("error: " + err.message);
+              if (err.message.indexOf("user gesture") > -1) {
+                //recycle, but make sure there is a user gesture involved
+              } else if (err.message.indexOf("The app is already installed") > -1) {
+                //the app is installed, no need to prompt, but you may need to log or update state values
+                alert("The app is already installed");
+              } else {
+                alert("Error");
+                return err;
+              }
+            });
+        });
+      }
+    };
+
+    // Checks if should display install popup notification:
+    if (isIos() && !isInStandaloneMode()) {
+      showInstallationModal();
+    }
+
+    // window.addEventListener("load", () => {
+    //     showInstallationModal();
+    // });
+
+    if ("onbeforeinstallprompt" in window) {
+      window.addEventListener("beforeinstallprompt", (e) => {
+        if (!canProceedWithInstall) {
+          return;
+        }
+
+        canProceedWithInstall = false;
+
+        // alert("ready to install");
+        // Prevent the mini-infobar from appearing on mobile
+        e.preventDefault();
+        // Stash the event so it can be triggered later.
+        deferredPrompt = e;
+        // Update UI notify the user they can install the PWA
+        showInstallationModal();
+      });
+    }
+
+    window.addEventListener("appinstalled", (evt) => {
+      alert("appinstalled");
+      // Log install to analytics
+      console.log("INSTALL: Success");
+    });
+  </script>
 </head>
-<body style="display: none">
+<body style="display: none">    
     <div class="wizard-container">
 
         <div id="restore-new-container" class="align-self-center bd-highlight content">
