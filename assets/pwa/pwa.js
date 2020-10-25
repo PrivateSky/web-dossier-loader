@@ -1,11 +1,3 @@
-// Check that service workers are registered
-if ("serviceWorker" in navigator) {
-  // Use the window load event to keep the page load performant
-  window.addEventListener("load", () => {
-    navigator.serviceWorker.register("swPwa.js", { scope: "/secure-channels/loader/" });
-  });
-}
-
 (function setupInstallation() {
   let canProceedWithInstall = true;
   let deferredPrompt;
@@ -40,13 +32,20 @@ if ("serviceWorker" in navigator) {
     return /iphone|ipad|ipod/.test(userAgent);
   };
 
+  const INSTALL_POPUP_ITEM_KEY = "@installPopup";
+
   // Detects if device is in standalone mode
   const isInStandaloneMode = () => "standalone" in window.navigator && window.navigator.standalone;
+  const wasInstallPopupShown = () =>
+    "localStorage" in window && window.localStorage.getItem(INSTALL_POPUP_ITEM_KEY) === "true";
   const canInstallAutomatically = () => !isIos() && deferredPrompt;
-  const canInstallManually = () => isIos() && !isInStandaloneMode();
+  const canInstallManually = () => isIos() && !isInStandaloneMode() && !wasInstallPopupShown();
   const canInstallApp = () => (canInstallAutomatically() || canInstallManually()) && !wasModalClosed;
 
   const closeModal = () => {
+    if ("localStorage" in window) {
+      window.localStorage.setItem(INSTALL_POPUP_ITEM_KEY, "true");
+    }
     wasModalClosed = true;
     modal.remove();
   };
