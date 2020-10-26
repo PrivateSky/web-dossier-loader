@@ -44,13 +44,6 @@
       if ("serviceWorker" in navigator) {
         const wb = new Workbox("swPwa.js", { scope: "/secure-channels/loader/" }); 
 
-        // wb.addEventListener("installed", (event) => {
-        //   console.log("installed", event);
-        //   if (event.isUpdate) {
-        //     showNewContentAvailable();
-        //   }
-        // });
-
         wb.register().then((registration) => {
           registration.addEventListener("updatefound", () => {
             console.log("updatefound", { installing: registration.installing, active: registration.active });
@@ -69,7 +62,7 @@
 
         setInterval(() => {
           wb.update();
-        }, 1000);
+        }, 60 * 1000);
       }
     </script>
 
