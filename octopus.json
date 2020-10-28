@@ -31,5 +31,17 @@
         }
       ]
     }
+  ],
+  "build": [
+    {
+      "name": "generate-service-worker",
+      "src": "",
+      "actions": [
+        {
+          "type": "execute",
+          "cmd": "workbox generateSW"
+        }
+      ]
+    }
   ]
 }
