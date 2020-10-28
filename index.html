@@ -42,7 +42,7 @@
       };
 
       if ("serviceWorker" in navigator) {
-        const wb = new Workbox("swPwa.js", { scope: "/secure-channels/loader/" }); 
+        const wb = new Workbox("swPwa.js", { scope: "/" });
 
         wb.register().then((registration) => {
           registration.addEventListener("updatefound", () => {

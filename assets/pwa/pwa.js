@@ -27,9 +27,11 @@
     };
   })();
 
-  const isIos = () => {
+  const isIosSafari = () => {
     const userAgent = window.navigator.userAgent.toLowerCase();
-    return /iphone|ipad|ipod/.test(userAgent);
+    const iOS = !!userAgent.match(/ipad/i) || !!userAgent.match(/iphone/i) || !!userAgent.match(/ipod/i);
+    const webkit = !!userAgent.match(/WebKit/i);
+    return iOS && webkit && !userAgent.match(/CriOS/i) && !userAgent.match(/OPiOS/i);
   };
 
   const INSTALL_POPUP_ITEM_KEY = "@installPopup";
@@ -38,8 +40,8 @@
   const isInStandaloneMode = () => "standalone" in window.navigator && window.navigator.standalone;
   const wasInstallPopupShown = () =>
     "localStorage" in window && window.localStorage.getItem(INSTALL_POPUP_ITEM_KEY) === "true";
-  const canInstallAutomatically = () => !isIos() && deferredPrompt;
-  const canInstallManually = () => isIos() && !isInStandaloneMode() && !wasInstallPopupShown();
+  const canInstallAutomatically = () => !isIosSafari() && deferredPrompt;
+  const canInstallManually = () => isIosSafari() && !isInStandaloneMode() && !wasInstallPopupShown();
   const canInstallApp = () => (canInstallAutomatically() || canInstallManually()) && !wasModalClosed;
 
   const closeModal = () => {
@@ -121,7 +123,7 @@
 
   window.addEventListener("load", () => {
     // Checks if should display install popup notification:
-    if (isIos() && !isInStandaloneMode()) {
+    if (isIosSafari() && !isInStandaloneMode()) {
       showInstallationModal();
     }
 

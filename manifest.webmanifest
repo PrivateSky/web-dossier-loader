@@ -20,9 +20,9 @@
       "purpose": "any maskable"
     }
   ],
-  "start_url": "/secure-channels/loader/",
+  "start_url": "/",
   "background_color": "#16767c",
   "display": "standalone",
-  "scope": "/secure-channels/loader/",
+  "scope": "/",
   "theme_color": "#16767c"
 }
