@@ -8,8 +8,10 @@
     "build": "node ./node_modules/octopus/scripts/run build"
   },
   "dependencies": {
-    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0",
-    "workbox-cli": "5.1.4"
+    "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0"
+  },
+  "devDependencies": {
+    "workbox-cli": ">=5.1.4"
   },
   "license": "MIT"
 }
