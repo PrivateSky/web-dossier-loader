@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Web Loader for the Dossiers' User Interface",
   "scripts": {
+    "preinstall": "npx npm-force-resolutions",
     "postinstall": "node ./node_modules/octopus/scripts/run",
     "update": "npm run postinstall",
     "build": "node ./node_modules/octopus/scripts/run build"
@@ -11,7 +12,11 @@
     "octopus": "git+https://github.com/PrivateSky/octopus.git#1.0"
   },
   "devDependencies": {
-    "workbox-cli": ">=5.1.4"
+    "workbox-cli": ">=5.1.4",
+    "meow": "8.0.0"
+  },
+  "resolutions": {
+    "meow": "8.0.0"
   },
   "license": "MIT"
 }
