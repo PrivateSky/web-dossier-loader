@@ -42,7 +42,8 @@
       };
 
       if ("serviceWorker" in navigator) {
-        const wb = new Workbox("swPwa.js", { scope: "/" });
+        const scope = window.location.pathname;
+        const wb = new Workbox("swPwa.js", { scope: scope });
 
         wb.register().then((registration) => {
           registration.addEventListener("updatefound", () => {
