@@ -58,6 +58,10 @@ function WalletService(options) {
         const keySSI = require("opendsu").loadApi("keyssi");
         const walletSSI = keySSI.buildWalletSSI();
         walletSSI.getSeedSSI = (pin, (err, seedSSI) => {
+            if(err) {
+                return callback(err);
+            }
+
             callback(undefined, seedSSI);
         });
     };
