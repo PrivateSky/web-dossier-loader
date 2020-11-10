@@ -42,24 +42,31 @@
       };
 
       if ("serviceWorker" in navigator) {
-        const scope = window.location.pathname;
-        const wb = new Workbox("swPwa.js", { scope: scope });
+        fetch("manifest.webmanifest")
+                .then(response => response.json())
+                .then(manifest => {
+                  const scope = manifest.scope;
+                  const wb = new Workbox("swPwa.js", { scope: scope });
 
-        wb.register().then((registration) => {
-          registration.addEventListener("updatefound", () => {
-            console.log("updatefound", { installing: registration.installing, active: registration.active });
+                  wb.register().then((registration) => {
+                    registration.addEventListener("updatefound", () => {
+                      console.log("updatefound", { installing: registration.installing, active: registration.active });
 
-            const activeWorker = registration.active;
-            if (activeWorker) {
-              activeWorker.addEventListener("statechange", () => {
-                console.log("active statechange");
-                if (activeWorker.state === "redundant" && navigator.serviceWorker.controller) {
-                  showNewContentAvailable();
-                }
-              });
-            }
-          });
+                      const activeWorker = registration.active;
+                      if (activeWorker) {
+                        activeWorker.addEventListener("statechange", () => {
+                          console.log("active statechange");
+                          if (activeWorker.state === "redundant" && navigator.serviceWorker.controller) {
+                            showNewContentAvailable();
+                          }
+                        });
+                      }
+                    });
+                  });
         });
+
+        
+        
 
         setInterval(() => {
           wb.update();
@@ -129,3 +136,4 @@
     </div>
   </body>
 </html>
+
