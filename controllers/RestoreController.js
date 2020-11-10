@@ -5,7 +5,7 @@ import SWAgent from "./services/SWAgent.js";
 
 function RestoreController() {
 
-    let seed;
+    let seedSSI;
     let pin;
     let wizard;
     let spinner;
@@ -59,19 +59,18 @@ function RestoreController() {
 
     this.restore = function(event) {
         event.preventDefault();
-        seed = document.getElementById("seed").value;
+        seedSSI = document.getElementById("seed").value;
         try {
-            walletService.restoreFromSeed(seed, (err) => {
+            walletService.restoreFromSeedSSI(seedSSI, (err) => {
                 if (err) {
                     throw err;
                 }
 
                 wizard.next();
-
             });
         } catch (e) {
             console.log(e);
-            document.getElementById("seed-error").innerText = "Seed is not valid."
+            document.getElementById("seed-error").innerText = "SeedSSI is not valid."
         }
     };
 
@@ -85,7 +84,7 @@ function RestoreController() {
     this.setPin = function(event) {
         event.preventDefault();
         spinner.attachToView();
-        walletService.changePin(seed, pin, (err, wallet) => {
+        walletService.setPin(seedSSI, pin, (err) => {
             spinner.removeFromView();
             if (err) {
                 return document.getElementById("pin-error").innerText = "Operation failed. Try again"

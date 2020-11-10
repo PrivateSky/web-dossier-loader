@@ -52,31 +52,44 @@ function WalletService(options) {
 
     /**
      * @param {string} pin
-     * @param {callback} callback
+     * @param {Function} callback
      */
-    this.restoreFromPin = function(pin, callback) {
+    this.restoreFromPin = function (pin, callback) {
         const keySSI = require("opendsu").loadApi("keyssi");
         const walletSSI = keySSI.buildWalletSSI();
         walletSSI.getSeedSSI = (pin, (err, seedSSI) => {
-             if (err) {
-                 return callback(err);
-             }
-             callback(undefined, seedSSI);
+            callback(undefined, seedSSI);
+        });
+    };
+
+    /**
+     * @param {string} seedSSI
+     * @param {Function} callback
+     */
+    this.restoreFromSeedSSI = function (seedSSI, callback) {
+        let resolver = require("opendsu").loadApi("resolver");
+        resolver.loadDSU(seedSSI, (err) => {
+            callback(err);
         });
     };
 
     /**
      * @param {keySSI} keySSI
-     * @param {string} pin
-     * @param {callback} callback
+     * @param {string} secret
+     * @param {Function} callback
      */
-    this.changePin = function(keySSI, pin, callback) {
-        keySSI.store(pin, callback);
+    this.setPin = function (keySSI, secret, callback) {
+        let keySSISpace = require("opendsu").loadApi("keyssi");
+        keySSI = keySSISpace.parse(keySSI, {dsuFactoryType: "wallet"});
+
+        keySSI.store({password: secret}, (err) => {
+            callback(err);
+        });
     };
 
     /**
      * @param {string} secret
-     * @param {callback}
+     * @param {Function} callback
      */
     this.load = function(secret, callback) {
         let resolver = require("opendsu").loadApi("resolver");
@@ -87,7 +100,7 @@ function WalletService(options) {
     /**
      * Create a new wallet
      * @param {string|undefined} pin
-     * @param {callback} callback
+     * @param {Function} callback
      */
     this.create = function(secret, callback) {
         SWAgent.unregisterSW(() => {
@@ -112,10 +125,8 @@ function WalletService(options) {
                     if(err){
                         return callback(err);
                     }
-                    let keySSISpace = require("opendsu").loadApi("keyssi");
-                    keySSI = keySSISpace.parse(keySSI,{dsuFactoryType:"wallet"});
 
-                    keySSI.store({password: secret}, (err)=>{
+                    this.setPin(keySSI, secret, (err) =>{
                         callback(err, wallet);
                     });
                 });
