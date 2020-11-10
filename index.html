@@ -63,15 +63,11 @@
                       }
                     });
                   });
+                  
+                  setInterval(() => {
+                    wb.update();
+                  }, 60 * 1000);
         });
-
-        
-        
-
-        setInterval(() => {
-          wb.update();
-        }, 60 * 1000);
-      }
     </script>
 
     <link type="text/css" rel="stylesheet" href="assets/pwa/pwa.css" />
