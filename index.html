@@ -41,7 +41,7 @@
         }
       };
 
-      if ("serviceWorker" in navigator) {
+      if (false && "serviceWorker" in navigator) {
         fetch("manifest.webmanifest")
                 .then(response => response.json())
                 .then(manifest => {
