@@ -102,7 +102,8 @@ function SSAppRunner(options) {
 
         SWAgent.registerSW({
             name: 'swLoader.js',
-            path: 'swLoader.js'
+            path: 'swLoader.js',
+	    scope:window.location.pathname+'iframe'
         }, (err) => {
             if (err) {
                 throw err;
