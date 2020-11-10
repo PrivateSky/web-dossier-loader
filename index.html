@@ -56,7 +56,7 @@
                       if (activeWorker) {
                         activeWorker.addEventListener("statechange", () => {
                           console.log("active statechange");
-                          if (activeWorker.state === "redundant" && navigator.serviceWorker.controller) {
+                          if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
                             showNewContentAvailable();
                           }
                         });
