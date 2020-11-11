@@ -1,5 +1,6 @@
 "use strict";
 
+import { Workbox } from "../../assets/pwa/workbox-window.prod.mjs";
 import SWAgent from "./SWAgent.js";
 import EventMiddleware from "./EventMiddleware.js";
 const PskCrypto = require("pskcrypto");
@@ -95,20 +96,59 @@ function SSAppRunner(options) {
     setupLoadEventsListener(iframe);
     setupSeedRequestListener();
 
-    SWAgent.registerSW(
-      {
-        name: "swLoader.js",
-        path: "swLoader.js",
-        scope: window.location.pathname + "iframe",
-      },
-      (err) => {
-        if (err) {
-          throw err;
-        }
+    SWAgent.unregisterAllServiceWorkers(() => {
+      SWAgent.registerSW(
+        {
+          name: "swLoader.js",
+          path: "swLoader.js",
+          scope: window.location.pathname + "iframe",
+        },
+        (err) => {
+          if (err) {
+            throw err;
+          }
 
-        document.body.appendChild(iframe);
-      }
-    );
+          iframe.onload = () => {
+            const showNewContentAvailable = () => {
+              if (confirm(`New content is available!. Click OK to refresh!`)) {
+                window.location.reload();
+              }
+            };
+
+            if ("serviceWorker" in navigator) {
+              fetch("./manifest.webmanifest")
+                .then((response) => response.json())
+                .then((manifest) => {
+                  const scope = manifest.scope;
+                  const wb = new Workbox("./swPwa.js", { scope: scope });
+
+                  wb.register().then((registration) => {
+                    registration.addEventListener("updatefound", () => {
+                      console.log("updatefound", { installing: registration.installing, active: registration.active });
+
+                      const activeWorker = registration.active;
+                      if (activeWorker) {
+                        activeWorker.addEventListener("statechange", () => {
+                          console.log("active statechange");
+                          if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
+                            showNewContentAvailable();
+                          }
+                        });
+                      }
+                    });
+                  });
+
+                  setInterval(() => {
+                    wb.update();
+                  }, 60 * 1000);
+                });
+            }
+          };
+
+          document.body.appendChild(iframe);
+        }
+      );
+    });
   };
 }
 
