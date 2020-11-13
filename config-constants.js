@@ -31,7 +31,6 @@ let APP_CONFIG = {
 	},
 	NEW_OR_RESTORE_CONTAINER_ID: "restore-new-container",
 	PIN_CONTAINER_ID: "pin-container",
-	EDFS_ENDPOINT: "http://localhost:8080",
 	MODE: 'secure',
 	PIN_MIN_LENGTH: 4,
 	NEW_DOSSIER_MORE_INFORMATION: `<div class="jumbotron p-0 m-0" align="center">

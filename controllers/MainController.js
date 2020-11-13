@@ -9,9 +9,7 @@ function MainController() {
   const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
   const DEFAULT_PIN = "12345";
 
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
   const fileService = new FileService();
 
   let pin;
@@ -107,7 +105,6 @@ function MainController() {
       if (!result) {
         // Create a new wallet
         spinner.attachToView();
-        walletService.setEDFSEndpoint(APP_CONFIG.EDFS_ENDPOINT);
         walletService.create(pin, (err, wallet) => {
           if (err) {
             return console.error(err);

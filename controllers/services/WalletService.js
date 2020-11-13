@@ -5,14 +5,12 @@ import SWAgent from "./SWAgent.js";
 
 /**
  * @param {object} options
- * @param {string} options.edfsEndpoint
  * @param {string} options.seed
  */
 function WalletService(options) {
   ScopedLocalStorage.setLocalStorageScope();
   options = options || {};
 
-  this.edfsEndpoint = options.edfsEndpoint;
   this.keySSI = options.keySSI;
 
   const openDSU = require("opendsu");
@@ -20,19 +18,6 @@ function WalletService(options) {
   const keyssi = openDSU.loadApi("keyssi");
   const resolver = openDSU.loadApi("resolver");
   const CONSTANTS = openDSU.constants;
-  const DEFAULT_DOMAIN = "default";
-
-  bdns.addRawInfo(DEFAULT_DOMAIN, {
-    brickStorages: [this.edfsEndpoint],
-    anchoringServices: [this.edfsEndpoint],
-  });
-
-  /**
-   * @param {string} endpoint
-   */
-  this.setEDFSEndpoint = function (endpoint) {
-    this.edfsEndpoint = endpoint;
-  };
 
   /**
    * @param {callback} callback
@@ -108,10 +93,6 @@ function WalletService(options) {
    */
   this.create = function (secret, callback) {
     SWAgent.unregisterAllServiceWorkers(() => {
-      if (!this.edfsEndpoint) {
-        throw new Error("An EDFS endpoint is required for creating a wallet");
-      }
-
       const walletBuilder = new WalletBuilderService({
         codeFolderName: "code",
         walletTemplateFolderName: "wallet-template",

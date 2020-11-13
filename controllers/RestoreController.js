@@ -8,9 +8,7 @@ function RestoreController() {
   let pin;
   let wizard;
   let spinner;
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
 
   function displayContainer(containerId) {
     document.getElementById(containerId).style.display = "block";

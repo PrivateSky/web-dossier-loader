@@ -7,9 +7,7 @@ function NewController() {
   let pin;
   let wizard;
   let spinner;
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
 
   this.hasInstallationUrl = function () {
     let windowUrl = new URL(window.location.href);
