@@ -168,7 +168,7 @@ function WalletBuilderService(options) {
         const instantiateNewDossier = (files) =>{
 			 let resolver = require("opendsu").loadApi("resolver");
 			 let keyssi = require("opendsu").loadApi("keyssi");
-			 resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), (err, appDSU) => {
+			 resolver.createDSU(keyssi.buildSeedSSI("vault"), (err, appDSU) => {
 				if (err) {
 					return callback(err);
 				}
