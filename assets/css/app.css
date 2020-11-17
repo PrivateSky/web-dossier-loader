@@ -51,13 +51,13 @@ body {
 }
 
 #restore-new-container,
-#pin-container {
+#credentials-container {
     display: none;
     width: 100%;
     text-align: center;
 }
 
-.pin-panel-container
+.credentials-panel-container
  {
     justify-content: center;
     display: flex;
@@ -177,7 +177,7 @@ border-radius:50%;
     background-color: var(--color-light-primary-blue-hover-button) !important;
 }
 
-.buttons-box-set-pin {
+.buttons-box-set-register-details {
     margin-left: 15px;
 }
 
@@ -267,35 +267,35 @@ label.error{
 
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-    .pin-panel{
+    .credentials-panel{
         width:20rem;
     }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .pin-panel{
+    .credentials-panel{
         width:24rem;
     }
 }
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .pin-panel{
+    .credentials-panel{
         width:32rem;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .pin-panel{
+    .credentials-panel{
         width:36rem;
     }
 }
 
 
 @media (min-width: 1200px) {
-    .pin-panel{
+    .credentials-panel{
         width:30rem;
     }
 }

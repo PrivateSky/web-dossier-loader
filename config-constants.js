@@ -1,24 +1,38 @@
 let APP_CONFIG = {
 	THEME: "app",
 	LABELS_DICTIONARY: {
-		APP_NAME: "Web Dossier",
+		APP_NAME: "Trust Loader",
 		APP_DESCRIPTION: "A smart application to keep your secrets",
-		NEW_DOSSIER: "New Dossier",
-		RESTORE_DOSSIER: "Restore Dossier",
+		NEW_WALLET: "New Wallet",
+		RESTORE_WALLET: "Restore Wallet",
 		WALLET_AUTHORIZATION: "Wallet Authorization",
-		PIN: "PIN",
+		REGISTER_DETAILS: "Register Details",
 		COMPLETE: "Complete",
-		SET_UP_PIN: "Set up a Personal Identifier(PIN)",
-		EASY_TO_REMEMBER_PIN: "Setup a easy to remember PIN",
-		CONFIRM_PIN: "Confirm PIN",
-		CONFIRM_PIN_IDENTICAL: "PINs should be identical.",
-		ENTER_PIN: "Enter PIN",
-		SET_PIN: "Set PIN",
+
+		SET_UP_USERNAME: "Enter your username",
+		SET_UP_USERNAME_HELP: "Username should have at least 6 characters",
+		ENTER_USERNAME: "Username",
+
+		SET_UP_EMAIL: "Enter your email",
+		SET_UP_EMAIL_HELP: "Enter a valid email address",
+		ENTER_EMAIL: "Email",
+
+		SET_UP_PASSWORD: "Enter your password",
+		SET_UP_PASSWORD_HELP: "Password should have at least 4 characters",
+		ENTER_PASSWORD: "Password",
+
+		SET_UP_CONFIRM_PASSWORD: "Confirm your password",
+		SET_UP_CONFIRM_PASSWORD_HELP: "Passwords should be identical",
+		ENTER_CONFIRM_PASSWORD: "Confirm password",
+
+		BACK_BUTTON_MESSAGE: "Back",
+		REGISTER_BUTTON_MESSAGE: "Register",
+		REGISTER_SUCCESSFULLY: "Register successfully",
+
+		ENTER_CREDENTIALS: "Enter your credentials",
 		OPEN_WALLET: "Open Wallet",
-		LOST_PIN: "Lost PIN?",
 		SEED: "Seed",
 		ENTER_WALLET_SEED: "Enter Wallet Seed",
-		SEED_KEEP_SECRET: "Please keep secret this seed",
 		SEED_PRINT: "You can print it on a piece of paper.",
 		RESTORE: "Restore",
 		WALLET_RESTORED_SUCCESSFULLY: "Your wallet has been successfully restored.",
@@ -30,12 +44,15 @@ let APP_CONFIG = {
 		RESTORE_WALLET: "/restore"
 	},
 	NEW_OR_RESTORE_CONTAINER_ID: "restore-new-container",
-	PIN_CONTAINER_ID: "pin-container",
+	PASSWORD_CONTAINER_ID: "credentials-container",
 	EDFS_ENDPOINT: "http://localhost:8080",
 	MODE: 'secure',
-	PIN_MIN_LENGTH: 4,
-	NEW_DOSSIER_MORE_INFORMATION: `<div class="jumbotron p-0 m-0" align="center">
-  <h1 class="display-6">Welcome to your secure dossier!</h1>
+	PASSWORD_MIN_LENGTH: 4,
+	USERNAME_MIN_LENGTH: 6,
+	USERNAME_REGEX: /^[a-zA-Z]([A-Za-z0-9]+[\\._]{0,1}[A-Za-z0-9]+){2,10}$/,
+	EMAIL_REGEX: /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+	NEW_WALLET_MORE_INFORMATION: `<div class="jumbotron p-0 m-0" align="center">
+  <h1 class="display-6">Welcome to your secure wallet!</h1>
   <p class="lead">After completing the following wizard you will gain access to your private data.</p>
   <p class="m-0">In order to access your private data you have to set up a password.</p>
   <hr/>

@@ -7,14 +7,18 @@ import SWAgent from "./services/SWAgent.js";
 
 function MainController() {
   const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
-  const DEFAULT_PIN = "12345";
+  const DEVELOPMENT_EMAIL = "test@test.com";
+  const DEVELOPMENT_USERNAME = "test.username";
+  const DEFAULT_PASSWORD = "testPassword123";
 
   const walletService = new WalletService({
     edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
   });
   const fileService = new FileService();
 
-  let pin;
+  let password;
+  let username;
+  let email;
   let spinner;
 
   const self = this;
@@ -97,18 +101,20 @@ function MainController() {
   /**
    * Run the loader in development mode
    *
-   * Create a default wallet with a default pin if none exists
+   * Create a default wallet with a default password if none exists
    * and load it
    */
   function runInDevelopment() {
     walletService.hasSeedCage((result) => {
-      pin = APP_CONFIG.DEVELOPMENT_PIN || DEFAULT_PIN;
+      email = APP_CONFIG.DEVELOPMENT_EMAIL || DEVELOPMENT_EMAIL;
+      username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
+      password = APP_CONFIG.DEVELOPMENT_PASSWORD || DEFAULT_PASSWORD;
 
       if (!result) {
         // Create a new wallet
         spinner.attachToView();
         walletService.setEDFSEndpoint(APP_CONFIG.EDFS_ENDPOINT);
-        walletService.create(pin, (err, wallet) => {
+        walletService.create(password, (err, wallet) => {
           if (err) {
             return console.error(err);
           }
@@ -143,7 +149,7 @@ function MainController() {
 
               // After all the service works have been unregistered and stopped
               // rebuild the wallet
-              walletService.rebuild(pin, (err, wallet) => {
+              walletService.rebuild(password, (err, wallet) => {
                 if (err) {
                   return console.error(err);
                 }
@@ -179,7 +185,7 @@ function MainController() {
       if (!result) {
         return this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
       }
-      this.displayContainer(APP_CONFIG.PIN_CONTAINER_ID);
+      this.displayContainer(APP_CONFIG.PASSWORD_CONTAINER_ID);
     });
   };
 
@@ -187,22 +193,26 @@ function MainController() {
     document.getElementById(containerId).style.display = "block";
   };
 
-  this.validatePIN = function () {
-    pin = document.getElementById("pin").value;
+  this.credentialsAreValid = function () {
+    username = document.getElementById("username").value;
+    email = document.getElementById("email").value;
+    console.log(username, APP_CONFIG.USERNAME_REGEX.test(username))
+    console.log(email, APP_CONFIG.EMAIL_REGEX.test(APP_CONFIG.EMAIL_REGEX))
+    return email.length > 4
+        && APP_CONFIG.EMAIL_REGEX.test(email)
+        && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
+        && APP_CONFIG.USERNAME_REGEX.test(username);
+  };
+
+  this.validateCredentials = function () {
+    password = document.getElementById("password").value;
     let btn = document.getElementById("open-wallet-btn");
 
-    if (pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
+    if (password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH && this.credentialsAreValid()) {
       btn.removeAttribute("disabled");
     } else {
       btn.setAttribute("disabled", "disabled");
     }
-  };
-
-  this.restore = function (event) {
-    event.preventDefault();
-    SWAgent.unregisterAllServiceWorkers(() => {
-      window.location = "./restore";
-    });
   };
 
   this.openWallet = function (event) {
@@ -211,10 +221,10 @@ function MainController() {
     }
     spinner.attachToView();
 
-    walletService.load(pin, (err, wallet) => {
+    walletService.load(password, (err, wallet) => {
       if (err) {
         spinner.removeFromView();
-        return (document.getElementById("pin-error").innerText = "Invalid PIN");
+        return (document.getElementById("register-details-error").innerText = "Invalid password");
       }
 
       wallet.getKeySSI((err, keySSI) => {
@@ -241,13 +251,14 @@ document.addEventListener("DOMContentLoaded", function () {
     { title: LABELS.APP_NAME },
     { "#loader-title": LABELS.APP_NAME },
     { "#loader-caption": LABELS.APP_DESCRIPTION },
-    { "#new-dossier": LABELS.NEW_DOSSIER },
-    { "#restore-dossier": LABELS.RESTORE_DOSSIER },
+    { "#new-wallet": LABELS.NEW_WALLET },
+    { "#restore-wallet": LABELS.RESTORE_WALLET },
     { "#wallet-authorization": LABELS.WALLET_AUTHORIZATION },
-    { "#enter-pin": LABELS.ENTER_PIN },
-    { "#pin": LABELS.ENTER_PIN, attribute: "placeholder" },
+    { "#enter-credentials": LABELS.ENTER_CREDENTIALS },
+    { "#username": LABELS.ENTER_USERNAME, attribute: "placeholder" },
+    { "#email": LABELS.ENTER_EMAIL, attribute: "placeholder" },
+    { "#password": LABELS.ENTER_PASSWORD, attribute: "placeholder" },
     { "#open-wallet-btn": LABELS.OPEN_WALLET },
-    { "#lost-pin": LABELS.LOST_PIN },
   ];
   prepareView(page_labels);
   controller.init();

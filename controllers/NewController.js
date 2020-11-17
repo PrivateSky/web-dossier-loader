@@ -4,7 +4,9 @@ import WalletService from "./services/WalletService.js";
 import SWAgent from "./services/SWAgent.js";
 
 function NewController() {
-  let pin;
+  let password;
+  let username;
+  let email;
   let wizard;
   let spinner;
   const walletService = new WalletService({
@@ -31,15 +33,26 @@ function NewController() {
     });
   };
 
-  this.pinsAreValid = function () {
-    pin = document.getElementById("pin").value;
-    let pinConfirm = document.getElementById("confirm-pin").value;
-    return pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH;
+  this.passwordsAreValid = function () {
+    password = document.getElementById("password").value;
+    let passwordConfirm = document.getElementById("confirm-password").value;
+    return password === passwordConfirm && password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH;
   };
 
-  this.validatePIN = function () {
-    let btn = document.getElementById("set-pin-btn");
-    if (this.pinsAreValid()) {
+  this.credentialsAreValid = function () {
+    username = document.getElementById("username").value;
+    email = document.getElementById("email").value;
+    console.log(username, APP_CONFIG.USERNAME_REGEX.test(username))
+    console.log(email, APP_CONFIG.EMAIL_REGEX.test(APP_CONFIG.EMAIL_REGEX))
+    return email.length > 4
+        && APP_CONFIG.EMAIL_REGEX.test(email)
+        && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
+        && APP_CONFIG.USERNAME_REGEX.test(username);
+  };
+
+  this.validateCredentials = function () {
+    let btn = document.getElementById("register-btn");
+    if (this.passwordsAreValid() && this.credentialsAreValid()) {
       btn.removeAttribute("disabled");
       return true;
     } else {
@@ -52,35 +65,35 @@ function NewController() {
     spinner.attachToView();
     try {
       console.log("Creating wallet...");
-      walletService.create(pin, (err, wallet) => {
+      walletService.create(password, (err, wallet) => {
         if (err) {
-          document.getElementById("pin-error").innerText = "An error occurred. Please try again.";
+          document.getElementById("password-error").innerText = "An error occurred. Please try again.";
           return console.error(err);
         }
 
         wallet.getKeySSI((err, keySSI) => {
           console.log(`Wallet created. Seed: ${keySSI}`);
-          document.getElementById("seed").value = keySSI;
+          //document.getElementById("seed").value = keySSI;
           spinner.removeFromView();
           wizard.next();
         });
       });
     } catch (e) {
-      document.getElementById("pin-error").innerText = "Seed is not valid.";
+      document.getElementById("password-error").innerText = "Seed is not valid.";
     }
   }
 
   this.previous = function (event) {
     event.preventDefault();
-    document.getElementById("seed").value = "";
+    //document.getElementById("seed").value = "";
     document.getElementById("restore-seed-btn").setAttribute("disabled", "disabled");
     wizard.previous();
   };
 
-  this.submitPin = function (event) {
+  this.submitPassword = function (event) {
     event.preventDefault();
     event.stopImmediatePropagation();
-    if (this.pinsAreValid()) {
+    if (this.passwordsAreValid()) {
       createWallet();
     }
   };
@@ -95,27 +108,28 @@ document.addEventListener("DOMContentLoaded", function () {
   let LABELS = APP_CONFIG.LABELS_DICTIONARY;
   const page_labels = [
     { title: LABELS.APP_NAME },
-    { "#step-pin": LABELS.PIN },
+    { "#step-register-details": LABELS.REGISTER_DETAILS },
     { "#step-complete": LABELS.COMPLETE },
-    { "#set-up-pin": LABELS.SET_UP_PIN },
-    {
-      "#pin": LABELS.ENTER_PIN,
-      attribute: "placeholder",
-    },
-    {
-      "#confirm-pin": LABELS.CONFIRM_PIN,
-      attribute: "placeholder",
-    },
-    { "#pin-help": LABELS.EASY_TO_REMEMBER_PIN },
-    { "#pin-confirm-help": LABELS.CONFIRM_PIN_IDENTICAL },
-    { "#set-pin-btn": LABELS.SET_PIN },
-
-    { "#seed_keep_secret": LABELS.SEED_KEEP_SECRET },
+    { "#set-up-username": LABELS.SET_UP_USERNAME },
+    { "#set-up-username-help": LABELS.SET_UP_USERNAME_HELP },
+    {"#username": LABELS.ENTER_USERNAME, attribute: "placeholder",},
+    { "#set-up-email": LABELS.SET_UP_EMAIL },
+    { "#set-up-email-help": LABELS.SET_UP_EMAIL_HELP },
+    {"#email": LABELS.ENTER_EMAIL, attribute: "placeholder",},
+    { "#set-up-password": LABELS.SET_UP_PASSWORD },
+    { "#set-up-password-help": LABELS.SET_UP_PASSWORD_HELP },
+    { "#password": LABELS.ENTER_PASSWORD, attribute: "placeholder",},
+    { "#set-up-confirm-password": LABELS.SET_UP_CONFIRM_PASSWORD },
+    { "#set-up-confirm-password-help": LABELS.SET_UP_CONFIRM_PASSWORD_HELP },
+    { "#confirm-password": LABELS.ENTER_CONFIRM_PASSWORD, attribute: "placeholder",},
+    { "#back-btn": LABELS.BACK_BUTTON_MESSAGE },
+    { "#register-btn": LABELS.REGISTER_BUTTON_MESSAGE },
+    { "#register-successfully": LABELS.REGISTER_SUCCESSFULLY },
     { "#seed_print": LABELS.SEED_PRINT },
     { "#open-wallet-btn": LABELS.OPEN_WALLET },
   ];
   if (controller.hasInstallationUrl()) {
-    page_labels.push({ "#more-information": APP_CONFIG.NEW_DOSSIER_MORE_INFORMATION });
+    page_labels.push({ "#more-information": APP_CONFIG.NEW_WALLET_MORE_INFORMATION });
   } else {
     document.querySelector("#more-information").remove();
   }

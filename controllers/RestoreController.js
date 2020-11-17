@@ -47,7 +47,7 @@ function RestoreController() {
     let pinConfirm = document.getElementById("confirm-pin").value;
     let btn = document.getElementById("set-pin-btn");
 
-    if (pin === pinConfirm && pin.length >= APP_CONFIG.PIN_MIN_LENGTH) {
+    if (pin === pinConfirm && pin.length >= APP_CONFIG.PASSWORD_MIN_LENGTH) {
       btn.removeAttribute("disabled");
     } else {
       btn.setAttribute("disabled", "disabled");
@@ -84,7 +84,7 @@ function RestoreController() {
     walletService.setPin(seedSSI, pin, (err) => {
       spinner.removeFromView();
       if (err) {
-        return (document.getElementById("pin-error").innerText = "Operation failed. Try again");
+        return (document.getElementById("register-details-error").innerText = "Operation failed. Try again");
       }
       wizard.next();
     });
@@ -112,16 +112,16 @@ document.addEventListener("DOMContentLoaded", function () {
     },
 
     {
-      "#pin": LABELS.ENTER_PIN,
+      "#pin": LABELS.ENTER_PASSWORD,
       attribute: "placeholder",
     },
     {
-      "#confirm-pin": LABELS.CONFIRM_PIN,
+      "#confirm-pin": LABELS.ENTER_CONFIRM_PASSWORD,
       attribute: "placeholder",
     },
-    { "#pin-help": LABELS.EASY_TO_REMEMBER_PIN },
-    { "#pin-confirm-help": LABELS.CONFIRM_PIN_IDENTICAL },
-    { "#set-pin-btn": LABELS.SET_PIN },
+    { "#pin-help": LABELS.SET_UP_PASSWORD_HELP },
+    { "#pin-confirm-help": LABELS.SET_UP_CONFIRM_PASSWORD_HELP },
+    { "#set-pin-btn": LABELS.REGISTER_BUTTON_MESSAGE },
     { "#restore-seed-btn": LABELS.RESTORE },
     { "#wallet-restored-success": LABELS.WALLET_RESTORED_SUCCESSFULLY },
     { "#change-wallet": LABELS.CHANGE_WALLET },

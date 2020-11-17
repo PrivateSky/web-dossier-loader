@@ -1,4 +1,6 @@
 {
     "MODE": "development",
-    "DEVELOPMENT_PIN": "12345"
+    "DEVELOPMENT_EMAIL": "test@test.com"
+    "DEVELOPMENT_USERNAME": "test.username"
+    "DEVELOPMENT_PASSWORD": "testPassword123"
 }

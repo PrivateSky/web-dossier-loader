@@ -1,5 +1,5 @@
-# web-dossier-loader
-Web Loader for the  Dossiers' User Interface
+# trust-loader
+Web Loader for the  Wallet User Interface
 
 ## Running the loader in development mode
 Create a copy of the `loader-config.local.json-template` file and rename it to `loader-config.local.json`.
@@ -10,7 +10,9 @@ Set the loader MODE configuration option to "development", set a wallet pin then
 // loader-config.local.json
 {
     "MODE": "development",
-    "DEVELOPMENT_PIN": "12345"
+    "DEVELOPMENT_EMAIL": "test@test.com"
+    "DEVELOPMENT_USERNAME": "test.username"
+    "DEVELOPMENT_PASSWORD": "testPassword123"
 }
 ```
 

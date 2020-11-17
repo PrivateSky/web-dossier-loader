@@ -1,7 +1,7 @@
 {
-  "name": "web-dossier-loader",
+  "name": "trust-loader",
   "version": "0.2.0",
-  "description": "Web Loader for the Dossiers' User Interface",
+  "description": "Web Loader for the Wallet User Interface",
   "scripts": {
     "postinstall": "node ./node_modules/octopus/scripts/run",
     "update": "npm run postinstall",

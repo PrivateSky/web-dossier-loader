@@ -56,14 +56,14 @@ body {
 }
 
 #restore-new-container,
-#pin-container {
+#credentials-container {
     display: none;
     width: 89%;
     height: var(--content-height);
     text-align: var(--text-align-center);
 }
 
-.pin-panel-container {
+.credentials-panel-container {
     justify-content: center;
     display: flex;
     flex: 1;
@@ -85,13 +85,13 @@ body {
     border-radius: 50%;
 }
 
-#enter-pin {
+#enter-credentials {
     font-size: 150%;
     font-weight: lighter;
     color: var(--color-gray-text);
 }
 
-#wallet-authorization + .card-body #enter-pin:before {
+#wallet-authorization + .card-body #enter-credentials:before {
     background: url('../images/login.png') center center no-repeat;
     background-size: 80px 80px;
     display: block;
@@ -156,7 +156,7 @@ body {
     font-size: 150%;
 }
 
-.set-pin-content {
+.set-register-details-content {
     padding: 40px 20px 20px !important;
 }
 
@@ -239,7 +239,7 @@ body {
     background-color: var(--color-dark-blue-hover-button) !important;
 }
 
-.pin-panel-action-box {
+.credentials-panel-action-box {
     padding: 0 80px;
 }
 
@@ -247,7 +247,12 @@ body {
     font-size: 170%
 }
 
-.pin-label {
+#register-successfully {
+    font-size: 22px;
+    font-weight: 500;
+}
+
+.register-detail-label {
     font-size: 120%
 }
 
@@ -358,7 +363,7 @@ label.error {
 
 /* Extra small devices (portrait phones, less than 576px)*/
 @media (max-width: 575.98px) {
-    .pin-panel {
+    .credentials-panel {
         width: 20rem;
     }
 
@@ -392,12 +397,17 @@ label.error {
         text-align: var(--text-align-center);
     }
 
-    .set-pin-content {
+    .set-register-details-content {
         padding: 0 !important;
     }
 
-    .pin-label {
+    .register-detail-label {
         font-size: 100%;
+    }
+
+    #register-successfully {
+        font-size: 22px;
+        font-weight: 500;
     }
 
     .buttons-box {
@@ -425,14 +435,14 @@ label.error {
         padding: 0;
     }
 
-    .pin-panel-action-box {
+    .credentials-panel-action-box {
         padding: 0 70px;
     }
 }
 
 /* Small devices (landscape phones, 576px and up)*/
 @media (min-width: 576px) and (max-width: 767.98px) {
-    .pin-panel {
+    .credentials-panel {
         width: 24rem;
     }
 
@@ -465,12 +475,17 @@ label.error {
         text-align: var(--text-align-center);
     }
 
-    .set-pin-content {
+    .set-register-details-content {
         padding: 0 !important;
     }
 
-    .pin-label {
+    .register-detail-label {
         font-size: 100%;
+    }
+
+    #register-successfully {
+        font-size: 22px;
+        font-weight: 500;
     }
 
     .buttons-box {
@@ -498,7 +513,7 @@ label.error {
 
 /* Medium devices (tablets, 768px and up)*/
 @media (min-width: 768px) and (max-width: 991.98px) {
-    .pin-panel {
+    .credentials-panel {
         width: 32rem;
     }
 
@@ -506,18 +521,23 @@ label.error {
         width: 100%;
     }
 
-    .pin-panel-action-box {
+    .credentials-panel-action-box {
         padding: 0 30px;
     }
 
-    .pin-label {
+    .register-detail-label {
         height: 50px;
+    }
+
+    #register-successfully {
+        font-size: 22px;
+        font-weight: 500;
     }
 }
 
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1199.98px) {
-    .pin-panel {
+    .credentials-panel {
         width: 36rem;
     }
 
@@ -525,12 +545,17 @@ label.error {
         width: 100%;
     }
 
-    .pin-panel-action-box {
+    .credentials-panel-action-box {
         padding: 0 30px;
     }
 
-    .pin-label {
+    .register-detail-label {
         height: 50px;
+    }
+
+    #register-successfully {
+        font-size: 22px;
+        font-weight: 500;
     }
 }
 
@@ -549,7 +574,7 @@ label.error {
 }
 
 @media (min-width: 1200px) {
-    .pin-panel {
+    .credentials-panel {
         width: 50rem;
         height: 30rem;
     }
@@ -558,7 +583,7 @@ label.error {
         width: 100%;
     }
 
-    .buttons-box-set-pin {
+    .buttons-box-set-register-details {
         width: 48%;
     }
 
@@ -568,7 +593,7 @@ label.error {
         margin-right: -15px;
     }
 
-    .pin-panel-action-box {
+    .credentials-panel-action-box {
         padding: 0 80px;
     }
 
