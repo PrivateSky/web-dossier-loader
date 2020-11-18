@@ -60,6 +60,7 @@ function SSAppRunner(options) {
 
     eventMiddleware.onStatus("sign-out", (data) => {
       SWAgent.unregisterAllServiceWorkers(() => {
+        // TODO: clear vault instead of seedCage
         if (data.deleteSeed === true) {
           localStorage.removeItem("seedCage");
         }

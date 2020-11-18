@@ -20,39 +20,6 @@ function WalletService(options) {
     const CONSTANTS = openDSU.constants;
 
     /**
-     * @param {callback} callback
-     */
-    this.hasSeedCage = function (callback) {
-        const keySSI = require("opendsu").loadApi("keyssi");
-        const walletSSI = keySSI.buildWalletSSI();
-        walletSSI.checkForSSICage((err) => {
-            if (err) {
-                return callback(false);
-            }
-
-            callback(true);
-        });
-    };
-
-    /**
-     * @param {string} pin
-     * @param {Function} callback
-     */
-    this.restoreFromPin = function (pin, callback) {
-        const keySSI = require("opendsu").loadApi("keyssi");
-        const walletSSI = keySSI.buildWalletSSI();
-        walletSSI.getSeedSSI =
-            (pin,
-                (err, seedSSI) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    callback(undefined, seedSSI);
-                });
-    };
-
-    /**
      * @param {string} seedSSI
      * @param {Function} callback
      */
@@ -135,37 +102,31 @@ function WalletService(options) {
 
     /**
      * Rebuild an existing wallet
-     * @param {string|undefined} pin
+     * @param {array|undefined} key
      * @param {callback} callback
      */
-    this.rebuild = function (pin, callback) {
-        this.restoreFromPin(pin, (err) => {
+    this.rebuild = function (key, callback) {
+        this.load(key, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
 
-            this.load(pin, (err, wallet) => {
+            const walletBuilder = new WalletBuilderService(wallet, {
+                codeFolderName: "code",
+                walletTemplateFolderName: "wallet-template",
+                appFolderName: CONSTANTS.APP_FOLDER,
+                appsFolderName: "apps",
+                dossierLoader: function (keySSI, callback) {
+                    resolver.loadDSU(keySSI, callback);
+                },
+            });
+
+            walletBuilder.rebuild((err) => {
                 if (err) {
+                    console.error(err);
                     return callback(err);
                 }
-
-                const walletBuilder = new WalletBuilderService(wallet, {
-                    codeFolderName: "code",
-                    walletTemplateFolderName: "wallet-template",
-                    appFolderName: CONSTANTS.APP_FOLDER,
-                    appsFolderName: "apps",
-                    dossierLoader: function (keySSI, callback) {
-                        resolver.loadDSU(keySSI, callback);
-                    },
-                });
-
-                walletBuilder.rebuild((err) => {
-                    if (err) {
-                        console.error(err);
-                        return callback(err);
-                    }
-                    callback(undefined, wallet);
-                });
+                callback(undefined, wallet);
             });
         });
     };

@@ -96,6 +96,31 @@ function MainController() {
     });
   }
 
+  let DEVELOPMENT_CREDENTIALS_KEY = "developmentCredentials";
+
+  function hash(key) {
+    return btoa(encodeURI(key.join("/")));
+  }
+
+  function getKnownCredentials() {
+    let knownCredentials = localStorage.getItem(DEVELOPMENT_CREDENTIALS_KEY);
+    if (!knownCredentials) {
+      knownCredentials = "{}";
+    }
+    return JSON.parse(knownCredentials);
+  }
+
+  function checkWalletExistence(key) {
+    let knownCredentials = getKnownCredentials();
+    return !!knownCredentials[hash(key)];
+  }
+
+  function markWalletExistence(key) {
+    let knownCredentials = getKnownCredentials();
+    knownCredentials[hash(key)] = true;
+    return localStorage.setItem(DEVELOPMENT_CREDENTIALS_KEY, JSON.stringify(knownCredentials));
+  }
+
   /**
    * Run the loader in development mode
    *
@@ -103,30 +128,28 @@ function MainController() {
    * and load it
    */
   function runInDevelopment() {
-    walletService.hasSeedCage((result) => {
-      email = APP_CONFIG.DEVELOPMENT_EMAIL || DEVELOPMENT_EMAIL;
-      username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
-      password = APP_CONFIG.DEVELOPMENT_PASSWORD || DEFAULT_PASSWORD;
+    email = APP_CONFIG.DEVELOPMENT_EMAIL || DEVELOPMENT_EMAIL;
+    username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
+    password = APP_CONFIG.DEVELOPMENT_PASSWORD || DEFAULT_PASSWORD;
+    let key = [username, email, password]
+    if (!checkWalletExistence(key)) {
+      spinner.attachToView();
+      walletService.create(key, (err, wallet) => {
+        if (err) {
+          return console.error(err);
+        }
+        localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
+        markWalletExistence(key);
+        window.location.reload();
+      });
+      return;
+    }
 
-      if (!result) {
-        // Create a new wallet
-        spinner.attachToView();
-        walletService.create(password, (err, wallet) => {
-          if (err) {
-            return console.error(err);
-          }
-          localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
-          window.location.reload();
-        });
-        return;
-      }
-
-      // Load an existing wallet
-      checkForWalletUpdates((hasUpdates) => {
-        if (hasUpdates) {
-          // Unregister the service workers to allow wallet rebuilding
-          // and clear the cache
-          navigator.serviceWorker
+    checkForWalletUpdates((hasUpdates) => {
+      if (hasUpdates) {
+        // Unregister the service workers to allow wallet rebuilding
+        // and clear the cache
+        navigator.serviceWorker
             .getRegistrations()
             .then((registrations) => {
               if (!registrations || !registrations.length) {
@@ -146,7 +169,7 @@ function MainController() {
 
               // After all the service works have been unregistered and stopped
               // rebuild the wallet
-              walletService.rebuild(password, (err, wallet) => {
+              walletService.rebuild(key, (err, wallet) => {
                 if (err) {
                   return console.error(err);
                 }
@@ -156,13 +179,13 @@ function MainController() {
                 window.location.reload();
               });
             });
-          return;
-        }
+        return;
+      }
 
-        // restore existing wallet
-        self.openWallet();
-      });
+      // restore existing wallet
+      self.openWallet();
     });
+
   }
 
   this.init = function () {
