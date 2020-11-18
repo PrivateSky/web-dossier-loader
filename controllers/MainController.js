@@ -11,9 +11,7 @@ function MainController() {
   const DEVELOPMENT_USERNAME = "test.username";
   const DEFAULT_PASSWORD = "testPassword123";
 
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
   const fileService = new FileService();
 
   let password;
@@ -113,7 +111,6 @@ function MainController() {
       if (!result) {
         // Create a new wallet
         spinner.attachToView();
-        walletService.setEDFSEndpoint(APP_CONFIG.EDFS_ENDPOINT);
         walletService.create(password, (err, wallet) => {
           if (err) {
             return console.error(err);
@@ -176,16 +173,11 @@ function MainController() {
         return runInDevelopment();
       }
 
-      this.initView();
-    });
-  };
-
-  this.initView = function () {
-    walletService.hasSeedCage((result) => {
-      if (!result) {
-        return this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID);
+      let windowUrl = new URL(window.location.href);
+      if(windowUrl.searchParams.get("login") !== null) {
+          return this.displayContainer(APP_CONFIG.PASSWORD_CONTAINER_ID);
       }
-      this.displayContainer(APP_CONFIG.PASSWORD_CONTAINER_ID);
+      this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID)
     });
   };
 
@@ -196,8 +188,6 @@ function MainController() {
   this.credentialsAreValid = function () {
     username = document.getElementById("username").value;
     email = document.getElementById("email").value;
-    console.log(username, APP_CONFIG.USERNAME_REGEX.test(username))
-    console.log(email, APP_CONFIG.EMAIL_REGEX.test(APP_CONFIG.EMAIL_REGEX))
     return email.length > 4
         && APP_CONFIG.EMAIL_REGEX.test(email)
         && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
@@ -221,7 +211,7 @@ function MainController() {
     }
     spinner.attachToView();
 
-    walletService.load(password, (err, wallet) => {
+    walletService.load([username, email, password], (err, wallet) => {
       if (err) {
         spinner.removeFromView();
         return (document.getElementById("register-details-error").innerText = "Invalid password");
@@ -252,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
     { "#loader-title": LABELS.APP_NAME },
     { "#loader-caption": LABELS.APP_DESCRIPTION },
     { "#new-wallet": LABELS.NEW_WALLET },
-    { "#restore-wallet": LABELS.RESTORE_WALLET },
+    { "#access-wallet": LABELS.ACCESS_WALLET },
     { "#wallet-authorization": LABELS.WALLET_AUTHORIZATION },
     { "#enter-credentials": LABELS.ENTER_CREDENTIALS },
     { "#username": LABELS.ENTER_USERNAME, attribute: "placeholder" },

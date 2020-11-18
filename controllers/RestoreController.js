@@ -8,9 +8,7 @@ function RestoreController() {
   let pin;
   let wizard;
   let spinner;
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
 
   function displayContainer(containerId) {
     document.getElementById(containerId).style.display = "block";
@@ -24,9 +22,7 @@ function RestoreController() {
         });
       } else {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
-        walletService.hasSeedCage((err, result) => {
-          wizard = new Stepper(document.getElementById("psk-wizard"));
-        });
+        wizard = new Stepper(document.getElementById("psk-wizard"));
       }
     });
   };
@@ -81,7 +77,7 @@ function RestoreController() {
   this.setPin = function (event) {
     event.preventDefault();
     spinner.attachToView();
-    walletService.setPin(seedSSI, pin, (err) => {
+    walletService.storeSSI(seedSSI, pin, (err) => {
       spinner.removeFromView();
       if (err) {
         return (document.getElementById("register-details-error").innerText = "Operation failed. Try again");

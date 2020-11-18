@@ -2,11 +2,11 @@ let APP_CONFIG = {
 	THEME: "app",
 	LABELS_DICTIONARY: {
 		APP_NAME: "Trust Loader",
-		APP_DESCRIPTION: "A smart application to keep your secrets",
+		APP_DESCRIPTION: "Start exploring privacy centered world",
 		NEW_WALLET: "New Wallet",
-		RESTORE_WALLET: "Restore Wallet",
+		ACCESS_WALLET: "Access Wallet",
 		WALLET_AUTHORIZATION: "Wallet Authorization",
-		REGISTER_DETAILS: "Register Details",
+		REGISTER_DETAILS: "Register details",
 		COMPLETE: "Complete",
 
 		SET_UP_USERNAME: "Enter your username",
@@ -45,7 +45,6 @@ let APP_CONFIG = {
 	},
 	NEW_OR_RESTORE_CONTAINER_ID: "restore-new-container",
 	PASSWORD_CONTAINER_ID: "credentials-container",
-	EDFS_ENDPOINT: "http://localhost:8080",
 	MODE: 'secure',
 	PASSWORD_MIN_LENGTH: 4,
 	USERNAME_MIN_LENGTH: 6,
@@ -54,7 +53,7 @@ let APP_CONFIG = {
 	NEW_WALLET_MORE_INFORMATION: `<div class="jumbotron p-0 m-0" align="center">
   <h1 class="display-6">Welcome to your secure wallet!</h1>
   <p class="lead">After completing the following wizard you will gain access to your private data.</p>
-  <p class="m-0">In order to access your private data you have to set up a password.</p>
+  <p class="m-0">In order to access your private data you have to set up your credentials.</p>
   <hr/>
 </div>`
 };

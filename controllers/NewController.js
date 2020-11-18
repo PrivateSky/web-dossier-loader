@@ -4,14 +4,12 @@ import WalletService from "./services/WalletService.js";
 import SWAgent from "./services/SWAgent.js";
 
 function NewController() {
-  let password;
   let username;
   let email;
+  let password;
   let wizard;
   let spinner;
-  const walletService = new WalletService({
-    edfsEndpoint: APP_CONFIG.EDFS_ENDPOINT,
-  });
+  const walletService = new WalletService();
 
   this.hasInstallationUrl = function () {
     let windowUrl = new URL(window.location.href);
@@ -26,9 +24,7 @@ function NewController() {
         });
       } else {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
-        walletService.hasSeedCage((err, result) => {
-          wizard = new Stepper(document.getElementById("psk-wizard"));
-        });
+        wizard = new Stepper(document.getElementById("psk-wizard"));
       }
     });
   };
@@ -42,8 +38,6 @@ function NewController() {
   this.credentialsAreValid = function () {
     username = document.getElementById("username").value;
     email = document.getElementById("email").value;
-    console.log(username, APP_CONFIG.USERNAME_REGEX.test(username))
-    console.log(email, APP_CONFIG.EMAIL_REGEX.test(APP_CONFIG.EMAIL_REGEX))
     return email.length > 4
         && APP_CONFIG.EMAIL_REGEX.test(email)
         && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
@@ -65,9 +59,9 @@ function NewController() {
     spinner.attachToView();
     try {
       console.log("Creating wallet...");
-      walletService.create(password, (err, wallet) => {
+      walletService.create([username, email, password], (err, wallet) => {
         if (err) {
-          document.getElementById("password-error").innerText = "An error occurred. Please try again.";
+          document.getElementById("register-details-error").innerText = "An error occurred. Please try again.";
           return console.error(err);
         }
 
@@ -79,7 +73,7 @@ function NewController() {
         });
       });
     } catch (e) {
-      document.getElementById("password-error").innerText = "Seed is not valid.";
+      document.getElementById("register-details-error").innerText = "Seed is not valid.";
     }
   }
 
@@ -112,10 +106,10 @@ document.addEventListener("DOMContentLoaded", function () {
     { "#step-complete": LABELS.COMPLETE },
     { "#set-up-username": LABELS.SET_UP_USERNAME },
     { "#set-up-username-help": LABELS.SET_UP_USERNAME_HELP },
-    {"#username": LABELS.ENTER_USERNAME, attribute: "placeholder",},
+    { "#username": LABELS.ENTER_USERNAME, attribute: "placeholder",},
     { "#set-up-email": LABELS.SET_UP_EMAIL },
     { "#set-up-email-help": LABELS.SET_UP_EMAIL_HELP },
-    {"#email": LABELS.ENTER_EMAIL, attribute: "placeholder",},
+    { "#email": LABELS.ENTER_EMAIL, attribute: "placeholder",},
     { "#set-up-password": LABELS.SET_UP_PASSWORD },
     { "#set-up-password-help": LABELS.SET_UP_PASSWORD_HELP },
     { "#password": LABELS.ENTER_PASSWORD, attribute: "placeholder",},
