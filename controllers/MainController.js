@@ -7,6 +7,9 @@ import SWAgent from "./services/SWAgent.js";
 
 function MainController() {
   const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
+
+  let USER_DETAILS_FILE = "user-details.json";
+
   const DEVELOPMENT_EMAIL = "test@test.com";
   const DEVELOPMENT_USERNAME = "test.username";
   const DEFAULT_PASSWORD = "testPassword123";
@@ -228,6 +231,25 @@ function MainController() {
     }
   };
 
+  this.writeUserDetailsToFile = function (wallet, callback) {
+    let objectToWrite = {
+      username: username,
+      email: email
+    }
+
+    wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(objectToWrite), callback);
+  }
+
+  this.getUserDetailsFromFile = function (wallet, callback) {
+    wallet.readFile(USER_DETAILS_FILE, (err, data) => {
+      if (err) {
+        return callback(err);
+      }
+      const dataSerialization = data.toString();
+      callback(undefined, JSON.parse(dataSerialization))
+    });
+  }
+
   this.openWallet = function (event) {
     if (event) {
       event.preventDefault();
@@ -245,6 +267,20 @@ function MainController() {
           console.error(err);
           return console.error("Operation failed. Try again");
         }
+
+        this.writeUserDetailsToFile(wallet, (err, data) => {
+          if(err) {
+            return console.log(err);
+          }
+
+          this.getUserDetailsFromFile(wallet, (err, data) => {
+            if (err) {
+              return console.log(err);
+            }
+            console.log("Logged user", data);
+          })
+
+        });
 
         console.log(`Loading wallet ${keySSI}`);
 
