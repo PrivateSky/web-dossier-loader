@@ -132,9 +132,13 @@ function MainController() {
    */
   function runInDevelopment() {
     email = APP_CONFIG.DEVELOPMENT_EMAIL || DEVELOPMENT_EMAIL;
-    username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
     password = APP_CONFIG.DEVELOPMENT_PASSWORD || DEFAULT_PASSWORD;
-    let key = [username, email, password]
+    username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
+
+    //fixes the situation when a app_config contains the same key information and the localstorage is not separated
+    username = window.location.pathname+"/"+username;
+
+    let key = [username, email, password];
     if (!checkWalletExistence(key)) {
       spinner.attachToView();
       walletService.create(key, (err, wallet) => {
