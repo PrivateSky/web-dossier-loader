@@ -31,46 +31,6 @@
     <link href="assets/images-pwa/apple_splash_640.png" sizes="640x1136" rel="apple-touch-startup-image" />
     <!-- /pwa configs -->
 
-    <!-- register pwa service worker and pwa installation -->
-    <!-- <script type="module">
-      import { Workbox, messageSW } from "./assets/pwa/workbox-window.prod.mjs";
-
-      const showNewContentAvailable = () => {
-        if (confirm(`New content is available!. Click OK to refresh!`)) {
-          window.location.reload(true);
-        }
-      };
-
-      if (false && "serviceWorker" in navigator) {
-        fetch("manifest.webmanifest")
-                .then(response => response.json())
-                .then(manifest => {
-                  const scope = manifest.scope;
-                  const wb = new Workbox("swPwa.js", { scope: scope });
-
-                  wb.register().then((registration) => {
-                    registration.addEventListener("updatefound", () => {
-                      console.log("updatefound", { installing: registration.installing, active: registration.active });
-
-                      const activeWorker = registration.active;
-                      if (activeWorker) {
-                        activeWorker.addEventListener("statechange", () => {
-                          console.log("active statechange");
-                          if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
-                            showNewContentAvailable();
-                          }
-                        });
-                      }
-                    });
-                  });
-                  
-                  setInterval(() => {
-                    wb.update();
-                  }, 60 * 1000);
-        });
-    }
-    </script> -->
-
     <link type="text/css" rel="stylesheet" href="assets/pwa/pwa.css" />
     <script src="assets/pwa/pwa.js"></script>
   </head>

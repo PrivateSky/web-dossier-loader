@@ -123,19 +123,27 @@
 
   window.addEventListener("load", () => {
     // Checks if should display install popup notification:
-    if (isIosSafari() && !isInStandaloneMode()) {
-      showInstallationModal();
-    }
+    if ("serviceWorker" in navigator) {
+      fetch("./manifest.webmanifest")
+        .then(() => {
+          if (isIosSafari() && !isInStandaloneMode()) {
+            showInstallationModal();
+          }
 
-    observeDOM(document.body, () => {
-      const installPWAModal = document.querySelector("div#installPWAModal");
-      if (!installPWAModal) {
-        // install modal no longer exists or never existed
-        if (canInstallApp()) {
-          showInstallationModal();
-        }
-      }
-    });
+          observeDOM(document.body, () => {
+            const installPWAModal = document.querySelector("div#installPWAModal");
+            if (!installPWAModal) {
+              // install modal no longer exists or never existed
+              if (canInstallApp()) {
+                showInstallationModal();
+              }
+            }
+          });
+        })
+        .catch((err) => {
+          console.log("Cannot load manifest.webmanifest", err);
+        });
+    }
   });
 
   if ("onbeforeinstallprompt" in window) {

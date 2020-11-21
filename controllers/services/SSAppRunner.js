@@ -123,25 +123,35 @@ function SSAppRunner(options) {
                   const scope = manifest.scope;
                   const wb = new Workbox("./swPwa.js", { scope: scope });
 
-                  wb.register().then((registration) => {
-                    registration.addEventListener("updatefound", () => {
-                      console.log("updatefound", { installing: registration.installing, active: registration.active });
-
-                      const activeWorker = registration.active;
-                      if (activeWorker) {
-                        activeWorker.addEventListener("statechange", () => {
-                          console.log("active statechange");
-                          if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
-                            showNewContentAvailable();
-                          }
+                  wb.register()
+                    .then((registration) => {
+                      registration.addEventListener("updatefound", () => {
+                        console.log("updatefound", {
+                          installing: registration.installing,
+                          active: registration.active,
                         });
-                      }
+
+                        const activeWorker = registration.active;
+                        if (activeWorker) {
+                          activeWorker.addEventListener("statechange", () => {
+                            console.log("active statechange", activeWorker.state);
+                            if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
+                              showNewContentAvailable();
+                            }
+                          });
+                        }
+                      });
+                    })
+                    .catch((err) => {
+                      console.log("swPwa registration issue", err);
                     });
-                  });
 
                   setInterval(() => {
                     wb.update();
                   }, 60 * 1000);
+                })
+                .catch((err) => {
+                  console.log("Cannot load manifest.webmanifest", err);
                 });
             }
           };
