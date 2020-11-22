@@ -260,9 +260,18 @@ label.error{
     align-items: center;
     z-index: 10000000;
     background: #00000099;
+    flex-direction: column;
+    justify-content: center;
 }
 .bg-violet{
     background: rgba(64, 83, 115, 0.6);
+}
+.reload-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
 /* Extra small devices (portrait phones, less than 576px)*/
