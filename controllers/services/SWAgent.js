@@ -1,10 +1,5 @@
 let controllersChangeHandlers = [];
 
-navigator.serviceWorker.ready.then(registration => {
-  console.log('ready', registration);
-});
-
-
 navigator.serviceWorker.oncontrollerchange = function (event) {
   let serviceWorker = event.target.controller;
   let serviceWorkerUrl = serviceWorker.scriptURL;
