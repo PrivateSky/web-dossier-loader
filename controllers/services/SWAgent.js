@@ -1,5 +1,10 @@
 let controllersChangeHandlers = [];
 
+navigator.serviceWorker.ready.then(registration => {
+  console.log('ready', registration);
+});
+
+
 navigator.serviceWorker.oncontrollerchange = function (event) {
   let serviceWorker = event.target.controller;
   let serviceWorkerUrl = serviceWorker.scriptURL;
@@ -107,24 +112,8 @@ const SWAgent = {
       .then((success) => {
         if (!success) {
           console.log("Could not unregister sw ", sw);
-        }
-        if ("caches" in window) {
-          return caches
-            .keys()
-            .then((keyList) => {
-              return Promise.all(
-                keyList.map((key) => {
-                  return caches.delete(key);
-                })
-              );
-            })
-            .then(callback)
-            .catch((error) => {
-              // if there are any issues with the cache clearing then we will consider the unregister still successful
-              console.log("cache clear error", error);
-              callback();
-            });
-        }
+          return callback("Could not unregister sw");
+        }       
 
         callback();
       })
@@ -161,6 +150,25 @@ const SWAgent = {
 
       callback(null, sws.length > 0);
     });
+  },
+
+  clearCaches: (callback) => {
+    if ("caches" in window) {
+      return caches
+        .keys()
+        .then((keyList) => {
+          return Promise.all(
+            keyList.map((key) => {
+              return caches.delete(key);
+            })
+          );
+        })
+        .then(() => callback())
+        .catch((error) => {
+          callback(error);
+          console.log("cache clear error", error);
+        });
+    }
   },
 
   loadWallet: (seed, swConfig, callback) => {

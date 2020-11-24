@@ -48,9 +48,15 @@ function Spinner(view) {
           const reloadSection = attachedSpinner.querySelector(".loader-container").appendChild(reloadSectionElement);
           reloadSection.innerHTML = RELOAD_SECTION_HTML;
   
-          reloadSection.querySelector("button").addEventListener("click", () => {
+          reloadSection.querySelector("button").addEventListener("click", () => {   
+            console.log("Unregistering all service workers...");
+
             SWAgent.unregisterAllServiceWorkers(() => {
-              window.location.reload();
+                console.log("Clearing caches...");
+                
+                SWAgent.clearCaches(() => {
+                    window.location.reload();
+                });
             });
           });
         }, RELOAD_SECTION_TIMEOUT_MS);
