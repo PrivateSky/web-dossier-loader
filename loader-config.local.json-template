@@ -1,6 +1,7 @@
 {
-    "MODE": "development",
-    "DEVELOPMENT_EMAIL": "test@test.com",
-    "DEVELOPMENT_USERNAME": "test.username",
-    "DEVELOPMENT_PASSWORD": "testPassword123"
+    "MODE": "autologin",
+    "LOGIN_EMAIL": "auto@autologin.autologin",
+    "LOGIN_USERNAME": "autologin.username",
+    "LOGIN_PASSWORD": "randomGeneratedAtRuntime",
+    "BLOCKCHAIN_DOMAIN": "vault"
 }
