@@ -55,7 +55,7 @@ function SSAppRunner(options) {
         /**
          * remove all body elements that are related to loader UI except the iframe
          */
-        document.querySelectorAll("body > *:not(iframe)").forEach((node) => node.remove());
+        document.querySelectorAll("body > *:not(iframe|.loader-container)").forEach((node) => node.remove());
       }
     });
 
