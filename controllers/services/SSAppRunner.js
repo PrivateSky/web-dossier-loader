@@ -50,7 +50,13 @@ function SSAppRunner(options) {
     eventMiddleware.onStatus("completed", () => {
       if (iframe.hasAttribute("app-placeholder")) {
         iframe.removeAttribute("app-placeholder");
-        return (document.body.innerHTML = iframe.outerHTML);
+        document.body.innerHTML = iframe.outerHTML;
+        document.dispatchEvent(new CustomEvent('ssapp:loading:progress', {
+            detail: {
+                progress: 0,
+                status: this.spinner.getLastStatusMessage()
+            }
+        }));
       } else {
         /**
          * remove all body elements that are related to loader UI except the iframe
