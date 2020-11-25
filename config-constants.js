@@ -1,8 +1,8 @@
 let APP_CONFIG = {
 	THEME: "app",
 	LABELS_DICTIONARY: {
-		APP_NAME: "Trust Loader",
-		APP_DESCRIPTION: "Start exploring privacy centered world",
+		APP_NAME: "Leaflet wallet",
+		APP_DESCRIPTION: "Prepare to access e-leaflets world",
 		NEW_WALLET: "New Wallet",
 		ACCESS_WALLET: "Access Wallet",
 		WALLET_AUTHORIZATION: "Wallet Authorization",
