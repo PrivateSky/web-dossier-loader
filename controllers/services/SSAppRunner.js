@@ -119,6 +119,7 @@ function SSAppRunner(options) {
     const iframe = buildContainerIframe();
     setupLoadEventsListener(iframe);
     setupSeedRequestListener();
+    setupLoadingProgressEventListener();
 
     SWAgent.unregisterAllServiceWorkers(() => {
       SWAgent.registerSW(
