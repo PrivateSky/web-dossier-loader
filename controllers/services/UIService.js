@@ -14,7 +14,7 @@ const SpinnerHTML = "<div class=\"loader-container\">\n" +
     "</div>\n" +
     "</div>";
 
-const RELOAD_SECTION_TIMEOUT_MS = 5 * 1000;
+const RELOAD_SECTION_TIMEOUT_MS = 10 * 1000;
 const RELOAD_SECTION_HTML = `
     <p>
       The application is taking longer than expected to load. <br/>
@@ -58,6 +58,9 @@ function Spinner(view) {
                     window.location.reload();
                 });
             });
+
+            console.log("Clearing localStorage");
+            localStorage.clear();
           });
         }, RELOAD_SECTION_TIMEOUT_MS);
     };

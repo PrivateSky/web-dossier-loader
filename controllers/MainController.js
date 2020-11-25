@@ -10,9 +10,8 @@ function MainController() {
 
   let USER_DETAILS_FILE = "user-details.json";
 
-  const DEVELOPMENT_EMAIL = "test@test.com";
-  const DEVELOPMENT_USERNAME = "test.username";
-  const DEFAULT_PASSWORD = "testPassword123";
+  const DEVELOPMENT_EMAIL = "development@autologin.autologin";
+  const DEVELOPMENT_USERNAME = "developement.username";
 
   const walletService = new WalletService();
   const fileService = new FileService();
@@ -102,7 +101,9 @@ function MainController() {
   let DEVELOPMENT_CREDENTIALS_KEY = "developmentCredentials";
 
   function hash(key) {
-    return btoa(encodeURI(key.join("/")));
+    const crypto = require("opendsu").loadApi("crypto");
+    let hsh = crypto.sha256(encodeURI(key.join("/")));
+    return hsh;
   }
 
   function getKnownCredentials() {
@@ -124,6 +125,26 @@ function MainController() {
     return localStorage.setItem(DEVELOPMENT_CREDENTIALS_KEY, JSON.stringify(knownCredentials));
   }
 
+  function generate(charactersSet, length){
+    let result = '';
+    const charactersLength = charactersSet.length;
+    for (let i = 0; i < length; i++) {
+      result += charactersSet.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+  }
+
+  function getSecretLocalToken(){
+    let storageKey = "secretToken";
+    let secret = localStorage.getItem(storageKey);
+    if(!secret){
+      const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      secret = generate(characters, 32);
+      localStorage.setItem(storageKey, secret);
+    }
+    return secret;
+  }
+
   /**
    * Run the loader in development mode
    *
@@ -131,9 +152,9 @@ function MainController() {
    * and load it
    */
   function runInDevelopment() {
-    email = APP_CONFIG.DEVELOPMENT_EMAIL || DEVELOPMENT_EMAIL;
-    password = APP_CONFIG.DEVELOPMENT_PASSWORD || DEFAULT_PASSWORD;
-    username = APP_CONFIG.DEVELOPMENT_USERNAME || DEVELOPMENT_USERNAME;
+    email = APP_CONFIG.LOGIN_EMAIL || DEVELOPMENT_EMAIL;
+    password = getSecretLocalToken();
+    username = APP_CONFIG.LOGIN_USERNAME || DEVELOPMENT_USERNAME;
 
     //fixes the situation when a app_config contains the same key information and the localstorage is not separated
     username = window.location.pathname+"/"+username;
@@ -199,7 +220,7 @@ function MainController() {
     spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
     loadLocalConfiguration(() => {
-      if (APP_CONFIG.MODE === "development") {
+      if (APP_CONFIG.MODE === "autologin") {
         return runInDevelopment();
       }
 
