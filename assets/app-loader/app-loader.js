@@ -1,5 +1,8 @@
 import SWAgent from "../../controllers/services/SWAgent.js";
 
+
+sendLoadingProgress(0, 'Getting SeedSSI...');
+
 const paths = window.location.pathname.split("/iframe/");
 const myIdentity = paths[1];
 const swName = "swBoot.js";
@@ -17,13 +20,16 @@ window.document.addEventListener(myIdentity, (e) => {
             scope: myIdentity
         };
 
+        sendLoadingProgress(30, 'Initializing application: ' + myIdentity);
         SWAgent.loadWallet(seed, swConfig, (err) => {
             if (err) {
+                sendLoadingProgress(100, 'Error loading: ' + myIdentity);
                 console.error(err);
                 return sendMessage({
                     status: 'error'
                 });
             }
+            sendLoadingProgress(50, 'Loading: ' + myIdentity);
             sendMessage({
                 status: 'completed'
             });
@@ -41,4 +47,21 @@ function sendMessage(message) {
         detail: message
     });
     window.parent.document.dispatchEvent(event);
+}
+
+function sendLoadingProgress(progress, status) {
+    let currentWindow = window;
+    let parentWindow = currentWindow.parent;
+
+    while (currentWindow !== parentWindow) {
+        currentWindow = parentWindow;
+        parentWindow = currentWindow.parent;
+    }
+
+    parentWindow.document.dispatchEvent(new CustomEvent('ssapp:loading:progress', {
+        detail: {
+            progress,
+            status
+        }
+    }));
 }

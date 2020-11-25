@@ -12,6 +12,7 @@ const SpinnerHTML = "<div class=\"loader-container\">\n" +
     "    <div class=\"sk-cube sk-cube8\"></div>\n" +
     "    <div class=\"sk-cube sk-cube9\"></div>\n" +
     "</div>\n" +
+    '<div class="loading-status"></div>' +
     "</div>";
 
 const RELOAD_SECTION_TIMEOUT_MS = 10 * 1000;
@@ -27,8 +28,12 @@ function Spinner(view) {
 
     let attachedSpinner = null;
     let reloadSectionTimeout = null;
+    let lastStatusMessage = null;
 
     this.attachToView = function () {
+        if (attachedSpinner) {
+            this.removeFromView();
+        }
         let element = document.createElement("div");
         attachedSpinner = view.appendChild(element);
         attachedSpinner.innerHTML = SpinnerHTML;
@@ -73,6 +78,17 @@ function Spinner(view) {
         if(reloadSectionTimeout) {
           clearTimeout(reloadSectionTimeout);
         }
+    }
+
+    this.setStatusText = function (text) {
+        lastStatusMessage = text;
+        const parent = attachedSpinner.querySelector('.loader-container');
+        let loadingStatus = parent.querySelector('.loading-status');
+        loadingStatus.innerHTML = text || '';
+    }
+
+    this.getLastStatusMessage = function () {
+        return lastStatusMessage;
     }
 }
 

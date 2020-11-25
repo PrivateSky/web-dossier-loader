@@ -13,6 +13,7 @@ function SSAppRunner(options) {
   }
   this.seed = options.seed;
   this.hash = PskCrypto.pskHash(this.seed, "hex");
+  this.spinner = options.spinner;
 
   /**
    * Builds the iframe container
@@ -91,6 +92,28 @@ function SSAppRunner(options) {
       }
     });
   };
+
+
+    /**
+     * Toggle the loading spinner based on the loading
+     * progress of ssapps
+     */
+    const setupLoadingProgressEventListener = () => {
+        document.addEventListener('ssapp:loading:progress', (e) => {
+            const data = e.detail;
+            const progress = data.progress;
+            const statusText = data.status;
+
+            if (progress < 100) {
+                this.spinner.attachToView();
+            }
+            this.spinner.setStatusText(statusText);
+
+            if (progress === 100) {
+                this.spinner.removeFromView();
+            }
+        });
+    }
 
   this.run = function () {
     const iframe = buildContainerIframe();

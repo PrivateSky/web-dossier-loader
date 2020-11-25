@@ -256,6 +256,8 @@ label.error{
     height: 100%;
     width:100%;
     min-height: 100%;
+    left: 0;
+    top: 0;
     display: flex;
     align-items: center;
     z-index: 10000000;
@@ -263,6 +265,12 @@ label.error{
     flex-direction: column;
     justify-content: center;
 }
+
+.loader-container .loading-status {
+    margin-top: -100px;
+    color: #dee9f8;
+}
+
 .bg-violet{
     background: rgba(64, 83, 115, 0.6);
 }

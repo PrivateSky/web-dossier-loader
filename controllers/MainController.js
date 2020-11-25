@@ -280,6 +280,7 @@ function MainController() {
       event.preventDefault();
     }
     spinner.attachToView();
+    spinner.setStatusText("Opening wallet...");
 
     walletService.load([username, email, password], (err, wallet) => {
       if (err) {
@@ -311,6 +312,7 @@ function MainController() {
 
         new SSAppRunner({
           seed: keySSI,
+          spinner
         }).run();
       });
     });
