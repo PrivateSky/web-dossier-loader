@@ -32,7 +32,7 @@ function Spinner(view) {
 
     this.attachToView = function () {
         if (attachedSpinner) {
-            this.removeFromView();
+            return;
         }
         let element = document.createElement("div");
         attachedSpinner = view.appendChild(element);

@@ -1,14 +1,31 @@
 import SWAgent from "../../controllers/services/SWAgent.js";
 
-
-sendLoadingProgress(0, 'Getting SeedSSI...');
-
 const paths = window.location.pathname.split("/iframe/");
 const myIdentity = paths[1];
 const swName = "swBoot.js";
+let loadingInterval;
+
+function startLoadingProgressInterval(initialLoadingProgress) {
+    sendLoadingProgress(initialLoadingProgress, `Loading ${initialLoadingProgress}%`);
+    let loadingProgress = initialLoadingProgress;
+    loadingInterval = setInterval(() => {
+        let increment = 10;
+        if (loadingProgress >= 90) {
+            increment = 1;
+        }
+
+        loadingProgress += increment;
+
+        if (loadingProgress >= 100) {
+            clearInterval(loadingInterval);
+            return;
+        }
+        sendLoadingProgress(loadingProgress, `Loading ${loadingProgress}%`);
+    }, 1000);
+}
 
 window.frameElement.setAttribute("app-placeholder","true");
-
+startLoadingProgressInterval(10);
 window.document.addEventListener(myIdentity, (e) => {
     const data = e.detail || {};
 
@@ -20,16 +37,15 @@ window.document.addEventListener(myIdentity, (e) => {
             scope: myIdentity
         };
 
-        sendLoadingProgress(30, 'Initializing application: ' + myIdentity);
         SWAgent.loadWallet(seed, swConfig, (err) => {
             if (err) {
-                sendLoadingProgress(100, 'Error loading: ' + myIdentity);
+                clearInterval(loadingInterval);
+                sendLoadingProgress(100, 'Error loading wallet');
                 console.error(err);
                 return sendMessage({
                     status: 'error'
                 });
             }
-            sendLoadingProgress(50, 'Loading: ' + myIdentity);
             sendMessage({
                 status: 'completed'
             });

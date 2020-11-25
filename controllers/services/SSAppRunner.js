@@ -51,10 +51,11 @@ function SSAppRunner(options) {
       if (iframe.hasAttribute("app-placeholder")) {
         iframe.removeAttribute("app-placeholder");
         document.body.innerHTML = iframe.outerHTML;
+        this.spinner.removeFromView();
         document.dispatchEvent(new CustomEvent('ssapp:loading:progress', {
             detail: {
                 progress: 0,
-                status: this.spinner.getLastStatusMessage()
+                status: 'Wallet Loaded<br />Loading SSApp...'
             }
         }));
       } else {
