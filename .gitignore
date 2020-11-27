@@ -3,3 +3,6 @@
 loader-config.local.json
 /bundles
 /swBoot.js
+/swPwa.js
+/workbox-*.js
+!/workbox-config.js
