@@ -3,7 +3,7 @@
 import { Workbox } from "../../assets/pwa/workbox-window.prod.mjs";
 import SWAgent from "./SWAgent.js";
 import EventMiddleware from "./EventMiddleware.js";
-const PskCrypto = require("pskcrypto");
+const crypto = require("opendsu").loadApi("crypto");
 
 function SSAppRunner(options) {
   options = options || {};
@@ -12,7 +12,7 @@ function SSAppRunner(options) {
     throw new Error("Missing seed");
   }
   this.seed = options.seed;
-  this.hash = PskCrypto.pskHash(this.seed, "hex");
+  this.hash = crypto.sha256(this.seed);
   this.spinner = options.spinner;
 
   /**
@@ -62,7 +62,11 @@ function SSAppRunner(options) {
         /**
          * remove all body elements that are related to loader UI except the iframe
          */
-        document.querySelectorAll("body > *:not(iframe|.loader-container)").forEach((node) => node.remove());
+        try {
+          document.querySelectorAll("body > *:not(iframe):not(.loader-parent-container)").forEach((node) => node.remove());
+        }catch (e) {
+          this.spinner.removeFromView();
+        }
       }
     });
 

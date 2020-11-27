@@ -35,6 +35,7 @@ function Spinner(view) {
             return;
         }
         let element = document.createElement("div");
+        element.classList.add('loader-parent-container');
         attachedSpinner = view.appendChild(element);
         attachedSpinner.innerHTML = SpinnerHTML;
 
