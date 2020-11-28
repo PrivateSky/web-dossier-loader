@@ -156,9 +156,6 @@ function MainController() {
     password = getSecretLocalToken();
     username = APP_CONFIG.LOGIN_USERNAME || DEVELOPMENT_USERNAME;
 
-    //fixes the situation when a app_config contains the same key information and the localstorage is not separated
-    username = window.location.pathname+"/"+username;
-
     let key = [username, email, password];
     if (!checkWalletExistence(key)) {
       spinner.attachToView();
