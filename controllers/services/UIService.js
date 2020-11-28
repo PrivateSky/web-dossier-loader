@@ -82,10 +82,15 @@ function Spinner(view) {
     }
 
     this.setStatusText = function (text) {
-        lastStatusMessage = text;
-        const parent = attachedSpinner.querySelector('.loader-container');
-        let loadingStatus = parent.querySelector('.loading-status');
-        loadingStatus.innerHTML = text || '';
+    	try{
+			lastStatusMessage = text;
+			const parent = attachedSpinner.querySelector('.loader-container');
+			let loadingStatus = parent.querySelector('.loading-status');
+			loadingStatus.innerHTML = text || '';
+		}catch(e){
+    		console.log("//TODO: pay attention, not critical but should be refactored.");
+		}
+
     }
 
     this.getLastStatusMessage = function () {
