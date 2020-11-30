@@ -1,7 +1,6 @@
 "use strict";
 
-import { Workbox } from "../../assets/pwa/workbox-window.prod.mjs";
-import SWAgent from "./SWAgent.js";
+import NavigatorUtils from "./NavigatorUtils.js";
 import EventMiddleware from "./EventMiddleware.js";
 const crypto = require("opendsu").loadApi("crypto");
 
@@ -20,7 +19,7 @@ function SSAppRunner(options) {
    * for the SSApp
    * @return {HTMLIFrameElement}
    */
-  const buildContainerIframe = () => {
+  const buildContainerIframe = (useSeedForIframeSource) => {
     const iframe = document.createElement("iframe");
 
     //iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-forms");
@@ -36,7 +35,8 @@ function SSAppRunner(options) {
 
     // This request will be intercepted by swLoader.js
     // and will make the iframe load the app-loader.js script
-    iframe.src = window.location.origin + window.location.pathname + "iframe/" + this.hash;
+    const { origin, pathname } = window.location;
+    iframe.src = `${origin}${pathname}iframe/${useSeedForIframeSource ? this.seed : this.hash}`;
     return iframe;
   };
 
@@ -127,73 +127,41 @@ function SSAppRunner(options) {
     }
 
   this.run = function () {
-    const iframe = buildContainerIframe();
-    setupLoadEventsListener(iframe);
-    setupSeedRequestListener();
-    setupLoadingProgressEventListener();
+    NavigatorUtils.getAreServiceWorkersEnabled((err, areServiceWorkersEnabled) => {
+      if (areServiceWorkersEnabled && !NavigatorUtils.areServiceWorkersSupported) {
+        return alert("You current browser doesn't support running this application");
+      }
 
-    SWAgent.unregisterAllServiceWorkers(() => {
-      SWAgent.registerSW(
-        {
-          name: "swLoader.js",
-          path: "swLoader.js",
-          scope: window.location.pathname + "iframe",
-        },
-        (err) => {
-          if (err) {
-            throw err;
-          }
+      const iframe = buildContainerIframe(!areServiceWorkersEnabled);
+      setupLoadEventsListener(iframe);
+      setupSeedRequestListener();
+      setupLoadingProgressEventListener();
 
-          iframe.onload = () => {
-            const showNewContentAvailable = () => {
-              if (confirm(`New content is available!. Click OK to refresh!`)) {
-                window.location.reload();
-              }
+      if (!areServiceWorkersEnabled) {
+        document.body.appendChild(iframe);
+        return;
+      }
+
+      NavigatorUtils.unregisterAllServiceWorkers(() => {
+        NavigatorUtils.registerSW(
+          {
+            name: "swLoader.js",
+            path: "swLoader.js",
+            scope: window.location.pathname + "iframe",
+          },
+          (err) => {
+            if (err) {
+              throw err;
+            }
+
+            iframe.onload = () => {
+              NavigatorUtils.registerPwaServiceWorker();
             };
 
-            if ("serviceWorker" in navigator) {
-              fetch("./manifest.webmanifest")
-                .then((response) => response.json())
-                .then((manifest) => {
-                  const scope = manifest.scope;
-                  const wb = new Workbox("./swPwa.js", { scope: scope });
-
-                  wb.register()
-                    .then((registration) => {
-                      registration.addEventListener("updatefound", () => {
-                        console.log("updatefound", {
-                          installing: registration.installing,
-                          active: registration.active,
-                        });
-
-                        const activeWorker = registration.active;
-                        if (activeWorker) {
-                          activeWorker.addEventListener("statechange", () => {
-                            console.log("active statechange", activeWorker.state);
-                            if (activeWorker.state === "installed" && navigator.serviceWorker.controller) {
-                              showNewContentAvailable();
-                            }
-                          });
-                        }
-                      });
-                    })
-                    .catch((err) => {
-                      console.log("swPwa registration issue", err);
-                    });
-
-                  setInterval(() => {
-                    wb.update();
-                  }, 60 * 1000);
-                })
-                .catch((err) => {
-                  console.log("Cannot load manifest.webmanifest", err);
-                });
-            }
-          };
-
-          document.body.appendChild(iframe);
-        }
-      );
+            document.body.appendChild(iframe);
+          }
+        );
+      });
     });
   };
 }

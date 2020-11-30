@@ -1,4 +1,4 @@
-import SWAgent from "../../controllers/services/SWAgent.js";
+import NavigatorUtils from "../../controllers/services/NavigatorUtils.js";
 
 const paths = window.location.pathname.split("/iframe/");
 const myIdentity = paths[1];
@@ -26,36 +26,44 @@ function startLoadingProgressInterval(initialLoadingProgress) {
 
 window.frameElement.setAttribute("app-placeholder","true");
 startLoadingProgressInterval(10);
-window.document.addEventListener(myIdentity, (e) => {
-    const data = e.detail || {};
 
-    if (data.seed) {
-        const seed = data.seed;
-        const swConfig = {
-            name: swName,
-            path: `../${swName}`,
-            scope: myIdentity
-        };
-
-        SWAgent.loadWallet(seed, swConfig, (err) => {
-            if (err) {
-                clearInterval(loadingInterval);
-                sendLoadingProgress(100, 'Error loading wallet');
-                console.error(err);
-                return sendMessage({
-                    status: 'error'
-                });
-            }
-            sendMessage({
-                status: 'completed'
-            });
-        })
-
+NavigatorUtils.getCanUseServiceWorkers((err, canUserServiceWorkers) => {
+    if (!canUserServiceWorkers) {
+        console.log("Skipping registering swBoot due to service workers being disabled");
+        return;
     }
-});
 
-sendMessage({
-    query: 'seed'
+    window.document.addEventListener(myIdentity, (e) => {
+        const data = e.detail || {};
+
+        if (data.seed) {
+            const seed = data.seed;
+            const swConfig = {
+                name: swName,
+                path: `../${swName}`,
+                scope: myIdentity
+            };
+
+            SWAgent.loadWallet(seed, swConfig, (err) => {
+                if (err) {
+                    clearInterval(loadingInterval);
+                    sendLoadingProgress(100, 'Error loading wallet');
+                    console.error(err);
+                    return sendMessage({
+                        status: 'error'
+                    });
+                }
+                sendMessage({
+                    status: 'completed'
+                });
+            })
+
+        }
+    });
+    
+    sendMessage({
+        query: 'seed'
+    });
 });
 
 function sendMessage(message) {

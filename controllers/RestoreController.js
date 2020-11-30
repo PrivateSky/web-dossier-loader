@@ -1,7 +1,7 @@
 import "./../loader-config.js";
 import { Spinner, prepareView } from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
-import SWAgent from "./services/SWAgent.js";
+import NavigatorUtils from "./services/NavigatorUtils.js";
 
 function RestoreController() {
   let seedSSI;
@@ -15,9 +15,9 @@ function RestoreController() {
   }
 
   this.init = function () {
-    SWAgent.hasServiceWorkers((error, hasServiceWorker) => {
+    NavigatorUtils.hasRegisteredServiceWorkers((error, hasServiceWorker) => {
       if (hasServiceWorker) {
-        SWAgent.unregisterAllServiceWorkers(() => {
+        NavigatorUtils.unregisterAllServiceWorkers(() => {
           window.location.reload();
         });
       } else {

@@ -1,7 +1,7 @@
 "use strict";
 import ScopedLocalStorage from "./ScopedLocalStorage.js";
 import WalletBuilderService from "./WalletBuilderService.js";
-import SWAgent from "./SWAgent.js";
+import NavigatorUtils from "./NavigatorUtils.js";
 
 /**
  * @param {object} options
@@ -59,7 +59,7 @@ function WalletService(options) {
      * @param {Function} callback
      */
     this.create = function (secret, callback) {
-        SWAgent.unregisterAllServiceWorkers(() => {
+        NavigatorUtils.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
                 walletTemplateFolderName: "wallet-template",

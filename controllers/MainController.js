@@ -3,7 +3,7 @@ import { Spinner, prepareView } from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import SSAppRunner from "./services/SSAppRunner.js";
-import SWAgent from "./services/SWAgent.js";
+import NavigatorUtils from "./services/NavigatorUtils.js";
 
 function MainController() {
   const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
@@ -216,16 +216,25 @@ function MainController() {
   this.init = function () {
     spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
-    loadLocalConfiguration(() => {
-      if (APP_CONFIG.MODE === "autologin") {
-        return runInDevelopment();
+    NavigatorUtils.getCanUseServiceWorkers((err, canUserServiceWorkers) => {
+      if(!canUserServiceWorkers) {
+        const openDSU = require("opendsu");
+        const config = openDSU.loadApi("config");
+        const CONSTANTS = openDSU.constants;
+        config.set(CONSTANTS.CACHE.VAULT_TYPE, CONSTANTS.CACHE.NO_CACHE);
       }
-
-      let windowUrl = new URL(window.location.href);
-      if(windowUrl.searchParams.get("login") !== null) {
+      
+      loadLocalConfiguration(() => {
+        if (APP_CONFIG.MODE === "autologin") {
+          return runInDevelopment();
+        }
+        
+        let windowUrl = new URL(window.location.href);
+        if(windowUrl.searchParams.get("login") !== null) {
           return this.displayContainer(APP_CONFIG.PASSWORD_CONTAINER_ID);
-      }
-      this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID)
+        }
+        this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID)
+      });
     });
   };
 

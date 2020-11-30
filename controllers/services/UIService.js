@@ -1,4 +1,4 @@
-import SWAgent from "./SWAgent.js";
+import NavigatorUtils from "./NavigatorUtils.js";
 
 const SpinnerHTML = "<div class=\"loader-container\">\n" +
     "<div class=\"sk-cube-grid\">\n" +
@@ -57,10 +57,10 @@ function Spinner(view) {
           reloadSection.querySelector("button").addEventListener("click", () => {   
             console.log("Unregistering all service workers...");
 
-            SWAgent.unregisterAllServiceWorkers(() => {
+            NavigatorUtils.unregisterAllServiceWorkers(() => {
                 console.log("Clearing caches...");
                 
-                SWAgent.clearCaches(() => {
+                NavigatorUtils.clearCaches(() => {
                     window.location.reload();
                 });
             });
@@ -82,15 +82,15 @@ function Spinner(view) {
     }
 
     this.setStatusText = function (text) {
-    	try{
-			lastStatusMessage = text;
-			const parent = attachedSpinner.querySelector('.loader-container');
-			let loadingStatus = parent.querySelector('.loading-status');
-			loadingStatus.innerHTML = text || '';
-		}catch(e){
+      try{
+        lastStatusMessage = text;
+        const parent = attachedSpinner.querySelector('.loader-container');
+        let loadingStatus = parent.querySelector('.loading-status');
+        loadingStatus.innerHTML = text || '';
+      }catch(e){
     		console.log("//TODO: pay attention, not critical but should be refactored.");
-		}
-
+    }
+    
     }
 
     this.getLastStatusMessage = function () {
