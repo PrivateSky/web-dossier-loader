@@ -6,4 +6,5 @@ loader-config.local.json
 /swPwa.js
 /workbox-*.js
 /config-constants.js
+/environment.json
 !/workbox-config.js
