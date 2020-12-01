@@ -236,10 +236,15 @@ function MainController() {
   this.credentialsAreValid = function () {
     username = document.getElementById("username").value;
     email = document.getElementById("email").value;
-    return email.length > 4
+    let pswd = document.getElementById("password").value;
+    let result = email.length > 4
         && APP_CONFIG.EMAIL_REGEX.test(email)
         && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
         && APP_CONFIG.USERNAME_REGEX.test(username);
+    if(typeof APP_CONFIG.PASSWORD_REGEX !== "undefined"){
+      result = result && APP_CONFIG.PASSWORD_REGEX.test(pswd);
+    }
+    return result;
   };
 
   this.validateCredentials = function () {
