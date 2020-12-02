@@ -7,6 +7,9 @@ function NewController() {
     let username;
     let email;
     let password;
+    let company;
+
+
     let wizard;
     let spinner;
     const walletService = new WalletService();
@@ -84,7 +87,7 @@ function NewController() {
         spinner.attachToView();
         try {
             console.log("Creating wallet...");
-            walletService.create([username, email, password], (err, wallet) => {
+            walletService.create(APP_CONFIG.environment.domain, [username, email, company, password], (err, wallet) => {
                 if (err) {
                     document.getElementById("register-details-error").innerText = "An error occurred. Please try again.";
                     return console.error(err);

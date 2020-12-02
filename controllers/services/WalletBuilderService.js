@@ -443,11 +443,11 @@ function WalletBuilderService(options) {
         }).then(environment => {
             let config = require("opendsu").loadApi("config");
             this.environment = environment;
-            config.autoconfigFromEnvironment(this.environment);
             domain = this.environment.domain;
             if (!domain) {
                 throw Error("Invalid domain in environment.json");
             }
+            config.autoconfigFromEnvironment(this.environment);
             _build();
         }).catch((err) => {
             throw Error("environment.json is missing");

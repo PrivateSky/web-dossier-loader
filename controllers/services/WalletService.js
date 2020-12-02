@@ -35,7 +35,7 @@ function WalletService(options) {
      * @param {string} secret
      * @param {Function} callback
      */
-    this.storeSSI = function (domain, keySSI, secret, callback) {
+    this.bindWithSeedSSI = function (domain, keySSI, secret, callback) {
         let keySSISpace = require("opendsu").loadApi("keyssi");
         const walletSSI = keySSISpace.buildWalletSSI(domain, secret);
 
@@ -68,7 +68,7 @@ function WalletService(options) {
                 ssiFileName: "seed",
             });
 
-            walletBuilder.build(domain, (err, wallet) => {
+            walletBuilder.build((err, wallet) => {
                 if (err) {
                     return callback(err);
                 }
@@ -78,24 +78,10 @@ function WalletService(options) {
                         return callback(err);
                     }
 
-                    this.storeSSI(domain, keySSI, secret, (err) => {
+                    this.bindWithSeedSSI(domain, keySSI, secret, (err) => {
                         callback(err, wallet);
                     });
                 });
-
-                /*wallet.getKeySSI((err, keySSI) => {
-                            if (err) {
-                                return callback(err);
-                            }
-
-                            resolver.loadDSU(keySSI, { password: pin, overwrite: true }, (err, wallet) => {
-                                if (err) {
-                                    return callback(err);
-                                }
-
-                                callback(undefined, wallet);
-                            });
-                        });*/
             });
         });
     };

@@ -19,7 +19,12 @@ function MainController() {
   let password;
   let username;
   let email;
+  let company;
+  let blockchainDomain;
+
+
   let spinner;
+
 
   const self = this;
 
@@ -46,11 +51,11 @@ function MainController() {
    * @param {callback} callback
    */
   function loadLocalConfiguration(callback) {
-    const localConfigurationPath = getUrl("loader-config.local.json");
+    const localConfigurationPath = getUrl("environment.json");
 
     fileService.getFile(localConfigurationPath, (err, data) => {
       if (err) {
-        return callback();
+        throw Error("Failed to load: environment.json");
       }
 
       let configuration;
@@ -58,12 +63,17 @@ function MainController() {
       try {
         configuration = JSON.parse(data);
       } catch (e) {
-        return callback();
+        throw Error("Failed to parse: environment.json");
       }
 
-      APP_CONFIG = Object.assign(APP_CONFIG, configuration);
-      callback();
+      APP_CONFIG.environment = configuration;
+      blockchainDomain = configuration.domain;
+      console.log("Setting environment " , configuration.mode, "in blockchain domain ",blockchainDomain);
+      callback(undefined, configuration);
     });
+
+
+
   }
 
   /**
@@ -152,16 +162,17 @@ function MainController() {
    * and load it
    */
   function runInDevelopment() {
-    email = APP_CONFIG.LOGIN_EMAIL || DEVELOPMENT_EMAIL;
+    email =  DEVELOPMENT_EMAIL;
     password = getSecretLocalToken();
-    username = APP_CONFIG.LOGIN_USERNAME || DEVELOPMENT_USERNAME;
+    username =  DEVELOPMENT_USERNAME;
+    company  = "dvelopment company";
 
-    let key = [username, email, password];
+    let key = [username, email, company, password];
     if (!checkWalletExistence(key)) {
       spinner.attachToView();
-      walletService.create(key, (err, wallet) => {
+      walletService.create(blockchainDomain,key, (err, wallet) => {
         if (err) {
-          return console.error(err);
+          throw Error(`Failed to create wallet in domain ${blockchainDomain + "\n" + err.message}`);
         }
         localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
         markWalletExistence(key);
@@ -169,6 +180,36 @@ function MainController() {
       });
       return;
     }
+
+
+
+    /**
+     * Run the loader in development mode
+     *
+     * Create a default wallet with a default password if none exists
+     * and load it
+     */
+    function runInAutologin() {
+      email = APP_CONFIG.LOGIN_EMAIL;
+      password = getSecretLocalToken();
+      username = APP_CONFIG.LOGIN_USERNAME;
+      company = APP_CONFIG.COMPANY_NAME;
+
+      let key = [username, email, company, password];
+      if (!checkWalletExistence(key)) {
+        spinner.attachToView();
+        walletService.create(blockchainDomain, key, (err, wallet) => {
+          if (err) {
+            throw Error(`Failed to create wallet  in domain  ${blockchainDomain +  "\n"  + err.message}`);
+          }
+          localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
+          markWalletExistence(key);
+          window.location.reload();
+        });
+        return;
+      }
+    }
+
 
     checkForWalletUpdates((hasUpdates) => {
       if (hasUpdates) {
@@ -194,9 +235,9 @@ function MainController() {
 
               // After all the service works have been unregistered and stopped
               // rebuild the wallet
-              walletService.rebuild(key, (err, wallet) => {
+              walletService.rebuild(blockchainDomain, key, (err, wallet) => {
                 if (err) {
-                  return console.error(err);
+                  throw Error(`Failed to create wallet ${blockchainDomain + key + err.message}`);
                 }
 
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
@@ -217,8 +258,16 @@ function MainController() {
     spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
     loadLocalConfiguration(() => {
-      if (APP_CONFIG.MODE === "autologin") {
+      if (APP_CONFIG.environment.mode === "dev-autologin") {
         return runInDevelopment();
+      }
+
+      if (APP_CONFIG.environment.mode === "autologin") {
+        return runInAutologin();
+      }
+
+      if (APP_CONFIG.environment.mode !== "secure") {
+        throw Error("Unknown mode in evironment.json");
       }
 
       let windowUrl = new URL(window.location.href);
@@ -314,7 +363,7 @@ function MainController() {
     spinner.attachToView();
     spinner.setStatusText("Opening wallet...");
 
-    walletService.load([username, email, password], (err, wallet) => {
+    walletService.load(blockchainDomain, [username, email, company, password], (err, wallet) => {
       if (err) {
         spinner.removeFromView();
         return (document.getElementById("register-details-error").innerText = "Invalid credentials");
@@ -371,4 +420,5 @@ document.addEventListener("DOMContentLoaded", function () {
   prepareView(page_labels);
   controller.init();
 });
+
 window.controller = controller;
