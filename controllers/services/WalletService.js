@@ -35,11 +35,11 @@ function WalletService(options) {
      * @param {string} secret
      * @param {Function} callback
      */
-    this.storeSSI = function (keySSI, secret, callback) {
+    this.storeSSI = function (domain, keySSI, secret, callback) {
         let keySSISpace = require("opendsu").loadApi("keyssi");
-        keySSI = keySSISpace.parse(keySSI, {dsuFactoryType: "wallet"});
+        const walletSSI = keySSISpace.buildWalletSSI(domain, secret);
 
-        keySSI.store(secret, (err) => {
+        walletSSI.bindWithSeedSSI(keySSI, (err) => {
             callback(err);
         });
     };
@@ -48,9 +48,9 @@ function WalletService(options) {
      * @param {string} secret
      * @param {Function} callback
      */
-    this.load = function (secret, callback) {
+    this.load = function (domain, secret, callback) {
         let resolver = require("opendsu").loadApi("resolver");
-        resolver.loadWallet(secret, {domain: "vault"}, callback);
+        resolver.loadWallet(domain, secret, callback);
     };
 
     /**
@@ -58,7 +58,7 @@ function WalletService(options) {
      * @param {string|undefined} pin
      * @param {Function} callback
      */
-    this.create = function (secret, callback) {
+    this.create = function (domain, secret, callback) {
         SWAgent.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
@@ -68,7 +68,7 @@ function WalletService(options) {
                 ssiFileName: "seed",
             });
 
-            walletBuilder.build((err, wallet) => {
+            walletBuilder.build(domain, (err, wallet) => {
                 if (err) {
                     return callback(err);
                 }
@@ -78,7 +78,7 @@ function WalletService(options) {
                         return callback(err);
                     }
 
-                    this.storeSSI(keySSI, secret, (err) => {
+                    this.storeSSI(domain, keySSI, secret, (err) => {
                         callback(err, wallet);
                     });
                 });
@@ -105,8 +105,8 @@ function WalletService(options) {
      * @param {array|undefined} key
      * @param {callback} callback
      */
-    this.rebuild = function (key, callback) {
-        this.load(key, (err, wallet) => {
+    this.rebuild = function (domain, key, callback) {
+        this.load(domain, key, (err, wallet) => {
             if (err) {
                 return callback(err);
             }
@@ -121,7 +121,7 @@ function WalletService(options) {
                 },
             });
 
-            walletBuilder.rebuild((err) => {
+            walletBuilder.rebuild(domain,(err) => {
                 if (err) {
                     console.error(err);
                     return callback(err);
