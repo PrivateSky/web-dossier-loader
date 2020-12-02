@@ -29,12 +29,14 @@ function NewController() {
         });
     };
 
-    this.showErrorOnField = function (fieldId) {
+    this.showErrorOnField = function (fieldId, fieldHelpId) {
         document.getElementById(fieldId).style.border = "2px solid red";
+        document.getElementById(fieldHelpId).setAttribute('style', 'color:red !important; font-weight: bold;');
     }
 
-    this.removeErrorFromField = function (fieldId) {
+    this.removeErrorFromField = function (fieldId, fieldHelpId) {
         document.getElementById(fieldId).style.border = "1px solid #ced4da";
+        document.getElementById(fieldHelpId).setAttribute('style', '#6c757d !important');
     }
 
     this.passwordsAreValid = function () {
@@ -49,8 +51,10 @@ function NewController() {
             confirmPasswordIsValid = confirmPasswordIsValid && APP_CONFIG.PASSWORD_REGEX.test(passwordConfirm);
         }
 
-        password.length > 0 && !passwordIsValid ? this.showErrorOnField('password') : this.removeErrorFromField('password');
-        passwordConfirm.length > 0 && !confirmPasswordIsValid ? this.showErrorOnField('confirm-password') : this.removeErrorFromField('confirm-password');
+        password.length > 0 && !passwordIsValid ? this.showErrorOnField('password', 'set-up-password-help') :
+            this.removeErrorFromField('password', 'set-up-password-help');
+        passwordConfirm.length > 0 && !confirmPasswordIsValid ? this.showErrorOnField('confirm-password', 'set-up-confirm-password-help')
+            : this.removeErrorFromField('confirm-password', 'set-up-confirm-password-help');
 
         return passwordIsValid && confirmPasswordIsValid && password === passwordConfirm;
     };
@@ -61,8 +65,11 @@ function NewController() {
 
         let usernameIsValid = username.length >= APP_CONFIG.USERNAME_MIN_LENGTH && APP_CONFIG.USERNAME_REGEX.test(username);
         let emailIsValid = email.length > 4 && APP_CONFIG.EMAIL_REGEX.test(email);
-        username.length > 0 && !usernameIsValid ? this.showErrorOnField('username') : this.removeErrorFromField('username');
-        email.length > 0 && !emailIsValid ? this.showErrorOnField('email') : this.removeErrorFromField('email');
+
+        username.length > 0 && !usernameIsValid ? this.showErrorOnField('username', 'set-up-username-help')
+            : this.removeErrorFromField('username', 'set-up-username-help');
+        email.length > 0 && !emailIsValid ? this.showErrorOnField('email', 'set-up-email-help')
+            : this.removeErrorFromField('email', 'set-up-email-help');
 
         return usernameIsValid && emailIsValid;
     };
