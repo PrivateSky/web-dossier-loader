@@ -247,11 +247,41 @@ function MainController() {
     return result;
   };
 
-  this.validateCredentials = function () {
-    password = document.getElementById("password").value;
-    let btn = document.getElementById("open-wallet-btn");
+  this.showErrorOnField = function (fieldId) {
+    document.getElementById(fieldId).style.border = "2px solid red";
+  }
 
-    if (password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH && this.credentialsAreValid()) {
+  this.removeErrorFromField = function (fieldId) {
+    document.getElementById(fieldId).style.border = "1px solid #ced4da";
+  }
+
+  this.passwordsAreValid = function () {
+    password = document.getElementById("password").value;
+    let passwordIsValid = password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH
+    if (typeof APP_CONFIG.PASSWORD_REGEX !== "undefined") {
+      passwordIsValid = passwordIsValid && APP_CONFIG.PASSWORD_REGEX.test(password);
+    }
+    password.length > 0 && !passwordIsValid ? this.showErrorOnField('password') : this.removeErrorFromField('password');
+    return passwordIsValid;
+  };
+
+  this.credentialsAreValid = function () {
+    username = document.getElementById("username").value;
+    email = document.getElementById("email").value;
+
+    let usernameIsValid = username.length >= APP_CONFIG.USERNAME_MIN_LENGTH && APP_CONFIG.USERNAME_REGEX.test(username);
+    let emailIsValid = email.length > 4 && APP_CONFIG.EMAIL_REGEX.test(email);
+    username.length > 0 && !usernameIsValid ? this.showErrorOnField('username') : this.removeErrorFromField('username');
+    email.length > 0 && !emailIsValid ? this.showErrorOnField('email') : this.removeErrorFromField('email');
+
+    return usernameIsValid && emailIsValid;
+  };
+
+  this.validateCredentials = function () {
+    let btn = document.getElementById("open-wallet-btn");
+    let credentialsAreValid = this.credentialsAreValid();
+    let passwordsAreValid = this.passwordsAreValid();
+    if (credentialsAreValid && passwordsAreValid) {
       btn.removeAttribute("disabled");
     } else {
       btn.setAttribute("disabled", "disabled");
@@ -287,7 +317,7 @@ function MainController() {
     walletService.load([username, email, password], (err, wallet) => {
       if (err) {
         spinner.removeFromView();
-        return (document.getElementById("register-details-error").innerText = "Invalid password");
+        return (document.getElementById("register-details-error").innerText = "Invalid credentials");
       }
 
       wallet.getKeySSI((err, keySSI) => {
