@@ -55,7 +55,7 @@ function MainController() {
 
         fileService.getFile(localConfigurationPath, (err, data) => {
             if (err) {
-                throw Error("Failed to load: environment.json");
+                return callback(createOpenDSUErrorWrapper("Failed to load: environment.json", err));
             }
 
             let configuration;
@@ -63,7 +63,7 @@ function MainController() {
             try {
                 configuration = JSON.parse(data);
             } catch (e) {
-                throw Error("Failed to parse: environment.json");
+                return callback(createOpenDSUErrorWrapper("Failed to parse: environment.json", e));
             }
 
             APP_CONFIG.environment = configuration;
@@ -171,7 +171,7 @@ function MainController() {
             spinner.attachToView();
             walletService.create(blockchainDomain, key, (err, wallet) => {
                 if (err) {
-                    throw Error(`Failed to create wallet in domain ${blockchainDomain + "\n" + err.message}`);
+                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${blockchainDomain}`, err);
                 }
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                 markWalletExistence(key);
@@ -199,7 +199,7 @@ function MainController() {
             spinner.attachToView();
             walletService.create(blockchainDomain, key, (err, wallet) => {
                 if (err) {
-                    throw Error(`Failed to create wallet  in domain  ${blockchainDomain + "\n" + err.message}`);
+                    return callback(createOpenDSUErrorWrapper(`Failed to create wallet  in domain  ${blockchainDomain}`, err));
                 }
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                 markWalletExistence(key);
@@ -237,7 +237,7 @@ function MainController() {
                         // rebuild the wallet
                         walletService.rebuild(blockchainDomain, key, (err, wallet) => {
                             if (err) {
-                                throw Error(`Failed to create wallet ${blockchainDomain + key + err.message}`);
+                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${blockchainDomain + key }`, err));
                             }
 
                             localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
@@ -266,7 +266,7 @@ function MainController() {
             }
 
             if (APP_CONFIG.environment.mode !== "secure") {
-                throw Error("Unknown mode in environment.json");
+                return callback(createOpenDSUErrorWrapper("Unknown mode in environment.json"));
             }
 
             let windowUrl = new URL(window.location.href);
@@ -365,6 +365,7 @@ function MainController() {
         walletService.load(blockchainDomain, [username, email, company, password], (err, wallet) => {
             if (err) {
                 spinner.removeFromView();
+                console.error(err);
                 return (document.getElementById("register-details-error").innerText = "Invalid credentials");
             }
 
