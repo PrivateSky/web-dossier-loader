@@ -50,7 +50,16 @@ function WalletService(options) {
      */
     this.load = function (domain, secret, callback) {
         let resolver = require("opendsu").loadApi("resolver");
-        resolver.loadWallet(domain, secret, callback);
+        let keyssi = require("opendsu").loadApi("keyssi");
+
+        let walletSSI =  keyssi.buildWalletSSI(domain, secret);
+
+        resolver.loadDSU(walletSSI, (err, constDSU) =>{
+            if(err){
+                return callback(createOpenDSUErrorWrapper("Failed to load wallet", err));
+            }
+            callback(undefined, constDSU.getWritableDSU());
+        });
     };
 
     /**
@@ -58,7 +67,7 @@ function WalletService(options) {
      * @param {string|undefined} pin
      * @param {Function} callback
      */
-    this.create = function (domain, secret, callback) {
+    this.create = function (domain, arrayWithSecrets, callback) {
         SWAgent.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
@@ -68,11 +77,12 @@ function WalletService(options) {
                 ssiFileName: "seed",
             });
 
-            walletBuilder.build((err, wallet) => {
+            walletBuilder.build(arrayWithSecrets,(err, wallet) => {
                 if (err) {
-                    return callback(err);
+                    return callback(createOpenDSUErrorWrapper("Failed to create Wallet", err));
                 }
-
+                callback(undefined, wallet);
+                /*TODO: delete this
                 wallet.getKeySSI((err, keySSI) => {
                     if (err) {
                         return callback(err);
@@ -82,6 +92,7 @@ function WalletService(options) {
                         callback(err, wallet);
                     });
                 });
+                 */
             });
         });
     };

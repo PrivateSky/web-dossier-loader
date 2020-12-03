@@ -432,7 +432,7 @@ function WalletBuilderService(options) {
     /**
      * @param {callback} callback
      */
-    this.build = function (callback) {
+    this.build = function (arrayWithSecrets, callback) {
         let resolver = require("opendsu").loadApi("resolver");
         let keySSISpace = require("opendsu").loadApi("keyssi");
         let domain;
@@ -456,40 +456,38 @@ function WalletBuilderService(options) {
                 if (err) {
                     return callback(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
                 }
-                resolver.createWallet(keySSISpace.buildSeedSSI(domain), dsuType, (err, walletDSU) => {
+                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets), {useSSIAsIdentifier:true, dsuType}, (err, walletDSU) => {
                     if (err) {
                         return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
                     }
 
-                    walletDSU.mount("/code", dsuType, (err) => {
+                    walletDSU = walletDSU.getWritableDSU();
+
+                    getWalletTemplateContent((err, files) => {
                         if (err) {
-                            return callback(createOpenDSUErrorWrapper(`Failed to mount  ${dsuType}`, err));
+                            return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
                         }
-                        getWalletTemplateContent((err, files) => {
+
+                        // we need to remove dsu type identifier from the file list
+                        files['/'][SSI_FILE_NAME] = undefined;
+                        delete files['/'][SSI_FILE_NAME];
+
+                        install(walletDSU, files, (err) => {
                             if (err) {
-                                return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
+                                return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
                             }
 
-                            // we need to remove dsu type identifier from the file list
-                            files['/'][SSI_FILE_NAME] = undefined;
-                            delete files['/'][SSI_FILE_NAME];
 
-                            install(walletDSU, files, (err) => {
+                            return walletDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err) => {
                                 if (err) {
-                                    return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
+                                    return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
                                 }
-
-
-                                return walletDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err) => {
-                                    if (err) {
-                                        return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
-                                    }
-                                    callback(undefined, walletDSU);
-                                });
-
+                                callback(undefined, walletDSU);
                             });
+
                         });
                     });
+
                 });
             });
         }

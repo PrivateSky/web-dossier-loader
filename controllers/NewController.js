@@ -2,13 +2,18 @@ import "./../loader-config.js";
 import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import SWAgent from "./services/SWAgent.js";
+import loadLocalConfiguration from "./LoadEnvironment";
 
 function NewController() {
     let username;
     let email;
     let password;
     let company;
+    let blockchainDomain;
 
+    loadLocalConfiguration( (err,res) => {
+        blockchainDomain = APP_CONFIG.environment.domain;
+    })
 
     let wizard;
     let spinner;

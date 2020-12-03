@@ -5,6 +5,8 @@ import FileService from "./services/FileService.js";
 import SSAppRunner from "./services/SSAppRunner.js";
 import SWAgent from "./services/SWAgent.js";
 
+import loadLocalConfiguration from "./LoadEnvironment.js";
+
 function MainController() {
     const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
 
@@ -20,7 +22,8 @@ function MainController() {
     let username;
     let email;
     let company;
-    let blockchainDomain;
+
+
 
 
     let spinner;
@@ -44,36 +47,6 @@ function MainController() {
         return `${loaderPath}/${file}`;
     }
 
-    /**
-     * Try and fetch 'loader-config.local.json' and overwrite
-     * the standard configuration
-     *
-     * @param {callback} callback
-     */
-    function loadLocalConfiguration(callback) {
-        const localConfigurationPath = getUrl("environment.json");
-
-        fileService.getFile(localConfigurationPath, (err, data) => {
-            if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to load: environment.json", err));
-            }
-
-            let configuration;
-
-            try {
-                configuration = JSON.parse(data);
-            } catch (e) {
-                return callback(createOpenDSUErrorWrapper("Failed to parse: environment.json", e));
-            }
-
-            APP_CONFIG.environment = configuration;
-            blockchainDomain = configuration.domain;
-            console.log("Setting environment ", configuration.mode, "in blockchain domain ", blockchainDomain);
-            callback(undefined, configuration);
-        });
-
-
-    }
 
     /**
      * Fetch the 'last-update.txt' file and compare the timestamp
@@ -169,9 +142,9 @@ function MainController() {
         let key = [username, email, company, password];
         if (!checkWalletExistence(key)) {
             spinner.attachToView();
-            walletService.create(blockchainDomain, key, (err, wallet) => {
+            walletService.create(APP_CONFIG.environment.domain, key, (err, wallet) => {
                 if (err) {
-                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${blockchainDomain}`, err);
+                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${APP_CONFIG.environment.domain}`, err);
                 }
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                 markWalletExistence(key);
@@ -197,9 +170,9 @@ function MainController() {
         let key = [username, email, company, password];
         if (!checkWalletExistence(key)) {
             spinner.attachToView();
-            walletService.create(blockchainDomain, key, (err, wallet) => {
+            walletService.create(APP_CONFIG.environment.domain, key, (err, wallet) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper(`Failed to create wallet  in domain  ${blockchainDomain}`, err));
+                    return callback(createOpenDSUErrorWrapper(`Failed to create wallet  in domain  ${APP_CONFIG.environment.domain}`, err));
                 }
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                 markWalletExistence(key);
@@ -235,9 +208,9 @@ function MainController() {
 
                         // After all the service works have been unregistered and stopped
                         // rebuild the wallet
-                        walletService.rebuild(blockchainDomain, key, (err, wallet) => {
+                        walletService.rebuild(APP_CONFIG.environment.domain, key, (err, wallet) => {
                             if (err) {
-                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${blockchainDomain + key }`, err));
+                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${APP_CONFIG.environment.domain + key }`, err));
                             }
 
                             localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
@@ -362,7 +335,7 @@ function MainController() {
         spinner.attachToView();
         spinner.setStatusText("Opening wallet...");
 
-        walletService.load(blockchainDomain, [username, email, company, password], (err, wallet) => {
+        walletService.load(APP_CONFIG.environment.domain, [username, email, company, password], (err, wallet) => {
             if (err) {
                 spinner.removeFromView();
                 console.error(err);
