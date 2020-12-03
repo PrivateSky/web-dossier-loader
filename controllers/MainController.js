@@ -5,7 +5,8 @@ import FileService from "./services/FileService.js";
 import SSAppRunner from "./services/SSAppRunner.js";
 import SWAgent from "./services/SWAgent.js";
 
-import loadLocalConfiguration from "./LoadEnvironment.js";
+
+
 
 function MainController() {
     const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
@@ -17,15 +18,6 @@ function MainController() {
 
     const walletService = new WalletService();
     const fileService = new FileService();
-
-    let password;
-    let username;
-    let email;
-    let company;
-
-
-
-
     let spinner;
 
 
@@ -46,6 +38,7 @@ function MainController() {
 
         return `${loaderPath}/${file}`;
     }
+
 
 
     /**
@@ -80,23 +73,18 @@ function MainController() {
         });
     }
 
-    let DEVELOPMENT_CREDENTIALS_KEY = "developmentCredentials";
 
-    function hash(key) {
+
+    function hash(arr) {
         const crypto = require("opendsu").loadApi("crypto");
-        let hsh = crypto.sha256(encodeURI(key.join("/")));
+        let hsh = crypto.sha256(encodeURI(arr.join("/")));
         return hsh;
     }
 
-    function getKnownCredentials() {
-        let knownCredentials = localStorage.getItem(DEVELOPMENT_CREDENTIALS_KEY);
-        if (!knownCredentials) {
-            knownCredentials = "{}";
-        }
-        return JSON.parse(knownCredentials);
-    }
 
-    function checkWalletExistence(key) {
+
+    /*function checkWalletExistence(key) {
+
         let knownCredentials = getKnownCredentials();
         return !!knownCredentials[hash(key)];
     }
@@ -106,8 +94,9 @@ function MainController() {
         knownCredentials[hash(key)] = true;
         return localStorage.setItem(DEVELOPMENT_CREDENTIALS_KEY, JSON.stringify(knownCredentials));
     }
+    */
 
-    function generate(charactersSet, length) {
+    function generateRandom(charactersSet, length) {
         let result = '';
         const charactersLength = charactersSet.length;
         for (let i = 0; i < length; i++) {
@@ -116,15 +105,24 @@ function MainController() {
         return result;
     }
 
-    function getSecretLocalToken() {
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    function getSecretLocalToken(development) {
         let storageKey = "secretToken";
+
+        if(development) {
+            return generateRandom(characters, 32); //new key each time
+        }
         let secret = localStorage.getItem(storageKey);
         if (!secret) {
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            secret = generate(characters, 32);
+            secret = generateRandom(characters, 32);
             localStorage.setItem(storageKey, secret);
         }
         return secret;
+    }
+
+    function getWalletSecretArrayKey(){
+        let arr = [LOADER_GLOBALS.credentials.username, LOADER_GLOBALS.credentials.email, LOADER_GLOBALS.credentials.company, LOADER_GLOBALS.credentials.password];
+        return arr;
     }
 
     /**
@@ -134,17 +132,12 @@ function MainController() {
      * and load it
      */
     function runInDevelopment() {
-        email = DEVELOPMENT_EMAIL;
-        password = getSecretLocalToken();
-        username = DEVELOPMENT_USERNAME;
-        company = "development company";
+        runInAutologin(true);
+        /*if (!checkWalletExistence(key)) {
 
-        let key = [username, email, company, password];
-        if (!checkWalletExistence(key)) {
-            spinner.attachToView();
-            walletService.create(APP_CONFIG.environment.domain, key, (err, wallet) => {
+            walletService.create(LOADER_GLOBALS.environment.domain, key, (err, wallet) => {
                 if (err) {
-                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${APP_CONFIG.environment.domain}`, err);
+                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
                 }
                 localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
                 markWalletExistence(key);
@@ -153,34 +146,45 @@ function MainController() {
             return;
         }
         rebuildWallet(key);
+         */
     }
 
     /**
-     * Run the loader in development mode
+     * Run the loader in autologing mode
      *
      * Create a default wallet with a default password if none exists
      * and load it
      */
-    function runInAutologin() {
-        email = APP_CONFIG.LOGIN_EMAIL;
-        password = getSecretLocalToken();
-        username = APP_CONFIG.LOGIN_USERNAME;
-        company = APP_CONFIG.COMPANY_NAME;
+    function runInAutologin(development) {
+        spinner.attachToView();
+        if(!LOADER_GLOBALS.credentials.isValid) {
+            let credentials = {};
+            if (!development) {
+                credentials.email = "wallet@invisible";
+                credentials.password = getSecretLocalToken(development);
+                credentials.username = "private";
+                credentials.company = "OpenDSU Development INC.";
+            } else {
+                credentials.email = DEVELOPMENT_EMAIL;
+                credentials.password = getSecretLocalToken(development);
+                credentials.username = DEVELOPMENT_USERNAME;
+                credentials.company = "OpenDSU Development INC.";
+            }
+            LOADER_GLOBALS.credentials = credentials;
+            LOADER_GLOBALS.credentials.isValid = true;
+            let LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
+            if(!development){
+                 localStorage.setItem(LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify(credentials));
+            }
 
-        let key = [username, email, company, password];
-        if (!checkWalletExistence(key)) {
-            spinner.attachToView();
-            walletService.create(APP_CONFIG.environment.domain, key, (err, wallet) => {
+            walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper(`Failed to create wallet  in domain  ${APP_CONFIG.environment.domain}`, err));
+                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
                 }
-                localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
-                markWalletExistence(key);
-                window.location.reload();
+                console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
+                return self.openWallet();
             });
-            return;
         }
-        rebuildWallet(key);
     }
 
     function rebuildWallet(key) {
@@ -208,9 +212,9 @@ function MainController() {
 
                         // After all the service works have been unregistered and stopped
                         // rebuild the wallet
-                        walletService.rebuild(APP_CONFIG.environment.domain, key, (err, wallet) => {
+                        walletService.rebuild(LOADER_GLOBALS.environment.domain, key, (err, wallet) => {
                             if (err) {
-                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${APP_CONFIG.environment.domain + key }`, err));
+                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${LOADER_GLOBALS.environment.domain + key }`, err));
                             }
 
                             localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
@@ -229,25 +233,24 @@ function MainController() {
     this.init = function () {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
 
-        loadLocalConfiguration(() => {
-            if (APP_CONFIG.environment.mode === "dev-autologin") {
-                return runInDevelopment();
-            }
+        if (LOADER_GLOBALS.environment.mode === "dev-autologin") {
+            return runInDevelopment();
+        }
 
-            if (APP_CONFIG.environment.mode === "autologin") {
-                return runInAutologin();
-            }
+        if (LOADER_GLOBALS.environment.mode === "autologin") {
+            return runInAutologin();
+        }
 
-            if (APP_CONFIG.environment.mode !== "secure") {
-                return callback(createOpenDSUErrorWrapper("Unknown mode in environment.json"));
-            }
+        if (LOADER_GLOBALS.environment.mode !== "secure") {
+            return callback(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
+        }
 
-            let windowUrl = new URL(window.location.href);
-            if (windowUrl.searchParams.get("login") !== null) {
-                return this.displayContainer(APP_CONFIG.PASSWORD_CONTAINER_ID);
-            }
-            this.displayContainer(APP_CONFIG.NEW_OR_RESTORE_CONTAINER_ID)
-        });
+        let windowUrl = new URL(window.location.href);
+        if (windowUrl.searchParams.get("login") !== null) {
+            return this.displayContainer(LOADER_GLOBALS.PASSWORD_CONTAINER_ID);
+        }
+        this.displayContainer(LOADER_GLOBALS.NEW_OR_RESTORE_CONTAINER_ID)
+
     };
 
     this.displayContainer = function (containerId) {
@@ -255,15 +258,15 @@ function MainController() {
     };
 
     this.credentialsAreValid = function () {
-        username = document.getElementById("username").value;
-        email = document.getElementById("email").value;
+        LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
+        LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
         let pswd = document.getElementById("password").value;
         let result = email.length > 4
-            && APP_CONFIG.EMAIL_REGEX.test(email)
-            && username.length >= APP_CONFIG.USERNAME_MIN_LENGTH
-            && APP_CONFIG.USERNAME_REGEX.test(username);
-        if (typeof APP_CONFIG.PASSWORD_REGEX !== "undefined") {
-            result = result && APP_CONFIG.PASSWORD_REGEX.test(pswd);
+            && LOADER_GLOBALS.EMAIL_REGEX.test(email)
+            && username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH
+            && LOADER_GLOBALS.USERNAME_REGEX.test(username);
+        if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
+            result = result && LOADER_GLOBALS.PASSWORD_REGEX.test(pswd);
         }
         return result;
     };
@@ -277,21 +280,21 @@ function MainController() {
     }
 
     this.passwordsAreValid = function () {
-        password = document.getElementById("password").value;
-        let passwordIsValid = password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH
-        if (typeof APP_CONFIG.PASSWORD_REGEX !== "undefined") {
-            passwordIsValid = passwordIsValid && APP_CONFIG.PASSWORD_REGEX.test(password);
+        LOADER_GLOBALS.credentials.password = document.getElementById("password").value;
+        let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
+        if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
+            passwordIsValid = passwordIsValid && LOADER_GLOBALS.PASSWORD_REGEX.test(password);
         }
         password.length > 0 && !passwordIsValid ? this.showErrorOnField('password') : this.removeErrorFromField('password');
         return passwordIsValid;
     };
 
     this.credentialsAreValid = function () {
-        username = document.getElementById("username").value;
-        email = document.getElementById("email").value;
+        LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
+        LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
 
-        let usernameIsValid = username.length >= APP_CONFIG.USERNAME_MIN_LENGTH && APP_CONFIG.USERNAME_REGEX.test(username);
-        let emailIsValid = email.length > 4 && APP_CONFIG.EMAIL_REGEX.test(email);
+        let usernameIsValid = username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH && LOADER_GLOBALS.USERNAME_REGEX.test(username);
+        let emailIsValid = email.length > 4 && LOADER_GLOBALS.EMAIL_REGEX.test(email);
         username.length > 0 && !usernameIsValid ? this.showErrorOnField('username') : this.removeErrorFromField('username');
         email.length > 0 && !emailIsValid ? this.showErrorOnField('email') : this.removeErrorFromField('email');
 
@@ -335,25 +338,27 @@ function MainController() {
         spinner.attachToView();
         spinner.setStatusText("Opening wallet...");
 
-        walletService.load(APP_CONFIG.environment.domain, [username, email, company, password], (err, wallet) => {
+        walletService.load(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
             if (err) {
                 spinner.removeFromView();
-                console.error(err);
+                console.error("Failed to load the wallet in domain:", LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), err);
                 return (document.getElementById("register-details-error").innerText = "Invalid credentials");
             }
 
-            wallet.getKeySSI((err, keySSI) => {
+            let writableWallet = wallet;
+
+            writableWallet.getKeySSI((err, keySSI) => {
                 if (err) {
                     console.error(err);
                     return console.error("Operation failed. Try again");
                 }
 
-                this.writeUserDetailsToFile(wallet, (err, data) => {
+                this.writeUserDetailsToFile(writableWallet, (err, data) => {
                     if (err) {
                         return console.log(err);
                     }
 
-                    this.getUserDetailsFromFile(wallet, (err, data) => {
+                    this.getUserDetailsFromFile(writableWallet, (err, data) => {
                         if (err) {
                             return console.log(err);
                         }
@@ -362,10 +367,10 @@ function MainController() {
 
                 });
 
-                console.log(`Loading wallet ${keySSI}`);
+                console.log(`Loading wallet ${keySSI.getIdentifier(true)}`);
 
                 new SSAppRunner({
-                    seed: keySSI,
+                    seed: keySSI.getIdentifier(),
                     spinner
                 }).run();
             });
@@ -376,7 +381,7 @@ function MainController() {
 const controller = new MainController();
 
 document.addEventListener("DOMContentLoaded", function () {
-    let LABELS = APP_CONFIG.LABELS_DICTIONARY;
+    let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
     const page_labels = [
         {title: LABELS.APP_NAME},
         {"#loader-title": LABELS.APP_NAME},

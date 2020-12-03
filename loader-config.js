@@ -1,18 +1,30 @@
-import APP_CONFIG from './config-constants.js';
+import LOADER_GLOBALS from './config-constants.js';
 
 let linkElement = document.createElement("link");
-let theme = APP_CONFIG.THEME;
+let theme = LOADER_GLOBALS.THEME;
 linkElement.href = "assets/css/" + theme + ".css";
 linkElement.type = "text/css";
 linkElement.rel = "stylesheet";
 document.head.appendChild(linkElement);
 
 
-if (APP_CONFIG.PLUGIN_SCRIPT) {
+if (LOADER_GLOBALS.PLUGIN_SCRIPT) {
 	let scriptElement = document.createElement("script");
-	scriptElement.src = APP_CONFIG.PLUGIN_SCRIPT;
+	scriptElement.src = LOADER_GLOBALS.PLUGIN_SCRIPT;
 	scriptElement.type = "module";
 	document.body.appendChild(scriptElement);
 }
 
-window.APP_CONFIG = APP_CONFIG;
+window.LOADER_GLOBALS = LOADER_GLOBALS;
+import env from "./environment.js";
+
+LOADER_GLOBALS.environment = env;
+
+let LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
+
+let knownCredentials = localStorage.getItem(LOCALSTORAGE_CREDENTIALS_KEY);
+if (!knownCredentials) {
+	knownCredentials = "{}";
+}
+
+LOADER_GLOBALS.credentials =  JSON.parse(knownCredentials);

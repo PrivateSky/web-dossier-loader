@@ -180,14 +180,12 @@ function WalletBuilderService(options) {
                         if (err) {
                             return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
                         }
-                        if (typeof this.environment !== "undefined") {
-                            return appDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err) => {
-                                if (err) {
-                                    console.log("Could not write environment file into app", err);
-                                }
-                                appDSU.getKeySSI(callback);
-                            });
-                        }
+                        return appDSU.writeFile("/environment.js", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
+                            if (err) {
+                                console.log("Could not write environment file into app", err);
+                            }
+                            appDSU.getKeySSI(callback);
+                        });
                         appDSU.getKeySSI(callback);
                     })
                 })
@@ -435,21 +433,12 @@ function WalletBuilderService(options) {
     this.build = function (arrayWithSecrets, callback) {
         let resolver = require("opendsu").loadApi("resolver");
         let keySSISpace = require("opendsu").loadApi("keyssi");
-        let domain;
-        fetch("environment.json").then(response => {
-            return response.json();
-        }).then(environment => {
-            let config = require("opendsu").loadApi("config");
-            this.environment = environment;
-            domain = this.environment.domain;
-            if (!domain) {
-                return callback(createOpenDSUErrorWrapper("Invalid domain in environment.json"));
-            }
-            config.autoconfigFromEnvironment(this.environment);
-            _build();
-        }).catch((err) => {
-            return callback(createOpenDSUErrorWrapper("environment.json is missing", err));
-        });
+        let config = require("opendsu").loadApi("config");
+        let domain = LOADER_GLOBALS.environment.domain;
+
+        config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
+
+
 
         let _build = () => {
             fileService.getFile(WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME, (err, dsuType) => {
@@ -477,8 +466,7 @@ function WalletBuilderService(options) {
                                 return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
                             }
 
-
-                            return walletDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err) => {
+                            return walletDSU.writeFile("/environment.js", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
                                 if (err) {
                                     return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
                                 }
@@ -491,6 +479,9 @@ function WalletBuilderService(options) {
                 });
             });
         }
+
+
+        _build();
     };
 
     /**

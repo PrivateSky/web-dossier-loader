@@ -31,24 +31,11 @@ function WalletService(options) {
     };
 
     /**
-     * @param {keySSI} keySSI
-     * @param {string} secret
-     * @param {Function} callback
-     */
-    this.bindWithSeedSSI = function (domain, keySSI, secret, callback) {
-        let keySSISpace = require("opendsu").loadApi("keyssi");
-        const walletSSI = keySSISpace.buildWalletSSI(domain, secret);
-
-        walletSSI.bindWithSeedSSI(keySSI, (err) => {
-            callback(err);
-        });
-    };
-
-    /**
      * @param {string} secret
      * @param {Function} callback
      */
     this.load = function (domain, secret, callback) {
+        console.log("Loading the wallet");
         let resolver = require("opendsu").loadApi("resolver");
         let keyssi = require("opendsu").loadApi("keyssi");
 
@@ -68,6 +55,7 @@ function WalletService(options) {
      * @param {Function} callback
      */
     this.create = function (domain, arrayWithSecrets, callback) {
+        console.log("Creating the wallet");
         SWAgent.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
@@ -105,7 +93,7 @@ function WalletService(options) {
     this.rebuild = function (domain, key, callback) {
         this.load(domain, key, (err, wallet) => {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to load wallet in rebuild", err));
             }
 
             const walletBuilder = new WalletBuilderService(wallet, {
@@ -120,8 +108,7 @@ function WalletService(options) {
 
             walletBuilder.rebuild(domain,(err) => {
                 if (err) {
-                    console.error(err);
-                    return callback(err);
+                    return callback(createOpenDSUErrorWrapper("Failed to rebuild wallet", err));
                 }
                 callback(undefined, wallet);
             });

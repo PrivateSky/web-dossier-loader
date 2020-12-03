@@ -2,7 +2,7 @@ import "./../loader-config.js";
 import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import SWAgent from "./services/SWAgent.js";
-import loadLocalConfiguration from "./LoadEnvironment";
+
 
 function NewController() {
     let username;
@@ -10,10 +10,6 @@ function NewController() {
     let password;
     let company;
     let blockchainDomain;
-
-    loadLocalConfiguration( (err,res) => {
-        blockchainDomain = APP_CONFIG.environment.domain;
-    })
 
     let wizard;
     let spinner;
@@ -51,12 +47,12 @@ function NewController() {
         password = document.getElementById("password").value;
         let passwordConfirm = document.getElementById("confirm-password").value;
 
-        let passwordIsValid = password.length >= APP_CONFIG.PASSWORD_MIN_LENGTH
-        let confirmPasswordIsValid = passwordConfirm.length >= APP_CONFIG.PASSWORD_MIN_LENGTH
+        let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
+        let confirmPasswordIsValid = passwordConfirm.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
 
-        if (typeof APP_CONFIG.PASSWORD_REGEX !== "undefined") {
-            passwordIsValid = passwordIsValid && APP_CONFIG.PASSWORD_REGEX.test(password);
-            confirmPasswordIsValid = confirmPasswordIsValid && APP_CONFIG.PASSWORD_REGEX.test(passwordConfirm);
+        if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
+            passwordIsValid = passwordIsValid && LOADER_GLOBALS.PASSWORD_REGEX.test(password);
+            confirmPasswordIsValid = confirmPasswordIsValid && LOADER_GLOBALS.PASSWORD_REGEX.test(passwordConfirm);
         }
 
         password.length > 0 && !passwordIsValid ? this.showErrorOnField('password', 'set-up-password-help') :
@@ -71,8 +67,8 @@ function NewController() {
         username = document.getElementById("username").value;
         email = document.getElementById("email").value;
 
-        let usernameIsValid = username.length >= APP_CONFIG.USERNAME_MIN_LENGTH && APP_CONFIG.USERNAME_REGEX.test(username);
-        let emailIsValid = email.length > 4 && APP_CONFIG.EMAIL_REGEX.test(email);
+        let usernameIsValid = username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH && LOADER_GLOBALS.USERNAME_REGEX.test(username);
+        let emailIsValid = email.length > 4 && LOADER_GLOBALS.EMAIL_REGEX.test(email);
 
         username.length > 0 && !usernameIsValid ? this.showErrorOnField('username', 'set-up-username-help')
             : this.removeErrorFromField('username', 'set-up-username-help');
@@ -99,7 +95,7 @@ function NewController() {
         spinner.attachToView();
         try {
             console.log("Creating wallet...");
-            walletService.create(APP_CONFIG.environment.domain, [username, email, company, password], (err, wallet) => {
+            walletService.create(LOADER_GLOBALS.environment.domain, [username, email, company, password], (err, wallet) => {
                 if (err) {
                     document.getElementById("register-details-error").innerText = "An error occurred. Please try again.";
                     return console.error(err);
@@ -139,7 +135,7 @@ function NewController() {
 let controller = new NewController();
 
 document.addEventListener("DOMContentLoaded", function () {
-    let LABELS = APP_CONFIG.LABELS_DICTIONARY;
+    let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
     const page_labels = [
         {title: LABELS.APP_NAME},
         {"#step-register-details": LABELS.REGISTER_DETAILS},
@@ -163,7 +159,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {"#open-wallet-btn": LABELS.OPEN_WALLET},
     ];
     if (controller.hasInstallationUrl()) {
-        page_labels.push({"#more-information": APP_CONFIG.NEW_WALLET_MORE_INFORMATION});
+        page_labels.push({"#more-information": LOADER_GLOBALS.NEW_WALLET_MORE_INFORMATION});
     } else {
         document.querySelector("#more-information").remove();
     }
