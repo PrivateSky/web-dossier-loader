@@ -95,7 +95,7 @@ function SSAppRunner(options) {
    * requests it
    */
   const setupSeedRequestListener = () => {
-    navigator.serviceWorker.addEventListener("message", (e) => {
+    NavigatorUtils.addServiceWorkerEventListener("message", (e) => {
       if (!e.data || e.data.query !== "seed") {
         return;
       }

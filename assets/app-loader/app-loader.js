@@ -27,12 +27,7 @@ function startLoadingProgressInterval(initialLoadingProgress) {
 window.frameElement.setAttribute("app-placeholder","true");
 startLoadingProgressInterval(10);
 
-NavigatorUtils.getCanUseServiceWorkers((err, canUserServiceWorkers) => {
-    if (!canUserServiceWorkers) {
-        console.log("Skipping registering swBoot due to service workers being disabled");
-        return;
-    }
-
+if(NavigatorUtils.canUseServiceWorkers()) {
     window.document.addEventListener(myIdentity, (e) => {
         const data = e.detail || {};
 
@@ -64,7 +59,9 @@ NavigatorUtils.getCanUseServiceWorkers((err, canUserServiceWorkers) => {
     sendMessage({
         query: 'seed'
     });
-});
+} else {
+    console.log(`Skipping registering ${swName} due to service workers being disabled`);
+}
 
 function sendMessage(message) {
     const event = new CustomEvent(myIdentity, {
