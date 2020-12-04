@@ -15,8 +15,8 @@ function ScopedLocalStorage() {
 		let currentLocationSegments = currentLocation.split("/");
 		let currentPage = currentLocationSegments[currentLocationSegments.length - 1];
 
-		let isNotLandingPage = Object.keys(APP_CONFIG.APP_PATHS).some((pathKey) => {
-			let path = APP_CONFIG.APP_PATHS[pathKey];
+		let isNotLandingPage = Object.keys(LOADER_GLOBALS.APP_PATHS).some((pathKey) => {
+			let path = LOADER_GLOBALS.APP_PATHS[pathKey];
 			path = path.replace(/^\/|\/$/g, '');
 			return path.length && path === currentPage;
 		});

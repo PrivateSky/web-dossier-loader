@@ -1,5 +1,5 @@
 "use strict";
-import ScopedLocalStorage from "./ScopedLocalStorage.js";
+
 import WalletBuilderService from "./WalletBuilderService.js";
 import NavigatorUtils from "./NavigatorUtils.js";
 
@@ -8,7 +8,6 @@ import NavigatorUtils from "./NavigatorUtils.js";
  * @param {string} options.seed
  */
 function WalletService(options) {
-    ScopedLocalStorage.setLocalStorageScope();
     options = options || {};
 
     this.keySSI = options.keySSI;
@@ -31,26 +30,22 @@ function WalletService(options) {
     };
 
     /**
-     * @param {keySSI} keySSI
      * @param {string} secret
      * @param {Function} callback
      */
-    this.storeSSI = function (keySSI, secret, callback) {
-        let keySSISpace = require("opendsu").loadApi("keyssi");
-        keySSI = keySSISpace.parse(keySSI, {dsuFactoryType: "wallet"});
-
-        keySSI.store(secret, (err) => {
-            callback(err);
-        });
-    };
-
-    /**
-     * @param {string} secret
-     * @param {Function} callback
-     */
-    this.load = function (secret, callback) {
+    this.load = function (domain, secret, callback) {
+        console.log("Loading the wallet");
         let resolver = require("opendsu").loadApi("resolver");
-        resolver.loadWallet(secret, {domain: "vault"}, callback);
+        let keyssi = require("opendsu").loadApi("keyssi");
+
+        let walletSSI =  keyssi.buildWalletSSI(domain, secret, LOADER_GLOBALS.environment.vault);
+
+        resolver.loadDSU(walletSSI, (err, constDSU) =>{
+            if(err){
+                return callback(createOpenDSUErrorWrapper("Failed to load wallet", err));
+            }
+            callback(undefined, constDSU.getWritableDSU());
+        });
     };
 
     /**
@@ -58,7 +53,8 @@ function WalletService(options) {
      * @param {string|undefined} pin
      * @param {Function} callback
      */
-    this.create = function (secret, callback) {
+    this.create = function (domain, arrayWithSecrets, callback) {
+        console.log("Creating the wallet");
         NavigatorUtils.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
@@ -68,34 +64,11 @@ function WalletService(options) {
                 ssiFileName: "seed",
             });
 
-            walletBuilder.build((err, wallet) => {
+            walletBuilder.build(arrayWithSecrets,(err, wallet) => {
                 if (err) {
-                    return callback(err);
+                    return callback(createOpenDSUErrorWrapper("Failed to create Wallet", err));
                 }
-
-                wallet.getKeySSI((err, keySSI) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    this.storeSSI(keySSI, secret, (err) => {
-                        callback(err, wallet);
-                    });
-                });
-
-                /*wallet.getKeySSI((err, keySSI) => {
-                            if (err) {
-                                return callback(err);
-                            }
-
-                            resolver.loadDSU(keySSI, { password: pin, overwrite: true }, (err, wallet) => {
-                                if (err) {
-                                    return callback(err);
-                                }
-
-                                callback(undefined, wallet);
-                            });
-                        });*/
+                callback(undefined, wallet);
             });
         });
     };
@@ -105,10 +78,10 @@ function WalletService(options) {
      * @param {array|undefined} key
      * @param {callback} callback
      */
-    this.rebuild = function (key, callback) {
-        this.load(key, (err, wallet) => {
+    this.rebuild = function (domain, key, callback) {
+        this.load(domain, key, (err, wallet) => {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to load wallet in rebuild", err));
             }
 
             const walletBuilder = new WalletBuilderService(wallet, {
@@ -121,10 +94,9 @@ function WalletService(options) {
                 },
             });
 
-            walletBuilder.rebuild((err) => {
+            walletBuilder.rebuild(domain,(err) => {
                 if (err) {
-                    console.error(err);
-                    return callback(err);
+                    return callback(createOpenDSUErrorWrapper("Failed to rebuild wallet", err));
                 }
                 callback(undefined, wallet);
             });

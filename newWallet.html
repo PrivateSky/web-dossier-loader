@@ -3,7 +3,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0">
     <meta name="apple-mobile-web-app-capable" content="yes"/>
-    <base href=".." target="_self">
+    <!-- <base href=".." target="_self"> -->
     <script src="bundles/webshims.js"></script>
     <script src="bundles/loaderBoot.js"></script>
     <script type="module" src="controllers/NewController.js"></script>
@@ -35,18 +35,25 @@
                     <form onSubmit="controller.submitPassword(event)">
                     <div id="more-information"></div>
                         <div class="row">
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="username" class="register-detail-label" id="set-up-username"></label>
                                 <input type="text" class="form-control" id="username"
                                        oninput="controller.validateCredentials(event)"/>
                                 <small id="set-up-username-help" class="form-text text-muted"></small>
 
                             </div>
-                            <div class="form-group col-md-6">
+                            <div class="form-group col-md-4">
                                 <label for="email" id="set-up-email" class="register-detail-label"></label>
                                 <input type="email" class="form-control" id="email"
                                        oninput="controller.validateCredentials(event)"/>
                                 <small id="set-up-email-help" class="form-text text-muted"></small>
+                            </div>
+
+                            <div class="form-group col-md-4">
+                                <label for="company" id="set-up-company" class="register-detail-label"></label>
+                                <input type="text" class="form-control" id="company"
+                                       oninput="controller.validateCredentials(event)"/>
+                                <small id="set-up-company-help" class="form-text text-muted"></small>
                             </div>
                         </div>
                     <div class="row">
@@ -87,7 +94,7 @@
                     </div>
 
                     <a type="button" class="btn btn-csb-restore btn-csb-loader btn-primary mt-5"
-                            id="open-wallet-btn" href="?login">Open Wallet</a>
+                            id="open-wallet-btn" href="index.html?login">Open Wallet</a>
                 </div>
         </div>
     </div>

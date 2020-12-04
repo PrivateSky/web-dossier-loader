@@ -35,7 +35,8 @@ function WalletBuilderService(options) {
     const APP_FOLDER = options.appFolderName;
     const APPS_FOLDER = options.appsFolderName;
     const SSI_FILE_NAME = options.ssiFileName;
-    const DEFAULT_DOMAIN = options.domain || "default";
+    const DEFAULT_DOMAIN = options.domain || "vault";
+
 
     const fileService = new FileService();
 
@@ -53,14 +54,14 @@ function WalletBuilderService(options) {
     const getWalletTemplateContent = (callback) => {
         fileService.getFolderContentAsJSON(WALLET_TEMPLATE_FOLDER, (err, data) => {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to get content for "+ WALLET_TEMPLATE_FOLDER, err));
             }
 
             let content;
             try {
                 content = JSON.parse(data);
             } catch (e) {
-                return callback(e);
+                return callback(createOpenDSUErrorWrapper("Failed to parse content for " + WALLET_TEMPLATE_FOLDER, e));
             }
 
             callback(undefined, content);
@@ -109,24 +110,22 @@ function WalletBuilderService(options) {
         }
 
         let fileContent;
-        if(Array.isArray(file.content)){
+        if (Array.isArray(file.content)) {
             let Buffer = require("buffer").Buffer;
 
-            let arrayBuffer  = new Uint8Array(file.content).buffer;
+            let arrayBuffer = new Uint8Array(file.content).buffer;
             let buffer = new Buffer(arrayBuffer.byteLength);
-			let view = new Uint8Array(arrayBuffer);
-			for (let i = 0; i < buffer.length; ++i) {
-				buffer[i] = view[i];
-			}
-			fileContent = buffer;
-        }
-        else{
+            let view = new Uint8Array(arrayBuffer);
+            for (let i = 0; i < buffer.length; ++i) {
+                buffer[i] = view[i];
+            }
+            fileContent = buffer;
+        } else {
             fileContent = file.content;
         }
         dsu.writeFile(targetPath, fileContent, (err) => {
             if (err) {
-                console.error(targetPath);
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to write file in DSU at path ", targetPath, err));
             }
             customizeDSU(dsu, files, prefix, callback);
         });
@@ -138,7 +137,7 @@ function WalletBuilderService(options) {
     const getListOfAppsForInstallation = (callback) => {
         fileService.getFolderContentAsJSON(APPS_FOLDER, function (err, data) {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to get content for folder" + APPS_FOLDER, err));
             }
 
             let apps;
@@ -146,7 +145,7 @@ function WalletBuilderService(options) {
             try {
                 apps = JSON.parse(data);
             } catch (e) {
-                return callback(e);
+                return callback(createOpenDSUErrorWrapper("Failed to parse content for folder" + APPS_FOLDER, err));
             }
 
             callback(undefined, apps);
@@ -160,57 +159,54 @@ function WalletBuilderService(options) {
      * @param {callback} callback
      */
     const buildApp = (appName, seed, hasTemplate, callback) => {
-		if (typeof hasTemplate === "function") {
-			callback = hasTemplate;
-			hasTemplate = true;
-		}
-
-        const instantiateNewDossier = (files) =>{
-			 let resolver = require("opendsu").loadApi("resolver");
-			 let keyssi = require("opendsu").loadApi("keyssi");
-			 resolver.createDSU(keyssi.buildSeedSSI("vault"), (err, appDSU) => {
-				if (err) {
-					return callback(err);
-				}
-
-				appDSU.mount('/' + CODE_FOLDER, seed, (err) => {
-
-					if (err) {
-						return callback(err);
-					}
-					customizeDSU(appDSU, files, `/${APP_FOLDER}`, (err) => {
-                        if (err) {
-                            return callback(err);
-                        }
-						if(typeof this.environment !== "undefined"){
-							return appDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err)=>{
-								if(err){
-									console.log("Could not write environment file into app", err);
-								}
-								appDSU.getKeySSI(callback);
-							});
-						}
-						appDSU.getKeySSI(callback);
-					})
-				})
-			});
-		};
-
-		if(hasTemplate){
-			return fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
-				let files;
-
-				try {
-					files = JSON.parse(data);
-				} catch (e) {
-					return callback(e);
-				}
-
-				files = dirSummaryAsArray(files);
-				instantiateNewDossier(files);
-			})
+        if (typeof hasTemplate === "function") {
+            callback = hasTemplate;
+            hasTemplate = true;
         }
-		instantiateNewDossier([]);
+
+        const instantiateNewDossier = (files) => {
+            let resolver = require("opendsu").loadApi("resolver");
+            let keyssi = require("opendsu").loadApi("keyssi");
+            resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), (err, appDSU) => {
+                if (err) {
+                    return callback(createOpenDSUErrorWrapper("Failed to create DSU ", err));
+                }
+
+                appDSU.mount('/' + CODE_FOLDER, seed, (err) => {
+                    if (err) {
+                        return callback(createOpenDSUErrorWrapper("Failed to mount in /code seedSSI ", seed, err));
+                    }
+                    customizeDSU(appDSU, files, `/${APP_FOLDER}`, (err) => {
+                        if (err) {
+                            return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+                        }
+                        return appDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
+                            if (err) {
+                                console.log("Could not write environment file into app", err);
+                            }
+                            appDSU.getKeySSI(callback);
+                        });
+                        appDSU.getKeySSI(callback);
+                    })
+                })
+            });
+        };
+
+        if (hasTemplate) {
+            return fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
+                let files;
+
+                try {
+                    files = JSON.parse(data);
+                } catch (e) {
+                    return callback(createOpenDSUErrorWrapper("Failed to get content for folder" + `apps/${appName}`, err));
+                }
+
+                files = dirSummaryAsArray(files);
+                instantiateNewDossier(files);
+            })
+        }
+        instantiateNewDossier([]);
 
 
     };
@@ -231,28 +227,28 @@ function WalletBuilderService(options) {
             appName = appName.replace('/', '');
         }
 
-		const mountApp = (newAppSeed) => {
-			walletDSU.mount('/apps/' + appName, newAppSeed, (err) => {
-				if (err) {
-					return callback(err);
-				}
+        const mountApp = (newAppSeed) => {
+            walletDSU.mount('/apps/' + appName, newAppSeed, (err) => {
+                if (err) {
+                    return callback(createOpenDSUErrorWrapper("Failed to mount in folder" + `/apps/${appName}`, err));
+                }
 
-				performInstallation(walletDSU, apps, appsList, callback);
-			})
-		};
+                performInstallation(walletDSU, apps, appsList, callback);
+            })
+        };
 
-	    //by default ssapps have a template
-		let hasTemplate = appInfo.hasTemplate !== false;
-		let newInstanceIsDemanded = appInfo.newInstance !== false;
-		if (newInstanceIsDemanded) {
-			return buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
-				if (err) {
-					return callback(err);
-				}
-				mountApp(newAppSeed);
-			});
-		}
-		mountApp(appInfo.seed);
+        //by default ssapps have a template
+        let hasTemplate = appInfo.hasTemplate !== false;
+        let newInstanceIsDemanded = appInfo.newInstance !== false;
+        if (newInstanceIsDemanded) {
+            return buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
+                if (err) {
+                    return callback(createOpenDSUErrorWrapper("Failed to build app " + `${appName}`, err));
+                }
+                mountApp(newAppSeed);
+            });
+        }
+        mountApp(appInfo.seed);
 
     };
 
@@ -275,7 +271,7 @@ function WalletBuilderService(options) {
 
             const appDossier = this.dossierLoader(seed);
             customizeDSU(appDossier, files, `/${APP_FOLDER}`, (err) => {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
             })
         })
 
@@ -300,7 +296,7 @@ function WalletBuilderService(options) {
 
         rebuildApp(appName, appInfo.seed, (err) => {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper("Failed to rebuild app" + `${appName}`, err));
             }
 
             performApplicationsRebuild(apps, appsList, callback);
@@ -346,35 +342,35 @@ function WalletBuilderService(options) {
 
     };
 
-	const getSSAppsFromInstallationURL = (callback)=>{
-		let url = new URL(window.location.href);
-		let searchParams = url.searchParams;
-		let apps = {};
+    const getSSAppsFromInstallationURL = (callback) => {
+        let url = new URL(window.location.href);
+        let searchParams = url.searchParams;
+        let apps = {};
 
-		searchParams.forEach((paramValue, paramKey) => {
-			if (paramKey === "appName") {
-				let seedKey = paramValue + "Seed";
-				let appSeed = searchParams.get(seedKey);
-				if (appSeed) {
-					apps[paramValue] = appSeed;
-				}
-			}
-		});
+        searchParams.forEach((paramValue, paramKey) => {
+            if (paramKey === "appName") {
+                let seedKey = paramValue + "Seed";
+                let appSeed = searchParams.get(seedKey);
+                if (appSeed) {
+                    apps[paramValue] = appSeed;
+                }
+            }
+        });
 
-		if(Object.keys(apps)){
-			return callback(apps);
-		}
+        if (Object.keys(apps)) {
+            return callback(apps);
+        }
 
-		callback();
+        callback();
 
-	};
+    };
 
 
     /**
      * Install applications found in the /apps folder
      * into the wallet
      *
-	 * @param {DSU} walletDSU
+     * @param {DSU} walletDSU
      * @param {callback} callback
      */
     const installApplications = (walletDSU, callback) => {
@@ -383,28 +379,28 @@ function WalletBuilderService(options) {
 
             let appsToBeInstalled = apps || {};
 
-            getSSAppsFromInstallationURL((apps)=>{
-               let externalAppsList = Object.keys(apps);
-               if(externalAppsList.length>0){
-                   externalAppsList.forEach(appName=>{
-					   appsToBeInstalled[appName] = {
-						   hasTemplate:false,
-						   newInstance:false,
-                           seed: apps[appName]
-					   };
-                   });
-				   let landingApp = {name: externalAppsList[0]};
-				   walletDSU.writeFile("apps/.landingApp",JSON.stringify(landingApp), ()=>{
-				   	console.log(`Written landingApp [${landingApp.name}]. `)
-				   });
-               }
+            getSSAppsFromInstallationURL((apps) => {
+                let externalAppsList = Object.keys(apps);
+                if (externalAppsList.length > 0) {
+                    externalAppsList.forEach(appName => {
+                        appsToBeInstalled[appName] = {
+                            hasTemplate: false,
+                            newInstance: false,
+                            seed: apps[appName]
+                        };
+                    });
+                    let landingApp = {name: externalAppsList[0]};
+                    walletDSU.writeFile("apps/.landingApp", JSON.stringify(landingApp), () => {
+                        console.log(`Written landingApp [${landingApp.name}]. `)
+                    });
+                }
             });
 
             const appsList = Object.keys(appsToBeInstalled);
 
-			if (appsList.length === 0) {
+            if (appsList.length === 0) {
                 return callback();
-			}
+            }
             console.log('Installing the following applications: ', appsToBeInstalled, appsList);
 
             performInstallation(walletDSU, appsToBeInstalled, appsList, callback);
@@ -419,74 +415,75 @@ function WalletBuilderService(options) {
      * @param {callback} callback
      */
     const install = (wallet, files, callback) => {
-		// Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
-		// into the wallet's app folder
-		files = dirSummaryAsArray(files);
-		customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
-			if (err) {
-				return callback(err);
-			}
+        // Copy any files found in the WALLET_TEMPLATE_FOLDER on the local file system
+        // into the wallet's app folder
+        files = dirSummaryAsArray(files);
+        customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
+            if (err) {
+                return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+            }
 
-			installApplications(wallet, callback);
-		});
+            installApplications(wallet, callback);
+        });
     }
 
     /**
      * @param {callback} callback
      */
-    this.build = function (callback) {
-    	let resolver = require("opendsu").loadApi("resolver");
-		let keySSISpace = require("opendsu").loadApi("keyssi");
+    this.build = function (arrayWithSecrets, callback) {
+        let resolver = require("opendsu").loadApi("resolver");
+        let keySSISpace = require("opendsu").loadApi("keyssi");
+        let domain = LOADER_GLOBALS.environment.domain;
 
-		fetch("environment.json").then(response=>{
-			return response.json();
-		}).then(environment => {
-			let config = require("opendsu").loadApi("config");
-			this.environment = environment;
-			//config.autoconfigFromEnvironment(this.environment);
-			_build();
-		}).catch((err)=>{
-			_build();
-		});
+        let _build = () => {
+            fileService.getFile(WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME, (err, dsuType) => {
+                if (err) {
+                    return callback(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
+                }
+                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets, LOADER_GLOBALS.environment.vault), {useSSIAsIdentifier:true, dsuTypeSSI: dsuType}, (err, walletDSU) => {
+                    if (err) {
+                        return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
+                    }
+                    console.log("ConstDSU Wallet has SSI:", walletDSU.getCreationSSI(true));
+                    walletDSU = walletDSU.getWritableDSU();
+                    getWalletTemplateContent((err, files) => {
+                        if (err) {
+                            return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
+                        }
 
-    	let _build = ()=>{
-			fileService.getFile(WALLET_TEMPLATE_FOLDER+"/"+SSI_FILE_NAME, (err, dsuType)=>{
-				if(err){
-					return callback(err);
-				}
-				resolver.createWallet(keySSISpace.buildWalletSSI("vault", "template").getIdentifier(), dsuType, (err, walletDSU) => {
-					if(err){
-						return callback(err);
-					}
+                        // we need to remove dsu type identifier from the file list
+                        files['/'][SSI_FILE_NAME] = undefined;
+                        delete files['/'][SSI_FILE_NAME];
 
-					getWalletTemplateContent((err, files) => {
-						if (err) {
-							return callback(err);
-						}
+                        install(walletDSU, files, (err) => {
+                            if (err) {
+                                return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
+                            }
 
-						// we need to remove dsu type identifier from the file list
-						files['/'][SSI_FILE_NAME] = undefined;
-						delete files['/'][SSI_FILE_NAME];
+                            return walletDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
+                                if (err) {
+                                    return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
+                                }
+                                callback(undefined, walletDSU);
+                            });
 
-						install(walletDSU, files, (err)=>{
-							if(err){
-								return callback(err);
-							}
+                        });
+                    });
 
-							if(typeof this.environment !== "undefined"){
-								return walletDSU.writeFile("/environment.json", JSON.stringify(this.environment), (err)=>{
-									if(err){
-										console.log("Could not write Environment file into wallet.");
-									}
-									callback(undefined, walletDSU);
-								});
-							}
-							callback(undefined, walletDSU);
-						});
-					});
-				});
-			});
-		}
+                });
+            });
+        }
+
+
+        resolver.loadDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets, LOADER_GLOBALS.environment.vault), (err, walletDSU) => {
+           if(err){
+               _build();
+           } else {
+               console.log("Possible security issue. It is ok during development if you use the same credentials. Just do a npm run clean to remove APIHub cache in this case...");
+               walletDSU = walletDSU.getWritableDSU();
+               callback(err, walletDSU);
+           }
+        });
     };
 
     /**
@@ -495,7 +492,7 @@ function WalletBuilderService(options) {
     this.rebuild = function (callback) {
         getWalletTemplateContent((err, files) => {
             if (err) {
-                return callback(err);
+                return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
             }
 
             // Remove the seed file in order to prevent copying it into the new dossier
@@ -506,10 +503,10 @@ function WalletBuilderService(options) {
             files = dirSummaryAsArray(files);
             customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
                 if (err) {
-                    return callback(err);
+                    return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
                 }
 
-                console.log('Rebuilding');
+                console.trace('Rebuilding');
                 rebuildApplications(callback);
             })
         })

@@ -43,7 +43,7 @@ function RestoreController() {
     let pinConfirm = document.getElementById("confirm-pin").value;
     let btn = document.getElementById("set-pin-btn");
 
-    if (pin === pinConfirm && pin.length >= APP_CONFIG.PASSWORD_MIN_LENGTH) {
+    if (pin === pinConfirm && pin.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH) {
       btn.removeAttribute("disabled");
     } else {
       btn.setAttribute("disabled", "disabled");
@@ -95,7 +95,7 @@ function RestoreController() {
 
 let controller = new RestoreController();
 document.addEventListener("DOMContentLoaded", function () {
-  let LABELS = APP_CONFIG.LABELS_DICTIONARY;
+  let LABELS = LOADER_GLOBALS.LABELS_DICTIONARY;
   const page_labels = [
     { title: LABELS.APP_NAME },
     { "#step-seed": LABELS.SEED },

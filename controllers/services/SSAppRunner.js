@@ -4,6 +4,12 @@ import NavigatorUtils from "./NavigatorUtils.js";
 import EventMiddleware from "./EventMiddleware.js";
 const crypto = require("opendsu").loadApi("crypto");
 
+function getIFrameBase(){
+  let iPath  = window.location.pathname;
+  return iPath.replace("index.html", "") +  "iframe/";
+}
+
+
 function SSAppRunner(options) {
   options = options || {};
 
@@ -35,8 +41,7 @@ function SSAppRunner(options) {
 
     // This request will be intercepted by swLoader.js
     // and will make the iframe load the app-loader.js script
-    const { origin, pathname } = window.location;
-    iframe.src = `${origin}${pathname}iframe/${useSeedForIframeSource ? this.seed : this.hash}`;
+    iframe.src = window.location.origin + getIFrameBase() + (useSeedForIframeSource ? this.seed : this.hash);
     return iframe;
   };
 
@@ -127,45 +132,44 @@ function SSAppRunner(options) {
     }
 
   this.run = function () {
-    NavigatorUtils.getAreServiceWorkersEnabled((err, areServiceWorkersEnabled) => {
-      if (areServiceWorkersEnabled && !NavigatorUtils.areServiceWorkersSupported) {
+    const areServiceWorkersEnabled = LOADER_GLOBALS.sw;
+    if (areServiceWorkersEnabled && !NavigatorUtils.areServiceWorkersSupported) {
         return alert("You current browser doesn't support running this application");
-      }
+    }
 
-      const iframe = buildContainerIframe(!areServiceWorkersEnabled);
-      setupLoadEventsListener(iframe);
-      setupSeedRequestListener();
-      setupLoadingProgressEventListener();
+    const iframe = buildContainerIframe(!areServiceWorkersEnabled);
+    setupLoadEventsListener(iframe);
+    setupSeedRequestListener();
+    setupLoadingProgressEventListener();
 
-      if (!areServiceWorkersEnabled) {
+    if (!areServiceWorkersEnabled) {
         iframe.onload = () => {
             this.spinner.removeFromView();
         };
         document.body.appendChild(iframe);
         return;
-      }
+    }
 
-      NavigatorUtils.unregisterAllServiceWorkers(() => {
+    NavigatorUtils.unregisterAllServiceWorkers(() => {
         NavigatorUtils.registerSW(
-          {
-            name: "swLoader.js",
-            path: "swLoader.js",
-            scope: window.location.pathname + "iframe",
-          },
-          (err) => {
-            if (err) {
-              throw err;
+            {
+                name: "swLoader.js",
+                path: "swLoader.js",
+                scope: window.location.pathname + "iframe",
+            },
+            (err) => {
+                if (err) {
+                    throw err;
+                }
+
+                iframe.onload = () => {
+                    NavigatorUtils.registerPwaServiceWorker();
+                };
+
+                document.body.appendChild(iframe);
             }
-
-            iframe.onload = () => {
-              NavigatorUtils.registerPwaServiceWorker();
-            };
-
-            document.body.appendChild(iframe);
-          }
         );
-      });
-    });
+    });      
   };
 }
 
