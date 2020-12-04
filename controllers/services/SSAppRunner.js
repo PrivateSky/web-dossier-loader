@@ -71,7 +71,7 @@ function SSAppRunner(options) {
     });
 
     eventMiddleware.onStatus("sign-out", (data) => {
-      SWAgent.unregisterAllServiceWorkers(() => {
+        NavigatorUtils.unregisterAllServiceWorkers(() => {
         // TODO: clear vault instead of seedCage
         if (data.deleteSeed === true) {
           localStorage.removeItem("seedCage");
@@ -138,6 +138,9 @@ function SSAppRunner(options) {
       setupLoadingProgressEventListener();
 
       if (!areServiceWorkersEnabled) {
+        iframe.onload = () => {
+            this.spinner.removeFromView();
+        };
         document.body.appendChild(iframe);
         return;
       }

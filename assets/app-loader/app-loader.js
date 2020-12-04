@@ -44,7 +44,7 @@ NavigatorUtils.getCanUseServiceWorkers((err, canUserServiceWorkers) => {
                 scope: myIdentity
             };
 
-            SWAgent.loadWallet(seed, swConfig, (err) => {
+            NavigatorUtils.loadWallet(seed, swConfig, (err) => {
                 if (err) {
                     clearInterval(loadingInterval);
                     sendLoadingProgress(100, 'Error loading wallet');

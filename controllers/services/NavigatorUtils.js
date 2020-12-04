@@ -1,3 +1,5 @@
+import { Workbox } from "../../assets/pwa/workbox-window.prod.mjs";
+
 let controllersChangeHandlers = [];
 
 let webmanifest = null;
