@@ -5,15 +5,25 @@ import SWAgent from "./services/SWAgent.js";
 
 
 function NewController() {
-    let username;
-    let email;
-    let password;
-    let company;
+
     let blockchainDomain;
 
     let wizard;
     let spinner;
     const walletService = new WalletService();
+
+    if(LOADER_GLOBALS.environment.mode === "dev-secure"){
+        if(!LOADER_GLOBALS.credentials.isValid){
+            LOADER_GLOBALS.credentials.isValid = true;
+            LOADER_GLOBALS.credentials.username = "devsuperuser"
+            LOADER_GLOBALS.credentials.email = "dev@superuser.dev";
+            LOADER_GLOBALS.credentials.company = "Company Inc";
+            LOADER_GLOBALS.credentials.password = "SuperUserSecurePassword1!";
+            localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify( LOADER_GLOBALS.credentials));
+            console.log("Initialising credentials for develoment mode");
+        }
+    }
+
 
     this.hasInstallationUrl = function () {
         let windowUrl = new URL(window.location.href);
@@ -44,7 +54,7 @@ function NewController() {
     }
 
     this.passwordsAreValid = function () {
-        password = document.getElementById("password").value;
+        let password = LOADER_GLOBALS.credentials.password = document.getElementById("password").value;
         let passwordConfirm = document.getElementById("confirm-password").value;
 
         let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
@@ -64,8 +74,9 @@ function NewController() {
     };
 
     this.credentialsAreValid = function () {
-        username = document.getElementById("username").value;
-        email = document.getElementById("email").value;
+        let username = LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
+        let email = LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
+        let company = LOADER_GLOBALS.credentials.company = document.getElementById("company").value;
 
         let usernameIsValid = username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH && LOADER_GLOBALS.USERNAME_REGEX.test(username);
         let emailIsValid = email.length > 4 && LOADER_GLOBALS.EMAIL_REGEX.test(email);
@@ -91,11 +102,19 @@ function NewController() {
         return false;
     };
 
+    //TODO Refactore and restructure the whole bs...
+    function getWalletSecretArrayKey(){
+        let arr = [LOADER_GLOBALS.credentials.username, LOADER_GLOBALS.credentials.email, LOADER_GLOBALS.credentials.company, LOADER_GLOBALS.credentials.password];
+        return arr;
+    }
+
     function createWallet() {
         spinner.attachToView();
         try {
             console.log("Creating wallet...");
-            walletService.create(LOADER_GLOBALS.environment.domain, [username, email, company, password], (err, wallet) => {
+            localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify( LOADER_GLOBALS.credentials));
+
+            walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
                 if (err) {
                     document.getElementById("register-details-error").innerText = "An error occurred. Please try again.";
                     return console.error(err);
@@ -168,5 +187,15 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     prepareView(page_labels);
     controller.init();
+
+
+    document.getElementById("username").value = LOADER_GLOBALS.credentials.username;
+    document.getElementById("email").value = LOADER_GLOBALS.credentials.email;
+    document.getElementById("company").value = LOADER_GLOBALS.credentials.company;
+    document.getElementById("password").value = LOADER_GLOBALS.credentials.password;
+    document.getElementById("confirm-password").value = LOADER_GLOBALS.credentials.password;
+    controller.validateCredentials();
+
+
 });
 window.controller = controller;

@@ -1,5 +1,5 @@
 "use strict";
-import ScopedLocalStorage from "./ScopedLocalStorage.js";
+
 import WalletBuilderService from "./WalletBuilderService.js";
 import SWAgent from "./SWAgent.js";
 
@@ -8,7 +8,6 @@ import SWAgent from "./SWAgent.js";
  * @param {string} options.seed
  */
 function WalletService(options) {
-    ScopedLocalStorage.setLocalStorageScope();
     options = options || {};
 
     this.keySSI = options.keySSI;
@@ -70,17 +69,6 @@ function WalletService(options) {
                     return callback(createOpenDSUErrorWrapper("Failed to create Wallet", err));
                 }
                 callback(undefined, wallet);
-                /*TODO: delete this
-                wallet.getKeySSI((err, keySSI) => {
-                    if (err) {
-                        return callback(err);
-                    }
-
-                    this.bindWithSeedSSI(domain, keySSI, secret, (err) => {
-                        callback(err, wallet);
-                    });
-                });
-                 */
             });
         });
     };

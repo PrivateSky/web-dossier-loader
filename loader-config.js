@@ -1,4 +1,5 @@
-import LOADER_GLOBALS from './config-constants.js';
+import configConstants from './config-constants.js';
+window.LOADER_GLOBALS = configConstants;
 
 let linkElement = document.createElement("link");
 let theme = LOADER_GLOBALS.THEME;
@@ -15,14 +16,14 @@ if (LOADER_GLOBALS.PLUGIN_SCRIPT) {
 	document.body.appendChild(scriptElement);
 }
 
-window.LOADER_GLOBALS = LOADER_GLOBALS;
+
 import env from "./environment.js";
 
 LOADER_GLOBALS.environment = env;
 
-let LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
+LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
 
-let knownCredentials = localStorage.getItem(LOCALSTORAGE_CREDENTIALS_KEY);
+let knownCredentials = localStorage.getItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
 if (!knownCredentials) {
 	knownCredentials = "{}";
 }

@@ -5,6 +5,12 @@ import SWAgent from "./SWAgent.js";
 import EventMiddleware from "./EventMiddleware.js";
 const crypto = require("opendsu").loadApi("crypto");
 
+function getIFrameBase(){
+  let iPath  = window.location.pathname;
+  return iPath.replace("index.html", "") +  "iframe/";
+}
+
+
 function SSAppRunner(options) {
   options = options || {};
 
@@ -36,7 +42,7 @@ function SSAppRunner(options) {
 
     // This request will be intercepted by swLoader.js
     // and will make the iframe load the app-loader.js script
-    iframe.src = window.location.origin + window.location.pathname + "iframe/" + this.hash;
+    iframe.src = window.location.origin + getIFrameBase()  + this.hash;
     return iframe;
   };
 
@@ -133,11 +139,12 @@ function SSAppRunner(options) {
     setupLoadingProgressEventListener();
 
     SWAgent.unregisterAllServiceWorkers(() => {
+
       SWAgent.registerSW(
         {
           name: "swLoader.js",
           path: "swLoader.js",
-          scope: window.location.pathname + "iframe",
+          scope:  getIFrameBase()
         },
         (err) => {
           if (err) {

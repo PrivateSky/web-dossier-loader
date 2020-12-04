@@ -8,11 +8,10 @@ import SWAgent from "./services/SWAgent.js";
 
 
 
+
 function MainController() {
-    const WALLET_LAST_UPDATE_TIMESTAMP_KEY = "__waletLastUpdated";
 
     let USER_DETAILS_FILE = "user-details.json";
-
     const DEVELOPMENT_EMAIL = "development@autologin.autologin";
     const DEVELOPMENT_USERNAME = "developement.username";
 
@@ -40,63 +39,13 @@ function MainController() {
     }
 
 
-
-    /**
-     * Fetch the 'last-update.txt' file and compare the timestamp
-     * with the one stored in local storage.
-     *
-     * @param {callback} callback
-     */
-    function checkForWalletUpdates(callback) {
-        const lastUpdateFilename = getUrl("../last-update.txt");
-
-        fileService.getFile(lastUpdateFilename, (err, data) => {
-            if (err) {
-                return callback(false);
-            }
-
-            const lastUpdateTimestamp = parseInt(data, 10);
-            if (isNaN(lastUpdateTimestamp)) {
-                return callback(false);
-            }
-
-            const walletLastUpdateTimestamp = parseInt(localStorage.getItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY), 10);
-            if (isNaN(walletLastUpdateTimestamp)) {
-                return callback(true);
-            }
-
-            if (lastUpdateTimestamp > walletLastUpdateTimestamp) {
-                return callback(true);
-            }
-
-            return callback(false);
-        });
-    }
-
-
-
     function hash(arr) {
         const crypto = require("opendsu").loadApi("crypto");
         let hsh = crypto.sha256(encodeURI(arr.join("/")));
         return hsh;
     }
 
-
-
-    /*function checkWalletExistence(key) {
-
-        let knownCredentials = getKnownCredentials();
-        return !!knownCredentials[hash(key)];
-    }
-
-    function markWalletExistence(key) {
-        let knownCredentials = getKnownCredentials();
-        knownCredentials[hash(key)] = true;
-        return localStorage.setItem(DEVELOPMENT_CREDENTIALS_KEY, JSON.stringify(knownCredentials));
-    }
-    */
-
-    function generateRandom(charactersSet, length) {
+       function generateRandom(charactersSet, length) {
         let result = '';
         const charactersLength = charactersSet.length;
         for (let i = 0; i < length; i++) {
@@ -133,20 +82,6 @@ function MainController() {
      */
     function runInDevelopment() {
         runInAutologin(true);
-        /*if (!checkWalletExistence(key)) {
-
-            walletService.create(LOADER_GLOBALS.environment.domain, key, (err, wallet) => {
-                if (err) {
-                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
-                }
-                localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
-                markWalletExistence(key);
-                window.location.reload();
-            });
-            return;
-        }
-        rebuildWallet(key);
-         */
     }
 
     /**
@@ -187,48 +122,6 @@ function MainController() {
         }
     }
 
-    function rebuildWallet(key) {
-        checkForWalletUpdates((hasUpdates) => {
-            if (hasUpdates) {
-                // Unregister the service workers to allow wallet rebuilding
-                // and clear the cache
-                navigator.serviceWorker
-                    .getRegistrations()
-                    .then((registrations) => {
-                        if (!registrations || !registrations.length) {
-                            return;
-                        }
-
-                        const unregisterPromises = registrations.map((reg) => reg.unregister());
-                        return Promise.all(unregisterPromises);
-                    })
-                    .then((result) => {
-                        if (result) {
-                            // Reload the page after unregistering the service workers
-                            return window.location.reload();
-                        }
-
-                        spinner.attachToView();
-
-                        // After all the service works have been unregistered and stopped
-                        // rebuild the wallet
-                        walletService.rebuild(LOADER_GLOBALS.environment.domain, key, (err, wallet) => {
-                            if (err) {
-                                return callback(createOpenDSUErrorWrapper(`Failed to create wallet ${LOADER_GLOBALS.environment.domain + key }`, err));
-                            }
-
-                            localStorage.setItem(WALLET_LAST_UPDATE_TIMESTAMP_KEY, Date.now());
-                            console.log("Wallet was rebuilt.");
-                            window.location.reload();
-                        });
-                    });
-                return;
-            }
-
-            // restore existing wallet
-            self.openWallet();
-        });
-    }
 
     this.init = function () {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
@@ -241,35 +134,22 @@ function MainController() {
             return runInAutologin();
         }
 
-        if (LOADER_GLOBALS.environment.mode !== "secure") {
+        if (! (LOADER_GLOBALS.environment.mode === "secure" || LOADER_GLOBALS.environment.mode === "dev-secure")) {
             return callback(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
         }
+
 
         let windowUrl = new URL(window.location.href);
         if (windowUrl.searchParams.get("login") !== null) {
             return this.displayContainer(LOADER_GLOBALS.PASSWORD_CONTAINER_ID);
         }
         this.displayContainer(LOADER_GLOBALS.NEW_OR_RESTORE_CONTAINER_ID)
-
     };
 
     this.displayContainer = function (containerId) {
         document.getElementById(containerId).style.display = "block";
     };
 
-    this.credentialsAreValid = function () {
-        LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
-        LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
-        let pswd = document.getElementById("password").value;
-        let result = email.length > 4
-            && LOADER_GLOBALS.EMAIL_REGEX.test(email)
-            && username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH
-            && LOADER_GLOBALS.USERNAME_REGEX.test(username);
-        if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
-            result = result && LOADER_GLOBALS.PASSWORD_REGEX.test(pswd);
-        }
-        return result;
-    };
 
     this.showErrorOnField = function (fieldId) {
         document.getElementById(fieldId).style.border = "2px solid red";
@@ -280,7 +160,7 @@ function MainController() {
     }
 
     this.passwordsAreValid = function () {
-        LOADER_GLOBALS.credentials.password = document.getElementById("password").value;
+        let password = LOADER_GLOBALS.credentials.password = document.getElementById("password").value;
         let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
         if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
             passwordIsValid = passwordIsValid && LOADER_GLOBALS.PASSWORD_REGEX.test(password);
@@ -289,9 +169,10 @@ function MainController() {
         return passwordIsValid;
     };
 
-    this.credentialsAreValid = function () {
-        LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
-        LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
+
+     this.credentialsAreValid = function () {
+        let username = LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
+        let email =  LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
 
         let usernameIsValid = username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH && LOADER_GLOBALS.USERNAME_REGEX.test(username);
         let emailIsValid = email.length > 4 && LOADER_GLOBALS.EMAIL_REGEX.test(email);
@@ -314,10 +195,10 @@ function MainController() {
 
     this.writeUserDetailsToFile = function (wallet, callback) {
         let objectToWrite = {
-            username: username,
-            email: email
+            username: LOADER_GLOBALS.credentials.username,
+            email: LOADER_GLOBALS.credentials.email,
+            company: LOADER_GLOBALS.credentials.company
         }
-
         wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(objectToWrite), callback);
     }
 
@@ -397,6 +278,12 @@ document.addEventListener("DOMContentLoaded", function () {
     ];
     prepareView(page_labels);
     controller.init();
+
+    document.getElementById("username").value = LOADER_GLOBALS.credentials.username;
+    document.getElementById("email").value = LOADER_GLOBALS.credentials.email;
+    //document.getElementById("company").value = LOADER_GLOBALS.credentials.company;
+    document.getElementById("password").value = LOADER_GLOBALS.credentials.password;
+    controller.validateCredentials();
 });
 
 window.controller = controller;
