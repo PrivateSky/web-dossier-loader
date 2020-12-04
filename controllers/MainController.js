@@ -279,10 +279,19 @@ document.addEventListener("DOMContentLoaded", function () {
     prepareView(page_labels);
     controller.init();
 
-    document.getElementById("username").value = LOADER_GLOBALS.credentials.username;
-    document.getElementById("email").value = LOADER_GLOBALS.credentials.email;
+    if(LOADER_GLOBALS.credentials.username){
+        document.getElementById("username").value = LOADER_GLOBALS.credentials.username;
+    }
+
+    if(LOADER_GLOBALS.credentials.email){
+        document.getElementById("email").value = LOADER_GLOBALS.credentials.email;
+    }
+
+    if(LOADER_GLOBALS.credentials.password){
+        document.getElementById("password").value = LOADER_GLOBALS.credentials.password;
+    }
     //document.getElementById("company").value = LOADER_GLOBALS.credentials.company;
-    document.getElementById("password").value = LOADER_GLOBALS.credentials.password;
+
     controller.validateCredentials();
 });
 
