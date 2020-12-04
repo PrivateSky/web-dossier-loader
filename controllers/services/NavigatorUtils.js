@@ -192,7 +192,10 @@ const NavigatorUtils = {
     },
 
     canUseServiceWorkers: () => {
-        return !!LOADER_GLOBALS.environment.sw && NavigatorUtils.areServiceWorkersSupported();
+        return (
+            typeof LOADER_GLOBALS === "undefined" ||
+            (!!LOADER_GLOBALS.environment.sw && NavigatorUtils.areServiceWorkersSupported())
+        );
     },
 
     loadWallet: (seed, swConfig, callback) => {

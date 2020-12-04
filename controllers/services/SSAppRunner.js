@@ -132,7 +132,7 @@ function SSAppRunner(options) {
     }
 
   this.run = function () {
-    const areServiceWorkersEnabled = !!LOADER_GLOBALS.environment.sw;
+    const areServiceWorkersEnabled = typeof LOADER_GLOBALS === "undefined" || !!LOADER_GLOBALS.environment.sw;
     if (areServiceWorkersEnabled && !NavigatorUtils.areServiceWorkersSupported) {
         return alert("You current browser doesn't support running this application");
     }
