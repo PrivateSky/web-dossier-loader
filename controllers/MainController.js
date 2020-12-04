@@ -367,10 +367,10 @@ function MainController() {
 
                 });
 
-                console.log(`Loading wallet ${keySSI.getIdentifier(true)}`);
+                console.log(`Loading wallet ${keySSI}`);
 
                 new SSAppRunner({
-                    seed: keySSI.getIdentifier(),
+                    seed: keySSI,
                     spinner
                 }).run();
             });

@@ -445,13 +445,12 @@ function WalletBuilderService(options) {
                 if (err) {
                     return callback(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
                 }
-                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets), {useSSIAsIdentifier:true, dsuType}, (err, walletDSU) => {
+                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets), {useSSIAsIdentifier:true, dsuTypeSSI: dsuType}, (err, walletDSU) => {
                     if (err) {
                         return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
                     }
 
                     walletDSU = walletDSU.getWritableDSU();
-
                     getWalletTemplateContent((err, files) => {
                         if (err) {
                             return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
