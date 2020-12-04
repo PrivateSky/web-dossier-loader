@@ -180,7 +180,7 @@ function WalletBuilderService(options) {
                         if (err) {
                             return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
                         }
-                        return appDSU.writeFile("/environment.js", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
+                        return appDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
                             if (err) {
                                 console.log("Could not write environment file into app", err);
                             }
@@ -440,7 +440,7 @@ function WalletBuilderService(options) {
                 if (err) {
                     return callback(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
                 }
-                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets), {useSSIAsIdentifier:true, dsuTypeSSI: dsuType}, (err, walletDSU) => {
+                resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets, LOADER_GLOBALS.environment.vault), {useSSIAsIdentifier:true, dsuTypeSSI: dsuType}, (err, walletDSU) => {
                     if (err) {
                         return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
                     }
@@ -460,7 +460,7 @@ function WalletBuilderService(options) {
                                 return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
                             }
 
-                            return walletDSU.writeFile("/environment.js", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
+                            return walletDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
                                 if (err) {
                                     return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
                                 }
