@@ -438,8 +438,6 @@ function WalletBuilderService(options) {
 
         config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
 
-
-
         let _build = () => {
             fileService.getFile(WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME, (err, dsuType) => {
                 if (err) {
@@ -449,7 +447,7 @@ function WalletBuilderService(options) {
                     if (err) {
                         return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
                     }
-
+                    console.log("ConstDSU Wallet has SSI:", walletDSU.getCreationSSI(true));
                     walletDSU = walletDSU.getWritableDSU();
                     getWalletTemplateContent((err, files) => {
                         if (err) {
