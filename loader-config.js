@@ -28,3 +28,5 @@ if (!knownCredentials) {
 }
 
 LOADER_GLOBALS.credentials =  JSON.parse(knownCredentials);
+let config = require("opendsu").loadApi("config");
+config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
