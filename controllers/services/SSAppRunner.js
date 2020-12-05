@@ -155,17 +155,15 @@ function SSAppRunner(options) {
             {
                 name: "swLoader.js",
                 path: "swLoader.js",
-                scope: window.location.pathname + "iframe",
+                scope: getIFrameBase(),
             },
-            (err) => {
+            (err, result) => {
                 if (err) {
                     throw err;
                 }
-
                 iframe.onload = () => {
                     NavigatorUtils.registerPwaServiceWorker();
                 };
-
                 document.body.appendChild(iframe);
             }
         );

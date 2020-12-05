@@ -35,7 +35,7 @@ function WalletBuilderService(options) {
     const APP_FOLDER = options.appFolderName;
     const APPS_FOLDER = options.appsFolderName;
     const SSI_FILE_NAME = options.ssiFileName;
-    const DEFAULT_DOMAIN = options.domain || "vault";
+    const VAULT_DOMAIN = LOADER_GLOBALS.environment.domain;
 
 
     const fileService = new FileService();
@@ -167,7 +167,7 @@ function WalletBuilderService(options) {
         const instantiateNewDossier = (files) => {
             let resolver = require("opendsu").loadApi("resolver");
             let keyssi = require("opendsu").loadApi("keyssi");
-            resolver.createDSU(keyssi.buildSeedSSI(DEFAULT_DOMAIN), (err, appDSU) => {
+            resolver.createDSU(keyssi.buildSeedSSI(VAULT_DOMAIN, undefined, undefined,undefined,LOADER_GLOBALS.environment.vault), (err, appDSU) => {
                 if (err) {
                     return callback(createOpenDSUErrorWrapper("Failed to create DSU ", err));
                 }

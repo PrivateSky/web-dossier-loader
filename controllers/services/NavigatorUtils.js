@@ -24,10 +24,15 @@ const NavigatorUtils = {
     whenSwIsReady: function (swName, registration, callback) {
         const { installing } = registration;
         if (installing) {
+            installing.onerror = function(err){
+                console.log(err)
+            }
+
             installing.addEventListener("statechange", (res) => {
                 if (installing.state === "activated") {
                     callback(null, registration);
                 }
+            console.log("Sw state", installing.state);
             });
         } else {
             controllersChangeHandlers.push({ swName, registration, callback });
@@ -91,17 +96,22 @@ const NavigatorUtils = {
         const registerOptions = scope ? { scope } : undefined;
 
         if (NavigatorUtils.areServiceWorkersSupported()) {
+            console.log("SW Register:", options.path, JSON.stringify(registerOptions));
+
             navigator.serviceWorker
                 .register(options.path, registerOptions)
                 .then((registration) => {
                     if (registration.active) {
                         return callback(null, registration);
                     }
+                    registration.onerror = function(err){
+                        console.log(err)
+                    }
                     NavigatorUtils.whenSwIsReady(options.name, registration, callback);
-                })
+                }, (err)=> {console.log(err)})
                 .catch((err) => {
                     console.log(err);
-                    return callback("Operation failed. Try again");
+                    return callback(createOpenDSUErrorWrapper("Service worker registration failed.",err));
                 });
         }
     },

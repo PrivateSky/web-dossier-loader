@@ -12,8 +12,8 @@ import NavigatorUtils from "./services/NavigatorUtils.js";
 function MainController() {
 
     let USER_DETAILS_FILE = "user-details.json";
-    const DEVELOPMENT_EMAIL = "development@autologin.autologin";
-    const DEVELOPMENT_USERNAME = "developement.username";
+    const DEVELOPMENT_EMAIL = "dev@autologin.dev";
+    const DEVELOPMENT_USERNAME = "autologin";
 
     const walletService = new WalletService();
     const fileService = new FileService();
