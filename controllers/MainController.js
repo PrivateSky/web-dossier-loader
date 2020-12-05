@@ -107,9 +107,9 @@ function MainController() {
             }
             LOADER_GLOBALS.credentials = credentials;
             LOADER_GLOBALS.credentials.isValid = true;
-            let LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
+
             if(!development){
-                 localStorage.setItem(LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify(credentials));
+                LOADER_GLOBALS.saveCredentials();
             }
 
             walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
