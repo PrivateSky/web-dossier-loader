@@ -19,7 +19,7 @@ function NewController() {
             LOADER_GLOBALS.credentials.email = "dev@superuser.dev";
             LOADER_GLOBALS.credentials.company = "Company Inc";
             LOADER_GLOBALS.credentials.password = "SuperUserSecurePassword1!";
-            localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify( LOADER_GLOBALS.credentials));
+            LOADER_GLOBALS.saveCredentials();
             console.log("Initialising credentials for develoment mode");
         }
     }
@@ -112,7 +112,7 @@ function NewController() {
         spinner.attachToView();
         try {
             console.log("Creating wallet...");
-            localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify( LOADER_GLOBALS.credentials));
+            LOADER_GLOBALS.saveCredentials();
 
             walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
                 if (err) {

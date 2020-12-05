@@ -21,13 +21,21 @@ import env from "./environment.js";
 
 LOADER_GLOBALS.environment = env;
 
-LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY = "LOCALSTORAGE_CREDENTIALS";
+LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY = env.appName + "-credentials";
 
-let knownCredentials = localStorage.getItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
-if (!knownCredentials) {
-	knownCredentials = "{}";
+LOADER_GLOBALS.saveCredentials = function(){
+	localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify(LOADER_GLOBALS.credentials));
 }
 
-LOADER_GLOBALS.credentials =  JSON.parse(knownCredentials);
+LOADER_GLOBALS.loadCredentials = function(){
+	let knownCredentials = localStorage.getItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
+	if (!knownCredentials) {
+		knownCredentials = "{}";
+	}
+	LOADER_GLOBALS.credentials =  JSON.parse(knownCredentials);
+}
+
+LOADER_GLOBALS.loadCredentials();
+
 let config = require("opendsu").loadApi("config");
 config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
