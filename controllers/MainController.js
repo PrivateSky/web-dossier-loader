@@ -138,6 +138,10 @@ function MainController() {
             return callback(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
         }
 
+        if(LOADER_GLOBALS.environment.mode === "dev-secure"{
+
+        })
+
 
         let windowUrl = new URL(window.location.href);
         if (windowUrl.searchParams.get("login") !== null) {
@@ -161,11 +165,16 @@ function MainController() {
 
     this.passwordsAreValid = function () {
         let password = LOADER_GLOBALS.credentials.password = document.getElementById("password").value;
-        let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
-        if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
+        let passwordIsValid = password.length > 0;
+        //let passwordIsValid = password.length >= LOADER_GLOBALS.PASSWORD_MIN_LENGTH
+        /*if (typeof LOADER_GLOBALS.PASSWORD_REGEX !== "undefined") {
             passwordIsValid = passwordIsValid && LOADER_GLOBALS.PASSWORD_REGEX.test(password);
+        }*/
+        if(passwordIsValid){
+            this.removeErrorFromField('password')
+        } else {
+            this.showErrorOnField('password')
         }
-        password.length > 0 && !passwordIsValid ? this.showErrorOnField('password') : this.removeErrorFromField('password');
         return passwordIsValid;
     };
 
