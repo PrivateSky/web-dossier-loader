@@ -138,10 +138,12 @@ function MainController() {
             return callback(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
         }
 
-        if(LOADER_GLOBALS.environment.mode === "dev-secure"{
-
-        })
-
+        if(LOADER_GLOBALS.environment.mode === "dev-secure" && !LOADER_GLOBALS.credentials.username){
+            LOADER_GLOBALS.credentials.username = "devsuperuser"
+            LOADER_GLOBALS.credentials.email = "dev@superuser.dev";
+            LOADER_GLOBALS.credentials.company = "Company Inc";
+            LOADER_GLOBALS.credentials.password = "SuperUserSecurePassword1!";
+        }
 
         let windowUrl = new URL(window.location.href);
         if (windowUrl.searchParams.get("login") !== null) {
