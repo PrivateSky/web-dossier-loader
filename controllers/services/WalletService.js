@@ -35,16 +35,18 @@ function WalletService(options) {
      */
     this.load = function (domain, secret, callback) {
         console.log("Loading the wallet");
-        let resolver = require("opendsu").loadApi("resolver");
-        let keyssi = require("opendsu").loadApi("keyssi");
+        NavigatorUtils.unregisterAllServiceWorkers(() => {
+            let resolver = require("opendsu").loadApi("resolver");
+            let keyssi = require("opendsu").loadApi("keyssi");
 
-        let walletSSI =  keyssi.buildWalletSSI(domain, secret, LOADER_GLOBALS.environment.vault);
+            let walletSSI =  keyssi.buildWalletSSI(domain, secret, LOADER_GLOBALS.environment.vault);
 
-        resolver.loadDSU(walletSSI, (err, constDSU) =>{
-            if(err){
-                return callback(createOpenDSUErrorWrapper("Failed to load wallet", err));
-            }
-            callback(undefined, constDSU.getWritableDSU());
+            resolver.loadDSU(walletSSI, (err, constDSU) =>{
+                if(err){
+                    return callback(createOpenDSUErrorWrapper("Failed to load wallet", err));
+                }
+                callback(undefined, constDSU.getWritableDSU());
+            });
         });
     };
 
@@ -55,7 +57,7 @@ function WalletService(options) {
      */
     this.create = function (domain, arrayWithSecrets, callback) {
         console.log("Creating the wallet");
-        NavigatorUtils.unregisterAllServiceWorkers(() => {
+        //NavigatorUtils.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
                 walletTemplateFolderName: "wallet-template",
@@ -70,7 +72,7 @@ function WalletService(options) {
                 }
                 callback(undefined, wallet);
             });
-        });
+       // });
     };
 
     /**

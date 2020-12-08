@@ -5,10 +5,6 @@ import FileService from "./services/FileService.js";
 import SSAppRunner from "./services/SSAppRunner.js";
 import NavigatorUtils from "./services/NavigatorUtils.js";
 
-
-
-
-
 function MainController() {
 
     let USER_DETAILS_FILE = "user-details.json";
@@ -111,15 +107,15 @@ function MainController() {
             if(!development){
                 LOADER_GLOBALS.saveCredentials();
             }
-
-            walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
-                if (err) {
-                    throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
-                }
-                console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
-                return self.openWallet();
-            });
         }
+
+        walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
+            if (err) {
+                throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
+            }
+            console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
+            return self.openWallet();
+        });
     }
 
 
