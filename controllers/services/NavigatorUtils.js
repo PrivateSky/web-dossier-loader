@@ -128,14 +128,18 @@ const NavigatorUtils = {
     },
 
     clearSwInScope: (scope, callback) => {
-
         if (NavigatorUtils.areServiceWorkersSupported()) {
             return navigator.serviceWorker
                 .getRegistration(scope)
-                .then((sw) =>  {
-                        console.log("Unregistering SCOPPPP", scope, sw);
-                    return NavigatorUtils.unregisterServiceWorker(sw, callback)}
-                    )
+                .then((sw) => {
+                        if (scope == sw.scope) {
+                            console.log("Refreshing sw for scope", scope, sw);
+                            return NavigatorUtils.unregisterServiceWorker(sw, callback)
+                        } else {
+                            callback(undefined);
+                        }
+                    }
+                )
                 .catch(callback);
         }
     },
@@ -218,7 +222,7 @@ const NavigatorUtils = {
     },
 
     loadSSAppOrWallet: (seed, swConfig, callback) => {
-        //NavigatorUtils.clearSwInScope(swConfig.scope, (err,res) =>{
+        NavigatorUtils.clearSwInScope(swConfig.scope, (err,res) =>{
             NavigatorUtils.registerSW(swConfig, (err, sw) => {
                 if (err) return callback(err);
 
@@ -230,7 +234,7 @@ const NavigatorUtils = {
                     callback();
                 });
             });
-        //})
+        })
     },
 
     addServiceWorkerEventListener: (eventType, callback) => {
