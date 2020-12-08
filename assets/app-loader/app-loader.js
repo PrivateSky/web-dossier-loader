@@ -39,7 +39,7 @@ if(NavigatorUtils.canUseServiceWorkers()) {
                 scope: myIdentity
             };
 
-            NavigatorUtils.loadWallet(seed, swConfig, (err) => {
+            NavigatorUtils.loadSSAppOrWallet(seed, swConfig, (err) => {
                 if (err) {
                     clearInterval(loadingInterval);
                     sendLoadingProgress(100, 'Error loading wallet');

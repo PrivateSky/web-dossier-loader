@@ -83,15 +83,13 @@ const NavigatorUtils = {
         });
     },
 
-    restoreDossier: (seed, callback) => {
+    sendSeedToSW: (seed, callback) => {
         NavigatorUtils.sendMessage({ seed: seed })
             .then((data) => callback(null, data))
             .catch(callback);
     },
 
     registerSW: (options, callback) => {
-        options = options || {};
-
         const { scope } = options;
         const registerOptions = scope ? { scope } : undefined;
 
@@ -129,8 +127,19 @@ const NavigatorUtils = {
             .catch(callback);
     },
 
+    clearSwInScope: (scope, callback) => {
+
+        if (NavigatorUtils.areServiceWorkersSupported()) {
+            return navigator.serviceWorker
+                .getRegistration(scope)
+                .then((sw) =>  {
+                        console.log("Unregistering SCOPPPP", scope, sw);
+                    return NavigatorUtils.unregisterServiceWorker(sw, callback)}
+                    )
+                .catch(callback);
+        }
+    },
     unregisterAllServiceWorkers: (callback) => {
-        callback = typeof callback === "function" ? callback : () => {};
         NavigatorUtils.getRegistrations((err, sws) => {
             if (err) {
                 return callback(err);
@@ -208,18 +217,20 @@ const NavigatorUtils = {
         );
     },
 
-    loadWallet: (seed, swConfig, callback) => {
-        NavigatorUtils.registerSW(swConfig, (err) => {
-            if (err) return callback(err);
+    loadSSAppOrWallet: (seed, swConfig, callback) => {
+        //NavigatorUtils.clearSwInScope(swConfig.scope, (err,res) =>{
+            NavigatorUtils.registerSW(swConfig, (err, sw) => {
+                if (err) return callback(err);
 
-            NavigatorUtils.restoreDossier(seed, (err) => {
-                if (err) {
-                    NavigatorUtils.unregisterAllServiceWorkers();
-                    return callback("Operation failed. Try again");
-                }
-                callback();
+                NavigatorUtils.sendSeedToSW(seed, (err) => {
+                    if (err) {
+                        //NavigatorUtils.unregisterAllServiceWorkers();
+                        return callback("Operation failed. Try again");
+                    }
+                    callback();
+                });
             });
-        });
+        //})
     },
 
     addServiceWorkerEventListener: (eventType, callback) => {
