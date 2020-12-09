@@ -137,18 +137,35 @@ function SSAppRunner(options) {
         return alert("You current browser doesn't support running this application");
     }
 
-    const iframe = buildContainerIframe(!areServiceWorkersEnabled);
-    setupLoadEventsListener(iframe);
-    setupSeedRequestListener();
-    setupLoadingProgressEventListener();
+    const iframe = buildContainerIframe(!areServiceWorkersEnabled);    
 
     if (!areServiceWorkersEnabled) {
+        let loadingInterval;
+        
+        let loadingProgress = 10;
+        this.spinner.setStatusText(`Loading ${loadingProgress}%`);
+        loadingInterval = setInterval(() => {
+            loadingProgress += loadingProgress >= 90 ? 1 : 10;
+    
+            if (loadingProgress >= 100) {
+                clearInterval(loadingInterval);
+                return;
+            }
+            this.spinner.setStatusText(`Loading ${loadingProgress}%`);
+        }, 1000);
+        
+
         iframe.onload = () => {
+            clearInterval(loadingInterval);
             this.spinner.removeFromView();
         };
         document.body.appendChild(iframe);
         return;
     }
+
+    setupLoadEventsListener(iframe);
+    setupSeedRequestListener();
+    setupLoadingProgressEventListener();
 
     NavigatorUtils.unregisterAllServiceWorkers(() => {
         NavigatorUtils.registerSW(
