@@ -180,6 +180,7 @@ function MainController() {
      this.credentialsAreValid = function () {
         let username = LOADER_GLOBALS.credentials.username = document.getElementById("username").value;
         let email =  LOADER_GLOBALS.credentials.email = document.getElementById("email").value;
+        let company =  LOADER_GLOBALS.credentials.company = document.getElementById("company").value;
 
         let usernameIsValid = username.length >= LOADER_GLOBALS.USERNAME_MIN_LENGTH && LOADER_GLOBALS.USERNAME_REGEX.test(username);
         let emailIsValid = email.length > 4 && LOADER_GLOBALS.EMAIL_REGEX.test(email);
@@ -279,6 +280,7 @@ document.addEventListener("DOMContentLoaded", function () {
         {"#wallet-authorization": LABELS.WALLET_AUTHORIZATION},
         {"#enter-credentials": LABELS.ENTER_CREDENTIALS},
         {"#username": LABELS.ENTER_USERNAME, attribute: "placeholder"},
+        {"#company": LABELS.ENTER_COMPANY, attribute: "placeholder"},
         {"#email": LABELS.ENTER_EMAIL, attribute: "placeholder"},
         {"#password": LABELS.ENTER_PASSWORD, attribute: "placeholder"},
         {"#open-wallet-btn": LABELS.OPEN_WALLET},
@@ -292,6 +294,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if(LOADER_GLOBALS.credentials.email){
         document.getElementById("email").value = LOADER_GLOBALS.credentials.email;
+    }
+
+    if(LOADER_GLOBALS.credentials.company){
+        document.getElementById("company").value = LOADER_GLOBALS.credentials.company;
     }
 
     if(LOADER_GLOBALS.credentials.password){
