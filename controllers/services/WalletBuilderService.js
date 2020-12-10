@@ -137,7 +137,7 @@ function WalletBuilderService(options) {
     const getListOfAppsForInstallation = (callback) => {
         fileService.getFolderContentAsJSON(APPS_FOLDER, function (err, data) {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to get content for folder" + APPS_FOLDER, err));
+                return callback(createOpenDSUErrorWrapper("Failed to get content for folder " + APPS_FOLDER, err));
             }
 
             let apps;
@@ -145,7 +145,7 @@ function WalletBuilderService(options) {
             try {
                 apps = JSON.parse(data);
             } catch (e) {
-                return callback(createOpenDSUErrorWrapper("Failed to parse content for folder" + APPS_FOLDER, err));
+                return callback(createOpenDSUErrorWrapper("Failed to parse content for folder " + APPS_FOLDER, err));
             }
 
             callback(undefined, apps);

@@ -60,9 +60,9 @@ function WalletService(options) {
         //NavigatorUtils.unregisterAllServiceWorkers(() => {
             const walletBuilder = new WalletBuilderService({
                 codeFolderName: "code",
-                walletTemplateFolderName: "wallet-template",
+                walletTemplateFolderName: "wallet-patch",
                 appFolderName: CONSTANTS.APP_FOLDER,
-                appsFolderName: "apps",
+                appsFolderName: "apps-patch",
                 ssiFileName: "seed",
             });
 
@@ -88,9 +88,9 @@ function WalletService(options) {
 
             const walletBuilder = new WalletBuilderService(wallet, {
                 codeFolderName: "code",
-                walletTemplateFolderName: "wallet-template",
+                walletTemplateFolderName: "wallet-patch",
                 appFolderName: CONSTANTS.APP_FOLDER,
-                appsFolderName: "apps",
+                appsFolderName: "apps-patch",
                 dossierLoader: function (keySSI, callback) {
                     resolver.loadDSU(keySSI, callback);
                 },
