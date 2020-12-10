@@ -193,7 +193,7 @@ function WalletBuilderService(options) {
         };
 
         if (hasTemplate) {
-            return fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
+            return fileService.getFolderContentAsJSON(`apps-patch/${appName}`, (err, data) => {
                 let files;
 
                 try {
@@ -258,7 +258,7 @@ function WalletBuilderService(options) {
      * @param {callback} callback
      */
     const rebuildApp = (appName, seed, callback) => {
-        fileService.getFolderContentAsJSON(`apps/${appName}`, (err, data) => {
+        fileService.getFolderContentAsJSON(`apps-patch/${appName}`, (err, data) => {
             let files;
 
             try {
@@ -390,7 +390,7 @@ function WalletBuilderService(options) {
                         };
                     });
                     let landingApp = {name: externalAppsList[0]};
-                    walletDSU.writeFile("apps/.landingApp", JSON.stringify(landingApp), () => {
+                    walletDSU.writeFile("apps-patch/.landingApp", JSON.stringify(landingApp), () => {
                         console.log(`Written landingApp [${landingApp.name}]. `)
                     });
                 }
