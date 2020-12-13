@@ -138,6 +138,7 @@ function SSAppRunner(options) {
     }
 
     const iframe = buildContainerIframe(!areServiceWorkersEnabled);    
+    setupLoadEventsListener(iframe);
 
     if (!areServiceWorkersEnabled) {
         let loadingInterval;
@@ -163,7 +164,6 @@ function SSAppRunner(options) {
         return;
     }
 
-    setupLoadEventsListener(iframe);
     setupSeedRequestListener();
     setupLoadingProgressEventListener();
 
