@@ -71,6 +71,29 @@ function MainController() {
     }
 
     /**
+     * Run the loader using credentials provided from external source
+     * These credentials should be stored in the localStorage before
+     */
+    function runExternalAutologin() {
+        spinner.attachToView();
+        LOADER_GLOBALS.loadCredentials();
+        const secretArrayKey = getWalletSecretArrayKey();
+        const isArrayEmpty = secretArrayKey.filter(el => el && el.trim().length !== 0).length === 0;
+        
+        if(isArrayEmpty) {
+            return console.warn("Array of secrets is not loaded yet...", secretArrayKey);
+        }
+
+        walletService.create(LOADER_GLOBALS.environment.domain, secretArrayKey, (err, wallet) => {
+            if (err) {
+                throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
+            }
+            console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
+            return self.openWallet();
+        });
+    }
+
+    /**
      * Run the loader in development mode
      *
      * Create a default wallet with a default password if none exists
@@ -121,6 +144,10 @@ function MainController() {
 
     this.init = function () {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
+
+        if (LOADER_GLOBALS.environment.mode === "external-autologin") {
+            return runExternalAutologin();
+        }
 
         if (LOADER_GLOBALS.environment.mode === "dev-autologin") {
             return runInDevelopment();
