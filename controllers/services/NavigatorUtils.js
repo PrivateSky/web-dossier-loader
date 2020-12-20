@@ -24,7 +24,7 @@ const NavigatorUtils = {
     whenSwIsReady: function (swName, registration, callback) {
         const { installing } = registration;
         if (installing) {
-            installing.onerror = function(err){
+            installing.onerror = function (err) {
                 console.log(err)
             }
 
@@ -32,7 +32,7 @@ const NavigatorUtils = {
                 if (installing.state === "activated") {
                     callback(null, registration);
                 }
-            console.log("Sw state", installing.state);
+                console.log("Sw state", installing.state);
             });
         } else {
             controllersChangeHandlers.push({ swName, registration, callback });
@@ -102,14 +102,14 @@ const NavigatorUtils = {
                     if (registration.active) {
                         return callback(null, registration);
                     }
-                    registration.onerror = function(err){
+                    registration.onerror = function (err) {
                         console.log(err)
                     }
                     NavigatorUtils.whenSwIsReady(options.name, registration, callback);
-                }, (err)=> {console.log(err)})
+                }, (err) => { console.log(err) })
                 .catch((err) => {
                     console.log(err);
-                    return callback(createOpenDSUErrorWrapper("Service worker registration failed.",err));
+                    return callback(createOpenDSUErrorWrapper("Service worker registration failed.", err));
                 });
         }
     },
@@ -132,13 +132,13 @@ const NavigatorUtils = {
             return navigator.serviceWorker
                 .getRegistration(scope)
                 .then((sw) => {
-                        if (scope == sw.scope) {
-                            console.log("Refreshing sw for scope", scope, sw);
-                            return NavigatorUtils.unregisterServiceWorker(sw, callback)
-                        } else {
-                            callback(undefined);
-                        }
+                    if (scope == sw.scope) {
+                        console.log("Refreshing sw for scope", scope, sw);
+                        return NavigatorUtils.unregisterServiceWorker(sw, callback)
+                    } else {
+                        callback(undefined);
                     }
+                }
                 )
                 .catch(callback);
         }
@@ -222,7 +222,7 @@ const NavigatorUtils = {
     },
 
     loadSSAppOrWallet: (seed, swConfig, callback) => {
-        NavigatorUtils.clearSwInScope(swConfig.scope, (err,res) =>{
+        NavigatorUtils.clearSwInScope(swConfig.scope, (err, res) => {
             NavigatorUtils.registerSW(swConfig, (err, sw) => {
                 if (err) return callback(err);
 
@@ -243,7 +243,16 @@ const NavigatorUtils = {
         }
     },
 
+    canRegisterPwa: () => {
+        return typeof LOADER_GLOBALS === "undefined" || !!LOADER_GLOBALS.environment.pwa;
+    },
+
     registerPwaServiceWorker: () => {
+        if (!NavigatorUtils.canRegisterPwa()) {
+            console.log('PWA is not enabled for this application.');
+            return;
+        }
+
         const showNewContentAvailable = () => {
             if (confirm(`New content is available!. Click OK to refresh!`)) {
                 window.location.reload();
@@ -253,6 +262,7 @@ const NavigatorUtils = {
         NavigatorUtils.getWebmanifest((err, manifest) => {
             if (!manifest) {
                 // no manifest is available to the SW won't be registered
+                console.log('Skipping PWA registration due to missing manifest.webmanifest.');
                 return;
             }
 
