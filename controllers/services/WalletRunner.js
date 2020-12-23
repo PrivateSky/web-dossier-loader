@@ -10,7 +10,7 @@ function getIFrameBase() {
 }
 
 
-function SSAppRunner(options) {
+function WalletRunner(options) {
     options = options || {};
 
     if (!options.seed) {
@@ -59,7 +59,7 @@ function SSAppRunner(options) {
                 this.spinner.removeFromView();
                 document.dispatchEvent(new CustomEvent('ssapp:loading:progress', {
                     detail: {
-                        progress: 0,
+                        progress: 100,
                         status: 'Wallet Loaded<br />Loading SSApp...'
                     }
                 }));
@@ -190,4 +190,4 @@ function SSAppRunner(options) {
     };
 }
 
-export default SSAppRunner;
+export default WalletRunner;
