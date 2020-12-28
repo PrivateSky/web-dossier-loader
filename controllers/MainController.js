@@ -3,7 +3,6 @@ import {Spinner, prepareView} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import FileService from "./services/FileService.js";
 import WalletRunner from "./services/WalletRunner.js";
-import NavigatorUtils from "./services/NavigatorUtils.js";
 
 function MainController() {
 

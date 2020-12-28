@@ -4,21 +4,27 @@ let controllersChangeHandlers = [];
 
 let webmanifest = null;
 
-navigator.serviceWorker.oncontrollerchange = function (event) {
-    let serviceWorker = event.target.controller;
-    let serviceWorkerUrl = serviceWorker.scriptURL;
+function areServiceWorkersSupported(){
+    return "serviceWorker" in navigator;
+}
 
-    if (controllersChangeHandlers.length) {
-        let index = controllersChangeHandlers.length;
-        while (index--) {
-            const { swName, registration, callback } = controllersChangeHandlers[index];
-            if (serviceWorkerUrl.endsWith(swName)) {
-                callback(undefined, registration);
-                controllersChangeHandlers.splice(index, 1);
+if(areServiceWorkersSupported()){
+    navigator.serviceWorker.oncontrollerchange = function (event) {
+        let serviceWorker = event.target.controller;
+        let serviceWorkerUrl = serviceWorker.scriptURL;
+
+        if (controllersChangeHandlers.length) {
+            let index = controllersChangeHandlers.length;
+            while (index--) {
+                const { swName, registration, callback } = controllersChangeHandlers[index];
+                if (serviceWorkerUrl.endsWith(swName)) {
+                    callback(undefined, registration);
+                    controllersChangeHandlers.splice(index, 1);
+                }
             }
         }
-    }
-};
+    };
+}
 
 const NavigatorUtils = {
     whenSwIsReady: function (swName, registration, callback) {
@@ -210,9 +216,7 @@ const NavigatorUtils = {
             });
     },
 
-    areServiceWorkersSupported: () => {
-        return "serviceWorker" in navigator;
-    },
+    areServiceWorkersSupported,
 
     canUseServiceWorkers: () => {
         return (
