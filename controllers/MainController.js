@@ -157,7 +157,7 @@ function MainController() {
         }
 
         if (! (LOADER_GLOBALS.environment.mode === "secure" || LOADER_GLOBALS.environment.mode === "dev-secure")) {
-            return callback(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
+            return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
         }
 
         if(LOADER_GLOBALS.environment.mode === "dev-secure" && !LOADER_GLOBALS.credentials.username){

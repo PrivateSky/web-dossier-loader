@@ -43,7 +43,7 @@ function WalletService(options) {
 
             resolver.loadDSU(walletSSI, (err, constDSU) =>{
                 if(err){
-                    return callback(createOpenDSUErrorWrapper("Failed to load wallet", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to load wallet", err));
                 }
                 callback(undefined, constDSU.getWritableDSU());
             });
@@ -68,7 +68,7 @@ function WalletService(options) {
 
             walletBuilder.build(arrayWithSecrets,(err, wallet) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to create Wallet", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to create Wallet", err));
                 }
                 callback(undefined, wallet);
             });
@@ -83,7 +83,7 @@ function WalletService(options) {
     this.rebuild = function (domain, key, callback) {
         this.load(domain, key, (err, wallet) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to load wallet in rebuild", err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to load wallet in rebuild", err));
             }
 
             const walletBuilder = new WalletBuilderService(wallet, {
@@ -98,7 +98,7 @@ function WalletService(options) {
 
             walletBuilder.rebuild(domain,(err) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to rebuild wallet", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to rebuild wallet", err));
                 }
                 callback(undefined, wallet);
             });

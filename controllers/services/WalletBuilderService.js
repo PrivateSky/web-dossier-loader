@@ -54,14 +54,14 @@ function WalletBuilderService(options) {
     const getWalletTemplateContent = (callback) => {
         fileService.getFolderContentAsJSON(WALLET_TEMPLATE_FOLDER, (err, data) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to get content for "+ WALLET_TEMPLATE_FOLDER, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to get content for "+ WALLET_TEMPLATE_FOLDER, err));
             }
 
             let content;
             try {
                 content = JSON.parse(data);
             } catch (e) {
-                return callback(createOpenDSUErrorWrapper("Failed to parse content for " + WALLET_TEMPLATE_FOLDER, e));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to parse content for " + WALLET_TEMPLATE_FOLDER, e));
             }
 
             callback(undefined, content);
@@ -125,7 +125,7 @@ function WalletBuilderService(options) {
         }
         dsu.writeFile(targetPath, fileContent, (err) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to write file in DSU at path ", targetPath, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to write file in DSU at path ", targetPath, err));
             }
             customizeDSU(dsu, files, prefix, callback);
         });
@@ -137,7 +137,7 @@ function WalletBuilderService(options) {
     const getListOfAppsForInstallation = (callback) => {
         fileService.getFolderContentAsJSON(APPS_FOLDER, function (err, data) {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to get content for folder " + APPS_FOLDER, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to get content for folder " + APPS_FOLDER, err));
             }
 
             let apps;
@@ -145,7 +145,7 @@ function WalletBuilderService(options) {
             try {
                 apps = JSON.parse(data);
             } catch (e) {
-                return callback(createOpenDSUErrorWrapper("Failed to parse content for folder " + APPS_FOLDER, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to parse content for folder " + APPS_FOLDER, err));
             }
 
             callback(undefined, apps);
@@ -169,16 +169,16 @@ function WalletBuilderService(options) {
             let keyssi = require("opendsu").loadApi("keyssi");
             resolver.createDSU(keyssi.buildSeedSSI(VAULT_DOMAIN, undefined, undefined,undefined,LOADER_GLOBALS.environment.vault), (err, appDSU) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to create DSU ", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to create DSU ", err));
                 }
 
                 appDSU.mount('/' + CODE_FOLDER, seed, (err) => {
                     if (err) {
-                        return callback(createOpenDSUErrorWrapper("Failed to mount in /code seedSSI ", seed, err));
+                        return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to mount in /code seedSSI ", seed, err));
                     }
                     customizeDSU(appDSU, files, `/${APP_FOLDER}`, (err) => {
                         if (err) {
-                            return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+                            return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to customize DSU", err));
                         }
                         return appDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
                             if (err) {
@@ -199,7 +199,7 @@ function WalletBuilderService(options) {
                 try {
                     files = JSON.parse(data);
                 } catch (e) {
-                    return callback(createOpenDSUErrorWrapper("Failed to get content for folder" + `apps/${appName}`, err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to get content for folder" + `apps/${appName}`, err));
                 }
 
                 files = dirSummaryAsArray(files);
@@ -230,7 +230,7 @@ function WalletBuilderService(options) {
         const mountApp = (newAppSeed) => {
             walletDSU.mount('/apps/' + appName, newAppSeed, (err) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to mount in folder" + `/apps/${appName}`, err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to mount in folder" + `/apps/${appName}`, err));
                 }
 
                 performInstallation(walletDSU, apps, appsList, callback);
@@ -243,7 +243,7 @@ function WalletBuilderService(options) {
         if (newInstanceIsDemanded) {
             return buildApp(appName, appInfo.seed, hasTemplate, (err, newAppSeed) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to build app " + `${appName}`, err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to build app " + `${appName}`, err));
                 }
                 mountApp(newAppSeed);
             });
@@ -271,7 +271,7 @@ function WalletBuilderService(options) {
 
             const appDossier = this.dossierLoader(seed);
             customizeDSU(appDossier, files, `/${APP_FOLDER}`, (err) => {
-                return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to customize DSU", err));
             })
         })
 
@@ -296,7 +296,7 @@ function WalletBuilderService(options) {
 
         rebuildApp(appName, appInfo.seed, (err) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to rebuild app" + `${appName}`, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to rebuild app" + `${appName}`, err));
             }
 
             performApplicationsRebuild(apps, appsList, callback);
@@ -420,7 +420,7 @@ function WalletBuilderService(options) {
         files = dirSummaryAsArray(files);
         customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to customize DSU", err));
             }
 
             installApplications(wallet, callback);
@@ -438,17 +438,17 @@ function WalletBuilderService(options) {
         let _build = () => {
             fileService.getFile(WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME, (err, dsuType) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper(`Failed to read wallet dsu type from ${WALLET_TEMPLATE_FOLDER + "/" + SSI_FILE_NAME}`,err));
                 }
                 resolver.createDSU(keySSISpace.buildWalletSSI(domain, arrayWithSecrets, LOADER_GLOBALS.environment.vault), {useSSIAsIdentifier:true, dsuTypeSSI: dsuType}, (err, walletDSU) => {
                     if (err) {
-                        return callback(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
+                        return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper(`Failed to create wallet of type  ${dsuType}`,err));
                     }
                     console.log("ConstDSU Wallet has SSI:", walletDSU.getCreationSSI(true));
                     walletDSU = walletDSU.getWritableDSU();
                     getWalletTemplateContent((err, files) => {
                         if (err) {
-                            return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
+                            return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
                         }
 
                         // we need to remove dsu type identifier from the file list
@@ -457,12 +457,12 @@ function WalletBuilderService(options) {
 
                         install(walletDSU, files, (err) => {
                             if (err) {
-                                return callback(createOpenDSUErrorWrapper(`Failed to install`, err));
+                                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper(`Failed to install`, err));
                             }
 
                             return walletDSU.writeFile("/environment.json", JSON.stringify(LOADER_GLOBALS.environment), (err) => {
                                 if (err) {
-                                    return callback(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
+                                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Could not write Environment file into wallet.", err));
                                 }
                                 callback(undefined, walletDSU);
                             });
@@ -492,7 +492,7 @@ function WalletBuilderService(options) {
     this.rebuild = function (callback) {
         getWalletTemplateContent((err, files) => {
             if (err) {
-                return callback(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
+                return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper(`Failed to read wallet template`, err));
             }
 
             // Remove the seed file in order to prevent copying it into the new dossier
@@ -503,7 +503,7 @@ function WalletBuilderService(options) {
             files = dirSummaryAsArray(files);
             customizeDSU(wallet, files, `/${APP_FOLDER}`, (err) => {
                 if (err) {
-                    return callback(createOpenDSUErrorWrapper("Failed to customize DSU", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Failed to customize DSU", err));
                 }
 
                 console.trace('Rebuilding');
