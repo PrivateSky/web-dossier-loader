@@ -115,7 +115,7 @@ const NavigatorUtils = {
                 }, (err) => { console.log(err) })
                 .catch((err) => {
                     console.log(err);
-                    return callback(createOpenDSUErrorWrapper("Service worker registration failed.", err));
+                    return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Service worker registration failed.", err));
                 });
         }
     },
