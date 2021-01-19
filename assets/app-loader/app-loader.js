@@ -71,6 +71,10 @@ function sendMessage(message) {
 }
 
 function sendLoadingProgress(progress, status) {
+    if (LOADER_GLOBALS.environment.showLoadingProgress === false) {
+        return;
+    }
+
     let currentWindow = window;
     let parentWindow = currentWindow.parent;
 

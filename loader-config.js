@@ -37,5 +37,7 @@ LOADER_GLOBALS.loadCredentials = function(){
 
 LOADER_GLOBALS.loadCredentials();
 
-let config = require("opendsu").loadApi("config");
-config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
+if (typeof require !== 'undefined') {
+    let config = require("opendsu").loadApi("config");
+    config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
+}
