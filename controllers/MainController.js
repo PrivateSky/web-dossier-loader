@@ -50,7 +50,10 @@ function MainController() {
     }
 
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    function getSecretLocalToken(development) {
+    function getSecretLocalToken(development, mobile) {
+        if (mobile) {
+            return "SuperUserSecurePassword1!";
+        }
         let storageKey = "secretToken";
 
         if(development) {
@@ -78,7 +81,7 @@ function MainController() {
         LOADER_GLOBALS.loadCredentials();
         const secretArrayKey = getWalletSecretArrayKey();
         const isArrayEmpty = secretArrayKey.filter(el => el && el.trim().length !== 0).length === 0;
-        
+
         if(isArrayEmpty) {
             return console.warn("Array of secrets is not loaded yet...", secretArrayKey);
         }
@@ -108,18 +111,18 @@ function MainController() {
      * Create a default wallet with a default password if none exists
      * and load it
      */
-    function runInAutologin(development) {
+    function runInAutologin(development, mobile) {
         spinner.attachToView();
         if(!LOADER_GLOBALS.credentials.isValid) {
             let credentials = {};
             if (!development) {
                 credentials.email = "wallet@invisible";
-                credentials.password = getSecretLocalToken(development);
+                credentials.password = getSecretLocalToken(development, mobile);
                 credentials.username = "private";
                 credentials.company = "OpenDSU Development INC.";
             } else {
                 credentials.email = DEVELOPMENT_EMAIL;
-                credentials.password = getSecretLocalToken(development);
+                credentials.password = getSecretLocalToken(development, mobile);
                 credentials.username = DEVELOPMENT_USERNAME;
                 credentials.company = "OpenDSU Development INC.";
             }
@@ -140,6 +143,9 @@ function MainController() {
         });
     }
 
+    function runInMobileAutologin(){
+        return runInAutologin(false, true);
+    }
 
     this.init = function () {
         spinner = new Spinner(document.getElementsByTagName("body")[0]);
@@ -150,6 +156,10 @@ function MainController() {
 
         if (LOADER_GLOBALS.environment.mode === "dev-autologin") {
             return runInDevelopment();
+        }
+
+        if (LOADER_GLOBALS.environment.mode === "mobile-autologin") {
+            return runInMobileAutologin();
         }
 
         if (LOADER_GLOBALS.environment.mode === "autologin") {
