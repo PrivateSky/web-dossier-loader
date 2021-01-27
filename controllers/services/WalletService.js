@@ -39,7 +39,7 @@ function WalletService(options) {
             let resolver = require("opendsu").loadApi("resolver");
             let keyssi = require("opendsu").loadApi("keyssi");
 
-            let walletSSI =  keyssi.buildWalletSSI(domain, secret, LOADER_GLOBALS.environment.vault);
+            let walletSSI =  keyssi.buildTemplateWalletSSI(domain, secret, LOADER_GLOBALS.environment.vault);
 
             resolver.loadDSU(walletSSI, (err, constDSU) =>{
                 if(err){
