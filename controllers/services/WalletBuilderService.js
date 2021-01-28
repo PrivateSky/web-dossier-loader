@@ -184,9 +184,9 @@ function WalletBuilderService(options) {
                             if (err) {
                                 console.log("Could not write environment file into app", err);
                             }
-                            appDSU.getKeySSI(callback);
+                            appDSU.getKeySSIAsString(callback);
                         });
-                        appDSU.getKeySSI(callback);
+                        appDSU.getKeySSIAsString(callback);
                     })
                 })
             });

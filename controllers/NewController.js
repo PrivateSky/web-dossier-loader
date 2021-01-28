@@ -120,7 +120,7 @@ function NewController() {
                     return console.error(err);
                 }
 
-                wallet.getKeySSI((err, keySSI) => {
+                wallet.getKeySSIAsString((err, keySSI) => {
                     console.log(`Wallet created. Seed: ${keySSI}`);
                     //document.getElementById("seed").value = keySSI;
                     spinner.removeFromView();

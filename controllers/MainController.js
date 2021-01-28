@@ -272,7 +272,7 @@ function MainController() {
 
             let writableWallet = wallet;
 
-            writableWallet.getKeySSI((err, keySSI) => {
+            writableWallet.getKeySSIAsString((err, keySSI) => {
                 if (err) {
                     console.error(err);
                     return console.error("Operation failed. Try again");
