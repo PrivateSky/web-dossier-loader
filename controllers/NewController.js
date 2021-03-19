@@ -67,7 +67,7 @@ function NewController() {
 
         password.length > 0 && !passwordIsValid ? this.showErrorOnField('password', 'set-up-password-help') :
             this.removeErrorFromField('password', 'set-up-password-help');
-        passwordConfirm.length > 0 && !confirmPasswordIsValid ? this.showErrorOnField('confirm-password', 'set-up-confirm-password-help')
+        passwordConfirm.length > 0 && (!confirmPasswordIsValid || password !== passwordConfirm) ? this.showErrorOnField('confirm-password', 'set-up-confirm-password-help')
             : this.removeErrorFromField('confirm-password', 'set-up-confirm-password-help');
 
         return passwordIsValid && confirmPasswordIsValid && password === passwordConfirm;
