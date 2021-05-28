@@ -221,12 +221,6 @@ function MainController() {
 
   this.createForm = function () {
     let formElement = document.getElementsByClassName("credentials-panel-action-box")[0];
-    if(typeof LOADER_GLOBALS.REGISTRATION_FIELDS ==="undefined"){
-      const errorMessage ="Configuration is not up to date. Please check config-constants.js-template file";
-      document.getElementsByTagName("body")[0].innerHTML="";
-      alert(errorMessage);
-      throw new Error(errorMessage);
-    }
     LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
       if (field.visible && field.fieldId !== "confirm-password") {
         self.formFields.push(field.fieldId);

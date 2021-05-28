@@ -83,14 +83,15 @@ let LOADER_GLOBALS = {
         window.location.replace(basePath + "loader/changePassword.html");
       }
     },
-    option3: {
+    /* Not implemented yet
+      option3: {
       label: "Change pin",
       action: function () {
         console.log('opt3 click', window.location.href);
         const basePath = window.location.href.split("loader")[0];
         window.location.replace(basePath + "loader/changePin.html");
       }
-    }
+    }*/
   },
   LABELS_DICTIONARY: {
     APP_NAME: "Trust loader",

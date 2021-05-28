@@ -1,4 +1,5 @@
 import configConstants from './config-constants.js';
+import DEFAULT_APP_CONFIG from "./utils/defaultConfigConstants.js";
 
 window.LOADER_GLOBALS = configConstants;
 
@@ -120,3 +121,26 @@ if (typeof require !== 'undefined') {
   let config = require("opendsu").loadApi("config");
   config.autoconfigFromEnvironment(LOADER_GLOBALS.environment);
 }
+
+/**
+ *  patching configuration
+ * **/
+
+let missingConfiguration = false;
+let patchConfiguration = (existingConfiguration, requiredConfiguration) => {
+  Object.keys(requiredConfiguration).forEach((key) => {
+    if (typeof existingConfiguration[key] === "undefined") {
+      existingConfiguration[key] = requiredConfiguration[key];
+      missingConfiguration = true;
+    } else if (typeof existingConfiguration[key] === "object" && typeof requiredConfiguration[key] === "object") {
+      patchConfiguration(existingConfiguration[key], requiredConfiguration[key])
+    }
+  })
+}
+
+patchConfiguration(LOADER_GLOBALS, DEFAULT_APP_CONFIG);
+
+if(missingConfiguration){
+  console.error("The trust-loader configuration is not up to date! Please update it using config-constants.js-template file", )
+}
+/** end patching configuration **/
