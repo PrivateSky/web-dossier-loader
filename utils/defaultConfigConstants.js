@@ -122,6 +122,7 @@ export default {
     CHANGE_PASSWORD_CONTAINER: "change-credentials-container",
     PASSWORD_CONTAINER_ID: "credentials-container",
     MODE: 'secure',
+    DEFAULT_PIN: "1qaz",
     PINCODE_REGEX: /^.{4,}$/,
     PASSWORD_MIN_LENGTH: 12,
     USERNAME_MIN_LENGTH: 6,

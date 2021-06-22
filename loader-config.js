@@ -26,15 +26,28 @@ LOADER_GLOBALS.environment = env;
 LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY = env.appName + "-credentials";
 LOADER_GLOBALS.LOCALSTORAGE_PINCODE_KEY = env.appName + "-pincode";
 
+let encrypt = function (key, dataObj) {
+  const crypto = require("opendsu").loadAPI("crypto");
+  const encryptionKey = crypto.deriveEncryptionKey(key);
+  const encryptedCredentials = crypto.encrypt(JSON.stringify(dataObj), encryptionKey);
+  return JSON.stringify(encryptedCredentials);
+}
+
+let decrypt = function (key, dataObj) {
+  const crypto = require("opendsu").loadAPI("crypto");
+  const encryptionKey = crypto.deriveEncryptionKey(key);
+  const decryptData = crypto.decrypt($$.Buffer.from(JSON.parse(dataObj)), encryptionKey);
+  return JSON.parse(decryptData.toString());
+}
+
 LOADER_GLOBALS.saveCredentials = function () {
-  localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, JSON.stringify(LOADER_GLOBALS.credentials));
+  const encryptedCredentials = encrypt(configConstants.DEFAULT_PIN,LOADER_GLOBALS.credentials);
+  localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, encryptedCredentials);
 }
 
 LOADER_GLOBALS.savePinCodeCredentials = function (pincode, credentials) {
-  const crypto = require("opendsu").loadAPI("crypto");
-  const encryptionKey = crypto.deriveEncryptionKey(pincode);
-  const encryptedCredentials = crypto.encrypt(JSON.stringify(credentials), encryptionKey);
-  localStorage.setItem(pincode, JSON.stringify(encryptedCredentials));
+  const encryptedCredentials = encrypt(pincode,credentials);
+  localStorage.setItem(pincode, encryptedCredentials);
   addPin(pincode);
 }
 
@@ -62,15 +75,12 @@ function removePin(pinCode) {
 
 LOADER_GLOBALS.loadPinCodeCredentials = function (pincode) {
   let pinCodeCredentials = localStorage.getItem(pincode);
-  pinCodeCredentials = $$.Buffer.from(JSON.parse(pinCodeCredentials));
   if (!pinCodeCredentials) {
-    pinCodeCredentials = "{}";
+    pinCodeCredentials = {};
   } else {
-    const crypto = require("opendsu").loadAPI("crypto");
-    const encryptionKey = crypto.deriveEncryptionKey(pincode);
-    pinCodeCredentials = crypto.decrypt(pinCodeCredentials, encryptionKey);
+    pinCodeCredentials = decrypt(pincode, pinCodeCredentials);
   }
-  LOADER_GLOBALS.credentials = JSON.parse(pinCodeCredentials.toString());
+  LOADER_GLOBALS.credentials = pinCodeCredentials;
 }
 
 LOADER_GLOBALS.changePinCode = function (newPin, oldPin) {
@@ -105,9 +115,11 @@ LOADER_GLOBALS.pinCodeExists = function (pinCode) {
 LOADER_GLOBALS.loadCredentials = function () {
   let knownCredentials = localStorage.getItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
   if (!knownCredentials) {
-    knownCredentials = "{}";
+    knownCredentials = {};
+  } else {
+    knownCredentials = decrypt(configConstants.DEFAULT_PIN, knownCredentials);
   }
-  LOADER_GLOBALS.credentials = JSON.parse(knownCredentials);
+  LOADER_GLOBALS.credentials = knownCredentials;
 }
 
 LOADER_GLOBALS.clearCredentials = function () {
