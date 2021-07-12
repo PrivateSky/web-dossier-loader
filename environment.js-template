@@ -7,7 +7,9 @@ export default{
   "mode":  "dev-autologin",
   "domain":  "default",
   "stage":  "release",
-  "sw": true
+  "sw": true,
+  "pwa":false,
+  "allowPinLogin": false
 }
 
 /*
@@ -20,4 +22,6 @@ export default{
 *  browser:(Chrome, Firefox, any)
 *  stage:(development, release)
 *  sw:(true, false)
+*  pwa:(true,false)
+*  allowPinLogin:(true,false)
 */
