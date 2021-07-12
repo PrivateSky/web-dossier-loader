@@ -222,7 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }*/
 
 
-  if (LOADER_GLOBALS.environment.alowPinLogin) {
+  if (LOADER_GLOBALS.environment.allowPinLogin) {
     document.getElementById("pin-container").classList.remove("d-none");
   }
 
