@@ -27,26 +27,30 @@ LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY = env.appName + "-credentials";
 LOADER_GLOBALS.LOCALSTORAGE_PINCODE_KEY = env.appName + "-pincode";
 
 let encrypt = function (key, dataObj) {
-  const crypto = require("opendsu").loadAPI("crypto");
-  const encryptionKey = crypto.deriveEncryptionKey(key);
-  const encryptedCredentials = crypto.encrypt(JSON.stringify(dataObj), encryptionKey);
-  return JSON.stringify(encryptedCredentials);
+  if (typeof require !== 'undefined') {
+    const crypto = require("opendsu").loadAPI("crypto");
+    const encryptionKey = crypto.deriveEncryptionKey(key);
+    const encryptedCredentials = crypto.encrypt(JSON.stringify(dataObj), encryptionKey);
+    return JSON.stringify(encryptedCredentials);
+  }
 }
 
 let decrypt = function (key, dataObj) {
-  const crypto = require("opendsu").loadAPI("crypto");
-  const encryptionKey = crypto.deriveEncryptionKey(key);
-  const decryptData = crypto.decrypt($$.Buffer.from(JSON.parse(dataObj)), encryptionKey);
-  return JSON.parse(decryptData.toString());
+  if (typeof require !== 'undefined') {
+    const crypto = require("opendsu").loadAPI("crypto");
+    const encryptionKey = crypto.deriveEncryptionKey(key);
+    const decryptData = crypto.decrypt($$.Buffer.from(JSON.parse(dataObj)), encryptionKey);
+    return JSON.parse(decryptData.toString());
+  }
 }
 
 LOADER_GLOBALS.saveCredentials = function () {
-  const encryptedCredentials = encrypt(configConstants.DEFAULT_PIN,LOADER_GLOBALS.credentials);
+  const encryptedCredentials = encrypt(configConstants.DEFAULT_PIN, LOADER_GLOBALS.credentials);
   localStorage.setItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY, encryptedCredentials);
 }
 
 LOADER_GLOBALS.savePinCodeCredentials = function (pincode, credentials) {
-  const encryptedCredentials = encrypt(pincode,credentials);
+  const encryptedCredentials = encrypt(pincode, credentials);
   localStorage.setItem(pincode, encryptedCredentials);
   addPin(pincode);
 }
@@ -108,7 +112,7 @@ LOADER_GLOBALS.pinCodeExists = function (pinCode) {
   if (!pinArr) {
     return false;
   } else {
-    return pinArr.indexOf(pinCode)>=0;
+    return pinArr.indexOf(pinCode) >= 0;
   }
 }
 
@@ -152,7 +156,7 @@ let patchConfiguration = (existingConfiguration, requiredConfiguration) => {
 
 patchConfiguration(LOADER_GLOBALS, DEFAULT_APP_CONFIG);
 
-if(missingConfiguration){
-  console.error("The trust-loader configuration is not up to date! Please update it using config-constants.js-template file", )
+if (missingConfiguration) {
+  console.error("The trust-loader configuration is not up to date! Please update it using config-constants.js-template file",)
 }
 /** end patching configuration **/

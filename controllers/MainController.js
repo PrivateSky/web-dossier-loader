@@ -197,15 +197,6 @@ function MainController() {
     document.getElementById(containerId).style.display = "block";
   };
 
-  this.validateCredentials = function () {
-    let btn = document.getElementById("open-wallet-btn");
-    if (this.formIsValid()) {
-      btn.removeAttribute("disabled");
-    } else {
-      btn.setAttribute("disabled", "disabled");
-    }
-  };
-
   this.formIsValid = function () {
       return validator.validateForm(self.formFields);
   }
@@ -236,8 +227,6 @@ function MainController() {
         htmlElem.value = LOADER_GLOBALS.credentials[item] || "";
       }
     });
-
-    this.validateCredentials();
   }
 
   this.openWallet = function (event) {
@@ -313,13 +302,6 @@ if (urlParams.get('login') === "auto" && LOADER_GLOBALS.credentials && Object.ke
     }
 
     prepareViewContent();
-
-    let passToggles = document.getElementsByClassName("toggle-password");
-    for (let i = 0; i < passToggles.length; i++) {
-      passToggles[i].addEventListener("click", (event) => {
-        toggleViewPassword(event);
-      })
-    }
   });
 }
 window.controller = controller;

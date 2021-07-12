@@ -1,4 +1,5 @@
 export default {
+    THEME: "app",
     REGISTRATION_FIELDS: [
         {
             visible: true,
@@ -50,28 +51,16 @@ export default {
     ACTION_BUTTON_OPTIONS: {
         option1: {
             label: "Logout",
-            action: function () {
-                localStorage.removeItem(LOADER_GLOBALS.LOCALSTORAGE_CREDENTIALS_KEY);
-                const basePath = window.location.href.split("loader")[0];
-                window.location.replace(basePath + "loader");
-            }
+            action: "logout"
         },
         option2: {
             label: "Change password",
-            action: function () {
-                console.log('opt2 click', window.location.href);
-                const basePath = window.location.href.split("loader")[0];
-                window.location.replace(basePath + "loader/changePassword.html");
-            }
+            action: "changePassword"
         },
         /* Not implemented yet
         option3: {
             label: "Change pin",
-            action: function () {
-                console.log('opt3 click', window.location.href);
-                const basePath = window.location.href.split("loader")[0];
-                window.location.replace(basePath + "loader/changePin.html");
-            }
+            action: "changePin"
         }*/
     },
 
