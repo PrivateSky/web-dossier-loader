@@ -2,6 +2,7 @@
 
 import NavigatorUtils from "./NavigatorUtils.js";
 import EventMiddleware from "./EventMiddleware.js";
+import ActionsRegistry from "./ActionsRegistry.js";
 
 const crypto = require("opendsu").loadApi("crypto");
 
@@ -72,7 +73,7 @@ function WalletRunner(options) {
           LOADER_GLOBALS.saveCredentials();
           Object.keys(LOADER_GLOBALS.ACTION_BUTTON_OPTIONS).forEach(key => {
             let liElem = document.createElement("li");
-            liElem.onclick = LOADER_GLOBALS.ACTION_BUTTON_OPTIONS[key].action;
+            liElem.onclick = ActionsRegistry.getAction([(LOADER_GLOBALS.ACTION_BUTTON_OPTIONS[key].action)]);
             liElem.innerHTML = `<div>${LOADER_GLOBALS.ACTION_BUTTON_OPTIONS[key].label}</div>`;
             options.appendChild(liElem);
           })
