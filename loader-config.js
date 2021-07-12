@@ -131,7 +131,6 @@ LOADER_GLOBALS.clearCredentials = function () {
   LOADER_GLOBALS.credentials = {};
 }
 
-LOADER_GLOBALS.loadCredentials();
 
 if (typeof require !== 'undefined') {
   let config = require("opendsu").loadApi("config");
@@ -155,6 +154,7 @@ let patchConfiguration = (existingConfiguration, requiredConfiguration) => {
 }
 
 patchConfiguration(LOADER_GLOBALS, DEFAULT_APP_CONFIG);
+LOADER_GLOBALS.loadCredentials();
 
 if (missingConfiguration) {
   console.error("The trust-loader configuration is not up to date! Please update it using config-constants.js-template file",)
