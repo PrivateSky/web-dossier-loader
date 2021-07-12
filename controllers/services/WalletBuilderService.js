@@ -477,8 +477,6 @@ function WalletBuilderService(options) {
             });
         }
 
-        console.log('-------->>>>> ', keySSISpace.createTemplateWalletSSI(domain,  options['secret'], LOADER_GLOBALS.environment.vault));
-        console.log('-------->>>>> options[walletKeySSI]',options['walletKeySSI'])
         resolver.loadDSU(keySSISpace.createTemplateWalletSSI(domain,  options['secret'], LOADER_GLOBALS.environment.vault), (err, walletDSU) => {
            if(err){
                _build();
