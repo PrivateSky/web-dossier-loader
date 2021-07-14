@@ -1,5 +1,5 @@
 import "./../loader-config.js";
-import {Spinner, prepareView, createFormElement, toggleViewPassword, prepareViewContent} from "./services/UIService.js";
+import {createFormElement, prepareView, prepareViewContent, Spinner} from "./services/UIService.js";
 import WalletService from "./services/WalletService.js";
 import NavigatorUtils from "./services/NavigatorUtils.js";
 
@@ -182,7 +182,7 @@ function NewController() {
     let formElement = document.getElementsByClassName("form-content-container")[0];
     LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
       if (field.visible) {
-        formFields.push(field.fieldId);
+        formFields.unshift(field.fieldId);
         formElement.prepend(createFormElement(field, {inputType: "helperInput"}));
       }
     })

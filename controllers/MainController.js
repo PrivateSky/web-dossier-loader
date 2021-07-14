@@ -174,13 +174,12 @@ function MainController() {
       return OpenDSUSafeCallback(callback)(createOpenDSUErrorWrapper("Unknown mode in environment.js"));
     }
 
-    /*    if (LOADER_GLOBALS.environment.mode === "dev-secure" && !LOADER_GLOBALS.credentials.username) {
-          LOADER_GLOBALS.credentials.username = "devsuperuser"
-          LOADER_GLOBALS.credentials.email = "dev@superuser.dev";
-          LOADER_GLOBALS.credentials.company = "Company Inc";
-          LOADER_GLOBALS.credentials.password = "SuperUserSecurePassword1!";
-          LOADER_GLOBALS.credentials['confirm-password'] = "SuperUserSecurePassword1!";
-        }*/
+    if (LOADER_GLOBALS.environment.mode === "dev-secure" && !LOADER_GLOBALS.credentials.username) {
+      LOADER_GLOBALS.credentials.username = "devsuperuser"
+      LOADER_GLOBALS.credentials.email = "dev@superuser.dev";
+      LOADER_GLOBALS.credentials.company = "Company Inc";
+      LOADER_GLOBALS.credentials.password = "SuperUserSecurePassword1!";
+    }
 
     let windowUrl = new URL(window.location.href);
     if (windowUrl.searchParams.get("login") !== null) {
@@ -198,7 +197,7 @@ function MainController() {
   };
 
   this.formIsValid = function () {
-      return validator.validateForm(self.formFields);
+    return validator.validateForm(self.formFields);
   }
 
   this.pinCheckboxHandler = function (event) {
