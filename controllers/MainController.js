@@ -6,8 +6,8 @@ import WalletRunner from "./services/WalletRunner.js";
 
 function MainController() {
 
-  const DEVELOPMENT_EMAIL = "dev@autologin.dev";
-  const DEVELOPMENT_USERNAME = "autologin";
+  const DEVELOPMENT_EMAIL = "dev@autoslogin.dev";
+  const DEVELOPMENT_USERNAME = "autologin12";
 
   const walletService = new WalletService();
   const fileService = new FileService();
@@ -112,6 +112,7 @@ function MainController() {
    * and load it
    */
   function runInAutologin(development, mobile) {
+    const USER_DETAILS_FILE = "user-details.json";
     spinner.attachToView();
     if (!LOADER_GLOBALS.credentials.isValid) {
       let credentials = {};
@@ -135,11 +136,17 @@ function MainController() {
     }
 
     walletService.create(LOADER_GLOBALS.environment.domain, getWalletSecretArrayKey(), (err, wallet) => {
+
       if (err) {
         throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
       }
-      console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
-      return self.openWallet();
+      wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(LOADER_GLOBALS.credentials), (err)=>{
+        if (err) {
+          throw createOpenDSUErrorWrapper("Failed to write user details in wallet", err);
+        }
+        console.log("A new wallet got initialised...", wallet.getCreationSSI(true));
+        return self.openWallet();
+      });
     });
   }
 
