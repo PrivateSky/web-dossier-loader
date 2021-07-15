@@ -87,6 +87,26 @@ function RecoverWalletController() {
     return validator.validateForm(["password", "confirm-password"]);
   }
 
+  this.writeUserDetailsToFile = function (wallet, callback) {
+    let objectToWrite = {};
+    Object.keys(LOADER_GLOBALS.credentials).forEach(key => {
+      if (typeof LOADER_GLOBALS.credentials[key] !== "boolean" && key !== "password") {
+        objectToWrite[key] = LOADER_GLOBALS.credentials[key]
+      }
+    })
+    wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(objectToWrite), callback);
+  }
+
+  this.getUserDetailsFromFile = function (wallet, callback) {
+    wallet.readFile(USER_DETAILS_FILE, (err, data) => {
+      if (err) {
+        return callback(err);
+      }
+      const dataSerialization = data.toString();
+      callback(undefined, JSON.parse(dataSerialization))
+    });
+  }
+
   function createWallet() {
     walletService.createWithKeySSI(LOADER_GLOBALS.environment.domain, {
       secret: getWalletSecretArrayKey(),
@@ -97,6 +117,19 @@ function RecoverWalletController() {
         showFormError(document.getElementById("recover-key-form"), LOADER_GLOBALS.LABELS_DICTIONARY.WRONG_KEY);
         return console.error(err);
       }
+      self.writeUserDetailsToFile(newWallet, (err, data) => {
+        if (err) {
+          return console.log(err);
+        }
+
+        self.getUserDetailsFromFile(newWallet, (err, data) => {
+          if (err) {
+            return console.log(err);
+          }
+          console.log("Logged user", data);
+        })
+
+      });
       new WalletRunner({
         seed: recoveryKey,
         spinner
@@ -137,7 +170,7 @@ function RecoverWalletController() {
         LOADER_GLOBALS.clearCredentials();
         LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
           if (field.visible) {
-            formFields.push(field.fieldId);
+            formFields.unshift(field.fieldId);
             if (field.fieldId !== "password" && field.fieldId !== "confirm-password") {
               LOADER_GLOBALS.credentials[field.fieldId] = userData[field.fieldId];
               let readonlyElement = document.createElement("div");
@@ -156,10 +189,6 @@ function RecoverWalletController() {
       });
     })
   };
-}
-
-function getWalletSecretArrayKey() {
-  return [];
 }
 
 let controller = new RecoverWalletController();

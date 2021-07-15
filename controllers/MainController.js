@@ -6,8 +6,9 @@ import WalletRunner from "./services/WalletRunner.js";
 
 function MainController() {
 
+  let USER_DETAILS_FILE = "user-details.json";
   const DEVELOPMENT_EMAIL = "dev@autoslogin.dev";
-  const DEVELOPMENT_USERNAME = "autologin12";
+  const DEVELOPMENT_USERNAME = "autologin";
 
   const walletService = new WalletService();
   const fileService = new FileService();
@@ -112,7 +113,6 @@ function MainController() {
    * and load it
    */
   function runInAutologin(development, mobile) {
-    const USER_DETAILS_FILE = "user-details.json";
     spinner.attachToView();
     if (!LOADER_GLOBALS.credentials.isValid) {
       let credentials = {};
@@ -140,7 +140,7 @@ function MainController() {
       if (err) {
         throw createOpenDSUErrorWrapper(`Failed to create wallet in domain ${LOADER_GLOBALS.environment.domain}`, err);
       }
-      wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(LOADER_GLOBALS.credentials), (err)=>{
+      wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(LOADER_GLOBALS.credentials), (err) => {
         if (err) {
           throw createOpenDSUErrorWrapper("Failed to write user details in wallet", err);
         }
@@ -220,7 +220,7 @@ function MainController() {
     let formElement = document.getElementsByClassName("credentials-panel-action-box")[0];
     LOADER_GLOBALS.REGISTRATION_FIELDS.slice().reverse().forEach(field => {
       if (field.visible && field.fieldId !== "confirm-password") {
-        self.formFields.push(field.fieldId);
+        self.formFields.unshift(field.fieldId);
         formElement.prepend(createFormElement(field, {inputType: "simpleInput"}));
       }
     })
@@ -232,6 +232,26 @@ function MainController() {
         let htmlElem = document.getElementById(item);
         htmlElem.value = LOADER_GLOBALS.credentials[item] || "";
       }
+    });
+  }
+
+  this.writeUserDetailsToFile = function (wallet, callback) {
+    let objectToWrite = {};
+    Object.keys(LOADER_GLOBALS.credentials).forEach(key => {
+      if (typeof LOADER_GLOBALS.credentials[key] !== "boolean" && key !== "password") {
+        objectToWrite[key] = LOADER_GLOBALS.credentials[key]
+      }
+    })
+    wallet.writeFile(USER_DETAILS_FILE, JSON.stringify(objectToWrite), callback);
+  }
+
+  this.getUserDetailsFromFile = function (wallet, callback) {
+    wallet.readFile(USER_DETAILS_FILE, (err, data) => {
+      if (err) {
+        return callback(err);
+      }
+      const dataSerialization = data.toString();
+      callback(undefined, JSON.parse(dataSerialization))
     });
   }
 
@@ -272,6 +292,20 @@ function MainController() {
           console.error(err);
           return console.error("Operation failed. Try again");
         }
+
+        this.writeUserDetailsToFile(writableWallet, (err, data) => {
+          if (err) {
+            return console.log(err);
+          }
+
+          this.getUserDetailsFromFile(writableWallet, (err, data) => {
+            if (err) {
+              return console.log(err);
+            }
+            console.log("Logged user", data);
+          })
+
+        });
 
         console.log(`Loading wallet ${keySSI}`);
 
